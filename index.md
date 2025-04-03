@@ -3,6 +3,11 @@ layout: default
 title: M4 Assignment Guide
 ---
 
+# How to use this guide
+
+This guide and website is a new tool I'm developing to help you navigate statistical methods. It's a work in progress, but I'm hoping it will be useful for you. You'll find useful resources that I've collected and created to help you learn and apply statistical methods, this site is not a substitute for the lectures and discussions, but rather a tool to help you make sense of the material in more depth, and in a different way than you might be used to. Written more like documentation and a guide, rather than a traditional textbook.
+
+
 # M4 Assignment Guide: Thinking Through ANOVA Analyses
 
 This guide helps you navigate the M4 assignment, focusing on the *why* behind the steps in ANOVA and Repeated Measures ANOVA. It encourages you to think critically about the process and interpret results thoughtfully. Use the hints provided to steer you in the right direction in SPSS and your interpretations.
