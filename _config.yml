@@ -1,0 +1,41 @@
+title: Statistical Methods Course
+description: Resources and materials for Statistical Methods
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "" # the base hostname & protocol for your site, e.g. http://example.com
+
+# Build settings
+markdown: kramdown
+permalink: pretty
+
+# Collections
+collections:
+  lectures:
+    output: true
+    permalink: /lectures/:path/
+  assignments:
+    output: true
+    permalink: /assignments/:path/
+  resources:
+    output: true
+    permalink: /resources/:path/
+
+# Default front matter
+defaults:
+  -
+    scope:
+      path: ""
+      type: "lectures"
+    values:
+      layout: "lecture"
+  -
+    scope:
+      path: ""
+      type: "assignments"
+    values:
+      layout: "assignment"
+  -
+    scope:
+      path: ""
+      type: "resources"
+    values:
+      layout: "resource" 
