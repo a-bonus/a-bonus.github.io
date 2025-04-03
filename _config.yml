@@ -38,4 +38,10 @@ defaults:
       path: ""
       type: "resources"
     values:
-      layout: "resource" 
+      layout: "resource"
+
+# Security headers for iframe embedding
+webrick:
+  headers:
+    "X-Frame-Options": "ALLOW-FROM https://canvas.asu.edu"
+    "Content-Security-Policy": "frame-ancestors 'self' https://canvas.asu.edu" 
