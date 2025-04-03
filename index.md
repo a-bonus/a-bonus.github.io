@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Statistical Methods Course
+title: Home
 ---
 
 # Welcome to Statistical Methods
