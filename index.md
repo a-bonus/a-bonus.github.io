@@ -12,8 +12,9 @@ This site provides resources and guides for ASU's PSY 330 - Statistical Methods 
 * [M4 Assignment Guide: ANOVA Analyses](/m4) - A comprehensive guide to ANOVA and Repeated Measures ANOVA analyses
 * [M5 Assignment Guide: Two-Way ANOVA Analyses](/m5) - A detailed guide to Two-Way ANOVA for factorial designs
 * [M6 Assignment Guide: Regression Analyses](/m6) - A complete guide to correlation and regression techniques
+* [Final Exam Study Guide](/final-exam) - A comprehensive study guide covering all material for the final exam
 
-*More modules will be added as the course progresses.*
+*More resources may be added as needed.*
 
 ## How to Use This Site
 
