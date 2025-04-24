@@ -3,503 +3,316 @@ layout: default
 title: Final Exam Study Guide
 ---
 
-# PSY 330 Final Exam Study Guide
+# PSY 330 Final Exam: Master Study Guide
 
-This comprehensive guide covers the core concepts, statistical tests, interpretation skills, and data analysis procedures for your PSY 330 Statistical Methods final exam. It's organized according to the course modules (M1-M7) while emphasizing critical thinking and understanding the "why" behind statistical procedures.
+This comprehensive guide integrates core concepts, statistical test details, interpretation skills, practical application examples, and exam strategies for your PSY 330 Statistical Methods final exam. It combines structured learning with insights derived from typical exam questions and explanations.
 
-## I. Core Statistical Concepts (Module 1)
+## I. Core Statistical Concepts (Module 1 Foundations)
 
 ### Descriptive Statistics
 
-- **Measures of Central Tendency**:
+**Measures of Central Tendency:**
 
-  - **Mean**: Average of all values (sum of values divided by number of values)
-  - **Median**: Middle value when data is arranged in order (less affected by outliers)
-  - **Mode**: Most frequently occurring value
+- **Mean:** Average of all values (sum/count). Sensitive to outliers.
+- **Median:** Middle value when data is ordered. Less affected by outliers.
+- **Mode:** Most frequently occurring value(s).
 
-- **Measures of Dispersion**:
-  - **Standard Deviation**: Average distance of each value from the mean
-  - **Variance**: Square of the standard deviation, measures spread of data
+**Measures of Dispersion:**
+
+- **Standard Deviation (SD or σ):** Average distance of scores from the mean. Indicates typical spread.
+- **Variance (SD² or σ²):** Square of the standard deviation. Also measures spread.
 
 ### Normal Distribution
 
-- **Definition**: Bell-shaped, symmetrical distribution with specific properties
-- **Characteristics**:
-  - Mean = Median = Mode
-  - Symmetrical around the mean
-  - 68% of data falls within ±1 SD of mean
-  - 95% of data falls within ±2 SD of mean
-  - 99.7% of data falls within ±3 SD of mean
+- **Definition:** A theoretical, bell-shaped, symmetrical distribution.
+- **Characteristics:**
+  - Mean = Median = Mode at the center.
+  - Symmetrical around the mean.
+  - Defined percentages of scores fall within specific standard deviations:
+    - ~68% within ±1 SD
+    - ~95% within ±2 SD
+    - ~99.7% within ±3 SD
 
-### Z-Scores
+### Z-Scores (Standard Scores)
 
-- **Definition**: Number of standard deviations a score is from the mean
-- **Formula**: z = (X - μ) / σ (or z = (X - M) / SD for samples)
-- **Uses**:
-  - Standardize scores from different distributions
-  - Determine relative position within a distribution
-  - Calculate probabilities using the standard normal distribution
+- **Definition:** Indicates how many standard deviations a specific score is above or below the mean.
+- **Formula:** `z = (Score - Mean) / Standard Deviation` or `z = (X - μ) / σ` or `z = (X - M) / SD`
+- **Uses:**
+  - Standardize scores: Allows comparison across different distributions (different means/SDs).
+    - _Example (KB Insight):_ To compare performance in History (M=60, SD=2, Score=63 -> z=+1.5) and Biology (M=40, SD=1, Score=43 -> z=+3.0), the higher z-score in Biology indicates better performance relative to classmates in that specific course.
+  - Determine relative position: Shows where a score sits within its distribution.
+    - _Example (KB Insight):_ A z-score of 0 means the score is exactly average. A z-score of +3.50 indicates a position very far above the mean in the extreme upper tail.
+  - Calculate probabilities using the standard normal table.
+  - _Symmetry (KB Insight):_ The normal distribution is symmetrical, so the proportion of scores above a positive z (e.g., P(Z > 0.89)) is equal to the proportion below the corresponding negative z (e.g., P(Z < -0.89)).
 
-### Hypothesis Testing
+### Hypothesis Testing Framework
 
-- **Null Hypothesis (H₀)**: Statement of no effect, no difference, or no relationship
-  - Example: "There is no difference in the mean number of hours of sleep between men and women"
-- **Alternative/Research Hypothesis (H₁ or Hₐ)**: Statement of an effect, difference, or relationship
-  - **Directional**: Specifies the direction of the effect (e.g., "There is a positive relationship between the number of hours of sleep and happiness")
-  - **Non-directional**: States a difference exists but not the direction (e.g., "There is a difference in the mean number of hours of sleep between men and women")
-
-### Significance & Errors (Module 2)
-
-- **Alpha (α) Level**: Probability threshold for rejecting H₀ (typically .05 or .01)
-  - Represents acceptable risk of Type I error
-  - Lowering alpha (e.g., .05 to .01) makes it harder to find significance
-- **p-value**: Probability of obtaining observed results (or more extreme) if H₀ were true
-  - If p ≤ α: Reject H₀ (Statistically significant result)
-  - If p > α: Fail to reject H₀ (Not statistically significant)
-- **Type I Error**: Rejecting a true null hypothesis (false positive). Probability = α
-- **Type II Error**: Failing to reject a false null hypothesis (false negative). Probability = β
-- In simple terms, a Type I error is when you reject a true null hypothesis, and a Type II error is when you fail to reject a false null hypothesis, for example, when there is a relationship between the number of hours of sleep and happiness, but you fail to reject the null hypothesis that there is no relationship. And a Type II error is when you fail to reject the null hypothesis that there is no relationship between the number of hours of sleep and happiness, when there is actually a relationship.
-
-- **Sampling Distribution**: Distribution of sample statistics (like means) if many samples were taken
-- **Standard Error of the Mean**: Standard deviation of the sampling distribution of means
-- **Central Limit Theorem**: As sample size increases, the sampling distribution of means approaches normal distribution regardless of the population's distribution
-
-### Research Designs
-
-- **Between-Subjects**: Different participants in different conditions
-  - Used for: Independent-samples t-tests and between-subjects ANOVAs
-- **Within-Subjects (Repeated-Measures)**: Same participants measured under all conditions
-  - Used for: Paired-samples t-tests and repeated-measures ANOVAs
-  - Example: Cornbread rating 1 vs. 2; Before vs. After medication
-  - **Advantage**: Reduces error variance, increasing statistical power
-  - **When to avoid**: When testing pre-existing groups or when carryover effects are likely
-- **Factorial Design**: Two or more Independent Variables (Factors)
-  - Examines: Main Effects and Interactions
-- **Experimental vs. Quasi-Experimental**:
-  - **Experiment**: Researcher manipulates IV and uses random assignment
-  - **Quasi-Experiment**: Uses pre-existing groups or lacks random assignment
-  - Key distinction: Only experiments allow for strong causal conclusions
+- **Null Hypothesis (H₀):** Statement of no effect, no difference, or no relationship. (The hypothesis the statistical test _directly_ evaluates).
+  - _Example:_ "There is no difference in mean happiness scores between bike riders and non-riders."
+- **Alternative/Research Hypothesis (H₁ or Hₐ):** Statement predicting an effect, difference, or relationship exists.
+  - **Non-directional:** States a difference/relationship exists but doesn't specify the direction. Uses words like "differs," "is related," "changes."
+    - _Example (KB Insight):_ "People who ride bikes _differ_ in happiness from people who do not ride bikes." (Doesn't say happier or less happy).
+  - **Directional:** Specifies the direction of the difference/relationship. Uses words like "greater than," "less than," "positively related," "happier than."
+    - _Example (KB Insight):_ "People who ride bikes are _happier than_ people who do not ride bikes."
 
 ### Variables & Measurement
 
-- **Independent Variable (IV)**: Variable manipulated/categorized by researcher (presumed cause)
-- **Dependent Variable (DV)**: Variable measured by researcher (presumed effect)
-- **Predictor Variable**: Used in regression/correlation (similar to IV)
-- **Criterion/Outcome Variable**: Used in regression/correlation (similar to DV)
+- **Independent Variable (IV):** Variable manipulated or categorized by the researcher (presumed cause).
+- **Dependent Variable (DV):** Variable measured by the researcher (presumed effect/outcome).
+- **Predictor Variable:** Used in regression/correlation (conceptually similar to IV).
+- **Criterion/Outcome Variable:** Used in regression/correlation (conceptually similar to DV).
+- **Levels of Measurement:**
+  - **Nominal:** Categories, no inherent order (e.g., Type of Music: Classical, Pop, Hip Hop).
+  - **Ordinal:** Ordered categories, but intervals may not be equal (e.g., Likert scale: Strongly Disagree to Strongly Agree).
+  - **Scale (Interval/Ratio):** Meaningful order with equal intervals between values. Ratio has a true zero. (e.g., temperature, height, weight, reaction time, test score).
+- **_Critical Requirement (KB Insight):_** Most common parametric tests (t-tests, ANOVAs, Pearson correlation, linear regression) require the dependent variable (or both variables in correlation/regression) to be measured on a **scale** level. This allows for meaningful calculation of means and variances.
 
-- **Levels of Measurement**:
-  - **Nominal**: Categories with no order (e.g., gender, marital status)
-  - **Ordinal**: Categories with meaningful order.
-  - **Scale** (Interval/Ratio): Continuous measurements with equal intervals
-  - **Important**: Most statistical tests (t-tests, ANOVA, Correlation, Regression) require scale DVs
+### Reliability
 
-## II. t-Tests (Module 3)
+- **Concept (KB Insight):** The consistency or stability of a measurement instrument. Does it yield similar results under consistent conditions?
+- **Cronbach's Alpha (α) (KB Insight):** A common measure of _internal consistency reliability_ (how well items on a scale measure the same construct). Ranges 0 to 1.
+- **Interpretation (KB Insight):** Higher values = better reliability. A very low value (e.g., α = .02) means the test is highly unreliable and scores are untrustworthy. Values > .70 or .80 are often considered acceptable/good.
 
-### Z-Test
+## II. Significance, Errors, and Power (Module 2 Insights)
 
-- **Purpose**: Compare a sample mean to a known population mean when population standard deviation is known
-- **Requirements**:
-  - Population standard deviation (σ) must be known (rare in practice)
-  - Sample size should be large (n > 30) if population not normal
-- **When to Use**: When you have complete information about the population parameters
-- **Formula**: z = (M - μ) / (σ / √n)
-- **Interpretation**: Similar to t-test, but uses z-distribution for critical values
+- **Alpha (α) Level:** The pre-set probability threshold for rejecting H₀ (commonly `.05`). Represents the maximum acceptable risk of a Type I error.
+  - _Consequence of Changing Alpha (KB Insight):_ Lowering alpha (e.g., from .05 to .01) decreases the probability of a Type I error but makes it harder to reject H₀ (smaller critical region), thus increasing the probability of a Type II error.
+- **p-value:** The probability of obtaining the observed test results (or results more extreme) _if the null hypothesis were actually true_ (KB Insight phrasing).
+- **Decision Rule:**
+  - If `p ≤ α`: **Reject H₀** → Statistically significant result. The observed data are unlikely under the null hypothesis.
+  - If `p > α`: **Fail to reject H₀** → Not statistically significant. The observed data are reasonably plausible under the null hypothesis.
+  - _Example (KB Insight):_ A p-value of 0.02 means there's a 2% chance of getting such results if H₀ is true. Since `.02 < .05` (conventional alpha), reject H₀.
+- **Type I Error:** Rejecting a **true** null hypothesis (a "false positive"). Probability = `α`.
+  - _Definition (KB Insight):_ Concluding there is an effect/difference when there isn't one in reality.
+- **Type II Error:** Failing to reject a **false** null hypothesis (a "false negative"). Probability = `β`.
+  - _Definition (KB Insight):_ Concluding there isn't an effect/difference when there _is_ one in reality.
+- **Statistical Power:** The probability of correctly rejecting a false null hypothesis (`1 - β`). The ability to detect a true effect.
+- **Factors Influencing Significance & Power (KB Insight):** Even a small mean difference can be statistically significant if:
+  - **Sample Size (N)** is very large: Larger N increases power.
+  - **Variability within groups (error variance)** is very small: Less "noise" makes the "signal" (difference) easier to detect.
+- **Sampling Distribution:** Theoretical distribution of a statistic (e.g., sample means) calculated from all possible samples of a given size from a population.
+- **Standard Error:** The standard deviation of a sampling distribution (e.g., standard error of the mean). Measures variability of sample statistics.
+- **Central Limit Theorem:** The sampling distribution of the mean tends towards a normal distribution as sample size increases, regardless of the population distribution's shape.
 
-### One-Sample t-Test
-
-- **Purpose**: Compare a sample mean to a known or hypothesized population mean
-- **Requirements**:
-  - Population standard deviation (σ) is unknown (uses sample SD instead)
-- **Key SPSS Steps**:
-  1. Analyze → Compare Means → One-Sample T Test
-  2. Move variable to "Test Variable(s)"
-  3. Enter test value (hypothesized population mean)
-- **APA Reporting**:
-  - Format: t(df) = [t-value], p = [p-value], d = [Cohen's d value]
-  - Example: t(24) = 2.68, p = .013, d = 0.54
-
-### Independent-Samples t-Test
-
-- **Purpose**: Compare means of two independent groups
-- **Requirements**:
-  - One categorical IV with exactly 2 levels (groups)
-  - One continuous DV
-  - Independent observations
-- **Key SPSS Steps**:
-  1. Analyze → Compare Means → Independent-Samples T Test
-  2. Move DV to "Test Variable(s)"
-  3. Move IV to "Grouping Variable"
-  4. Define groups (specify values that define the two groups)
-- **Interpretation**:
-  - Check Levene's test for equality of variances first
-  - Use appropriate row of t-test results based on Levene's test
-  - Significant result: Groups differ significantly on the DV
-- **APA Reporting**:
-  - Format: t(df) = [t-value], p = [p-value], d = [Cohen's d value]
-  - Example: t(46) = 3.27, p = .002, d = 0.95
-
-### Paired-Samples t-Test
-
-- **Purpose**: Compare means of two related measurements (same participants measured twice)
-- **Requirements**:
-  - Two measurements of the same continuous variable
-  - Measurements are from the same participants or matched pairs
-- **Advantages over Independent-Samples t-Test**:
-  - Reduces error variance due to individual differences
-  - Typically has more statistical power
-- **Key SPSS Steps**:
-  1. Analyze → Compare Means → Paired-Samples T Test
-  2. Select pairs of variables for analysis
-- **APA Reporting**:
-  - Format: t(df) = [t-value], p = [p-value], d = [Cohen's d value]
-  - Example: t(19) = 4.52, p < .001, d = 1.01
+## III. Research Designs & Corresponding Tests
 
 ### Between-Subjects vs. Within-Subjects Designs
 
-- **Between-Subjects (Independent Groups)**:
-  - Different participants in different conditions
-  - Advantages: No order or practice effects
-  - Disadvantages: Requires more participants, more influenced by individual differences
-- **Within-Subjects (Repeated Measures)**:
-  - Same participants in all conditions
-  - Advantages: Controls for individual differences, requires fewer participants
-  - Disadvantages: Potential carryover effects, practice effects, fatigue
+- **Between-Subjects (Independent Groups):**
+  - Different participants are assigned to different conditions/levels of the IV. Each participant experiences only one level.
+  - _Examples (KB Insight):_ Comparing spaced vs. massed practice groups (different people); comparing plant vs. no-plant classroom groups; comparing different ethnic groups.
+  - **Tests used:** Independent-Samples t-test (2 groups), One-Way Between-Subjects ANOVA (3+ groups).
+  - **Advantage:** No carryover/order effects.
+  - **Disadvantage:** Requires more participants; individual differences contribute to error variance.
+- **Within-Subjects (Repeated Measures):**
+  - The same participants are measured under all conditions/levels of the IV or at multiple time points.
+  - _Examples (KB Insight):_ Rating two cornbread recipes (same friends); blood pressure before vs. after medication (same people); memory tested under binaural beats vs. static (same people); memory tested for high, medium, low arousal words (same people).
+  - **Tests used:** Paired-Samples t-test (2 conditions), One-Way Repeated-Measures ANOVA (3+ conditions).
+  - **_Key Advantage (KB Insight):_** More powerful because it removes/controls for stable individual differences between participants from the error term, making it easier to detect the effect of the IV.
+  - **Disadvantage:** Potential for order effects, practice effects, fatigue (carryover).
+  - _When NOT appropriate (KB Insight):_ When comparing pre-existing, distinct groups (e.g., ethnic groups, age groups where participants cannot be in both).
+- **Factorial Design:** Involves two or more Independent Variables (Factors). Allows examination of main effects and interactions. Can be between-subjects, within-subjects, or mixed.
 
-## III. Module 4: ANOVA
+### Experimental vs. Quasi-Experimental Designs:
 
-### One-Way ANOVA
+- **True Experiment:** Researcher manipulates IV(s) **AND** uses **random assignment** to conditions. Allows for strong causal inferences.
+- **Quasi-Experiment:** Lacks random assignment. Often uses pre-existing groups (e.g., different classrooms, smokers vs. non-smokers). Causal inferences are weaker due to potential confounding variables.
+- **_Essential Difference (KB Insight):_** **Random assignment** is the key distinction enabling causal claims in experiments.
 
-- **Purpose**: Compare means of three or more groups
-- **Requirements**:
-  - One categorical IV with 3+ levels
-  - One continuous DV (scale measurement)
-  - Independent observations
-- **Key Assumption - Homogeneity of Variances**:
-  - Test with Levene's test
-  - If p > .05: Assumption met (variances are similar)
-  - If p ≤ .05: Assumption violated (consider alternative tests)
-- **Key SPSS Steps**:
-  1. Analyze → Compare Means → One-Way ANOVA
-  2. Move DV to "Dependent List" and IV to "Factor"
-  3. Options → Check "Homogeneity of variance test"
-  4. Post Hoc → Select appropriate test based on Levene's results
-- **Interpreting Results**:
-  - **Main ANOVA table**: Look for F-statistic, degrees of freedom (df), and p-value
-  - **Effect Size**: Calculate η² = SS_between / SS_total
-    - Small: ~.01 (1% variance explained)
-    - Medium: ~.06 (6% variance explained)
-    - Large: ~.14 (14% variance explained)
-- **Post-Hoc Tests**:
-  - When needed: When overall ANOVA is significant AND IV has more than two groups
-  - Purpose: Determine which specific groups differ significantly
-  - Choice depends on equality of variances (from Levene's test)
-- **APA Reporting**:
-  - Format: F(df_between, df_within) = [F-value], p = [p-value], η² = [value]
-  - Example: F(2, 78) = 3.89, p = .025, η² = .09
+## IV. t-Tests (Comparing Two Means - Module 3)
 
-### Repeated Measures ANOVA
+### Z-Test vs. t-Test: The Crucial Decision
 
-- **Purpose**: Compare means across 3+ conditions with the same participants
-- **Advantage over One-Way ANOVA**: Reduces error variance from individual differences
-- **Requirements**:
-  - One categorical IV with 3+ levels (all participants experience all levels)
-  - One continuous DV (scale measurement)
-- **Key Assumption - Sphericity**:
-  - Definition: Equal variances of the differences between all pairs of levels
-  - Test with Mauchly's test
-  - If p > .05: Assumption met (use "Sphericity Assumed" row)
-  - If p ≤ .05: Assumption violated (use "Greenhouse-Geisser" row)
-- **Key SPSS Steps**:
-  1. Analyze → General Linear Model → Repeated Measures
-  2. Define factor name and number of levels
-  3. Assign variables to within-subjects levels
-- **Interpreting Results**:
-  - Find "Tests of Within-Subjects Effects" table
-  - Choose correct row based on Mauchly's test
-  - Look for F-statistic, degrees of freedom, p-value, and partial eta squared (ηₚ²)
-- **Contrasts**:
-  - Purpose: Pinpoint where significant differences occur between specific levels
-  - "Simple" contrasts compare each level to a reference level
-  - Look at "Tests of Within-Subjects Contrasts" table for significance of each comparison
-- **APA Reporting**:
-  - Format: F(df_factor, df_error) = [F-value], p = [p-value], ηₚ² = [value]
-  - Note: If using Greenhouse-Geisser correction, df values may be non-integers
+- **_Key Distinction (KB Insight):_** The choice depends on whether the **population standard deviation (σ)** is known.
+  - Use **z-test** IF σ is known. (Rare in psychology).
+  - Use **t-test** IF σ is unknown and must be estimated from the sample SD. (Most common scenario).
 
-## IV. Module 5: Factorial ANOVA
+### One-Sample t-Test
 
-### Two-Way ANOVA
+- **Purpose:** Compare a single sample mean (M) to a known or hypothesized population mean (μ).
+- **Requirements:** Population SD (σ) is unknown. DV is scale.
+- **SPSS:** `Analyze → Compare Means → One-Sample T Test`. Enter test value (μ).
+- **APA:** _t_(df) = [t-value], _p_ = [p-value], _d_ = [Cohen's d] (df = N-1)
 
-- **Purpose**: Examine how two IVs affect a DV, both individually and together
-- **Key Concepts**:
-  - **Main Effects**: Individual impact of each IV (averaging across levels of other IV)
-  - **Interaction Effect**: Whether the effect of one IV depends on levels of the other IV
-- **Requirements**:
-  - Two categorical IVs
-  - One continuous DV (scale measurement)
-  - Independent observations
-- **Key SPSS Steps**:
-  1. Analyze → General Linear Model → Univariate
-  2. Put DV in "Dependent Variable" box
-  3. Put both IVs in "Fixed Factor(s)" box
-  4. Options → Check "Descriptive statistics" and "Estimates of effect size"
-  5. Plots → Create interaction plots
-- **Interpreting Results**:
+### Independent-Samples t-Test
 
-  - **Omnibus Effect**: "Corrected Model" row in output table
+- **Purpose:** Compare the means of two independent groups (between-subjects design).
+- **Requirements:** One categorical IV with exactly 2 levels; one scale DV; independence of observations.
+- **_Design Link (KB Insight):_** Used for **between-subjects** designs with two groups (e.g., spaced vs. massed practice; plant vs. no-plant).
+- **Assumption:** Homogeneity of variances (tested with Levene's Test).
+- **SPSS:** `Analyze → Compare Means → Independent-Samples T Test`. Define groups for the IV.
+- **Interpretation:** Check Levene's Test first. Report t, p, and effect size (Cohen's d) from the appropriate row ("Equal variances assumed" or "not assumed").
+- **APA:** _t_(df) = [t-value], _p_ = [p-value], _d_ = [Cohen's d] (df based on output, often N-2).
+- _Interpreting Output (KB Insight):_ In _t_(37) = 5.95, _p_ < .001, the `5.95` is the calculated t-statistic value.
 
-    - Tests if overall model explains significant variance
+### Paired-Samples t-Test (Dependent-Samples t-Test)
 
-  - **Main Effects**: Rows for each IV
+- **Purpose:** Compare the means of two related measurements (within-subjects design).
+- **Requirements:** Two related variables (often the same DV measured at two times or under two conditions for the same participants); DV is scale.
+- **_Design Link (KB Insight):_** Used for **within-subjects** designs with two conditions (e.g., cornbread ratings; before/after medication; binaural beats vs. static).
+- **_Advantage (KB Insight):_** More power than independent t-test because it controls for individual differences.
+- **SPSS:** `Analyze → Compare Means → Paired-Samples T Test`. Select the pair of variables.
+- **APA:** _t_(df) = [t-value], _p_ = [p-value], _d_ = [Cohen's d] (df = N_pairs - 1).
 
-    - Significant main effect (p ≤ .05): IV has significant impact on DV
-    - Non-significant (p > .05): IV does not have significant impact on DV
+## V. ANOVA (Comparing Means of 2+ Groups - Modules 4 & 5)
 
-  - **Interaction Effect**: Row with both IVs (e.g., "IV1 \* IV2")
-    - Significant interaction (p ≤ .05): Effect of one IV depends on levels of other IV
-    - Non-significant (p > .05): IVs affect DV independently
+### Core ANOVA Concepts
 
-- **Visualizing Interactions**:
-  - **Parallel lines**: No interaction
-  - **Non-parallel lines**: Interaction exists
-  - **Crossing lines**: Strong interaction
-- **APA Reporting**:
-  - Format for each effect: F(df1, df2) = [F-value], p = [p-value], partial η² = [value]
-  - Report omnibus effect, both main effects, and interaction effect
+- **Purpose:** Compare means across two or more groups/conditions.
+- **Data Requirement:** Dependent Variable must be **Scale** level.
+- **F-Ratio (KB Insight):** The test statistic. `F = Variance Between Groups / Variance Within Groups` (MS_between / MS_within).
+  - **Interpretation (KB Insight):**
+    - If `F ≈ 1`: Variance between groups is similar to variance within groups (error). Suggests no significant effect; fail to reject H₀.
+    - If `F > 1`: Variance between groups is larger than variance within groups. Suggests the IV may have caused differences beyond chance.
+  - _Large F-ratio likely with (KB Insight):_ Large differences between group means **AND** small variances within groups.
+- **Omnibus Test:** The overall F-test in ANOVA tells you _if_ there is _any_ significant difference among the means, but not _which_ specific means differ.
+- **Post-Hoc Tests:** Used _after_ a significant omnibus F-test (when IV has 3+ levels) to determine which specific pairs of means are significantly different. Choice depends on assumptions (e.g., Levene's test).
+- **Effect Size:** η² (Eta squared) or ηₚ² (Partial eta squared) = proportion of variance in the DV explained by the IV(s). (Small ≈ .01, Medium ≈ .06, Large ≈ .14).
+  - _Interpretation (KB Insight):_ ηₚ² = .099 means approx. 9.9% of the variance in the DV is attributable to the IV in this analysis.
 
-### Important Considerations for Factorial Designs
+### One-Way Between-Subjects ANOVA (Module 4)
 
-- **Multiple Null Hypotheses**: Need to test and report on:
-  1. Overall model (omnibus)
-  2. First main effect
-  3. Second main effect
-  4. Interaction effect
-- **Effect Size Interpretation**:
-  - Small: partial η² ≈ .01
-  - Medium: partial η² ≈ .06
-  - Large: partial η² ≈ .14
-- **Interpreting Complex Results**:
-  - If interaction is significant: Main effects may be misleading (must interpret with caution)
-  - Remember: "It depends" is often the key insight from factorial designs
+- **Purpose:** Compare means of three or more independent groups.
+- **_Design Link (KB Insight):_** Used for **between-subjects** designs with one IV having 3+ levels (e.g., comparing memory scores across 4 different music conditions).
+- **Requirements:** One categorical IV (3+ levels); one scale DV; independence; homogeneity of variances (Levene's test).
+- **SPSS:** `Analyze → Compare Means → One-Way ANOVA`. Check Homogeneity test & select Post Hoc tests.
+- **APA:** _F_(df*between, df_within) = [F-value], \_p* = [p-value], η² = [value]. Report post-hoc results if F is significant.
 
-## V. Module 6: Correlation and Regression
+### One-Way Repeated-Measures ANOVA (Module 4)
+
+- **Purpose:** Compare means across three or more related conditions (within-subjects design).
+- **_Design Link (KB Insight):_** Used for **within-subjects** designs with one IV having 3+ levels (e.g., testing memory for high, medium, low arousal words in the same people).
+- **Requirements:** One categorical IV (3+ levels, experienced by all participants); one scale DV; sphericity assumption (Mauchly's test).
+- **_Advantage (KB Insight):_** More powerful than between-subjects ANOVA due to removing individual difference variance.
+- **SPSS:** `Analyze → General Linear Model → Repeated Measures`. Define factor, assign variables.
+- **Interpretation:** Check Mauchly's Test. Use "Sphericity Assumed" row if _p_ > .05, otherwise use correction (e.g., "Greenhouse-Geisser"). Report within-subjects contrasts or post-hoc tests if F is significant.
+- **APA:** _F_(df*factor, df_error) = [F-value], \_p* = [p-value], ηₚ² = [value]. Mention if correction was used.
+
+### Factorial ANOVA (Between-Subjects, e.g., Two-Way - Module 5)
+
+- **Purpose:** Examine effects of two or more IVs (factors) on a scale DV, including their interaction.
+- **Key Concepts (KB Insight):**
+  - **Main Effect:** The overall effect of one IV, averaging across the levels of the other IV(s). There is one main effect tested for each IV. (e.g., In a 2x2 design, there are 2 main effects).
+  - **Interaction Effect:** Occurs when the effect of one IV _depends_ on the level of another IV. (e.g., In a 2x2 design, there is 1 two-way interaction).
+- **Design:** Can be fully between-subjects, fully within-subjects (Repeated Measures Factorial), or mixed. This section focuses on between-subjects.
+- **Requirements:** Two+ categorical IVs; one scale DV; independence; homogeneity of variances.
+- **SPSS:** `Analyze → General Linear Model → Univariate`. Add IVs to "Fixed Factors". Request Plots and Effect Size.
+- **Interpretation:** Check main effects and interaction effect F-tests and p-values. If interaction is significant, interpret main effects _with caution_ (the effect of one IV isn't simple; it depends). Use plots to visualize interaction.
+- **APA:** Report _F_, _p_, and ηₚ² for each main effect and the interaction effect. E.g., Main Effect A: _F_(...) = ..., _p_ = ..., ηₚ² = ...; Main Effect B: _F_(...) = ..., _p_ = ..., ηₚ² = ...; Interaction AxB: _F_(...) = ..., _p_ = ..., ηₚ² = ....
+
+### Mixed-Factors ANOVA (Split-Plot ANOVA - Module 6 in FESG, logically fits here)
+
+- **Purpose (KB Insight):** Analyzes designs with at least one **between-subjects** IV AND at least one **within-subjects** IV.
+- **_Design Link (KB Insight):_** Used when you have both types of factors simultaneously. (e.g., Class [Between: Cog vs. Stats] x Prompt [Within: Expressive vs. Control]; Story Type [Between: News vs. Social Media] x Story Valence [Within: Positive vs. Negative]).
+- **SPSS:** `Analyze → General Linear Model → Repeated Measures`. Define within-factor(s), assign within-variables, **AND** add between-subjects factor(s) to the "Between-Subjects Factor(s)" box.
+- **Interpretation:** Check assumptions (Sphericity for within-effects, Homogeneity for between-effects). Examine _F_, _p_, ηₚ² for the main effect of the between-subjects IV, the main effect of the within-subjects IV, and their interaction.
+- **APA:** Report results for all effects, similar to Factorial ANOVA, noting which are between- vs. within-subjects effects.
+
+## VI. Correlation and Regression (Relationships & Prediction - Module 6)
 
 ### Correlation
 
-- **Purpose**: Examine strength and direction of linear relationship between two scale variables
-- **Requirements**:
-  - Two continuous variables (scale measurement)
-  - Assumptions: Linear relationship, no extreme outliers
-- **Pearson's Correlation Coefficient (r)**:
-  - Range: -1.0 to +1.0
-  - **Sign**: Indicates direction
-    - Positive: Variables increase together
-    - Negative: As one increases, other decreases
-  - **Magnitude**: Indicates strength
-    - |r| < 0.3: Weak relationship
-    - 0.3 ≤ |r| < 0.7: Moderate relationship
-    - |r| ≥ 0.7: Strong relationship
-- **Coefficient of Determination (r²)**:
-  - Proportion of variance in one variable explained by the other
-  - Calculate by squaring r
-  - Example: If r = -.36, then r² = .13 (13% of variance is shared)
-- **Key SPSS Steps**:
-  1. Analyze → Correlate → Bivariate
-  2. Select variables to analyze
-  3. Ensure "Pearson" is selected
-- **APA Reporting**:
-  - Format: r(df) = [r-value], p = [p-value]
-  - Where df = N - 2
-  - Example: r(37) = .56, p = .008
-- **Important**: Correlation does not imply causation!
+- **Purpose:** Measure the strength and direction of the **linear** relationship between two **scale** variables.
+- **Pearson's r:** The correlation coefficient.
+  - **Range:** -1.0 (perfect negative linear relationship) to +1.0 (perfect positive linear relationship). 0 indicates no linear relationship.
+  - **Direction (Sign):** Positive (+) means variables tend to move in the same direction; Negative (-) means variables tend to move in opposite directions.
+    - _Example (KB Insight):_ Higher optimism associated with lower depression (negative _r_); Higher introversion associated with higher depression (positive _r_).
+  - **Strength (Magnitude/Absolute Value) (KB Insight):** The closer `|r|` is to 1, the stronger the linear relationship.
+    - _Example (KB Insight):_ _r_ = -0.90 is a _stronger_ relationship than _r_ = +0.50 because `|-0.90| > |+0.50|`.
+  - **General Guidelines:** Weak < |.3|, Moderate |.3| to <|.7|, Strong ≥ |.7|.
+  - _Interpreting Tables (KB Insight):_ To find weakest/strongest relationship in a table, find the 'r' value closest to 0 (weakest) or farthest from 0 (strongest), _ignoring the sign_.
+- **Coefficient of Determination (r²):**
+  - Calculated by squaring 'r'.
+  - Represents the proportion of variance in one variable that is statistically _explained by_ (or shared with) the other variable.
+  - _Example (KB Insight):_ If _r_ = -0.36, then _r²_ = (-0.36)² ≈ 0.13, meaning about 13% of the variance is shared/explained.
+- **Requirements:** Two scale variables; linear relationship; no significant outliers.
+- **SPSS:** `Analyze → Correlate → Bivariate`. Select variables.
+- **APA:** _r_(df) = [r-value], _p_ = [p-value] (df = N - 2).
+- **_CRITICAL CAUTION:_** Correlation does **NOT** imply causation!
 
-### Bivariate Regression
+### Regression
 
-- **Purpose**: Predict a scale outcome variable (Y) from one predictor variable (X)
-- **Requirements**:
-  - Continuous outcome variable
-  - Predictor can be continuous or categorical (dummy-coded)
-- **Key Equation**: Ŷ = bX + a
-  - Ŷ = Predicted outcome value
-  - b = Slope (change in Y for one-unit increase in X)
-  - a = Y-intercept (value of Y when X = 0)
-- **Key SPSS Steps**:
-  1. Analyze → Regression → Linear
-  2. Move outcome variable to "Dependent"
-  3. Move predictor variable to "Independent(s)"
-- **Key Output Tables**:
+- **Purpose:** Predict the value of one scale outcome/criterion variable (Y) based on one or more predictor variables (X).
+- **Types (KB Insight):**
+  - **Univariate (Simple) Regression:** One predictor variable.
+  - **Multiple Regression:** Two or more predictor variables.
+- **Regression Equation:** Represents the best-fitting line/plane.
+  - Simple: `Ŷ = bX + a` (or `Ŷ = b₁X₁ + b₀`)
+  - Multiple: `Ŷ = b₁X₁ + b₂X₂ + ... + b₀`
+  - `Ŷ` = Predicted value of Y.
+  - `a` or `b₀` = Y-intercept (Predicted Y when all X=0).
+  - `b` or `b₁, b₂...` = Slopes (Unstandardized Coefficients).
+  - _Using the Equation (KB Insight):_ If `Ŷ = 5x + 25` (salary in $1k, x=years education), for x=9, predicted salary `Ŷ = 5(9)+25 = 70`, or $70,000.
+- **Key Output Interpretation:**
+  - **Model Summary:**
+    - **R²:** Proportion of variance in Y explained by the predictor(s) _together_.
+    - **Adjusted R²:** More conservative estimate, adjusted for number of predictors and N.
+  - **ANOVA Table:** Tests the overall significance of the regression model (Is R² significantly different from zero?). Look at _F_ and _p_-value.
+  - **Coefficients Table:**
+    - **Unstandardized Coefficients (b):** Predict change in Y in its _original units_ for a one-unit change in X. Useful for making predictions. _Not directly comparable_ if Xs have different scales (KB Insight).
+    - **Standardized Coefficients (Beta, β):** Predict change in Y in _standard deviation units_ for a one-SD change in X. Used to compare relative strength of predictors within the same model because they are on the same scale (KB Insight). Larger absolute Beta = stronger unique predictor.
+    - **t-tests and p-values:** Indicate whether each individual predictor significantly contributes to the model _after accounting for other predictors_.
+  - _Simple Regression Equivalence (KB Insight):_ In simple linear regression (one predictor), the standardized coefficient Beta (β) is equal to the Pearson correlation coefficient (r) between X and Y.
+- **SPSS:** `Analyze → Regression → Linear`. Add DV to "Dependent", IV(s) to "Independent(s)".
+- **APA:** Report overall model significance: _F_(df*reg, df_resid) = [F-value], \_p* = [p-value], _R²_ = [value]. Report coefficients for significant predictors: _b_ = [value], β = [value], _t_(df*resid) = [t-value], \_p* = [p-value].
 
-  - **Model Summary**:
+## VII. Data Preparation and Assumptions (Module 7 Preliminaries)
 
-    - R²: Proportion of variance explained (0-1)
-    - Adjusted R²: R² adjusted for sample size
+- **Data Cleaning:** Check for errors, outliers, missing values. Configure variables correctly in SPSS (type, labels, values).
+- **Assumption Checking:** Essential before interpreting results!
+  - **Normality:** DV distribution (histograms, Q-Q plots, Shapiro-Wilk). Less critical with large N (CLT).
+  - **Homogeneity of Variance** (t-tests, Between-Subjects ANOVA): Levene's Test.
+  - **Sphericity** (Repeated-Measures ANOVA): Mauchly's Test.
+  - **Independence of Observations:** Assumed based on design (usually met if participants are unrelated and measured once, or if dependencies are modeled).
+  - **Linearity** (Correlation, Regression): Scatterplots.
+  - **Homoscedasticity** (Regression): Scatterplot of residuals vs. predicted values.
+- **Data Transformation:** Consider if assumptions are badly violated (e.g., log, square root). Use cautiously.
 
-  - **ANOVA Table**:
+## VIII. Practical Data Analysis & Exam Strategy
 
-    - Tests overall significance of model
-    - Significant F-test (p ≤ .05): Model explains significant variance
+### Choosing the Right Test (Summary Table)
 
-  - **Coefficients Table**:
-    - Unstandardized B: Actual prediction weights
-    - t-tests: Test significance of each coefficient
-    - Significant t-test (p ≤ .05): Predictor significantly contributes to model
+| Goal?             | # of IVs | IV Type(s)  | IV Levels | DV Type | Design           | Test                       |
+| :---------------- | :------- | :---------- | :-------- | :------ | :--------------- | :------------------------- |
+| **Difference?**   | 1        | Categorical | 2         | Scale   | Between (Indep)  | Independent-samples t-test |
+| **Difference?**   | 1        | Categorical | 2         | Scale   | Within (Related) | Paired-samples t-test      |
+| **Difference?**   | 1        | Categorical | 3+        | Scale   | Between (Indep)  | One-way ANOVA              |
+| **Difference?**   | 1        | Categorical | 3+        | Scale   | Within (Related) | Repeated-measures ANOVA    |
+| **Difference?**   | 2+       | Categorical | Any       | Scale   | Between (Indep)  | Factorial ANOVA            |
+| **Difference?**   | 2+       | Mixed (B/W) | Any       | Scale   | Mixed            | Mixed-factors ANOVA        |
+| **Relationship?** | N/A      | Scale       | N/A       | Scale   | Correlational    | Pearson correlation        |
+| **Prediction?**   | 1        | Any         | N/A       | Scale   | Regression       | Bivariate regression       |
+| **Prediction?**   | 2+       | Any         | N/A       | Scale   | Regression       | Multiple regression        |
+| **Compare M?**    | N/A      | N/A         | N/A       | Scale   | (vs. Pop μ)      | One-sample t-test / Z-test |
 
-- **APA Reporting**:
-  - Format for model: F(df_regression, df_residual) = [F-value], p = [p-value], R² = [value]
-  - Format for coefficients: b = [value], t(df) = [t-value], p = [p-value]
+### Interpretation & Reporting
 
-### Multiple Regression
+**Key Steps:**
 
-- **Purpose**: Predict outcome from two or more predictors
-- **Key Equation**: Ŷ = b₁X₁ + b₂X₂ + ... + a
-- **Key SPSS Steps**:
-  - Same as bivariate regression, but include multiple predictors
-- **Comparing Predictors**:
+1.  **Check Assumptions.**
+2.  Identify the key test statistic (_t_, _F_, _r_) and its _p_-value.
+3.  Determine **Statistical Significance** (Is _p_ ≤ α?).
+4.  Assess **Practical Significance / Effect Size** (_d_, η², ηₚ², *r*², *R*², β). How big is the effect?
+5.  **Describe the Pattern:** Which groups differ? What is the direction of the relationship/prediction? Use means, correlation signs, coefficient signs.
+6.  Relate back to the research question.
+7.  **APA Format:** Follow specific guidelines (italics, spacing, decimal places, reporting df, exact p-values unless _p_ < .001). See examples under each test.
 
-  - **Unstandardized Coefficients (B)**:
+### Common Pitfalls to Avoid:
 
-    - Original units of measurement
-    - Not directly comparable between variables with different scales
+- Choosing the wrong test.
+- Ignoring assumptions.
+- Misinterpreting p-values (≠ effect size, ≠ practical importance).
+- Forgetting effect sizes.
+- Claiming causation from non-experimental designs (correlation, regression, quasi-experiments).
+- Over-interpreting non-significant results ("proving" the null).
+- Ignoring context.
+- Confusing statistical significance with practical importance (_KB Insight:_ large N or low variability can make tiny, unimportant effects statistically significant).
 
-  - **Standardized Coefficients (Beta, β)**:
-    - Expressed in standard deviation units
-    - Directly comparable between predictors
-    - Larger absolute value = stronger predictor
+### Exam Strategy
 
-- **Model Comparison**:
-  - Compare Adjusted R² between models
-  - Higher value indicates better prediction
-  - Adding predictors should increase Adjusted R² to justify complexity
-- **APA Reporting**:
-  - Similar to bivariate regression
-  - Include standardized coefficients: β = [value]
+- **Focus on Understanding:** Why use this test? What do the results mean conceptually?
+- **Practice Test Selection:** Given a scenario, identify IVs, DV, design -> choose test.
+- **Practice Interpretation:** Given output, find key numbers, state the conclusion in plain language and APA format.
+- **Understand Key Distinctions:** Between vs. Within; Z vs. t; Main Effect vs. Interaction; Correlation vs. Causation; Statistical vs. Practical Significance.
 
-### Mixed Factorial ANOVA
-
-- **Purpose**: Analyze data with at least one between-subjects factor and one within-subjects factor
-- **Requirements**:
-  - At least one categorical IV manipulated between subjects
-  - At least one categorical IV manipulated within subjects
-  - One continuous DV
-- **Key SPSS Steps**:
-  1. Analyze → General Linear Model → Repeated Measures
-  2. Define within-subjects factor(s) and between-subjects factor(s)
-  3. Add between-subjects factor(s) to the model
-- **Interpreting Results**:
-  - Check Mauchly's test for sphericity
-  - Examine main effects for both within-subjects and between-subjects factors
-  - Examine interaction between within-subjects and between-subjects factors
-- **APA Reporting**: Similar to Two-Way ANOVA, but with appropriate df adjustments for within-subjects tests
-
-## VI. Module 7: Data Preparation and Practical Applications
-
-### Data Preparation
-
-- **Importing and Cleaning Data**:
-  - Properly importing data from Excel to SPSS
-  - Checking for data entry errors and missing values
-  - Configuring variable types and labels
-- **Checking Assumptions**:
-  - Normality: Histograms, Q-Q plots, Shapiro-Wilk test
-  - Homogeneity of variance: Levene's test
-  - Independence of observations
-  - Linearity and homoscedasticity for regression/correlation
-- **Data Transformation**:
-  - When and why to transform data
-  - Common transformations (log, square root, inverse)
-
-### Research Design Considerations
-
-- **How Statistical Approaches Influence Design**:
-  - Matching research questions to appropriate statistical tests
-  - Planning sample size based on power analysis
-  - Choosing between within-subjects and between-subjects designs
-- **Creating Multiple Research Designs**:
-  - Converting between-subjects designs to within-subjects (and vice versa)
-  - Adding factors to create factorial designs
-  - Moving from experimental to correlational designs
-
-## VII. Practical Data Analysis Skills
-
-### Choosing the Right Test
-
-| Research Question | # of IVs | IV Type     | # of IV Levels | DV Type | Participants | Appropriate Test           |
-| ----------------- | -------- | ----------- | -------------- | ------- | ------------ | -------------------------- |
-| Difference?       | 1        | Categorical | 2              | Scale   | Different    | Independent-samples t-test |
-| Difference?       | 1        | Categorical | 2              | Scale   | Same         | Paired-samples t-test      |
-| Difference?       | 1        | Categorical | 3+             | Scale   | Different    | One-way ANOVA              |
-| Difference?       | 1        | Categorical | 3+             | Scale   | Same         | Repeated-measures ANOVA    |
-| Difference?       | 2+       | Categorical | Any            | Scale   | Different    | Factorial ANOVA            |
-| Difference?       | 2+       | Mixed       | Any            | Scale   | Mixed        | Mixed-factors ANOVA        |
-| Relationship?     | 1        | Scale       | N/A            | Scale   | N/A          | Pearson correlation        |
-| Prediction?       | 1        | Any         | N/A            | Scale   | N/A          | Bivariate regression       |
-| Prediction?       | 2+       | Any         | N/A            | Scale   | N/A          | Multiple regression        |
-
-### Interpreting Statistical Output
-
-- **Always consider**:
-  1. Is the effect statistically significant? (p ≤ α, usually .05)
-  2. What is the practical significance? (effect size)
-  3. What are the actual group differences or relationship patterns?
-  4. How do these results relate to the research question?
-- **Common Mistakes**:
-  - Confusing statistical significance with practical importance
-  - Ignoring effect sizes
-  - Over-interpreting non-significant results
-  - Claiming causation from correlation or regression
-
-### APA Reporting Checklist
-
-- **All Statistical Tests**:
-  - Italicize statistical symbols (t, F, r, p, etc.)
-  - Report exact p-values (e.g., p = .032) unless very small (p < .001)
-  - Include appropriate degrees of freedom
-- **t-test**: t(df) = [t-value], p = [p-value], d = [Cohen's d value]
-- **ANOVA**: F(df_between, df_within) = [F-value], p = [p-value], η² or ηₚ² = [value]
-- **Correlation**: r(df) = [r-value], p = [p-value]
-- **Regression**: F(df_regression, df_residual) = [F-value], p = [p-value], R² = [value]
-
-### Common Pitfalls to Avoid
-
-1. **Using the wrong test** for your research question or data type
-2. **Ignoring assumptions** of statistical tests
-3. **Misinterpreting p-values** (they don't indicate effect size or importance)
-4. **Failing to report effect sizes** along with significance tests
-5. **Over-relying on p-values** without considering practical significance
-6. **Confusing correlation with causation**
-7. **Ignoring the context** of your research question when interpreting results
-
-## VIII. Exam Preparation Strategies
-
-### Critical Understanding vs. Memorization
-
-- Focus on understanding concepts rather than memorizing formulas
-- Practice applying concepts to different scenarios
-- Think about why procedures work the way they do
-
-### Practice with Specific Questions
-
-1. **Test Selection Questions**:
-   - "Given [scenario], which statistical test should be used?"
-   - Practice identifying IVs, DVs, measurement types, and design types
-2. **Interpretation Questions**:
-   - "What does this output tell us about the research question?"
-   - Practice finding key statistics and drawing appropriate conclusions
-3. **APA Reporting Questions**:
-   - "Write the results in APA format."
-   - Practice proper formatting for each test type
-4. **Application Questions**:
-   - "What does this result mean in practical terms?"
-   - Practice connecting statistics to real-world implications
-
-### Study Flowchart Approach
-
-1. Identify the research question (difference, relationship, prediction)
-2. Identify the variables (how many, what types)
-3. Identify the design (between-subjects, within-subjects, factorial)
-4. Select the appropriate test
-5. Determine what to look for in results
-6. Apply appropriate interpretation
-
-Remember: The exam is testing your understanding of statistical concepts and their application, not just your ability to run analyses in SPSS.
-
-Good luck with your final exam!
+**Good luck with your exam!**
