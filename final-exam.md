@@ -200,7 +200,7 @@ This comprehensive guide integrates core concepts, statistical test details, int
 - **Interpretation:** Check main effects and interaction effect F-tests and p-values. If interaction is significant, interpret main effects _with caution_ (the effect of one IV isn't simple; it depends). Use plots to visualize interaction.
 - **APA:** Report _F_, _p_, and ηₚ² for each main effect and the interaction effect. E.g., Main Effect A: _F_(...) = ..., _p_ = ..., ηₚ² = ...; Main Effect B: _F_(...) = ..., _p_ = ..., ηₚ² = ...; Interaction AxB: _F_(...) = ..., _p_ = ..., ηₚ² = ....
 
-### Mixed-Factors ANOVA (Split-Plot ANOVA - Module 6 in FESG, logically fits here)
+### Mixed-Factors ANOVA
 
 - **Purpose:** Analyzes designs with at least one **between-subjects** IV AND at least one **within-subjects** IV.
 - **_Design Link:_** Used when you have both types of factors simultaneously. (e.g., Class [Between: Cog vs. Stats] x Prompt [Within: Expressive vs. Control]; Story Type [Between: News vs. Social Media] x Story Valence [Within: Positive vs. Negative]).
@@ -256,7 +256,7 @@ This comprehensive guide integrates core concepts, statistical test details, int
 - **SPSS:** `Analyze → Regression → Linear`. Add DV to "Dependent", IV(s) to "Independent(s)".
 - **APA:** Report overall model significance: _F_(df*reg, df_resid) = [F-value], \\\_p* = [p-value], _R²_ = [value]. Report coefficients for significant predictors: _b_ = [value], β = [value], _t_(df*resid) = [t-value], \\\_p* = [p-value].
 
-## VII. Data Preparation and Assumptions (Module 7 Preliminaries)
+## VII. Data Preparation and Assumptions
 
 - **Data Cleaning:** Check for errors, outliers, missing values. Configure variables correctly in SPSS (type, labels, values).
 - **Assumption Checking:** Essential before interpreting results!
