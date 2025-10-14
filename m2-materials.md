@@ -1,0 +1,167 @@
+Of course. Here is a step-by-step assignment guide for the M2 assignment, crafted in the expert, pedagogical style of the previous examples.
+
+---
+
+layout: default
+title: M2 Assignment Guide
+
+---
+
+# M2 Assignment Guide: Thinking Through One-Sample t-Tests
+
+This guide will help you navigate the M2 assignment, focusing on the logic behind the one-sample t-test. It covers both manual calculations and SPSS analysis, encouraging you to think critically about hypotheses, test selection, and the interpretation of results.
+
+**Goal:** To build a deep understanding of the one-sample t-test by comparing a sample mean to a known population value, and to master the process of hypothesis testing from formulation to conclusion.
+
+**General Principles:**
+
+- **Start with the Question:** Always translate the research scenario into a specific, testable question before touching any numbers.
+- **One-Tailed vs. Two-Tailed:** The choice depends entirely on the research question. Does it predict a specific _direction_ of difference ("higher than," "less than"), or just _any_ difference ("different from")?
+- **Manual vs. Software:** Manual calculations (Q1) reveal the statistical engine "under the hood." SPSS (Q2, Q3) automates the process, allowing you to focus on interpretation.
+- **APA Formatting is Precise:** Pay close attention to the specific conventions for reporting t-test results, including italics, spacing, and the order of statistics.
+
+---
+
+## Part 1: Data Preparation
+
+**Objective:** Correctly import and configure the M2 dataset. A properly set-up file is essential for accurate analysis. This process is identical to the M1 assignment but with a new dataset.
+
+**Process:**
+
+1.  **Import Data:** Open SPSS and import the data from the provided M2 Excel file (`File -> Import Data -> Excel`).
+2.  **Go to "Variable View":** Click the tab at the bottom of the SPSS window.
+    - **Measure:** For each variable, set the correct measurement level (`Scale`, `Nominal`, or `Ordinal`). `Think:` Are Age, MMSE, and Education continuous measurements or categories? What about Sex and Marital Status?
+    - **Values:** For all `Nominal` and `Ordinal` variables (e.g., Sex, Marital Status), click in the "Values" column to define what the numeric codes represent (e.g., Value `1` = Label `"Male"`).
+3.  **Save:** Save your SPSS data file (`.sav`). You will need to submit this file.
+
+---
+
+## Part 2: Q1 - One-Sample t-Test (MMSE Scores)
+
+**Objective:** To conduct a full one-sample t-test by hand, from hypothesis to conclusion, and then verify the results using SPSS. This question tests your understanding of the entire process.
+
+**First Step: Filter Your Data**
+
+The research question is only about participants aged 75 or older.
+
+- `Hint:` In SPSS, go to `Data -> Select Cases`.
+- Choose "If condition is satisfied" and click the "If..." button.
+- Enter the condition: `Age >= 75`.
+- Click `Continue` and `OK`. SPSS will temporarily filter out all participants younger than 75. Now, any analysis you run will only use the older group. The filtered-out cases will have a slash through their row number.
+
+![SPSS Select Cases](/assets/m2-assets/select-cases.png)
+
+### 1. Formulate Hypotheses
+
+- **Concept:** The research question predicts a specific direction: that your sample will score **"significantly higher than"** the general population mean of 25. This calls for a directional, or one-tailed, test.
+- **Null Hypothesis (H₀):** This is the "no difference" or "no effect" statement. It posits that your sample's population mean is not higher than the general population mean.
+  - _In words:_ The mean MMSE score of the study's population of elderly residents aged 75+ is not higher than 25.
+  - _In symbols:_ H₀: µ₁ ≤ 25
+- **Alternative Hypothesis (H₁ or Hₐ):** This is your research hypothesis. It directly reflects the "significantly higher than" prediction.
+  - _In words:_ The mean MMSE score of the study's population of elderly residents aged 75+ is significantly higher than 25.
+  - _In symbols:_ H₁: µ₁ > 25
+
+### 2. Find the Critical t-value
+
+- **Concept:** The critical value is a threshold from a t-distribution table. If your calculated t-statistic is beyond this threshold, your result is statistically significant.
+- **Process:**
+  1.  Determine your **degrees of freedom (df)**. For a one-sample t-test, `df = n - 1`, where `n` is the number of participants in your selected sample (those aged 75+).
+  2.  You are given alpha (α) = .05.
+  3.  You are conducting a one-tailed test.
+  4.  Look up the value in a t-table where your `df` row intersects with the α = .05 column for a **one-tailed test**. This is your critical t-value.
+
+### 3. Manual Calculations (Show Your Work!)
+
+- **3a. Sample Mean (M):** Sum all the MMSE scores from your selected sample (age 75+) and divide by the sample size (n). `M = ΣX / n`
+- **3b. Estimated Population Standard Deviation (s):**
+  - `Think:` This is the step where you use `n-1` in the denominator to get an unbiased estimate for the population.
+  - Step 1: Calculate the Sum of Squares (SS). `SS = Σ(X - M)²`
+  - Step 2: Calculate the variance. `s² = SS / (n-1)`
+  - Step 3: Take the square root of the variance. `s = √ (SS / (n-1))`
+- **3c. Standard Error of the Mean (sM):** This measures the variability of sample means.
+  - `sM = s / √n` (Use the `s` you calculated in 3b).
+- **3d. t-statistic:** This is the ratio of the difference between means to the standard error.
+  - `t = (M - μ) / sM` (Where `M` is your sample mean, and `μ` is the population mean/test value, which is 25).
+
+### 4. Make a Decision
+
+- Compare your calculated t-statistic (from 3d) to the critical t-value (from 2).
+- `Think:` Is your calculated t-statistic further into the tail of the distribution than the critical value?
+  - If `t_calculated` > `t_critical`, your result is significant. You **reject the null hypothesis**.
+  - If `t_calculated` ≤ `t_critical`, your result is not significant. You **fail to reject the null hypothesis**.
+
+### 5. Answer the Research Question
+
+- Translate your statistical decision back into plain language. For example: "Based on the hypothesis test, the well-educated elderly residents (M = ..., SD = ...) scored significantly higher on the MMSE than the general population, t(...) = ..., p < .05."
+
+### 6. & 7. SPSS Verification and APA Reporting
+
+- **Run the Test in SPSS:**
+  - `Hint:` Go to `Analyze -> Compare Means -> One-Sample T Test`.
+  - Move the `MMSE` variable into the "Test Variable(s)" box.
+  - In the "Test Value" box, enter `25`.
+  - Click `OK`.
+- **Interpret the Output:**
+  - Find the table with the t-statistic, df, and p-value ("Sig. (2-tailed)").
+  - **Important:** SPSS always provides a _two-tailed_ p-value. For your one-tailed test, you must **divide the SPSS p-value by 2**. If this new value is less than .05, your result is significant.
+  - SPSS can also calculate the effect size for you. In the `One-Sample T Test` dialog, click on `Effect Sizes` and check the box. The output will include a table with Cohen's d.
+- **APA Reporting:** Combine the key statistics into a single line, formatted precisely.
+  - `Example format:` _t_(df) = [t-value], _p_ = [one-tailed p-value], _d_ = [Cohen's d value]
+  - **Action:** Paste the main SPSS output table and write your final APA-formatted result.
+
+---
+
+## Part 3: Q2 - One-Sample t-Test (Age)
+
+**Objective:** To use SPSS to conduct a one-sample t-test and to justify the choice between a one-tailed and two-tailed test.
+
+**First Step: Use the Whole Dataset**
+
+- If you filtered your data in Q1, turn it off. Go to `Data -> Select Cases` and choose "All cases".
+
+### 1. & 2. Hypotheses and Test Type
+
+- **Concept:** The research question asks if the sample is **"significantly different from"** the norm of 70. It does _not_ specify whether they expect the sample to be older or younger. This lack of a specific direction calls for a non-directional, or **two-tailed**, test.
+- **Rationale:** You should perform a two-tailed test because there is no prior theory or strong reason to assume the sample's average age will be only higher or only lower than 70. A significant difference in either direction would be important to know.
+- **Null Hypothesis (H₀):** H₀: µ = 70 (The mean age of the study population is 70.)
+- **Alternative Hypothesis (H₁):** H₁: µ ≠ 70 (The mean age of the study population is different from 70.)
+
+### 3. & 4. Run Test and Make a Decision
+
+- **In SPSS:** `Analyze -> Compare Means -> One-Sample T Test`. Use `Age` as the test variable and `70` as the test value.
+- **Decision:** Find the p-value ("Sig. (2-tailed)") in the output. Compare this value directly to your alpha level (α = .05).
+  - If _p_ ≤ .05: Reject the null hypothesis.
+  - If _p_ > .05: Fail to reject the null hypothesis.
+
+### 5. & 6. & 7. Conclusion, Effect Size, and APA Reporting
+
+- **Conclusion:** State in words whether the sample's mean age is significantly different from 70.
+- **Effect Size:** Report Cohen's d from the SPSS output.
+- **APA Report:** Combine the statistics into the correct format.
+  - `_t_(df) = [t-value], _p_ = [p-value], _d_ = [d-value]`
+  - **Action:** Paste the SPSS output table and provide your APA-formatted summary.
+
+---
+
+## Part 4: Q3 - One-Sample t-Test (Education)
+
+**Objective:** To conduct another SPSS-based t-test and practice interpreting both descriptive and inferential statistics.
+
+### 1. Descriptive Statistics
+
+- **Concept:** Before running the t-test, it's good practice to look at the descriptive statistics (mean, standard deviation). This gives you a feel for the data.
+- **In SPSS:** The `One-Sample T Test` output automatically includes a table with descriptives (N, Mean, Std. Deviation, Std. Error Mean).
+- **Interpretation:**
+  - Look at the sample mean for Education. Is it above 16?
+  - Look at the standard deviation. `Think:` Does a large SD suggest that education levels are very similar among participants, or that they vary a lot?
+
+### 2. Run Test and Report Results
+
+- **In SPSS:** `Analyze -> Compare Means -> One-Sample T Test`. Use `Education` as the test variable and `16` as the test value.
+- **Action:** Paste the t-test results table.
+- **APA Report:** Write out the full result in APA format, including _t_, df, _p_, and _d_.
+
+### 3. Decision and Rationale
+
+- **Decision:** Based on the p-value from your output, state whether you reject or fail to reject the null hypothesis.
+- **Rationale:** Your rationale is the direct comparison of your p-value to the alpha level. "I reject the null hypothesis because the p-value (e.g., _p_ = .012) is less than the pre-determined alpha level of .05." or "I fail to reject the null hypothesis because the p-value (e.g., _p_ = .245) is greater than the alpha level of .05."
