@@ -1109,32 +1109,44 @@ By the end of this module, you will be able to:
 
             <h3>Quick Check</h3>
 
-            <p><strong>Question 1:</strong> You survey 50 students about their favorite subject. Which graph should you use?</p>
-            <ul>
-                <li>A) Histogram</li>
-                <li>B) Bar chart</li>
-                <li>C) Line graph</li>
-            </ul>
+            <div class="knowledge-check-item" data-question-id="tab3-q1">
+                <p class="question-text"><strong>Question 1:</strong> You survey 50 students about their favorite subject. Which graph should you use?</p>
+                <ul class="question-options">
+                    <li>A) Histogram</li>
+                    <li>B) Bar chart</li>
+                    <li>C) Line graph</li>
+                </ul>
+                <div class="answer-reveal" style="display: none;">
+                    <p class="answer-text"><strong>Answer:</strong> B) Bar chart - because "favorite subject" is categorical data (nominal level)</p>
+                </div>
+                <button class="reveal-answer-btn" onclick="revealAnswer('tab3-q1')">Show Answer</button>
+            </div>
 
-            <p><strong>Answer:</strong> B) Bar chart - because "favorite subject" is categorical data (nominal level)</p>
+            <div class="knowledge-check-item" data-question-id="tab3-q2">
+                <p class="question-text"><strong>Question 2:</strong> You measure the height of 100 people. Which graph should you use?</p>
+                <ul class="question-options">
+                    <li>A) Histogram</li>
+                    <li>B) Bar chart</li>
+                    <li>C) Pie chart</li>
+                </ul>
+                <div class="answer-reveal" style="display: none;">
+                    <p class="answer-text"><strong>Answer:</strong> A) Histogram - because height is continuous scale data</p>
+                </div>
+                <button class="reveal-answer-btn" onclick="revealAnswer('tab3-q2')">Show Answer</button>
+            </div>
 
-            <p><strong>Question 2:</strong> You measure the height of 100 people. Which graph should you use?</p>
-            <ul>
-                <li>A) Histogram</li>
-                <li>B) Bar chart</li>
-                <li>C) Pie chart</li>
-            </ul>
-
-            <p><strong>Answer:</strong> A) Histogram - because height is continuous scale data</p>
-
-            <p><strong>Question 3:</strong> Looking at your histogram, you notice the bars on the left are much taller than those on the right. What does this suggest?</p>
-            <ul>
-                <li>A) Your data is normally distributed</li>
-                <li>B) Your data is right-skewed (positively skewed)</li>
-                <li>C) Your data is left-skewed (negatively skewed)</li>
-            </ul>
-
-            <p><strong>Answer:</strong> C) Left-skewed - most values are on the higher end, with a tail extending to the lower end</p>
+            <div class="knowledge-check-item" data-question-id="tab3-q3">
+                <p class="question-text"><strong>Question 3:</strong> Looking at your histogram, you notice the bars on the left are much taller than those on the right. What does this suggest?</p>
+                <ul class="question-options">
+                    <li>A) Your data is normally distributed</li>
+                    <li>B) Your data is right-skewed (positively skewed)</li>
+                    <li>C) Your data is left-skewed (negatively skewed)</li>
+                </ul>
+                <div class="answer-reveal" style="display: none;">
+                    <p class="answer-text"><strong>Answer:</strong> C) Left-skewed - most values are on the higher end, with a tail extending to the lower end</p>
+                </div>
+                <button class="reveal-answer-btn" onclick="revealAnswer('tab3-q3')">Show Answer</button>
+            </div>
 
             <hr>
 
@@ -1492,17 +1504,29 @@ By the end of this module, you will be able to:
 
             <h3>Quick Check</h3>
 
-            <p><strong>Question 1:</strong> A student scores 88 on a test where the mean is 80 and standard deviation is 4. What is their z-score?</p>
+            <div class="knowledge-check-item" data-question-id="tab4-z-q1">
+                <p class="question-text"><strong>Question 1:</strong> A student scores 88 on a test where the mean is 80 and standard deviation is 4. What is their z-score?</p>
+                <div class="answer-reveal" style="display: none;">
+                    <p class="answer-text"><strong>Answer:</strong> z = (88 - 80) ÷ 4 = 8 ÷ 4 = 2.0</p>
+                </div>
+                <button class="reveal-answer-btn" onclick="revealAnswer('tab4-z-q1')">Show Answer</button>
+            </div>
 
-            <p><strong>Answer:</strong> z = (88 - 80) ÷ 4 = 8 ÷ 4 = 2.0</p>
+            <div class="knowledge-check-item" data-question-id="tab4-z-q2">
+                <p class="question-text"><strong>Question 2:</strong> Using the 68-95-99.7 rule, what percentage of students scored better than this student?</p>
+                <div class="answer-reveal" style="display: none;">
+                    <p class="answer-text"><strong>Answer:</strong> About 2.5% (since 95% fall within 2 standard deviations, 5% fall outside, and 2.5% are above)</p>
+                </div>
+                <button class="reveal-answer-btn" onclick="revealAnswer('tab4-z-q2')">Show Answer</button>
+            </div>
 
-            <p><strong>Question 2:</strong> Using the 68-95-99.7 rule, what percentage of students scored better than this student?</p>
-
-            <p><strong>Answer:</strong> About 2.5% (since 95% fall within 2 standard deviations, 5% fall outside, and 2.5% are above)</p>
-
-            <p><strong>Question 3:</strong> If IQ scores are normally distributed with mean 100 and standard deviation 15, what IQ score corresponds to z = -1.5?</p>
-
-            <p><strong>Answer:</strong> IQ = 100 + (-1.5 × 15) = 100 - 22.5 = 77.5</p>
+            <div class="knowledge-check-item" data-question-id="tab4-z-q3">
+                <p class="question-text"><strong>Question 3:</strong> If IQ scores are normally distributed with mean 100 and standard deviation 15, what IQ score corresponds to z = -1.5?</p>
+                <div class="answer-reveal" style="display: none;">
+                    <p class="answer-text"><strong>Answer:</strong> IQ = 100 + (-1.5 × 15) = 100 - 22.5 = 77.5</p>
+                </div>
+                <button class="reveal-answer-btn" onclick="revealAnswer('tab4-z-q3')">Show Answer</button>
+            </div>
 
             <hr>
 
@@ -1682,21 +1706,33 @@ By the end of this module, you will be able to:
 
             <h3>Quick Check</h3>
 
-            <p><strong>Question 1:</strong> A researcher finds p = 0.08 for their statistical test. What should they conclude?</p>
+            <div class="knowledge-check-item" data-question-id="tab5-q1">
+                <p class="question-text"><strong>Question 1:</strong> A researcher finds p = 0.08 for their statistical test. What should they conclude?</p>
+                <div class="answer-reveal" style="display: none;">
+                    <p class="answer-text"><strong>Answer:</strong> They should NOT reject the null hypothesis because p > 0.05. The result could easily have happened by chance.</p>
+                </div>
+                <button class="reveal-answer-btn" onclick="revealAnswer('tab5-q1')">Show Answer</button>
+            </div>
 
-            <p><strong>Answer:</strong> They should NOT reject the null hypothesis because p > 0.05. The result could easily have happened by chance.</p>
+            <div class="knowledge-check-item" data-question-id="tab5-q2">
+                <p class="question-text"><strong>Question 2:</strong> What does p = 0.01 mean?</p>
+                <div class="answer-reveal" style="display: none;">
+                    <p class="answer-text"><strong>Answer:</strong> There's only a 1% chance of getting this result if the null hypothesis is true. This suggests the null hypothesis is probably false.</p>
+                </div>
+                <button class="reveal-answer-btn" onclick="revealAnswer('tab5-q2')">Show Answer</button>
+            </div>
 
-            <p><strong>Question 2:</strong> What does p = 0.01 mean?</p>
-
-            <p><strong>Answer:</strong> There's only a 1% chance of getting this result if the null hypothesis is true. This suggests the null hypothesis is probably false.</p>
-
-            <p><strong>Question 3:</strong> If you flip a fair coin 10 times and get 9 heads, what's the probability of this happening by chance?</p>
-
-            <p><strong>Answer:</strong> About 1% (very unlikely). This might make you suspect the coin isn't fair.</p>
+            <div class="knowledge-check-item" data-question-id="tab5-q3">
+                <p class="question-text"><strong>Question 3:</strong> If you flip a fair coin 10 times and get 9 heads, what's the probability of this happening by chance?</p>
+                <div class="answer-reveal" style="display: none;">
+                    <p class="answer-text"><strong>Answer:</strong> About 1% (very unlikely). This might make you suspect the coin isn't fair.</p>
+                </div>
+                <button class="reveal-answer-btn" onclick="revealAnswer('tab5-q3')">Show Answer</button>
+            </div>
 
             <hr>
 
-            ## Part 9: Practical Guide: Working with SPSS
+            <h2>Part 9: Practical Guide: Working with SPSS</h2>
 
             Now let's put theory into practice! SPSS (Statistical Package for the Social Sciences) is a powerful tool for statistical analysis. This section will walk you through the basics you'll need for your M1 assignment.
 
@@ -1949,7 +1985,7 @@ By the end of this module, you will be able to:
 
             ---
 
-            ## Quick Reference Card
+            <h2>Quick Reference Card</h2>
 
             <h3>Variable Classification Decision Tree</h3>
             <ol>
@@ -2056,9 +2092,9 @@ By the end of this module, you will be able to:
 
             ---
 
-            ## Summary and Key Formulas
+            <h2>Summary and Key Formulas</h2>
 
-            ### Core Concepts
+            <h3>Core Concepts</h3>
             - **Statistics:** Mathematical tools for organizing, summarizing, and interpreting data
             - **Descriptive Statistics:** Summarize data you have collected
             - **Inferential Statistics:** Make conclusions about populations based on samples
@@ -2066,32 +2102,32 @@ By the end of this module, you will be able to:
             - **Population:** Entire group you want to study
             - **Sample:** Subset of population you actually study
 
-            ### Measures of Central Tendency
+            <h3>Measures of Central Tendency</h3>
             - **Mean (x̄):** Sum of all values ÷ Number of values
             - **Median:** Middle value when data is ordered
             - **Mode:** Most frequently occurring value
 
-            ### Measures of Variability
+            <h3>Measures of Variability</h3>
             - **Range:** Highest value - Lowest value
             - **Variance (s²):** Sum of squared differences ÷ (n-1)
             - **Standard Deviation (s):** √Variance
 
-            ### Z-Scores
+            <h3>Z-Scores</h3>
             - **Formula:** z = (Value - Mean) ÷ Standard Deviation
             - **Interpretation:** Number of standard deviations from the mean
             - **68-95-99.7 Rule:** 68% within 1 SD, 95% within 2 SD, 99.7% within 3 SD
 
-            ### Symbols Reference
+            <h3>Symbols Reference</h3>
             - **Population:** μ (mean), σ (standard deviation), N (size)
             - **Sample:** x̄ (mean), s (standard deviation), n (size)
             - **Probability:** p (p-value)
 
-            ### Key Distinctions
+            <h3>Key Distinctions</h3>
             - **Parameter vs. Statistic:** Population vs. sample characteristics
             - **Discrete vs. Continuous:** Counted vs. measured variables
             - **Independent vs. Dependent:** Cause vs. effect variables
 
-            ### Analysis Decision Guide
+            <h3>Analysis Decision Guide</h3>
             1. **Identify your variables** and their measurement levels
             2. **Choose appropriate descriptive statistics** based on measurement level
             3. **Create appropriate visualizations** (bar charts for categories, histograms for scale data)
@@ -2100,7 +2136,7 @@ By the end of this module, you will be able to:
 
             ---
 
-            ## Glossary
+            <h2>Glossary</h2>
 
             **Bias:** Systematic error that affects the accuracy of estimates
             **Central Tendency:** Measures that describe the "typical" value in a dataset
@@ -2155,7 +2191,7 @@ By the end of this module, you will be able to:
 
             ---
 
-            ## Connections to Future Modules
+            <h2>Connections to Future Modules</h2>
 
             **Module 2: One-Sample Tests**
             - Uses z-scores and normal distributions to test if a sample mean differs from a known population mean
@@ -2181,7 +2217,7 @@ By the end of this module, you will be able to:
 
             ---
 
-            ## Final Thoughts
+            <h2>Final Thoughts</h2>
 
             Congratulations! You've completed Module 1 and learned the fundamental concepts that form the foundation of statistical reasoning. You now understand:
 
@@ -2231,9 +2267,73 @@ By the end of this module, you will be able to:
                 </button>
         </div>
     </div>
-    </div>
 
 </div>
+
+</div>
+
+<style>
+/* Knowledge Check Styling */
+.knowledge-check-item {
+    background-color: #f8f9fa;
+    border-left: 4px solid #007bff;
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 4px;
+}
+
+.knowledge-check-item.answered {
+    border-left-color: #28a745;
+    background-color: #f0f8f4;
+}
+
+.question-text {
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.question-options {
+    margin: 10px 0;
+    list-style-position: inside;
+}
+
+.answer-reveal {
+    background-color: #e7f3ff;
+    border: 1px solid #b3d9ff;
+    padding: 12px;
+    margin-top: 10px;
+    border-radius: 4px;
+}
+
+.answer-text {
+    margin: 0;
+    color: #004085;
+}
+
+.reveal-answer-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 10px;
+    transition: background-color 0.2s;
+}
+
+.reveal-answer-btn:hover {
+    background-color: #0056b3;
+}
+
+.reveal-answer-btn.answered {
+    background-color: #28a745;
+}
+
+.reveal-answer-btn.answered:hover {
+    background-color: #218838;
+}
+</style>
 
 <script>
 // Progress tracking storage key
@@ -2312,6 +2412,67 @@ function showTab(tabNumber) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
+// Knowledge Check functionality
+const KC_STORAGE_KEY = 'm1-knowledge-checks';
+
+// Load answered questions on page load
+function loadKnowledgeCheckProgress() {
+    const savedProgress = localStorage.getItem(KC_STORAGE_KEY);
+    if (savedProgress) {
+        const answeredQuestions = JSON.parse(savedProgress);
+        answeredQuestions.forEach(questionId => {
+            markQuestionAsAnswered(questionId, false);
+        });
+    }
+}
+
+// Save answered question to localStorage
+function saveAnsweredQuestion(questionId) {
+    const savedProgress = localStorage.getItem(KC_STORAGE_KEY);
+    const answeredQuestions = savedProgress ? JSON.parse(savedProgress) : [];
+    
+    if (!answeredQuestions.includes(questionId)) {
+        answeredQuestions.push(questionId);
+        localStorage.setItem(KC_STORAGE_KEY, JSON.stringify(answeredQuestions));
+    }
+}
+
+// Reveal answer for a question
+function revealAnswer(questionId) {
+    const questionItem = document.querySelector(`[data-question-id="${questionId}"]`);
+    const answerDiv = questionItem.querySelector('.answer-reveal');
+    const button = questionItem.querySelector('.reveal-answer-btn');
+    
+    // Show the answer
+    answerDiv.style.display = 'block';
+    
+    // Mark as answered
+    markQuestionAsAnswered(questionId, true);
+}
+
+// Mark question as answered (visually and in storage)
+function markQuestionAsAnswered(questionId, saveToStorage) {
+    const questionItem = document.querySelector(`[data-question-id="${questionId}"]`);
+    if (!questionItem) return;
+    
+    const answerDiv = questionItem.querySelector('.answer-reveal');
+    const button = questionItem.querySelector('.reveal-answer-btn');
+    
+    // Update visual state
+    questionItem.classList.add('answered');
+    button.classList.add('answered');
+    button.textContent = 'Answer Shown ✓';
+    answerDiv.style.display = 'block';
+    
+    // Save to storage if requested
+    if (saveToStorage) {
+        saveAnsweredQuestion(questionId);
+    }
+}
+
 // Load progress when page loads
-document.addEventListener('DOMContentLoaded', loadProgress);
+document.addEventListener('DOMContentLoaded', function() {
+    loadProgress();
+    loadKnowledgeCheckProgress();
+});
 </script>
