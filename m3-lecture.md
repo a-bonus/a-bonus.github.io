@@ -8,7 +8,7 @@ subtitle: Independent-Samples and Paired-Samples t-Tests
 
 ## Independent-Samples and Paired-Samples t-Tests
 
-**Estimated Reading Time:** 45-60 minutes  
+**Estimated Study Time:** 1-2 hours  
 **Prerequisites:** M1 (Data Setup & Description), M2 (One-Sample t-Tests)
 
 ---
@@ -99,6 +99,8 @@ With two samples, we have two challenges the one-sample test didn't have:
 The most important question you must ask is: **"Are the two sets of scores from the same people or from two different, unrelated groups?"**
 
 This single question determines which t-test you will use.
+
+> **⚠️ Critical Warning:** Choosing the wrong test (independent vs. paired) is the most common error in Module 3. Using the wrong test will give you incorrect results and invalid conclusions. Always verify your research design before selecting a test.
 
 ### Between-Subjects Design → Independent-Samples t-Test
 
@@ -301,6 +303,8 @@ Do you have the same people measured twice?
 
 ## Part 3: The Independent-Samples t-Test
 
+> **Before proceeding:** Make sure you've determined that independent-samples is the right test for your design (see [Part 2](#part-2-research-designs-and-the-critical-decision)). If your data involves the same people measured twice or matched pairs, you need the paired-samples t-test instead ([Part 4](#part-4-the-paired-samples-t-test)).
+
 ### Conceptual Foundation
 
 The independent-samples t-test works by creating a **distribution of mean differences**. Here's the key insight:
@@ -327,21 +331,26 @@ Where:
 - SE(M₁ - M₂) = standard error of the difference between means
 
 **Standard Error Calculation:**
-The formula for standard error depends on whether the two groups have equal variances:
+The approach differs depending on whether the two groups have equal variances:
 
-**Equal Variances Assumed:**
+**Equal Variances Assumed (Pooled Variance Method):**
 
 ```
-SE = √[(s₁²/n₁) + (s₂²/n₂)]
+s_pooled² = [(n₁-1)s₁² + (n₂-1)s₂²] / (n₁ + n₂ - 2)
+SE = √[s_pooled² × (1/n₁ + 1/n₂)]
+df = n₁ + n₂ - 2
 ```
+
+This uses a weighted average (pooled variance) to estimate the common population variance.
 
 **Equal Variances Not Assumed (Welch's t-test):**
 
 ```
 SE = √[(s₁²/n₁) + (s₂²/n₂)]
+df = (complex Welch-Satterthwaite approximation)
 ```
 
-(Note: The degrees of freedom calculation is different, but SPSS handles this automatically)
+This uses each group's variance separately and adjusts the degrees of freedom. SPSS handles the df calculation automatically.
 
 ### Step-by-Step Process
 
@@ -478,13 +487,13 @@ For a one-tailed test:
     <div class="answer-content">
       <p class="correct-answer"><strong>✓ Answer:</strong> A) Group A is significantly higher than Group B, with a large effect size</p>
 
-      <p class="explanation"><strong>Why this is correct:</strong> The p-value (.019) is less than .05, so the difference is statistically significant. Group A's mean (85.2) is higher than Group B's mean (78.9), so Group A is significantly higher. Cohen's d = 0.78 is considered a large effect size (typically d > 0.8 is large).</p>
+      <p class="explanation"><strong>Why this is correct:</strong> The p-value (.019) is less than .05, so the difference is statistically significant. Group A's mean (85.2) is higher than Group B's mean (78.9), so Group A is significantly higher. Cohen's d = 0.78 is approaching the 0.8 threshold for a large effect size and represents a medium-to-large effect.</p>
 
       <p class="explanation"><strong>Why the others are incorrect:</strong></p>
       <ul>
         <li><strong>B) Not significant:</strong> p = .019 is less than .05, so it IS significant.</li>
         <li><strong>C) Group B higher:</strong> Group A's mean (85.2) > Group B's mean (78.9), so A is higher, not B.</li>
-        <li><strong>D) Small effect:</strong> d = 0.78 is a large effect size, not small (small is typically d < 0.2).</li>
+        <li><strong>D) Small effect:</strong> d = 0.78 is approaching a large effect size, not small (small is typically d = 0.2).</li>
       </ul>
 
       <p class="application-tip"><em>💡 Application Tip:</em> Always report the direction of difference by looking at which mean is higher, and interpret effect sizes using standard guidelines (small: d = 0.2, medium: d = 0.5, large: d = 0.8).</p>
@@ -524,6 +533,8 @@ For a one-tailed test:
 
 ## Part 4: The Paired-Samples t-Test
 
+> **Before proceeding:** Make sure you've determined that paired-samples is the right test for your design (see [Part 2](#part-2-research-designs-and-the-critical-decision)). If your data involves two completely different groups (not the same people), you need the independent-samples t-test instead ([Part 3](#part-3-the-independent-samples-t-test)).
+
 ### Why Paired-Samples Tests Are More Powerful
 
 The paired-samples t-test has a major advantage: **it eliminates individual differences**. Here's why this matters:
@@ -542,6 +553,12 @@ The paired-samples t-test is clever because it transforms a two-sample problem b
 
 - Difference = Score_Time2 - Score_Time1
 - Or: Difference = Score_ConditionA - Score_ConditionB
+
+> **💡 Important:** The order matters! If Difference = Time2 - Time1:
+> - **Positive difference** means Time2 scores are higher
+> - **Negative difference** means Time2 scores are lower (Time1 was higher)
+>
+> Always note which direction you're subtracting to interpret your results correctly.
 
 **Step 2:** Create a single sample of difference scores
 
@@ -832,8 +849,11 @@ Equal variances not assumed
 
    - Your groups have different amounts of variability
    - This might indicate that the treatment affects not just the mean, but also the spread
+   - Welch's t-test is more conservative and provides accurate results even with unequal variances
 
 4. **Report appropriately:** Mention that you used Welch's t-test due to unequal variances
+
+> **📝 Note:** Welch's t-test adjusts both the standard error calculation and the degrees of freedom to account for unequal variances. This makes it robust to violations of the homogeneity of variance assumption. The adjusted degrees of freedom are usually non-integer values (e.g., df = 41.2).
 
 ### Example: Reading SPSS Output
 
@@ -1297,7 +1317,7 @@ Effect sizes help us judge **practical significance**:
       <p class="explanation"><strong>Why the others are incorrect:</strong></p>
       <ul>
         <li><strong>A) Small and not important:</strong> d = 0.85 is well above the 0.2 threshold for small effects.</li>
-        <li><strong>B) Medium and somewhat important:</strong> d = 0.85 is above the 0.5 threshold for medium effects and approaches the 0.8 threshold for large effects.</li>
+        <li><strong>B) Medium and somewhat important:</strong> d = 0.85 is above the 0.5 threshold for medium effects and exceeds the 0.8 threshold for large effects.</li>
         <li><strong>D) Tells us nothing:</strong> Effect size is specifically designed to provide information about practical significance.</li>
       </ul>
 
@@ -1672,10 +1692,14 @@ Do you want to compare two means?
 ### APA Reporting Template
 
 **Independent-Samples t-Test:**
-"An independent-samples t-test revealed that [Group A] (M = [mean], SD = [sd]) scored significantly [higher/lower] than [Group B] (M = [mean], SD = [sd]), t([df]) = [t-value], p = [p-value], d = [effect-size]."
+"An independent-samples t-test [with Welch's correction if applicable] revealed that [Group A] (M = [mean], SD = [sd]) scored significantly [higher/lower] than [Group B] (M = [mean], SD = [sd]), t([df]) = [t-value], p = [p-value], d = [effect-size]."
+
+**Example:** "An independent-samples t-test revealed that students who received tutoring (M = 85.2, SD = 12.4) scored significantly higher than students who did not receive tutoring (M = 78.9, SD = 11.8), t(53) = 2.15, p = .037, d = 0.52."
 
 **Paired-Samples t-Test:**
 "A paired-samples t-test revealed that [Condition 2] scores (M = [mean], SD = [sd]) were significantly [higher/lower] than [Condition 1] scores (M = [mean], SD = [sd]), t([df]) = [t-value], p = [p-value], d = [effect-size]."
+
+**Example:** "A paired-samples t-test revealed that post-intervention anxiety scores (M = 42.5, SD = 8.3) were significantly lower than pre-intervention scores (M = 51.0, SD = 9.1), t(14) = -3.45, p = .004, d = 0.89."
 
 ### Key Takeaways
 
@@ -2063,6 +2087,45 @@ Remember: **The research design determines the statistical test, not the other w
 
 ---
 
+## Quick Reference Card
+
+### When to Use Each Test
+
+| Question to Ask | Answer | Test to Use |
+|----------------|--------|-------------|
+| Are the same people measured twice? | YES | Paired-Samples t-Test |
+| Are the participants meaningfully matched (twins, couples)? | YES | Paired-Samples t-Test |
+| Are there two completely different groups? | YES | Independent-Samples t-Test |
+| Do I need to check equal variances? | Independent only | Run Levene's test |
+
+### Critical Steps Checklist
+
+**For Independent-Samples:**
+- ☐ Verify groups are truly independent
+- ☐ Check normality for each group
+- ☐ Run Levene's test (p > .05 = equal variances)
+- ☐ Use correct row in output based on Levene's test
+- ☐ Calculate Cohen's d using pooled SD
+- ☐ Report: groups, means, SDs, t, df, p, d
+
+**For Paired-Samples:**
+- ☐ Verify data is paired correctly
+- ☐ Calculate difference scores
+- ☐ Check normality of difference scores
+- ☐ Run paired-samples t-test
+- ☐ Calculate Cohen's d using difference SD
+- ☐ Report: conditions, means, SDs, t, df, p, d
+
+### Effect Size Interpretation
+
+| Cohen's d | Interpretation |
+|-----------|----------------|
+| 0.2 | Small effect |
+| 0.5 | Medium effect |
+| 0.8 | Large effect |
+
+---
+
 ## Glossary
 
 **Between-Subjects Design:** A research design where different participants are assigned to different conditions.
@@ -2243,7 +2306,7 @@ Remember: **The research design determines the statistical test, not the other w
       <p>C) The groups are 8.50 points apart</p>
       <p>D) The standard deviation is 8.50</p>
     </div>
-  </details>
+  </div>
 
   <details class="answer-section">
     <summary>💡 Click to reveal answer and explanation</summary>

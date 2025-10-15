@@ -263,6 +263,8 @@ Research Question
 
 **When in Doubt:** Use a two-tailed test. It's more conservative and protects against missing unexpected findings.
 
+> **⚠️ CRITICAL WARNING:** You MUST decide whether to use a one-tailed or two-tailed test BEFORE collecting or looking at your data. Switching from two-tailed to one-tailed after seeing your results is called **p-hacking** and invalidates your statistical inference. This inflates your Type I error rate and is considered research misconduct.
+
 ### Practice: Writing Hypotheses
 
 For each research question, write H₀ and H₁, and indicate whether you'd use a one-tailed or two-tailed test.
@@ -474,6 +476,21 @@ The **p-value** is the most important concept in hypothesis testing—and also t
 2. The drug actually works (H₀ is probably false)
 
 We conclude #2 is more plausible.
+
+> **📊 UNDERSTANDING P-VALUES: The Most Misunderstood Concept**
+>
+> **What p-values ARE:**
+> - The probability of getting your data (or more extreme) IF H₀ is true
+> - A measure of how surprising your results are under the null hypothesis
+> - Conditional on H₀ being true
+>
+> **What p-values are NOT:**
+> - ❌ The probability that H₀ is true
+> - ❌ The probability that your results are due to chance
+> - ❌ The probability that H₁ is true
+> - ❌ The probability you made a mistake
+>
+> **Key Insight:** p-values assume H₀ is true and ask "how weird is our data?" They do NOT tell us the probability that our hypothesis is correct!
 
 ### The Alpha Level (α)
 
@@ -822,6 +839,20 @@ You can't eliminate both types of errors simultaneously. There's always a trade-
 - → Does NOT change Type I error rate (α stays the same)
 - **This is why larger samples are almost always better!**
 
+> **📋 ERROR TYPES SUMMARY**
+>
+> | Aspect | Type I Error (α) | Type II Error (β) |
+> |--------|------------------|-------------------|
+> | **What happens** | Reject true H₀ | Fail to reject false H₀ |
+> | **In plain English** | False positive | False negative |
+> | **Analogy** | Convict innocent person | Let guilty person go free |
+> | **Probability** | α (usually .05 = 5%) | β (varies, often 20-50%) |
+> | **To reduce** | Lower α, replicate studies | Increase n, increase power |
+> | **Controlled by** | Researcher (set α) | Study design (sample size, effect size) |
+>
+> **Key Trade-off:** ↓ Type I → ↑ Type II (and vice versa)
+> **Solution:** Increase sample size (reduces Type II without affecting Type I)
+
 ### Which Error is Worse?
 
 **It depends on context!**
@@ -1091,6 +1122,14 @@ Where:
 
 Now we put everything together into our first formal hypothesis test!
 
+> **Before proceeding:** Make sure you understand these prerequisite concepts:
+> - Hypothesis formulation ([Part 2](#part-2-formulating-hypotheses))
+> - p-values and decision-making ([Part 3](#part-3-the-decision-making-framework))
+> - Type I and Type II errors ([Part 4](#part-4-understanding-errors-in-hypothesis-testing))
+> - Central Limit Theorem and standard error ([Part 5](#part-5-the-central-limit-theorem))
+>
+> The one-sample t-test brings all these concepts together into a single, systematic procedure.
+
 ### When to Use a One-Sample t-Test
 
 **Purpose:** Compare a sample mean to a known population mean
@@ -1222,6 +1261,28 @@ From your sample data:
 **Conclusion:**
 "Individuals who meditate regularly (M = 45, SD = 12) had significantly lower stress scores than the general population mean of 50, t(24) = -2.08, p = .012, suggesting meditation is associated with reduced stress."
 
+**What This Means in Practice:**
+
+**Effect Size:** Let's calculate Cohen's d to understand practical significance:
+\[ d = \frac{M - \mu}{s} = \frac{45 - 50}{12} = \frac{-5}{12} = -0.42 \]
+
+This is a **small to medium effect** (between 0.2 and 0.5), meaning:
+- The difference is not just statistically significant, but also practically meaningful
+- Meditators score about 0.4 standard deviations lower on stress than the general population
+- This represents a noticeable improvement in real-world terms
+
+**Practical Interpretation:**
+- **For researchers:** This provides evidence that meditation programs may be worth investigating further
+- **For practitioners:** A 5-point reduction in stress (on this scale) could represent meaningful relief for clients
+- **For policymakers:** This effect size suggests meditation could be a cost-effective stress management intervention
+- **Limitations:** This is correlational (people who meditate may differ in other ways); a randomized experiment would provide stronger evidence
+
+**Next Steps:**
+- Replicate with larger sample (n = 25 is modest)
+- Use random assignment (assign people to meditate vs. control)
+- Follow up over time to see if effects persist
+- Calculate confidence intervals to understand range of plausible effects
+
 ### Manual Calculation Practice
 
 **Scenario:** National average depression score is μ = 30. A sample of 16 therapy patients has M = 25, s = 8. Test if therapy patients score differently from the national average.
@@ -1286,6 +1347,30 @@ The t-value (like a z-score) measures how many standard errors your sample mean 
 
 **Note:** Exact cutoffs depend on df (degrees of freedom) and alpha level.
 
+> **🧮 CALCULATION CHECKLIST: Avoid These Common Errors**
+>
+> Before finalizing your t-test calculations, verify:
+>
+> ✓ **Standard Error vs. Standard Deviation**
+> - Did you use SE = s/√n (NOT just s)?
+> - SE should always be smaller than s
+>
+> ✓ **Degrees of Freedom**
+> - Did you use df = n - 1 (NOT n)?
+> - Example: If n = 25, then df = 24
+>
+> ✓ **Sign of t-Value**
+> - Keep the negative sign if M < μ
+> - The sign indicates direction
+>
+> ✓ **Formula Check**
+> - t = (M - μ) / SE
+> - NOT t = (μ - M) / SE (order matters!)
+>
+> ✓ **One-Tailed p-Value**
+> - Did you divide SPSS p by 2?
+> - Only if result is in predicted direction!
+
 ### Common Mistakes
 
 ❌ **Mistake 1:** Using one-tailed when you should use two-tailed
@@ -1316,6 +1401,8 @@ The t-value (like a z-score) measures how many standard errors your sample mean 
 ## Part 7: Effect Size: Measuring Practical Significance
 
 Statistical significance tells you IF there's an effect. Effect size tells you HOW BIG the effect is.
+
+> **Connection to previous concepts:** Remember the distinction between statistical and practical significance from [Part 3](#part-3-the-decision-making-framework)? Effect size is how we measure practical significance. A result can be statistically significant (p < .05) but have a tiny effect size, or have a large effect size but not be statistically significant (underpowered study).
 
 ### Why Effect Size Matters
 
@@ -1385,6 +1472,13 @@ Jacob Cohen proposed rough guidelines for interpreting d:
 - Sample: M = 112, s = 15
 - \[ d = \frac{112 - 100}{15} = \frac{12}{15} = 0.80 \]
 - **Interpretation:** Large effect (reading scores are 0.80 SD above population mean)
+
+**What This Means in Practice:**
+- This is a **substantial improvement** - students improved by 12 points on average
+- A Cohen's d of 0.80 is considered educationally significant
+- In practical terms: If the program works, it could move an average student from the 50th percentile to approximately the 79th percentile
+- **Cost-benefit consideration:** If the program is affordable and scalable, this effect size would strongly support implementation
+- **Caution:** Need to verify with randomized controlled trial to rule out selection effects (maybe better students chose the program)
 
 **Example 3:** Memory drug trial
 
@@ -1464,6 +1558,66 @@ Jacob Cohen proposed rough guidelines for interpreting d:
 "Patients receiving the experimental memory drug (M = 52, SD = 10) did not differ significantly from the population mean of 50, t(19) = 0.89, p = .38, d = 0.20."
 
 **Note:** Report d even when results are not significant! Effect size estimates are valuable regardless.
+
+### Complete APA Reporting Guidelines
+
+**Essential Components to Include:**
+
+1. **Descriptive statistics:** M and SD for your sample
+2. **Comparison value:** The population mean you're comparing against
+3. **Test statistic:** t(df) = value
+4. **p-value:** Exact value when possible, or p < .001 for very small values
+5. **Effect size:** Cohen's d
+6. **Direction and significance:** Clearly state whether the difference was significant and in which direction
+
+**Reporting p-Values:**
+
+| SPSS Output | How to Report | Why |
+|-------------|---------------|-----|
+| p = .000 | **p < .001** | Never report p = .000; it's rounded |
+| p = .0234 | **p = .023** | Round to 2-3 decimal places |
+| p = .050 | **p = .050** | Report exactly (borderline case) |
+| p = .0499 | **p = .050** | Round to 3 decimals, or report exactly |
+| p = .347 | **p = .347** or **p = .35** | Either is acceptable |
+
+**Common Reporting Mistakes to Avoid:**
+
+❌ **Wrong:** "The result was p = .000"
+✓ **Right:** "The result was p < .001"
+
+❌ **Wrong:** "t = 2.45 with p < .05"
+✓ **Right:** "t(23) = 2.45, p = .023" (report exact p when available)
+
+❌ **Wrong:** "The difference was not significant (p = .08)"
+✓ **Right:** "The difference was not significant, t(45) = 1.78, p = .08, d = 0.26"
+
+❌ **Wrong:** "Participants scored M = 85"
+✓ **Right:** "Participants (M = 85, SD = 12) scored..."
+
+❌ **Wrong:** "Results were significant at the .05 level"
+✓ **Right:** "Results were significant, t(30) = 2.34, p = .026"
+
+### APA Format for Different Scenarios
+
+**Scenario 1: Significant Result (Two-Tailed)**
+"College students (M = 6.2, SD = 1.3) slept significantly less than the recommended 8 hours, t(149) = -8.52, p < .001, d = 1.38, suggesting substantial sleep deprivation in this population."
+
+**Scenario 2: Non-Significant Result (Two-Tailed)**
+"Participants receiving the new study technique (M = 78.5, SD = 11.2) did not differ significantly from the national average of 75, t(32) = 1.79, p = .082, d = 0.31, though the medium effect size suggests the study may have been underpowered."
+
+**Scenario 3: Significant Result (One-Tailed)**
+"As predicted, athletes who underwent visualization training (M = 142.3, SD = 18.7) performed significantly better than the population mean of 130, t(27) = 3.48, p = .001 (one-tailed), d = 0.66."
+
+**Scenario 4: Reporting with Context**
+"Participants in the mindfulness intervention group (M = 42.1, SD = 9.3) showed significantly lower anxiety scores compared to the clinical cutoff of 50, t(38) = -5.30, p < .001, d = 0.85. This large effect suggests the intervention moved participants from clinically significant anxiety to subclinical levels."
+
+**Best Practices:**
+
+- **Always include SD:** Readers need it to understand variability and calculate effect sizes
+- **Report exact p-values:** Don't just say "p < .05" when you have the exact value
+- **Include effect size:** Required by most journals and essential for meta-analyses
+- **Interpret in context:** Don't just report numbers; explain what they mean
+- **Be honest about limitations:** Mention if sample was small, not randomized, etc.
 
 ### Quick Check
 
@@ -1635,6 +1789,11 @@ Jacob Cohen proposed rough guidelines for interpreting d:
 ## Part 8: Statistical Power
 
 Power is your study's ability to detect a real effect when one exists. Understanding power helps you design better studies and interpret null results.
+
+> **Connection to previous concepts:**
+> - Power is directly related to **Type II errors** from [Part 4](#part-4-understanding-errors-in-hypothesis-testing): Power = 1 - β
+> - Power depends on **effect size** from [Part 7](#part-7-effect-size-measuring-practical-significance): Larger effects are easier to detect
+> - Power is why we care about **sample size**: Bigger samples = more power to detect real effects
 
 ### What is Statistical Power?
 
@@ -2655,6 +2814,111 @@ Sometimes you need to analyze a subset of your data.
 
   </details>
 </div>
+
+---
+
+## Quick Reference Card
+
+### Hypothesis Testing Decision Tree
+
+```
+Start: Do you have a research question?
+    |
+    ├─ ONE sample comparing to known population value?
+    |   └─→ ONE-SAMPLE T-TEST (Module 2)
+    |
+    ├─ TWO samples from different groups?
+    |   └─→ INDEPENDENT-SAMPLES T-TEST (Module 3)
+    |
+    └─ Same people measured twice?
+        └─→ PAIRED-SAMPLES T-TEST (Module 3)
+```
+
+### The 7-Step Hypothesis Testing Process
+
+**Step 1:** State hypotheses (H₀ and H₁)
+**Step 2:** Set alpha level (α = .05)
+**Step 3:** Calculate descriptive statistics (n, M, s)
+**Step 4:** Calculate standard error (SE = s/√n)
+**Step 5:** Calculate t-statistic (t = (M - μ)/SE)
+**Step 6:** Determine df and find p-value
+**Step 7:** Make decision and interpret
+
+### Critical Decision Rules
+
+| Situation | Decision | Action |
+|-----------|----------|--------|
+| p < α (.05) | Reject H₀ | Result is statistically significant |
+| p ≥ α (.05) | Fail to reject H₀ | Result is not statistically significant |
+| Result in predicted direction (one-tailed) | Divide SPSS p by 2 | p_one-tailed = p_SPSS / 2 |
+| Result in wrong direction (one-tailed) | Fail to reject H₀ | Don't divide p-value |
+
+### Essential Formulas Quick Reference
+
+| Formula | Equation | When to Use |
+|---------|----------|-------------|
+| Standard Error | SE = s/√n | Always needed for t-test |
+| t-Statistic | t = (M - μ)/SE | One-sample t-test |
+| Degrees of Freedom | df = n - 1 | One-sample t-test |
+| Cohen's d | d = (M - μ)/s | Effect size for one-sample |
+
+### Effect Size Interpretation
+
+| Cohen's d | Interpretation | Example |
+|-----------|----------------|---------|
+| 0.2 | Small effect | Noticeable to experts |
+| 0.5 | Medium effect | Visible to careful observer |
+| 0.8 | Large effect | Obvious to anyone |
+
+> **Remember:** These are guidelines, not rigid rules. Context matters!
+
+### One-Tailed vs. Two-Tailed Quick Guide
+
+| Aspect | One-Tailed | Two-Tailed |
+|--------|------------|------------|
+| **When to use** | Specific directional prediction | Any difference/change |
+| **Power** | Higher (for predicted direction) | Lower but safer |
+| **p-value** | Divide SPSS p by 2* | Use SPSS p as reported |
+| **Risk** | Miss effects in opposite direction | More conservative |
+
+*Only if result is in predicted direction!
+
+### APA Format Template
+
+**Complete reporting:**
+"[Sample description] (M = [mean], SD = [SD]) [comparison statement], t([df]) = [t-value], p = [p-value], d = [Cohen's d]."
+
+**Example:**
+"College students (M = 6.2, SD = 1.3) slept significantly less than the recommended 8 hours, t(149) = -8.52, p < .001, d = 1.38."
+
+### Common Mistakes Checklist
+
+☐ **Don't say "accept H₀"** → Say "fail to reject H₀"
+☐ **Don't forget effect size** → Always report Cohen's d
+☐ **Don't decide one/two-tailed after seeing data** → Decide before data collection
+☐ **Don't confuse s and SE** → SE = s/√n (always smaller)
+☐ **Don't ignore power** → Check if your study could detect effects
+☐ **Don't report p = .000** → Use p < .001 instead
+
+### Statistical Power Quick Facts
+
+| Factor | Effect on Power | How to Improve |
+|--------|----------------|----------------|
+| Sample size (n) | ↑ n = ↑ Power | **Recruit more participants** |
+| Effect size (d) | ↑ d = ↑ Power | Use stronger interventions |
+| Alpha (α) | ↑ α = ↑ Power | Usually keep at .05 |
+| One vs. two-tailed | One-tailed has more power | Only if appropriate |
+
+**Target:** Aim for power ≥ .80 (80% chance of detecting real effects)
+
+### Error Types at a Glance
+
+| Error | What It Is | Probability | How to Reduce |
+|-------|-----------|-------------|---------------|
+| **Type I** | False positive (reject true H₀) | α (typically .05) | Lower α, replicate |
+| **Type II** | False negative (miss real effect) | β (varies) | Increase n, increase power |
+
+**Trade-off:** Can't minimize both simultaneously!
 
 ---
 
