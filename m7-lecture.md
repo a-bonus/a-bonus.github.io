@@ -1,7 +1,3 @@
-Of course. This final module brings everything together, focusing on the practical process of research from design to analysis and interpretation. Here is your synthesized, Pareto-optimal study guide for Module 7.
-
----
-
 ### **Module 7 Statistics Study Guide: The Complete Research Workflow**
 
 This capstone module isn't about learning a new statistical test. It's about putting all the pieces together. We will walk through the entire quantitative research process, from the initial design blueprint to the final, ethical interpretation of results. This is the "how-to" guide for thinking like a statistician and a researcher.

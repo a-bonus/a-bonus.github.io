@@ -1,9 +1,9 @@
 ---
 layout: default
-title: "M6 Lecture: Correlation and Regression"
+title: "Module 6: Correlation and Regression"
 ---
 
-# M6 Lecture: Correlation and Regression
+# Module 6: Correlation and Regression
 
 ## Learning Objectives
 

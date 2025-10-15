@@ -1,9 +1,9 @@
 ---
 layout: lecture
-title: "M5 Lecture: Two-Way Factorial ANOVA"
+title: "Module 5: Two-Way Factorial ANOVA"
 ---
 
-# M5 Lecture: Two-Way Factorial ANOVA
+# Module 5: Two-Way Factorial ANOVA
 
 ## Understanding Complex Relationships Between Multiple Factors
 
@@ -1064,7 +1064,7 @@ Corrected Total           30871.960      59
 1. **Omnibus test** (Corrected Model row)
 2. **Main effect of Factor A** (first IV row)
 3. **Main effect of Factor B** (second IV row)
-4. **Interaction** (IV1 \* IV2 row)
+4. **Interaction** (IV1 × IV2 row)
 
 **Tip:** SPSS provides many decimal places—use all of them when reporting F-statistics in assignments.
 
@@ -2006,7 +2006,7 @@ Shows means and SDs for each cell
 
 - **Corrected Model:** Omnibus F-test
 - **Each IV:** Main effect F-tests
-- **IV1 \* IV2:** Interaction F-test
+- **IV1 × IV2:** Interaction F-test
 - **Error:** Within-groups variance
 
 **4. Profile Plots (if requested):**
