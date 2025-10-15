@@ -330,6 +330,126 @@ For each research question, write H₀ and H₁, and indicate whether you'd use 
 
 **Key Concept:** The null hypothesis always represents the "boring" or "no effect" outcome. The alternative represents the "interesting" or "something is happening" outcome.
 
+<div class="knowledge-check">
+  <h4>🧠 Knowledge Check: Selecting the Appropriate Test</h4>
+
+  <div class="quiz-question">
+    <p><strong>Question 1:</strong> Of all the online courses offered through the New College, the average rating on instructor presence is 0.8 (4 on a scale of 5). You want to compare your own sample of ratings to this college average to see if you deviate from it. Which test should you use?</p>
+    <div class="options">
+      <p>A) Independent-samples t-test</p>
+      <p>B) Z-test</p>
+      <p>C) One-sample t-test</p>
+      <p>D) Paired-samples t-test</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> C) One-sample t-test</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> You're comparing a sample mean (your ratings) to a known population value (college average of 0.8). This is exactly what the one-sample t-test is designed for.</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>A) Independent-samples t-test:</strong> This compares two different groups, but you only have one group (your ratings) and want to compare it to a population value.</li>
+        <li><strong>B) Z-test:</strong> While similar to one-sample t-test, z-tests require knowing the population standard deviation, which you don't have here.</li>
+        <li><strong>D) Paired-samples t-test:</strong> This compares the same people measured twice, but you're comparing one group to a population average.</li>
+      </ul>
+
+      <p class="review-tip"><em>💭 Need to review?</em> See Part 1: Introduction to One-Sample t-Tests for when to use this test.</p>
+    </div>
+
+  </details>
+
+  <div class="quiz-question">
+    <p><strong>Question 2:</strong> In order to run a one-sample t-test on a variable in SPSS, it must be coded as a _____ variable.</p>
+    <div class="options">
+      <p>A) Nominal</p>
+      <p>B) Scale</p>
+      <p>C) Discrete</p>
+      <p>D) Ordinal</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> B) Scale</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> One-sample t-tests require continuous data (interval or ratio level) that can be meaningfully averaged. In SPSS, this is coded as "Scale" measure.</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>A) Nominal:</strong> Nominal variables are categorical with no order. You can't calculate a meaningful mean of categories.</li>
+        <li><strong>C) Discrete:</strong> This isn't a measurement level in SPSS. Discrete variables can still be scale if they represent meaningful numeric values.</li>
+        <li><strong>D) Ordinal:</strong> Ordinal variables have order but unequal intervals. While sometimes used, scale variables are preferred for t-tests.</li>
+      </ul>
+
+      <p class="application-tip"><em>💡 Application Tip:</em> Always check your variable's measurement level in SPSS before running statistical tests. Scale variables are required for most parametric tests.</p>
+    </div>
+
+  </details>
+
+  <div class="quiz-question">
+    <p><strong>Question 3:</strong> A researcher wants to test if the average IQ in their sample differs from the population average of 100. What type of research design is this?</p>
+    <div class="options">
+      <p>A) Between-subjects design</p>
+      <p>B) Within-subjects design</p>
+      <p>C) Single-group design</p>
+      <p>D) Correlational design</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> C) Single-group design</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> In a one-sample t-test, you have one group of participants that you're comparing to a known population value. This is a single-group design, not a comparison between groups.</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>A) Between-subjects design:</strong> This would compare two different groups of people, but here you only have one group.</li>
+        <li><strong>B) Within-subjects design:</strong> This would measure the same people twice, but here you're measuring them once and comparing to a population.</li>
+        <li><strong>D) Correlational design:</strong> This would examine relationships between variables, not compare a group to a population value.</li>
+      </ul>
+
+      <p class="review-tip"><em>💭 Need to review?</em> See Part 1: Introduction to One-Sample t-Tests for the research design context.</p>
+    </div>
+
+  </details>
+
+  <div class="quiz-question">
+    <p><strong>Question 4:</strong> The numerator (top portion) of the t-test formula contains _____.</p>
+    <div class="options">
+      <p>A) A difference between means</p>
+      <p>B) The degrees of freedom</p>
+      <p>C) A difference between variances</p>
+      <p>D) The sample mean</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> A) A difference between means</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> The t-test formula is t = (M - μ) / SE. The numerator is (M - μ), which is the difference between the sample mean (M) and the population mean (μ).</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>B) Degrees of freedom:</strong> Degrees of freedom are used in the calculation but appear in the denominator (SE calculation), not the numerator.</li>
+        <li><strong>C) Difference between variances:</strong> T-tests don't directly compare variances in the numerator. The variance affects the standard error calculation.</li>
+        <li><strong>D) Sample mean alone:</strong> The numerator needs both the sample mean and population mean to calculate the difference.</li>
+      </ul>
+
+      <p class="review-tip"><em>💭 Need to review?</em> See Part 2: The Logic of One-Sample t-Tests for the t-test formula breakdown.</p>
+    </div>
+
+  </details>
+</div>
+
 ---
 
 ## Part 3: The Decision-Making Framework
@@ -1361,6 +1481,155 @@ Jacob Cohen proposed rough guidelines for interpreting d:
 4. Yes! With very large samples, even d = 0.1 can be p < .05 (statistically significant but practically small)
 </details>
 
+<div class="knowledge-check">
+  <h4>🧠 Knowledge Check: Effect Size - Cohen's d</h4>
+
+  <div class="quiz-question">
+    <p><strong>Question 1:</strong> Cohen's d is a measure of _____.</p>
+    <div class="options">
+      <p>A) Statistical significance</p>
+      <p>B) Effect size</p>
+      <p>C) Confidence interval</p>
+      <p>D) Power</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> B) Effect size</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> Cohen's d specifically measures the magnitude or size of an effect, standardized in terms of standard deviation units. It tells us how large a difference is, regardless of sample size.</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>A) Statistical significance:</strong> This is measured by p-values, not Cohen's d. You can have large effects that aren't significant (small samples) or small effects that are significant (large samples).</li>
+        <li><strong>C) Confidence interval:</strong> This provides a range of plausible values for a parameter, not the size of an effect.</li>
+        <li><strong>D) Power:</strong> This is the probability of detecting an effect when it exists, which is related to but different from effect size.</li>
+      </ul>
+
+      <p class="review-tip"><em>💭 Need to review?</em> See Part 7: Effect Size - Measuring Practical Significance for the definition and purpose of Cohen's d.</p>
+    </div>
+
+  </details>
+
+  <div class="quiz-question">
+    <p><strong>Question 2:</strong> Effect size in a t-test assesses the degree to which _____.</p>
+    <div class="options">
+      <p>A) Two populations are separated</p>
+      <p>B) Two populations overlap</p>
+      <p>C) Two samples are separated</p>
+      <p>D) Two samples overlap</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> A) Two populations are separated</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> Effect size measures how much the populations differ from each other. A larger effect size means the populations are more separated (less overlap), while a smaller effect size means they overlap more.</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>B) Two populations overlap:</strong> This is the opposite. Large effect sizes mean LESS overlap between populations.</li>
+        <li><strong>C) Two samples are separated:</strong> Effect size is about populations, not samples. We use samples to estimate population effect sizes.</li>
+        <li><strong>D) Two samples overlap:</strong> Again, effect size is about populations, and large effects mean less overlap, not more.</li>
+      </ul>
+
+      <p class="application-tip"><em>💡 Application Tip:</em> Think of effect size as measuring how "different" the populations are. Large effect = very different populations, small effect = similar populations.</p>
+    </div>
+
+  </details>
+
+  <div class="quiz-question">
+    <p><strong>Question 3:</strong> Imagine the average time to complete a 4-year bachelor degree is actually 4.7 years, based on national data. You collect data on 68 psychology students, finding an average completion time of 4.3 years with a standard deviation of 0.6 years. What would be the effect size for a single-sample t-test?</p>
+    <div class="options">
+      <p>A) -5.50</p>
+      <p>B) -0.67</p>
+      <p>C) 0.20</p>
+      <p>D) 0.82</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> B) -0.67</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> Cohen's d = (M - μ) / s = (4.3 - 4.7) / 0.6 = -0.4 / 0.6 = -0.67. The negative sign indicates the sample mean is below the population mean.</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>A) -5.50:</strong> This would result from using the wrong formula or calculation error. The difference (-0.4) divided by standard deviation (0.6) cannot equal -5.50.</li>
+        <li><strong>C) 0.20:</strong> This might be the result of using the wrong population mean or calculation error.</li>
+        <li><strong>D) 0.82:</strong> This might be using the absolute value or incorrect calculation.</li>
+      </ul>
+
+      <p class="review-tip"><em>💭 Need to review?</em> See Part 7.2: Cohen's d - The Most Common Effect Size for the formula and calculation steps.</p>
+    </div>
+
+  </details>
+
+  <div class="quiz-question">
+    <p><strong>Question 4:</strong> When performing a single-sample t-test, an effect size of 0.50 would be interpreted as a _____ effect.</p>
+    <div class="options">
+      <p>A) Small</p>
+      <p>B) Negligible</p>
+      <p>C) Medium</p>
+      <p>D) Large</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> C) Medium</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> According to Cohen's (1988) guidelines: d = 0.2 is small, d = 0.5 is medium, and d = 0.8 is large. An effect size of 0.50 falls exactly at the medium benchmark.</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>A) Small:</strong> Small effects are around d = 0.2, which is smaller than 0.5.</li>
+        <li><strong>B) Negligible:</strong> There's no "negligible" category in Cohen's guidelines. 0.5 is definitely not negligible.</li>
+        <li><strong>D) Large:</strong> Large effects are around d = 0.8, which is larger than 0.5.</li>
+      </ul>
+
+      <p class="application-tip"><em>💡 Application Tip:</em> Remember Cohen's benchmarks: 0.2 (small), 0.5 (medium), 0.8 (large). These are rough guidelines, but useful for initial interpretation.</p>
+    </div>
+
+  </details>
+
+  <div class="quiz-question">
+    <p><strong>Question 5:</strong> What is the key difference between effect size and statistical significance?</p>
+    <div class="options">
+      <p>A) Effect size depends on sample size; significance doesn't</p>
+      <p>B) Statistical significance depends on sample size; effect size doesn't</p>
+      <p>C) They measure the same thing in different ways</p>
+      <p>D) Effect size is always larger than significance</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> B) Statistical significance depends on sample size; effect size doesn't</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> Statistical significance (p-value) is heavily influenced by sample size—larger samples make it easier to achieve significance. Effect size (Cohen's d) measures the magnitude of the difference independent of sample size.</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>A) Effect size depends on sample size:</strong> This is backwards. Effect size is calculated from means and standard deviations, not sample size.</li>
+        <li><strong>C) Same thing in different ways:</strong> They measure completely different concepts—significance tests whether an effect exists, effect size measures how large it is.</li>
+        <li><strong>D) Effect size is always larger:</strong> These are incomparable metrics. Effect size is in standard deviation units, significance is a probability.</li>
+      </ul>
+
+      <p class="review-tip"><em>💭 Need to review?</em> See Part 7.4: Effect Size vs. Statistical Significance for the key distinctions between these concepts.</p>
+    </div>
+
+  </details>
+</div>
+
 ---
 
 ## Part 8: Statistical Power
@@ -1602,6 +1871,155 @@ Power is your study's ability to detect a real effect when one exists. Understan
 4. Higher! Larger effects are easier to detect, so power would be > .80
 </details>
 
+<div class="knowledge-check">
+  <h4>🧠 Knowledge Check: Statistical Power and Errors</h4>
+
+  <div class="quiz-question">
+    <p><strong>Question 1:</strong> _____ is the ability to reject the null hypothesis when the null hypothesis is actually false.</p>
+    <div class="options">
+      <p>A) Statistical power</p>
+      <p>B) Effect size</p>
+      <p>C) Probability of Type I error</p>
+      <p>D) Probability of Type II error</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> A) Statistical power</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> Statistical power is defined as the probability of correctly rejecting the null hypothesis when it is false (i.e., when there really is an effect). This is what we want our study to do.</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>B) Effect size:</strong> This measures how large an effect is, not the probability of detecting it.</li>
+        <li><strong>C) Probability of Type I error:</strong> This is the probability of incorrectly rejecting a true null hypothesis (false positive).</li>
+        <li><strong>D) Probability of Type II error:</strong> This is the probability of failing to reject a false null hypothesis (false negative), which is the opposite of power.</li>
+      </ul>
+
+      <p class="review-tip"><em>💭 Need to review?</em> See Part 8.1: What is Statistical Power for the definition and importance of power.</p>
+    </div>
+
+  </details>
+
+  <div class="quiz-question">
+    <p><strong>Question 2:</strong> The practical use of statistical power is that it informs researchers _____.</p>
+    <div class="options">
+      <p>A) Whether they will find significant results</p>
+      <p>B) What effect size they can expect to find in conducting their study</p>
+      <p>C) Whether they will find important results</p>
+      <p>D) How many participants are needed to conduct a study with findings they can trust</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> D) How many participants are needed to conduct a study with findings they can trust</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> Power analysis is primarily used for sample size planning. Before conducting a study, researchers calculate how many participants they need to have adequate power (typically 80%) to detect an effect of a certain size.</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>A) Whether they will find significant results:</strong> Power doesn't guarantee significance—it only increases the probability of detecting real effects.</li>
+        <li><strong>B) What effect size to expect:</strong> Researchers typically assume an expected effect size when planning power analysis, not the other way around.</li>
+        <li><strong>C) Whether they will find important results:</strong> Power relates to detecting effects, not to their importance or practical significance.</li>
+      </ul>
+
+      <p class="application-tip"><em>💡 Application Tip:</em> Power analysis is most valuable for study planning. Always calculate required sample size before collecting data to ensure your study can detect meaningful effects.</p>
+    </div>
+
+  </details>
+
+  <div class="quiz-question">
+    <p><strong>Question 3:</strong> Alpha level in a hypothesis test refers to _____.</p>
+    <div class="options">
+      <p>A) Probability of making a Type II error</p>
+      <p>B) Probability of making a Type I error</p>
+      <p>C) Statistical power</p>
+      <p>D) Probability of the null hypothesis being true</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> B) Probability of making a Type I error</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> Alpha (α) is the significance level that sets the probability of making a Type I error—incorrectly rejecting a true null hypothesis. It's typically set at 0.05 (5%).</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>A) Probability of Type II error:</strong> This is beta (β), which is related to but different from alpha.</li>
+        <li><strong>C) Statistical power:</strong> Power is 1 - β, not alpha. Power is the probability of correctly rejecting a false null hypothesis.</li>
+        <li><strong>D) Probability of null being true:</strong> Alpha doesn't tell us about the probability that the null hypothesis is true—it's about our decision criterion.</li>
+      </ul>
+
+      <p class="review-tip"><em>💭 Need to review?</em> See Part 8.3: The Relationship Between Power and Error Types for how alpha relates to Type I errors.</p>
+    </div>
+
+  </details>
+
+  <div class="quiz-question">
+    <p><strong>Question 4:</strong> When alpha increases, both _____ and _____ increase.</p>
+    <div class="options">
+      <p>A) Probability of Type II error; statistical power</p>
+      <p>B) Probability of Type I error; probability of Type II error</p>
+      <p>C) Statistical power; probability of Type I error</p>
+      <p>D) Effect size; statistical power</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> C) Statistical power; probability of Type I error</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> When alpha increases (e.g., from 0.05 to 0.10), you become more willing to reject the null hypothesis. This increases both Type I error rate (false positives) and statistical power (ability to detect real effects).</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>A) Type II error and power:</strong> These have an inverse relationship—when one increases, the other decreases.</li>
+        <li><strong>B) Both error types:</strong> Type I and Type II errors typically have an inverse relationship, not both increasing together.</li>
+        <li><strong>D) Effect size and power:</strong> Effect size is independent of alpha—it's a property of the population, not our decision criterion.</li>
+      </ul>
+
+      <p class="application-tip"><em>💡 Application Tip:</em> There's always a trade-off between Type I and Type II errors. Lower alpha reduces false positives but increases false negatives (and vice versa).</p>
+    </div>
+
+  </details>
+
+  <div class="quiz-question">
+    <p><strong>Question 5:</strong> Which statement best describes the relationship between power and Type II error?</p>
+    <div class="options">
+      <p>A) They are the same thing</p>
+      <p>B) Power = 1 - Type II error rate</p>
+      <p>C) Power = Type II error rate</p>
+      <p>D) There is no relationship between them</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> B) Power = 1 - Type II error rate</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> Power and Type II error are complementary probabilities. Type II error is the probability of missing a real effect (β), while power is the probability of detecting a real effect (1 - β).</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>A) Same thing:</strong> They're related but opposite—one is the probability of detecting effects, the other is the probability of missing effects.</li>
+        <li><strong>C) Power = Type II error:</strong> This would mean they're equal, but they're complementary (add up to 1).</li>
+        <li><strong>D) No relationship:</strong> They're directly related as complementary probabilities that sum to 1.</li>
+      </ul>
+
+      <p class="review-tip"><em>💭 Need to review?</em> See Part 8.3: The Relationship Between Power and Error Types for the mathematical relationship between power and Type II errors.</p>
+    </div>
+
+  </details>
+</div>
+
 ---
 
 ## Part 9: The t-Distribution
@@ -1727,6 +2145,126 @@ We've been using the t-test, but what exactly is this "t-distribution"?
 - This is the standard approach!
 
 **Practical Reality:** You'll almost always use t-tests, not z-tests.
+
+<div class="knowledge-check">
+  <h4>🧠 Knowledge Check: Sample Size Effects</h4>
+
+  <div class="quiz-question">
+    <p><strong>Question 1:</strong> When conducting a hypothesis test such as the t-test, having a larger sample size means that the value of the test statistic would _____ and the effect size would _____.</p>
+    <div class="options">
+      <p>A) Increase; remain the same</p>
+      <p>B) Remain the same; decrease</p>
+      <p>C) Remain the same; increase</p>
+      <p>D) Decrease; remain the same</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> A) Increase; remain the same</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> Larger sample sizes lead to smaller standard errors, which increases the t-statistic (t = difference / SE). However, effect size (Cohen's d) is calculated from means and standard deviations, not sample size, so it remains unchanged.</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>B) Remain same; decrease:</strong> The test statistic definitely changes with sample size, and effect size doesn't decrease with larger samples.</li>
+        <li><strong>C) Remain same; increase:</strong> The test statistic changes with sample size, and effect size doesn't increase with larger samples.</li>
+        <li><strong>D) Decrease; remain same:</strong> Larger samples increase, not decrease, the test statistic.</li>
+      </ul>
+
+      <p class="review-tip"><em>💭 Need to review?</em> See Part 8.4: Factors Affecting Power for how sample size affects test statistics and effect sizes.</p>
+    </div>
+
+  </details>
+
+  <div class="quiz-question">
+    <p><strong>Question 2:</strong> Why does effect size remain the same when sample size increases?</p>
+    <div class="options">
+      <p>A) Effect size is calculated from the means and standard deviations, not sample size</p>
+      <p>B) Larger samples always have smaller effect sizes</p>
+      <p>C) Effect size automatically adjusts to sample size</p>
+      <p>D) Effect size and sample size are unrelated concepts</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> A) Effect size is calculated from the means and standard deviations, not sample size</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> Cohen's d = (M - μ) / s. The formula only uses the sample mean (M), population mean (μ), and standard deviation (s). Sample size (n) doesn't appear in this formula, so increasing n doesn't change d.</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>B) Larger samples have smaller effects:</strong> This is incorrect—effect size is independent of sample size.</li>
+        <li><strong>C) Automatically adjusts:</strong> Effect size doesn't automatically adjust to anything—it's a fixed property of the population difference.</li>
+        <li><strong>D) Unrelated concepts:</strong> They're related in that larger samples help you detect smaller effect sizes, but the effect size itself doesn't change.</li>
+      </ul>
+
+      <p class="application-tip"><em>💡 Application Tip:</em> Think of effect size as measuring "how different" the populations are. This difference doesn't change just because you measured more people.</p>
+    </div>
+
+  </details>
+
+  <div class="quiz-question">
+    <p><strong>Question 3:</strong> What happens to statistical power when sample size increases?</p>
+    <div class="options">
+      <p>A) Power decreases</p>
+      <p>B) Power increases</p>
+      <p>C) Power remains the same</p>
+      <p>D) Power becomes zero</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> B) Power increases</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> Larger sample sizes reduce the standard error, making it easier to detect real effects. This increases statistical power—the probability of correctly rejecting a false null hypothesis.</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>A) Power decreases:</strong> This is backwards—larger samples make it easier to detect effects, increasing power.</li>
+        <li><strong>C) Power remains same:</strong> Sample size is one of the main factors that affects power, so it definitely changes.</li>
+        <li><strong>D) Power becomes zero:</strong> This would only happen with extremely problematic samples, not simply larger samples.</li>
+      </ul>
+
+      <p class="review-tip"><em>💭 Need to review?</em> See Part 8.4: Factors Affecting Power for how sample size influences statistical power.</p>
+    </div>
+
+  </details>
+
+  <div class="quiz-question">
+    <p><strong>Question 4:</strong> A researcher conducts the same study with two different sample sizes: n = 25 and n = 100. Both studies find the same sample mean and standard deviation. Which study is more likely to find statistical significance?</p>
+    <div class="options">
+      <p>A) The study with n = 25</p>
+      <p>B) The study with n = 100</p>
+      <p>C) Both are equally likely</p>
+      <p>D) It depends on the population mean</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> B) The study with n = 100</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> Since both studies have the same means and standard deviations, they have the same effect size. However, the larger sample (n = 100) will have a smaller standard error, leading to a larger t-statistic and greater likelihood of statistical significance.</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>A) n = 25:</strong> The smaller sample has less power to detect the same effect size.</li>
+        <li><strong>C) Equally likely:</strong> Larger samples are more likely to find significance for the same effect size.</li>
+        <li><strong>D) Depends on population mean:</strong> Both studies are comparing to the same population mean, so this doesn't affect the comparison.</li>
+      </ul>
+
+      <p class="application-tip"><em>💡 Application Tip:</em> This is why sample size planning is crucial. Larger samples can detect smaller effects and are more likely to find significance for real effects.</p>
+    </div>
+
+  </details>
+</div>
 
 ---
 
@@ -1939,6 +2477,184 @@ Sometimes you need to analyze a subset of your data.
 "Gamers (M = 235, SD = 30) had significantly faster reaction times than the non-gamer population mean of 250 ms, t(39) = -3.16, p = .002, d = 0.50."
 
 </details>
+
+<div class="knowledge-check">
+  <h4>🧠 Knowledge Check: SPSS and APA Reporting</h4>
+
+  <div class="quiz-question">
+    <p><strong>Question 1:</strong> A one-sample t-test in SPSS produces output with t(44) = -2.386 and p = .021. How should this result be reported according to APA standards?</p>
+    <div class="options">
+      <p>A) t(45) = -2.386, p = .021</p>
+      <p>B) t(44) = -2.386, p < .05</p>
+      <p>C) t(44) = .021</p>
+      <p>D) t(44) = -2.386, p = .021</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> D) t(44) = -2.386, p = .021</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> APA format requires: t(df) = value, p = exact value. The degrees of freedom should be exactly as reported by SPSS, and the exact p-value should be reported unless it's less than .001.</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>A) t(45):</strong> The degrees of freedom should be exactly as reported by SPSS (44), not rounded up.</li>
+        <li><strong>B) p < .05:</strong> When the exact p-value is available (.021), report it exactly rather than using the inequality.</li>
+        <li><strong>C) Missing p-value:</strong> APA format requires reporting both the t-statistic and p-value.</li>
+      </ul>
+
+      <p class="review-tip"><em>💭 Need to review?</em> See Part 10.4: Reading and Interpreting SPSS Output for APA reporting guidelines.</p>
+    </div>
+
+  </details>
+
+  <div class="quiz-question">
+    <p><strong>Question 2:</strong> In SPSS output, where would you find Cohen's d for a one-sample t-test?</p>
+    <div class="options">
+      <p>A) It's automatically included in the main t-test table</p>
+      <p>B) In a separate "Effect Sizes" table (if requested)</p>
+      <p>C) It's never available in SPSS</p>
+      <p>D) In the "Descriptive Statistics" table</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> B) In a separate "Effect Sizes" table (if requested)</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> Cohen's d is not automatically calculated in SPSS. You must request it before running the test (Options → Effect Sizes → Cohen's d), and it will appear in a separate table.</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>A) Automatically included:</strong> SPSS doesn't automatically calculate effect sizes—you must request them.</li>
+        <li><strong>C) Never available:</strong> SPSS can calculate Cohen's d, but only if you specifically request it in the Options.</li>
+        <li><strong>D) Descriptive Statistics table:</strong> This table shows means and standard deviations, not effect sizes.</li>
+      </ul>
+
+      <p class="application-tip"><em>💡 Application Tip:</em> Always remember to request effect sizes in SPSS before running your test. You can't add them after the fact.</p>
+    </div>
+
+  </details>
+
+  <div class="quiz-question">
+    <p><strong>Question 3:</strong> A one-sample t-test was conducted to see if blood pressure from a sample was significantly different from 90. The SPSS output shows a negative t-value and p < .05. What can be concluded?</p>
+    <div class="options">
+      <p>A) No conclusion can be drawn from the test result</p>
+      <p>B) The sample blood pressure was significantly lower than 90</p>
+      <p>C) The sample blood pressure was not significantly different from 90</p>
+      <p>D) The sample blood pressure was significantly higher than 90</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> B) The sample blood pressure was significantly lower than 90</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> A negative t-value means the sample mean is below the population value (90). Since p < .05, the difference is statistically significant. Therefore, the sample blood pressure is significantly lower than 90.</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>A) No conclusion:</strong> The results are clear—negative t-value with p < .05 indicates significant difference below the population value.</li>
+        <li><strong>C) Not significant:</strong> p < .05 means the result IS significant.</li>
+        <li><strong>D) Significantly higher:</strong> A negative t-value indicates the sample mean is below, not above, the population value.</li>
+      </ul>
+
+      <p class="review-tip"><em>💭 Need to review?</em> See Part 10.4: Reading and Interpreting SPSS Output for how to interpret the direction of t-values.</p>
+    </div>
+
+  </details>
+
+  <div class="quiz-question">
+    <p><strong>Question 4:</strong> Which report of statistical results is in appropriate APA format?</p>
+    <div class="options">
+      <p>A) t = 1.2, df = 5</p>
+      <p>B) t = 1.2, df = 5, p < 0.05</p>
+      <p>C) t(5) = 1.2, p = .013</p>
+      <p>D) t = 1.2, p = .000</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> C) t(5) = 1.2, p = .013</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> APA format requires: t(df) = value, p = exact value. The degrees of freedom go in parentheses immediately after t, and the exact p-value should be reported when available.</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>A) Missing p-value:</strong> APA format requires reporting the p-value along with the t-statistic.</li>
+        <li><strong>B) df = 5 instead of t(5):</strong> The degrees of freedom should be in parentheses immediately after t, not as a separate item.</li>
+        <li><strong>D) p = .000:</strong> Never report p = .000. Use p < .001 instead.</li>
+      </ul>
+
+      <p class="application-tip"><em>💡 Application Tip:</em> Remember the APA format: t(df) = value, p = value. Always include both the test statistic and p-value.</p>
+    </div>
+
+  </details>
+
+  <div class="quiz-question">
+    <p><strong>Question 5:</strong> What is the independent variable in a graph comparing in-state tuition between public and private colleges?</p>
+    <div class="options">
+      <p>A) Type of college</p>
+      <p>B) In-state tuition</p>
+      <p>C) Private college</p>
+      <p>D) Public college</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> A) Type of college</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> The independent variable is what you're comparing or manipulating. In this case, you're comparing tuition between different types of colleges (public vs. private), so "Type of college" is the IV.</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>B) In-state tuition:</strong> This is the dependent variable—what you're measuring (the outcome).</li>
+        <li><strong>C) Private college:</strong> This is one level of the independent variable, not the IV itself.</li>
+        <li><strong>D) Public college:</strong> This is one level of the independent variable, not the IV itself.</li>
+      </ul>
+
+      <p class="review-tip"><em>💭 Need to review?</em> See Part 1: Introduction to One-Sample t-Tests for the distinction between independent and dependent variables.</p>
+    </div>
+
+  </details>
+
+  <div class="quiz-question">
+    <p><strong>Question 6:</strong> Based on the statistical results provided, which would lead us to reject the null hypothesis using α = .05?</p>
+    <div class="options">
+      <p>A) t(4) = 2.2, p = .09</p>
+      <p>B) t(11) = 2.2, p = .11</p>
+      <p>C) t(12) = 2.2, p = .03</p>
+      <p>D) t(10) = 2.2, p = .065</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> C) t(12) = 2.2, p = .03</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> To reject the null hypothesis, the p-value must be less than or equal to α (.05). Only option C has p = .03, which is less than .05.</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>A) p = .09:</strong> This is greater than .05, so we fail to reject the null hypothesis.</li>
+        <li><strong>B) p = .11:</strong> This is greater than .05, so we fail to reject the null hypothesis.</li>
+        <li><strong>D) p = .065:</strong> This is greater than .05, so we fail to reject the null hypothesis.</li>
+      </ul>
+
+      <p class="application-tip"><em>💡 Application Tip:</em> The decision rule is simple: if p ≤ α, reject H₀; if p > α, fail to reject H₀. Always compare your p-value to your chosen alpha level.</p>
+    </div>
+
+  </details>
+</div>
 
 ---
 
@@ -2164,6 +2880,155 @@ As you complete the M2 assignment, focus on understanding the **why** behind eac
 The one-sample t-test is just the beginning. The logic you've learned here will serve you throughout your statistical journey—and throughout your career as you evaluate claims, interpret research, and make evidence-based decisions.
 
 **You've got this!** Hypothesis testing is logical, systematic, and powerful. Take it one step at a time, and it will all make sense.
+
+<div class="knowledge-check">
+  <h4>🧠 Knowledge Check: Hypothesis Testing Decisions</h4>
+
+  <div class="quiz-question">
+    <p><strong>Question 1:</strong> When comparing a p-value to alpha = .05, which statement is correct?</p>
+    <div class="options">
+      <p>A) If p > .05, reject the null hypothesis</p>
+      <p>B) If p ≤ .05, reject the null hypothesis</p>
+      <p>C) If p = .05, fail to reject the null hypothesis</p>
+      <p>D) The p-value doesn't matter for decision making</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> B) If p ≤ .05, reject the null hypothesis</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> The decision rule is: if p ≤ α, reject H₀; if p > α, fail to reject H₀. Since α = .05, we reject the null hypothesis when p ≤ .05.</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>A) p > .05, reject:</strong> This is backwards—we reject when p is small (≤ α), not large.</li>
+        <li><strong>C) p = .05, fail to reject:</strong> When p = α exactly, we reject H₀ (the inequality is ≤, not <).</li>
+        <li><strong>D) p-value doesn't matter:</strong> The p-value is central to hypothesis testing decisions.</li>
+      </ul>
+
+      <p class="review-tip"><em>💭 Need to review?</em> See Part 3: The Decision-Making Framework for the decision rules.</p>
+    </div>
+
+  </details>
+
+  <div class="quiz-question">
+    <p><strong>Question 2:</strong> What is the difference between Type I and Type II errors?</p>
+    <div class="options">
+      <p>A) Type I error is rejecting a false null; Type II error is failing to reject a true null</p>
+      <p>B) Type I error is rejecting a true null; Type II error is failing to reject a false null</p>
+      <p>C) They are the same thing</p>
+      <p>D) Type I error is always more serious than Type II error</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> B) Type I error is rejecting a true null; Type II error is failing to reject a false null</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> Type I error (false positive) occurs when we reject a true null hypothesis. Type II error (false negative) occurs when we fail to reject a false null hypothesis.</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>A) Reverses the definitions:</strong> This has Type I and Type II errors backwards.</li>
+        <li><strong>C) Same thing:</strong> They are completely different types of mistakes in hypothesis testing.</li>
+        <li><strong>D) Always more serious:</strong> The seriousness depends on context—both can be problematic in different situations.</li>
+      </ul>
+
+      <p class="review-tip"><em>💭 Need to review?</em> See Part 4: Understanding Type I and Type II Errors for detailed explanations.</p>
+    </div>
+
+  </details>
+
+  <div class="quiz-question">
+    <p><strong>Question 3:</strong> If a researcher sets α = .01 instead of α = .05, what happens to the probability of Type I and Type II errors?</p>
+    <div class="options">
+      <p>A) Type I error increases; Type II error decreases</p>
+      <p>B) Type I error decreases; Type II error increases</p>
+      <p>C) Both errors increase</p>
+      <p>D) Both errors decrease</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> B) Type I error decreases; Type II error increases</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> Lowering alpha (from .05 to .01) makes it harder to reject the null hypothesis, reducing Type I errors (false positives) but increasing Type II errors (false negatives). There's always a trade-off between these errors.</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>A) Type I increases; Type II decreases:</strong> This would happen if alpha increased, not decreased.</li>
+        <li><strong>C) Both increase:</strong> Type I and Type II errors have an inverse relationship—when one goes up, the other goes down.</li>
+        <li><strong>D) Both decrease:</strong> You can't reduce both errors simultaneously—there's always a trade-off.</li>
+      </ul>
+
+      <p class="application-tip"><em>💡 Application Tip:</em> Think of alpha as your "skepticism level." Lower alpha = more skeptical = fewer false positives but more false negatives.</p>
+    </div>
+
+  </details>
+
+  <div class="quiz-question">
+    <p><strong>Question 4:</strong> A researcher finds p = .08 in their one-sample t-test with α = .05. What should they conclude?</p>
+    <div class="options">
+      <p>A) Reject the null hypothesis because the effect is close to significant</p>
+      <p>B) Fail to reject the null hypothesis because p > α</p>
+      <p>C) The result is significant because p < .10</p>
+      <p>D) The test is inconclusive</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> B) Fail to reject the null hypothesis because p > α</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> The decision rule is clear: if p > α, fail to reject H₀. Since .08 > .05, we fail to reject the null hypothesis. There's no "close to significant" in hypothesis testing—it's either significant or it isn't.</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>A) Close to significant:</strong> There's no such thing as "close to significant." The decision is binary based on the alpha level.</li>
+        <li><strong>C) Significant because p < .10:</strong> The alpha level was set at .05, not .10. You can't change the criterion after seeing the results.</li>
+        <li><strong>D) Inconclusive:</strong> The test is conclusive—we fail to reject H₀. The conclusion is that there's insufficient evidence for the alternative hypothesis.</li>
+      </ul>
+
+      <p class="application-tip"><em>💡 Application Tip:</em> Always stick to your predetermined alpha level. Don't change the rules after seeing the results—this would be p-hacking.</p>
+    </div>
+
+  </details>
+
+  <div class="quiz-question">
+    <p><strong>Question 5:</strong> What does it mean when we "fail to reject" the null hypothesis?</p>
+    <div class="options">
+      <p>A) We have proven the null hypothesis is true</p>
+      <p>B) We have proven the alternative hypothesis is false</p>
+      <p>C) We don't have enough evidence to conclude the alternative hypothesis is true</p>
+      <p>D) The study was poorly designed</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> C) We don't have enough evidence to conclude the alternative hypothesis is true</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> "Fail to reject H₀" means we don't have sufficient evidence to support the alternative hypothesis. It doesn't prove H₀ is true—it just means we can't confidently say H₁ is true.</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>A) Proven null is true:</strong> We never prove hypotheses in statistics—we only gather evidence for or against them.</li>
+        <li><strong>B) Proven alternative is false:</strong> Again, we don't prove hypotheses false—we just don't have evidence for them.</li>
+        <li><strong>D) Poorly designed study:</strong> A non-significant result doesn't necessarily mean poor design—it could mean insufficient power or a true null hypothesis.</li>
+      </ul>
+
+      <p class="review-tip"><em>💭 Need to review?</em> See Part 3: The Decision-Making Framework for the proper interpretation of statistical decisions.</p>
+    </div>
+
+  </details>
+</div>
 
 ---
 
