@@ -2408,8 +2408,11 @@ function showTab(tabNumber) {
     // Activate the button that was clicked (could be top or bottom)
     event.target.classList.add('active');
     
-    // Scroll to top of the page for better UX
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    // Scroll to top of the tab navigation for better UX
+    const tabContainer = document.querySelector('.lecture-tabs');
+    if (tabContainer) {
+        tabContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
 }
 
 // Knowledge Check functionality
