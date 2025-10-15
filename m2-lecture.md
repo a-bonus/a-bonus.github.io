@@ -3469,3 +3469,148 @@ The one-sample t-test is just the beginning. The logic you've learned here will 
 ---
 
 _Remember: Statistics is a way of thinking about evidence, not just a set of formulas. When in doubt, ask yourself: "What question am I trying to answer, and what would constitute convincing evidence?"_
+
+<script>
+// Progress tracking storage key
+const PROGRESS_KEY = 'm2-lecture-progress';
+
+// Load saved progress on page load
+function loadProgress() {
+    const savedProgress = localStorage.getItem(PROGRESS_KEY);
+    if (savedProgress) {
+        const progress = JSON.parse(savedProgress);
+        // Update all checkboxes based on saved progress
+        for (let i = 1; i <= 5; i++) {
+            const isComplete = progress[i] || false;
+            document.getElementById(`progress-${i}`).checked = isComplete;
+            document.getElementById(`progress-${i}-bottom`).checked = isComplete;
+            updateTabVisualState(i, isComplete);
+        }
+    }
+}
+
+// Save progress to localStorage
+function saveProgress(tabNumber, isComplete) {
+    const savedProgress = localStorage.getItem(PROGRESS_KEY);
+    const progress = savedProgress ? JSON.parse(savedProgress) : {};
+    progress[tabNumber] = isComplete;
+    localStorage.setItem(PROGRESS_KEY, JSON.stringify(progress));
+}
+
+// Toggle tab completion state
+function toggleTabComplete(tabNumber) {
+    // Determine which checkbox was clicked (top or bottom)
+    const clickedCheckbox = event.target;
+    const isComplete = clickedCheckbox.checked;
+    
+    // Update both top and bottom checkboxes to stay in sync
+    document.getElementById(`progress-${tabNumber}`).checked = isComplete;
+    document.getElementById(`progress-${tabNumber}-bottom`).checked = isComplete;
+    
+    // Update visual state
+    updateTabVisualState(tabNumber, isComplete);
+    
+    // Save to localStorage
+    saveProgress(tabNumber, isComplete);
+}
+
+// Update visual state of tab buttons when completed
+function updateTabVisualState(tabNumber, isComplete) {
+    // Update all tab buttons for this tab (top and bottom)
+    const tabButtons = document.querySelectorAll(`button[onclick="showTab(${tabNumber})"]`);
+    tabButtons.forEach(button => {
+        if (isComplete) {
+            button.classList.add('completed');
+        } else {
+            button.classList.remove('completed');
+        }
+    });
+}
+
+// Main tab switching function
+function showTab(tabNumber) {
+    // Hide all panels
+    const panels = document.querySelectorAll('.tab-panel');
+    panels.forEach(panel => panel.classList.remove('active'));
+    
+    // Remove active from all buttons
+    const buttons = document.querySelectorAll('.tab-button');
+    buttons.forEach(button => button.classList.remove('active'));
+    
+    // Show selected panel and activate button
+    document.getElementById(`tab-${tabNumber}`).classList.add('active');
+    
+    // Activate the button that was clicked (could be top or bottom)
+    event.target.classList.add('active');
+    
+    // Scroll to top of the tab navigation for better UX
+    const tabContainer = document.querySelector('.lecture-tabs');
+    if (tabContainer) {
+        tabContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+}
+
+// Knowledge Check functionality
+const KC_STORAGE_KEY = 'm2-knowledge-checks';
+
+// Load answered questions on page load
+function loadKnowledgeCheckProgress() {
+    const savedProgress = localStorage.getItem(KC_STORAGE_KEY);
+    if (savedProgress) {
+        const answeredQuestions = JSON.parse(savedProgress);
+        answeredQuestions.forEach(questionId => {
+            markQuestionAsAnswered(questionId, false);
+        });
+    }
+}
+
+// Save answered question to localStorage
+function saveAnsweredQuestion(questionId) {
+    const savedProgress = localStorage.getItem(KC_STORAGE_KEY);
+    const answeredQuestions = savedProgress ? JSON.parse(savedProgress) : [];
+    
+    if (!answeredQuestions.includes(questionId)) {
+        answeredQuestions.push(questionId);
+        localStorage.setItem(KC_STORAGE_KEY, JSON.stringify(answeredQuestions));
+    }
+}
+
+// Reveal answer for a question
+function revealAnswer(questionId) {
+    const questionItem = document.querySelector(`[data-question-id="${questionId}"]`);
+    const answerDiv = questionItem.querySelector('.answer-reveal');
+    const button = questionItem.querySelector('.reveal-answer-btn');
+    
+    // Show the answer
+    answerDiv.style.display = 'block';
+    
+    // Mark as answered
+    markQuestionAsAnswered(questionId, true);
+}
+
+// Mark question as answered (visually and in storage)
+function markQuestionAsAnswered(questionId, saveToStorage) {
+    const questionItem = document.querySelector(`[data-question-id="${questionId}"]`);
+    if (!questionItem) return;
+    
+    const answerDiv = questionItem.querySelector('.answer-reveal');
+    const button = questionItem.querySelector('.reveal-answer-btn');
+    
+    // Update visual state
+    questionItem.classList.add('answered');
+    button.classList.add('answered');
+    button.textContent = 'Answer Shown ✓';
+    answerDiv.style.display = 'block';
+    
+    // Save to storage if requested
+    if (saveToStorage) {
+        saveAnsweredQuestion(questionId);
+    }
+}
+
+// Load progress when page loads
+document.addEventListener('DOMContentLoaded', function() {
+    loadProgress();
+    loadKnowledgeCheckProgress();
+});
+</script>
