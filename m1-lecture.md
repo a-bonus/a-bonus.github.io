@@ -649,15 +649,17 @@ Once you've collected data, the first step is to summarize it. With scale (numer
 **Definition:** The arithmetic average—the sum of all scores divided by the number of scores.
 
 **Formula:**
-\[ M = \frac{\sum X}{N} \]
+
+M = ΣX / N
 
 Where:
 
-- \(\sum X\) = sum of all scores
-- \(N\) = number of scores
+- ΣX = sum of all scores
+- N = number of scores
 
 **Example:** Test scores: 75, 80, 85, 90, 95
-\[ M = \frac{75 + 80 + 85 + 90 + 95}{5} = \frac{425}{5} = 85 \]
+
+M = (75 + 80 + 85 + 90 + 95) / 5 = 425 / 5 = 85
 
 **When to Use:**
 
@@ -809,10 +811,12 @@ The mean doesn't tell the whole story! We need measures of **variability** (spre
 **Definition:** The distance between the highest and lowest scores.
 
 **Formula:**
-\[ \text{Range} = X*{\text{max}} - X*{\text{min}} \]
+
+Range = X<sub>max</sub> - X<sub>min</sub>
 
 **Example:** Scores: 65, 70, 75, 80, 95
-\[ \text{Range} = 95 - 65 = 30 \]
+
+Range = 95 - 65 = 30
 
 **Strengths:**
 
@@ -829,13 +833,15 @@ The mean doesn't tell the whole story! We need measures of **variability** (spre
 
 **Definition:** The average of the squared deviations from the mean. It quantifies how much scores differ from the mean.
 
-**Why We Square the Deviations:** If we just averaged the deviations \((X - M)\), they would sum to zero (positive and negative cancel out). Squaring makes all deviations positive.
+**Why We Square the Deviations:** If we just averaged the deviations (X - M), they would sum to zero (positive and negative cancel out). Squaring makes all deviations positive.
 
 **Formula (for a sample, describing only the data you have):**
-\[ \text{Variance} = \frac{\sum(X - M)^2}{N} \]
+
+Variance = Σ(X - M)² / N
 
 **Formula (for estimating population variance from a sample):**
-\[ s^2 = \frac{\sum(X - M)^2}{n - 1} \]
+
+s² = Σ(X - M)² / (n - 1)
 
 > **🔍 THE n vs. n-1 CONFUSION (Most Common Student Question!)**
 >
@@ -888,10 +894,12 @@ The mean doesn't tell the whole story! We need measures of **variability** (spre
 **Definition:** The square root of the variance. It represents the **average distance of scores from the mean** (in the original units).
 
 **Formula:**
-\[ SD = \sqrt{\text{Variance}} = \sqrt{\frac{\sum(X - M)^2}{N}} \]
+
+SD = √(Variance) = √[Σ(X - M)² / N]
 
 **Or for population estimate:**
-\[ s = \sqrt{\frac{\sum(X - M)^2}{n - 1}} \]
+
+s = √[Σ(X - M)² / (n - 1)]
 
 **Example (continuing from above):**
 
@@ -910,14 +918,15 @@ The mean doesn't tell the whole story! We need measures of **variability** (spre
 - **Test A:** M = 75, SD = 3 → Most scores between 72-78 (consistent performance)
 - **Test B:** M = 75, SD = 15 → Scores range widely from 60-90 (inconsistent performance)
 
-**SPSS Note:** SPSS always reports the version using \(n-1\), which estimates the population SD. This is what you'll see in output.
+**SPSS Note:** SPSS always reports the version using (n-1), which estimates the population SD. This is what you'll see in output.
 
 ### Worked Example: Calculating Descriptive Statistics
 
 **Data:** Hours of sleep for 8 students: 5, 6, 6, 7, 7, 7, 8, 10
 
 **Step 1: Mean**
-\[ M = \frac{5 + 6 + 6 + 7 + 7 + 7 + 8 + 10}{8} = \frac{56}{8} = 7 \text{ hours} \]
+
+M = (5 + 6 + 6 + 7 + 7 + 7 + 8 + 10) / 8 = 56 / 8 = 7 hours
 
 **Step 2: Median**
 
@@ -931,7 +940,8 @@ The mean doesn't tell the whole story! We need measures of **variability** (spre
 - Mode = 7 hours
 
 **Step 4: Range**
-\[ \text{Range} = 10 - 5 = 5 \text{ hours} \]
+
+Range = 10 - 5 = 5 hours
 
 **Step 5: Variance and Standard Deviation**
 
@@ -947,9 +957,9 @@ The mean doesn't tell the whole story! We need measures of **variability** (spre
 | 10        | 3                 | 9                          |
 | **Sum**   |                   | **SS = 16**                |
 
-\[ \text{Variance} = \frac{16}{8} = 2 \text{ hours}^2 \]
+Variance = 16 / 8 = 2 hours²
 
-\[ SD = \sqrt{2} = 1.41 \text{ hours} \]
+SD = √2 = 1.41 hours
 
 **Interpretation:** The average sleep time is 7 hours, with students typically varying by about 1.4 hours above or below this average.
 
@@ -1503,21 +1513,23 @@ We use different symbols depending on whether we're describing a population or a
 
 Here's a surprising fact: **Samples tend to be less variable than their populations.**
 
-**Why?** By random chance, extreme values in the population are less likely to appear in a small sample. This means if we calculate variance using the sample formula \(\frac{\sum(X-M)^2}{n}\), we systematically **underestimate** the true population variance.
+**Why?** By random chance, extreme values in the population are less likely to appear in a small sample. This means if we calculate variance using the sample formula [Σ(X-M)² / n], we systematically **underestimate** the true population variance.
 
-**The Solution:** Use \(n-1\) instead of \(n\) in the denominator when estimating population variance from a sample.
+**The Solution:** Use (n-1) instead of (n) in the denominator when estimating population variance from a sample.
 
 **Formulas:**
 
 **Sample Variance (describes only your sample):**
-\[ \text{Variance} = \frac{SS}{n} = \frac{\sum(X-M)^2}{n} \]
+
+Variance = SS / n = Σ(X-M)² / n
 
 **Estimated Population Variance (what SPSS calculates):**
-\[ s^2 = \frac{SS}{n-1} = \frac{\sum(X-M)^2}{n-1} \]
+
+s² = SS / (n-1) = Σ(X-M)² / (n-1)
 
 **Why This Works:** Dividing by a smaller number (n-1) makes the variance estimate slightly larger, correcting for the systematic underestimation. This is called **Bessel's correction** or the **degrees of freedom correction**.
 
-**Degrees of Freedom (df):** \(df = n - 1\)
+**Degrees of Freedom (df):** df = n - 1
 
 - Represents the number of values that are "free to vary" when calculating variance
 - Once you know the mean and n-1 values, the last value is determined
@@ -1526,7 +1538,7 @@ Here's a surprising fact: **Samples tend to be less variable than their populati
 
 **Data:** Quiz scores for 5 students: 6, 7, 8, 9, 10
 
-**Mean:** \(M = \frac{40}{5} = 8\)
+**Mean:** M = 40 / 5 = 8
 
 **Sum of Squares (SS):**
 
@@ -1535,16 +1547,20 @@ Here's a surprising fact: **Samples tend to be less variable than their populati
 - SS = 10
 
 **Sample Variance (describes only these 5 students):**
-\[ \text{Variance} = \frac{10}{5} = 2.0 \]
-\[ SD = \sqrt{2} = 1.41 \]
+
+Variance = 10 / 5 = 2.0
+
+SD = √2 = 1.41
 
 **Estimated Population Variance (estimates all students in the class):**
-\[ s^2 = \frac{10}{4} = 2.5 \]
-\[ s = \sqrt{2.5} = 1.58 \]
+
+s² = 10 / 4 = 2.5
+
+s = √2.5 = 1.58
 
 **Notice:** The population estimate (s = 1.58) is larger than the sample SD (1.41), correcting for the underestimation bias.
 
-**SPSS Always Uses n-1:** When you run descriptive statistics in SPSS, it calculates \(s\) (using n-1), not the sample SD. This is because we're almost always interested in making inferences about populations.
+**SPSS Always Uses n-1:** When you run descriptive statistics in SPSS, it calculates s (using n-1), not the sample SD. This is because we're almost always interested in making inferences about populations.
 
 ### Why This Matters for Your Assignment
 
