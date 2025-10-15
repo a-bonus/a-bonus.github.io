@@ -100,6 +100,302 @@
             margin-top: 10px;
         }
 
+        /* Visual Diagrams Styling */
+        .visual-diagram {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .visual-diagram h4 {
+            color: #495057;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 5px;
+        }
+
+        .diagram-caption {
+            text-align: center;
+            font-size: 0.9em;
+            color: #6c757d;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        /* Flowchart Styling */
+        .flowchart {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .flow-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .step-box {
+            background-color: #e3f2fd;
+            border: 2px solid #2196f3;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            font-weight: 500;
+            max-width: 250px;
+        }
+
+        .arrow {
+            font-size: 1.5em;
+            color: #2196f3;
+            font-weight: bold;
+        }
+
+        .decision-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .decision {
+            background-color: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 8px;
+            padding: 10px;
+            font-weight: bold;
+        }
+
+        .branches {
+            display: flex;
+            gap: 30px;
+        }
+
+        .branch {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .yes {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        .no {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        .result {
+            background-color: #f8f9fa;
+            border: 1px solid #6c757d;
+            border-radius: 4px;
+            padding: 8px;
+            text-align: center;
+            font-size: 0.9em;
+        }
+
+        /* Error Matrix Styling */
+        .error-matrix {
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+
+        .decision-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0 auto;
+        }
+
+        .decision-table th,
+        .decision-table td {
+            border: 2px solid #6c757d;
+            padding: 12px;
+            text-align: center;
+        }
+
+        .decision-table th {
+            background-color: #495057;
+            color: white;
+            font-weight: bold;
+        }
+
+        .decision-header {
+            background-color: #6c757d;
+            color: white;
+            font-weight: bold;
+        }
+
+        .error-cell {
+            background-color: #f8d7da;
+        }
+
+        .error-cell.type1 {
+            background-color: #f8d7da;
+        }
+
+        .error-cell.type2 {
+            background-color: #fff3cd;
+        }
+
+        .correct-cell {
+            background-color: #d4edda;
+        }
+
+        .error-rate, .power, .confidence {
+            font-size: 0.9em;
+            font-weight: bold;
+        }
+
+        .error-desc, .power-desc, .confidence-desc {
+            font-size: 0.8em;
+            font-style: italic;
+        }
+
+        /* CLT Visualization Styling */
+        .clt-visualization {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .population-distribution,
+        .sampling-distribution {
+            text-align: center;
+        }
+
+        .population-distribution h5,
+        .sampling-distribution h5 {
+            margin-bottom: 10px;
+            color: #495057;
+        }
+
+        .distribution-shape {
+            display: flex;
+            justify-content: center;
+            align-items: end;
+            gap: 3px;
+            height: 80px;
+            margin: 10px 0;
+        }
+
+        .distribution-shape .bar {
+            width: 20px;
+            border-radius: 2px 2px 0 0;
+            background-color: #6c757d;
+        }
+
+        .distribution-shape.skewed .bar.low {
+            height: 15px;
+            background-color: #28a745;
+        }
+
+        .distribution-shape.skewed .bar.medium {
+            height: 25px;
+            background-color: #17a2b8;
+        }
+
+        .distribution-shape.skewed .bar.high {
+            height: 35px;
+            background-color: #ffc107;
+        }
+
+        .distribution-shape.skewed .bar.very-high {
+            height: 45px;
+            background-color: #fd7e14;
+        }
+
+        .distribution-shape.skewed .bar.extreme {
+            height: 60px;
+            background-color: #dc3545;
+        }
+
+        .distribution-shape.normal .bar.very-low {
+            height: 10px;
+            background-color: #28a745;
+        }
+
+        .distribution-shape.normal .bar.low {
+            height: 20px;
+            background-color: #17a2b8;
+        }
+
+        .distribution-shape.normal .bar.medium-low {
+            height: 35px;
+            background-color: #6f42c1;
+        }
+
+        .distribution-shape.normal .bar.medium {
+            height: 50px;
+            background-color: #e83e8c;
+        }
+
+        .arrow-down {
+            font-size: 1.2em;
+            color: #007bff;
+            font-weight: bold;
+        }
+
+        .distribution-label {
+            font-size: 0.9em;
+            color: #6c757d;
+            margin-top: 5px;
+        }
+
+        .clt-key-points {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .key-point {
+            background-color: #e7f3ff;
+            border-left: 4px solid #007bff;
+            padding: 10px;
+            border-radius: 4px;
+        }
+
+        /* Glossary Styling */
+        .glossary-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .glossary-item {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 6px;
+            padding: 15px;
+        }
+
+        .glossary-item h4 {
+            color: #007bff;
+            margin-bottom: 8px;
+            font-size: 1.1em;
+        }
+
+        .glossary-item p {
+            margin: 0;
+            color: #495057;
+            line-height: 1.5;
+        }
+
         .scenario {
             background-color: #f8f9fa;
             border: 1px solid #dee2e6;
@@ -364,6 +660,46 @@
                         </li>
                     </ol>
 
+                    <div class="visual-diagram">
+                        <h4>📊 Hypothesis Testing Flowchart</h4>
+                        <div class="flowchart">
+                            <div class="flow-step">
+                                <div class="step-box">Research Question<br/>"Does X affect Y?"</div>
+                                <div class="arrow">↓</div>
+                            </div>
+                            <div class="flow-step">
+                                <div class="step-box">Formulate Hypotheses<br/>H₀: No effect<br/>H₁: There is an effect</div>
+                                <div class="arrow">↓</div>
+                            </div>
+                            <div class="flow-step">
+                                <div class="step-box">Set Alpha Level<br/>α = 0.05</div>
+                                <div class="arrow">↓</div>
+                            </div>
+                            <div class="flow-step">
+                                <div class="step-box">Collect Data &<br/>Calculate p-value</div>
+                                <div class="arrow">↓</div>
+                            </div>
+                            <div class="flow-step">
+                                <div class="decision-box">
+                                    <div class="decision">Is p < α?</div>
+                                    <div class="branches">
+                                        <div class="branch">
+                                            <span class="yes">YES</span>
+                                            <div class="arrow">→</div>
+                                            <span class="result">Reject H₀<br/>Evidence for H₁</span>
+                                        </div>
+                                        <div class="branch">
+                                            <span class="no">NO</span>
+                                            <div class="arrow">→</div>
+                                            <span class="result">Fail to reject H₀<br/>No evidence for H₁</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="diagram-caption"><em>Figure 2.1: The hypothesis testing decision process</em></p>
+                    </div>
+
                     <h3>Real-World Example</h3>
 
                     <div class="example-scenario">
@@ -434,6 +770,42 @@
 
                     <div class="think-about-it">
                         <p><strong>Think About It:</strong> Why is the distinction between "failing to find evidence" and "finding evidence of no effect" important? (Hint: absence of evidence is not evidence of absence!)</p>
+                    </div>
+
+                    <h3>Quick Check</h3>
+
+                    <div class="knowledge-check-item" data-question-id="tab1-q1">
+                        <p class="question-text"><strong>Question 1:</strong> A researcher wants to know if a new teaching method improves test scores. What is the null hypothesis in this case?</p>
+                        <ul class="question-options">
+                            <li>A) The new method improves test scores</li>
+                            <li>B) The new method does not improve test scores</li>
+                            <li>C) The new method decreases test scores</li>
+                            <li>D) We cannot determine the null hypothesis</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <div class="answer-content">
+                                <p class="correct-answer">Correct Answer: B) The new method does not improve test scores</p>
+                                <p class="explanation">The null hypothesis always states "no effect" or "no difference." Since the researcher is testing if the new method improves scores, the null would be that it does not improve scores.</p>
+                            </div>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab1-q1')">Show Answer</button>
+                    </div>
+
+                    <div class="knowledge-check-item" data-question-id="tab1-q2">
+                        <p class="question-text"><strong>Question 2:</strong> If a p-value is 0.03, what does this mean?</p>
+                        <ul class="question-options">
+                            <li>A) There's a 3% chance our hypothesis is true</li>
+                            <li>B) There's a 3% chance the null hypothesis is true</li>
+                            <li>C) There's a 3% chance of getting our results if the null hypothesis is true</li>
+                            <li>D) We're 97% confident our hypothesis is correct</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <div class="answer-content">
+                                <p class="correct-answer">Correct Answer: C) There's a 3% chance of getting our results if the null hypothesis is true</p>
+                                <p class="explanation">The p-value tells us the probability of observing our data (or more extreme data) if the null hypothesis is true. It does NOT tell us the probability that our hypothesis is correct.</p>
+                            </div>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab1-q2')">Show Answer</button>
                     </div>
 
                     <hr>
@@ -852,6 +1224,42 @@
                             <p class="answer-text"><em>💭 Need to review?</em> See Part 2: The Logic of One-Sample t-Tests for the t-test formula breakdown.</p>
                         </div>
                     </div>
+
+                    <h3>Quick Check</h3>
+
+                    <div class="knowledge-check-item" data-question-id="tab1-q3">
+                        <p class="question-text"><strong>Question 3:</strong> A researcher wants to test if students who study with music score differently on exams than the population average of 75. What would be the correct null hypothesis?</p>
+                        <ul class="question-options">
+                            <li>A) H₀: μ ≠ 75</li>
+                            <li>B) H₀: μ = 75</li>
+                            <li>C) H₀: μ > 75</li>
+                            <li>D) H₀: μ < 75</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <div class="answer-content">
+                                <p class="correct-answer">Correct Answer: B) H₀: μ = 75</p>
+                                <p class="explanation">Since the researcher is asking if students score "differently" (not specifically higher or lower), this is a two-tailed test. The null hypothesis should state no difference from the population mean of 75.</p>
+                            </div>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab1-q3')">Show Answer</button>
+                    </div>
+
+                    <div class="knowledge-check-item" data-question-id="tab1-q4">
+                        <p class="question-text"><strong>Question 4:</strong> Which of the following is a correct alternative hypothesis for a one-tailed test?</p>
+                        <ul class="question-options">
+                            <li>A) H₁: μ ≠ 50</li>
+                            <li>B) H₁: μ = 50</li>
+                            <li>C) H₁: μ > 50</li>
+                            <li>D) H₁: μ ≤ 50</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <div class="answer-content">
+                                <p class="correct-answer">Correct Answer: C) H₁: μ > 50</p>
+                                <p class="explanation">For a one-tailed test, the alternative hypothesis specifies a direction (either greater than or less than). Option A is for a two-tailed test, B is the null hypothesis, and D is the null for a one-tailed test with H₁: μ > 50.</p>
+                            </div>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab1-q4')">Show Answer</button>
+                    </div>
                 </div>
 
                 <div id="tab-2" class="tab-panel">
@@ -1208,6 +1616,42 @@
                         </div>
                     </div>
 
+                    <h3>Quick Check</h3>
+
+                    <div class="knowledge-check-item" data-question-id="tab2-q1">
+                        <p class="question-text"><strong>Question 1:</strong> A researcher finds p = 0.02 with α = 0.05. What should they conclude?</p>
+                        <ul class="question-options">
+                            <li>A) Reject the null hypothesis</li>
+                            <li>B) Fail to reject the null hypothesis</li>
+                            <li>C) Accept the alternative hypothesis</li>
+                            <li>D) The results are inconclusive</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <div class="answer-content">
+                                <p class="correct-answer">Correct Answer: A) Reject the null hypothesis</p>
+                                <p class="explanation">Since p = 0.02 < α = 0.05, the probability of getting these results if the null hypothesis is true is very low (2%). We reject the null hypothesis and conclude there is evidence for the alternative hypothesis.</p>
+                            </div>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab2-q1')">Show Answer</button>
+                    </div>
+
+                    <div class="knowledge-check-item" data-question-id="tab2-q2">
+                        <p class="question-text"><strong>Question 2:</strong> What is the difference between statistical significance and practical significance?</p>
+                        <ul class="question-options">
+                            <li>A) They are the same thing</li>
+                            <li>B) Statistical significance is about p-values, practical significance is about effect size</li>
+                            <li>C) Practical significance is more important than statistical significance</li>
+                            <li>D) Statistical significance guarantees practical importance</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <div class="answer-content">
+                                <p class="correct-answer">Correct Answer: B) Statistical significance is about p-values, practical significance is about effect size</p>
+                                <p class="explanation">Statistical significance tells us if an effect is unlikely due to chance (p < α), while practical significance tells us if the effect is large enough to matter in real-world applications. A statistically significant result may not be practically meaningful if the effect size is tiny.</p>
+                            </div>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab2-q2')">Show Answer</button>
+                    </div>
+
                     <hr>
 
                     <h2>Part 4: Understanding Errors in Hypothesis Testing</h2>
@@ -1369,6 +1813,50 @@
                     <h3>Balancing the Two Errors</h3>
 
                     <p>You can't eliminate both types of errors simultaneously. There's always a trade-off.</p>
+
+                    <div class="visual-diagram">
+                        <h4>📊 Type I vs Type II Errors Decision Matrix</h4>
+                        <div class="error-matrix">
+                            <table class="decision-table">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th class="reality-header">Reality: H₀ True</th>
+                                        <th class="reality-header">Reality: H₁ True</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="decision-header">Decision: Reject H₀</td>
+                                        <td class="error-cell type1">
+                                            <strong>Type I Error</strong><br/>
+                                            <span class="error-rate">Probability = α</span><br/>
+                                            <span class="error-desc">False Positive</span>
+                                        </td>
+                                        <td class="correct-cell">
+                                            <strong>Correct Decision</strong><br/>
+                                            <span class="power">Power = 1-β</span><br/>
+                                            <span class="power-desc">True Positive</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="decision-header">Decision: Fail to Reject H₀</td>
+                                        <td class="correct-cell">
+                                            <strong>Correct Decision</strong><br/>
+                                            <span class="confidence">Confidence = 1-α</span><br/>
+                                            <span class="confidence-desc">True Negative</span>
+                                        </td>
+                                        <td class="error-cell type2">
+                                            <strong>Type II Error</strong><br/>
+                                            <span class="error-rate">Probability = β</span><br/>
+                                            <span class="error-desc">False Negative</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p class="diagram-caption"><em>Figure 2.2: The four possible outcomes in hypothesis testing</em></p>
+                    </div>
 
                     <div class="alpha-comparison">
                         <div class="alpha-scenario">
@@ -1631,6 +2119,55 @@
                         <li>Center: Near the true population mean</li>
                         <li>Spread: Much narrower than the original population</li>
                     </ul>
+
+                    <div class="visual-diagram">
+                        <h4>📊 Central Limit Theorem Visualization</h4>
+                        <div class="clt-visualization">
+                            <div class="population-distribution">
+                                <h5>Original Population (Skewed)</h5>
+                                <div class="distribution-shape skewed">
+                                    <div class="bar low"></div>
+                                    <div class="bar low"></div>
+                                    <div class="bar medium"></div>
+                                    <div class="bar medium"></div>
+                                    <div class="bar medium"></div>
+                                    <div class="bar high"></div>
+                                    <div class="bar very-high"></div>
+                                    <div class="bar extreme"></div>
+                                </div>
+                                <p class="distribution-label">Mean = $50,000, SD = $20,000</p>
+                            </div>
+                            
+                            <div class="arrow-down">↓ Take many samples (n=25 each) ↓</div>
+                            
+                            <div class="sampling-distribution">
+                                <h5>Distribution of Sample Means</h5>
+                                <div class="distribution-shape normal">
+                                    <div class="bar very-low"></div>
+                                    <div class="bar low"></div>
+                                    <div class="bar medium-low"></div>
+                                    <div class="bar medium"></div>
+                                    <div class="bar medium"></div>
+                                    <div class="bar medium-low"></div>
+                                    <div class="bar low"></div>
+                                    <div class="bar very-low"></div>
+                                </div>
+                                <p class="distribution-label">Mean = $50,000, SE = $4,000</p>
+                            </div>
+                        </div>
+                        <div class="clt-key-points">
+                            <div class="key-point">
+                                <strong>🎯 Key Insight:</strong> Even though the population was skewed, the distribution of sample means is perfectly normal!
+                            </div>
+                            <div class="key-point">
+                                <strong>📏 Narrower Spread:</strong> Standard Error ($4,000) is much smaller than population SD ($20,000)
+                            </div>
+                            <div class="key-point">
+                                <strong>🎲 Sample Size Effect:</strong> Larger samples (n=50) would have even narrower distributions
+                            </div>
+                        </div>
+                        <p class="diagram-caption"><em>Figure 2.3: How the Central Limit Theorem transforms skewed populations into normal sampling distributions</em></p>
+                    </div>
 
                     <h3>Key Properties</h3>
 
@@ -2695,12 +3232,247 @@
 
                     <p>Always include: descriptive statistics (M, SD), test statistic t(df), exact p-value, and effect size (Cohen's d).</p>
 
+                    <hr>
+
+                    <h2>Practical Guide: Performing One-Sample t-Tests in SPSS</h2>
+
+                    <p>Now let's put theory into practice! This section will walk you through conducting a one-sample t-test in SPSS.</p>
+
+                    <h3>Setting Up Your Data</h3>
+
+                    <div class="step-by-step">
+                        <h4>Step 1: Data Entry</h4>
+                        <ol>
+                            <li>Open SPSS and create a new data file</li>
+                            <li>In the <strong>Variable View</strong> tab, create a variable for your dependent variable:
+                                <ul>
+                                    <li>Name: <code>test_score</code> (or whatever fits your data)</li>
+                                    <li>Type: Numeric</li>
+                                    <li>Decimals: 2</li>
+                                    <li>Label: "Test Score"</li>
+                                    <li>Measure: Scale</li>
+                                </ul>
+                            </li>
+                            <li>Switch to <strong>Data View</strong> and enter your data</li>
+                        </ol>
+                    </div>
+
+                    <h3>Running the One-Sample t-Test</h3>
+
+                    <div class="step-by-step">
+                        <h4>Step 2: Navigate to the Test</h4>
+                        <ol>
+                            <li>Go to <strong>Analyze</strong> → <strong>Compare Means</strong> → <strong>One-Sample T Test</strong></li>
+                        </ol>
+
+                        <h4>Step 3: Select Variables</h4>
+                        <ol>
+                            <li>Move your dependent variable to the <strong>Test Variable(s)</strong> box</li>
+                            <li>In the <strong>Test Value</strong> box, enter the population mean you're testing against (e.g., 75)</li>
+                        </ol>
+
+                        <h4>Step 4: Options (Optional)</h4>
+                        <ol>
+                            <li>Click <strong>Options</strong></li>
+                            <li>Set confidence interval percentage (default is 95%)</li>
+                            <li>Choose how to handle missing values</li>
+                            <li>Click <strong>Continue</strong></li>
+                        </ol>
+
+                        <h4>Step 5: Run the Test</h4>
+                        <ol>
+                            <li>Click <strong>OK</strong> to run the analysis</li>
+                        </ol>
+                    </div>
+
+                    <h3>Interpreting SPSS Output</h3>
+
+                    <div class="spss-output-guide">
+                        <h4>One-Sample Statistics Table</h4>
+                        <ul>
+                            <li><strong>N:</strong> Sample size</li>
+                            <li><strong>Mean:</strong> Sample mean (your descriptive statistic)</li>
+                            <li><strong>Std. Deviation:</strong> Standard deviation of your sample</li>
+                            <li><strong>Std. Error Mean:</strong> Standard error of the mean</li>
+                        </ul>
+
+                        <h4>One-Sample Test Table</h4>
+                        <ul>
+                            <li><strong>t:</strong> Your calculated t-statistic</li>
+                            <li><strong>df:</strong> Degrees of freedom (n - 1)</li>
+                            <li><strong>Sig. (2-tailed):</strong> Your p-value for a two-tailed test</li>
+                            <li><strong>Mean Difference:</strong> Difference between sample mean and test value</li>
+                            <li><strong>95% Confidence Interval:</strong> Confidence interval for the mean difference</li>
+                        </ul>
+                    </div>
+
+                    <h3>Example: Interpreting Real Output</h3>
+
+                    <div class="example-box">
+                        <h4>Scenario:</h4>
+                        <p>You're testing if students in your class score differently from the national average of 75 on a standardized test.</p>
+
+                        <h4>SPSS Output:</h4>
+                        <pre><code>One-Sample Statistics
+                    N    Mean   Std. Deviation   Std. Error Mean
+test_score  30   78.50        8.25              1.51
+
+One-Sample Test
+Test Value = 75
+                    t    df    Sig. (2-tailed)    Mean Difference    95% CI of the Difference
+test_score        2.32   29        .028               3.50             Lower: 0.42  Upper: 6.58</code></pre>
+
+                        <h4>Interpretation:</h4>
+                        <ul>
+                            <li><strong>Sample:</strong> 30 students, mean = 78.50, SD = 8.25</li>
+                            <li><strong>t(29) = 2.32, p = .028</strong></li>
+                            <li><strong>Decision:</strong> Since p = .028 < .05, reject the null hypothesis</li>
+                            <li><strong>Conclusion:</strong> Students in this class scored significantly higher than the national average</li>
+                            <li><strong>Effect size:</strong> Cohen's d = 3.50/8.25 = 0.42 (medium effect)</li>
+                        </ul>
+                    </div>
+
+                    <h3>APA Style Reporting</h3>
+
+                    <div class="apa-reporting">
+                        <p><strong>Results:</strong></p>
+                        <p>Students in the current class (M = 78.50, SD = 8.25) scored significantly higher than the national average of 75, t(29) = 2.32, p = .028, d = 0.42.</p>
+
+                        <p><strong>Note:</strong> Always report the exact p-value, not p < .05, unless it's truly less than .001.</p>
+                    </div>
+
+                    <h3>Common SPSS Issues and Solutions</h3>
+
+                    <div class="troubleshooting">
+                        <h4>Problem: No output appears</h4>
+                        <p><strong>Solution:</strong> Check that you have data in your dataset and that the variable is numeric.</p>
+
+                        <h4>Problem: "Test Value" field is grayed out</h4>
+                        <p><strong>Solution:</strong> Make sure you have selected a variable in the Test Variable(s) box first.</p>
+
+                        <h4>Problem: Getting weird results</h4>
+                        <p><strong>Solution:</strong> Check your data for outliers or data entry errors. Run descriptive statistics first.</p>
+
+                        <h4>Problem: Need one-tailed test</h4>
+                        <p><strong>Solution:</strong> SPSS gives two-tailed p-values by default. For one-tailed tests, divide the p-value by 2 (but only if the direction matches your hypothesis).</p>
+                    </div>
+
+                    <h3>Practice Exercise</h3>
+
+                    <div class="practice-exercise">
+                        <p><strong>Try it yourself:</strong></p>
+                        <ol>
+                            <li>Create a dataset with 20 scores (make up some realistic test scores)</li>
+                            <li>Test if the mean is different from 80</li>
+                            <li>Run the one-sample t-test in SPSS</li>
+                            <li>Interpret the results</li>
+                            <li>Calculate Cohen's d manually</li>
+                            <li>Write an APA-style results section</li>
+                        </ol>
+                    </div>
+
                     <h3>What's Next?</h3>
 
                     <p>In Module 3, you'll learn about comparing two groups using independent-samples and paired-samples t-tests. The logic you've learned here will apply to those tests as well!</p>
 
                     <p><strong>Remember:</strong> Statistics is a way of thinking about evidence. The formulas are tools, but understanding the logic behind hypothesis testing is what will serve you throughout your statistical journey.</p>
                 </div>
+            </div>
+        </div>
+
+        <hr>
+
+        <h2>Glossary</h2>
+
+        <div class="glossary-section">
+            <div class="glossary-item">
+                <h4>Alpha Level (α)</h4>
+                <p>The probability of making a Type I error; typically set at 0.05. It's the threshold for deciding whether a result is statistically significant.</p>
+            </div>
+
+            <div class="glossary-item">
+                <h4>Alternative Hypothesis (H₁ or Hₐ)</h4>
+                <p>The hypothesis that states there is an effect, difference, or relationship. This is what researchers typically want to support.</p>
+            </div>
+
+            <div class="glossary-item">
+                <h4>Central Limit Theorem</h4>
+                <p>The statistical principle that states the distribution of sample means approaches a normal distribution as sample size increases, regardless of the population's distribution shape.</p>
+            </div>
+
+            <div class="glossary-item">
+                <h4>Cohen's d</h4>
+                <p>A standardized measure of effect size that indicates the magnitude of difference between two means, expressed in standard deviation units.</p>
+            </div>
+
+            <div class="glossary-item">
+                <h4>Degrees of Freedom (df)</h4>
+                <p>The number of values in a calculation that are free to vary. For a one-sample t-test, df = n - 1.</p>
+            </div>
+
+            <div class="glossary-item">
+                <h4>Effect Size</h4>
+                <p>A measure of the magnitude of an effect, independent of sample size. It indicates practical significance.</p>
+            </div>
+
+            <div class="glossary-item">
+                <h4>Hypothesis Testing</h4>
+                <p>A statistical method for making decisions about population parameters based on sample data using probability theory.</p>
+            </div>
+
+            <div class="glossary-item">
+                <h4>Null Hypothesis (H₀)</h4>
+                <p>The hypothesis that states there is no effect, difference, or relationship. It represents the status quo or what we'd expect if nothing special is happening.</p>
+            </div>
+
+            <div class="glossary-item">
+                <h4>One-Sample t-Test</h4>
+                <p>A statistical test that compares a sample mean to a known population mean to determine if there's a significant difference.</p>
+            </div>
+
+            <div class="glossary-item">
+                <h4>p-Value</h4>
+                <p>The probability of obtaining a result as extreme as (or more extreme than) the one observed, assuming the null hypothesis is true.</p>
+            </div>
+
+            <div class="glossary-item">
+                <h4>Power Analysis</h4>
+                <p>A method for determining the appropriate sample size needed to detect an effect of a given size with a specified level of power.</p>
+            </div>
+
+            <div class="glossary-item">
+                <h4>Statistical Power</h4>
+                <p>The probability of correctly rejecting the null hypothesis when it's false (i.e., detecting a real effect). Power = 1 - β.</p>
+            </div>
+
+            <div class="glossary-item">
+                <h4>Standard Error</h4>
+                <p>The standard deviation of the sampling distribution of a statistic. It measures how much the sample statistic varies from sample to sample.</p>
+            </div>
+
+            <div class="glossary-item">
+                <h4>t-Statistic</h4>
+                <p>A test statistic that measures how many standard errors the sample mean is from the population mean. Used in t-tests.</p>
+            </div>
+
+            <div class="glossary-item">
+                <h4>Type I Error</h4>
+                <p>Rejecting the null hypothesis when it's actually true (false positive). The probability of this error equals α.</p>
+            </div>
+
+            <div class="glossary-item">
+                <h4>Type II Error</h4>
+                <p>Failing to reject the null hypothesis when it's actually false (false negative). The probability of this error equals β.</p>
+            </div>
+
+            <div class="glossary-item">
+                <h4>Two-Tailed Test</h4>
+                <p>A hypothesis test that considers both directions of an effect (greater than or less than). Uses α/2 in each tail.</p>
+            </div>
+
+            <div class="glossary-item">
+                <h4>One-Tailed Test</h4>
+                <p>A hypothesis test that considers only one direction of an effect (either greater than or less than). Uses α in one tail.</p>
             </div>
         </div>
 
