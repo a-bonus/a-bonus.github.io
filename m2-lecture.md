@@ -5,23 +5,25 @@ title: "Module 2: Introduction to Hypothesis Testing and the One-Sample t-Test"
 
 <h1>Module 2: Introduction to Hypothesis Testing and the One-Sample t-Test</h1>
 
-<strong>Estimated Study Time:</strong> 2-3 hours
+<div class="study-time">
+    <strong>Estimated Study Time:</strong> 2-3 hours
+</div>
 
 <h2>Learning Objectives</h2>
 
-By the end of this module, you will be able to:
+<p>By the end of this module, you will be able to:</p>
 
-<ol>
-<li>Explain the logic and purpose of hypothesis testing</li>
-<li>Formulate null and alternative hypotheses for research questions</li>
-<li>Distinguish between one-tailed and two-tailed tests</li>
-<li>Understand and interpret p-values in the context of statistical decisions</li>
-<li>Identify and explain Type I and Type II errors</li>
-<li>Apply the Central Limit Theorem to understand sampling distributions</li>
-<li>Conduct and interpret a one-sample t-test (manually and using SPSS)</li>
-<li>Calculate and interpret effect sizes (Cohen's d)</li>
-<li>Understand the concept of statistical power and factors that influence it</li>
-<li>Report statistical results in APA format</li>
+<ol class="learning-objectives">
+    <li>Explain the logic and purpose of hypothesis testing</li>
+    <li>Formulate null and alternative hypotheses for research questions</li>
+    <li>Distinguish between one-tailed and two-tailed tests</li>
+    <li>Understand and interpret p-values in the context of statistical decisions</li>
+    <li>Identify and explain Type I and Type II errors</li>
+    <li>Apply the Central Limit Theorem to understand sampling distributions</li>
+    <li>Conduct and interpret a one-sample t-test (manually and using SPSS)</li>
+    <li>Calculate and interpret effect sizes (Cohen's d)</li>
+    <li>Understand the concept of statistical power and factors that influence it</li>
+    <li>Report statistical results in APA format</li>
 </ol>
 
 ---
@@ -57,305 +59,528 @@ By the end of this module, you will be able to:
 
 <h3>From Description to Inference</h3>
 
-In Module 1, you learned to <strong>describe</strong> data using means, standard deviations, and graphs. Now we take the crucial next step: using sample data to make <strong>inferences</strong> about populations.
+<p>In Module 1, you learned to <strong>describe</strong> data using means, standard deviations, and graphs. Now we take the crucial next step: using sample data to make <strong>inferences</strong> about populations.</p>
 
-<strong>The Central Challenge:</strong> We can't study everyone, so we study a sample. But how do we know if what we observe in our sample reflects a real pattern in the population, or is just random chance?
+<div class="highlight-box">
+    <p><strong>The Central Challenge:</strong> We can't study everyone, so we study a sample. But how do we know if what we observe in our sample reflects a real pattern in the population, or is just random chance?</p>
+</div>
 
-<strong>The Solution:</strong> Hypothesis testing—a systematic method for distinguishing signal from noise.
+<div class="solution-box">
+    <p><strong>The Solution:</strong> Hypothesis testing—a systematic method for distinguishing signal from noise.</p>
+</div>
 
 <h3>The Courtroom Analogy</h3>
 
-Hypothesis testing works like a legal trial. This analogy is powerful and worth understanding deeply.
+<p>Hypothesis testing works like a legal trial. This analogy is powerful and worth understanding deeply.</p>
 
-<strong>In a Courtroom:</strong>
+<div class="comparison-box">
+    <h4>In a Courtroom:</h4>
+    <ul>
+        <li><strong>Presumption of Innocence:</strong> The defendant is assumed innocent until proven guilty</li>
+        <li><strong>Burden of Proof:</strong> The prosecution must provide strong evidence of guilt</li>
+        <li><strong>Standard of Proof:</strong> "Beyond a reasonable doubt"</li>
+        <li><strong>Decision:</strong> If evidence is overwhelming, we reject innocence and conclude guilt. If evidence is weak, we maintain the presumption of innocence (we don't declare the person "innocent," just "not proven guilty")</li>
+    </ul>
 
-<ul>
-<li><strong>Presumption of Innocence:</strong> The defendant is assumed innocent until proven guilty</li>
-<li><strong>Burden of Proof:</strong> The prosecution must provide strong evidence of guilt</li>
-<li><strong>Standard of Proof:</strong> "Beyond a reasonable doubt"</li>
-<li><strong>Decision:</strong> If evidence is overwhelming, we reject innocence and conclude guilt. If evidence is weak, we maintain the presumption of innocence (we don't declare the person "innocent," just "not proven guilty")</li>
-</ul>
+    <h4>In Hypothesis Testing:</h4>
+    <ul>
+        <li><strong>Null Hypothesis (H₀):</strong> We assume "nothing special is happening" (like presuming innocence)</li>
+        <li><strong>Burden of Proof:</strong> Our data must provide strong evidence against this assumption</li>
+        <li><strong>Standard of Proof:</strong> p < .05 (less than 5% probability the result is due to chance)</li>
+        <li><strong>Decision:</strong> If evidence is strong (p < .05), we reject H₀ and conclude there IS an effect. If evidence is weak (p ≥ .05), we maintain H₀ (we don't "prove" H₀, just fail to find evidence against it)</li>
+    </ul>
 
-<strong>In Hypothesis Testing:</strong>
+</div>
 
-<ul>
-<li><strong>Null Hypothesis (H₀):</strong> We assume "nothing special is happening" (like presuming innocence)</li>
-<li><strong>Burden of Proof:</strong> Our data must provide strong evidence against this assumption</li>
-<li><strong>Standard of Proof:</strong> p < .05 (less than 5% probability the result is due to chance)</li>
-<li><strong>Decision:</strong> If evidence is strong (p < .05), we reject H₀ and conclude there IS an effect. If evidence is weak (p ≥ .05), we maintain H₀ (we don't "prove" H₀, just fail to find evidence against it)</li>
-</ul>
-
-<strong>Key Concept:</strong> We never "prove" anything in statistics. We only collect evidence strong enough to reject the null hypothesis, or fail to do so.
+<div class="key-concept">
+    <p><strong>Key Concept:</strong> We never "prove" anything in statistics. We only collect evidence strong enough to reject the null hypothesis, or fail to do so.</p>
+</div>
 
 <h3>Why This Backward Logic?</h3>
 
-<strong>Why not just test our research hypothesis directly?</strong>
+<div class="question-box">
+    <p><strong>Why not just test our research hypothesis directly?</strong></p>
+</div>
 
-Because we can never observe all possible outcomes. Consider:
+<p>Because we can never observe all possible outcomes. Consider:</p>
 
-<strong>Direct Approach (doesn't work):</strong> "Does this drug improve memory?"
+<div class="approach-comparison">
+    <div class="approach-direct">
+        <h4>Direct Approach (doesn't work):</h4>
+        <p>"Does this drug improve memory?"</p>
+        <ul>
+            <li>To prove this directly, we'd need to test every possible person, under every possible condition, forever</li>
+            <li><strong>Impossible!</strong></li>
+        </ul>
+    </div>
 
-<ul>
-<li>To prove this directly, we'd need to test every possible person, under every possible condition, forever</li>
-<li>Impossible!</li>
-</ul>
+    <div class="approach-indirect">
+        <h4>Indirect Approach (hypothesis testing):</h4>
+        <p>"Assume the drug does nothing. How likely is it we'd see results this good by chance alone?"</p>
+        <ul>
+            <li>If the probability is very low (p < .05), the "does nothing" assumption is probably wrong</li>
+            <li>We reject that assumption and conclude the drug likely works</li>
+        </ul>
+    </div>
 
-<strong>Indirect Approach (hypothesis testing):</strong> "Assume the drug does nothing. How likely is it we'd see results this good by chance alone?"
+</div>
 
-<ul>
-<li>If the probability is very low (p < .05), the "does nothing" assumption is probably wrong</li>
-<li>We reject that assumption and conclude the drug likely works</li>
-</ul>
-
-<strong>Think of it like proof by contradiction in mathematics:</strong> To prove X is true, assume X is false and show that leads to an impossible or highly unlikely situation. Therefore, X must be true.
+<div class="mathematical-analogy">
+    <p><strong>Think of it like proof by contradiction in mathematics:</strong> To prove X is true, assume X is false and show that leads to an impossible or highly unlikely situation. Therefore, X must be true.</p>
+</div>
 
 <h3>The Hypothesis Testing Process: Overview</h3>
 
-Here's the big picture before we dive into details:
+<p>Here's the big picture before we dive into details:</p>
 
-1. <strong>Start with a research question</strong>
-
-   - Example: "Does meditation reduce anxiety?"
-
-2. <strong>Formulate hypotheses</strong>
-
-   - H₀ (Null): Meditation has no effect on anxiety (μ = population mean)
-   - H₁ (Alternative): Meditation does affect anxiety (μ ≠ population mean)
-
-3. <strong>Set decision criteria</strong>
-
-   - Alpha level: Usually α = .05
-
-4. <strong>Collect data</strong>
-
-   - Sample of people who meditate regularly
-
-5. <strong>Calculate a test statistic</strong>
-
-   - Measures how far your sample result is from what H₀ predicts
-
-6. <strong>Determine probability (p-value)</strong>
-
-   - If H₀ were true, how likely would we see a result this extreme?
-
-7. <strong>Make a decision</strong>
-
-   - If p < .05: Reject H₀ (conclude meditation likely works)
-   - If p ≥ .05: Fail to reject H₀ (insufficient evidence)
-
-8. <strong>Interpret in context</strong>
-   - Translate statistical decision back into meaningful conclusion
+<ol class="process-steps">
+    <li>
+        <strong>Start with a research question</strong>
+        <ul>
+            <li>Example: "Does meditation reduce anxiety?"</li>
+        </ul>
+    </li>
+    
+    <li>
+        <strong>Formulate hypotheses</strong>
+        <ul>
+            <li>H₀ (Null): Meditation has no effect on anxiety (μ = population mean)</li>
+            <li>H₁ (Alternative): Meditation does affect anxiety (μ ≠ population mean)</li>
+        </ul>
+    </li>
+    
+    <li>
+        <strong>Set decision criteria</strong>
+        <ul>
+            <li>Alpha level: Usually α = .05</li>
+        </ul>
+    </li>
+    
+    <li>
+        <strong>Collect data</strong>
+        <ul>
+            <li>Sample of people who meditate regularly</li>
+        </ul>
+    </li>
+    
+    <li>
+        <strong>Calculate a test statistic</strong>
+        <ul>
+            <li>Measures how far your sample result is from what H₀ predicts</li>
+        </ul>
+    </li>
+    
+    <li>
+        <strong>Determine probability (p-value)</strong>
+        <ul>
+            <li>If H₀ were true, how likely would we see a result this extreme?</li>
+        </ul>
+    </li>
+    
+    <li>
+        <strong>Make a decision</strong>
+        <ul>
+            <li>If p < .05: Reject H₀ (conclude meditation likely works)</li>
+            <li>If p ≥ .05: Fail to reject H₀ (insufficient evidence)</li>
+        </ul>
+    </li>
+    
+    <li>
+        <strong>Interpret in context</strong>
+        <ul>
+            <li>Translate statistical decision back into meaningful conclusion</li>
+        </ul>
+    </li>
+</ol>
 
 <h3>Real-World Example</h3>
 
-<strong>Scenario:</strong> A school psychologist believes a new reading program improves comprehension.
-
-<strong>What We Know:</strong>
-
-<ul>
-<li>National average reading score: μ = 100, σ = 15</li>
-<li>Our sample of 25 students using the new program: M = 107</li>
-</ul>
-
-<strong>The Question:</strong> Is 107 significantly higher than 100, or could this difference be just random sampling variation?
-
-<strong>Hypothesis Testing Answers This:</strong>
-
-1. H₀: The program doesn't work (students are just a random sample from the population where μ = 100)
-2. H₁: The program does work (students come from a different population where μ > 100)
-3. Calculate: How unlikely is it to get M = 107 from a population where μ = 100?
-4. Result: If probability is < 5%, we conclude the program likely works
-
-<strong>Why This Matters:</strong> Without hypothesis testing, we couldn't distinguish:
-
-<ul>
-<li>Real improvements from natural variation</li>
-<li>Effective treatments from placebos</li>
-<li>Meaningful differences from random noise</li>
-</ul>
+<div class="example-scenario">
+    <p><strong>Scenario:</strong> A school psychologist believes a new reading program improves comprehension.</p>
+    
+    <div class="data-given">
+        <h4>What We Know:</h4>
+        <ul>
+            <li>National average reading score: μ = 100, σ = 15</li>
+            <li>Our sample of 25 students using the new program: M = 107</li>
+        </ul>
+    </div>
+    
+    <div class="research-question">
+        <p><strong>The Question:</strong> Is 107 significantly higher than 100, or could this difference be just random sampling variation?</p>
+    </div>
+    
+    <div class="hypothesis-testing-answer">
+        <h4>Hypothesis Testing Answers This:</h4>
+        <ol>
+            <li>H₀: The program doesn't work (students are just a random sample from the population where μ = 100)</li>
+            <li>H₁: The program does work (students come from a different population where μ > 100)</li>
+            <li>Calculate: How unlikely is it to get M = 107 from a population where μ = 100?</li>
+            <li>Result: If probability is < 5%, we conclude the program likely works</li>
+        </ol>
+    </div>
+    
+    <div class="why-matters">
+        <p><strong>Why This Matters:</strong> Without hypothesis testing, we couldn't distinguish:</p>
+        <ul>
+            <li>Real improvements from natural variation</li>
+            <li>Effective treatments from placebos</li>
+            <li>Meaningful differences from random noise</li>
+        </ul>
+    </div>
+</div>
 
 <h3>Common Misconceptions</h3>
 
-❌ <strong>Misconception:</strong> "If p < .05, we've proven our theory is true"
-✓ <strong>Reality:</strong> We've only shown the null hypothesis is unlikely. Our theory is supported, not proven.
+<div class="misconceptions">
+    <div class="misconception-item">
+        <div class="misconception">
+            <span class="incorrect">❌</span> <strong>Misconception:</strong> "If p < .05, we've proven our theory is true"
+        </div>
+        <div class="reality">
+            <span class="correct">✓</span> <strong>Reality:</strong> We've only shown the null hypothesis is unlikely. Our theory is supported, not proven.
+        </div>
+    </div>
+    
+    <div class="misconception-item">
+        <div class="misconception">
+            <span class="incorrect">❌</span> <strong>Misconception:</strong> "If p > .05, we've proven there's no effect"
+        </div>
+        <div class="reality">
+            <span class="correct">✓</span> <strong>Reality:</strong> We failed to find evidence of an effect. Maybe it doesn't exist, or maybe our sample was too small to detect it.
+        </div>
+    </div>
+    
+    <div class="misconception-item">
+        <div class="misconception">
+            <span class="incorrect">❌</span> <strong>Misconception:</strong> "p-value tells us the probability our hypothesis is true"
+        </div>
+        <div class="reality">
+            <span class="correct">✓</span> <strong>Reality:</strong> p-value tells us the probability of getting our data IF the null hypothesis is true.
+        </div>
+    </div>
+</div>
 
-❌ <strong>Misconception:</strong> "If p > .05, we've proven there's no effect"
-✓ <strong>Reality:</strong> We failed to find evidence of an effect. Maybe it doesn't exist, or maybe our sample was too small to detect it.
-
-❌ <strong>Misconception:</strong> "p-value tells us the probability our hypothesis is true"
-✓ <strong>Reality:</strong> p-value tells us the probability of getting our data IF the null hypothesis is true.
-
-<strong>Think About It:</strong> Why is the distinction between "failing to find evidence" and "finding evidence of no effect" important? (Hint: absence of evidence is not evidence of absence!)
+<div class="think-about-it">
+    <p><strong>Think About It:</strong> Why is the distinction between "failing to find evidence" and "finding evidence of no effect" important? (Hint: absence of evidence is not evidence of absence!)</p>
+</div>
 
 ---
 
 <h2>Part 2: Formulating Hypotheses</h2>
 
-Every hypothesis test requires two competing hypotheses: the null (H₀) and the alternative (H₁ or Hₐ).
+<p>Every hypothesis test requires two competing hypotheses: the null (H₀) and the alternative (H₁ or Hₐ).</p>
 
 <h3>The Null Hypothesis (H₀)</h3>
 
-<strong>Definition:</strong> A statement of "no effect," "no difference," or "no relationship." It represents the status quo or what we'd expect if nothing special is happening.
+<div class="definition-box">
+    <p><strong>Definition:</strong> A statement of "no effect," "no difference," or "no relationship." It represents the status quo or what we'd expect if nothing special is happening.</p>
+</div>
 
-<strong>Key Characteristics:</strong>
+<div class="key-characteristics">
+    <h4>Key Characteristics:</h4>
+    <ul>
+        <li>Always includes an equals sign (=, ≤, or ≥)</li>
+        <li>Represents the assumption we're trying to disprove</li>
+        <li>The hypothesis we "presume true" until proven otherwise</li>
+    </ul>
+</div>
 
-- Always includes an equals sign (=, ≤, or ≥)
-- Represents the assumption we're trying to disprove
-- The hypothesis we "presume true" until proven otherwise
-
-<strong>Examples:</strong>
-
-| Research Context                | Null Hypothesis                                                     |
-| :------------------------------ | :------------------------------------------------------------------ |
-| New drug for headaches          | H₀: The drug has no effect on headache duration (μ = 24 hours)      |
-| Mindfulness training for stress | H₀: Training doesn't reduce stress (μ = 50 on stress scale)         |
-| Teaching method comparison      | H₀: The new method produces the same scores as traditional (μ = 75) |
-| Gender and salary               | H₀: There is no gender difference in salary (μ_male = μ_female)     |
+<div class="examples-section">
+    <h4>Examples:</h4>
+    <table class="examples-table">
+        <thead>
+            <tr>
+                <th>Research Context</th>
+                <th>Null Hypothesis</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>New drug for headaches</td>
+                <td>H₀: The drug has no effect on headache duration (μ = 24 hours)</td>
+            </tr>
+            <tr>
+                <td>Mindfulness training for stress</td>
+                <td>H₀: Training doesn't reduce stress (μ = 50 on stress scale)</td>
+            </tr>
+            <tr>
+                <td>Teaching method comparison</td>
+                <td>H₀: The new method produces the same scores as traditional (μ = 75)</td>
+            </tr>
+            <tr>
+                <td>Gender and salary</td>
+                <td>H₀: There is no gender difference in salary (μ_male = μ_female)</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
 <h3>The Alternative Hypothesis (H₁ or Hₐ)</h3>
 
-<strong>Definition:</strong> The research hypothesis—what you actually believe or predict. It represents "something special is happening."
+<div class="definition-box">
+    <p><strong>Definition:</strong> The research hypothesis—what you actually believe or predict. It represents "something special is happening."</p>
+</div>
 
-<strong>Key Characteristics:</strong>
+<div class="key-characteristics">
+    <h4>Key Characteristics:</h4>
+    <ul>
+        <li>Never includes an equals sign (uses ≠, <, or >)</li>
+        <li>Represents what you're trying to find evidence for</li>
+        <li>Can be directional or non-directional</li>
+    </ul>
+</div>
 
-- Never includes an equals sign (uses ≠, <, or >)
-- Represents what you're trying to find evidence for
-- Can be directional or non-directional
-
-**Examples (matching the null hypotheses above):**
-
-| Research Context                | Alternative Hypothesis                                         |
-| :------------------------------ | :------------------------------------------------------------- |
-| New drug for headaches          | H₁: The drug reduces headache duration (μ < 24 hours)          |
-| Mindfulness training for stress | H₁: Training reduces stress (μ < 50 on stress scale)           |
-| Teaching method comparison      | H₁: The new method produces different scores (μ ≠ 75)          |
-| Gender and salary               | H₁: There is a gender difference in salary (μ_male ≠ μ_female) |
+<div class="examples-section">
+    <h4>Examples (matching the null hypotheses above):</h4>
+    <table class="examples-table">
+        <thead>
+            <tr>
+                <th>Research Context</th>
+                <th>Alternative Hypothesis</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>New drug for headaches</td>
+                <td>H₁: The drug reduces headache duration (μ < 24 hours)</td>
+            </tr>
+            <tr>
+                <td>Mindfulness training for stress</td>
+                <td>H₁: Training reduces stress (μ < 50 on stress scale)</td>
+            </tr>
+            <tr>
+                <td>Teaching method comparison</td>
+                <td>H₁: The new method produces different scores (μ ≠ 75)</td>
+            </tr>
+            <tr>
+                <td>Gender and salary</td>
+                <td>H₁: There is a gender difference in salary (μ_male ≠ μ_female)</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
 <h3>Directional vs. Non-Directional Hypotheses</h3>
 
-This is one of the most important decisions in hypothesis testing.
+<p>This is one of the most important decisions in hypothesis testing.</p>
 
 <h4>Non-Directional (Two-Tailed) Hypotheses</h4>
 
-**Used when:** You predict a difference or effect but **not which direction**
-
-**Symbols:** H₁: μ ≠ [value]
-
-<strong>Examples:</strong>
-
-- "Does caffeine affect reaction time?" (could make it faster OR slower)
-- "Is the average age of psychology majors different from 20?" (could be higher OR lower)
-- "Does music affect study performance?" (could help OR hurt)
-
-**Why two-tailed?** You're looking for extreme results in BOTH directions (both tails of the distribution)
+<div class="hypothesis-type">
+    <div class="when-used">
+        <p><strong>Used when:</strong> You predict a difference or effect but <strong>not which direction</strong></p>
+    </div>
+    
+    <div class="symbols">
+        <p><strong>Symbols:</strong> H₁: μ ≠ [value]</p>
+    </div>
+    
+    <div class="examples">
+        <h5>Examples:</h5>
+        <ul>
+            <li>"Does caffeine affect reaction time?" (could make it faster OR slower)</li>
+            <li>"Is the average age of psychology majors different from 20?" (could be higher OR lower)</li>
+            <li>"Does music affect study performance?" (could help OR hurt)</li>
+        </ul>
+    </div>
+    
+    <div class="explanation">
+        <p><strong>Why two-tailed?</strong> You're looking for extreme results in BOTH directions (both tails of the distribution)</p>
+    </div>
+</div>
 
 <h4>Directional (One-Tailed) Hypotheses</h4>
 
-**Used when:** You predict a **specific direction** of difference or effect
-
-**Symbols:**
-
-- H₁: μ > [value] (predicting an increase)
-- H₁: μ < [value] (predicting a decrease)
-
-<strong>Examples:</strong>
-
-- "Does this anti-anxiety medication reduce anxiety?" (specifically predicts decrease)
-- "Are basketball players taller than average?" (specifically predicts increase)
-- "Does sleep deprivation impair performance?" (specifically predicts impairment, not improvement)
-
-**Why one-tailed?** You're only looking for extreme results in ONE direction (one tail of the distribution)
+<div class="hypothesis-type">
+    <div class="when-used">
+        <p><strong>Used when:</strong> You predict a <strong>specific direction</strong> of difference or effect</p>
+    </div>
+    
+    <div class="symbols">
+        <h5>Symbols:</h5>
+        <ul>
+            <li>H₁: μ > [value] (predicting an increase)</li>
+            <li>H₁: μ < [value] (predicting a decrease)</li>
+        </ul>
+    </div>
+    
+    <div class="examples">
+        <h5>Examples:</h5>
+        <ul>
+            <li>"Does this anti-anxiety medication reduce anxiety?" (specifically predicts decrease)</li>
+            <li>"Are basketball players taller than average?" (specifically predicts increase)</li>
+            <li>"Does sleep deprivation impair performance?" (specifically predicts impairment, not improvement)</li>
+        </ul>
+    </div>
+    
+    <div class="explanation">
+        <p><strong>Why one-tailed?</strong> You're only looking for extreme results in ONE direction (one tail of the distribution)</p>
+    </div>
+</div>
 
 <h3>How to Choose: Decision Tree</h3>
 
-**Ask yourself:** Does my research question predict a specific direction?
+<div class="decision-question">
+    <p><strong>Ask yourself:</strong> Does my research question predict a specific direction?</p>
+</div>
 
-```
-Research Question
-    |
-    ├─ Predicts specific direction (increase/decrease, higher/lower, more/less)
-    |   └─→ ONE-TAILED TEST
-    |       • H₁: μ > [value] or μ < [value]
-    |       • More statistical power to detect effect in predicted direction
-    |       • But: Can't detect effects in opposite direction
-    |
-    └─ Asks about any difference/change (different from, affects, changes)
-        └─→ TWO-TAILED TEST
-            • H₁: μ ≠ [value]
-            • Can detect effects in either direction
-            • More conservative (safer choice when unsure)
-```
+<div class="decision-tree">
+    <div class="tree-root">
+        <p><strong>Research Question</strong></p>
+    </div>
+    
+    <div class="tree-branch">
+        <div class="branch-left">
+            <p>├─ Predicts specific direction (increase/decrease, higher/lower, more/less)</p>
+            <div class="branch-result">
+                <p>└─→ <strong>ONE-TAILED TEST</strong></p>
+                <ul>
+                    <li>H₁: μ > [value] or μ < [value]</li>
+                    <li>More statistical power to detect effect in predicted direction</li>
+                    <li>But: Can't detect effects in opposite direction</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="branch-right">
+            <p>└─ Asks about any difference/change (different from, affects, changes)</p>
+            <div class="branch-result">
+                <p>└─→ <strong>TWO-TAILED TEST</strong></p>
+                <ul>
+                    <li>H₁: μ ≠ [value]</li>
+                    <li>Can detect effects in either direction</li>
+                    <li>More conservative (safer choice when unsure)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
 
-**When in Doubt:** Use a two-tailed test. It's more conservative and protects against missing unexpected findings.
+<div class="when-in-doubt">
+    <p><strong>When in Doubt:</strong> Use a two-tailed test. It's more conservative and protects against missing unexpected findings.</p>
+</div>
 
-> **⚠️ CRITICAL WARNING:** You MUST decide whether to use a one-tailed or two-tailed test BEFORE collecting or looking at your data. Switching from two-tailed to one-tailed after seeing your results is called **p-hacking** and invalidates your statistical inference. This inflates your Type I error rate and is considered research misconduct.
+<div class="critical-warning">
+    <p><strong>⚠️ CRITICAL WARNING:</strong> You MUST decide whether to use a one-tailed or two-tailed test BEFORE collecting or looking at your data. Switching from two-tailed to one-tailed after seeing your results is called <strong>p-hacking</strong> and invalidates your statistical inference. This inflates your Type I error rate and is considered research misconduct.</p>
+</div>
 
 <h3>Practice: Writing Hypotheses</h3>
 
-For each research question, write H₀ and H₁, and indicate whether you'd use a one-tailed or two-tailed test.
+<p>For each research question, write H₀ and H₁, and indicate whether you'd use a one-tailed or two-tailed test.</p>
 
-**Scenario 1:** "A researcher wants to know if college students sleep less than the recommended 8 hours per night."
-
-<details>
-<summary>Click to see answer</summary>
-
-- **Type:** One-tailed (predicts "less than")
-- **H₀:** μ ≥ 8 hours (students sleep 8 hours or more)
-- **H₁:** μ < 8 hours (students sleep less than 8 hours)
-</details>
-
-**Scenario 2:** "Does listening to classical music while studying affect test scores? The national average is 75."
-
-<details>
-<summary>Click to see answer</summary>
-
-- **Type:** Two-tailed (asks "affect" without direction)
-- **H₀:** μ = 75 (music has no effect)
-- **H₁:** μ ≠ 75 (music affects scores, either way)
-</details>
-
-**Scenario 3:** "A therapist predicts that cognitive-behavioral therapy will lower depression scores below the clinical cutoff of 30."
-
-<details>
-<summary>Click to see answer</summary>
-
-- **Type:** One-tailed (predicts "lower")
-- **H₀:** μ ≥ 30 (therapy doesn't lower scores below cutoff)
-- **H₁:** μ < 30 (therapy lowers scores below cutoff)
-</details>
-
-**Scenario 4:** "Is the average IQ of chess champions different from the population mean of 100?"
-
-<details>
-<summary>Click to see answer</summary>
-
-- **Type:** Two-tailed (asks "different from")
-- **H₀:** μ = 100 (chess champions have average IQ)
-- **H₁:** μ ≠ 100 (chess champions differ from average)
-</details>
+<div class="practice-scenarios">
+    <div class="scenario">
+        <h4>Scenario 1:</h4>
+        <p>"A researcher wants to know if college students sleep less than the recommended 8 hours per night."</p>
+        
+        <details>
+            <summary>Click to see answer</summary>
+            <div class="answer">
+                <ul>
+                    <li><strong>Type:</strong> One-tailed (predicts "less than")</li>
+                    <li><strong>H₀:</strong> μ ≥ 8 hours (students sleep 8 hours or more)</li>
+                    <li><strong>H₁:</strong> μ < 8 hours (students sleep less than 8 hours)</li>
+                </ul>
+            </div>
+        </details>
+    </div>
+    
+    <div class="scenario">
+        <h4>Scenario 2:</h4>
+        <p>"Does listening to classical music while studying affect test scores? The national average is 75."</p>
+        
+        <details>
+            <summary>Click to see answer</summary>
+            <div class="answer">
+                <ul>
+                    <li><strong>Type:</strong> Two-tailed (asks "affect" without direction)</li>
+                    <li><strong>H₀:</strong> μ = 75 (music has no effect)</li>
+                    <li><strong>H₁:</strong> μ ≠ 75 (music affects scores, either way)</li>
+                </ul>
+            </div>
+        </details>
+    </div>
+    
+    <div class="scenario">
+        <h4>Scenario 3:</h4>
+        <p>"A therapist predicts that cognitive-behavioral therapy will lower depression scores below the clinical cutoff of 30."</p>
+        
+        <details>
+            <summary>Click to see answer</summary>
+            <div class="answer">
+                <ul>
+                    <li><strong>Type:</strong> One-tailed (predicts "lower")</li>
+                    <li><strong>H₀:</strong> μ ≥ 30 (therapy doesn't lower scores below cutoff)</li>
+                    <li><strong>H₁:</strong> μ < 30 (therapy lowers scores below cutoff)</li>
+                </ul>
+            </div>
+        </details>
+    </div>
+    
+    <div class="scenario">
+        <h4>Scenario 4:</h4>
+        <p>"Is the average IQ of chess champions different from the population mean of 100?"</p>
+        
+        <details>
+            <summary>Click to see answer</summary>
+            <div class="answer">
+                <ul>
+                    <li><strong>Type:</strong> Two-tailed (asks "different from")</li>
+                    <li><strong>H₀:</strong> μ = 100 (chess champions have average IQ)</li>
+                    <li><strong>H₁:</strong> μ ≠ 100 (chess champions differ from average)</li>
+                </ul>
+            </div>
+        </details>
+    </div>
+</div>
 
 <h3>Common Mistakes in Hypothesis Formulation</h3>
 
-❌ **Mistake 1:** Making H₀ the research hypothesis
+<div class="common-mistakes">
+    <div class="mistake-item">
+        <div class="mistake-header">
+            <span class="incorrect">❌</span> <strong>Mistake 1:</strong> Making H₀ the research hypothesis
+        </div>
+        <ul>
+            <li><span class="wrong">Wrong:</span> H₀: The drug reduces pain</li>
+            <li><span class="right">Right:</span> H₁: The drug reduces pain; H₀: The drug has no effect</li>
+        </ul>
+    </div>
+    
+    <div class="mistake-item">
+        <div class="mistake-header">
+            <span class="incorrect">❌</span> <strong>Mistake 2:</strong> Forgetting the equals sign in H₀
+        </div>
+        <ul>
+            <li><span class="wrong">Wrong:</span> H₀: μ > 50</li>
+            <li><span class="right">Right:</span> H₀: μ = 50 (or μ ≤ 50 for one-tailed)</li>
+        </ul>
+    </div>
+    
+    <div class="mistake-item">
+        <div class="mistake-header">
+            <span class="incorrect">❌</span> <strong>Mistake 3:</strong> Using wrong direction for one-tailed test
+        </div>
+        <ul>
+            <li>If predicting scores will increase: H₁: μ > [value], not μ < [value]</li>
+        </ul>
+    </div>
+    
+    <div class="mistake-item">
+        <div class="mistake-header">
+            <span class="incorrect">❌</span> <strong>Mistake 4:</strong> Being too specific in the alternative hypothesis
+        </div>
+        <ul>
+            <li><span class="wrong">Wrong:</span> H₁: μ = 105 (this is too specific; we don't know the exact value)</li>
+            <li><span class="right">Right:</span> H₁: μ > 100 (we predict it's greater, but not a specific value)</li>
+        </ul>
+    </div>
+</div>
 
-- Wrong: H₀: The drug reduces pain
-- Right: H₁: The drug reduces pain; H₀: The drug has no effect
-
-❌ **Mistake 2:** Forgetting the equals sign in H₀
-
-- Wrong: H₀: μ > 50
-- Right: H₀: μ = 50 (or μ ≤ 50 for one-tailed)
-
-❌ **Mistake 3:** Using wrong direction for one-tailed test
-
-- If predicting scores will increase: H₁: μ > [value], not μ < [value]
-
-❌ **Mistake 4:** Being too specific in the alternative hypothesis
-
-- Wrong: H₁: μ = 105 (this is too specific; we don't know the exact value)
-- Right: H₁: μ > 100 (we predict it's greater, but not a specific value)
-
-<strong>Key Concept:</strong> The null hypothesis always represents the "boring" or "no effect" outcome. The alternative represents the "interesting" or "something is happening" outcome.
+<div class="key-concept">
+    <p><strong>Key Concept:</strong> The null hypothesis always represents the "boring" or "no effect" outcome. The alternative represents the "interesting" or "something is happening" outcome.</p>
+</div>
 
 <div class="knowledge-check">
   <h4>🧠 Knowledge Check: Selecting the Appropriate Test</h4>
@@ -506,97 +731,146 @@ For each research question, write H₀ and H₁, and indicate whether you'd use 
 
 <h2>Part 3: The Decision-Making Framework</h2>
 
-Once we've formulated hypotheses and collected data, we need a systematic way to decide which hypothesis the evidence supports.
+<p>Once we've formulated hypotheses and collected data, we need a systematic way to decide which hypothesis the evidence supports.</p>
 
 <h3>Understanding p-Values</h3>
 
-The **p-value** is the most important concept in hypothesis testing—and also the most misunderstood.
+<p>The <strong>p-value</strong> is the most important concept in hypothesis testing—and also the most misunderstood.</p>
 
-<strong>Definition:</strong> The probability of obtaining a result as extreme as (or more extreme than) the one observed, **assuming the null hypothesis is true**.
+<div class="definition-box">
+    <p><strong>Definition:</strong> The probability of obtaining a result as extreme as (or more extreme than) the one observed, <strong>assuming the null hypothesis is true</strong>.</p>
+</div>
 
-**In Plain English:** If there really is no effect (H₀ is true), how surprising would our result be? How often would random chance alone produce data this extreme?
+<div class="plain-english">
+    <p><strong>In Plain English:</strong> If there really is no effect (H₀ is true), how surprising would our result be? How often would random chance alone produce data this extreme?</p>
+</div>
 
-**Example:** You test a memory drug and get p = .03
+<div class="example-box">
+    <p><strong>Example:</strong> You test a memory drug and get p = .03</p>
+    
+    <p><strong>This means:</strong> If the drug actually does nothing (H₀ is true), there's only a 3% chance we'd see improvement this large due to random sampling variation alone.</p>
+    
+    <p><strong>Interpretation:</strong> That's pretty unlikely! Either:</p>
+    <ol>
+        <li>We got really lucky with our random sample (3% chance), OR</li>
+        <li>The drug actually works (H₀ is probably false)</li>
+    </ol>
+    <p>We conclude #2 is more plausible.</p>
+</div>
 
-**This means:** If the drug actually does nothing (H₀ is true), there's only a 3% chance we'd see improvement this large due to random sampling variation alone.
-
-**Interpretation:** That's pretty unlikely! Either:
-
-1. We got really lucky with our random sample (3% chance), OR
-2. The drug actually works (H₀ is probably false)
-
-We conclude #2 is more plausible.
-
-> **📊 UNDERSTANDING P-VALUES: The Most Misunderstood Concept**
->
-> **What p-values ARE:**
->
-> - The probability of getting your data (or more extreme) IF H₀ is true
-> - A measure of how surprising your results are under the null hypothesis
-> - Conditional on H₀ being true
->
-> **What p-values are NOT:**
->
-> - ❌ The probability that H₀ is true
-> - ❌ The probability that your results are due to chance
-> - ❌ The probability that H₁ is true
-> - ❌ The probability you made a mistake
->
-> **Key Insight:** p-values assume H₀ is true and ask "how weird is our data?" They do NOT tell us the probability that our hypothesis is correct!
+<div class="understanding-box">
+    <h4>📊 UNDERSTANDING P-VALUES: The Most Misunderstood Concept</h4>
+    
+    <div class="what-are">
+        <h5>What p-values ARE:</h5>
+        <ul>
+            <li>The probability of getting your data (or more extreme) IF H₀ is true</li>
+            <li>A measure of how surprising your results are under the null hypothesis</li>
+            <li>Conditional on H₀ being true</li>
+        </ul>
+    </div>
+    
+    <div class="what-are-not">
+        <h5>What p-values are NOT:</h5>
+        <ul>
+            <li><span class="incorrect">❌</span> The probability that H₀ is true</li>
+            <li><span class="incorrect">❌</span> The probability that your results are due to chance</li>
+            <li><span class="incorrect">❌</span> The probability that H₁ is true</li>
+            <li><span class="incorrect">❌</span> The probability you made a mistake</li>
+        </ul>
+    </div>
+    
+    <div class="key-insight">
+        <p><strong>Key Insight:</strong> p-values assume H₀ is true and ask "how weird is our data?" They do NOT tell us the probability that our hypothesis is correct!</p>
+    </div>
+</div>
 
 <h3>The Alpha Level (α)</h3>
 
-<strong>Definition:</strong> The threshold for deciding if a p-value is "small enough" to reject H₀. The maximum probability of making a Type I error we're willing to accept.
+<div class="definition-box">
+    <p><strong>Definition:</strong> The threshold for deciding if a p-value is "small enough" to reject H₀. The maximum probability of making a Type I error we're willing to accept.</p>
+</div>
 
-**Standard Value:** α = .05 (5%)
+<div class="standard-value">
+    <p><strong>Standard Value:</strong> α = .05 (5%)</p>
+</div>
 
-**The Decision Rule:**
+<div class="decision-rule">
+    <h4>The Decision Rule:</h4>
+    <ul>
+        <li>If p < α (.05): Reject H₀ → Result is <strong>statistically significant</strong></li>
+        <li>If p ≥ α (.05): Fail to reject H₀ → Result is <strong>not statistically significant</strong></li>
+    </ul>
+</div>
 
-- If p < α (.05): Reject H₀ → Result is **statistically significant**
-- If p ≥ α (.05): Fail to reject H₀ → Result is **not statistically significant**
+<div class="why-alpha">
+    <p><strong>Why .05?</strong></p>
+    <p>This is somewhat arbitrary! It was popularized by statistician Ronald Fisher in the 1920s.</p>
+</div>
 
-**Why .05?**
+<div class="different-alphas">
+    <h4>Different fields sometimes use different alphas:</h4>
+    <ul>
+        <li>Physics: α = .0000003 (very stringent)</li>
+        <li>Medicine: α = .05 (standard)</li>
+        <li>Exploratory research: Sometimes α = .10 (more lenient)</li>
+    </ul>
+</div>
 
-This is somewhat arbitrary! It was popularized by statistician Ronald Fisher in the 1920s.
-
-**Different fields sometimes use different alphas:**
-
-- Physics: α = .0000003 (very stringent)
-- Medicine: α = .05 (standard)
-- Exploratory research: Sometimes α = .10 (more lenient)
-
-**The principle:** Lower α = more conservative (harder to reject H₀) = less risk of false positives
+<div class="principle">
+    <p><strong>The principle:</strong> Lower α = more conservative (harder to reject H₀) = less risk of false positives</p>
+</div>
 
 <h3>Worked Example: Making a Decision</h3>
 
-<strong>Scenario:</strong> Testing if a new teaching method improves test scores
+<div class="worked-example">
+    <div class="scenario">
+        <p><strong>Scenario:</strong> Testing if a new teaching method improves test scores</p>
+    </div>
+    
+    <div class="given-information">
+        <h4>Given Information:</h4>
+        <ul>
+            <li>National average: μ = 70</li>
+            <li>Sample of 30 students using new method: M = 75, s = 12</li>
+            <li>Statistical test yields: t(29) = 2.36, p = .025</li>
+            <li>Alpha level: α = .05</li>
+        </ul>
+    </div>
+    
+    <div class="steps">
+        <div class="step">
+            <h4>Step 1: State hypotheses</h4>
+            <ul>
+                <li>H₀: μ = 70 (method doesn't work)</li>
+                <li>H₁: μ ≠ 70 (method has an effect)</li>
+            </ul>
+        </div>
+        
+        <div class="step">
+            <h4>Step 2: Compare p-value to alpha</h4>
+            <ul>
+                <li>p = .025</li>
+                <li>α = .05</li>
+                <li>Is .025 < .05? <strong>Yes</strong></li>
+            </ul>
+        </div>
+        
+        <div class="step">
+            <h4>Step 3: Make statistical decision</h4>
+            <ul>
+                <li>Since p < α, we <strong>reject the null hypothesis</strong></li>
+            </ul>
+        </div>
+        
+        <div class="step">
+            <h4>Step 4: State conclusion</h4>
+            <p>"The new teaching method produced significantly different test scores (M = 75, SD = 12) compared to the national average of 70, t(29) = 2.36, p = .025. Students using the new method scored higher than expected if the method had no effect."</p>
+        </div>
+    </div>
+</div>
 
-**Given Information:**
-
-- National average: μ = 70
-- Sample of 30 students using new method: M = 75, s = 12
-- Statistical test yields: t(29) = 2.36, p = .025
-- Alpha level: α = .05
-
-**Step 1: State hypotheses**
-
-- H₀: μ = 70 (method doesn't work)
-- H₁: μ ≠ 70 (method has an effect)
-
-**Step 2: Compare p-value to alpha**
-
-- p = .025
-- α = .05
-- Is .025 < .05? **Yes**
-
-**Step 3: Make statistical decision**
-
-- Since p < α, we **reject the null hypothesis**
-
-**Step 4: State conclusion**
-"The new teaching method produced significantly different test scores (M = 75, SD = 12) compared to the national average of 70, t(29) = 2.36, p = .025. Students using the new method scored higher than expected if the method had no effect."
-
-<h3>Statistical Significance vs. Practical Significance</h3>
+### Statistical Significance vs. Practical Significance
 
 This is a crucial distinction that students often miss.
 
@@ -624,9 +898,9 @@ This is a crucial distinction that students often miss.
 - With only 15 participants, p = .08 (not significant)
 - Six months of life is hugely important! But our sample was too small to prove it statistically.
 
-<strong>The Solution:</strong> Always consider BOTH statistical significance (p-value) AND effect size (how big the difference is).
+**The Solution:** Always consider BOTH statistical significance (p-value) AND effect size (how big the difference is).
 
-<h3>One-Tailed vs. Two-Tailed: How p-Values Differ</h3>
+### One-Tailed vs. Two-Tailed: How p-Values Differ
 
 This is where the directional vs. non-directional distinction becomes concrete.
 
@@ -785,11 +1059,11 @@ This is where the directional vs. non-directional distinction becomes concrete.
 
 ---
 
-<h2>Part 4: Understanding Errors in Hypothesis Testing</h2>
+## Part 4: Understanding Errors in Hypothesis Testing
 
 Because hypothesis testing is based on probability, not certainty, we can make mistakes. Understanding these errors is crucial for interpreting research.
 
-<h3>The Two Types of Errors</h3>
+### The Two Types of Errors
 
 Every hypothesis test can result in four possible outcomes:
 
@@ -798,9 +1072,9 @@ Every hypothesis test can result in four possible outcomes:
 | **Decision: Reject H₀** (Claim effect exists)                 | **TYPE I ERROR** ❌<br>False Positive<br>Probability = α       | **CORRECT DECISION** ✓<br>True Positive<br>Probability = Power |
 | **Decision: Fail to reject H₀** (Claim no evidence of effect) | **CORRECT DECISION** ✓<br>True Negative<br>Probability = 1 - α | **TYPE II ERROR** ❌<br>False Negative<br>Probability = β      |
 
-<h3>Type I Error (False Positive)</h3>
+### Type I Error (False Positive)
 
-<strong>Definition:</strong> Rejecting H₀ when it's actually true. Concluding there's an effect when there isn't one.
+**Definition:** Rejecting H₀ when it's actually true. Concluding there's an effect when there isn't one.
 
 **Probability:** α (your alpha level, usually .05)
 
@@ -832,9 +1106,9 @@ Every hypothesis test can result in four possible outcomes:
 
 **Trade-off:** Being more conservative increases Type II errors
 
-<h3>Type II Error (False Negative)</h3>
+### Type II Error (False Negative)
 
-<strong>Definition:</strong> Failing to reject H₀ when it's actually false. Missing a real effect.
+**Definition:** Failing to reject H₀ when it's actually false. Missing a real effect.
 
 **Probability:** β (beta, varies based on sample size, effect size, and alpha)
 
@@ -871,7 +1145,7 @@ Every hypothesis test can result in four possible outcomes:
 
 **Trade-off:** Being less conservative increases Type I errors
 
-<h3>Balancing the Two Errors</h3>
+### Balancing the Two Errors
 
 You can't eliminate both types of errors simultaneously. There's always a trade-off.
 
@@ -905,7 +1179,7 @@ You can't eliminate both types of errors simultaneously. There's always a trade-
 > **Key Trade-off:** ↓ Type I → ↑ Type II (and vice versa)
 > **Solution:** Increase sample size (reduces Type II without affecting Type I)
 
-<h3>Which Error is Worse?</h3>
+### Which Error is Worse?
 
 **It depends on context!**
 
@@ -925,7 +1199,7 @@ You can't eliminate both types of errors simultaneously. There's always a trade-
 
 **Strategy:** Use higher α, larger samples
 
-<h3>Mnemonics for Remembering</h3>
+### Mnemonics for Remembering
 
 **Type I Error:**
 
@@ -942,7 +1216,7 @@ You can't eliminate both types of errors simultaneously. There's always a trade-
 - Type I: Test says pregnant when not (false positive)
 - Type II: Test says not pregnant when actually pregnant (false negative)
 
-<h3>Real-World Example</h3>
+### Real-World Example
 
 **Clinical Trial for Depression Medication:**
 
@@ -950,7 +1224,7 @@ You can't eliminate both types of errors simultaneously. There's always a trade-
 **Result:** Average improvement of 5 points on depression scale
 **Statistical test:** p = .08
 
-<strong>Decision:</strong> Fail to reject H₀ (p > .05)
+**Decision:** Fail to reject H₀ (p > .05)
 **Conclusion:** No significant evidence the drug works
 
 **But what if:**
@@ -971,7 +1245,7 @@ You can't eliminate both types of errors simultaneously. There's always a trade-
 - Look at effect size (is 5 points clinically meaningful?)
 - Don't rely on a single study
 
-<h3>Quick Check</h3>
+### Quick Check
 
 1. What type of error do you make if you reject H₀ but it's actually true?
 2. How does increasing sample size affect Type II error?
@@ -1014,11 +1288,11 @@ You can't eliminate both types of errors simultaneously. There's always a trade-
 
             <div id="tab-3" class="tab-panel">
 
-<h2>Part 5: The Central Limit Theorem</h2>
+## Part 5: The Central Limit Theorem
 
 The Central Limit Theorem (CLT) is one of the most important concepts in statistics. It's the "magic" that makes hypothesis testing work.
 
-<h3>The Problem It Solves</h3>
+### The Problem It Solves
 
 **Challenge:** Many populations in the real world aren't normally distributed.
 
@@ -1030,7 +1304,7 @@ The Central Limit Theorem (CLT) is one of the most important concepts in statist
 
 **Solution:** The Central Limit Theorem!
 
-<h3>What the CLT States</h3>
+### What the CLT States
 
 **Formal Statement:** If you take many random samples of size n from ANY population (regardless of the population's shape) and calculate the mean of each sample, the distribution of those sample means will be approximately normal—especially as sample size increases.
 
@@ -1044,7 +1318,7 @@ The Central Limit Theorem (CLT) is one of the most important concepts in statist
 
 **The Bigger the Sample:** The more perfectly normal the distribution of sample means becomes.
 
-<h3>Why This is Magical</h3>
+### Why This is Magical
 
 **It means:**
 
@@ -1054,7 +1328,7 @@ The Central Limit Theorem (CLT) is one of the most important concepts in statist
 
 **Practical Implication:** This is why the t-test and other tests work even when populations aren't perfectly normal. We're comparing means, and the distribution of means is (nearly) always normal!
 
-<h3>Visual Example</h3>
+### Visual Example
 
 **Starting Population:** Highly skewed (like income)
 
@@ -1076,7 +1350,7 @@ The Central Limit Theorem (CLT) is one of the most important concepts in statist
 - Center: Near the true population mean
 - Spread: Much narrower than the original population
 
-<h3>Key Properties</h3>
+### Key Properties
 
 **1. The mean of the sampling distribution equals the population mean**
 
@@ -1096,7 +1370,7 @@ Sample means vary less than individual scores. Larger samples have even less var
 - n ≥ 100: Very close to perfect normal
 - For populations already normal: Works even with small n
 
-<h3>Standard Error: The Variability of Means</h3>
+### Standard Error: The Variability of Means
 
 **Standard Deviation (σ or s):** Measures how much individual scores vary around the population/sample mean
 
@@ -1182,7 +1456,7 @@ z = (M - μ) / SE = (520 - 500) / 18 = 20 / 18 = 1.11
 
 **The CLT in Action:** Even though the population is skewed, we could use the normal distribution to evaluate our sample mean because the sampling distribution of means is normal!
 
-<h3>Quick Check</h3>
+### Quick Check
 
 1. What does the Central Limit Theorem tell us about the distribution of sample means?
 2. How does increasing sample size affect standard error?
@@ -1200,7 +1474,7 @@ z = (M - μ) / SE = (520 - 500) / 18 = 20 / 18 = 1.11
 
 ---
 
-<h2>Part 6: The One-Sample t-Test</h2>
+## Part 6: The One-Sample t-Test
 
 Now we put everything together into our first formal hypothesis test!
 
@@ -1224,7 +1498,7 @@ Now we put everything together into our first formal hypothesis test!
 - You want to know if your sample is different from that population
 - You DON'T know the population standard deviation (σ)
 
-<strong>Examples:</strong>
+**Examples:**
 
 - Do students at your university sleep less than the national average of 8 hours?
 - Is the average IQ of chess players different from 100?
@@ -1296,7 +1570,7 @@ t = (M - μ) / SE = (M - μ) / (s / √n)
 
 #### Step 7: Make Decision and State Conclusion
 
-<strong>Decision:</strong>
+**Decision:**
 
 - If p < α: Reject H₀ (significant result)
 - If p ≥ α: Fail to reject H₀ (non-significant result)
@@ -1376,7 +1650,7 @@ This is a **small to medium effect** (between 0.2 and 0.5), meaning:
 
 ### Manual Calculation Practice
 
-<strong>Scenario:</strong> National average depression score is μ = 30. A sample of 16 therapy patients has M = 25, s = 8. Test if therapy patients score differently from the national average.
+**Scenario:** National average depression score is μ = 30. A sample of 16 therapy patients has M = 25, s = 8. Test if therapy patients score differently from the national average.
 
 **Your turn! Work through all 7 steps.**
 
@@ -1519,335 +1793,243 @@ The t-value (like a z-score) measures how many standard errors your sample mean 
 
         <div id="tab-4" class="tab-panel">
 
-<h2>Part 7: Effect Size: Measuring Practical Significance</h2>
-
-<p>Statistical significance tells you IF there's an effect. Effect size tells you HOW BIG the effect is.</p>
+## Part 7: Effect Size: Measuring Practical Significance
 
-<blockquote>
-<p><strong>Connection to previous concepts:</strong> Remember the distinction between statistical and practical significance from <a href="#part-3-the-decision-making-framework">Part 3</a>? Effect size is how we measure practical significance. A result can be statistically significant (p < .05) but have a tiny effect size, or have a large effect size but not be statistically significant (underpowered study).</p>
-</blockquote>
+Statistical significance tells you IF there's an effect. Effect size tells you HOW BIG the effect is.
 
-<h3>Why Effect Size Matters</h3>
-
-<p><strong>The Problem with p-Values Alone:</strong></p>
+> **Connection to previous concepts:** Remember the distinction between statistical and practical significance from [Part 3](#part-3-the-decision-making-framework)? Effect size is how we measure practical significance. A result can be statistically significant (p < .05) but have a tiny effect size, or have a large effect size but not be statistically significant (underpowered study).
 
-<p><strong>Example 1:</strong> Tiny, trivial difference</p>
+### Why Effect Size Matters
 
-<ul>
-<li>New diet: Participants lose M = 0.1 pounds more than control</li>
-<li>Sample size: n = 10,000</li>
-<li>Result: p = .001 (highly significant!)</li>
-<li><strong>But:</strong> Who cares about 0.1 pounds? Practically meaningless.</li>
-</ul>
-
-<p><strong>Example 2:</strong> Large, important difference</p>
-
-<ul>
-<li>New therapy: Participants improve M = 15 points on depression scale</li>
-<li>Sample size: n = 12</li>
-<li>Result: p = .08 (not significant)</li>
-<li><strong>But:</strong> 15 points is a huge improvement! Likely very important.</li>
-</ul>
-
-<p><strong>Key Insight:</strong> With large samples, even tiny differences become "significant." With small samples, even large differences might not reach "significance."</p>
-
-<p><strong>Solution:</strong> ALWAYS report effect size alongside p-values.</p>
-
-<h3>Cohen's d: The Most Common Effect Size</h3>
+**The Problem with p-Values Alone:**
 
-<p><strong>Definition:</strong> Cohen's d measures the standardized difference between a sample mean and population mean (or between two means).</p>
+**Example 1:** Tiny, trivial difference
 
-<p><strong>For One-Sample t-Test:</strong></p>
+- New diet: Participants lose M = 0.1 pounds more than control
+- Sample size: n = 10,000
+- Result: p = .001 (highly significant!)
+- **But:** Who cares about 0.1 pounds? Practically meaningless.
 
-<p>d = (M - μ) / s</p>
+**Example 2:** Large, important difference
 
-<p>Where:</p>
+- New therapy: Participants improve M = 15 points on depression scale
+- Sample size: n = 12
+- Result: p = .08 (not significant)
+- **But:** 15 points is a huge improvement! Likely very important.
 
-<ul>
-<li>M = sample mean</li>
-<li>μ = population mean</li>
-<li>s = sample standard deviation</li>
-</ul>
+**Key Insight:** With large samples, even tiny differences become "significant." With small samples, even large differences might not reach "significance."
 
-<p><strong>Interpretation:</strong> How many standard deviations apart are the two means?</p>
+**Solution:** ALWAYS report effect size alongside p-values.
 
-<h3>Cohen's Benchmarks</h3>
+### Cohen's d: The Most Common Effect Size
 
-<p>Jacob Cohen proposed rough guidelines for interpreting d:</p>
+**Definition:** Cohen's d measures the standardized difference between a sample mean and population mean (or between two means).
 
-<table>
-<thead>
-<tr>
-<th>Cohen's d</th>
-<th>Interpretation</th>
-<th>Overlap Between Distributions</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>d = 0.2</td>
-<td><strong>Small</strong> effect</td>
-<td>85% overlap</td>
-</tr>
-<tr>
-<td>d = 0.5</td>
-<td><strong>Medium</strong> effect</td>
-<td>67% overlap</td>
-</tr>
-<tr>
-<td>d = 0.8</td>
-<td><strong>Large</strong> effect</td>
-<td>53% overlap</td>
-</tr>
-</tbody>
-</table>
+**For One-Sample t-Test:**
 
-<p><strong>Important Caveats:</strong></p>
+d = (M - μ) / s
 
-<ul>
-<li>These are just guidelines, not rigid rules</li>
-<li>What's "large" in one field might be "small" in another</li>
-<li>Consider practical/clinical significance in your specific context</li>
-</ul>
+Where:
 
-<h3>Calculating Cohen's d: Examples</h3>
+- M = sample mean
+- μ = population mean
+- s = sample standard deviation
 
-<p><strong>Example 1:</strong> Meditation and stress</p>
+**Interpretation:** How many standard deviations apart are the two means?
 
-<ul>
-<li>Population mean: μ = 50</li>
-<li>Sample: M = 45, s = 12</li>
-<li>d = (45 - 50) / 12 = -5 / 12 = -0.42</li>
-<li><strong>Interpretation:</strong> Small to medium effect (stress is 0.42 SD below population mean)</li>
-</ul>
+### Cohen's Benchmarks
 
-<p><strong>Example 2:</strong> Reading program effectiveness</p>
+Jacob Cohen proposed rough guidelines for interpreting d:
 
-<ul>
-<li>Population mean: μ = 100</li>
-<li>Sample: M = 112, s = 15</li>
-<li>d = (112 - 100) / 15 = 12 / 15 = 0.80</li>
-<li><strong>Interpretation:</strong> Large effect (reading scores are 0.80 SD above population mean)</li>
-</ul>
+| Cohen's d | Interpretation    | Overlap Between Distributions |
+| :-------- | :---------------- | :---------------------------- |
+| d = 0.2   | **Small** effect  | 85% overlap                   |
+| d = 0.5   | **Medium** effect | 67% overlap                   |
+| d = 0.8   | **Large** effect  | 53% overlap                   |
 
-<p><strong>What This Means in Practice:</strong></p>
+**Important Caveats:**
 
-<ul>
-<li>This is a <strong>substantial improvement</strong> - students improved by 12 points on average</li>
-<li>A Cohen's d of 0.80 is considered educationally significant</li>
-<li>In practical terms: If the program works, it could move an average student from the 50th percentile to approximately the 79th percentile</li>
-<li><strong>Cost-benefit consideration:</strong> If the program is affordable and scalable, this effect size would strongly support implementation</li>
-<li><strong>Caution:</strong> Need to verify with randomized controlled trial to rule out selection effects (maybe better students chose the program)</li>
-</ul>
+- These are just guidelines, not rigid rules
+- What's "large" in one field might be "small" in another
+- Consider practical/clinical significance in your specific context
 
-<p><strong>Example 3:</strong> Memory drug trial</p>
+### Calculating Cohen's d: Examples
 
-<ul>
-<li>Population mean: μ = 50</li>
-<li>Sample: M = 52, s = 10</li>
-<li>d = (52 - 50) / 10 = 2 / 10 = 0.20</li>
-<li><strong>Interpretation:</strong> Small effect (memory is 0.20 SD above population mean)</li>
-</ul>
+**Example 1:** Meditation and stress
 
-<h3>Interpreting Effect Sizes in Context</h3>
+- Population mean: μ = 50
+- Sample: M = 45, s = 12
+- d = (45 - 50) / 12 = -5 / 12 = -0.42
+- **Interpretation:** Small to medium effect (stress is 0.42 SD below population mean)
 
-<p><strong>Don't just rely on Cohen's benchmarks!</strong> Consider:</p>
+**Example 2:** Reading program effectiveness
 
-<p><strong>1. Field-Specific Norms</strong></p>
+- Population mean: μ = 100
+- Sample: M = 112, s = 15
+- d = (112 - 100) / 15 = 12 / 15 = 0.80
+- **Interpretation:** Large effect (reading scores are 0.80 SD above population mean)
 
-<ul>
-<li>In physics: d = 0.2 might be considered large</li>
-<li>In psychology/education: d = 0.2 is genuinely small</li>
-</ul>
+**What This Means in Practice:**
 
-<p><strong>2. Clinical/Practical Importance</strong></p>
+- This is a **substantial improvement** - students improved by 12 points on average
+- A Cohen's d of 0.80 is considered educationally significant
+- In practical terms: If the program works, it could move an average student from the 50th percentile to approximately the 79th percentile
+- **Cost-benefit consideration:** If the program is affordable and scalable, this effect size would strongly support implementation
+- **Caution:** Need to verify with randomized controlled trial to rule out selection effects (maybe better students chose the program)
 
-<ul>
-<li>d = 0.3 for a simple, cheap intervention might be very valuable</li>
-<li>d = 0.3 for an expensive, risky treatment might not be worthwhile</li>
-</ul>
+**Example 3:** Memory drug trial
 
-<p><strong>3. Costs and Benefits</strong></p>
+- Population mean: μ = 50
+- Sample: M = 52, s = 10
+- d = (52 - 50) / 10 = 2 / 10 = 0.20
+- **Interpretation:** Small effect (memory is 0.20 SD above population mean)
 
-<ul>
-<li>Small effects can matter if intervention is inexpensive or harm-free</li>
-<li>Large effects are needed if intervention is costly or has risks</li>
-</ul>
+### Interpreting Effect Sizes in Context
 
-<p><strong>4. Comparison to Existing Alternatives</strong></p>
+**Don't just rely on Cohen's benchmarks!** Consider:
 
-<ul>
-<li>d = 0.4 is impressive if current best treatment has d = 0.2</li>
-<li>d = 0.4 is unimpressive if current treatment already achieves d = 0.8</li>
-</ul>
-
-<h3>Effect Size vs. Statistical Significance: Four Scenarios</h3>
-
-<p><strong>Scenario A: Large effect, significant (ideal!)</strong></p>
-
-<ul>
-<li>d = 0.9, p = .001, n = 50</li>
-<li><strong>Interpretation:</strong> Strong evidence of a substantial effect</li>
-<li><strong>Action:</strong> Strong support for the intervention/theory</li>
-</ul>
-
-<p><strong>Scenario B: Small effect, significant (common with large samples)</strong></p>
-
-<ul>
-<li>d = 0.1, p = .02, n = 1000</li>
-<li><strong>Interpretation:</strong> Statistically reliable but tiny effect</li>
-<li><strong>Action:</strong> Consider practical value before implementing</li>
-</ul>
-
-<p><strong>Scenario C: Large effect, not significant (underpowered study)</strong></p>
-
-<ul>
-<li>d = 0.9, p = .09, n = 10</li>
-<li><strong>Interpretation:</strong> Possibly important effect, but insufficient evidence</li>
-<li><strong>Action:</strong> Replicate with larger sample</li>
-</ul>
-
-<p><strong>Scenario D: Small effect, not significant</strong></p>
-
-<ul>
-<li>d = 0.1, p = .45, n = 30</li>
-<li><strong>Interpretation:</strong> Little evidence of an effect</li>
-<li><strong>Action:</strong> Likely not worthwhile to pursue</li>
-</ul>
+**1. Field-Specific Norms**
 
-<p><strong>The Complete Picture:</strong> Always report BOTH p-value AND effect size. They tell different parts of the story.</p>
-
-<h3>Reporting Effect Size in APA Format</h3>
+- In physics: d = 0.2 might be considered large
+- In psychology/education: d = 0.2 is genuinely small
 
-<p><strong>Include d in your results statement:</strong></p>
+**2. Clinical/Practical Importance**
 
-<p><strong>Format:</strong><br>
-"[Group description], M = [mean], SD = [standard deviation], [comparison description], t([df]) = [t-value], p = [p-value], d = [Cohen's d]."</p>
+- d = 0.3 for a simple, cheap intervention might be very valuable
+- d = 0.3 for an expensive, risky treatment might not be worthwhile
 
-<p><strong>Examples:</strong></p>
+**3. Costs and Benefits**
 
-<p><strong>Example 1:</strong><br>
-"Participants who meditated regularly (M = 45, SD = 12) reported significantly lower stress than the general population mean of 50, t(24) = -2.08, p = .012, d = 0.42."</p>
-
-<p><strong>Example 2:</strong><br>
-"Students using the new reading program (M = 112, SD = 15) scored significantly higher than the national average of 100, t(29) = 4.38, p < .001, d = 0.80."</p>
+- Small effects can matter if intervention is inexpensive or harm-free
+- Large effects are needed if intervention is costly or has risks
 
-<p><strong>Example 3:</strong><br>
-"Patients receiving the experimental memory drug (M = 52, SD = 10) did not differ significantly from the population mean of 50, t(19) = 0.89, p = .38, d = 0.20."</p>
+**4. Comparison to Existing Alternatives**
 
-<p><strong>Note:</strong> Report d even when results are not significant! Effect size estimates are valuable regardless.</p>
-
-<h3>Complete APA Reporting Guidelines</h3>
-
-<p><strong>Essential Components to Include:</strong></p>
-
-<ol>
-<li><strong>Descriptive statistics:</strong> M and SD for your sample</li>
-<li><strong>Comparison value:</strong> The population mean you're comparing against</li>
-<li><strong>Test statistic:</strong> t(df) = value</li>
-<li><strong>p-value:</strong> Exact value when possible, or p < .001 for very small values</li>
-<li><strong>Effect size:</strong> Cohen's d</li>
-<li><strong>Direction and significance:</strong> Clearly state whether the difference was significant and in which direction</li>
-</ol>
-
-<p><strong>Reporting p-Values:</strong></p>
-
-<table>
-<thead>
-<tr>
-<th>SPSS Output</th>
-<th>How to Report</th>
-<th>Why</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>p = .000</td>
-<td><strong>p < .001</strong></td>
-<td>Never report p = .000; it's rounded</td>
-</tr>
-<tr>
-<td>p = .0234</td>
-<td><strong>p = .023</strong></td>
-<td>Round to 2-3 decimal places</td>
-</tr>
-<tr>
-<td>p = .050</td>
-<td><strong>p = .050</strong></td>
-<td>Report exactly (borderline case)</td>
-</tr>
-<tr>
-<td>p = .0499</td>
-<td><strong>p = .050</strong></td>
-<td>Round to 3 decimals, or report exactly</td>
-</tr>
-<tr>
-<td>p = .347</td>
-<td><strong>p = .347</strong> or <strong>p = .35</strong></td>
-<td>Either is acceptable</td>
-</tr>
-</tbody>
-</table>
-
-<p><strong>Common Reporting Mistakes to Avoid:</strong></p>
-
-<p>❌ <strong>Wrong:</strong> "The result was p = .000"<br>
-✓ <strong>Right:</strong> "The result was p < .001"</p>
-
-<p>❌ <strong>Wrong:</strong> "t = 2.45 with p < .05"<br>
-✓ <strong>Right:</strong> "t(23) = 2.45, p = .023" (report exact p when available)</p>
-
-<p>❌ <strong>Wrong:</strong> "The difference was not significant (p = .08)"<br>
-✓ <strong>Right:</strong> "The difference was not significant, t(45) = 1.78, p = .08, d = 0.26"</p>
-
-<p>❌ <strong>Wrong:</strong> "Participants scored M = 85"<br>
-✓ <strong>Right:</strong> "Participants (M = 85, SD = 12) scored..."</p>
-
-<p>❌ <strong>Wrong:</strong> "Results were significant at the .05 level"<br>
-✓ <strong>Right:</strong> "Results were significant, t(30) = 2.34, p = .026"</p>
-
-<h3>APA Format for Different Scenarios</h3>
-
-<p><strong>Scenario 1: Significant Result (Two-Tailed)</strong><br>
-"College students (M = 6.2, SD = 1.3) slept significantly less than the recommended 8 hours, t(149) = -8.52, p < .001, d = 1.38, suggesting substantial sleep deprivation in this population."</p>
-
-<p><strong>Scenario 2: Non-Significant Result (Two-Tailed)</strong><br>
-"Participants receiving the new study technique (M = 78.5, SD = 11.2) did not differ significantly from the national average of 75, t(32) = 1.79, p = .082, d = 0.31, though the medium effect size suggests the study may have been underpowered."</p>
-
-<p><strong>Scenario 3: Significant Result (One-Tailed)</strong><br>
-"As predicted, athletes who underwent visualization training (M = 142.3, SD = 18.7) performed significantly better than the population mean of 130, t(27) = 3.48, p = .001 (one-tailed), d = 0.66."</p>
-
-<p><strong>Scenario 4: Reporting with Context</strong><br>
-"Participants in the mindfulness intervention group (M = 42.1, SD = 9.3) showed significantly lower anxiety scores compared to the clinical cutoff of 50, t(38) = -5.30, p < .001, d = 0.85. This large effect suggests the intervention moved participants from clinically significant anxiety to subclinical levels."</p>
-
-<p><strong>Best Practices:</strong></p>
-
-<ul>
-<li><strong>Always include SD:</strong> Readers need it to understand variability and calculate effect sizes</li>
-<li><strong>Report exact p-values:</strong> Don't just say "p < .05" when you have the exact value</li>
-<li><strong>Include effect size:</strong> Required by most journals and essential for meta-analyses</li>
-<li><strong>Interpret in context:</strong> Don't just report numbers; explain what they mean</li>
-<li><strong>Be honest about limitations:</strong> Mention if sample was small, not randomized, etc.</li>
-</ul>
-
-<h3>Quick Check</h3>
-
-<ol>
-<li>Why is effect size important beyond just p-values?</li>
-<li>Calculate Cohen's d: M = 85, μ = 75, s = 20</li>
-<li>Is d = 0.3 always a "small" effect?</li>
-<li>Can you have a significant result with a small effect size?</li>
-</ol>
+- d = 0.4 is impressive if current best treatment has d = 0.2
+- d = 0.4 is unimpressive if current treatment already achieves d = 0.8
+
+### Effect Size vs. Statistical Significance: Four Scenarios
+
+**Scenario A: Large effect, significant (ideal!)**
+
+- d = 0.9, p = .001, n = 50
+- **Interpretation:** Strong evidence of a substantial effect
+- **Action:** Strong support for the intervention/theory
+
+**Scenario B: Small effect, significant (common with large samples)**
+
+- d = 0.1, p = .02, n = 1000
+- **Interpretation:** Statistically reliable but tiny effect
+- **Action:** Consider practical value before implementing
+
+**Scenario C: Large effect, not significant (underpowered study)**
+
+- d = 0.9, p = .09, n = 10
+- **Interpretation:** Possibly important effect, but insufficient evidence
+- **Action:** Replicate with larger sample
+
+**Scenario D: Small effect, not significant**
+
+- d = 0.1, p = .45, n = 30
+- **Interpretation:** Little evidence of an effect
+- **Action:** Likely not worthwhile to pursue
+
+**The Complete Picture:** Always report BOTH p-value AND effect size. They tell different parts of the story.
+
+### Reporting Effect Size in APA Format
+
+**Include d in your results statement:**
+
+**Format:**
+"[Group description], M = [mean], SD = [standard deviation], [comparison description], t([df]) = [t-value], p = [p-value], d = [Cohen's d]."
+
+**Examples:**
+
+**Example 1:**
+"Participants who meditated regularly (M = 45, SD = 12) reported significantly lower stress than the general population mean of 50, t(24) = -2.08, p = .012, d = 0.42."
+
+**Example 2:**
+"Students using the new reading program (M = 112, SD = 15) scored significantly higher than the national average of 100, t(29) = 4.38, p < .001, d = 0.80."
+
+**Example 3:**
+"Patients receiving the experimental memory drug (M = 52, SD = 10) did not differ significantly from the population mean of 50, t(19) = 0.89, p = .38, d = 0.20."
+
+**Note:** Report d even when results are not significant! Effect size estimates are valuable regardless.
+
+### Complete APA Reporting Guidelines
+
+**Essential Components to Include:**
+
+1. **Descriptive statistics:** M and SD for your sample
+2. **Comparison value:** The population mean you're comparing against
+3. **Test statistic:** t(df) = value
+4. **p-value:** Exact value when possible, or p < .001 for very small values
+5. **Effect size:** Cohen's d
+6. **Direction and significance:** Clearly state whether the difference was significant and in which direction
+
+**Reporting p-Values:**
+
+| SPSS Output | How to Report               | Why                                    |
+| ----------- | --------------------------- | -------------------------------------- |
+| p = .000    | **p < .001**                | Never report p = .000; it's rounded    |
+| p = .0234   | **p = .023**                | Round to 2-3 decimal places            |
+| p = .050    | **p = .050**                | Report exactly (borderline case)       |
+| p = .0499   | **p = .050**                | Round to 3 decimals, or report exactly |
+| p = .347    | **p = .347** or **p = .35** | Either is acceptable                   |
+
+**Common Reporting Mistakes to Avoid:**
+
+❌ **Wrong:** "The result was p = .000"
+✓ **Right:** "The result was p < .001"
+
+❌ **Wrong:** "t = 2.45 with p < .05"
+✓ **Right:** "t(23) = 2.45, p = .023" (report exact p when available)
+
+❌ **Wrong:** "The difference was not significant (p = .08)"
+✓ **Right:** "The difference was not significant, t(45) = 1.78, p = .08, d = 0.26"
+
+❌ **Wrong:** "Participants scored M = 85"
+✓ **Right:** "Participants (M = 85, SD = 12) scored..."
+
+❌ **Wrong:** "Results were significant at the .05 level"
+✓ **Right:** "Results were significant, t(30) = 2.34, p = .026"
+
+### APA Format for Different Scenarios
+
+**Scenario 1: Significant Result (Two-Tailed)**
+"College students (M = 6.2, SD = 1.3) slept significantly less than the recommended 8 hours, t(149) = -8.52, p < .001, d = 1.38, suggesting substantial sleep deprivation in this population."
+
+**Scenario 2: Non-Significant Result (Two-Tailed)**
+"Participants receiving the new study technique (M = 78.5, SD = 11.2) did not differ significantly from the national average of 75, t(32) = 1.79, p = .082, d = 0.31, though the medium effect size suggests the study may have been underpowered."
+
+**Scenario 3: Significant Result (One-Tailed)**
+"As predicted, athletes who underwent visualization training (M = 142.3, SD = 18.7) performed significantly better than the population mean of 130, t(27) = 3.48, p = .001 (one-tailed), d = 0.66."
+
+**Scenario 4: Reporting with Context**
+"Participants in the mindfulness intervention group (M = 42.1, SD = 9.3) showed significantly lower anxiety scores compared to the clinical cutoff of 50, t(38) = -5.30, p < .001, d = 0.85. This large effect suggests the intervention moved participants from clinically significant anxiety to subclinical levels."
+
+**Best Practices:**
+
+- **Always include SD:** Readers need it to understand variability and calculate effect sizes
+- **Report exact p-values:** Don't just say "p < .05" when you have the exact value
+- **Include effect size:** Required by most journals and essential for meta-analyses
+- **Interpret in context:** Don't just report numbers; explain what they mean
+- **Be honest about limitations:** Mention if sample was small, not randomized, etc.
+
+### Quick Check
+
+1. Why is effect size important beyond just p-values?
+2. Calculate Cohen's d: M = 85, μ = 75, s = 20
+3. Is d = 0.3 always a "small" effect?
+4. Can you have a significant result with a small effect size?
 
 <details>
 <summary>Click to see answers</summary>
 
-<ol>
-<li>p-value tells IF there's an effect; d tells HOW BIG it is. Large samples can make trivial differences significant.</li>
-<li>d = (85-75)/20 = 10/20 = 0.5 (medium effect)</li>
-<li>No! Context matters. It might be large in physics, meaningful for a cheap intervention, or insufficient for a risky treatment.</li>
-<li>Yes! With very large samples, even d = 0.1 can be p < .05 (statistically significant but practically small)</li>
-</ol>
+1. p-value tells IF there's an effect; d tells HOW BIG it is. Large samples can make trivial differences significant.
+2. d = (85-75)/20 = 10/20 = 0.5 (medium effect)
+3. No! Context matters. It might be large in physics, meaningful for a cheap intervention, or insufficient for a risky treatment.
+4. Yes! With very large samples, even d = 0.1 can be p < .05 (statistically significant but practically small)
 </details>
 
 <div class="knowledge-check">
@@ -2001,320 +2183,249 @@ The t-value (like a z-score) measures how many standard errors your sample mean 
 
 ---
 
-<h2>Part 8: Statistical Power</h2>
-
-<p>Power is your study's ability to detect a real effect when one exists. Understanding power helps you design better studies and interpret null results.</p>
-
-<blockquote>
-<p><strong>Connection to previous concepts:</strong></p>
-<ul>
-<li>Power is directly related to <strong>Type II errors</strong> from <a href="#part-4-understanding-errors-in-hypothesis-testing">Part 4</a>: Power = 1 - β</li>
-<li>Power depends on <strong>effect size</strong> from <a href="#part-7-effect-size-measuring-practical-significance">Part 7</a>: Larger effects are easier to detect</li>
-<li>Power is why we care about <strong>sample size</strong>: Bigger samples = more power to detect real effects</li>
-</ul>
-</blockquote>
+## Part 8: Statistical Power
 
-<h3>What is Statistical Power?</h3>
+Power is your study's ability to detect a real effect when one exists. Understanding power helps you design better studies and interpret null results.
 
-<p><strong>Definition:</strong> The probability of correctly rejecting a false null hypothesis (detecting a real effect when it exists).</p>
+> **Connection to previous concepts:**
+>
+> - Power is directly related to **Type II errors** from [Part 4](#part-4-understanding-errors-in-hypothesis-testing): Power = 1 - β
+> - Power depends on **effect size** from [Part 7](#part-7-effect-size-measuring-practical-significance): Larger effects are easier to detect
+> - Power is why we care about **sample size**: Bigger samples = more power to detect real effects
 
-<p><strong>In the Error Matrix:</strong></p>
+### What is Statistical Power?
 
-<ul>
-<li>Power = Probability of True Positive</li>
-<li>Power = 1 - β (where β = probability of Type II error)</li>
-</ul>
+**Definition:** The probability of correctly rejecting a false null hypothesis (detecting a real effect when it exists).
 
-<p><strong>Standard Goal:</strong> Power ≥ .80 (80% chance of detecting a real effect)</p>
+**In the Error Matrix:**
 
-<p><strong>What Power Means:</strong></p>
+- Power = Probability of True Positive
+- Power = 1 - β (where β = probability of Type II error)
 
-<table>
-<thead>
-<tr>
-<th>Power</th>
-<th>Interpretation</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>.50</td>
-<td>50% chance of detecting real effect (coin flip—terrible!)</td>
-</tr>
-<tr>
-<td>.80</td>
-<td>80% chance of detecting real effect (acceptable)</td>
-</tr>
-<tr>
-<td>.90</td>
-<td>90% chance of detecting real effect (good)</td>
-</tr>
-<tr>
-<td>.95</td>
-<td>95% chance of detecting real effect (excellent)</td>
-</tr>
-</tbody>
-</table>
+**Standard Goal:** Power ≥ .80 (80% chance of detecting a real effect)
 
-<h3>Why Power Matters</h3>
+**What Power Means:**
 
-<p><strong>Low Power Studies (e.g., power = .30):</strong></p>
+| Power | Interpretation                                            |
+| :---- | :-------------------------------------------------------- |
+| .50   | 50% chance of detecting real effect (coin flip—terrible!) |
+| .80   | 80% chance of detecting real effect (acceptable)          |
+| .90   | 90% chance of detecting real effect (good)                |
+| .95   | 95% chance of detecting real effect (excellent)           |
 
-<ul>
-<li>Even if effect exists, you'll probably miss it (70% chance of Type II error)</li>
-<li>Null results are uninterpretable (effect might exist but study couldn't detect it)</li>
-<li>Waste of resources and participants' time</li>
-</ul>
+### Why Power Matters
 
-<p><strong>High Power Studies (e.g., power = .85):</strong></p>
+**Low Power Studies (e.g., power = .30):**
 
-<ul>
-<li>Good chance of detecting real effects</li>
-<li>Null results are more meaningful (if effect existed, you likely would've found it)</li>
-<li>Efficient use of resources</li>
-</ul>
+- Even if effect exists, you'll probably miss it (70% chance of Type II error)
+- Null results are uninterpretable (effect might exist but study couldn't detect it)
+- Waste of resources and participants' time
 
-<p><strong>Real-World Consequence:</strong> Many published studies are underpowered, leading to:</p>
+**High Power Studies (e.g., power = .85):**
 
-<ul>
-<li>Missed discoveries (Type II errors)</li>
-<li>Overestimated effect sizes (only the "lucky" studies reach significance)</li>
-<li>Non-replicable findings</li>
-</ul>
+- Good chance of detecting real effects
+- Null results are more meaningful (if effect existed, you likely would've found it)
+- Efficient use of resources
 
-<h3>Factors Affecting Power</h3>
+**Real-World Consequence:** Many published studies are underpowered, leading to:
 
-<p><strong>Four main factors determine power:</strong></p>
+- Missed discoveries (Type II errors)
+- Overestimated effect sizes (only the "lucky" studies reach significance)
+- Non-replicable findings
 
-<h4>1. Sample Size (n)</h4>
+### Factors Affecting Power
 
-<p><strong>Effect on Power:</strong> ↑ Larger sample = ↑ Higher power</p>
+**Four main factors determine power:**
 
-<p><strong>Why:</strong> Larger samples give more precise estimates (smaller SE), making it easier to detect real differences.</p>
+#### 1. Sample Size (n)
 
-<p><strong>Example:</strong> True effect size d = 0.5</p>
+**Effect on Power:** ↑ Larger sample = ↑ Higher power
 
-<ul>
-<li>n = 10: Power = .18 (only 18% chance of detecting it!)</li>
-<li>n = 30: Power = .48</li>
-<li>n = 64: Power = .80 (acceptable!)</li>
-<li>n = 100: Power = .94</li>
-</ul>
+**Why:** Larger samples give more precise estimates (smaller SE), making it easier to detect real differences.
 
-<p><strong>This is the easiest factor to control!</strong> Want more power? Get more participants.</p>
+**Example:** True effect size d = 0.5
 
-<h4>2. Effect Size in Population</h4>
+- n = 10: Power = .18 (only 18% chance of detecting it!)
+- n = 30: Power = .48
+- n = 64: Power = .80 (acceptable!)
+- n = 100: Power = .94
 
-<p><strong>Effect on Power:</strong> ↑ Larger effect = ↑ Higher power</p>
+**This is the easiest factor to control!** Want more power? Get more participants.
 
-<p><strong>Why:</strong> Larger effects are easier to detect.</p>
+#### 2. Effect Size in Population
 
-<p><strong>Example:</strong> With n = 30</p>
+**Effect on Power:** ↑ Larger effect = ↑ Higher power
 
-<ul>
-<li>Small effect (d = 0.2): Power = .11 (very low!)</li>
-<li>Medium effect (d = 0.5): Power = .48</li>
-<li>Large effect (d = 0.8): Power = .80</li>
-</ul>
+**Why:** Larger effects are easier to detect.
 
-<p><strong>Implication:</strong> If effects are small, you need larger samples to detect them.</p>
+**Example:** With n = 30
 
-<p><strong>But:</strong> You can't control true effect size! You can only estimate it and plan accordingly.</p>
+- Small effect (d = 0.2): Power = .11 (very low!)
+- Medium effect (d = 0.5): Power = .48
+- Large effect (d = 0.8): Power = .80
 
-<h4>3. Alpha Level (α)</h4>
+**Implication:** If effects are small, you need larger samples to detect them.
 
-<p><strong>Effect on Power:</strong> ↑ Higher α = ↑ Higher power</p>
+**But:** You can't control true effect size! You can only estimate it and plan accordingly.
 
-<p><strong>Why:</strong> Being less strict (larger α) makes it easier to reject H₀.</p>
+#### 3. Alpha Level (α)
 
-<p><strong>Example:</strong> With n = 50, d = 0.5</p>
+**Effect on Power:** ↑ Higher α = ↑ Higher power
 
-<ul>
-<li>α = .01: Power = .59</li>
-<li>α = .05: Power = .80</li>
-<li>α = .10: Power = .90</li>
-</ul>
+**Why:** Being less strict (larger α) makes it easier to reject H₀.
 
-<p><strong>Trade-off:</strong> Higher α increases power BUT also increases Type I error rate.</p>
+**Example:** With n = 50, d = 0.5
 
-<p><strong>Standard Practice:</strong> Keep α = .05 and adjust sample size instead.</p>
+- α = .01: Power = .59
+- α = .05: Power = .80
+- α = .10: Power = .90
 
-<h4>4. One-Tailed vs. Two-Tailed Test</h4>
+**Trade-off:** Higher α increases power BUT also increases Type I error rate.
 
-<p><strong>Effect on Power:</strong> One-tailed test has higher power (for detecting effects in predicted direction)</p>
+**Standard Practice:** Keep α = .05 and adjust sample size instead.
 
-<p><strong>Why:</strong> All alpha is concentrated in one tail instead of split between two.</p>
+#### 4. One-Tailed vs. Two-Tailed Test
 
-<p><strong>Example:</strong> n = 30, d = 0.5</p>
+**Effect on Power:** One-tailed test has higher power (for detecting effects in predicted direction)
 
-<ul>
-<li>Two-tailed: Power = .48</li>
-<li>One-tailed: Power = .61</li>
-</ul>
+**Why:** All alpha is concentrated in one tail instead of split between two.
 
-<p><strong>Caution:</strong> Only use one-tailed if you have strong directional prediction and truly don't care about effects in the opposite direction.</p>
+**Example:** n = 30, d = 0.5
 
-<h3>Power Analysis: Before vs. After Study</h3>
+- Two-tailed: Power = .48
+- One-tailed: Power = .61
 
-<h4>A Priori Power Analysis (BEFORE collecting data)</h4>
+**Caution:** Only use one-tailed if you have strong directional prediction and truly don't care about effects in the opposite direction.
 
-<p><strong>Purpose:</strong> Determine required sample size to achieve desired power</p>
+### Power Analysis: Before vs. After Study
 
-<p><strong>Process:</strong></p>
+#### A Priori Power Analysis (BEFORE collecting data)
 
-<ol>
-<li>Decide desired power (usually .80)</li>
-<li>Set alpha level (usually .05)</li>
-<li>Estimate expected effect size (from literature or pilot study)</li>
-<li>Use power analysis software to calculate required n</li>
-</ol>
+**Purpose:** Determine required sample size to achieve desired power
 
-<p><strong>Example:</strong> Planning a study</p>
+**Process:**
 
-<ul>
-<li>Expected effect: d = 0.5 (medium)</li>
-<li>Desired power: .80</li>
-<li>Alpha: .05 (two-tailed)</li>
-<li><strong>Result:</strong> Need n ≥ 64</li>
-</ul>
+1. Decide desired power (usually .80)
+2. Set alpha level (usually .05)
+3. Estimate expected effect size (from literature or pilot study)
+4. Use power analysis software to calculate required n
 
-<p><strong>This is best practice for study design!</strong></p>
+**Example:** Planning a study
 
-<h4>Post Hoc Power Analysis (AFTER collecting data)</h4>
+- Expected effect: d = 0.5 (medium)
+- Desired power: .80
+- Alpha: .05 (two-tailed)
+- **Result:** Need n ≥ 64
 
-<p><strong>Purpose:</strong> Understand the power you actually had</p>
+**This is best practice for study design!**
 
-<p><strong>Process:</strong></p>
+#### Post Hoc Power Analysis (AFTER collecting data)
 
-<ol>
-<li>Calculate observed effect size from your data</li>
-<li>Use your actual sample size</li>
-<li>Calculate power you had to detect an effect that size</li>
-</ol>
+**Purpose:** Understand the power you actually had
 
-<p><strong>Example:</strong> After a study with null result</p>
+**Process:**
 
-<ul>
-<li>n = 20</li>
-<li>Observed d = 0.3</li>
-<li><strong>Retrospective power:</strong> .14 (only 14%!)</li>
-<li><strong>Interpretation:</strong> Study was severely underpowered; null result is uninterpretable</li>
-</ul>
+1. Calculate observed effect size from your data
+2. Use your actual sample size
+3. Calculate power you had to detect an effect that size
 
-<p><strong>Controversy:</strong> Some statisticians argue post-hoc power is not useful. But it helps explain why you might have gotten null results.</p>
+**Example:** After a study with null result
 
-<h3>Interpreting Null Results Through the Lens of Power</h3>
+- n = 20
+- Observed d = 0.3
+- **Retrospective power:** .14 (only 14%!)
+- **Interpretation:** Study was severely underpowered; null result is uninterpretable
 
-<p><strong>High-Powered Study with Null Result:</strong></p>
+**Controversy:** Some statisticians argue post-hoc power is not useful. But it helps explain why you might have gotten null results.
 
-<ul>
-<li>n = 100, power was .90 for medium effects</li>
-<li>p = .52</li>
-<li><strong>Interpretation:</strong> Strong evidence that effect is small or non-existent</li>
-<li><strong>Confidence:</strong> Can reasonably conclude no meaningful effect</li>
-</ul>
+### Interpreting Null Results Through the Lens of Power
 
-<p><strong>Low-Powered Study with Null Result:</strong></p>
+**High-Powered Study with Null Result:**
 
-<ul>
-<li>n = 15, power was .20 for medium effects</li>
-<li>p = .31</li>
-<li><strong>Interpretation:</strong> Study couldn't detect an effect even if one exists</li>
-<li><strong>Confidence:</strong> Can't conclude anything; study was inadequate</li>
-</ul>
+- n = 100, power was .90 for medium effects
+- p = .52
+- **Interpretation:** Strong evidence that effect is small or non-existent
+- **Confidence:** Can reasonably conclude no meaningful effect
 
-<p><strong>The Bottom Line:</strong> Null results from underpowered studies are meaningless!</p>
+**Low-Powered Study with Null Result:**
 
-<h3>Increasing Power: Practical Strategies</h3>
+- n = 15, power was .20 for medium effects
+- p = .31
+- **Interpretation:** Study couldn't detect an effect even if one exists
+- **Confidence:** Can't conclude anything; study was inadequate
 
-<p><strong>1. Increase Sample Size (Most Important!)</strong></p>
+**The Bottom Line:** Null results from underpowered studies are meaningless!
 
-<ul>
-<li>Recruit more participants</li>
-<li>Even small increases help</li>
-<li>Calculate required n before starting</li>
-</ul>
+### Increasing Power: Practical Strategies
 
-<p><strong>2. Use More Reliable Measures</strong></p>
+**1. Increase Sample Size (Most Important!)**
 
-<ul>
-<li>Reduces random error (noise)</li>
-<li>Makes real effects easier to detect</li>
-<li>Use validated, well-tested instruments</li>
-</ul>
+- Recruit more participants
+- Even small increases help
+- Calculate required n before starting
 
-<p><strong>3. Reduce Variability in Procedures</strong></p>
+**2. Use More Reliable Measures**
 
-<ul>
-<li>Standardize testing conditions</li>
-<li>Train experimenters thoroughly</li>
-<li>Control extraneous variables</li>
-<li>Less noise = easier to see signal</li>
-</ul>
+- Reduces random error (noise)
+- Makes real effects easier to detect
+- Use validated, well-tested instruments
 
-<p><strong>4. Use Within-Subjects Designs (When Possible)</strong></p>
+**3. Reduce Variability in Procedures**
 
-<ul>
-<li>More powerful than between-subjects</li>
-<li>Reduces individual differences</li>
-<li>(Covered more in Module 3)</li>
-</ul>
+- Standardize testing conditions
+- Train experimenters thoroughly
+- Control extraneous variables
+- Less noise = easier to see signal
 
-<p><strong>5. Maximize Effect Size</strong></p>
+**4. Use Within-Subjects Designs (When Possible)**
 
-<ul>
-<li>Use stronger manipulations/interventions</li>
-<li>Ensure treatment fidelity</li>
-<li>Select participants likely to show effects</li>
-</ul>
+- More powerful than between-subjects
+- Reduces individual differences
+- (Covered more in Module 3)
 
-<p><strong>What NOT to Do:</strong></p>
+**5. Maximize Effect Size**
 
-<ul>
-<li>❌ Don't just increase alpha (increases Type I errors)</li>
-<li>❌ Don't use one-tailed tests just for power (unless genuinely appropriate)</li>
-<li>❌ Don't run underpowered studies and hope for the best</li>
-</ul>
+- Use stronger manipulations/interventions
+- Ensure treatment fidelity
+- Select participants likely to show effects
 
-<h3>Power in Research Ethics</h3>
+**What NOT to Do:**
 
-<p><strong>Ethical Issue:</strong> Running underpowered studies is arguably unethical.</p>
+- ❌ Don't just increase alpha (increases Type I errors)
+- ❌ Don't use one-tailed tests just for power (unless genuinely appropriate)
+- ❌ Don't run underpowered studies and hope for the best
 
-<p><strong>Why:</strong></p>
+### Power in Research Ethics
 
-<ul>
-<li>Wastes participants' time and trust</li>
-<li>Wastes research resources</li>
-<li>Unlikely to contribute meaningful knowledge</li>
-<li>May lead to false conclusions</li>
-</ul>
+**Ethical Issue:** Running underpowered studies is arguably unethical.
 
-<p><strong>Best Practice:</strong></p>
+**Why:**
 
-<ul>
-<li>Always conduct power analysis before data collection</li>
-<li>Aim for power ≥ .80</li>
-<li>If you can't achieve adequate power, reconsider the study design</li>
-</ul>
+- Wastes participants' time and trust
+- Wastes research resources
+- Unlikely to contribute meaningful knowledge
+- May lead to false conclusions
 
-<h3>Quick Check</h3>
+**Best Practice:**
 
-<ol>
-<li>What does power = .70 mean?</li>
-<li>What's the easiest way to increase statistical power?</li>
-<li>Why is a null result from a low-powered study hard to interpret?</li>
-<li>If you have power = .80 for d = 0.5, is your power higher or lower for d = 0.8?</li>
-</ol>
+- Always conduct power analysis before data collection
+- Aim for power ≥ .80
+- If you can't achieve adequate power, reconsider the study design
+
+### Quick Check
+
+1. What does power = .70 mean?
+2. What's the easiest way to increase statistical power?
+3. Why is a null result from a low-powered study hard to interpret?
+4. If you have power = .80 for d = 0.5, is your power higher or lower for d = 0.8?
 
 <details>
 <summary>Click to see answers</summary>
 
-<ol>
-<li>70% probability of detecting a real effect if one exists (30% chance of Type II error)</li>
-<li>Increase sample size</li>
-<li>You don't know if there's no effect, or if the effect exists but your study couldn't detect it</li>
-<li>Higher! Larger effects are easier to detect, so power would be > .80</li>
-</ol>
+1. 70% probability of detecting a real effect if one exists (30% chance of Type II error)
+2. Increase sample size
+3. You don't know if there's no effect, or if the effect exists but your study couldn't detect it
+4. Higher! Larger effects are easier to detect, so power would be > .80
 </details>
 
 <div class="knowledge-check">
@@ -2493,206 +2604,133 @@ The t-value (like a z-score) measures how many standard errors your sample mean 
 
         <div id="tab-5" class="tab-panel">
 
-<h2>Part 9: The t-Distribution</h2>
+## Part 9: The t-Distribution
 
-<p>We've been using the t-test, but what exactly is this "t-distribution"?</p>
+We've been using the t-test, but what exactly is this "t-distribution"?
 
-<h3>Why Not Use the Normal Distribution (z)?</h3>
+### Why Not Use the Normal Distribution (z)?
 
-<p><strong>Remember the z-score formula:</strong></p>
+**Remember the z-score formula:**
 
-<p>z = (X - μ) / σ</p>
+z = (X - μ) / σ
 
-<p><strong>For testing sample means:</strong></p>
+**For testing sample means:**
 
-<p>z = (M - μ) / (σ / √n)</p>
+z = (M - μ) / (σ / √n)
 
-<p><strong>The problem:</strong> We almost never know σ (population standard deviation)!</p>
+**The problem:** We almost never know σ (population standard deviation)!
 
-<p><strong>Our solution:</strong> Substitute s (sample standard deviation)</p>
+**Our solution:** Substitute s (sample standard deviation)
 
-<p>t = (M - μ) / (s / √n)</p>
+t = (M - μ) / (s / √n)
 
-<p><strong>New problem:</strong> Using s instead of σ adds uncertainty. The regular normal distribution doesn't account for this extra uncertainty.</p>
+**New problem:** Using s instead of σ adds uncertainty. The regular normal distribution doesn't account for this extra uncertainty.
 
-<p><strong>The fix:</strong> Use the t-distribution, which adjusts for this uncertainty!</p>
+**The fix:** Use the t-distribution, which adjusts for this uncertainty!
 
-<h3>Properties of the t-Distribution</h3>
+### Properties of the t-Distribution
 
-<p><strong>Similarities to Normal Distribution:</strong></p>
+**Similarities to Normal Distribution:**
 
-<ul>
-<li>Symmetrical</li>
-<li>Bell-shaped</li>
-<li>Centered on zero</li>
-<li>Area under curve = 1.0</li>
-</ul>
+- Symmetrical
+- Bell-shaped
+- Centered on zero
+- Area under curve = 1.0
 
-<p><strong>Differences from Normal Distribution:</strong></p>
+**Differences from Normal Distribution:**
 
-<ul>
-<li><strong>Heavier tails</strong> (more area in the extremes)</li>
-<li><strong>Flatter peak</strong> (less area in the center)</li>
-<li><strong>Shape depends on degrees of freedom (df)</strong></li>
-</ul>
+- **Heavier tails** (more area in the extremes)
+- **Flatter peak** (less area in the center)
+- **Shape depends on degrees of freedom (df)**
 
-<p><strong>Why Heavier Tails?</strong></p>
+**Why Heavier Tails?**
 
-<ul>
-<li>Reflects the extra uncertainty from estimating σ with s</li>
-<li>Means you need a larger t-value (vs. z-value) to reach significance</li>
-<li>More conservative than z-test (less likely to make Type I errors)</li>
-</ul>
+- Reflects the extra uncertainty from estimating σ with s
+- Means you need a larger t-value (vs. z-value) to reach significance
+- More conservative than z-test (less likely to make Type I errors)
 
-<h3>Degrees of Freedom (df)</h3>
+### Degrees of Freedom (df)
 
-<p><strong>Definition:</strong> The number of values that are "free to vary" when calculating a statistic.</p>
+**Definition:** The number of values that are "free to vary" when calculating a statistic.
 
-<p><strong>For One-Sample t-Test:</strong></p>
+**For One-Sample t-Test:**
 
-<p>df = n - 1</p>
+df = n - 1
 
-<p><strong>Why n - 1?</strong></p>
+**Why n - 1?**
 
-<ul>
-<li>Once you know the mean and (n-1) scores, the last score is determined</li>
-<li>Example: If M = 10 and you know 4 out of 5 scores are {8, 9, 11, 12}, the 5th MUST be 10 (to make the mean = 10)</li>
-</ul>
+- Once you know the mean and (n-1) scores, the last score is determined
+- Example: If M = 10 and you know 4 out of 5 scores are {8, 9, 11, 12}, the 5th MUST be 10 (to make the mean = 10)
 
-<p><strong>Effect on t-Distribution:</strong></p>
+**Effect on t-Distribution:**
 
-<table>
-<thead>
-<tr>
-<th>df</th>
-<th>Shape of t-Distribution</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Small (df = 1-5)</td>
-<td>Very heavy tails, very flat</td>
-</tr>
-<tr>
-<td>Medium (df = 10-20)</td>
-<td>Moderately heavy tails</td>
-</tr>
-<tr>
-<td>Large (df = 30+)</td>
-<td>Very close to normal</td>
-</tr>
-<tr>
-<td>df = ∞</td>
-<td>Identical to normal distribution</td>
-</tr>
-</tbody>
-</table>
+| df                  | Shape of t-Distribution          |
+| :------------------ | :------------------------------- |
+| Small (df = 1-5)    | Very heavy tails, very flat      |
+| Medium (df = 10-20) | Moderately heavy tails           |
+| Large (df = 30+)    | Very close to normal             |
+| df = ∞              | Identical to normal distribution |
 
-<p><strong>Practical Implication:</strong> With larger samples (higher df), the t-distribution approaches the normal distribution.</p>
+**Practical Implication:** With larger samples (higher df), the t-distribution approaches the normal distribution.
 
-<h3>Critical Values: t vs. z</h3>
+### Critical Values: t vs. z
 
-<p><strong>Critical values</strong> are the thresholds for significance. Let's compare for α = .05, two-tailed:</p>
+**Critical values** are the thresholds for significance. Let's compare for α = .05, two-tailed:
 
-<table>
-<thead>
-<tr>
-<th>df</th>
-<th>t-critical</th>
-<th>z-critical</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>5</td>
-<td>±2.571</td>
-<td>±1.96</td>
-</tr>
-<tr>
-<td>10</td>
-<td>±2.228</td>
-<td>±1.96</td>
-</tr>
-<tr>
-<td>20</td>
-<td>±2.086</td>
-<td>±1.96</td>
-</tr>
-<tr>
-<td>30</td>
-<td>±2.042</td>
-<td>±1.96</td>
-</tr>
-<tr>
-<td>60</td>
-<td>±2.000</td>
-<td>±1.96</td>
-</tr>
-<tr>
-<td>∞</td>
-<td>±1.96</td>
-<td>±1.96</td>
-</tr>
-</tbody>
-</table>
+| df  | t-critical | z-critical |
+| :-- | :--------- | :--------- |
+| 5   | ±2.571     | ±1.96      |
+| 10  | ±2.228     | ±1.96      |
+| 20  | ±2.086     | ±1.96      |
+| 30  | ±2.042     | ±1.96      |
+| 60  | ±2.000     | ±1.96      |
+| ∞   | ±1.96      | ±1.96      |
 
-<p><strong>Notice:</strong></p>
+**Notice:**
 
-<ul>
-<li>With small samples (low df), t-critical is much larger than z-critical</li>
-<li>As sample size increases, t-critical approaches z-critical</li>
-<li>You need a more extreme t-value to reject H₀ with small samples</li>
-</ul>
+- With small samples (low df), t-critical is much larger than z-critical
+- As sample size increases, t-critical approaches z-critical
+- You need a more extreme t-value to reject H₀ with small samples
 
-<p><strong>Why This Matters:</strong> Small samples require stronger evidence (larger t-values) to reach the same significance level. This protects against Type I errors when sample information is limited.</p>
+**Why This Matters:** Small samples require stronger evidence (larger t-values) to reach the same significance level. This protects against Type I errors when sample information is limited.
 
-<h3>Using the t-Table</h3>
+### Using the t-Table
 
-<p><strong>To find critical value (manual hypothesis testing):</strong></p>
+**To find critical value (manual hypothesis testing):**
 
-<ol>
-<li>Calculate df = n - 1</li>
-<li>Choose alpha level (usually .05)</li>
-<li>Determine one-tailed vs. two-tailed</li>
-<li>Find where df row meets alpha column</li>
-<li>That's your critical value</li>
-</ol>
+1. Calculate df = n - 1
+2. Choose alpha level (usually .05)
+3. Determine one-tailed vs. two-tailed
+4. Find where df row meets alpha column
+5. That's your critical value
 
-<p><strong>Example:</strong> n = 25, α = .05, two-tailed</p>
+**Example:** n = 25, α = .05, two-tailed
 
-<ul>
-<li>df = 24</li>
-<li>Look up df = 24, α = .05 (two-tailed)</li>
-<li>Critical value = ±2.064</li>
-</ul>
+- df = 24
+- Look up df = 24, α = .05 (two-tailed)
+- Critical value = ±2.064
 
-<p><strong>Decision:</strong></p>
+**Decision:**
 
-<ul>
-<li>If |t_calculated| > 2.064: Reject H₀</li>
-<li>If |t_calculated| ≤ 2.064: Fail to reject H₀</li>
-</ul>
+- If |t_calculated| > 2.064: Reject H₀
+- If |t_calculated| ≤ 2.064: Fail to reject H₀
 
-<p><strong>Modern Approach:</strong> SPSS calculates exact p-values for you, so you rarely need t-tables for research. But understanding them builds intuition!</p>
+**Modern Approach:** SPSS calculates exact p-values for you, so you rarely need t-tables for research. But understanding them builds intuition!
 
-<h3>t vs. z: When to Use Each</h3>
+### t vs. z: When to Use Each
 
-<p><strong>Use z-test when:</strong></p>
+**Use z-test when:**
 
-<ul>
-<li>You know the population standard deviation (σ)</li>
-<li>This is rare! Usually only in textbook examples</li>
-</ul>
+- You know the population standard deviation (σ)
+- This is rare! Usually only in textbook examples
 
-<p><strong>Use t-test when:</strong></p>
+**Use t-test when:**
 
-<ul>
-<li>You don't know population standard deviation (most real research)</li>
-<li>You're estimating σ with sample s</li>
-<li>This is the standard approach!</li>
-</ul>
+- You don't know population standard deviation (most real research)
+- You're estimating σ with sample s
+- This is the standard approach!
 
-<p><strong>Practical Reality:</strong> You'll almost always use t-tests, not z-tests.</p>
+**Practical Reality:** You'll almost always use t-tests, not z-tests.
 
 <div class="knowledge-check">
   <h4>🧠 Knowledge Check: Sample Size Effects</h4>
@@ -2816,295 +2854,207 @@ The t-value (like a z-score) measures how many standard errors your sample mean 
 
 ---
 
-<h2>Part 10: Practical Guide: SPSS for One-Sample t-Tests</h2>
-
-<p>This section walks you through conducting one-sample t-tests in SPSS, from data setup to interpretation.</p>
-
-<h3>Setting Up Your Data</h3>
-
-<p><strong>Step 1: Import or Enter Data</strong></p>
+## Part 10: Practical Guide: SPSS for One-Sample t-Tests
 
-<ul>
-<li><code>File → Import Data → Excel</code> (if importing)</li>
-<li>Or manually enter data in Data View</li>
-</ul>
+This section walks you through conducting one-sample t-tests in SPSS, from data setup to interpretation.
 
-<p><strong>Step 2: Configure Variables (Variable View)</strong></p>
-
-<ul>
-<li>Set measurement level to "Scale" for your continuous variable</li>
-<li>Add descriptive labels</li>
-<li>Set appropriate decimals</li>
-</ul>
-
-<p><strong>Step 3: Check Your Data</strong></p>
-
-<ul>
-<li>Look for outliers (extremely high/low values)</li>
-<li>Check for data entry errors</li>
-<li>Verify n is correct</li>
-</ul>
-
-<h3>Running a Basic One-Sample t-Test</h3>
-
-<p><strong>Step 1: Access the Menu</strong></p>
-
-<ul>
-<li><code>Analyze → Compare Means → One-Sample T Test</code></li>
-</ul>
-
-<p><strong>Step 2: Select Variables</strong></p>
-
-<ul>
-<li>Move your test variable from left box to "Test Variable(s)" box</li>
-<li>You can test multiple variables at once if they're all compared to the same test value</li>
-</ul>
-
-<p><strong>Step 3: Enter Test Value</strong></p>
-
-<ul>
-<li>In "Test Value" box, enter the known population mean (μ)</li>
-<li>Example: If testing against population mean of 100, enter 100</li>
-</ul>
-
-<p><strong>Step 4: Request Effect Size (Recommended)</strong></p>
-
-<ul>
-<li>Click "Options" button</li>
-<li>Check "Confidence Intervals"</li>
-<li>Click "Effect Sizes" tab</li>
-<li>Check "Cohen's d"</li>
-<li>Click "Continue"</li>
-</ul>
-
-<p><strong>Step 5: Run the Test</strong></p>
-
-<ul>
-<li>Click "OK"</li>
-<li>Results appear in Output window</li>
-</ul>
-
-<h3>Reading SPSS Output</h3>
-
-<p>SPSS produces two main tables:</p>
-
-<h4>Table 1: One-Sample Statistics</h4>
-
-<table>
-<thead>
-<tr>
-<th>Variable</th>
-<th>N</th>
-<th>Mean</th>
-<th>Std. Deviation</th>
-<th>Std. Error Mean</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>IQ_Score</td>
-<td>30</td>
-<td>107.50</td>
-<td>14.23</td>
-<td>2.60</td>
-</tr>
-</tbody>
-</table>
-
-<p><strong>What It Tells You:</strong></p>
-
-<ul>
-<li><strong>N:</strong> Sample size (30)</li>
-<li><strong>Mean:</strong> Sample mean (107.50)</li>
-<li><strong>Std. Deviation:</strong> Sample SD (14.23)</li>
-<li><strong>Std. Error Mean:</strong> SE = s/√n (2.60)</li>
-</ul>
-
-<p><strong>Use these for:</strong> Describing your sample, calculating effect size</p>
-
-<h4>Table 2: One-Sample Test (Testing against μ = 100)</h4>
-
-<table>
-<thead>
-<tr>
-<th>Variable</th>
-<th>t</th>
-<th>df</th>
-<th>Sig. (2-tailed)</th>
-<th>Mean Difference</th>
-<th>95% CI Lower</th>
-<th>95% CI Upper</th>
-<th>Cohen's d</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>IQ_Score</td>
-<td>2.88</td>
-<td>29</td>
-<td>.007</td>
-<td>7.50</td>
-<td>2.17</td>
-<td>12.83</td>
-<td>0.53</td>
-</tr>
-</tbody>
-</table>
-
-<p><strong>What It Tells You:</strong></p>
-
-<ul>
-<li><strong>t:</strong> t-statistic (2.88)</li>
-<li><strong>df:</strong> Degrees of freedom (29 = 30-1)</li>
-<li><strong>Sig. (2-tailed):</strong> p-value for two-tailed test (.007)</li>
-<li><strong>Mean Difference:</strong> M - μ (107.50 - 100 = 7.50)</li>
-<li><strong>95% CI:</strong> Confidence interval for the difference (2.17 to 12.83)</li>
-<li><strong>Cohen's d:</strong> Effect size (0.53, medium effect)</li>
-</ul>
-
-<h3>Interpreting Results</h3>
-
-<p><strong>Decision:</strong></p>
-
-<ul>
-<li>p = .007</li>
-<li>α = .05</li>
-<li>Since .007 < .05, <strong>reject H₀</strong></li>
-</ul>
+### Setting Up Your Data
 
-<p><strong>Interpretation:</strong><br>
-"The sample (M = 107.50, SD = 14.23) scored significantly higher than the population mean of 100, t(29) = 2.88, p = .007, d = 0.53."</p>
+**Step 1: Import or Enter Data**
 
-<h3>One-Tailed Tests in SPSS</h3>
+- `File → Import Data → Excel` (if importing)
+- Or manually enter data in Data View
 
-<p><strong>SPSS always reports two-tailed p-values.</strong> For one-tailed tests:</p>
+**Step 2: Configure Variables (Variable View)**
 
-<p><strong>Step 1: Check Direction</strong></p>
+- Set measurement level to "Scale" for your continuous variable
+- Add descriptive labels
+- Set appropriate decimals
 
-<ul>
-<li>Is your result in the predicted direction?</li>
-<li>If predicting higher: Is M > μ?</li>
-<li>If predicting lower: Is M < μ?</li>
-</ul>
+**Step 3: Check Your Data**
 
-<p><strong>Step 2: Convert p-Value</strong></p>
+- Look for outliers (extremely high/low values)
+- Check for data entry errors
+- Verify n is correct
 
-<ul>
-<li>If result is in predicted direction: p_one-tailed = p_two-tailed / 2</li>
-<li>If result is in opposite direction: p_one-tailed = 1 - (p_two-tailed / 2)</li>
-<li>But you'd fail to reject H₀ anyway!</li>
-</ul>
+### Running a Basic One-Sample t-Test
 
-<p><strong>Example 1:</strong> Predicting IQ > 100</p>
+**Step 1: Access the Menu**
 
-<ul>
-<li>Observed: M = 107.50 (higher than 100 ✓)</li>
-<li>SPSS gives: p = .007 (two-tailed)</li>
-<li>One-tailed p = .007 / 2 = <strong>.0035</strong></li>
-<li>Even more significant!</li>
-</ul>
+- `Analyze → Compare Means → One-Sample T Test`
 
-<p><strong>Example 2:</strong> Predicting stress < 50</p>
+**Step 2: Select Variables**
 
-<ul>
-<li>Observed: M = 52 (higher than 50, wrong direction ✗)</li>
-<li>SPSS gives: p = .20 (two-tailed)</li>
-<li><strong>Fail to reject H₀</strong> (result is opposite of prediction)</li>
-</ul>
+- Move your test variable from left box to "Test Variable(s)" box
+- You can test multiple variables at once if they're all compared to the same test value
 
-<h3>Filtering Data in SPSS</h3>
+**Step 3: Enter Test Value**
 
-<p>Sometimes you need to analyze a subset of your data.</p>
+- In "Test Value" box, enter the known population mean (μ)
+- Example: If testing against population mean of 100, enter 100
 
-<p><strong>Step 1: Select Cases</strong></p>
+**Step 4: Request Effect Size (Recommended)**
 
-<ul>
-<li><code>Data → Select Cases</code></li>
-</ul>
+- Click "Options" button
+- Check "Confidence Intervals"
+- Click "Effect Sizes" tab
+- Check "Cohen's d"
+- Click "Continue"
 
-<p><strong>Step 2: Specify Condition</strong></p>
+**Step 5: Run the Test**
 
-<ul>
-<li>Choose "If condition is satisfied"</li>
-<li>Click "If..." button</li>
-</ul>
+- Click "OK"
+- Results appear in Output window
 
-<p><strong>Step 3: Write the Condition</strong></p>
+### Reading SPSS Output
 
-<ul>
-<li>Examples:</li>
-<li><code>Age >= 75</code> (select only ages 75+)</li>
-<li><code>Gender = 1</code> (select only code 1, if 1=Female)</li>
-<li><code>Score > 50 AND Group = 2</code> (combine conditions)</li>
-</ul>
+SPSS produces two main tables:
 
-<p><strong>Step 4: Click OK</strong></p>
+#### Table 1: One-Sample Statistics
 
-<ul>
-<li>Filtered-out cases show diagonal slash through row number</li>
-<li>Only selected cases are used in analyses</li>
-</ul>
+| Variable | N   | Mean   | Std. Deviation | Std. Error Mean |
+| :------- | :-- | :----- | :------------- | :-------------- |
+| IQ_Score | 30  | 107.50 | 14.23          | 2.60            |
 
-<p><strong>Step 5: Turn Off Filter When Done</strong></p>
+**What It Tells You:**
 
-<ul>
-<li><code>Data → Select Cases → All cases</code></li>
-</ul>
+- **N:** Sample size (30)
+- **Mean:** Sample mean (107.50)
+- **Std. Deviation:** Sample SD (14.23)
+- **Std. Error Mean:** SE = s/√n (2.60)
 
-<h3>Common SPSS Issues and Solutions</h3>
+**Use these for:** Describing your sample, calculating effect size
 
-<p><strong>Issue:</strong> "Test Value" is grayed out<br>
-<strong>Solution:</strong> Make sure you've moved a variable to the Test Variable(s) box first</p>
+#### Table 2: One-Sample Test (Testing against μ = 100)
 
-<p><strong>Issue:</strong> Can't find effect size in output<br>
-<strong>Solution:</strong> You must request it before running the test (Options → Effect Sizes → Cohen's d)</p>
+| Variable | t    | df  | Sig. (2-tailed) | Mean Difference | 95% CI Lower | 95% CI Upper | Cohen's d |
+| :------- | :--- | :-- | :-------------- | :-------------- | :----------- | :----------- | :-------- |
+| IQ_Score | 2.88 | 29  | .007            | 7.50            | 2.17         | 12.83        | 0.53      |
 
-<p><strong>Issue:</strong> p-value shows as .000<br>
-<strong>Solution:</strong> SPSS rounds very small p-values. Report as "p < .001" (not p = .000)</p>
+**What It Tells You:**
 
-<p><strong>Issue:</strong> Results seem wrong after filtering<br>
-<strong>Solution:</strong> Check that filter is set correctly. Look for slash marks on rows to see what's filtered out.</p>
+- **t:** t-statistic (2.88)
+- **df:** Degrees of freedom (29 = 30-1)
+- **Sig. (2-tailed):** p-value for two-tailed test (.007)
+- **Mean Difference:** M - μ (107.50 - 100 = 7.50)
+- **95% CI:** Confidence interval for the difference (2.17 to 12.83)
+- **Cohen's d:** Effect size (0.53, medium effect)
 
-<p><strong>Issue:</strong> Want to compare to a value not in my data<br>
-<strong>Solution:</strong> That's fine! The "Test Value" doesn't need to be in your dataset—it's the population value you're testing against.</p>
+### Interpreting Results
 
-<h3>Practice Exercise</h3>
+**Decision:**
 
-<p><strong>Scenario:</strong> You have data on reaction times (in ms) for 40 gamers. Population average for non-gamers is μ = 250 ms. Test if gamers are significantly faster.</p>
+- p = .007
+- α = .05
+- Since .007 < .05, **reject H₀**
 
-<p><strong>Your Data:</strong></p>
+**Interpretation:**
+"The sample (M = 107.50, SD = 14.23) scored significantly higher than the population mean of 100, t(29) = 2.88, p = .007, d = 0.53."
 
-<ul>
-<li>n = 40</li>
-<li>M = 235 ms</li>
-<li>s = 30 ms</li>
-</ul>
+### One-Tailed Tests in SPSS
 
-<p><strong>Tasks:</strong></p>
+**SPSS always reports two-tailed p-values.** For one-tailed tests:
 
-<ol>
-<li>Write hypotheses (one-tailed, predicting faster = lower times)</li>
-<li>Run one-sample t-test in SPSS</li>
-<li>Interpret results with APA formatting</li>
-</ol>
+**Step 1: Check Direction**
+
+- Is your result in the predicted direction?
+- If predicting higher: Is M > μ?
+- If predicting lower: Is M < μ?
+
+**Step 2: Convert p-Value**
+
+- If result is in predicted direction: p_one-tailed = p_two-tailed / 2
+- If result is in opposite direction: p_one-tailed = 1 - (p_two-tailed / 2)
+  - But you'd fail to reject H₀ anyway!
+
+**Example 1:** Predicting IQ > 100
+
+- Observed: M = 107.50 (higher than 100 ✓)
+- SPSS gives: p = .007 (two-tailed)
+- One-tailed p = .007 / 2 = **.0035**
+- Even more significant!
+
+**Example 2:** Predicting stress < 50
+
+- Observed: M = 52 (higher than 50, wrong direction ✗)
+- SPSS gives: p = .20 (two-tailed)
+- **Fail to reject H₀** (result is opposite of prediction)
+
+### Filtering Data in SPSS
+
+Sometimes you need to analyze a subset of your data.
+
+**Step 1: Select Cases**
+
+- `Data → Select Cases`
+
+**Step 2: Specify Condition**
+
+- Choose "If condition is satisfied"
+- Click "If..." button
+
+**Step 3: Write the Condition**
+
+- Examples:
+  - `Age >= 75` (select only ages 75+)
+  - `Gender = 1` (select only code 1, if 1=Female)
+  - `Score > 50 AND Group = 2` (combine conditions)
+
+**Step 4: Click OK**
+
+- Filtered-out cases show diagonal slash through row number
+- Only selected cases are used in analyses
+
+**Step 5: Turn Off Filter When Done**
+
+- `Data → Select Cases → All cases`
+
+### Common SPSS Issues and Solutions
+
+**Issue:** "Test Value" is grayed out
+**Solution:** Make sure you've moved a variable to the Test Variable(s) box first
+
+**Issue:** Can't find effect size in output
+**Solution:** You must request it before running the test (Options → Effect Sizes → Cohen's d)
+
+**Issue:** p-value shows as .000
+**Solution:** SPSS rounds very small p-values. Report as "p < .001" (not p = .000)
+
+**Issue:** Results seem wrong after filtering
+**Solution:** Check that filter is set correctly. Look for slash marks on rows to see what's filtered out.
+
+**Issue:** Want to compare to a value not in my data
+**Solution:** That's fine! The "Test Value" doesn't need to be in your dataset—it's the population value you're testing against.
+
+### Practice Exercise
+
+**Scenario:** You have data on reaction times (in ms) for 40 gamers. Population average for non-gamers is μ = 250 ms. Test if gamers are significantly faster.
+
+**Your Data:**
+
+- n = 40
+- M = 235 ms
+- s = 30 ms
+
+**Tasks:**
+
+1. Write hypotheses (one-tailed, predicting faster = lower times)
+2. Run one-sample t-test in SPSS
+3. Interpret results with APA formatting
 
 <details>
 <summary>Click to see expected results</summary>
 
-<p><strong>Hypotheses:</strong></p>
+**Hypotheses:**
 
-<ul>
-<li>H₀: μ ≥ 250</li>
-<li>H₁: μ < 250 (gamers are faster)</li>
-</ul>
+- H₀: μ ≥ 250
+- H₁: μ < 250 (gamers are faster)
 
-<p><strong>Expected Calculations:</strong></p>
+**Expected Calculations:**
 
-<ul>
-<li>SE = 30/√40 = 4.74</li>
-<li>t = (235-250)/4.74 = -3.16</li>
-<li>df = 39</li>
-</ul>
+- SE = 30/√40 = 4.74
+- t = (235-250)/4.74 = -3.16
+- df = 39
 - p (two-tailed) ≈ .003
 - p (one-tailed) = .003/2 = .0015
 - d = (235-250)/30 = -0.50
@@ -3413,7 +3363,7 @@ Start: Do you have a research question?
 
 ### Core Concepts
 
-<strong>Null Hypothesis (H₀):</strong> Statement of no effect/no difference
+**Null Hypothesis (H₀):** Statement of no effect/no difference
 
 **Alternative Hypothesis (H₁):** Research prediction; what you're trying to support
 
@@ -3513,7 +3463,7 @@ d = (M - μ) / s
 
 **Effect Size:** Magnitude of difference/effect, independent of sample size
 
-<strong>Null Hypothesis (H₀):</strong> Statement of no effect/no difference
+**Null Hypothesis (H₀):** Statement of no effect/no difference
 
 **One-Tailed Test:** Directional hypothesis (predicts specific direction)
 
