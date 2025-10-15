@@ -447,27 +447,11 @@
         }
 
         .learning-objectives {
-            counter-reset: objective-counter;
+            margin: 15px 0;
         }
 
         .learning-objectives > li {
-            counter-increment: objective-counter;
             margin-bottom: 8px;
-        }
-
-        .learning-objectives > li::before {
-            content: counter(objective-counter);
-            background-color: #007bff;
-            color: white;
-            border-radius: 50%;
-            width: 20px;
-            height: 20px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 10px;
-            font-size: 12px;
-            font-weight: bold;
         }
     </style>
 </head>
