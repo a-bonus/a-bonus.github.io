@@ -2264,9 +2264,12 @@ function saveProgress(tabNumber, isComplete) {
 
 // Toggle tab completion state
 function toggleTabComplete(tabNumber) {
-    const isComplete = document.getElementById(`progress-${tabNumber}`).checked;
+    // Determine which checkbox was clicked (top or bottom)
+    const clickedCheckbox = event.target;
+    const isComplete = clickedCheckbox.checked;
     
-    // Update both top and bottom checkboxes
+    // Update both top and bottom checkboxes to stay in sync
+    document.getElementById(`progress-${tabNumber}`).checked = isComplete;
     document.getElementById(`progress-${tabNumber}-bottom`).checked = isComplete;
     
     // Update visual state
@@ -2304,6 +2307,9 @@ function showTab(tabNumber) {
     
     // Activate the button that was clicked (could be top or bottom)
     event.target.classList.add('active');
+    
+    // Scroll to top of the page for better UX
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 // Load progress when page loads
