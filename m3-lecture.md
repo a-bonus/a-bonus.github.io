@@ -28,20 +28,32 @@ By the end of this module, you will be able to:
 
 ---
 
-## Table of Contents
-
-1. [Introduction to Comparing Two Means](#part-1-introduction-to-comparing-two-means)
-2. [Research Designs and the Critical Decision](#part-2-research-designs-and-the-critical-decision)
-3. [The Independent-Samples t-Test](#part-3-the-independent-samples-t-test)
-4. [The Paired-Samples t-Test](#part-4-the-paired-samples-t-test)
-5. [Levene's Test Explained](#part-5-levens-test-explained)
-6. [Effect Sizes for Comparing Means](#part-6-effect-sizes-for-comparing-means)
-7. [Assumptions and Diagnostics](#part-7-assumptions-and-diagnostics)
-8. [Putting It All Together](#part-8-putting-it-all-together)
-9. [Practical Guide: SPSS](#part-9-practical-guide-spss)
-10. [Summary and Key Formulas](#part-10-summary-and-key-formulas)
-
----
+<div class="lecture-tabs">
+    <div class="tab-navigation">
+        <button class="tab-button active" onclick="showTab(1)">
+            <input type="checkbox" id="progress-1" class="tab-checkbox" onchange="toggleTabComplete(1)">
+            <span class="tab-label">Introduction & Research Designs</span>
+        </button>
+        <button class="tab-button" onclick="showTab(2)">
+            <input type="checkbox" id="progress-2" class="tab-checkbox" onchange="toggleTabComplete(2)">
+            <span class="tab-label">Independent-Samples t-Test</span>
+        </button>
+        <button class="tab-button" onclick="showTab(3)">
+            <input type="checkbox" id="progress-3" class="tab-checkbox" onchange="toggleTabComplete(3)">
+            <span class="tab-label">Paired-Samples t-Test</span>
+        </button>
+        <button class="tab-button" onclick="showTab(4)">
+            <input type="checkbox" id="progress-4" class="tab-checkbox" onchange="toggleTabComplete(4)">
+            <span class="tab-label">Effect Sizes & Assumptions</span>
+        </button>
+        <button class="tab-button" onclick="showTab(5)">
+            <input type="checkbox" id="progress-5" class="tab-checkbox" onchange="toggleTabComplete(5)">
+            <span class="tab-label">Application & Summary</span>
+        </button>
+    </div>
+    
+    <div class="tab-content">
+        <div id="tab-1" class="tab-panel active">
 
 ## Part 1: Introduction to Comparing Two Means
 
@@ -299,7 +311,32 @@ Do you have the same people measured twice?
   </details>
 </div>
 
----
+            <!-- Bottom Navigation -->
+            <div class="tab-navigation bottom-nav">
+                <button class="tab-button active" onclick="showTab(1)">
+                    <input type="checkbox" id="progress-1-bottom" class="tab-checkbox" onchange="toggleTabComplete(1)">
+                    <span class="tab-label">Introduction & Research Designs</span>
+                </button>
+                <button class="tab-button" onclick="showTab(2)">
+                    <input type="checkbox" id="progress-2-bottom" class="tab-checkbox" onchange="toggleTabComplete(2)">
+                    <span class="tab-label">Independent-Samples t-Test</span>
+                </button>
+                <button class="tab-button" onclick="showTab(3)">
+                    <input type="checkbox" id="progress-3-bottom" class="tab-checkbox" onchange="toggleTabComplete(3)">
+                    <span class="tab-label">Paired-Samples t-Test</span>
+                </button>
+                <button class="tab-button" onclick="showTab(4)">
+                    <input type="checkbox" id="progress-4-bottom" class="tab-checkbox" onchange="toggleTabComplete(4)">
+                    <span class="tab-label">Effect Sizes & Assumptions</span>
+                </button>
+                <button class="tab-button" onclick="showTab(5)">
+                    <input type="checkbox" id="progress-5-bottom" class="tab-checkbox" onchange="toggleTabComplete(5)">
+                    <span class="tab-label">Application & Summary</span>
+                </button>
+            </div>
+        </div>
+
+        <div id="tab-2" class="tab-panel">
 
 ## Part 3: The Independent-Samples t-Test
 
@@ -529,7 +566,32 @@ For a one-tailed test:
   </details>
 </div>
 
----
+            <!-- Bottom Navigation -->
+            <div class="tab-navigation bottom-nav">
+                <button class="tab-button" onclick="showTab(1)">
+                    <input type="checkbox" id="progress-1-bottom" class="tab-checkbox" onchange="toggleTabComplete(1)">
+                    <span class="tab-label">Introduction & Research Designs</span>
+                </button>
+                <button class="tab-button active" onclick="showTab(2)">
+                    <input type="checkbox" id="progress-2-bottom" class="tab-checkbox" onchange="toggleTabComplete(2)">
+                    <span class="tab-label">Independent-Samples t-Test</span>
+                </button>
+                <button class="tab-button" onclick="showTab(3)">
+                    <input type="checkbox" id="progress-3-bottom" class="tab-checkbox" onchange="toggleTabComplete(3)">
+                    <span class="tab-label">Paired-Samples t-Test</span>
+                </button>
+                <button class="tab-button" onclick="showTab(4)">
+                    <input type="checkbox" id="progress-4-bottom" class="tab-checkbox" onchange="toggleTabComplete(4)">
+                    <span class="tab-label">Effect Sizes & Assumptions</span>
+                </button>
+                <button class="tab-button" onclick="showTab(5)">
+                    <input type="checkbox" id="progress-5-bottom" class="tab-checkbox" onchange="toggleTabComplete(5)">
+                    <span class="tab-label">Application & Summary</span>
+                </button>
+            </div>
+        </div>
+
+        <div id="tab-3" class="tab-panel">
 
 ## Part 4: The Paired-Samples t-Test
 
@@ -555,6 +617,7 @@ The paired-samples t-test is clever because it transforms a two-sample problem b
 - Or: Difference = Score_ConditionA - Score_ConditionB
 
 > **💡 Important:** The order matters! If Difference = Time2 - Time1:
+>
 > - **Positive difference** means Time2 scores are higher
 > - **Negative difference** means Time2 scores are lower (Time1 was higher)
 >
@@ -1040,7 +1103,32 @@ Equal variances not assumed 2.089  41.2  .043          5.2
   </details>
 </div>
 
----
+            <!-- Bottom Navigation -->
+            <div class="tab-navigation bottom-nav">
+                <button class="tab-button" onclick="showTab(1)">
+                    <input type="checkbox" id="progress-1-bottom" class="tab-checkbox" onchange="toggleTabComplete(1)">
+                    <span class="tab-label">Introduction & Research Designs</span>
+                </button>
+                <button class="tab-button" onclick="showTab(2)">
+                    <input type="checkbox" id="progress-2-bottom" class="tab-checkbox" onchange="toggleTabComplete(2)">
+                    <span class="tab-label">Independent-Samples t-Test</span>
+                </button>
+                <button class="tab-button active" onclick="showTab(3)">
+                    <input type="checkbox" id="progress-3-bottom" class="tab-checkbox" onchange="toggleTabComplete(3)">
+                    <span class="tab-label">Paired-Samples t-Test</span>
+                </button>
+                <button class="tab-button" onclick="showTab(4)">
+                    <input type="checkbox" id="progress-4-bottom" class="tab-checkbox" onchange="toggleTabComplete(4)">
+                    <span class="tab-label">Effect Sizes & Assumptions</span>
+                </button>
+                <button class="tab-button" onclick="showTab(5)">
+                    <input type="checkbox" id="progress-5-bottom" class="tab-checkbox" onchange="toggleTabComplete(5)">
+                    <span class="tab-label">Application & Summary</span>
+                </button>
+            </div>
+        </div>
+
+        <div id="tab-4" class="tab-panel">
 
 ## Part 6: Effect Sizes for Comparing Means
 
@@ -1622,7 +1710,32 @@ Effect sizes help us judge **practical significance**:
   </details>
 </div>
 
----
+            <!-- Bottom Navigation -->
+            <div class="tab-navigation bottom-nav">
+                <button class="tab-button" onclick="showTab(1)">
+                    <input type="checkbox" id="progress-1-bottom" class="tab-checkbox" onchange="toggleTabComplete(1)">
+                    <span class="tab-label">Introduction & Research Designs</span>
+                </button>
+                <button class="tab-button" onclick="showTab(2)">
+                    <input type="checkbox" id="progress-2-bottom" class="tab-checkbox" onchange="toggleTabComplete(2)">
+                    <span class="tab-label">Independent-Samples t-Test</span>
+                </button>
+                <button class="tab-button" onclick="showTab(3)">
+                    <input type="checkbox" id="progress-3-bottom" class="tab-checkbox" onchange="toggleTabComplete(3)">
+                    <span class="tab-label">Paired-Samples t-Test</span>
+                </button>
+                <button class="tab-button active" onclick="showTab(4)">
+                    <input type="checkbox" id="progress-4-bottom" class="tab-checkbox" onchange="toggleTabComplete(4)">
+                    <span class="tab-label">Effect Sizes & Assumptions</span>
+                </button>
+                <button class="tab-button" onclick="showTab(5)">
+                    <input type="checkbox" id="progress-5-bottom" class="tab-checkbox" onchange="toggleTabComplete(5)">
+                    <span class="tab-label">Application & Summary</span>
+                </button>
+            </div>
+        </div>
+
+        <div id="tab-5" class="tab-panel">
 
 ## Part 8: Putting It All Together
 
@@ -2091,16 +2204,17 @@ Remember: **The research design determines the statistical test, not the other w
 
 ### When to Use Each Test
 
-| Question to Ask | Answer | Test to Use |
-|----------------|--------|-------------|
-| Are the same people measured twice? | YES | Paired-Samples t-Test |
-| Are the participants meaningfully matched (twins, couples)? | YES | Paired-Samples t-Test |
-| Are there two completely different groups? | YES | Independent-Samples t-Test |
-| Do I need to check equal variances? | Independent only | Run Levene's test |
+| Question to Ask                                             | Answer           | Test to Use                |
+| ----------------------------------------------------------- | ---------------- | -------------------------- |
+| Are the same people measured twice?                         | YES              | Paired-Samples t-Test      |
+| Are the participants meaningfully matched (twins, couples)? | YES              | Paired-Samples t-Test      |
+| Are there two completely different groups?                  | YES              | Independent-Samples t-Test |
+| Do I need to check equal variances?                         | Independent only | Run Levene's test          |
 
 ### Critical Steps Checklist
 
 **For Independent-Samples:**
+
 - ☐ Verify groups are truly independent
 - ☐ Check normality for each group
 - ☐ Run Levene's test (p > .05 = equal variances)
@@ -2109,6 +2223,7 @@ Remember: **The research design determines the statistical test, not the other w
 - ☐ Report: groups, means, SDs, t, df, p, d
 
 **For Paired-Samples:**
+
 - ☐ Verify data is paired correctly
 - ☐ Calculate difference scores
 - ☐ Check normality of difference scores
@@ -2119,10 +2234,10 @@ Remember: **The research design determines the statistical test, not the other w
 ### Effect Size Interpretation
 
 | Cohen's d | Interpretation |
-|-----------|----------------|
-| 0.2 | Small effect |
-| 0.5 | Medium effect |
-| 0.8 | Large effect |
+| --------- | -------------- |
+| 0.2       | Small effect   |
+| 0.5       | Medium effect  |
+| 0.8       | Large effect   |
 
 ---
 
@@ -2357,6 +2472,180 @@ Remember: **The research design determines the statistical test, not the other w
   </details>
 </div>
 
+            <!-- Bottom Navigation -->
+            <div class="tab-navigation bottom-nav">
+                <button class="tab-button" onclick="showTab(1)">
+                    <input type="checkbox" id="progress-1-bottom" class="tab-checkbox" onchange="toggleTabComplete(1)">
+                    <span class="tab-label">Introduction & Research Designs</span>
+                </button>
+                <button class="tab-button" onclick="showTab(2)">
+                    <input type="checkbox" id="progress-2-bottom" class="tab-checkbox" onchange="toggleTabComplete(2)">
+                    <span class="tab-label">Independent-Samples t-Test</span>
+                </button>
+                <button class="tab-button" onclick="showTab(3)">
+                    <input type="checkbox" id="progress-3-bottom" class="tab-checkbox" onchange="toggleTabComplete(3)">
+                    <span class="tab-label">Paired-Samples t-Test</span>
+                </button>
+                <button class="tab-button" onclick="showTab(4)">
+                    <input type="checkbox" id="progress-4-bottom" class="tab-checkbox" onchange="toggleTabComplete(4)">
+                    <span class="tab-label">Effect Sizes & Assumptions</span>
+                </button>
+                <button class="tab-button active" onclick="showTab(5)">
+                    <input type="checkbox" id="progress-5-bottom" class="tab-checkbox" onchange="toggleTabComplete(5)">
+                    <span class="tab-label">Application & Summary</span>
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
 ---
 
 _This module provides a comprehensive foundation for understanding and applying t-tests for comparing two means. Practice with real data and always remember that statistical analysis begins with understanding your research design._
+
+<script>
+// Progress tracking storage key
+const PROGRESS_KEY = 'm3-lecture-progress';
+
+// Load saved progress on page load
+function loadProgress() {
+    const savedProgress = localStorage.getItem(PROGRESS_KEY);
+    if (savedProgress) {
+        const progress = JSON.parse(savedProgress);
+        // Update all checkboxes based on saved progress
+        for (let i = 1; i <= 5; i++) {
+            const isComplete = progress[i] || false;
+            document.getElementById(`progress-${i}`).checked = isComplete;
+            document.getElementById(`progress-${i}-bottom`).checked = isComplete;
+            updateTabVisualState(i, isComplete);
+        }
+    }
+}
+
+// Save progress to localStorage
+function saveProgress(tabNumber, isComplete) {
+    const savedProgress = localStorage.getItem(PROGRESS_KEY);
+    const progress = savedProgress ? JSON.parse(savedProgress) : {};
+    progress[tabNumber] = isComplete;
+    localStorage.setItem(PROGRESS_KEY, JSON.stringify(progress));
+}
+
+// Toggle tab completion state
+function toggleTabComplete(tabNumber) {
+    // Determine which checkbox was clicked (top or bottom)
+    const clickedCheckbox = event.target;
+    const isComplete = clickedCheckbox.checked;
+    
+    // Update both top and bottom checkboxes to stay in sync
+    document.getElementById(`progress-${tabNumber}`).checked = isComplete;
+    document.getElementById(`progress-${tabNumber}-bottom`).checked = isComplete;
+    
+    // Update visual state
+    updateTabVisualState(tabNumber, isComplete);
+    
+    // Save to localStorage
+    saveProgress(tabNumber, isComplete);
+}
+
+// Update visual state of tab buttons when completed
+function updateTabVisualState(tabNumber, isComplete) {
+    // Update all tab buttons for this tab (top and bottom)
+    const tabButtons = document.querySelectorAll(`button[onclick="showTab(${tabNumber})"]`);
+    tabButtons.forEach(button => {
+        if (isComplete) {
+            button.classList.add('completed');
+        } else {
+            button.classList.remove('completed');
+        }
+    });
+}
+
+// Main tab switching function
+function showTab(tabNumber) {
+    // Hide all panels
+    const panels = document.querySelectorAll('.tab-panel');
+    panels.forEach(panel => panel.classList.remove('active'));
+    
+    // Remove active from all buttons
+    const buttons = document.querySelectorAll('.tab-button');
+    buttons.forEach(button => button.classList.remove('active'));
+    
+    // Show selected panel and activate button
+    document.getElementById(`tab-${tabNumber}`).classList.add('active');
+    
+    // Activate the button that was clicked (could be top or bottom)
+    event.target.classList.add('active');
+    
+    // Scroll to top of the tab navigation for better UX
+    const tabContainer = document.querySelector('.lecture-tabs');
+    if (tabContainer) {
+        tabContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+}
+
+// Knowledge Check functionality
+const KC_STORAGE_KEY = 'm3-knowledge-checks';
+
+// Load answered questions on page load
+function loadKnowledgeCheckProgress() {
+    const savedProgress = localStorage.getItem(KC_STORAGE_KEY);
+    if (savedProgress) {
+        const answeredQuestions = JSON.parse(savedProgress);
+        answeredQuestions.forEach(questionId => {
+            markQuestionAsAnswered(questionId, false);
+        });
+    }
+}
+
+// Save answered question to localStorage
+function saveAnsweredQuestion(questionId) {
+    const savedProgress = localStorage.getItem(KC_STORAGE_KEY);
+    const answeredQuestions = savedProgress ? JSON.parse(savedProgress) : [];
+    
+    if (!answeredQuestions.includes(questionId)) {
+        answeredQuestions.push(questionId);
+        localStorage.setItem(KC_STORAGE_KEY, JSON.stringify(answeredQuestions));
+    }
+}
+
+// Reveal answer for a question
+function revealAnswer(questionId) {
+    const questionItem = document.querySelector(`[data-question-id="${questionId}"]`);
+    const answerDiv = questionItem.querySelector('.answer-reveal');
+    const button = questionItem.querySelector('.reveal-answer-btn');
+    
+    // Show the answer
+    answerDiv.style.display = 'block';
+    
+    // Mark as answered
+    markQuestionAsAnswered(questionId, true);
+}
+
+// Mark question as answered (visually and in storage)
+function markQuestionAsAnswered(questionId, saveToStorage) {
+    const questionItem = document.querySelector(`[data-question-id="${questionId}"]`);
+    if (!questionItem) return;
+    
+    const answerDiv = questionItem.querySelector('.answer-reveal');
+    const button = questionItem.querySelector('.reveal-answer-btn');
+    
+    // Update visual state
+    questionItem.classList.add('answered');
+    button.classList.add('answered');
+    button.textContent = 'Answer Shown ✓';
+    answerDiv.style.display = 'block';
+    
+    // Save to storage if requested
+    if (saveToStorage) {
+        saveAnsweredQuestion(questionId);
+    }
+}
+
+// Load progress when page loads
+document.addEventListener('DOMContentLoaded', function() {
+    loadProgress();
+    loadKnowledgeCheckProgress();
+});
+</script>

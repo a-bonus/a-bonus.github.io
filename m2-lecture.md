@@ -3,24 +3,26 @@ layout: lecture
 title: "Module 2: Introduction to Hypothesis Testing and the One-Sample t-Test"
 ---
 
-# Module 2: Introduction to Hypothesis Testing and the One-Sample t-Test
+<h1>Module 2: Introduction to Hypothesis Testing and the One-Sample t-Test</h1>
 
-**Estimated Study Time:** 2-3 hours
+<strong>Estimated Study Time:</strong> 2-3 hours
 
-## Learning Objectives
+<h2>Learning Objectives</h2>
 
 By the end of this module, you will be able to:
 
-1. Explain the logic and purpose of hypothesis testing
-2. Formulate null and alternative hypotheses for research questions
-3. Distinguish between one-tailed and two-tailed tests
-4. Understand and interpret p-values in the context of statistical decisions
-5. Identify and explain Type I and Type II errors
-6. Apply the Central Limit Theorem to understand sampling distributions
-7. Conduct and interpret a one-sample t-test (manually and using SPSS)
-8. Calculate and interpret effect sizes (Cohen's d)
-9. Understand the concept of statistical power and factors that influence it
-10. Report statistical results in APA format
+<ol>
+<li>Explain the logic and purpose of hypothesis testing</li>
+<li>Formulate null and alternative hypotheses for research questions</li>
+<li>Distinguish between one-tailed and two-tailed tests</li>
+<li>Understand and interpret p-values in the context of statistical decisions</li>
+<li>Identify and explain Type I and Type II errors</li>
+<li>Apply the Central Limit Theorem to understand sampling distributions</li>
+<li>Conduct and interpret a one-sample t-test (manually and using SPSS)</li>
+<li>Calculate and interpret effect sizes (Cohen's d)</li>
+<li>Understand the concept of statistical power and factors that influence it</li>
+<li>Report statistical results in APA format</li>
+</ol>
 
 ---
 
@@ -51,145 +53,157 @@ By the end of this module, you will be able to:
     <div class="tab-content">
         <div id="tab-1" class="tab-panel active">
 
-## Part 1: The Logic of Hypothesis Testing
+<h2>Part 1: The Logic of Hypothesis Testing</h2>
 
-### From Description to Inference
+<h3>From Description to Inference</h3>
 
-In Module 1, you learned to **describe** data using means, standard deviations, and graphs. Now we take the crucial next step: using sample data to make **inferences** about populations.
+In Module 1, you learned to <strong>describe</strong> data using means, standard deviations, and graphs. Now we take the crucial next step: using sample data to make <strong>inferences</strong> about populations.
 
-**The Central Challenge:** We can't study everyone, so we study a sample. But how do we know if what we observe in our sample reflects a real pattern in the population, or is just random chance?
+<strong>The Central Challenge:</strong> We can't study everyone, so we study a sample. But how do we know if what we observe in our sample reflects a real pattern in the population, or is just random chance?
 
-**The Solution:** Hypothesis testing—a systematic method for distinguishing signal from noise.
+<strong>The Solution:</strong> Hypothesis testing—a systematic method for distinguishing signal from noise.
 
-### The Courtroom Analogy
+<h3>The Courtroom Analogy</h3>
 
 Hypothesis testing works like a legal trial. This analogy is powerful and worth understanding deeply.
 
-**In a Courtroom:**
+<strong>In a Courtroom:</strong>
 
-- **Presumption of Innocence:** The defendant is assumed innocent until proven guilty
-- **Burden of Proof:** The prosecution must provide strong evidence of guilt
-- **Standard of Proof:** "Beyond a reasonable doubt"
-- **Decision:** If evidence is overwhelming, we reject innocence and conclude guilt. If evidence is weak, we maintain the presumption of innocence (we don't declare the person "innocent," just "not proven guilty")
+<ul>
+<li><strong>Presumption of Innocence:</strong> The defendant is assumed innocent until proven guilty</li>
+<li><strong>Burden of Proof:</strong> The prosecution must provide strong evidence of guilt</li>
+<li><strong>Standard of Proof:</strong> "Beyond a reasonable doubt"</li>
+<li><strong>Decision:</strong> If evidence is overwhelming, we reject innocence and conclude guilt. If evidence is weak, we maintain the presumption of innocence (we don't declare the person "innocent," just "not proven guilty")</li>
+</ul>
 
-**In Hypothesis Testing:**
+<strong>In Hypothesis Testing:</strong>
 
-- **Null Hypothesis (H₀):** We assume "nothing special is happening" (like presuming innocence)
-- **Burden of Proof:** Our data must provide strong evidence against this assumption
-- **Standard of Proof:** p < .05 (less than 5% probability the result is due to chance)
-- **Decision:** If evidence is strong (p < .05), we reject H₀ and conclude there IS an effect. If evidence is weak (p ≥ .05), we maintain H₀ (we don't "prove" H₀, just fail to find evidence against it)
+<ul>
+<li><strong>Null Hypothesis (H₀):</strong> We assume "nothing special is happening" (like presuming innocence)</li>
+<li><strong>Burden of Proof:</strong> Our data must provide strong evidence against this assumption</li>
+<li><strong>Standard of Proof:</strong> p < .05 (less than 5% probability the result is due to chance)</li>
+<li><strong>Decision:</strong> If evidence is strong (p < .05), we reject H₀ and conclude there IS an effect. If evidence is weak (p ≥ .05), we maintain H₀ (we don't "prove" H₀, just fail to find evidence against it)</li>
+</ul>
 
-**Key Concept:** We never "prove" anything in statistics. We only collect evidence strong enough to reject the null hypothesis, or fail to do so.
+<strong>Key Concept:</strong> We never "prove" anything in statistics. We only collect evidence strong enough to reject the null hypothesis, or fail to do so.
 
-### Why This Backward Logic?
+<h3>Why This Backward Logic?</h3>
 
-**Why not just test our research hypothesis directly?**
+<strong>Why not just test our research hypothesis directly?</strong>
 
 Because we can never observe all possible outcomes. Consider:
 
-**Direct Approach (doesn't work):** "Does this drug improve memory?"
+<strong>Direct Approach (doesn't work):</strong> "Does this drug improve memory?"
 
-- To prove this directly, we'd need to test every possible person, under every possible condition, forever
-- Impossible!
+<ul>
+<li>To prove this directly, we'd need to test every possible person, under every possible condition, forever</li>
+<li>Impossible!</li>
+</ul>
 
-**Indirect Approach (hypothesis testing):** "Assume the drug does nothing. How likely is it we'd see results this good by chance alone?"
+<strong>Indirect Approach (hypothesis testing):</strong> "Assume the drug does nothing. How likely is it we'd see results this good by chance alone?"
 
-- If the probability is very low (p < .05), the "does nothing" assumption is probably wrong
-- We reject that assumption and conclude the drug likely works
+<ul>
+<li>If the probability is very low (p < .05), the "does nothing" assumption is probably wrong</li>
+<li>We reject that assumption and conclude the drug likely works</li>
+</ul>
 
-**Think of it like proof by contradiction in mathematics:** To prove X is true, assume X is false and show that leads to an impossible or highly unlikely situation. Therefore, X must be true.
+<strong>Think of it like proof by contradiction in mathematics:</strong> To prove X is true, assume X is false and show that leads to an impossible or highly unlikely situation. Therefore, X must be true.
 
-### The Hypothesis Testing Process: Overview
+<h3>The Hypothesis Testing Process: Overview</h3>
 
 Here's the big picture before we dive into details:
 
-1. **Start with a research question**
+1. <strong>Start with a research question</strong>
 
    - Example: "Does meditation reduce anxiety?"
 
-2. **Formulate hypotheses**
+2. <strong>Formulate hypotheses</strong>
 
    - H₀ (Null): Meditation has no effect on anxiety (μ = population mean)
    - H₁ (Alternative): Meditation does affect anxiety (μ ≠ population mean)
 
-3. **Set decision criteria**
+3. <strong>Set decision criteria</strong>
 
    - Alpha level: Usually α = .05
 
-4. **Collect data**
+4. <strong>Collect data</strong>
 
    - Sample of people who meditate regularly
 
-5. **Calculate a test statistic**
+5. <strong>Calculate a test statistic</strong>
 
    - Measures how far your sample result is from what H₀ predicts
 
-6. **Determine probability (p-value)**
+6. <strong>Determine probability (p-value)</strong>
 
    - If H₀ were true, how likely would we see a result this extreme?
 
-7. **Make a decision**
+7. <strong>Make a decision</strong>
 
    - If p < .05: Reject H₀ (conclude meditation likely works)
    - If p ≥ .05: Fail to reject H₀ (insufficient evidence)
 
-8. **Interpret in context**
+8. <strong>Interpret in context</strong>
    - Translate statistical decision back into meaningful conclusion
 
-### Real-World Example
+<h3>Real-World Example</h3>
 
-**Scenario:** A school psychologist believes a new reading program improves comprehension.
+<strong>Scenario:</strong> A school psychologist believes a new reading program improves comprehension.
 
-**What We Know:**
+<strong>What We Know:</strong>
 
-- National average reading score: μ = 100, σ = 15
-- Our sample of 25 students using the new program: M = 107
+<ul>
+<li>National average reading score: μ = 100, σ = 15</li>
+<li>Our sample of 25 students using the new program: M = 107</li>
+</ul>
 
-**The Question:** Is 107 significantly higher than 100, or could this difference be just random sampling variation?
+<strong>The Question:</strong> Is 107 significantly higher than 100, or could this difference be just random sampling variation?
 
-**Hypothesis Testing Answers This:**
+<strong>Hypothesis Testing Answers This:</strong>
 
 1. H₀: The program doesn't work (students are just a random sample from the population where μ = 100)
 2. H₁: The program does work (students come from a different population where μ > 100)
 3. Calculate: How unlikely is it to get M = 107 from a population where μ = 100?
 4. Result: If probability is < 5%, we conclude the program likely works
 
-**Why This Matters:** Without hypothesis testing, we couldn't distinguish:
+<strong>Why This Matters:</strong> Without hypothesis testing, we couldn't distinguish:
 
-- Real improvements from natural variation
-- Effective treatments from placebos
-- Meaningful differences from random noise
+<ul>
+<li>Real improvements from natural variation</li>
+<li>Effective treatments from placebos</li>
+<li>Meaningful differences from random noise</li>
+</ul>
 
-### Common Misconceptions
+<h3>Common Misconceptions</h3>
 
-❌ **Misconception:** "If p < .05, we've proven our theory is true"
-✓ **Reality:** We've only shown the null hypothesis is unlikely. Our theory is supported, not proven.
+❌ <strong>Misconception:</strong> "If p < .05, we've proven our theory is true"
+✓ <strong>Reality:</strong> We've only shown the null hypothesis is unlikely. Our theory is supported, not proven.
 
-❌ **Misconception:** "If p > .05, we've proven there's no effect"
-✓ **Reality:** We failed to find evidence of an effect. Maybe it doesn't exist, or maybe our sample was too small to detect it.
+❌ <strong>Misconception:</strong> "If p > .05, we've proven there's no effect"
+✓ <strong>Reality:</strong> We failed to find evidence of an effect. Maybe it doesn't exist, or maybe our sample was too small to detect it.
 
-❌ **Misconception:** "p-value tells us the probability our hypothesis is true"
-✓ **Reality:** p-value tells us the probability of getting our data IF the null hypothesis is true.
+❌ <strong>Misconception:</strong> "p-value tells us the probability our hypothesis is true"
+✓ <strong>Reality:</strong> p-value tells us the probability of getting our data IF the null hypothesis is true.
 
-**Think About It:** Why is the distinction between "failing to find evidence" and "finding evidence of no effect" important? (Hint: absence of evidence is not evidence of absence!)
+<strong>Think About It:</strong> Why is the distinction between "failing to find evidence" and "finding evidence of no effect" important? (Hint: absence of evidence is not evidence of absence!)
 
 ---
 
-## Part 2: Formulating Hypotheses
+<h2>Part 2: Formulating Hypotheses</h2>
 
 Every hypothesis test requires two competing hypotheses: the null (H₀) and the alternative (H₁ or Hₐ).
 
-### The Null Hypothesis (H₀)
+<h3>The Null Hypothesis (H₀)</h3>
 
-**Definition:** A statement of "no effect," "no difference," or "no relationship." It represents the status quo or what we'd expect if nothing special is happening.
+<strong>Definition:</strong> A statement of "no effect," "no difference," or "no relationship." It represents the status quo or what we'd expect if nothing special is happening.
 
-**Key Characteristics:**
+<strong>Key Characteristics:</strong>
 
 - Always includes an equals sign (=, ≤, or ≥)
 - Represents the assumption we're trying to disprove
 - The hypothesis we "presume true" until proven otherwise
 
-**Examples:**
+<strong>Examples:</strong>
 
 | Research Context                | Null Hypothesis                                                     |
 | :------------------------------ | :------------------------------------------------------------------ |
@@ -198,11 +212,11 @@ Every hypothesis test requires two competing hypotheses: the null (H₀) and the
 | Teaching method comparison      | H₀: The new method produces the same scores as traditional (μ = 75) |
 | Gender and salary               | H₀: There is no gender difference in salary (μ_male = μ_female)     |
 
-### The Alternative Hypothesis (H₁ or Hₐ)
+<h3>The Alternative Hypothesis (H₁ or Hₐ)</h3>
 
-**Definition:** The research hypothesis—what you actually believe or predict. It represents "something special is happening."
+<strong>Definition:</strong> The research hypothesis—what you actually believe or predict. It represents "something special is happening."
 
-**Key Characteristics:**
+<strong>Key Characteristics:</strong>
 
 - Never includes an equals sign (uses ≠, <, or >)
 - Represents what you're trying to find evidence for
@@ -217,17 +231,17 @@ Every hypothesis test requires two competing hypotheses: the null (H₀) and the
 | Teaching method comparison      | H₁: The new method produces different scores (μ ≠ 75)          |
 | Gender and salary               | H₁: There is a gender difference in salary (μ_male ≠ μ_female) |
 
-### Directional vs. Non-Directional Hypotheses
+<h3>Directional vs. Non-Directional Hypotheses</h3>
 
 This is one of the most important decisions in hypothesis testing.
 
-#### Non-Directional (Two-Tailed) Hypotheses
+<h4>Non-Directional (Two-Tailed) Hypotheses</h4>
 
 **Used when:** You predict a difference or effect but **not which direction**
 
 **Symbols:** H₁: μ ≠ [value]
 
-**Examples:**
+<strong>Examples:</strong>
 
 - "Does caffeine affect reaction time?" (could make it faster OR slower)
 - "Is the average age of psychology majors different from 20?" (could be higher OR lower)
@@ -235,7 +249,7 @@ This is one of the most important decisions in hypothesis testing.
 
 **Why two-tailed?** You're looking for extreme results in BOTH directions (both tails of the distribution)
 
-#### Directional (One-Tailed) Hypotheses
+<h4>Directional (One-Tailed) Hypotheses</h4>
 
 **Used when:** You predict a **specific direction** of difference or effect
 
@@ -244,7 +258,7 @@ This is one of the most important decisions in hypothesis testing.
 - H₁: μ > [value] (predicting an increase)
 - H₁: μ < [value] (predicting a decrease)
 
-**Examples:**
+<strong>Examples:</strong>
 
 - "Does this anti-anxiety medication reduce anxiety?" (specifically predicts decrease)
 - "Are basketball players taller than average?" (specifically predicts increase)
@@ -252,7 +266,7 @@ This is one of the most important decisions in hypothesis testing.
 
 **Why one-tailed?** You're only looking for extreme results in ONE direction (one tail of the distribution)
 
-### How to Choose: Decision Tree
+<h3>How to Choose: Decision Tree</h3>
 
 **Ask yourself:** Does my research question predict a specific direction?
 
@@ -276,7 +290,7 @@ Research Question
 
 > **⚠️ CRITICAL WARNING:** You MUST decide whether to use a one-tailed or two-tailed test BEFORE collecting or looking at your data. Switching from two-tailed to one-tailed after seeing your results is called **p-hacking** and invalidates your statistical inference. This inflates your Type I error rate and is considered research misconduct.
 
-### Practice: Writing Hypotheses
+<h3>Practice: Writing Hypotheses</h3>
 
 For each research question, write H₀ and H₁, and indicate whether you'd use a one-tailed or two-tailed test.
 
@@ -320,7 +334,7 @@ For each research question, write H₀ and H₁, and indicate whether you'd use 
 - **H₁:** μ ≠ 100 (chess champions differ from average)
 </details>
 
-### Common Mistakes in Hypothesis Formulation
+<h3>Common Mistakes in Hypothesis Formulation</h3>
 
 ❌ **Mistake 1:** Making H₀ the research hypothesis
 
@@ -341,7 +355,7 @@ For each research question, write H₀ and H₁, and indicate whether you'd use 
 - Wrong: H₁: μ = 105 (this is too specific; we don't know the exact value)
 - Right: H₁: μ > 100 (we predict it's greater, but not a specific value)
 
-**Key Concept:** The null hypothesis always represents the "boring" or "no effect" outcome. The alternative represents the "interesting" or "something is happening" outcome.
+<strong>Key Concept:</strong> The null hypothesis always represents the "boring" or "no effect" outcome. The alternative represents the "interesting" or "something is happening" outcome.
 
 <div class="knowledge-check">
   <h4>🧠 Knowledge Check: Selecting the Appropriate Test</h4>
@@ -490,15 +504,15 @@ For each research question, write H₀ and H₁, and indicate whether you'd use 
 
         <div id="tab-2" class="tab-panel">
 
-## Part 3: The Decision-Making Framework
+<h2>Part 3: The Decision-Making Framework</h2>
 
 Once we've formulated hypotheses and collected data, we need a systematic way to decide which hypothesis the evidence supports.
 
-### Understanding p-Values
+<h3>Understanding p-Values</h3>
 
 The **p-value** is the most important concept in hypothesis testing—and also the most misunderstood.
 
-**Definition:** The probability of obtaining a result as extreme as (or more extreme than) the one observed, **assuming the null hypothesis is true**.
+<strong>Definition:</strong> The probability of obtaining a result as extreme as (or more extreme than) the one observed, **assuming the null hypothesis is true**.
 
 **In Plain English:** If there really is no effect (H₀ is true), how surprising would our result be? How often would random chance alone produce data this extreme?
 
@@ -530,9 +544,9 @@ We conclude #2 is more plausible.
 >
 > **Key Insight:** p-values assume H₀ is true and ask "how weird is our data?" They do NOT tell us the probability that our hypothesis is correct!
 
-### The Alpha Level (α)
+<h3>The Alpha Level (α)</h3>
 
-**Definition:** The threshold for deciding if a p-value is "small enough" to reject H₀. The maximum probability of making a Type I error we're willing to accept.
+<strong>Definition:</strong> The threshold for deciding if a p-value is "small enough" to reject H₀. The maximum probability of making a Type I error we're willing to accept.
 
 **Standard Value:** α = .05 (5%)
 
@@ -553,9 +567,9 @@ This is somewhat arbitrary! It was popularized by statistician Ronald Fisher in 
 
 **The principle:** Lower α = more conservative (harder to reject H₀) = less risk of false positives
 
-### Worked Example: Making a Decision
+<h3>Worked Example: Making a Decision</h3>
 
-**Scenario:** Testing if a new teaching method improves test scores
+<strong>Scenario:</strong> Testing if a new teaching method improves test scores
 
 **Given Information:**
 
@@ -582,7 +596,7 @@ This is somewhat arbitrary! It was popularized by statistician Ronald Fisher in 
 **Step 4: State conclusion**
 "The new teaching method produced significantly different test scores (M = 75, SD = 12) compared to the national average of 70, t(29) = 2.36, p = .025. Students using the new method scored higher than expected if the method had no effect."
 
-### Statistical Significance vs. Practical Significance
+<h3>Statistical Significance vs. Practical Significance</h3>
 
 This is a crucial distinction that students often miss.
 
@@ -610,9 +624,9 @@ This is a crucial distinction that students often miss.
 - With only 15 participants, p = .08 (not significant)
 - Six months of life is hugely important! But our sample was too small to prove it statistically.
 
-**The Solution:** Always consider BOTH statistical significance (p-value) AND effect size (how big the difference is).
+<strong>The Solution:</strong> Always consider BOTH statistical significance (p-value) AND effect size (how big the difference is).
 
-### One-Tailed vs. Two-Tailed: How p-Values Differ
+<h3>One-Tailed vs. Two-Tailed: How p-Values Differ</h3>
 
 This is where the directional vs. non-directional distinction becomes concrete.
 
@@ -771,11 +785,11 @@ This is where the directional vs. non-directional distinction becomes concrete.
 
 ---
 
-## Part 4: Understanding Errors in Hypothesis Testing
+<h2>Part 4: Understanding Errors in Hypothesis Testing</h2>
 
 Because hypothesis testing is based on probability, not certainty, we can make mistakes. Understanding these errors is crucial for interpreting research.
 
-### The Two Types of Errors
+<h3>The Two Types of Errors</h3>
 
 Every hypothesis test can result in four possible outcomes:
 
@@ -784,9 +798,9 @@ Every hypothesis test can result in four possible outcomes:
 | **Decision: Reject H₀** (Claim effect exists)                 | **TYPE I ERROR** ❌<br>False Positive<br>Probability = α       | **CORRECT DECISION** ✓<br>True Positive<br>Probability = Power |
 | **Decision: Fail to reject H₀** (Claim no evidence of effect) | **CORRECT DECISION** ✓<br>True Negative<br>Probability = 1 - α | **TYPE II ERROR** ❌<br>False Negative<br>Probability = β      |
 
-### Type I Error (False Positive)
+<h3>Type I Error (False Positive)</h3>
 
-**Definition:** Rejecting H₀ when it's actually true. Concluding there's an effect when there isn't one.
+<strong>Definition:</strong> Rejecting H₀ when it's actually true. Concluding there's an effect when there isn't one.
 
 **Probability:** α (your alpha level, usually .05)
 
@@ -818,9 +832,9 @@ Every hypothesis test can result in four possible outcomes:
 
 **Trade-off:** Being more conservative increases Type II errors
 
-### Type II Error (False Negative)
+<h3>Type II Error (False Negative)</h3>
 
-**Definition:** Failing to reject H₀ when it's actually false. Missing a real effect.
+<strong>Definition:</strong> Failing to reject H₀ when it's actually false. Missing a real effect.
 
 **Probability:** β (beta, varies based on sample size, effect size, and alpha)
 
@@ -857,7 +871,7 @@ Every hypothesis test can result in four possible outcomes:
 
 **Trade-off:** Being less conservative increases Type I errors
 
-### Balancing the Two Errors
+<h3>Balancing the Two Errors</h3>
 
 You can't eliminate both types of errors simultaneously. There's always a trade-off.
 
@@ -891,7 +905,7 @@ You can't eliminate both types of errors simultaneously. There's always a trade-
 > **Key Trade-off:** ↓ Type I → ↑ Type II (and vice versa)
 > **Solution:** Increase sample size (reduces Type II without affecting Type I)
 
-### Which Error is Worse?
+<h3>Which Error is Worse?</h3>
 
 **It depends on context!**
 
@@ -911,7 +925,7 @@ You can't eliminate both types of errors simultaneously. There's always a trade-
 
 **Strategy:** Use higher α, larger samples
 
-### Mnemonics for Remembering
+<h3>Mnemonics for Remembering</h3>
 
 **Type I Error:**
 
@@ -928,7 +942,7 @@ You can't eliminate both types of errors simultaneously. There's always a trade-
 - Type I: Test says pregnant when not (false positive)
 - Type II: Test says not pregnant when actually pregnant (false negative)
 
-### Real-World Example
+<h3>Real-World Example</h3>
 
 **Clinical Trial for Depression Medication:**
 
@@ -936,7 +950,7 @@ You can't eliminate both types of errors simultaneously. There's always a trade-
 **Result:** Average improvement of 5 points on depression scale
 **Statistical test:** p = .08
 
-**Decision:** Fail to reject H₀ (p > .05)
+<strong>Decision:</strong> Fail to reject H₀ (p > .05)
 **Conclusion:** No significant evidence the drug works
 
 **But what if:**
@@ -957,7 +971,7 @@ You can't eliminate both types of errors simultaneously. There's always a trade-
 - Look at effect size (is 5 points clinically meaningful?)
 - Don't rely on a single study
 
-### Quick Check
+<h3>Quick Check</h3>
 
 1. What type of error do you make if you reject H₀ but it's actually true?
 2. How does increasing sample size affect Type II error?
@@ -1000,11 +1014,11 @@ You can't eliminate both types of errors simultaneously. There's always a trade-
 
             <div id="tab-3" class="tab-panel">
 
-## Part 5: The Central Limit Theorem
+<h2>Part 5: The Central Limit Theorem</h2>
 
 The Central Limit Theorem (CLT) is one of the most important concepts in statistics. It's the "magic" that makes hypothesis testing work.
 
-### The Problem It Solves
+<h3>The Problem It Solves</h3>
 
 **Challenge:** Many populations in the real world aren't normally distributed.
 
@@ -1016,7 +1030,7 @@ The Central Limit Theorem (CLT) is one of the most important concepts in statist
 
 **Solution:** The Central Limit Theorem!
 
-### What the CLT States
+<h3>What the CLT States</h3>
 
 **Formal Statement:** If you take many random samples of size n from ANY population (regardless of the population's shape) and calculate the mean of each sample, the distribution of those sample means will be approximately normal—especially as sample size increases.
 
@@ -1030,7 +1044,7 @@ The Central Limit Theorem (CLT) is one of the most important concepts in statist
 
 **The Bigger the Sample:** The more perfectly normal the distribution of sample means becomes.
 
-### Why This is Magical
+<h3>Why This is Magical</h3>
 
 **It means:**
 
@@ -1040,7 +1054,7 @@ The Central Limit Theorem (CLT) is one of the most important concepts in statist
 
 **Practical Implication:** This is why the t-test and other tests work even when populations aren't perfectly normal. We're comparing means, and the distribution of means is (nearly) always normal!
 
-### Visual Example
+<h3>Visual Example</h3>
 
 **Starting Population:** Highly skewed (like income)
 
@@ -1062,7 +1076,7 @@ The Central Limit Theorem (CLT) is one of the most important concepts in statist
 - Center: Near the true population mean
 - Spread: Much narrower than the original population
 
-### Key Properties
+<h3>Key Properties</h3>
 
 **1. The mean of the sampling distribution equals the population mean**
 
@@ -1082,7 +1096,7 @@ Sample means vary less than individual scores. Larger samples have even less var
 - n ≥ 100: Very close to perfect normal
 - For populations already normal: Works even with small n
 
-### Standard Error: The Variability of Means
+<h3>Standard Error: The Variability of Means</h3>
 
 **Standard Deviation (σ or s):** Measures how much individual scores vary around the population/sample mean
 
@@ -1168,7 +1182,7 @@ z = (M - μ) / SE = (520 - 500) / 18 = 20 / 18 = 1.11
 
 **The CLT in Action:** Even though the population is skewed, we could use the normal distribution to evaluate our sample mean because the sampling distribution of means is normal!
 
-### Quick Check
+<h3>Quick Check</h3>
 
 1. What does the Central Limit Theorem tell us about the distribution of sample means?
 2. How does increasing sample size affect standard error?
@@ -1186,7 +1200,7 @@ z = (M - μ) / SE = (520 - 500) / 18 = 20 / 18 = 1.11
 
 ---
 
-## Part 6: The One-Sample t-Test
+<h2>Part 6: The One-Sample t-Test</h2>
 
 Now we put everything together into our first formal hypothesis test!
 
@@ -1210,7 +1224,7 @@ Now we put everything together into our first formal hypothesis test!
 - You want to know if your sample is different from that population
 - You DON'T know the population standard deviation (σ)
 
-**Examples:**
+<strong>Examples:</strong>
 
 - Do students at your university sleep less than the national average of 8 hours?
 - Is the average IQ of chess players different from 100?
@@ -1282,7 +1296,7 @@ t = (M - μ) / SE = (M - μ) / (s / √n)
 
 #### Step 7: Make Decision and State Conclusion
 
-**Decision:**
+<strong>Decision:</strong>
 
 - If p < α: Reject H₀ (significant result)
 - If p ≥ α: Fail to reject H₀ (non-significant result)
@@ -1362,7 +1376,7 @@ This is a **small to medium effect** (between 0.2 and 0.5), meaning:
 
 ### Manual Calculation Practice
 
-**Scenario:** National average depression score is μ = 30. A sample of 16 therapy patients has M = 25, s = 8. Test if therapy patients score differently from the national average.
+<strong>Scenario:</strong> National average depression score is μ = 30. A sample of 16 therapy patients has M = 25, s = 8. Test if therapy patients score differently from the national average.
 
 **Your turn! Work through all 7 steps.**
 
@@ -1535,7 +1549,7 @@ Statistical significance tells you IF there's an effect. Effect size tells you H
 
 ### Cohen's d: The Most Common Effect Size
 
-**Definition:** Cohen's d measures the standardized difference between a sample mean and population mean (or between two means).
+<strong>Definition:</strong> Cohen's d measures the standardized difference between a sample mean and population mean (or between two means).
 
 **For One-Sample t-Test:**
 
@@ -1655,7 +1669,7 @@ Jacob Cohen proposed rough guidelines for interpreting d:
 **Format:**
 "[Group description], M = [mean], SD = [standard deviation], [comparison description], t([df]) = [t-value], p = [p-value], d = [Cohen's d]."
 
-**Examples:**
+<strong>Examples:</strong>
 
 **Example 1:**
 "Participants who meditated regularly (M = 45, SD = 12) reported significantly lower stress than the general population mean of 50, t(24) = -2.08, p = .012, d = 0.42."
@@ -1728,7 +1742,7 @@ Jacob Cohen proposed rough guidelines for interpreting d:
 - **Interpret in context:** Don't just report numbers; explain what they mean
 - **Be honest about limitations:** Mention if sample was small, not randomized, etc.
 
-### Quick Check
+<h3>Quick Check</h3>
 
 1. Why is effect size important beyond just p-values?
 2. Calculate Cohen's d: M = 85, μ = 75, s = 20
@@ -1907,7 +1921,7 @@ Power is your study's ability to detect a real effect when one exists. Understan
 
 ### What is Statistical Power?
 
-**Definition:** The probability of correctly rejecting a false null hypothesis (detecting a real effect when it exists).
+<strong>Definition:</strong> The probability of correctly rejecting a false null hypothesis (detecting a real effect when it exists).
 
 **In the Error Matrix:**
 
@@ -2124,7 +2138,7 @@ Power is your study's ability to detect a real effect when one exists. Understan
 - Aim for power ≥ .80
 - If you can't achieve adequate power, reconsider the study design
 
-### Quick Check
+<h3>Quick Check</h3>
 
 1. What does power = .70 mean?
 2. What's the easiest way to increase statistical power?
@@ -2363,7 +2377,7 @@ t = (M - μ) / (s / √n)
 
 ### Degrees of Freedom (df)
 
-**Definition:** The number of values that are "free to vary" when calculating a statistic.
+<strong>Definition:</strong> The number of values that are "free to vary" when calculating a statistic.
 
 **For One-Sample t-Test:**
 
@@ -2404,7 +2418,7 @@ df = n - 1
 - As sample size increases, t-critical approaches z-critical
 - You need a more extreme t-value to reject H₀ with small samples
 
-**Why This Matters:** Small samples require stronger evidence (larger t-values) to reach the same significance level. This protects against Type I errors when sample information is limited.
+<strong>Why This Matters:</strong> Small samples require stronger evidence (larger t-values) to reach the same significance level. This protects against Type I errors when sample information is limited.
 
 ### Using the t-Table
 
@@ -2422,7 +2436,7 @@ df = n - 1
 - Look up df = 24, α = .05 (two-tailed)
 - Critical value = ±2.064
 
-**Decision:**
+<strong>Decision:</strong>
 
 - If |t_calculated| > 2.064: Reject H₀
 - If |t_calculated| ≤ 2.064: Fail to reject H₀
@@ -2654,7 +2668,7 @@ SPSS produces two main tables:
 
 ### Interpreting Results
 
-**Decision:**
+<strong>Decision:</strong>
 
 - p = .007
 - α = .05
@@ -2740,7 +2754,7 @@ Sometimes you need to analyze a subset of your data.
 
 ### Practice Exercise
 
-**Scenario:** You have data on reaction times (in ms) for 40 gamers. Population average for non-gamers is μ = 250 ms. Test if gamers are significantly faster.
+<strong>Scenario:</strong> You have data on reaction times (in ms) for 40 gamers. Population average for non-gamers is μ = 250 ms. Test if gamers are significantly faster.
 
 **Your Data:**
 
@@ -3075,7 +3089,7 @@ Start: Do you have a research question?
 
 ### Core Concepts
 
-**Null Hypothesis (H₀):** Statement of no effect/no difference
+<strong>Null Hypothesis (H₀):</strong> Statement of no effect/no difference
 
 **Alternative Hypothesis (H₁):** Research prediction; what you're trying to support
 
@@ -3175,7 +3189,7 @@ d = (M - μ) / s
 
 **Effect Size:** Magnitude of difference/effect, independent of sample size
 
-**Null Hypothesis (H₀):** Statement of no effect/no difference
+<strong>Null Hypothesis (H₀):</strong> Statement of no effect/no difference
 
 **One-Tailed Test:** Directional hypothesis (predicts specific direction)
 
