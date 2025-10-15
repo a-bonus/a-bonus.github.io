@@ -26,11 +26,26 @@ By the end of this module, you will be able to:
 
 <div class="lecture-tabs">
     <div class="tab-navigation">
-        <button class="tab-button active" onclick="showTab(1)">Foundations & Variables</button>
-        <button class="tab-button" onclick="showTab(2)">Descriptive Statistics</button>
-        <button class="tab-button" onclick="showTab(3)">Data Visualization</button>
-        <button class="tab-button" onclick="showTab(4)">Population & Normal Distribution</button>
-        <button class="tab-button" onclick="showTab(5)">Probability, SPSS & Summary</button>
+        <button class="tab-button active" onclick="showTab(1)">
+            <input type="checkbox" id="progress-1" class="tab-checkbox" onchange="toggleTabComplete(1)">
+            <span class="tab-label">Foundations & Variables</span>
+        </button>
+        <button class="tab-button" onclick="showTab(2)">
+            <input type="checkbox" id="progress-2" class="tab-checkbox" onchange="toggleTabComplete(2)">
+            <span class="tab-label">Descriptive Statistics</span>
+        </button>
+        <button class="tab-button" onclick="showTab(3)">
+            <input type="checkbox" id="progress-3" class="tab-checkbox" onchange="toggleTabComplete(3)">
+            <span class="tab-label">Data Visualization</span>
+        </button>
+        <button class="tab-button" onclick="showTab(4)">
+            <input type="checkbox" id="progress-4" class="tab-checkbox" onchange="toggleTabComplete(4)">
+            <span class="tab-label">Population & Normal Distribution</span>
+        </button>
+        <button class="tab-button" onclick="showTab(5)">
+            <input type="checkbox" id="progress-5" class="tab-checkbox" onchange="toggleTabComplete(5)">
+            <span class="tab-label">Probability, SPSS & Summary</span>
+        </button>
     </div>
     
     <div class="tab-content">
@@ -1096,113 +1111,156 @@ By the end of this module, you will be able to:
 
             <p>The n-1 correction gives us a better estimate of the true population standard deviation.</p>
 
-            ### Worked Example: Sample vs. Population Calculation
+            <h3>Worked Example: Sample vs. Population Calculation</h3>
 
-            **Scenario:** A researcher wants to know the average number of hours college students spend studying per week. She surveys 20 students from her statistics class.
+            <p><strong>Scenario:</strong> A researcher wants to know the average number of hours college students spend studying per week. She surveys 20 students from her statistics class.</p>
 
-            **Sample data (hours per week):**
-            8, 12, 15, 6, 10, 18, 9, 14, 7, 11, 13, 16, 5, 19, 8, 12, 14, 10, 17, 9
+            <p><strong>Sample data (hours per week):</strong><br>
+            8, 12, 15, 6, 10, 18, 9, 14, 7, 11, 13, 16, 5, 19, 8, 12, 14, 10, 17, 9</p>
 
-            **Step 1: Calculate sample statistics**
+            <p><strong>Step 1: Calculate sample statistics</strong></p>
 
-            **Sample mean (x̄):**
-            Sum = 8+12+15+6+10+18+9+14+7+11+13+16+5+19+8+12+14+10+17+9 = 232
-            x̄ = 232 ÷ 20 = 11.6 hours
+            <p><strong>Sample mean (x̄):</strong><br>
+            Sum = 8+12+15+6+10+18+9+14+7+11+13+16+5+19+8+12+14+10+17+9 = 232<br>
+            x̄ = 232 ÷ 20 = 11.6 hours</p>
 
-            **Sample standard deviation (s):**
-            Using n-1 correction:
+            <p><strong>Sample standard deviation (s):</strong><br>
+            Using n-1 correction:</p>
 
-            | Hours | (Hours - x̄) | (Hours - x̄)² |
-            |-------|--------------|---------------|
-            | 8     | 8-11.6 = -3.6 | (-3.6)² = 12.96 |
-            | 12    | 12-11.6 = 0.4 | (0.4)² = 0.16 |
-            | 15    | 15-11.6 = 3.4 | (3.4)² = 11.56 |
-            | ...   | ...         | ...           |
-            | (sum of all squared differences = 284.8) |
+            <table>
+                <tr>
+                    <th>Hours</th>
+                    <th>(Hours - x̄)</th>
+                    <th>(Hours - x̄)²</th>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>8-11.6 = -3.6</td>
+                    <td>(-3.6)² = 12.96</td>
+                </tr>
+                <tr>
+                    <td>12</td>
+                    <td>12-11.6 = 0.4</td>
+                    <td>(0.4)² = 0.16</td>
+                </tr>
+                <tr>
+                    <td>15</td>
+                    <td>15-11.6 = 3.4</td>
+                    <td>(3.4)² = 11.56</td>
+                </tr>
+                <tr>
+                    <td>...</td>
+                    <td>...</td>
+                    <td>...</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>(sum of all squared differences = 284.8)</td>
+                </tr>
+            </table>
 
-            s = √(284.8 ÷ 19) = √14.99 = 3.87 hours
+            <p>s = √(284.8 ÷ 19) = √14.99 = 3.87 hours</p>
 
-            **Step 2: Interpret in context**
+            <p><strong>Step 2: Interpret in context</strong></p>
 
-            **Sample findings:**
-            - The 20 students in our sample study an average of 11.6 hours per week
-            - Study times vary by about 3.9 hours on average from this mean
+            <p><strong>Sample findings:</strong></p>
+            <ul>
+                <li>The 20 students in our sample study an average of 11.6 hours per week</li>
+                <li>Study times vary by about 3.9 hours on average from this mean</li>
+            </ul>
 
-            **Population inference:**
-            - We estimate that all college students study about 11.6 hours per week
-            - However, we're not certain—this is just our best estimate based on our sample
+            <p><strong>Population inference:</strong></p>
+            <ul>
+                <li>We estimate that all college students study about 11.6 hours per week</li>
+                <li>However, we're not certain—this is just our best estimate based on our sample</li>
+            </ul>
 
-            **Step 3: Consider limitations**
+            <p><strong>Step 3: Consider limitations</strong></p>
 
-            **Potential bias:**
-            - These are statistics students (might study more than average)
-            - Only from one university (might not represent all colleges)
-            - Small sample size (n=20) means less precision
+            <p><strong>Potential bias:</strong></p>
+            <ul>
+                <li>These are statistics students (might study more than average)</li>
+                <li>Only from one university (might not represent all colleges)</li>
+                <li>Small sample size (n=20) means less precision</li>
+            </ul>
 
-            **Better approach:** Random sampling from multiple universities would give more reliable population estimates.
+            <p><strong>Better approach:</strong> Random sampling from multiple universities would give more reliable population estimates.</p>
 
-            ### Why This Matters for Your Assignment
+            <h3>Why This Matters for Your Assignment</h3>
 
-            When you calculate descriptive statistics in your M1 assignment:
+            <p>When you calculate descriptive statistics in your M1 assignment:</p>
 
-            1. **Always use n-1** for sample standard deviation
-            2. **Remember you're describing your sample**, not making claims about the entire population
-            3. **Be cautious about generalizations** unless you have a representative sample
+            <ol>
+                <li><strong>Always use n-1</strong> for sample standard deviation</li>
+                <li><strong>Remember you're describing your sample</strong>, not making claims about the entire population</li>
+                <li><strong>Be cautious about generalizations</strong> unless you have a representative sample</li>
+            </ol>
 
-            ### Quick Check
+            <h3>Quick Check</h3>
 
-            **Question 1:** A researcher surveys 100 people about their exercise habits. What is the sample and what is the population?
+            <p><strong>Question 1:</strong> A researcher surveys 100 people about their exercise habits. What is the sample and what is the population?</p>
 
-            **Answer:**
-            - Sample: The 100 people surveyed
-            - Population: All people (or whatever group the researcher wants to generalize to)
+            <p><strong>Answer:</strong></p>
+            <ul>
+                <li>Sample: The 100 people surveyed</li>
+                <li>Population: All people (or whatever group the researcher wants to generalize to)</li>
+            </ul>
 
-            **Question 2:** The researcher finds that the sample exercises an average of 3.2 hours per week. What type of number is this?
+            <p><strong>Question 2:</strong> The researcher finds that the sample exercises an average of 3.2 hours per week. What type of number is this?</p>
 
-            **Answer:** This is a statistic (sample mean), not a parameter (population mean)
+            <p><strong>Answer:</strong> This is a statistic (sample mean), not a parameter (population mean)</p>
 
-            **Question 3:** Why do we divide by n-1 instead of n when calculating sample standard deviation?
+            <p><strong>Question 3:</strong> Why do we divide by n-1 instead of n when calculating sample standard deviation?</p>
 
-            **Answer:** To correct for bias—samples tend to underestimate population variability, and dividing by n-1 gives a better estimate of the true population standard deviation.
+            <p><strong>Answer:</strong> To correct for bias—samples tend to underestimate population variability, and dividing by n-1 gives a better estimate of the true population standard deviation.</p>
 
-            ---
+            <hr>
 
-            ## Part 7: The Normal Distribution and Z-Scores
+            <h2>Part 7: The Normal Distribution and Z-Scores</h2>
 
-            Many natural phenomena follow a predictable pattern called the **normal distribution** (also called the bell curve). Understanding this pattern is crucial for statistical inference.
+            <p>Many natural phenomena follow a predictable pattern called the <strong>normal distribution</strong> (also called the bell curve). Understanding this pattern is crucial for statistical inference.</p>
 
-            ### The Normal Distribution (The Bell Curve)
+            <h3>The Normal Distribution (The Bell Curve)</h3>
 
-            **Characteristics:**
-            - Symmetrical (mirror image on both sides)
-            - Bell-shaped
-            - Mean, median, and mode are all the same
-            - Most values cluster around the center
-            - Fewer values as you move away from center
+            <p><strong>Characteristics:</strong></p>
+            <ul>
+                <li>Symmetrical (mirror image on both sides)</li>
+                <li>Bell-shaped</li>
+                <li>Mean, median, and mode are all the same</li>
+                <li>Most values cluster around the center</li>
+                <li>Fewer values as you move away from center</li>
+            </ul>
 
-            **Real-world examples:**
-            - Heights of adult men
-            - IQ scores
-            - Test scores (when the test is well-designed)
-            - Measurement errors
-            - Many biological measurements
+            <p><strong>Real-world examples:</strong></p>
+            <ul>
+                <li>Heights of adult men</li>
+                <li>IQ scores</li>
+                <li>Test scores (when the test is well-designed)</li>
+                <li>Measurement errors</li>
+                <li>Many biological measurements</li>
+            </ul>
 
-            **Key insight:** The normal distribution is so common that many statistical tests assume your data follows this pattern.
+            <p><strong>Key insight:</strong> The normal distribution is so common that many statistical tests assume your data follows this pattern.</p>
 
-            ### The 68-95-99.7 Rule (Empirical Rule)
+            <h3>The 68-95-99.7 Rule (Empirical Rule)</h3>
 
-            For any normal distribution:
-            - **68%** of values fall within 1 standard deviation of the mean
-            - **95%** of values fall within 2 standard deviations of the mean
-            - **99.7%** of values fall within 3 standard deviations of the mean
+            <p>For any normal distribution:</p>
+            <ul>
+                <li><strong>68%</strong> of values fall within 1 standard deviation of the mean</li>
+                <li><strong>95%</strong> of values fall within 2 standard deviations of the mean</li>
+                <li><strong>99.7%</strong> of values fall within 3 standard deviations of the mean</li>
+            </ul>
 
-            **Example:** IQ scores have a mean of 100 and standard deviation of 15
-            - 68% of people have IQ between 85 and 115 (100 ± 15)
-            - 95% of people have IQ between 70 and 130 (100 ± 30)
-            - 99.7% of people have IQ between 55 and 145 (100 ± 45)
+            <p><strong>Example:</strong> IQ scores have a mean of 100 and standard deviation of 15</p>
+            <ul>
+                <li>68% of people have IQ between 85 and 115 (100 ± 15)</li>
+                <li>95% of people have IQ between 70 and 130 (100 ± 30)</li>
+                <li>99.7% of people have IQ between 55 and 145 (100 ± 45)</li>
+            </ul>
 
-            **Visual representation:**
-            ```
+            <p><strong>Visual representation:</strong></p>
+            <pre>
             Percentage of values
                 34%   34%
                    \ /
@@ -1214,104 +1272,114 @@ By the end of this module, you will be able to:
                    |   |
                 0.15% 0.15%
                 -3σ -2σ -1σ μ +1σ +2σ +3σ
-            ```
+            </pre>
 
-            ### Z-Scores: The Universal Translator
+            <h3>Z-Scores: The Universal Translator</h3>
 
-            A **z-score** tells you how many standard deviations a value is from the mean.
+            <p>A <strong>z-score</strong> tells you how many standard deviations a value is from the mean.</p>
 
-            **Formula:** z = (Value - Mean) ÷ Standard Deviation
+            <p><strong>Formula:</strong> z = (Value - Mean) ÷ Standard Deviation</p>
 
-            **Interpretation:**
-            - z = 0: Value equals the mean
-            - z = 1: Value is 1 standard deviation above the mean
-            - z = -1: Value is 1 standard deviation below the mean
-            - z = 2: Value is 2 standard deviations above the mean
+            <p><strong>Interpretation:</strong></p>
+            <ul>
+                <li>z = 0: Value equals the mean</li>
+                <li>z = 1: Value is 1 standard deviation above the mean</li>
+                <li>z = -1: Value is 1 standard deviation below the mean</li>
+                <li>z = 2: Value is 2 standard deviations above the mean</li>
+            </ul>
 
-            **Why z-scores matter:**
-            1. **Standardization:** Convert any normal distribution to the same scale
-            2. **Comparison:** Compare values from different distributions
-            3. **Probability:** Find the probability of getting a value or range
+            <p><strong>Why z-scores matter:</strong></p>
+            <ol>
+                <li><strong>Standardization:</strong> Convert any normal distribution to the same scale</li>
+                <li><strong>Comparison:</strong> Compare values from different distributions</li>
+                <li><strong>Probability:</strong> Find the probability of getting a value or range</li>
+            </ol>
 
-            ### Worked Examples of Z-Scores
+            <h3>Worked Examples of Z-Scores</h3>
 
-            **Example 1: Test Scores**
-            Math test: Mean = 75, Standard deviation = 10
-            Your score: 85
+            <p><strong>Example 1: Test Scores</strong><br>
+            Math test: Mean = 75, Standard deviation = 10<br>
+            Your score: 85</p>
 
-            z = (85 - 75) ÷ 10 = 10 ÷ 10 = 1.0
+            <p>z = (85 - 75) ÷ 10 = 10 ÷ 10 = 1.0</p>
 
-            **Interpretation:** Your score is 1 standard deviation above the mean. You scored better than about 84% of students (50% + 34% = 84%).
+            <p><strong>Interpretation:</strong> Your score is 1 standard deviation above the mean. You scored better than about 84% of students (50% + 34% = 84%).</p>
 
-            **Example 2: Height**
-            Adult male heights: Mean = 70 inches, Standard deviation = 3 inches
-            Your height: 76 inches
+            <p><strong>Example 2: Height</strong><br>
+            Adult male heights: Mean = 70 inches, Standard deviation = 3 inches<br>
+            Your height: 76 inches</p>
 
-            z = (76 - 70) ÷ 3 = 6 ÷ 3 = 2.0
+            <p>z = (76 - 70) ÷ 3 = 6 ÷ 3 = 2.0</p>
 
-            **Interpretation:** You are 2 standard deviations above the mean height. You are taller than about 97.5% of adult men.
+            <p><strong>Interpretation:</strong> You are 2 standard deviations above the mean height. You are taller than about 97.5% of adult men.</p>
 
-            **Example 3: Comparing Different Tests**
-            Math test: Score = 80, Mean = 75, SD = 10 → z = 0.5
-            English test: Score = 85, Mean = 80, SD = 15 → z = 0.33
+            <p><strong>Example 3: Comparing Different Tests</strong><br>
+            Math test: Score = 80, Mean = 75, SD = 10 → z = 0.5<br>
+            English test: Score = 85, Mean = 80, SD = 15 → z = 0.33</p>
 
-            **Interpretation:** You performed better on the math test relative to your classmates, even though your English score was higher in absolute terms.
+            <p><strong>Interpretation:</strong> You performed better on the math test relative to your classmates, even though your English score was higher in absolute terms.</p>
 
-            ### Using Z-Scores to Find Probabilities
+            <h3>Using Z-Scores to Find Probabilities</h3>
 
-            **Example:** What percentage of people have IQ scores above 115?
+            <p><strong>Example:</strong> What percentage of people have IQ scores above 115?</p>
 
-            **Step 1:** Calculate z-score
-            z = (115 - 100) ÷ 15 = 15 ÷ 15 = 1.0
+            <p><strong>Step 1:</strong> Calculate z-score<br>
+            z = (115 - 100) ÷ 15 = 15 ÷ 15 = 1.0</p>
 
-            **Step 2:** Use the 68-95-99.7 rule
-            - 68% of people have IQ between 85 and 115
-            - This means 32% have IQ outside this range
-            - Since the distribution is symmetrical, 16% have IQ above 115
+            <p><strong>Step 2:</strong> Use the 68-95-99.7 rule</p>
+            <ul>
+                <li>68% of people have IQ between 85 and 115</li>
+                <li>This means 32% have IQ outside this range</li>
+                <li>Since the distribution is symmetrical, 16% have IQ above 115</li>
+            </ul>
 
-            **Answer:** About 16% of people have IQ scores above 115.
+            <p><strong>Answer:</strong> About 16% of people have IQ scores above 115.</p>
 
-            **Example:** What percentage of people have IQ scores below 85?
+            <p><strong>Example:</strong> What percentage of people have IQ scores below 85?</p>
 
-            **Step 1:** Calculate z-score
-            z = (85 - 100) ÷ 15 = -15 ÷ 15 = -1.0
+            <p><strong>Step 1:</strong> Calculate z-score<br>
+            z = (85 - 100) ÷ 15 = -15 ÷ 15 = -1.0</p>
 
-            **Step 2:** Use symmetry
-            - 16% have IQ above 115 (z = +1)
-            - By symmetry, 16% have IQ below 85 (z = -1)
+            <p><strong>Step 2:</strong> Use symmetry</p>
+            <ul>
+                <li>16% have IQ above 115 (z = +1)</li>
+                <li>By symmetry, 16% have IQ below 85 (z = -1)</li>
+            </ul>
 
-            **Answer:** About 16% of people have IQ scores below 85.
+            <p><strong>Answer:</strong> About 16% of people have IQ scores below 85.</p>
 
-            ### Properties of Z-Scores
+            <h3>Properties of Z-Scores</h3>
 
-            1. **Mean of z-scores = 0**
-            2. **Standard deviation of z-scores = 1**
-            3. **Shape remains the same** (normal distribution stays normal)
-            4. **Easy to interpret** (positive = above average, negative = below average)
+            <ol>
+                <li><strong>Mean of z-scores = 0</strong></li>
+                <li><strong>Standard deviation of z-scores = 1</strong></li>
+                <li><strong>Shape remains the same</strong> (normal distribution stays normal)</li>
+                <li><strong>Easy to interpret</strong> (positive = above average, negative = below average)</li>
+            </ol>
 
-            ### Real-World Application
+            <h3>Real-World Application</h3>
 
-            **College Admissions:** SAT scores are converted to z-scores to compare students from different graduating classes and different high schools.
+            <p><strong>College Admissions:</strong> SAT scores are converted to z-scores to compare students from different graduating classes and different high schools.</p>
 
-            **Medical Testing:** Lab results are often reported as z-scores to help doctors identify unusual values (typically z > 2 or z < -2).
+            <p><strong>Medical Testing:</strong> Lab results are often reported as z-scores to help doctors identify unusual values (typically z > 2 or z < -2).</p>
 
-            **Quality Control:** Manufacturing processes use z-scores to identify products that are too far from specifications.
+            <p><strong>Quality Control:</strong> Manufacturing processes use z-scores to identify products that are too far from specifications.</p>
 
-            ### Quick Check
+            <h3>Quick Check</h3>
 
-            **Question 1:** A student scores 88 on a test where the mean is 80 and standard deviation is 4. What is their z-score?
+            <p><strong>Question 1:</strong> A student scores 88 on a test where the mean is 80 and standard deviation is 4. What is their z-score?</p>
 
-            **Answer:** z = (88 - 80) ÷ 4 = 8 ÷ 4 = 2.0
+            <p><strong>Answer:</strong> z = (88 - 80) ÷ 4 = 8 ÷ 4 = 2.0</p>
 
-            **Question 2:** Using the 68-95-99.7 rule, what percentage of students scored better than this student?
+            <p><strong>Question 2:</strong> Using the 68-95-99.7 rule, what percentage of students scored better than this student?</p>
 
-            **Answer:** About 2.5% (since 95% fall within 2 standard deviations, 5% fall outside, and 2.5% are above)
+            <p><strong>Answer:</strong> About 2.5% (since 95% fall within 2 standard deviations, 5% fall outside, and 2.5% are above)</p>
 
-            **Question 3:** If IQ scores are normally distributed with mean 100 and standard deviation 15, what IQ score corresponds to z = -1.5?
+            <p><strong>Question 3:</strong> If IQ scores are normally distributed with mean 100 and standard deviation 15, what IQ score corresponds to z = -1.5?</p>
 
-            **Answer:** IQ = 100 + (-1.5 × 15) = 100 - 22.5 = 77.5
+            <p><strong>Answer:</strong> IQ = 100 + (-1.5 × 15) = 100 - 22.5 = 77.5</p>
 
-            ---
+            <hr>
         </div>
 
         <div id="tab-5" class="tab-panel">
@@ -1338,122 +1406,146 @@ By the end of this module, you will be able to:
 
             <p><strong>Key insight:</strong> In statistics, we're often interested in the probability of getting certain sample results if our hypothesis about the population is true.</p>
 
-            ### Probability in Normal Distributions
+            <h3>Probability in Normal Distributions</h3>
 
-            **The connection:** In a normal distribution, we can calculate the probability of getting any value or range of values.
+            <p><strong>The connection:</strong> In a normal distribution, we can calculate the probability of getting any value or range of values.</p>
 
-            **Example:** IQ scores are normally distributed with mean 100 and standard deviation 15.
-            - Probability of IQ > 115: About 16%
-            - Probability of IQ between 85 and 115: About 68%
-            - Probability of IQ < 70: About 2.5%
+            <p><strong>Example:</strong> IQ scores are normally distributed with mean 100 and standard deviation 15.</p>
+            <ul>
+                <li>Probability of IQ > 115: About 16%</li>
+                <li>Probability of IQ between 85 and 115: About 68%</li>
+                <li>Probability of IQ < 70: About 2.5%</li>
+            </ul>
 
-            **Why this matters:** Statistical tests use probability to determine if our sample results are "surprising" or "expected" if our hypothesis is true.
+            <p><strong>Why this matters:</strong> Statistical tests use probability to determine if our sample results are "surprising" or "expected" if our hypothesis is true.</p>
 
-            ### The Logic of Inferential Statistics (Preview)
+            <h3>The Logic of Inferential Statistics (Preview)</h3>
 
-            **The basic question:** "Is what I observed in my sample likely to have happened by chance, or does it suggest a real effect in the population?"
+            <p><strong>The basic question:</strong> "Is what I observed in my sample likely to have happened by chance, or does it suggest a real effect in the population?"</p>
 
-            **The process:**
-            1. **State a hypothesis** about the population
-            2. **Collect sample data**
-            3. **Calculate the probability** of getting your sample results if the hypothesis is true
-            4. **Make a decision:** If the probability is low, reject the hypothesis
+            <p><strong>The process:</strong></p>
+            <ol>
+                <li><strong>State a hypothesis</strong> about the population</li>
+                <li><strong>Collect sample data</strong></li>
+                <li><strong>Calculate the probability</strong> of getting your sample results if the hypothesis is true</li>
+                <li><strong>Make a decision:</strong> If the probability is low, reject the hypothesis</li>
+            </ol>
 
-            **Example:** Testing a new teaching method
-            - **Hypothesis:** New method = traditional method (no difference)
-            - **Sample:** Students using new method score 15 points higher on average
-            - **Question:** What's the probability of getting this result by chance?
-            - **Decision:** If probability < 5%, conclude new method is better
+            <p><strong>Example:</strong> Testing a new teaching method</p>
+            <ul>
+                <li><strong>Hypothesis:</strong> New method = traditional method (no difference)</li>
+                <li><strong>Sample:</strong> Students using new method score 15 points higher on average</li>
+                <li><strong>Question:</strong> What's the probability of getting this result by chance?</li>
+                <li><strong>Decision:</strong> If probability < 5%, conclude new method is better</li>
+            </ul>
 
-            ### Concrete Example: Does This Drug Work?
+            <h3>Concrete Example: Does This Drug Work?</h3>
 
-            **Scenario:** A pharmaceutical company tests a new headache medication.
+            <p><strong>Scenario:</strong> A pharmaceutical company tests a new headache medication.</p>
 
-            **Step 1: Set up the hypothesis**
-            - **Null hypothesis (H₀):** The drug doesn't work (pain reduction = 0)
-            - **Alternative hypothesis (H₁):** The drug does work (pain reduction > 0)
+            <p><strong>Step 1: Set up the hypothesis</strong></p>
+            <ul>
+                <li><strong>Null hypothesis (H₀):</strong> The drug doesn't work (pain reduction = 0)</li>
+                <li><strong>Alternative hypothesis (H₁):</strong> The drug does work (pain reduction > 0)</li>
+            </ul>
 
-            **Step 2: Collect sample data**
-            - Test the drug on 100 people with headaches
-            - Measure pain level before and after taking the drug
-            - Find average pain reduction = 2.3 points (on a 0-10 scale)
+            <p><strong>Step 2: Collect sample data</strong></p>
+            <ul>
+                <li>Test the drug on 100 people with headaches</li>
+                <li>Measure pain level before and after taking the drug</li>
+                <li>Find average pain reduction = 2.3 points (on a 0-10 scale)</li>
+            </ul>
 
-            **Step 3: Calculate probability**
-            - **Question:** "What's the probability of getting 2.3 points average reduction if the drug doesn't actually work?"
-            - **Answer:** Based on the normal distribution, this probability is 0.02 (2%)
+            <p><strong>Step 3: Calculate probability</strong></p>
+            <ul>
+                <li><strong>Question:</strong> "What's the probability of getting 2.3 points average reduction if the drug doesn't actually work?"</li>
+                <li><strong>Answer:</strong> Based on the normal distribution, this probability is 0.02 (2%)</li>
+            </ul>
 
-            **Step 4: Make a decision**
-            - Since 2% < 5%, we reject the null hypothesis
-            - **Conclusion:** The drug appears to work
+            <p><strong>Step 4: Make a decision</strong></p>
+            <ul>
+                <li>Since 2% < 5%, we reject the null hypothesis</li>
+                <li><strong>Conclusion:</strong> The drug appears to work</li>
+            </ul>
 
-            **Key insight:** We're not proving the drug works—we're saying the results would be very unlikely if it didn't work.
+            <p><strong>Key insight:</strong> We're not proving the drug works—we're saying the results would be very unlikely if it didn't work.</p>
 
-            ### The p < 0.05 Convention
+            <h3>The p < 0.05 Convention</h3>
 
-            **Definition:** p-value is the probability of getting your sample results (or more extreme) if the null hypothesis is true.
+            <p><strong>Definition:</strong> p-value is the probability of getting your sample results (or more extreme) if the null hypothesis is true.</p>
 
-            **The 5% rule:** If p < 0.05, we consider the result "statistically significant."
+            <p><strong>The 5% rule:</strong> If p < 0.05, we consider the result "statistically significant."</p>
 
-            **What this means:**
-            - **p < 0.05:** Less than 5% chance this happened by random luck
-            - **p ≥ 0.05:** Could easily have happened by random luck
+            <p><strong>What this means:</strong></p>
+            <ul>
+                <li><strong>p < 0.05:</strong> Less than 5% chance this happened by random luck</li>
+                <li><strong>p ≥ 0.05:</strong> Could easily have happened by random luck</li>
+            </ul>
 
-            **Important:** p < 0.05 doesn't mean:
-            - The effect is large or important
-            - The result is definitely true
-            - You've proven your hypothesis
+            <p><strong>Important:</strong> p < 0.05 doesn't mean:</p>
+            <ul>
+                <li>The effect is large or important</li>
+                <li>The result is definitely true</li>
+                <li>You've proven your hypothesis</li>
+            </ul>
 
-            **It only means:** The result is unlikely to have occurred by chance alone.
+            <p><strong>It only means:</strong> The result is unlikely to have occurred by chance alone.</p>
 
-            ### Sampling Error
+            <h3>Sampling Error</h3>
 
-            **Definition:** The difference between sample statistics and population parameters due to random variation.
+            <p><strong>Definition:</strong> The difference between sample statistics and population parameters due to random variation.</p>
 
-            **Example:** Even if a coin is fair, you might get 7 heads out of 10 flips just by chance. This is sampling error.
+            <p><strong>Example:</strong> Even if a coin is fair, you might get 7 heads out of 10 flips just by chance. This is sampling error.</p>
 
-            **Why sampling error matters:**
-            - Every sample will be slightly different
-            - We need to account for this when making inferences
-            - Statistical tests help us distinguish real effects from sampling error
+            <p><strong>Why sampling error matters:</strong></p>
+            <ul>
+                <li>Every sample will be slightly different</li>
+                <li>We need to account for this when making inferences</li>
+                <li>Statistical tests help us distinguish real effects from sampling error</li>
+            </ul>
 
-            ### Building Toward Hypothesis Testing
+            <h3>Building Toward Hypothesis Testing</h3>
 
-            **The big picture:** In future modules, you'll learn specific statistical tests (t-tests, ANOVA, correlation) that all follow this same logic:
+            <p><strong>The big picture:</strong> In future modules, you'll learn specific statistical tests (t-tests, ANOVA, correlation) that all follow this same logic:</p>
 
-            1. **State hypotheses** about population parameters
-            2. **Calculate a test statistic** from your sample data
-            3. **Find the p-value** (probability of getting this result by chance)
-            4. **Make a decision** based on the p-value
+            <ol>
+                <li><strong>State hypotheses</strong> about population parameters</li>
+                <li><strong>Calculate a test statistic</strong> from your sample data</li>
+                <li><strong>Find the p-value</strong> (probability of getting this result by chance)</li>
+                <li><strong>Make a decision</strong> based on the p-value</li>
+            </ol>
 
-            **Example preview (t-test):**
-            - **Question:** Do men and women differ in height?
-            - **Test:** Compare average heights in a sample
-            - **Result:** p = 0.03
-            - **Decision:** Since p < 0.05, conclude men and women do differ in height
+            <p><strong>Example preview (t-test):</strong></p>
+            <ul>
+                <li><strong>Question:</strong> Do men and women differ in height?</li>
+                <li><strong>Test:</strong> Compare average heights in a sample</li>
+                <li><strong>Result:</strong> p = 0.03</li>
+                <li><strong>Decision:</strong> Since p < 0.05, conclude men and women do differ in height</li>
+            </ul>
 
-            ### Why This Matters
+            <h3>Why This Matters</h3>
 
-            **For your assignments:** Understanding probability helps you interpret statistical results correctly.
+            <p><strong>For your assignments:</strong> Understanding probability helps you interpret statistical results correctly.</p>
 
-            **For reading research:** You'll be able to evaluate whether researchers' conclusions are justified by their data.
+            <p><strong>For reading research:</strong> You'll be able to evaluate whether researchers' conclusions are justified by their data.</p>
 
-            **For decision-making:** You'll understand the difference between statistical significance and practical importance.
+            <p><strong>For decision-making:</strong> You'll understand the difference between statistical significance and practical importance.</p>
 
-            ### Quick Check
+            <h3>Quick Check</h3>
 
-            **Question 1:** A researcher finds p = 0.08 for their statistical test. What should they conclude?
+            <p><strong>Question 1:</strong> A researcher finds p = 0.08 for their statistical test. What should they conclude?</p>
 
-            **Answer:** They should NOT reject the null hypothesis because p > 0.05. The result could easily have happened by chance.
+            <p><strong>Answer:</strong> They should NOT reject the null hypothesis because p > 0.05. The result could easily have happened by chance.</p>
 
-            **Question 2:** What does p = 0.01 mean?
+            <p><strong>Question 2:</strong> What does p = 0.01 mean?</p>
 
-            **Answer:** There's only a 1% chance of getting this result if the null hypothesis is true. This suggests the null hypothesis is probably false.
+            <p><strong>Answer:</strong> There's only a 1% chance of getting this result if the null hypothesis is true. This suggests the null hypothesis is probably false.</p>
 
-            **Question 3:** If you flip a fair coin 10 times and get 9 heads, what's the probability of this happening by chance?
+            <p><strong>Question 3:</strong> If you flip a fair coin 10 times and get 9 heads, what's the probability of this happening by chance?</p>
 
-            **Answer:** About 1% (very unlikely). This might make you suspect the coin isn't fair.
+            <p><strong>Answer:</strong> About 1% (very unlikely). This might make you suspect the coin isn't fair.</p>
 
-            ---
+            <hr>
 
             ## Part 9: Practical Guide: Working with SPSS
 
