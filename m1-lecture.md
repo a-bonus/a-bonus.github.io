@@ -24,3006 +24,1580 @@ By the end of this module, you will be able to:
 
 ---
 
-## Table of Contents
-
-1. [The Purpose of Statistics](#part-1-the-purpose-of-statistics)
-2. [Variables: The Building Blocks](#part-2-variables-the-building-blocks)
-3. [Classifying Variables](#part-3-classifying-variables)
-4. [Describing Data with Numbers](#part-4-describing-data-with-numbers)
-5. [Visualizing Data: Frequency Distributions](#part-5-visualizing-data-frequency-distributions)
-6. [From Sample to Population](#part-6-from-sample-to-population)
-7. [The Normal Distribution and Z-Scores](#part-7-the-normal-distribution-and-z-scores)
-8. [Probability and Inference](#part-8-probability-and-inference)
-9. [Practical Guide: Working with SPSS](#part-9-practical-guide-working-with-spss)
-10. [Summary and Key Formulas](#summary-and-key-formulas)
-
----
-
-## Part 1: The Purpose of Statistics
-
-### Why Do We Need Statistics?
-
-Imagine you're a researcher trying to answer the question: "Does meditation reduce anxiety?" You could rely on personal experience, anecdotes, or intuition. But science demands something more rigorous—**objective evidence** based on systematic data collection and analysis.
-
-This is where statistics comes in.
-
-**Key Concept:** Statistics is the set of mathematical tools we use to organize, summarize, and interpret numerical data, allowing us to move from subjective opinion to objective evidence.
-
-### The Two Branches of Statistics
-
-Statistics serves two fundamental purposes, reflected in its two main branches:
-
-#### 1. Descriptive Statistics
-
-**Purpose:** To summarize and describe the data you have collected from your specific group.
-
-**Example:** "In our study of 50 college students, the average hours of sleep per night was 6.8 hours, with most students sleeping between 6 and 8 hours."
-
-**When to Use:**
-
-- When you want to understand patterns in your collected data
-- When presenting a summary of survey results
-- When creating a profile of your participant group
-- Any time you need to communicate "what the data looks like"
-
-**Common Tools:**
-
-- Averages (mean, median, mode)
-- Measures of spread (range, standard deviation)
-- Frequency tables
-- Graphs and charts
-
-#### 2. Inferential Statistics
-
-**Purpose:** To make educated guesses (inferences) about a larger group (population) based on data from a smaller subset (sample).
-
-**Example:** "Based on our sample of 50 college students, we can infer with 95% confidence that the average sleep time for _all_ college students at this university falls between 6.3 and 7.3 hours."
-
-**When to Use:**
-
-- When you want to generalize findings beyond your specific participants
-- When testing hypotheses about population characteristics
-- When determining if observed differences are "real" or due to chance
-- Most research scenarios in psychology and social sciences
-
-**Common Tools:**
-
-- Hypothesis tests (t-tests, ANOVA, etc.)
-- Confidence intervals
-- p-values and significance testing
-
-**Why This Matters:** Almost all psychological research uses inferential statistics because we can never study every single person. We study samples to learn about populations.
-
-### Real-World Applications
-
-**Medical Research:** A pharmaceutical company tests a new drug on 500 patients. They use _descriptive_ statistics to summarize the results in their sample (e.g., "60% showed improvement") and _inferential_ statistics to estimate effectiveness in the broader population (e.g., "We are 95% confident the drug helps between 55% and 65% of all patients with this condition").
-
-**Educational Psychology:** A school psychologist measures reading scores for 30 third-graders using a new teaching method. Descriptive statistics show what happened in this specific classroom. Inferential statistics help determine if the method would likely work in other classrooms.
-
-**Business Decisions:** A company surveys 200 customers about a product redesign. They describe their sample's preferences, then use inference to predict how their entire customer base (millions) would respond.
-
-### Common Misconceptions
-
-❌ **Misconception:** "Statistics can prove anything you want."
-✓ **Reality:** When used correctly, statistics provide objective evidence. Misleading statistics usually involve inappropriate methods, selective reporting, or misinterpretation.
-
-❌ **Misconception:** "A statistic is just a number."
-✓ **Reality:** Statistics are numbers _with context_. The interpretation matters as much as the calculation.
-
-❌ **Misconception:** "I only need statistics if I'm doing research."
-✓ **Reality:** Statistical thinking helps you evaluate claims in news, advertising, health information, and everyday decision-making.
-
-**Think About It:** When you see a headline like "New study shows coffee reduces heart disease risk by 30%," what questions should you ask? (Sample size? How was the study designed? What does "30%" actually mean?)
-
----
-
-## Part 2: Variables: The Building Blocks
-
-### What is a Variable?
-
-In research, we don't measure everything—we measure specific **variables**.
-
-**Definition:** A variable is any characteristic or measurement that can change or vary from one person, object, or situation to another.
-
-**Key Concept:** If something doesn't vary, it's not a variable—it's a constant.
-
-### The Golden Rule of Naming Variables
-
-A variable's name must represent something that can have **different values or levels**.
-
-**Example:** If you're studying whether exercise affects mood:
-
-- ✓ **Good variable name:** "Exercise frequency" (can be 0, 1, 2, 3+ times per week)
-- ✗ **Bad variable name:** "Exercise" (too vague—what about exercise?)
-
-### Practice: Identifying Variables
-
-Let's practice with some research scenarios:
-
-**Scenario 1:** "Do college students who get more sleep perform better on exams?"
-
-**Think About It:** What are we measuring that can vary?
-
-- Sleep duration (varies from student to student)
-- Exam performance (varies from student to student)
-
-✓ **Good variable names:** `Hours of sleep`, `Exam score`
-✗ **Bad variable names:** `Sleep`, `Test` (these don't clearly indicate what's being measured)
-
-**Scenario 2:** "Are women more likely than men to volunteer for charity work?"
-
-**Variables:**
-
-- `Gender` (varies: male, female, non-binary, etc.)
-- `Volunteer status` or `Number of volunteer hours` (varies by person)
-
-✓ **Good variable names:** `Gender`, `Volunteer hours per month`
-✗ **Bad variable names:** `Women`, `Men`, `Volunteering` (these suggest groups or activities, not measurable variables)
-
-**Scenario 3:** "Does caffeine improve reaction time?"
-
-**Variables:**
-
-- `Caffeine consumption` or `Caffeine condition` (e.g., caffeine vs. no caffeine)
-- `Reaction time` (measured in milliseconds)
-
-<div class="knowledge-check">
-  <h4>🧠 Knowledge Check: Identifying Variables</h4>
-  
-  <div class="quiz-question">
-    <p><strong>Question 1:</strong> For the research question "Do children who watch more TV have shorter attention spans?", which of these are good variable names?</p>
-    <div class="options">
-      <p>A) "Children" and "TV"</p>
-      <p>B) "TV viewing hours" and "Attention span"</p>
-      <p>C) "Watching TV" and "Attention"</p>
-      <p>D) "TV time" and "Focus"</p>
+<div class="lecture-tabs">
+    <div class="tab-navigation">
+        <button class="tab-button active" onclick="showTab(1)">Foundations & Variables</button>
+        <button class="tab-button" onclick="showTab(2)">Descriptive Statistics</button>
+        <button class="tab-button" onclick="showTab(3)">Data Visualization</button>
+        <button class="tab-button" onclick="showTab(4)">Population & Normal Distribution</button>
+        <button class="tab-button" onclick="showTab(5)">Probability, SPSS & Summary</button>
     </div>
-  </div>
-  
-  <details class="answer-section">
-    <summary>💡 Click to reveal answer and explanation</summary>
-    <div class="answer-content">
-      <p class="correct-answer"><strong>✓ Answer:</strong> B) "TV viewing hours" and "Attention span"</p>
-      
-      <p class="explanation"><strong>Why this is correct:</strong> These names clearly indicate what is being measured and can vary between individuals. "TV viewing hours" specifies the exact measurement (hours), and "Attention span" describes the psychological construct being assessed.</p>
-      
-      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
-      <ul>
-        <li><strong>A) "Children" and "TV":</strong> These are too vague. "Children" doesn't indicate what aspect of children is being measured, and "TV" doesn't specify what about TV is relevant.</li>
-        <li><strong>C) "Watching TV" and "Attention":</strong> "Watching TV" is an activity, not a measurable variable. "Attention" is too broad—attention span, attention quality, or attention duration?</li>
-        <li><strong>D) "TV time" and "Focus":</strong> "TV time" is better but less specific than "TV viewing hours." "Focus" is vague—focus on what? For how long?</li>
-      </ul>
-      
-      <p class="review-tip"><em>💭 Need to review?</em> See Part 2: Variables: The Building Blocks for the golden rule of variable naming.</p>
+    
+    <div class="tab-content">
+        <div id="tab-1" class="tab-panel active">
+            ## Part 1: The Purpose of Statistics
+
+            ### Why Do We Need Statistics?
+
+            Imagine you're a researcher trying to answer the question: "Does meditation reduce anxiety?" You could rely on personal experience, anecdotes, or intuition. But science demands something more rigorous—**objective evidence** based on systematic data collection and analysis.
+
+            This is where statistics comes in.
+
+            **Key Concept:** Statistics is the set of mathematical tools we use to organize, summarize, and interpret numerical data, allowing us to move from subjective opinion to objective evidence.
+
+            ### The Two Branches of Statistics
+
+            Statistics serves two fundamental purposes, reflected in its two main branches:
+
+            #### 1. Descriptive Statistics
+
+            **Purpose:** To summarize and describe the data you have collected from your specific group.
+
+            **Example:** "In our study of 50 college students, the average hours of sleep per night was 6.8 hours, with most students sleeping between 6 and 8 hours."
+
+            **When to Use:**
+
+            - When you want to understand patterns in your collected data
+            - When presenting a summary of survey results
+            - When creating a profile of your participant group
+            - Any time you need to communicate "what the data looks like"
+
+            **Common Tools:**
+
+            - Averages (mean, median, mode)
+            - Measures of spread (range, standard deviation)
+            - Frequency tables
+            - Graphs and charts
+
+            #### 2. Inferential Statistics
+
+            **Purpose:** To make educated guesses (inferences) about a larger group (population) based on data from a smaller subset (sample).
+
+            **Example:** "Based on our sample of 50 college students, we can infer with 95% confidence that the average sleep time for _all_ college students at this university falls between 6.3 and 7.3 hours."
+
+            **When to Use:**
+
+            - When you want to generalize findings beyond your specific participants
+            - When testing hypotheses about population characteristics
+            - When determining if observed differences are "real" or due to chance
+            - Most research scenarios in psychology and social sciences
+
+            **Common Tools:**
+
+            - Hypothesis tests (t-tests, ANOVA, etc.)
+            - Confidence intervals
+            - p-values and significance testing
+
+            **Why This Matters:** Almost all psychological research uses inferential statistics because we can never study every single person. We study samples to learn about populations.
+
+            ### Real-World Applications
+
+            **Medical Research:** A pharmaceutical company tests a new drug on 500 patients. They use _descriptive_ statistics to summarize the results in their sample (e.g., "60% showed improvement") and _inferential_ statistics to estimate effectiveness in the broader population (e.g., "We are 95% confident the drug helps between 55% and 65% of all patients with this condition").
+
+            **Educational Psychology:** A school psychologist measures reading scores for 30 third-graders using a new teaching method. Descriptive statistics show what happened in this specific classroom. Inferential statistics help determine if the method would likely work in other classrooms.
+
+            **Business Decisions:** A company surveys 200 customers about a product redesign. They describe their sample's preferences, then use inference to predict how their entire customer base (millions) would respond.
+
+            ### Common Misconceptions
+
+            ❌ **Misconception:** "Statistics can prove anything you want."
+            ✓ **Reality:** When used correctly, statistics provide objective evidence. Misleading statistics usually involve inappropriate methods, selective reporting, or misinterpretation.
+
+            ❌ **Misconception:** "A statistic is just a number."
+            ✓ **Reality:** Statistics are numbers _with context_. The interpretation matters as much as the calculation.
+
+            ❌ **Misconception:** "I only need statistics if I'm doing research."
+            ✓ **Reality:** Statistical thinking helps you evaluate claims in news, advertising, health information, and everyday decision-making.
+
+            **Think About It:** When you see a headline like "New study shows coffee reduces heart disease risk by 30%," what questions should you ask? (Sample size? How was the study designed? What does "30%" actually mean?)
+
+            ---
+
+            ## Part 2: Variables: The Building Blocks
+
+            ### What is a Variable?
+
+            **Definition:** A variable is any characteristic that can take on different values or categories across individuals, objects, or situations.
+
+            **Key Point:** The word "variable" comes from "vary"—it's something that changes or differs.
+
+            ### The Golden Rule of Naming Variables
+
+            **Always name variables based on WHAT you are measuring, not HOW you are measuring it.**
+
+            **Example:**
+            - ❌ "Survey_Question_5" 
+            - ✅ "Anxiety_Level"
+
+            ### Practice: Identifying Variables
+
+            **Scenario 1: Sleep Study**
+            A researcher wants to know if people who exercise regularly get better sleep. They ask 100 participants two questions:
+            1. "How many minutes do you exercise per week?"
+            2. "How many hours of sleep do you get per night on average?"
+
+            **Variables:**
+            - **Exercise_Time** (measured in minutes per week)
+            - **Sleep_Duration** (measured in hours per night)
+
+            **Scenario 2: Classroom Environment**
+            An educational psychologist studies whether classroom lighting affects student performance. She measures:
+            1. The brightness of classroom lights (in lumens)
+            2. Students' test scores on a standardized math test
+
+            **Variables:**
+            - **Lighting_Brightness** (measured in lumens)
+            - **Math_Test_Score** (measured in points)
+
+            **Scenario 3: Social Media Study**
+            A researcher investigates the relationship between social media usage and self-esteem. They collect:
+            1. Number of hours spent on social media per day
+            2. Responses to a self-esteem questionnaire (scores range from 10-50)
+
+            **Variables:**
+            - **Social_Media_Usage** (measured in hours per day)
+            - **Self_Esteem_Score** (measured on a 10-50 scale)
+
+            **Scenario 4: Job Satisfaction**
+            An organizational psychologist wants to understand what affects employee satisfaction. She measures:
+            1. Employee age (in years)
+            2. Years of experience in current job
+            3. Annual salary (in dollars)
+            4. Job satisfaction rating (1 = very dissatisfied, 5 = very satisfied)
+            5. Department (Engineering, Marketing, HR, Sales)
+            6. Whether the employee works remotely (Yes/No)
+
+            **Variables:**
+            - **Employee_Age** (measured in years)
+            - **Job_Experience** (measured in years)
+            - **Annual_Salary** (measured in dollars)
+            - **Job_Satisfaction** (measured on a 1-5 scale)
+            - **Department** (categories: Engineering, Marketing, HR, Sales)
+            - **Remote_Work** (categories: Yes, No)
+
+            **Scenario 5: Memory Experiment**
+            A cognitive psychologist tests whether background music affects memory performance. She:
+            1. Assigns participants to either listen to classical music, rock music, or no music while studying
+            2. Tests their memory with a recall task (number of words correctly remembered)
+            3. Records their heart rate during the study session
+
+            **Variables:**
+            - **Music_Condition** (categories: Classical, Rock, None)
+            - **Memory_Performance** (measured as number of words recalled)
+            - **Heart_Rate** (measured in beats per minute)
+
+            **Scenario 6: Customer Satisfaction**
+            A retail company wants to improve customer experience. They collect data on:
+            1. Customer age group (18-25, 26-35, 36-45, 46-55, 56+)
+            2. Time spent shopping (in minutes)
+            3. Amount spent (in dollars)
+            4. Overall satisfaction rating (1-10 scale)
+            5. Whether they would recommend the store (Yes/No)
+
+            **Variables:**
+            - **Age_Group** (categories: 18-25, 26-35, 36-45, 46-55, 56+)
+            - **Shopping_Time** (measured in minutes)
+            - **Purchase_Amount** (measured in dollars)
+            - **Satisfaction_Rating** (measured on a 1-10 scale)
+            - **Recommendation_Likelihood** (categories: Yes, No)
+
+            **Scenario 7: Health and Lifestyle**
+            A public health researcher studies factors related to physical fitness. She measures:
+            1. Participants' height (in inches)
+            2. Participants' weight (in pounds)
+            3. Number of servings of fruits/vegetables consumed per day
+            4. Minutes of moderate exercise per week
+            5. Blood pressure reading (systolic pressure in mmHg)
+            6. Whether participants smoke (Yes/No)
+
+            **Variables:**
+            - **Height** (measured in inches)
+            - **Weight** (measured in pounds)
+            - **Fruit_Vegetable_Intake** (measured in servings per day)
+            - **Exercise_Time** (measured in minutes per week)
+            - **Blood_Pressure** (measured in mmHg)
+            - **Smoking_Status** (categories: Yes, No)
+
+            **Scenario 8: Academic Performance**
+            A university researcher investigates factors that predict college success. They collect:
+            1. High school GPA (0.0-4.0 scale)
+            2. SAT score (400-1600 range)
+            3. Number of hours studied per week
+            4. Whether students live on campus or commute
+            5. First-year college GPA
+            6. Number of extracurricular activities
+
+            **Variables:**
+            - **High_School_GPA** (measured on a 0.0-4.0 scale)
+            - **SAT_Score** (measured on a 400-1600 scale)
+            - **Study_Hours** (measured in hours per week)
+            - **Housing_Type** (categories: On-campus, Commute)
+            - **College_GPA** (measured on a 0.0-4.0 scale)
+            - **Extracurricular_Count** (measured as number of activities)
+
+            ### Why Proper Variable Naming Matters
+
+            1. **Clarity:** Other researchers (and future you) can understand what was measured
+            2. **Reproducibility:** Studies can be replicated when variables are clearly defined
+            3. **Communication:** Results make sense when variables have meaningful names
+            4. **Data Analysis:** Statistical software works better with descriptive variable names
+
+            **Remember:** Good variable names are like good street signs—they tell you exactly where you are and where you're going.
+
+            ---
+
+            ## Part 3: Classifying Variables
+
+            ### Classification System 1: By Role in Research
+
+            Variables can be classified by their **role** in a research study:
+
+            #### Independent Variable (IV)
+            - **Definition:** The variable that the researcher manipulates or assumes causes changes in another variable
+            - **Also called:** Predictor variable, explanatory variable, treatment variable
+            - **Purpose:** This is what you're testing to see if it has an effect
+            - **Examples:**
+              - Teaching method (traditional vs. new method)
+              - Drug dosage (0mg, 10mg, 20mg)
+              - Study environment (quiet vs. noisy)
+
+            #### Dependent Variable (DV)
+            - **Definition:** The variable that is measured to see if it changes in response to the IV
+            - **Also called:** Outcome variable, response variable, criterion variable
+            - **Purpose:** This is what you're measuring to see the effect
+            - **Examples:**
+              - Test scores (after different teaching methods)
+              - Pain level (after different drug dosages)
+              - Concentration (in different study environments)
+
+            **Memory Trick:** Think of the IV as the "cause" and the DV as the "effect." The IV is independent (doesn't depend on other variables), while the DV depends on the IV.
+
+            ### How to Identify IV and DV
+
+            1. **Ask "What is the researcher trying to find out?"** → This is usually the DV
+            2. **Ask "What does the researcher control or manipulate?"** → This is usually the IV
+            3. **Look for causal language:** "Does X affect Y?" → X is IV, Y is DV
+
+            **Example:** "Does exercise improve mood?"
+            - IV: Exercise (manipulated: some people exercise, others don't)
+            - DV: Mood (measured: how happy people report feeling)
+
+            ### Practice Scenarios
+
+            **Scenario 1:** A researcher wants to know if background music affects productivity. She assigns some workers to listen to classical music and others to work in silence, then measures how many tasks they complete.
+
+            - **IV:** Background Music (Classical vs. Silence)
+            - **DV:** Productivity (Number of tasks completed)
+
+            **Scenario 2:** A psychologist studies whether meditation reduces anxiety. She measures anxiety levels before and after participants complete a 4-week meditation program.
+
+            - **IV:** Meditation Program (Before vs. After)
+            - **DV:** Anxiety Level
+
+            **Scenario 3:** A teacher wants to test if using technology improves student engagement. She teaches one class with traditional methods and another with tablets and apps, then measures how often students participate.
+
+            - **IV:** Teaching Method (Traditional vs. Technology)
+            - **DV:** Student Engagement (Participation frequency)
+
+            ### Classification System 2: By Measurement Scale
+
+            Variables can also be classified by their **measurement scale** (also called level of measurement):
+
+            #### 1. Nominal (Categorical)
+            - **Definition:** Categories with no inherent order or ranking
+            - **Characteristics:**
+              - Categories are mutually exclusive
+              - No mathematical operations possible (can't add, subtract, etc.)
+              - Can count frequency of each category
+            - **Examples:**
+              - Gender (Male, Female, Other)
+              - Eye Color (Blue, Brown, Green, Hazel)
+              - Department (Psychology, Biology, English)
+              - Blood Type (A, B, AB, O)
+
+            **Think About It:** You can say "There are 25 males and 30 females," but you can't say "Male is greater than Female."
+
+            #### 2. Ordinal (Ranked)
+            - **Definition:** Categories with a meaningful order, but intervals between categories are not equal
+            - **Characteristics:**
+              - Categories can be ranked from low to high
+              - Can determine which is greater/lesser
+              - Cannot perform mathematical operations (because intervals aren't equal)
+            - **Examples:**
+              - Likert Scale (Strongly Disagree, Disagree, Neutral, Agree, Strongly Agree)
+              - Education Level (High School, Bachelor's, Master's, PhD)
+              - Pain Rating (Mild, Moderate, Severe)
+              - Letter Grades (A, B, C, D, F)
+
+            **Think About It:** You can say "Master's is higher than Bachelor's," but you can't say the difference between Master's and Bachelor's equals the difference between Bachelor's and High School.
+
+            #### 3. Scale (Interval/Ratio)
+            - **Definition:** Numeric data where intervals between values are equal
+            - **Two types:**
+              - **Interval:** Equal intervals, no true zero (e.g., temperature in Celsius)
+              - **Ratio:** Equal intervals, true zero point (e.g., height, weight, age)
+
+            **Characteristics:**
+            - All mathematical operations are meaningful
+            - Can calculate means, standard deviations, etc.
+            - True zero point (ratio) or arbitrary zero (interval)
+
+            **Examples:**
+            - **Interval:** Temperature (°C or °F), IQ scores, SAT scores
+            - **Ratio:** Height (inches), Weight (pounds), Age (years), Income (dollars)
+
+            **Think About It:** You can say "Person A is twice as tall as Person B" (ratio) but not "Today is twice as hot as yesterday" (interval).
+
+            ### Discrete vs. Continuous
+
+            **Discrete Variables:**
+            - Can only take specific, separate values
+            - Usually counted (not measured)
+            - Examples: Number of children, Number of correct answers, Number of pets
+
+            **Continuous Variables:**
+            - Can take any value within a range
+            - Usually measured (not counted)
+            - Examples: Height, Weight, Time, Temperature
+
+            ### Decision Tree: Determining Measurement Level
+
+            1. **Can you perform meaningful mathematical operations?**
+               - **No** → Go to question 2
+               - **Yes** → Scale (Interval/Ratio)
+
+            2. **Do the categories have a meaningful order?**
+               - **No** → Nominal
+               - **Yes** → Ordinal
+
+            **Quick Examples:**
+            - **Number of siblings:** Scale (Ratio) - you can add, subtract, and there's a true zero
+            - **Letter grade:** Ordinal - A > B > C, but A-B ≠ B-C
+            - **Favorite color:** Nominal - no order, no math operations
+
+            ### Why Measurement Level Matters
+
+            **Determines which statistics you can use:**
+
+            - **Nominal:** Mode, frequency counts, chi-square tests
+            - **Ordinal:** Mode, median, non-parametric tests
+            - **Scale:** Mean, standard deviation, parametric tests (t-tests, ANOVA, correlation)
+
+            **Real-world impact:** Using the wrong statistic for your measurement level can lead to incorrect conclusions!
+
+            **Example:** You can't calculate the mean of "Favorite Color" (nominal), but you can calculate the mean of "Age" (scale).
+
+            ---
+        </div>
+        
+        <div id="tab-2" class="tab-panel">
+            ## Part 4: Describing Data with Numbers
+
+            Now that we understand what variables are and how to classify them, let's learn how to describe them with numbers. This is where **descriptive statistics** comes in—the tools we use to summarize and make sense of our data.
+
+            ### Measures of Central Tendency
+
+            These tell us about the "typical" or "average" value in our dataset.
+
+            #### 1. Mean (Average)
+            **Formula:** Mean = Sum of all values ÷ Number of values
+
+            **Symbol:** μ (population) or x̄ (sample)
+
+            **When to use:** Best for scale data that is roughly normally distributed
+
+            **Example:** Test scores: 85, 90, 78, 92, 88
+            Mean = (85 + 90 + 78 + 92 + 88) ÷ 5 = 433 ÷ 5 = 86.6
+
+            **Pros:**
+            - Uses all data points
+            - Mathematically useful for further calculations
+            - Most common measure of central tendency
+
+            **Cons:**
+            - Sensitive to outliers (extreme values)
+            - Can be misleading with skewed data
+
+            #### 2. Median
+            **Definition:** The middle value when data is arranged in order
+
+            **When to use:** Best when you have outliers or skewed data
+
+            **How to find:**
+            1. Arrange values from lowest to highest
+            2. If odd number of values: middle value is median
+            3. If even number of values: average of two middle values
+
+            **Example:** Test scores: 85, 90, 78, 92, 88
+            Ordered: 78, 85, 88, 90, 92
+            Median = 88 (middle value)
+
+            **Example with even numbers:** 78, 85, 88, 90, 92, 95
+            Two middle values: 88 and 90
+            Median = (88 + 90) ÷ 2 = 89
+
+            **Pros:**
+            - Not affected by outliers
+            - Good for skewed distributions
+            - Easy to understand
+
+            **Cons:**
+            - Doesn't use all data points
+            - Less useful for mathematical calculations
+
+            #### 3. Mode
+            **Definition:** The most frequently occurring value
+
+            **When to use:** Best for nominal data or when you want to know the most common category
+
+            **Example:** Eye colors in a class: Blue (12), Brown (18), Green (5), Hazel (3)
+            Mode = Brown (most frequent)
+
+            **Pros:**
+            - Only measure that works with nominal data
+            - Easy to find and understand
+            - Good for categorical data
+
+            **Cons:**
+            - May not exist (no repeated values)
+            - May have multiple modes
+            - Doesn't provide much information for scale data
+
+            ### Choosing the Right Measure
+
+            **For Scale Data:**
+            - **Normal distribution:** Use mean
+            - **Skewed distribution:** Use median
+            - **Many outliers:** Use median
+
+            **For Ordinal Data:**
+            - Use median (most appropriate)
+
+            **For Nominal Data:**
+            - Use mode (only option)
+
+            **Real-world example:** Income data is usually right-skewed (few very high earners). Median income is often more representative than mean income.
+
+            ### Measures of Variability
+
+            These tell us how spread out our data is—how much the values differ from each other.
+
+            #### 1. Range
+            **Formula:** Range = Highest value - Lowest value
+
+            **Example:** Test scores: 78, 85, 88, 90, 92
+            Range = 92 - 78 = 14
+
+            **Pros:** Simple to calculate and understand
+
+            **Cons:** Only uses two values (min and max), very sensitive to outliers
+
+            #### 2. Standard Deviation
+            **Purpose:** Measures how much values typically deviate from the mean
+
+            **Symbol:** σ (population) or s (sample)
+
+            **Formula (Conceptual):** Average distance from the mean
+
+            **Step-by-step calculation:**
+            1. Calculate the mean
+            2. Find the difference between each value and the mean
+            3. Square each difference (to remove negative signs)
+            4. Add up all the squared differences
+            5. Divide by n-1 (for sample) or N (for population)
+            6. Take the square root
+
+            **Example:** Test scores: 85, 90, 78, 92, 88
+            Mean = 86.6
+
+            | Score | (Score - Mean) | (Score - Mean)² |
+            |-------|----------------|-----------------|
+            | 85    | 85 - 86.6 = -1.6 | (-1.6)² = 2.56 |
+            | 90    | 90 - 86.6 = 3.4  | (3.4)² = 11.56 |
+            | 78    | 78 - 86.6 = -8.6 | (-8.6)² = 73.96 |
+            | 92    | 92 - 86.6 = 5.4  | (5.4)² = 29.16 |
+            | 88    | 88 - 86.6 = 1.4  | (1.4)² = 1.96  |
+            |       | Sum = 0          | Sum = 119.2    |
+
+            Variance = 119.2 ÷ (5-1) = 119.2 ÷ 4 = 29.8
+            Standard Deviation = √29.8 = 5.46
+
+            **Interpretation:** On average, scores deviate about 5.46 points from the mean of 86.6.
+
+            **Why n-1 for samples?** This is called the "degrees of freedom" correction. It makes our estimate of the population standard deviation more accurate when working with sample data.
+
+            #### 3. Variance
+            **Definition:** The square of the standard deviation
+
+            **Symbol:** σ² (population) or s² (sample)
+
+            **Why use variance?** It's easier to work with mathematically (no square roots), but harder to interpret (units are squared)
+
+            ### Worked Example: Calculating Descriptive Statistics
+
+            **Data:** Hours of sleep per night for 10 college students
+            6, 7, 8, 5, 9, 6, 7, 8, 7, 6
+
+            **Step 1: Organize the data**
+            Ordered: 5, 6, 6, 6, 7, 7, 7, 8, 8, 9
+
+            **Step 2: Calculate measures of central tendency**
+
+            **Mean:**
+            Sum = 5 + 6 + 6 + 6 + 7 + 7 + 7 + 8 + 8 + 9 = 69
+            Mean = 69 ÷ 10 = 6.9 hours
+
+            **Median:**
+            Even number of values (10), so average of 5th and 6th values
+            Median = (7 + 7) ÷ 2 = 7 hours
+
+            **Mode:**
+            Most frequent values: 6 and 7 (each appears 3 times)
+            Bimodal: 6 and 7 hours
+
+            **Step 3: Calculate measures of variability**
+
+            **Range:**
+            Range = 9 - 5 = 4 hours
+
+            **Standard Deviation:**
+            Mean = 6.9
+
+            | Hours | (Hours - Mean) | (Hours - Mean)² |
+            |-------|----------------|-----------------|
+            | 6     | 6 - 6.9 = -0.9 | (-0.9)² = 0.81 |
+            | 7     | 7 - 6.9 = 0.1  | (0.1)² = 0.01 |
+            | 8     | 8 - 6.9 = 1.1  | (1.1)² = 1.21 |
+            | 5     | 5 - 6.9 = -1.9 | (-1.9)² = 3.61 |
+            | 9     | 9 - 6.9 = 2.1  | (2.1)² = 4.41 |
+            | 6     | 6 - 6.9 = -0.9 | (-0.9)² = 0.81 |
+            | 7     | 7 - 6.9 = 0.1  | (0.1)² = 0.01 |
+            | 8     | 8 - 6.9 = 1.1  | (1.1)² = 1.21 |
+            | 7     | 7 - 6.9 = 0.1  | (0.1)² = 0.01 |
+            | 6     | 6 - 6.9 = -0.9 | (-0.9)² = 0.81 |
+            |       | Sum = 0        | Sum = 12.9     |
+
+            Variance = 12.9 ÷ (10-1) = 12.9 ÷ 9 = 1.43
+            Standard Deviation = √1.43 = 1.20 hours
+
+            **Step 4: Interpret the results**
+
+            **Central Tendency:**
+            - Mean sleep time is 6.9 hours
+            - Median sleep time is 7 hours (half sleep less, half sleep more)
+            - Most common sleep times are 6 and 7 hours
+
+            **Variability:**
+            - Sleep times range from 5 to 9 hours (4-hour spread)
+            - On average, sleep times deviate about 1.2 hours from the mean
+            - This suggests relatively consistent sleep patterns
+
+            **Summary:** These college students sleep an average of 6.9 hours per night, with most sleeping 6-7 hours. The variation is relatively small (standard deviation = 1.2 hours), indicating fairly consistent sleep habits.
+
+            ---
+        </div>
+        
+        <div id="tab-3" class="tab-panel">
+            ## Part 5: Visualizing Data: Frequency Distributions
+
+            Numbers can tell us a lot, but sometimes a picture is worth a thousand data points. In this section, we'll learn how to create visual representations of our data that make patterns and relationships easier to see.
+
+            ### What is a Frequency Distribution?
+
+            A **frequency distribution** is a summary of how often each value (or range of values) occurs in your dataset. It shows the pattern of your data at a glance.
+
+            **Two main types:**
+            1. **Categorical frequency distribution** - for nominal and ordinal data
+            2. **Grouped frequency distribution** - for scale data
+
+            ### For Categorical Data: Frequency Tables and Bar Charts
+
+            #### Frequency Tables
+            Simply count how many times each category appears.
+
+            **Example: Favorite Pizza Toppings**
+            Data: Pepperoni, Cheese, Mushroom, Pepperoni, Cheese, Pepperoni, Sausage, Cheese, Pepperoni, Mushroom
+
+            | Topping    | Frequency | Percentage |
+            |------------|-----------|------------|
+            | Pepperoni  | 4         | 40%        |
+            | Cheese     | 3         | 30%        |
+            | Mushroom   | 2         | 20%        |
+            | Sausage    | 1         | 10%        |
+            | **Total**  | **10**    | **100%**   |
+
+            #### Bar Charts
+            Visual representation of frequency tables.
+
+            **When to use bar charts:**
+            - Nominal data (categories with no order)
+            - Ordinal data (categories with order)
+            - Comparing frequencies across categories
+
+            **Characteristics:**
+            - Bars don't touch (categories are separate)
+            - Height represents frequency
+            - Can be horizontal or vertical
+
+            **Example Bar Chart Data:**
+            ```
+            Pepperoni  ████████ 4
+            Cheese     ██████   3
+            Mushroom   ████     2
+            Sausage    ██       1
+            ```
+
+            ### For Scale Data: Grouped Frequency Tables and Histograms
+
+            #### Grouped Frequency Tables
+            When you have many different values, group them into ranges (called "bins" or "intervals").
+
+            **Example: Test Scores (0-100 scale)**
+            Raw data: 78, 85, 92, 67, 89, 94, 76, 83, 91, 88, 79, 86, 93, 75, 87
+
+            **Step 1: Determine range**
+            Highest: 94, Lowest: 67
+            Range = 94 - 67 = 27
+
+            **Step 2: Choose appropriate interval width**
+            Common rule: Use 5-15 intervals
+            With 15 data points, let's use 5-point intervals
+
+            **Step 3: Create intervals**
+            Start just below the lowest value: 65-69, 70-74, 75-79, 80-84, 85-89, 90-94, 95-99
+
+            **Step 4: Count frequencies**
+            | Score Range | Tally | Frequency |
+            |-------------|-------|-----------|
+            | 95-99       |       | 0         |
+            | 90-94       | ||||  | 4         |
+            | 85-89       | ||||| | 5         |
+            | 80-84       | ||    | 2         |
+            | 75-79       | |||   | 3         |
+            | 70-74       |       | 0         |
+            | 65-69       | |     | 1         |
+
+            **Step 5: Calculate percentages**
+            | Score Range | Frequency | Percentage |
+            |-------------|-----------|------------|
+            | 95-99       | 0         | 0%         |
+            | 90-94       | 4         | 27%        |
+            | 85-89       | 5         | 33%        |
+            | 80-84       | 2         | 13%        |
+            | 75-79       | 3         | 20%        |
+            | 70-74       | 0         | 0%         |
+            | 65-69       | 1         | 7%         |
+            | **Total**   | **15**    | **100%**   |
+
+            #### Histograms
+            Visual representation of grouped frequency data.
+
+            **When to use histograms:**
+            - Scale data (interval or ratio)
+            - Showing distribution shape
+            - Identifying patterns, outliers, skewness
+
+            **Characteristics:**
+            - Bars touch (continuous scale)
+            - Width represents interval range
+            - Height represents frequency
+            - No gaps between bars (unless frequency is zero)
+
+            **Example Histogram:**
+            ```
+            Frequency
+                5 |     ███
+                4 | ███ ███ ███
+                3 | ███ ███ ███ ███
+                2 | ███ ███ ███ ███ ███
+                1 | ███ ███ ███ ███ ███ ███
+                  +----+----+----+----+----+
+                  65  70   75   80   85   90
+                  Score Range
+            ```
+
+            **What this histogram tells us:**
+            - Most scores are in the 85-89 range (5 students)
+            - Distribution is roughly bell-shaped
+            - No extreme outliers
+            - Scores are concentrated in the upper ranges
+
+            ### Common Mistake: Choosing the Wrong Graph
+
+            **❌ Wrong:** Using a line graph for categorical data
+            **✅ Correct:** Use bar charts for categories
+
+            **❌ Wrong:** Using a bar chart for continuous scale data
+            **✅ Correct:** Use histograms for scale data
+
+            **Why this matters:** Different graph types are designed for different types of data. Using the wrong type can mislead readers about your data's characteristics.
+
+            ### Quick Check
+
+            **Question 1:** You survey 50 students about their favorite subject. Which graph should you use?
+            - A) Histogram
+            - B) Bar chart
+            - C) Line graph
+
+            **Answer:** B) Bar chart - because "favorite subject" is categorical data (nominal level)
+
+            **Question 2:** You measure the height of 100 people. Which graph should you use?
+            - A) Histogram
+            - B) Bar chart
+            - C) Pie chart
+
+            **Answer:** A) Histogram - because height is continuous scale data
+
+            **Question 3:** Looking at your histogram, you notice the bars on the left are much taller than those on the right. What does this suggest?
+            - A) Your data is normally distributed
+            - B) Your data is right-skewed (positively skewed)
+            - C) Your data is left-skewed (negatively skewed)
+
+            **Answer:** C) Left-skewed - most values are on the higher end, with a tail extending to the lower end
+
+            ---
+        </div>
+        
+        <div id="tab-4" class="tab-panel">
+            ## Part 6: From Sample to Population
+
+            So far, we've focused on describing the data we actually collected. But in most research, we want to make conclusions about a larger group than just our participants. This is where the distinction between **samples** and **populations** becomes crucial.
+
+            ### Key Definitions
+
+            **Population:** The entire group of individuals, objects, or events that you want to study and make conclusions about.
+
+            **Sample:** A subset of the population that you actually study and collect data from.
+
+            **Examples:**
+            - **Population:** All college students in the United States
+            - **Sample:** 500 college students from your university
+
+            - **Population:** All smartphones sold last year
+            - **Sample:** 1,000 smartphones tested for battery life
+
+            - **Population:** All patients with diabetes
+            - **Sample:** 200 patients who received a new medication
+
+            **Why use samples?** Because studying entire populations is usually impractical, expensive, or impossible.
+
+            ### Parameters vs. Statistics
+
+            **Parameter:** A numerical characteristic of a population (usually unknown)
+
+            **Statistic:** A numerical characteristic of a sample (what we actually calculate)
+
+            **Symbols:**
+            - Population mean: μ (mu)
+            - Sample mean: x̄ (x-bar)
+            - Population standard deviation: σ (sigma)
+            - Sample standard deviation: s
+
+            **Example:**
+            - **Parameter:** Average height of all adult women in the US (μ = unknown)
+            - **Statistic:** Average height of 100 adult women in our sample (x̄ = 65.2 inches)
+
+            **Key insight:** We use sample statistics to estimate population parameters.
+
+            ### The Problem of Bias and the n-1 Correction
+
+            When we calculate the sample standard deviation, we divide by **n-1** instead of **n**. Why?
+
+            **The bias problem:** If we divide by n, our sample standard deviation tends to underestimate the true population standard deviation.
+
+            **Why this happens:** In a sample, the values are closer to the sample mean than they would be to the true population mean. This makes our sample look less variable than it really is.
+
+            **The solution:** Dividing by n-1 (called "degrees of freedom") corrects for this bias and gives us a better estimate of the population standard deviation.
+
+            **Example:**
+            Population: 1, 2, 3, 4, 5 (μ = 3, σ = √2 ≈ 1.41)
+            Sample: 2, 3, 4 (x̄ = 3)
+
+            **Wrong way (divide by n):**
+            s = √[(2-3)² + (3-3)² + (4-3)²] ÷ 3 = √[1+0+1] ÷ 3 = √(2/3) ≈ 0.82
+
+            **Right way (divide by n-1):**
+            s = √[(2-3)² + (3-3)² + (4-3)²] ÷ 2 = √[1+0+1] ÷ 2 = √1 = 1.00
+
+            The n-1 correction gives us a better estimate of the true population standard deviation.
+
+            ### Worked Example: Sample vs. Population Calculation
+
+            **Scenario:** A researcher wants to know the average number of hours college students spend studying per week. She surveys 20 students from her statistics class.
+
+            **Sample data (hours per week):**
+            8, 12, 15, 6, 10, 18, 9, 14, 7, 11, 13, 16, 5, 19, 8, 12, 14, 10, 17, 9
+
+            **Step 1: Calculate sample statistics**
+
+            **Sample mean (x̄):**
+            Sum = 8+12+15+6+10+18+9+14+7+11+13+16+5+19+8+12+14+10+17+9 = 232
+            x̄ = 232 ÷ 20 = 11.6 hours
+
+            **Sample standard deviation (s):**
+            Using n-1 correction:
+
+            | Hours | (Hours - x̄) | (Hours - x̄)² |
+            |-------|--------------|---------------|
+            | 8     | 8-11.6 = -3.6 | (-3.6)² = 12.96 |
+            | 12    | 12-11.6 = 0.4 | (0.4)² = 0.16 |
+            | 15    | 15-11.6 = 3.4 | (3.4)² = 11.56 |
+            | ...   | ...         | ...           |
+            | (sum of all squared differences = 284.8) |
+
+            s = √(284.8 ÷ 19) = √14.99 = 3.87 hours
+
+            **Step 2: Interpret in context**
+
+            **Sample findings:**
+            - The 20 students in our sample study an average of 11.6 hours per week
+            - Study times vary by about 3.9 hours on average from this mean
+
+            **Population inference:**
+            - We estimate that all college students study about 11.6 hours per week
+            - However, we're not certain—this is just our best estimate based on our sample
+
+            **Step 3: Consider limitations**
+
+            **Potential bias:**
+            - These are statistics students (might study more than average)
+            - Only from one university (might not represent all colleges)
+            - Small sample size (n=20) means less precision
+
+            **Better approach:** Random sampling from multiple universities would give more reliable population estimates.
+
+            ### Why This Matters for Your Assignment
+
+            When you calculate descriptive statistics in your M1 assignment:
+
+            1. **Always use n-1** for sample standard deviation
+            2. **Remember you're describing your sample**, not making claims about the entire population
+            3. **Be cautious about generalizations** unless you have a representative sample
+
+            ### Quick Check
+
+            **Question 1:** A researcher surveys 100 people about their exercise habits. What is the sample and what is the population?
+
+            **Answer:**
+            - Sample: The 100 people surveyed
+            - Population: All people (or whatever group the researcher wants to generalize to)
+
+            **Question 2:** The researcher finds that the sample exercises an average of 3.2 hours per week. What type of number is this?
+
+            **Answer:** This is a statistic (sample mean), not a parameter (population mean)
+
+            **Question 3:** Why do we divide by n-1 instead of n when calculating sample standard deviation?
+
+            **Answer:** To correct for bias—samples tend to underestimate population variability, and dividing by n-1 gives a better estimate of the true population standard deviation.
+
+            ---
+
+            ## Part 7: The Normal Distribution and Z-Scores
+
+            Many natural phenomena follow a predictable pattern called the **normal distribution** (also called the bell curve). Understanding this pattern is crucial for statistical inference.
+
+            ### The Normal Distribution (The Bell Curve)
+
+            **Characteristics:**
+            - Symmetrical (mirror image on both sides)
+            - Bell-shaped
+            - Mean, median, and mode are all the same
+            - Most values cluster around the center
+            - Fewer values as you move away from center
+
+            **Real-world examples:**
+            - Heights of adult men
+            - IQ scores
+            - Test scores (when the test is well-designed)
+            - Measurement errors
+            - Many biological measurements
+
+            **Key insight:** The normal distribution is so common that many statistical tests assume your data follows this pattern.
+
+            ### The 68-95-99.7 Rule (Empirical Rule)
+
+            For any normal distribution:
+            - **68%** of values fall within 1 standard deviation of the mean
+            - **95%** of values fall within 2 standard deviations of the mean
+            - **99.7%** of values fall within 3 standard deviations of the mean
+
+            **Example:** IQ scores have a mean of 100 and standard deviation of 15
+            - 68% of people have IQ between 85 and 115 (100 ± 15)
+            - 95% of people have IQ between 70 and 130 (100 ± 30)
+            - 99.7% of people have IQ between 55 and 145 (100 ± 45)
+
+            **Visual representation:**
+            ```
+            Percentage of values
+                34%   34%
+                   \ /
+                    X
+                   / \
+                13.5% 13.5%
+                   |   |
+                2.35% 2.35%
+                   |   |
+                0.15% 0.15%
+                -3σ -2σ -1σ μ +1σ +2σ +3σ
+            ```
+
+            ### Z-Scores: The Universal Translator
+
+            A **z-score** tells you how many standard deviations a value is from the mean.
+
+            **Formula:** z = (Value - Mean) ÷ Standard Deviation
+
+            **Interpretation:**
+            - z = 0: Value equals the mean
+            - z = 1: Value is 1 standard deviation above the mean
+            - z = -1: Value is 1 standard deviation below the mean
+            - z = 2: Value is 2 standard deviations above the mean
+
+            **Why z-scores matter:**
+            1. **Standardization:** Convert any normal distribution to the same scale
+            2. **Comparison:** Compare values from different distributions
+            3. **Probability:** Find the probability of getting a value or range
+
+            ### Worked Examples of Z-Scores
+
+            **Example 1: Test Scores**
+            Math test: Mean = 75, Standard deviation = 10
+            Your score: 85
+
+            z = (85 - 75) ÷ 10 = 10 ÷ 10 = 1.0
+
+            **Interpretation:** Your score is 1 standard deviation above the mean. You scored better than about 84% of students (50% + 34% = 84%).
+
+            **Example 2: Height**
+            Adult male heights: Mean = 70 inches, Standard deviation = 3 inches
+            Your height: 76 inches
+
+            z = (76 - 70) ÷ 3 = 6 ÷ 3 = 2.0
+
+            **Interpretation:** You are 2 standard deviations above the mean height. You are taller than about 97.5% of adult men.
+
+            **Example 3: Comparing Different Tests**
+            Math test: Score = 80, Mean = 75, SD = 10 → z = 0.5
+            English test: Score = 85, Mean = 80, SD = 15 → z = 0.33
+
+            **Interpretation:** You performed better on the math test relative to your classmates, even though your English score was higher in absolute terms.
+
+            ### Using Z-Scores to Find Probabilities
+
+            **Example:** What percentage of people have IQ scores above 115?
+
+            **Step 1:** Calculate z-score
+            z = (115 - 100) ÷ 15 = 15 ÷ 15 = 1.0
+
+            **Step 2:** Use the 68-95-99.7 rule
+            - 68% of people have IQ between 85 and 115
+            - This means 32% have IQ outside this range
+            - Since the distribution is symmetrical, 16% have IQ above 115
+
+            **Answer:** About 16% of people have IQ scores above 115.
+
+            **Example:** What percentage of people have IQ scores below 85?
+
+            **Step 1:** Calculate z-score
+            z = (85 - 100) ÷ 15 = -15 ÷ 15 = -1.0
+
+            **Step 2:** Use symmetry
+            - 16% have IQ above 115 (z = +1)
+            - By symmetry, 16% have IQ below 85 (z = -1)
+
+            **Answer:** About 16% of people have IQ scores below 85.
+
+            ### Properties of Z-Scores
+
+            1. **Mean of z-scores = 0**
+            2. **Standard deviation of z-scores = 1**
+            3. **Shape remains the same** (normal distribution stays normal)
+            4. **Easy to interpret** (positive = above average, negative = below average)
+
+            ### Real-World Application
+
+            **College Admissions:** SAT scores are converted to z-scores to compare students from different graduating classes and different high schools.
+
+            **Medical Testing:** Lab results are often reported as z-scores to help doctors identify unusual values (typically z > 2 or z < -2).
+
+            **Quality Control:** Manufacturing processes use z-scores to identify products that are too far from specifications.
+
+            ### Quick Check
+
+            **Question 1:** A student scores 88 on a test where the mean is 80 and standard deviation is 4. What is their z-score?
+
+            **Answer:** z = (88 - 80) ÷ 4 = 8 ÷ 4 = 2.0
+
+            **Question 2:** Using the 68-95-99.7 rule, what percentage of students scored better than this student?
+
+            **Answer:** About 2.5% (since 95% fall within 2 standard deviations, 5% fall outside, and 2.5% are above)
+
+            **Question 3:** If IQ scores are normally distributed with mean 100 and standard deviation 15, what IQ score corresponds to z = -1.5?
+
+            **Answer:** IQ = 100 + (-1.5 × 15) = 100 - 22.5 = 77.5
+
+            ---
+        </div>
+        
+        <div id="tab-5" class="tab-panel">
+            ## Part 8: Probability and Inference
+
+            Probability is the foundation of statistical inference—the process of drawing conclusions about populations based on sample data. Understanding basic probability concepts helps us make sense of statistical tests and their results.
+
+            ### What is Probability?
+
+            **Definition:** Probability is the likelihood that a particular event will occur, expressed as a number between 0 and 1.
+
+            - **0** = Event will never happen (impossible)
+            - **0.5** = Event has equal chance of happening or not (50-50)
+            - **1** = Event will always happen (certain)
+
+            **Examples:**
+            - Probability of flipping heads: 0.5 (50%)
+            - Probability of rolling a 6 on a die: 0.167 (16.7%)
+            - Probability of rain tomorrow: 0.3 (30%)
+
+            **Key insight:** In statistics, we're often interested in the probability of getting certain sample results if our hypothesis about the population is true.
+
+            ### Probability in Normal Distributions
+
+            **The connection:** In a normal distribution, we can calculate the probability of getting any value or range of values.
+
+            **Example:** IQ scores are normally distributed with mean 100 and standard deviation 15.
+            - Probability of IQ > 115: About 16%
+            - Probability of IQ between 85 and 115: About 68%
+            - Probability of IQ < 70: About 2.5%
+
+            **Why this matters:** Statistical tests use probability to determine if our sample results are "surprising" or "expected" if our hypothesis is true.
+
+            ### The Logic of Inferential Statistics (Preview)
+
+            **The basic question:** "Is what I observed in my sample likely to have happened by chance, or does it suggest a real effect in the population?"
+
+            **The process:**
+            1. **State a hypothesis** about the population
+            2. **Collect sample data**
+            3. **Calculate the probability** of getting your sample results if the hypothesis is true
+            4. **Make a decision:** If the probability is low, reject the hypothesis
+
+            **Example:** Testing a new teaching method
+            - **Hypothesis:** New method = traditional method (no difference)
+            - **Sample:** Students using new method score 15 points higher on average
+            - **Question:** What's the probability of getting this result by chance?
+            - **Decision:** If probability < 5%, conclude new method is better
+
+            ### Concrete Example: Does This Drug Work?
+
+            **Scenario:** A pharmaceutical company tests a new headache medication.
+
+            **Step 1: Set up the hypothesis**
+            - **Null hypothesis (H₀):** The drug doesn't work (pain reduction = 0)
+            - **Alternative hypothesis (H₁):** The drug does work (pain reduction > 0)
+
+            **Step 2: Collect sample data**
+            - Test the drug on 100 people with headaches
+            - Measure pain level before and after taking the drug
+            - Find average pain reduction = 2.3 points (on a 0-10 scale)
+
+            **Step 3: Calculate probability**
+            - **Question:** "What's the probability of getting 2.3 points average reduction if the drug doesn't actually work?"
+            - **Answer:** Based on the normal distribution, this probability is 0.02 (2%)
+
+            **Step 4: Make a decision**
+            - Since 2% < 5%, we reject the null hypothesis
+            - **Conclusion:** The drug appears to work
+
+            **Key insight:** We're not proving the drug works—we're saying the results would be very unlikely if it didn't work.
+
+            ### The p < 0.05 Convention
+
+            **Definition:** p-value is the probability of getting your sample results (or more extreme) if the null hypothesis is true.
+
+            **The 5% rule:** If p < 0.05, we consider the result "statistically significant."
+
+            **What this means:**
+            - **p < 0.05:** Less than 5% chance this happened by random luck
+            - **p ≥ 0.05:** Could easily have happened by random luck
+
+            **Important:** p < 0.05 doesn't mean:
+            - The effect is large or important
+            - The result is definitely true
+            - You've proven your hypothesis
+
+            **It only means:** The result is unlikely to have occurred by chance alone.
+
+            ### Sampling Error
+
+            **Definition:** The difference between sample statistics and population parameters due to random variation.
+
+            **Example:** Even if a coin is fair, you might get 7 heads out of 10 flips just by chance. This is sampling error.
+
+            **Why sampling error matters:**
+            - Every sample will be slightly different
+            - We need to account for this when making inferences
+            - Statistical tests help us distinguish real effects from sampling error
+
+            ### Building Toward Hypothesis Testing
+
+            **The big picture:** In future modules, you'll learn specific statistical tests (t-tests, ANOVA, correlation) that all follow this same logic:
+
+            1. **State hypotheses** about population parameters
+            2. **Calculate a test statistic** from your sample data
+            3. **Find the p-value** (probability of getting this result by chance)
+            4. **Make a decision** based on the p-value
+
+            **Example preview (t-test):**
+            - **Question:** Do men and women differ in height?
+            - **Test:** Compare average heights in a sample
+            - **Result:** p = 0.03
+            - **Decision:** Since p < 0.05, conclude men and women do differ in height
+
+            ### Why This Matters
+
+            **For your assignments:** Understanding probability helps you interpret statistical results correctly.
+
+            **For reading research:** You'll be able to evaluate whether researchers' conclusions are justified by their data.
+
+            **For decision-making:** You'll understand the difference between statistical significance and practical importance.
+
+            ### Quick Check
+
+            **Question 1:** A researcher finds p = 0.08 for their statistical test. What should they conclude?
+
+            **Answer:** They should NOT reject the null hypothesis because p > 0.05. The result could easily have happened by chance.
+
+            **Question 2:** What does p = 0.01 mean?
+
+            **Answer:** There's only a 1% chance of getting this result if the null hypothesis is true. This suggests the null hypothesis is probably false.
+
+            **Question 3:** If you flip a fair coin 10 times and get 9 heads, what's the probability of this happening by chance?
+
+            **Answer:** About 1% (very unlikely). This might make you suspect the coin isn't fair.
+
+            ---
+
+            ## Part 9: Practical Guide: Working with SPSS
+
+            Now let's put theory into practice! SPSS (Statistical Package for the Social Sciences) is a powerful tool for statistical analysis. This section will walk you through the basics you'll need for your M1 assignment.
+
+            ### Setting Up Your Dataset
+
+            **Step 1: Open SPSS**
+            - Launch SPSS from your computer or university lab
+            - You'll see the Data Editor window with two tabs: "Data View" and "Variable View"
+
+            **Step 2: Define Variables (Variable View)**
+            - Click on "Variable View" tab
+            - Each row represents one variable
+            - Key columns to fill out:
+              - **Name:** Variable name (no spaces, start with letter)
+              - **Type:** Numeric (for numbers), String (for text)
+              - **Label:** Full description of the variable
+              - **Values:** Define value labels for categories
+              - **Measure:** Scale, Ordinal, or Nominal
+
+            **Example Variable Setup:**
+            | Name | Label | Type | Values | Measure |
+            |------|-------|------|--------|---------|
+            | ID | Student ID | Numeric | | Scale |
+            | Gender | Gender | Numeric | 1=Male, 2=Female | Nominal |
+            | Hours | Study Hours | Numeric | | Scale |
+            | Grade | Course Grade | Numeric | 1=F, 2=D, 3=C, 4=B, 5=A | Ordinal |
+
+            **Step 3: Enter Data (Data View)**
+            - Click on "Data View" tab
+            - Each row is one participant
+            - Each column is one variable
+            - Enter your data carefully (double-check for errors)
+
+            **Step 4: Save Your File**
+            - File → Save As
+            - Choose a location and descriptive filename
+            - SPSS files have .sav extension
+
+            ### Creating Frequency Tables
+
+            **For Categorical Variables:**
+
+            **Steps:**
+            1. Analyze → Descriptive Statistics → Frequencies
+            2. Move your categorical variable(s) to the "Variable(s)" box
+            3. Click "Statistics" if you want additional statistics
+            4. Click "Charts" if you want bar charts
+            5. Click OK
+
+            **Output includes:**
+            - Frequency count for each category
+            - Valid and missing percentages
+            - Cumulative percentages
+
+            **Example Output:**
+            ```
+            Gender
+                        Frequency    Percent    Valid Percent    Cumulative Percent
+            Valid   Male        25      50.0           50.0                50.0
+                    Female      25      50.0           50.0               100.0
+            Total              50     100.0          100.0
+            ```
+
+            ### Creating Grouped Frequency Tables
+
+            **For Scale Variables:**
+
+            **Method 1: Using Visual Binning**
+            1. Transform → Visual Binning
+            2. Select your scale variable
+            3. Click "Make Cutpoints" → Equal Width Intervals
+            4. Choose number of intervals (e.g., 5)
+            5. Click "Make Labels" to create descriptive labels
+            6. Click OK to create new grouped variable
+            7. Run Frequencies on the new grouped variable
+
+            **Method 2: Manual Grouping**
+            1. Transform → Recode into Different Variables
+            2. Select your scale variable
+            3. Define ranges for each group
+            4. Create new variable with group labels
+            5. Run Frequencies on the new variable
+
+            ### Creating Graphs
+
+            **Bar Charts (for categorical data):**
+            1. Graphs → Chart Builder
+            2. Choose "Bar" from gallery
+            3. Drag your categorical variable to X-axis
+            4. Choose "Count" for Y-axis
+            5. Click OK
+
+            **Histograms (for scale data):**
+            1. Graphs → Chart Builder
+            2. Choose "Histogram" from gallery
+            3. Drag your scale variable to X-axis
+            4. Click OK
+
+            **Customizing Graphs:**
+            - Double-click on graph to open Chart Editor
+            - Change colors, titles, axis labels
+            - Add gridlines, legends, etc.
+
+            ### Calculating Descriptive Statistics
+
+            **For Scale Variables:**
+
+            **Steps:**
+            1. Analyze → Descriptive Statistics → Descriptives
+            2. Move your scale variable(s) to the "Variable(s)" box
+            3. Click "Options" to choose which statistics to calculate
+            4. Recommended statistics: Mean, Std. Deviation, Min, Max
+            5. Click OK
+
+            **Output includes:**
+            - Sample size (N)
+            - Mean
+            - Standard deviation
+            - Minimum and maximum values
+            - Range
+
+            **Example Output:**
+            ```
+            Study Hours
+                        N    Mean    Std. Deviation    Minimum    Maximum
+            Valid       50   12.40            3.25        6.00       20.00
+            ```
+
+            **For All Variables (including categorical):**
+            1. Analyze → Descriptive Statistics → Frequencies
+            2. Move all variables to the "Variable(s)" box
+            3. Click "Statistics" and select desired statistics
+            4. Click OK
+
+            ### Common SPSS Errors and Troubleshooting
+
+            **Error: "Variable names must be unique"**
+            - Solution: Check for duplicate variable names in Variable View
+
+            **Error: "String variables cannot be used in arithmetic operations"**
+            - Solution: Use Numeric type for variables you want to analyze
+
+            **Error: "No cases in analysis"**
+            - Solution: Check for missing data codes; use "Missing" column in Variable View
+
+            **Graphs not displaying properly:**
+            - Solution: Check that you have the right variable type (Scale for histograms, Nominal for bar charts)
+
+            **Statistics showing as missing:**
+            - Solution: Check for invalid data entry; use "Values" column to define valid codes
+
+            ### Try It Yourself: Practice Exercise
+
+            **Dataset:** Create a dataset with the following variables:
+            - Student_ID (Scale): 1, 2, 3, 4, 5
+            - Study_Method (Nominal): 1=Reading, 2=Practice Problems, 3=Group Study
+            - Hours_Studied (Scale): 5, 8, 12, 6, 10
+            - Test_Score (Scale): 78, 85, 92, 67, 89
+
+            **Tasks:**
+            1. Set up variables in Variable View
+            2. Enter data in Data View
+            3. Create frequency table for Study_Method
+            4. Create histogram for Test_Score
+            5. Calculate descriptive statistics for Hours_Studied and Test_Score
+            6. Interpret your results
+
+            **Expected Results:**
+            - Study_Method frequencies: Reading (1), Practice Problems (1), Group Study (1), Other (2)
+            - Test_Score mean: 82.2, Standard deviation: 9.8
+            - Hours_Studied mean: 8.2, Standard deviation: 2.9
+
+            ---
+
+            ## Quick Reference Card
+
+            ### Variable Classification Decision Tree
+            1. **Can you do math with it?** No → Go to 2. Yes → Scale
+            2. **Does it have order?** No → Nominal. Yes → Ordinal
+
+            ### Measurement Level Quick Guide
+            - **Nominal:** Categories only (Gender, Eye Color)
+            - **Ordinal:** Ordered categories (Grade, Satisfaction Rating)
+            - **Scale:** Numbers with meaning (Age, Height, Score)
+
+            ### Essential Formulas at a Glance
+            - **Mean:** Sum ÷ Count
+            - **Median:** Middle value (or average of two middle values)
+            - **Mode:** Most frequent value
+            - **Range:** Highest - Lowest
+            - **Standard Deviation:** √(Sum of squared differences ÷ (n-1))
+            - **Z-Score:** (Value - Mean) ÷ Standard Deviation
+
+            ### Central Tendency Decision Guide
+            - **Normal distribution:** Use mean
+            - **Skewed distribution:** Use median
+            - **Nominal data:** Use mode
+
+            ### Z-Score Interpretation Guide
+            - **z = 0:** At the mean
+            - **z = ±1:** 1 standard deviation from mean (68% rule)
+            - **z = ±2:** 2 standard deviations from mean (95% rule)
+            - **z = ±3:** 3 standard deviations from mean (99.7% rule)
+
+            ### SPSS Variable Setup Checklist
+            - [ ] Name: No spaces, starts with letter
+            - [ ] Type: Numeric for numbers, String for text
+            - [ ] Label: Clear description
+            - [ ] Values: Define categories
+            - [ ] Measure: Correct level (Scale/Ordinal/Nominal)
+
+            ### Common Mistakes Checklist
+            - [ ] Using mean for ordinal data
+            - [ ] Forgetting n-1 in standard deviation
+            - [ ] Using wrong graph type
+            - [ ] Not defining variable labels in SPSS
+            - [ ] Confusing sample and population
+
+            ### Graph Selection Quick Guide
+            - **Bar Chart:** Categorical data (nominal/ordinal)
+            - **Histogram:** Scale data (continuous)
+            - **Line Graph:** Time series or continuous relationships
+
+            ### IV vs. DV Identification Trick
+            - **IV:** What the researcher manipulates or assumes causes change
+            - **DV:** What the researcher measures to see if it changes
+            - **Memory:** IV is the "cause," DV is the "effect"
+
+            ### Sample vs. Population Symbols
+            - **Population:** μ (mean), σ (standard deviation), N (size)
+            - **Sample:** x̄ (mean), s (standard deviation), n (size)
+
+            ### n vs. n-1 Decision
+            - **Population standard deviation:** Divide by N
+            - **Sample standard deviation:** Divide by n-1 (bias correction)
+
+            ### Module 1 Key Takeaways
+            1. **Statistics organizes and interprets data** to move from opinion to evidence
+            2. **Variables are the building blocks** of all research
+            3. **Measurement level determines** which statistics are appropriate
+            4. **Descriptive statistics summarize** what you have; inferential statistics generalize to populations
+            5. **Normal distributions and z-scores** are the foundation of statistical inference
+            6. **Probability concepts** help us understand statistical significance
+
+            ### Connection to Future Modules
+            - **Module 2:** One-sample t-tests (testing if sample mean differs from population mean)
+            - **Module 3:** Independent and paired t-tests (comparing two groups)
+            - **Module 4:** ANOVA (comparing multiple groups)
+            - **Module 5:** Factorial designs (multiple independent variables)
+            - **Module 6:** Correlation and regression (relationships between variables)
+
+            Each module builds on these foundations, so master these concepts now!
+
+            ---
+
+            ## Summary and Key Formulas
+
+            ### Core Concepts
+            - **Statistics:** Mathematical tools for organizing, summarizing, and interpreting data
+            - **Descriptive Statistics:** Summarize data you have collected
+            - **Inferential Statistics:** Make conclusions about populations based on samples
+            - **Variables:** Characteristics that can take different values
+            - **Population:** Entire group you want to study
+            - **Sample:** Subset of population you actually study
+
+            ### Measures of Central Tendency
+            - **Mean (x̄):** Sum of all values ÷ Number of values
+            - **Median:** Middle value when data is ordered
+            - **Mode:** Most frequently occurring value
+
+            ### Measures of Variability
+            - **Range:** Highest value - Lowest value
+            - **Variance (s²):** Sum of squared differences ÷ (n-1)
+            - **Standard Deviation (s):** √Variance
+
+            ### Z-Scores
+            - **Formula:** z = (Value - Mean) ÷ Standard Deviation
+            - **Interpretation:** Number of standard deviations from the mean
+            - **68-95-99.7 Rule:** 68% within 1 SD, 95% within 2 SD, 99.7% within 3 SD
+
+            ### Symbols Reference
+            - **Population:** μ (mean), σ (standard deviation), N (size)
+            - **Sample:** x̄ (mean), s (standard deviation), n (size)
+            - **Probability:** p (p-value)
+
+            ### Key Distinctions
+            - **Parameter vs. Statistic:** Population vs. sample characteristics
+            - **Discrete vs. Continuous:** Counted vs. measured variables
+            - **Independent vs. Dependent:** Cause vs. effect variables
+
+            ### Analysis Decision Guide
+            1. **Identify your variables** and their measurement levels
+            2. **Choose appropriate descriptive statistics** based on measurement level
+            3. **Create appropriate visualizations** (bar charts for categories, histograms for scale data)
+            4. **Use n-1 correction** when calculating sample standard deviation
+            5. **Interpret results** in context of your research question
+
+            ---
+
+            ## Glossary
+
+            **Bias:** Systematic error that affects the accuracy of estimates
+            **Central Tendency:** Measures that describe the "typical" value in a dataset
+            **Continuous Variable:** Variable that can take any value within a range
+            **Degrees of Freedom:** Number of values free to vary (n-1 for sample standard deviation)
+            **Descriptive Statistics:** Methods for summarizing and describing data
+            **Discrete Variable:** Variable that can only take specific, separate values
+            **Frequency Distribution:** Summary showing how often each value occurs
+            **Histogram:** Graph showing distribution of continuous data using bars that touch
+            **Inferential Statistics:** Methods for drawing conclusions about populations from samples
+            **Mean:** Average value (sum divided by count)
+            **Median:** Middle value when data is ordered
+            **Mode:** Most frequently occurring value
+            **Normal Distribution:** Bell-shaped distribution where most values cluster around the mean
+            **Parameter:** Numerical characteristic of a population
+            **Population:** Entire group of interest in a study
+            **Probability:** Likelihood that an event will occur (0 to 1)
+            **Range:** Difference between highest and lowest values
+            **Sample:** Subset of population actually studied
+            **Standard Deviation:** Measure of how spread out values are from the mean
+            **Statistic:** Numerical characteristic of a sample
+            **Variable:** Characteristic that can take different values
+            **Z-Score:** Number of standard deviations a value is from the mean
+
+            ---
+
+            ## Frequently Asked Questions
+
+            **Q: Why do we divide by n-1 instead of n for sample standard deviation?**
+            A: This corrects for bias. Samples tend to underestimate population variability because values are closer to the sample mean than the true population mean. Dividing by n-1 gives a better estimate of the population standard deviation.
+
+            **Q: Can I use the mean for ordinal data?**
+            A: No. Ordinal data has meaningful order but unequal intervals, so mathematical operations like averaging aren't appropriate. Use the median instead.
+
+            **Q: What's the difference between a parameter and a statistic?**
+            A: A parameter is a characteristic of the entire population (usually unknown). A statistic is a characteristic of your sample (what you actually calculate). We use statistics to estimate parameters.
+
+            **Q: When should I use a histogram vs. a bar chart?**
+            A: Use histograms for continuous scale data (bars touch). Use bar charts for categorical data (bars don't touch).
+
+            **Q: What does p < 0.05 really mean?**
+            A: It means there's less than a 5% chance of getting your sample results if the null hypothesis is true. It doesn't prove your hypothesis is correct or that the effect is large.
+
+            **Q: Can I calculate a z-score for any type of data?**
+            A: Z-scores are most meaningful for data that follows a normal distribution. They're less useful for highly skewed or categorical data.
+
+            **Q: How do I know if my data is normally distributed?**
+            A: Look at a histogram. Normal data should be roughly bell-shaped and symmetrical. You can also use statistical tests (like Shapiro-Wilk) that you'll learn about in future modules.
+
+            **Q: What's the difference between descriptive and inferential statistics?**
+            A: Descriptive statistics summarize the data you have (e.g., "the average age in our sample is 22"). Inferential statistics make conclusions about a larger population (e.g., "we estimate the average age of all college students is 22").
+
+            ---
+
+            ## Connections to Future Modules
+
+            **Module 2: One-Sample Tests**
+            - Uses z-scores and normal distributions to test if a sample mean differs from a known population mean
+            - Applies probability concepts to hypothesis testing
+
+            **Module 3: Two-Sample Tests**
+            - Compares means between two groups using the same statistical reasoning
+            - Builds on understanding of sampling error and probability
+
+            **Module 4: Analysis of Variance (ANOVA)**
+            - Extends t-test logic to compare multiple groups simultaneously
+            - Uses the same probability framework for decision-making
+
+            **Module 5: Factorial Designs**
+            - Combines multiple independent variables
+            - Requires understanding of variable classification and measurement levels
+
+            **Module 6: Correlation and Regression**
+            - Examines relationships between variables
+            - Uses similar probability concepts for testing relationships
+
+            Each module builds on the foundations you've learned here. Master these concepts, and you'll have a solid foundation for all future statistical analysis!
+
+            ---
+
+            ## Final Thoughts
+
+            Congratulations! You've completed Module 1 and learned the fundamental concepts that form the foundation of statistical reasoning. You now understand:
+
+            - How statistics helps us move from subjective opinion to objective evidence
+            - How to identify and classify variables appropriately
+            - How to describe data with numbers and visualizations
+            - How samples relate to populations
+            - How the normal distribution and z-scores work
+            - How probability forms the basis of statistical inference
+            - How to use SPSS for basic data analysis
+
+            These concepts might seem abstract now, but they will become your tools for understanding research, evaluating claims, and making data-driven decisions throughout your academic and professional career.
+
+            **Remember:** Statistics is not about memorizing formulas—it's about understanding the logic behind them. When you encounter new statistical concepts in future modules, always ask yourself: "What is this trying to tell me about my data? What does this mean in the context of my research question?"
+
+            As you work through the M1 assignment, focus not just on getting the right answers, but on understanding **why** we do each step. When you calculate a standard deviation, think about what it tells you. When you create a histogram, consider what patterns the shape reveals. When you compare your manual calculations to SPSS output, reflect on the purpose of the n-1 adjustment.
+
+            These fundamental statistical reasoning skills will serve you throughout your academic career and beyond—whether you're reading research papers, evaluating news headlines, or making data-driven decisions in your future career.
+
+            **You've got this!** Statistics builds logically, step by step. Master these foundations, and everything that follows will make sense.
+
+            ---
+
+            _Remember: The goal isn't to memorize formulas—it's to understand the logic behind them. When in doubt, think about what the numbers mean in the context of your research question._
+        </div>
     </div>
-  </details>
-  
-  <div class="quiz-question">
-    <p><strong>Question 2:</strong> For the research question "Is there a relationship between income level and job satisfaction?", what makes these good variable names?</p>
-    <div class="options">
-      <p>A) They are short and simple</p>
-      <p>B) They represent characteristics that can vary between people</p>
-      <p>C) They are easy to spell</p>
-      <p>D) They sound professional</p>
-    </div>
-  </div>
-  
-  <details class="answer-section">
-    <summary>💡 Click to reveal answer and explanation</summary>
-    <div class="answer-content">
-      <p class="correct-answer"><strong>✓ Answer:</strong> B) They represent characteristics that can vary between people</p>
-      
-      <p class="explanation"><strong>Why this is correct:</strong> The key principle of variable naming is that variables must represent something that can change or vary from one person to another. "Income level" varies (some people earn $30K, others $100K), and "job satisfaction" varies (some people love their job, others hate it).</p>
-      
-      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
-      <ul>
-        <li><strong>A) Short and simple:</strong> While clarity is important, being short isn't the main criterion. "Income level" is longer than "money" but much more specific.</li>
-        <li><strong>C) Easy to spell:</strong> Spelling is important for communication, but it's not the defining characteristic of a good variable name.</li>
-        <li><strong>D) Sound professional:</strong> Professional language is good, but the most important thing is that the name clearly represents something that varies.</li>
-      </ul>
-      
-      <p class="application-tip"><em>🌟 Real-world tip:</em> In SPSS, you'll use these variable names in all your analyses. Clear, descriptive names make your output much easier to interpret!</p>
-    </div>
-  </details>
-  
-  <div class="quiz-question">
-    <p><strong>Question 3:</strong> For the research question "Does listening to music while studying help or hurt test performance?", which variable represents the independent variable (the presumed cause)?</p>
-    <div class="options">
-      <p>A) "Test performance"</p>
-      <p>B) "Music condition" (music vs. no music)</p>
-      <p>C) "Studying"</p>
-      <p>D) "Listening"</p>
-    </div>
-  </div>
-  
-  <details class="answer-section">
-    <summary>💡 Click to reveal answer and explanation</summary>
-    <div class="answer-content">
-      <p class="correct-answer"><strong>✓ Answer:</strong> B) "Music condition" (music vs. no music)</p>
-      
-      <p class="explanation"><strong>Why this is correct:</strong> The independent variable is the presumed cause or predictor. In this study, the researcher is manipulating whether students listen to music or not, and then measuring the effect on test performance. The music condition is what the researcher controls or varies.</p>
-      
-      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
-      <ul>
-        <li><strong>A) "Test performance":</strong> This is the dependent variable (the outcome being measured). Test performance is what we expect to change based on the music condition.</li>
-        <li><strong>C) "Studying":</strong> This is too vague. All participants are studying—the question is about the conditions under which they study.</li>
-        <li><strong>D) "Listening":</strong> This is an activity, not a variable. The variable is whether they're in the music condition or the no-music condition.</li>
-      </ul>
-      
-      <p class="review-tip"><em>💭 Need to review?</em> See Part 3: Classifying Variables for more on independent vs. dependent variables.</p>
-    </div>
-  </details>
 </div>
 
-### Why Proper Variable Naming Matters
-
-**In Research Papers:** Clear variable names make your methods transparent and reproducible.
-
-**In SPSS:** The variable names you create will appear in all your output. Good names make your results instantly understandable. Compare:
-
-- ❌ `VAR001`, `VAR002` → What do these mean?
-- ✓ `Age`, `Depression_Score` → Immediately clear!
-
-> **⚠️ CRITICAL:** Variable names you choose at the beginning affect EVERYTHING that follows. Poor variable naming leads to:
->
-> - Confusion in SPSS output (which variable is which?)
-> - Errors in analysis (using the wrong variable)
-> - Difficulty reproducing your work
-> - Lower grades on assignments (unclear what you measured)
->
-> **Best Practice:** Spend time getting variable names right during initial setup. It's much harder to fix later!
-
----
-
-## Part 3: Classifying Variables
-
-Not all variables are created equal. How we classify a variable determines which statistical analyses we can use and how we interpret our results.
-
-### Classification System 1: By Role in Research
-
-This classification describes the **cause-and-effect relationship** you're investigating.
-
-#### Independent Variable (IV)
-
-**Definition:** The variable you believe is the **cause** or **predictor**. It's "independent" because its value doesn't depend on other variables in your study.
-
-**Other Names:** Predictor variable, explanatory variable
-
-**Examples:**
-
-- Type of therapy (CBT vs. medication)
-- Amount of study time
-- Experimental condition (treatment vs. control)
-
-#### Dependent Variable (DV)
-
-**Definition:** The variable you believe is the **effect** or **outcome**. Its value "depends on" the independent variable.
-
-**Other Names:** Outcome variable, response variable, criterion variable
-
-**Examples:**
-
-- Depression symptoms (after therapy)
-- Test score (after studying)
-- Recovery rate (after treatment)
-
-### How to Identify IV and DV
-
-**The Simple Trick:** Ask yourself: "Does [Variable A] depend on [Variable B]?"
-
-**Example:** "Does exercise frequency affect stress levels?"
-
-- Question: Does `stress level` depend on `exercise frequency`? **Yes!**
-- Therefore: **DV** = Stress level, **IV** = Exercise frequency
-
-**Example:** "Is there a relationship between SAT scores and college GPA?"
-
-- Question: Does `college GPA` depend on `SAT score`? **Yes!** (We're predicting GPA from SAT)
-- Therefore: **DV** = College GPA, **IV** = SAT score
-
-### Practice Scenarios
-
-**Scenario 1:** A researcher investigates whether background noise affects concentration.
-
-- **IV:** Background noise level (quiet, moderate, loud)
-- **DV:** Concentration score
-
-**Scenario 2:** A study examines whether age is related to smartphone usage.
-
-- **IV:** Age
-- **DV:** Smartphone usage (hours per day)
-
-**Scenario 3:** Do students who attend review sessions score higher on exams?
-
-- **IV:** Review session attendance (yes/no)
-- **DV:** Exam score
-
-**Common Mistake:** Sometimes students confuse which is which. Remember: The DV is what you're _measuring as an outcome_. The IV is what you're _manipulating or using to predict_.
-
-**Advanced Note:** Not all research fits neatly into IV/DV categories. Correlational studies might examine relationships without clear causation. We'll explore this more in Module 6.
-
----
-
-### Classification System 2: By Measurement Scale
-
-This classification describes the **nature of the values** a variable can take. This is **crucial** because it determines which statistical procedures are appropriate.
-
-#### Nominal Variables
-
-**Definition:** Variables that represent categories or names with **no inherent order or ranking**.
-
-**Key Property:** The numbers assigned are arbitrary labels—they have no mathematical meaning.
-
-**Examples:**
-
-- `Gender` (1 = Male, 2 = Female, 3 = Non-binary)
-- `Marital Status` (1 = Single, 2 = Married, 3 = Divorced, 4 = Widowed)
-- `Major` (1 = Psychology, 2 = Biology, 3 = English, etc.)
-- `Type of therapy` (1 = CBT, 2 = Psychodynamic, 3 = Humanistic)
-
-**What You Can Do:**
-
-- Count frequencies (How many males? How many females?)
-- Find the mode (most common category)
-- Create bar charts or pie charts
-
-**What You Cannot Do:**
-
-- Calculate a meaningful average (What's the average of Male and Female? Nonsense!)
-- Put categories in order (Unless there's a natural order—see Ordinal)
-
-**SPSS Note:** In SPSS, set the "Measure" to "Nominal" and always define value labels (1 = "Male", 2 = "Female") to make output readable.
-
-#### Ordinal Variables
-
-**Definition:** Variables that represent categories with a **meaningful rank or order**, but the distance between ranks is **not equal or meaningful**.
-
-**Key Property:** You can say A > B, but you can't say "how much more."
-
-**Examples:**
-
-- `Education level` (1 = High School, 2 = Bachelor's, 3 = Master's, 4 = Doctorate)
-  - A Master's is "more" than a Bachelor's, but is the distance from HS to Bachelor's the same as Bachelor's to Master's? No!
-- `Class rank` (1st place, 2nd place, 3rd place)
-  - The difference between 1st and 2nd might be 0.01 points, but between 10th and 11th might be 5 points
-- `Likert scale items` (1 = Strongly Disagree, 2 = Disagree, 3 = Neutral, 4 = Agree, 5 = Strongly Agree)
-  - The "distance" from Disagree to Neutral might not equal the distance from Agree to Strongly Agree
-
-**What You Can Do:**
-
-- Everything you can do with nominal data
-- Find the median (middle rank)
-- Determine if one value is greater or less than another
-
-**What You Should Be Cautious About:**
-
-- Calculating means (technically debatable—see the note on Likert scales below)
-- Assuming equal intervals
-
-**SPSS Note:** Set "Measure" to "Ordinal" when the categories have an order but aren't true numbers.
-
-> **⚖️ THE LIKERT SCALE DEBATE: A Gray Area**
->
-> Likert scales (e.g., 1=Strongly Disagree to 5=Strongly Agree) create controversy:
->
-> **Technically:** Ordinal
->
-> - We can't prove the distance from "Disagree" to "Neutral" equals "Agree" to "Strongly Agree"
-> - Different people may interpret scale points differently
->
-> **In Practice:** Often treated as Scale
->
-> - Most researchers calculate means of Likert items
-> - Required for common analyses (t-tests, ANOVA, regression)
-> - Especially acceptable when averaging multiple items into a scale score
->
-> **What You Should Do:**
->
-> 1. **Single Likert item:** Consider treating as ordinal, use median
-> 2. **Multiple items averaged (Likert scale):** Usually treat as scale, calculate mean
-> 3. **In assignments:** Follow your instructor's guidance
-> 4. **In research:** Be aware you're making an assumption and note it in limitations
->
-> **Bottom Line:** There's no universal "right answer" – it depends on context and conventions in your field.
-
-#### Scale Variables (Interval and Ratio)
-
-**Definition:** Variables with **true numerical values** where the distance between any two values is **equal and meaningful**.
-
-**Key Property:** You can do real math—add, subtract, average, etc.
-
-**Two Subtypes:**
-
-- **Interval:** Has equal intervals but no true zero point (e.g., temperature in Celsius—0° doesn't mean "no temperature")
-- **Ratio:** Has equal intervals AND a true zero point (e.g., height, weight, age—0 means "none")
-
-**In SPSS:** Both are labeled as "Scale" (SPSS doesn't distinguish between them)
-
-**Examples:**
-
-- `Age` (in years) → 30 years is exactly twice 15 years
-- `Reaction time` (in milliseconds)
-- `Test score` (0-100)
-- `Income` (in dollars)
-- `Height` (in inches)
-- `IQ score`
-- `Number of errors` on a task
-
-**What You Can Do:**
-
-- Everything from nominal and ordinal
-- Calculate mean, median, mode
-- Calculate standard deviation and variance
-- Perform most statistical tests (t-tests, ANOVA, correlation, regression)
-
-**SPSS Note:** Set "Measure" to "Scale" for all true numerical measurements.
-
-### Discrete vs. Continuous
-
-This is another way to classify **scale** variables:
-
-**Discrete Variables:** Can only take specific, separate values (usually whole numbers).
-
-- Examples: `Number of siblings` (0, 1, 2, 3...), `Number of errors`, `Number of children`
-- You can't have 2.5 siblings!
-
-**Continuous Variables:** Can take any value within a range (including decimals).
-
-- Examples: `Height` (65.5, 65.51, 65.512 inches...), `Reaction time`, `Temperature`
-- Theoretically infinite precision (limited only by your measurement tool)
-
-**Practical Note:** The distinction matters for certain statistical procedures, but SPSS treats both as "Scale."
-
-### Decision Tree: Determining Measurement Level
-
-**Start Here:** What are the possible values?
-
-1. **Are they categories/names?** → Nominal
-
-   - Is there a natural order to the categories?
-     - **No** → Nominal (e.g., hair color, major)
-     - **Yes** → Ordinal (e.g., education level, class rank)
-
-2. **Are they true numbers?** → Scale
-   - Can you perform meaningful arithmetic (add, average)?
-     - **Yes** → Scale
-     - **No** → Probably ordinal (reconsider if they're really numbers)
-
-> **📊 MOST IMPORTANT CONCEPT IN MODULE 1**
->
-> **Measurement level determines EVERYTHING you can do with your data!**
->
-> Get this wrong and:
->
-> - ❌ Your analysis is invalid (e.g., calculating mean of blood types)
-> - ❌ Your conclusions are meaningless
-> - ❌ You'll lose major points on assignments
-> - ❌ You might get published research retracted
->
-> **Before ANY analysis, always ask:**
-> "What measurement level is this variable?"
->
-> This single question prevents 80% of statistical errors in student work!
-
-### Why Measurement Level Matters
-
-**The Golden Rule:** Your variable's measurement level determines which statistical procedures you can use.
-
-| Measurement Level | Appropriate Central Tendency | Appropriate Graphs      | Common Statistical Tests               |
-| :---------------- | :--------------------------- | :---------------------- | :------------------------------------- |
-| **Nominal**       | Mode                         | Bar chart, Pie chart    | Chi-square test                        |
-| **Ordinal**       | Median, Mode                 | Bar chart               | Mann-Whitney U, Kruskal-Wallis         |
-| **Scale**         | Mean, Median, Mode           | Histogram, Scatter plot | t-test, ANOVA, Correlation, Regression |
-
-**Common Mistake:** Students sometimes calculate the mean of a nominal variable because SPSS doesn't stop you. If you set `Gender` as 1=Male, 2=Female and calculate a mean of 1.6, what does that mean? Nothing! Always check your measurement level before choosing an analysis.
-
-<div class="knowledge-check">
-  <h4>🧠 Knowledge Check: Classifying Variables by Measurement Scale</h4>
-  
-  <div class="quiz-question">
-    <p><strong>Question 1:</strong> What measurement level is "blood type" (A, B, AB, O)?</p>
-    <div class="options">
-      <p>A) Nominal</p>
-      <p>B) Ordinal</p>
-      <p>C) Scale</p>
-      <p>D) It depends on how you measure it</p>
-    </div>
-  </div>
-  
-  <details class="answer-section">
-    <summary>💡 Click to reveal answer and explanation</summary>
-    <div class="answer-content">
-      <p class="correct-answer"><strong>✓ Answer:</strong> A) Nominal</p>
-      
-      <p class="explanation"><strong>Why this is correct:</strong> Blood type represents distinct categories with no inherent order or ranking. Type A is not "more" or "less" than Type B—they're just different categories. The letters are arbitrary labels.</p>
-      
-      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
-      <ul>
-        <li><strong>B) Ordinal:</strong> There's no meaningful order to blood types. You can't say A > B > AB > O in any meaningful way.</li>
-        <li><strong>C) Scale:</strong> You can't do meaningful math with blood types. What's the average of A and B? It doesn't make sense.</li>
-        <li><strong>D) It depends:</strong> Blood type is always nominal regardless of how you code it (A=1, B=2, etc.). The measurement level is about the nature of the variable, not the coding.</li>
-      </ul>
-      
-      <p class="review-tip"><em>💭 Need to review?</em> See Part 3.2: Classification by Measurement Scale for the decision tree.</p>
-    </div>
-  </details>
-  
-  <div class="quiz-question">
-    <p><strong>Question 2:</strong> What measurement level is "pain rating" (0 = No pain, 10 = Worst pain imaginable)?</p>
-    <div class="options">
-      <p>A) Nominal</p>
-      <p>B) Ordinal</p>
-      <p>C) Scale</p>
-      <p>D) It could be either ordinal or scale</p>
-    </div>
-  </div>
-  
-  <details class="answer-section">
-    <summary>💡 Click to reveal answer and explanation</summary>
-    <div class="answer-content">
-      <p class="correct-answer"><strong>✓ Answer:</strong> D) It could be either ordinal or scale</p>
-      
-      <p class="explanation"><strong>Why this is correct:</strong> This is a "gray area" case! Pain ratings can be treated as either ordinal or scale depending on your research question and assumptions.</p>
-      
-      <p class="explanation"><strong>Arguments for Ordinal:</strong> The distance between pain levels might not be equal. Is the difference between 2 and 3 the same as between 8 and 9? Maybe not—pain perception isn't linear.</p>
-      
-      <p class="explanation"><strong>Arguments for Scale:</strong> Many researchers treat pain scales as interval data, assuming roughly equal intervals. This allows for more powerful statistical analyses (calculating means, correlations, etc.).</p>
-      
-      <p class="application-tip"><em>🌟 Real-world tip:</em> In practice, most researchers treat Likert scales and pain ratings as scale data for analysis purposes, but acknowledge the ordinal nature in their limitations section.</p>
-    </div>
-  </details>
-  
-  <div class="quiz-question">
-    <p><strong>Question 3:</strong> What measurement level is "finishing position in a race" (1st, 2nd, 3rd, etc.)?</p>
-    <div class="options">
-      <p>A) Nominal</p>
-      <p>B) Ordinal</p>
-      <p>C) Scale</p>
-      <p>D) It depends on the race</p>
-    </div>
-  </div>
-  
-  <details class="answer-section">
-    <summary>💡 Click to reveal answer and explanation</summary>
-    <div class="answer-content">
-      <p class="correct-answer"><strong>✓ Answer:</strong> B) Ordinal</p>
-      
-      <p class="explanation"><strong>Why this is correct:</strong> Finishing positions have a meaningful order (1st is better than 2nd, which is better than 3rd), but the distances between positions aren't equal. The time difference between 1st and 2nd place might be 0.1 seconds, while the difference between 2nd and 3rd might be 5 seconds.</p>
-      
-      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
-      <ul>
-        <li><strong>A) Nominal:</strong> There IS a meaningful order—1st place is clearly better than 2nd place.</li>
-        <li><strong>C) Scale:</strong> You can't do meaningful math with positions. What's the average of 1st and 3rd place? It's not 2nd place!</li>
-        <li><strong>D) It depends:</strong> The measurement level is about the nature of the variable, not the specific race. All finishing positions work the same way.</li>
-      </ul>
-      
-      <p class="review-tip"><em>💭 Need to review?</em> See Part 3.2 for more examples of ordinal variables and why unequal intervals matter.</p>
-    </div>
-  </details>
-  
-  <div class="quiz-question">
-    <p><strong>Question 4:</strong> Which of these variables would be classified as "Scale" in SPSS?</p>
-    <div class="options">
-      <p>A) Salary in dollars</p>
-      <p>B) Reaction time in milliseconds</p>
-      <p>C) Number of siblings</p>
-      <p>D) All of the above</p>
-    </div>
-  </div>
-  
-  <details class="answer-section">
-    <summary>💡 Click to reveal answer and explanation</summary>
-    <div class="answer-content">
-      <p class="correct-answer"><strong>✓ Answer:</strong> D) All of the above</p>
-      
-      <p class="explanation"><strong>Why this is correct:</strong> All three represent true numerical values where you can do meaningful math operations.</p>
-      
-      <p class="explanation"><strong>Why each is scale:</strong></p>
-      <ul>
-        <li><strong>A) Salary:</strong> You can add, subtract, average salaries. $50,000 + $30,000 = $80,000 makes sense.</li>
-        <li><strong>B) Reaction time:</strong> You can calculate means, differences, etc. 250ms + 300ms = 550ms is meaningful.</li>
-        <li><strong>C) Number of siblings:</strong> Even though it's discrete (whole numbers), you can still do math. Average of 2 and 4 siblings = 3 siblings.</li>
-      </ul>
-      
-      <p class="explanation"><strong>Key insight:</strong> Scale variables can be either discrete (like number of siblings) or continuous (like reaction time). What matters is that the numbers represent true quantities, not just labels.</p>
-      
-      <p class="application-tip"><em>🌟 SPSS tip:</em> In SPSS, set all of these to "Scale" in the Measure column. This allows you to calculate means, standard deviations, and run most statistical tests.</p>
-    </div>
-  </details>
-</div>
-
----
-
-## Part 4: Describing Data with Numbers
-
-> **Before proceeding:** Make sure you understand variable classification from [Part 3](#part-3-classifying-variables).
-> The measurement level of your variable (nominal, ordinal, scale) determines which descriptive statistics you can use.
-> Using the wrong statistic for your measurement level is one of the most common errors in statistics!
->
-> **Key connection:** Measurement level (Part 3) → Appropriate statistics (Part 4)
-
-Once you've collected data, the first step is to summarize it. With scale (numerical) data, we use two types of summary statistics:
-
-1. **Central Tendency** - Where is the "center" or "typical" value?
-2. **Variability** - How spread out are the scores?
-
-### Measures of Central Tendency
-
-#### The Mean (M or X̄)
-
-**Definition:** The arithmetic average—the sum of all scores divided by the number of scores.
-
-**Formula:**
-
-M = ΣX / N
-
-Where:
-
-- ΣX = sum of all scores
-- N = number of scores
-
-**Example:** Test scores: 75, 80, 85, 90, 95
-
-M = (75 + 80 + 85 + 90 + 95) / 5 = 425 / 5 = 85
-
-**When to Use:**
-
-- Data is scale (interval/ratio)
-- Distribution is relatively symmetrical
-- No extreme outliers
-
-**Strengths:**
-
-- Uses all data points
-- Most statistically powerful
-- Required for most inferential tests
-
-**Weaknesses:**
-
-- Sensitive to extreme scores (outliers)
-- Can be misleading with skewed distributions
-
-**Real Example:** Average income is often misleading because billionaires pull the mean way up. The mean income in a town might be $120,000, but if one billionaire lives there, most residents might earn $40,000.
-
-#### The Median (Mdn)
-
-**Definition:** The middle score when all values are arranged in order.
-
-**How to Calculate:**
-
-1. Put all scores in order from lowest to highest
-2. If N is odd: median is the middle score
-3. If N is even: median is the average of the two middle scores
-
-**Example 1 (odd N):** Scores: 65, 70, 75, 80, 95
-
-- The middle score (3rd of 5) is **75**
-
-**Example 2 (even N):** Scores: 65, 70, 75, 80, 85, 95
-
-- The two middle scores (3rd and 4th) are 75 and 80
-- Median = (75 + 80) / 2 = **77.5**
-
-**When to Use:**
-
-- Data is ordinal or scale
-- Distribution is skewed (lopsided)
-- Extreme outliers are present
-- Describing income, home prices, etc.
-
-**Strengths:**
-
-- Not affected by extreme scores
-- Better represents the "typical" value in skewed distributions
-- Can be used with ordinal data
-
-**Weaknesses:**
-
-- Doesn't use all information in the dataset
-- Less useful for inferential statistics
-
-**Real Example:** Median household income is usually reported instead of mean because it's not inflated by the ultra-wealthy.
-
-#### The Mode
-
-**Definition:** The most frequently occurring score.
-
-**Example:** Scores: 70, 75, 75, 75, 80, 85, 90
-
-- The mode is **75** (appears three times)
-
-**When to Use:**
-
-- Any level of data (nominal, ordinal, or scale)
-- Describing the most common category
-- Identifying peaks in distributions
-
-**Special Cases:**
-
-- **Bimodal:** Two modes (two distinct peaks)
-- **Multimodal:** More than two modes
-- **No mode:** All values occur with equal frequency
-
-**Strengths:**
-
-- Only measure of central tendency for nominal data
-- Can identify multiple peaks
-- Not affected by outliers
-
-**Weaknesses:**
-
-- Might not exist or be useful
-- Doesn't use most of the data
-- Rarely used in inferential statistics
-
-**Real Example:** The mode of `Favorite Color` in a class might be "Blue" (nominal data where mean and median are meaningless).
-
-### Choosing the Right Measure
-
-> **🎯 CENTRAL TENDENCY DECISION GUIDE**
->
-> | Your Data Type              | Best Measure  | Why                                            |
-> | --------------------------- | ------------- | ---------------------------------------------- |
-> | **Nominal** (categories)    | **Mode only** | Mean and median are meaningless for categories |
-> | **Ordinal** (ranked)        | **Median**    | Intervals aren't equal, but order matters      |
-> | **Scale + Symmetrical**     | **Mean**      | Uses all data, best for statistical tests      |
-> | **Scale + Skewed/Outliers** | **Median**    | Not affected by extreme values                 |
->
-> **Quick Decision Rule:**
->
-> 1. Check measurement level → If Nominal, must use Mode
-> 2. Look at your data → See outliers or skew? Use Median
-> 3. Otherwise → Use Mean (but always report SD with it!)
->
-> **Pro Tip:** When in doubt, report both mean and median. This gives readers the full picture!
-
-**Use the Mean when:**
-
-- Data is scale/interval
-- Distribution is roughly symmetrical
-- No extreme outliers
-- You need to do further statistical tests
-
-**Use the Median when:**
-
-- Data is ordinal
-- Distribution is skewed
-- Extreme outliers are present
-- Describing income, housing prices, or other ratio variables prone to outliers
-
-**Use the Mode when:**
-
-- Data is nominal
-- You want to identify the most common category
-- Describing categorical preferences
-
-**Example:** Consider ages at a children's birthday party: 5, 5, 6, 6, 6, 7, 7, 35 (one parent stayed)
-
-- Mean = 9.6 years (Not representative! Pulled up by the outlier)
-- Median = 6 years (Better representation of the typical partygoer)
-- Mode = 6 years (Most common age)
-
-### Measures of Variability
-
-Knowing the center isn't enough. Consider two classes with the same mean test score of 75:
-
-- **Class A:** Scores range from 73 to 77 (very consistent)
-- **Class B:** Scores range from 20 to 100 (highly variable)
-
-The mean doesn't tell the whole story! We need measures of **variability** (spread, dispersion).
-
-#### Range
-
-**Definition:** The distance between the highest and lowest scores.
-
-**Formula:**
-
-Range = X<sub>max</sub> - X<sub>min</sub>
-
-**Example:** Scores: 65, 70, 75, 80, 95
-
-Range = 95 - 65 = 30
-
-**Strengths:**
-
-- Easy to calculate and understand
-- Gives a quick sense of spread
-
-**Weaknesses:**
-
-- Based on only two scores (ignores everything else)
-- Extremely sensitive to outliers
-- Not useful for inferential statistics
-
-#### Variance (s² or SD²)
-
-**Definition:** The average of the squared deviations from the mean. It quantifies how much scores differ from the mean.
-
-**Why We Square the Deviations:** If we just averaged the deviations (X - M), they would sum to zero (positive and negative cancel out). Squaring makes all deviations positive.
-
-**Formula (for a sample, describing only the data you have):**
-
-Variance = Σ(X - M)² / N
-
-**Formula (for estimating population variance from a sample):**
-
-s² = Σ(X - M)² / (n - 1)
-
-> **🔍 THE n vs. n-1 CONFUSION (Most Common Student Question!)**
->
-> **Why two formulas?** It depends on your goal:
->
-> **Divide by n:**
->
-> - Goal: Describe ONLY your specific sample
-> - You have all the data you care about
-> - Rare in practice (usually we want to generalize)
->
-> **Divide by n-1:** ⭐ **Most Common!**
->
-> - Goal: Estimate population variance from your sample
-> - You're inferring beyond your data
-> - Corrects for bias (samples underestimate population variance)
-> - **SPSS ALWAYS uses n-1**
->
-> **Why n-1?** Samples are less variable than populations. The n-1 adjustment (called "Bessel's correction") compensates for this. Without it, we'd consistently underestimate population variability.
->
-> **What should YOU do?**
->
-> - **In this course:** Almost always use n-1
-> - **In SPSS:** It automatically uses n-1
-> - **On exams:** Unless told otherwise, use n-1
-> - **For very large samples:** The difference becomes negligible
->
-> (More mathematical explanation in Part 6)
-
-**Example:** Scores: 2, 4, 6, 8, 10
-
-- Mean = 6
-- Deviations: -4, -2, 0, +2, +4
-- Squared deviations: 16, 4, 0, 4, 16
-- Sum of squared deviations (SS) = 40
-- Variance = 40 / 5 = **8**
-
-**Interpretation:** Variance of 8... but 8 what? The units are squared (if original scores are in points, variance is in points²), which is hard to interpret.
-
-**Strengths:**
-
-- Uses all data points
-- Foundation for many statistical procedures
-- Mathematically important
-
-**Weaknesses:**
-
-- Units are squared (not intuitive)
-- Hard to interpret directly
-
-#### Standard Deviation (s or SD)
-
-**Definition:** The square root of the variance. It represents the **average distance of scores from the mean** (in the original units).
-
-**Formula:**
-
-SD = √(Variance) = √[Σ(X - M)² / N]
-
-**Or for population estimate:**
-
-s = √[Σ(X - M)² / (n - 1)]
-
-**Example (continuing from above):**
-
-- Variance = 8
-- Standard Deviation = √8 = **2.83**
-
-**Interpretation:** On average, scores deviate from the mean by 2.83 points.
-
-**Key Insight:**
-
-- **Small SD** → Scores cluster tightly around the mean → Low variability → Group is homogeneous
-- **Large SD** → Scores spread widely → High variability → Group is heterogeneous
-
-**Real Example:**
-
-- **Test A:** M = 75, SD = 3 → Most scores between 72-78 (consistent performance)
-- **Test B:** M = 75, SD = 15 → Scores range widely from 60-90 (inconsistent performance)
-
-**SPSS Note:** SPSS always reports the version using (n-1), which estimates the population SD. This is what you'll see in output.
-
-### Worked Example: Calculating Descriptive Statistics
-
-**Data:** Hours of sleep for 8 students: 5, 6, 6, 7, 7, 7, 8, 10
-
-**Step 1: Mean**
-
-M = (5 + 6 + 6 + 7 + 7 + 7 + 8 + 10) / 8 = 56 / 8 = 7 hours
-
-**Step 2: Median**
-
-- Ordered: 5, 6, 6, 7, 7, 7, 8, 10
-- Middle scores (4th and 5th): 7 and 7
-- Median = 7 hours
-
-**Step 3: Mode**
-
-- 7 appears three times (most frequent)
-- Mode = 7 hours
-
-**Step 4: Range**
-
-Range = 10 - 5 = 5 hours
-
-**Step 5: Variance and Standard Deviation**
-
-| Score (X) | Deviation (X - M) | Squared Deviation (X - M)² |
-| :-------- | :---------------- | :------------------------- |
-| 5         | -2                | 4                          |
-| 6         | -1                | 1                          |
-| 6         | -1                | 1                          |
-| 7         | 0                 | 0                          |
-| 7         | 0                 | 0                          |
-| 7         | 0                 | 0                          |
-| 8         | 1                 | 1                          |
-| 10        | 3                 | 9                          |
-| **Sum**   |                   | **SS = 16**                |
-
-Variance = 16 / 8 = 2 hours²
-
-SD = √2 = 1.41 hours
-
-**Interpretation:** The average sleep time is 7 hours, with students typically varying by about 1.4 hours above or below this average.
-
-<div class="knowledge-check">
-  <h4>🧠 Knowledge Check: Descriptive Statistics and Outliers</h4>
-  
-  <div class="quiz-question">
-    <p><strong>Question 1:</strong> For these reaction times (in ms): 250, 275, 280, 280, 290, 310, 500, which measure of central tendency is most affected by the outlier (500)?</p>
-    <div class="options">
-      <p>A) Mean</p>
-      <p>B) Median</p>
-      <p>C) Mode</p>
-      <p>D) Range</p>
-    </div>
-  </div>
-  
-  <details class="answer-section">
-    <summary>💡 Click to reveal answer and explanation</summary>
-    <div class="answer-content">
-      <p class="correct-answer"><strong>✓ Answer:</strong> A) Mean</p>
-      
-      <p class="explanation"><strong>Why this is correct:</strong> The mean is calculated by adding all values and dividing by the count. The outlier (500) gets included in this sum, pulling the average up significantly. Mean = (250+275+280+280+290+310+500)/7 = 312.1 ms, which is much higher than the other values.</p>
-      
-      <p class="explanation"><strong>Why the others are less affected:</strong></p>
-      <ul>
-        <li><strong>B) Median:</strong> The median is the middle value when ordered. With 7 values, the median is the 4th value (280), regardless of how extreme the highest value is.</li>
-        <li><strong>C) Mode:</strong> The mode is the most frequent value (280, which appears twice). Outliers don't affect the mode unless they're also the most frequent.</li>
-        <li><strong>D) Range:</strong> While the range is affected (500-250=250), the question asks about central tendency measures specifically.</li>
-      </ul>
-      
-      <p class="application-tip"><em>🌟 Real-world tip:</em> When you have outliers, always report both mean and median. The median gives a better sense of the "typical" value, while the mean shows the full impact of extreme values.</p>
-    </div>
-  </details>
-  
-  <div class="quiz-question">
-    <p><strong>Question 2:</strong> In the same dataset, what is the median reaction time?</p>
-    <div class="options">
-      <p>A) 280 ms</p>
-      <p>B) 290 ms</p>
-      <p>C) 312.1 ms</p>
-      <p>D) 500 ms</p>
-    </div>
-  </div>
-  
-  <details class="answer-section">
-    <summary>💡 Click to reveal answer and explanation</summary>
-    <div class="answer-content">
-      <p class="correct-answer"><strong>✓ Answer:</strong> A) 280 ms</p>
-      
-      <p class="explanation"><strong>How to find the median:</strong></p>
-      <ol>
-        <li>Order the values: 250, 275, 280, 280, 290, 310, 500</li>
-        <li>Count the values: n = 7 (odd number)</li>
-        <li>Find the middle position: (7+1)/2 = 4th position</li>
-        <li>The 4th value is 280 ms</li>
-      </ol>
-      
-      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
-      <ul>
-        <li><strong>B) 290 ms:</strong> This is the 5th value, not the middle.</li>
-        <li><strong>C) 312.1 ms:</strong> This is the mean, not the median.</li>
-        <li><strong>D) 500 ms:</strong> This is the maximum value (outlier), not the median.</li>
-      </ul>
-      
-      <p class="review-tip"><em>💭 Need to review?</em> See Part 4.1: Measures of Central Tendency for the step-by-step process.</p>
-    </div>
-  </details>
-  
-  <div class="quiz-question">
-    <p><strong>Question 3:</strong> Which measure would you choose to describe the "typical" reaction time in this dataset?</p>
-    <div class="options">
-      <p>A) Mean (312.1 ms) because it uses all the data</p>
-      <p>B) Median (280 ms) because it's not affected by the outlier</p>
-      <p>C) Mode (280 ms) because it's the most common</p>
-      <p>D) It doesn't matter—they're all equally good</p>
-    </div>
-  </div>
-  
-  <details class="answer-section">
-    <summary>💡 Click to reveal answer and explanation</summary>
-    <div class="answer-content">
-      <p class="correct-answer"><strong>✓ Answer:</strong> B) Median (280 ms) because it's not affected by the outlier</p>
-      
-      <p class="explanation"><strong>Why the median is best here:</strong> The median represents the "typical" value better when outliers are present. Most participants (5 out of 7) had reaction times between 250-310 ms, so 280 ms better represents the typical performance than 312.1 ms.</p>
-      
-      <p class="explanation"><strong>Why the others are less ideal:</strong></p>
-      <ul>
-        <li><strong>A) Mean:</strong> While it uses all data, it's pulled up by the outlier and doesn't represent typical performance well.</li>
-        <li><strong>C) Mode:</strong> The mode is good, but the median is generally preferred for describing central tendency in skewed distributions.</li>
-        <li><strong>D) It does matter:</strong> The choice of measure affects how you interpret and communicate your results.</li>
-      </ul>
-      
-      <p class="explanation"><strong>General rule:</strong> Use the median when you have outliers or skewed distributions. Use the mean when your data is roughly symmetrical and has no extreme outliers.</p>
-      
-      <p class="application-tip"><em>🌟 Reporting tip:</em> Always report both mean and median when outliers are present. This gives readers a complete picture: "Mean reaction time was 312.1 ms (SD = 89.2), but the median was 280 ms, suggesting the mean was influenced by one slow outlier."</p>
-    </div>
-  </details>
-</div>
-
-<div class="knowledge-check">
-  <h4>🧠 Knowledge Check: Variance, Standard Deviation, and Choosing Measures</h4>
-
-  <div class="quiz-question">
-    <p><strong>Question 1:</strong> A researcher calculated the variance of scores at 113.00. What is the standard deviation?</p>
-    <div class="options">
-      <p>A) 12769.00</p>
-      <p>B) 37.67</p>
-      <p>C) 113.00</p>
-      <p>D) 10.63</p>
-    </div>
-  </div>
-
-  <details class="answer-section">
-    <summary>💡 Click to reveal answer and explanation</summary>
-    <div class="answer-content">
-      <p class="correct-answer"><strong>✓ Answer:</strong> D) 10.63</p>
-
-      <p class="explanation"><strong>Why this is correct:</strong> Standard deviation is the square root of variance. √113.00 = 10.63 (rounded to two decimal places).</p>
-
-      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
-      <ul>
-        <li><strong>A) 12769.00:</strong> This would be variance squared (113²), which doesn't make statistical sense.</li>
-        <li><strong>B) 37.67:</strong> This might be the result of dividing by n instead of n-1, or a calculation error.</li>
-        <li><strong>C) 113.00:</strong> This is the variance, not the standard deviation. Standard deviation is always smaller than variance (unless variance = 1).</li>
-      </ul>
-
-      <p class="review-tip"><em>💭 Need to review?</em> See Part 4.3: Measures of Variability for the relationship between variance and standard deviation.</p>
-    </div>
-
-  </details>
-
-  <div class="quiz-question">
-    <p><strong>Question 2:</strong> What is the best measure of central tendency for the following data set: 18, 99, 14, 16, 21, 33, 12, 14, 13, 55, 12?</p>
-    <div class="options">
-      <p>A) Mean</p>
-      <p>B) Median</p>
-      <p>C) Mode</p>
-      <p>D) Range</p>
-    </div>
-  </div>
-
-  <details class="answer-section">
-    <summary>💡 Click to reveal answer and explanation</summary>
-    <div class="answer-content">
-      <p class="correct-answer"><strong>✓ Answer:</strong> B) Median</p>
-
-      <p class="explanation"><strong>Why this is correct:</strong> This data set has a clear outlier (99) that would pull the mean upward. The median (16) better represents the "typical" value since it's not affected by extreme values.</p>
-
-      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
-      <ul>
-        <li><strong>A) Mean:</strong> The mean (29.5) is inflated by the outlier (99) and doesn't represent the typical value.</li>
-        <li><strong>C) Mode:</strong> The mode (12 and 14 both appear twice) might be useful, but the median is better for this skewed distribution.</li>
-        <li><strong>D) Range:</strong> Range is a measure of variability, not central tendency.</li>
-      </ul>
-
-      <p class="application-tip"><em>💡 Application Tip:</em> When you see extreme values in your data, always check how they affect the mean. If the mean seems "pulled" toward the outliers, use the median instead.</p>
-    </div>
-
-  </details>
-
-  <div class="quiz-question">
-    <p><strong>Question 3:</strong> In a physical geography course, the average score on the first exam was 79 percent, based on a sample of 48 students. This mean was calculated on the class grades to summarize overall performance. The test average is a:</p>
-    <div class="options">
-      <p>A) Parameter</p>
-      <p>B) Statistic</p>
-      <p>C) Mode</p>
-      <p>D) Variability measure</p>
-    </div>
-  </div>
-
-  <details class="answer-section">
-    <summary>💡 Click to reveal answer and explanation</summary>
-    <div class="answer-content">
-      <p class="correct-answer"><strong>✓ Answer:</strong> B) Statistic</p>
-
-      <p class="explanation"><strong>Why this is correct:</strong> Since this mean was calculated from a sample (48 students), it's a statistic. Statistics describe samples; parameters describe populations.</p>
-
-      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
-      <ul>
-        <li><strong>A) Parameter:</strong> Parameters describe population characteristics. If this were the average for ALL students who ever took this course, it would be a parameter.</li>
-        <li><strong>C) Mode:</strong> The mode is a measure of central tendency, but this question is asking about the nature of the 79% value (statistic vs. parameter).</li>
-        <li><strong>D) Variability measure:</strong> The mean (79%) is a measure of central tendency, not variability.</li>
-      </ul>
-
-      <p class="review-tip"><em>💭 Need to review?</em> See Part 6: From Sample to Population for the distinction between statistics and parameters.</p>
-    </div>
-
-  </details>
-
-  <div class="quiz-question">
-    <p><strong>Question 4:</strong> Which statement best describes when to use the mean versus the median?</p>
-    <div class="options">
-      <p>A) Always use the mean for scale variables</p>
-      <p>B) Use the median when there are outliers or the distribution is skewed</p>
-      <p>C) Use the mean only for normal distributions</p>
-      <p>D) The median is always better than the mean</p>
-    </div>
-  </div>
-
-  <details class="answer-section">
-    <summary>💡 Click to reveal answer and explanation</summary>
-    <div class="answer-content">
-      <p class="correct-answer"><strong>✓ Answer:</strong> B) Use the median when there are outliers or the distribution is skewed</p>
-
-      <p class="explanation"><strong>Why this is correct:</strong> The median is robust to outliers and skewness because it's based on the middle value, not the average. When data is skewed or has extreme values, the median better represents the "typical" value.</p>
-
-      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
-      <ul>
-        <li><strong>A) Always use mean for scale variables:</strong> Even with scale variables, outliers can make the mean misleading.</li>
-        <li><strong>C) Use mean only for normal distributions:</strong> The mean is useful for many distributions, not just normal ones. The key is whether there are outliers.</li>
-        <li><strong>D) Median is always better:</strong> The mean has advantages too—it uses all the data and is mathematically convenient for further calculations.</li>
-      </ul>
-
-      <p class="application-tip"><em>💡 Application Tip:</em> Check your data for outliers first. If present, report both mean and median to give a complete picture of your data.</p>
-    </div>
-
-  </details>
-</div>
-
----
-
-## Part 5: Visualizing Data: Frequency Distributions
-
-Numbers tell part of the story, but **visualizations** can reveal patterns that statistics alone might miss.
-
-### What is a Frequency Distribution?
-
-**Definition:** A summary showing how many times each value (or range of values) appears in a dataset.
-
-**Purpose:** To see the shape, spread, and patterns in your data at a glance.
-
-### For Categorical Data: Frequency Tables and Bar Charts
-
-#### Frequency Tables
-
-**Example:** Survey of 50 students' employment status
-
-| Employment Status  | Frequency | Percent  |
-| :----------------- | :-------: | :------: |
-| Employed Full-Time |    12     |   24%    |
-| Employed Part-Time |    23     |   46%    |
-| Unemployed         |    10     |   20%    |
-| Other              |     5     |   10%    |
-| **Total**          |  **50**   | **100%** |
-
-**What to Look For:**
-
-- Which category is most common? (Part-time employment)
-- Are categories evenly distributed or is there a dominant category?
-- Any unexpected patterns?
-
-#### Bar Charts
-
-**Key Feature:** Bars are **separated** (gaps between them) to emphasize that categories are distinct.
-
-**When to Use:** Nominal or ordinal data
-
-**Best Practices:**
-
-- Label axes clearly
-- Include a descriptive title
-- Order bars logically (by frequency, or natural order for ordinal data)
-
-**SPSS Creation:**
-
-- `Graphs → Chart Builder`
-- Select "Bar" chart type
-- Drag your categorical variable to the X-axis
-- Y-axis automatically shows frequency (count)
-
-### For Scale Data: Grouped Frequency Tables and Histograms
-
-With continuous data, you might have many unique values. Grouping them into "bins" or "intervals" makes patterns visible.
-
-#### Grouped Frequency Tables
-
-**Example:** Ages of 100 participants
-
-| Age Range | Frequency | Percent  |
-| :-------- | :-------: | :------: |
-| 18-22     |    25     |   25%    |
-| 23-27     |    30     |   30%    |
-| 28-32     |    20     |   20%    |
-| 33-37     |    15     |   15%    |
-| 38-42     |    10     |   10%    |
-| **Total** |  **100**  | **100%** |
-
-**Choosing Bin Width:**
-
-- **Too many bins:** Table becomes cluttered, pattern is hard to see
-- **Too few bins:** You lose important detail
-- **Rule of thumb:** Aim for 5-15 bins, depending on sample size
-- **Equal width:** Keep intervals consistent (each covers same range)
-
-**SPSS Method:**
-
-- Use `Transform → Visual Binning` to create equal-width intervals
-- Then run `Analyze → Descriptive Statistics → Frequencies` on the binned variable
-
-#### Histograms
-
-**Key Feature:** Bars are **touching** (no gaps) to show that the variable is continuous.
-
-**When to Use:** Scale (continuous) data
-
-**What to Look For:**
-
-1. **Shape:**
-
-   - **Symmetrical/Normal:** Bell-shaped, mean ≈ median ≈ mode
-   - **Skewed Right (Positive Skew):** Long tail to the right, mean > median
-   - **Skewed Left (Negative Skew):** Long tail to the left, mean < median
-   - **Bimodal:** Two distinct peaks (might indicate two subgroups)
-
-2. **Center:** Where is the middle of the distribution?
-
-3. **Spread:** How wide is the distribution?
-
-4. **Outliers:** Any unusually extreme values?
-
-**Examples of Distribution Shapes:**
-
-- **Normal Distribution (Bell Curve):**
-
-  - Most common in nature (height, IQ, many biological measures)
-  - Symmetrical, one peak in the center
-  - Most values cluster near the mean
-
-- **Right-Skewed (Positively Skewed):**
-
-  - Examples: Income, home prices, reaction times
-  - Most values are low, but a few very high values create a long right tail
-  - Mean > Median (pulled toward the tail)
-
-- **Left-Skewed (Negatively Skewed):**
-
-  - Examples: Age at retirement, test scores on an easy exam
-  - Most values are high, but a few low values create a long left tail
-  - Mean < Median
-
-- **Bimodal:**
-  - Examples: Height when measuring both men and women together
-  - Two distinct peaks
-  - Might indicate two separate groups in your data
-
-**Why Shape Matters:**
-
-- Determines which central tendency measure is best (mean vs. median)
-- Affects which statistical tests are appropriate (many assume normal distribution)
-- Reveals potential data issues or interesting subgroups
-
-**SPSS Creation:**
-
-- `Graphs → Chart Builder`
-- Select "Histogram"
-- Drag your scale variable to the X-axis
-- Optional: Check "Display normal curve" to see how your data compares to a perfect bell curve
-
-### Common Mistake: Choosing the Wrong Graph
-
-❌ Creating a histogram for nominal data (e.g., gender)
-✓ Use a bar chart instead
-
-❌ Creating a bar chart for continuous data (e.g., age)
-✓ Use a histogram instead
-
-**The Difference:**
-
-- **Bar charts:** For categories (gaps show distinct groups)
-- **Histograms:** For continuous variables (touching bars show continuity)
-
-### Quick Check
-
-What type of graph should you create for each variable?
-
-1. Type of smartphone (iPhone, Android, Other)
-2. Daily screen time in hours
-3. Education level (HS, Bachelor's, Master's, Doctorate)
-4. Number of social media followers
-
-<details>
-<summary>Click to see answers</summary>
-
-1. **Bar chart** (nominal data - categories)
-2. **Histogram** (scale data - continuous)
-3. **Bar chart** (ordinal data - ordered categories)
-4. **Histogram** (scale data - discrete but treated as continuous)
-</details>
-
-<div class="knowledge-check">
-  <h4>🧠 Knowledge Check: Distribution Shapes and Patterns</h4>
-
-  <div class="quiz-question">
-    <p><strong>Question 1:</strong> What seems to be the shape of this distribution?</p>
-    <div class="options">
-      <p>A) Rectangle</p>
-      <p>B) Positively skewed</p>
-      <p>C) Negatively skewed</p>
-      <p>D) Symmetrical</p>
-    </div>
-  </div>
-
-  <details class="answer-section">
-    <summary>💡 Click to reveal answer and explanation</summary>
-    <div class="answer-content">
-      <p class="correct-answer"><strong>✓ Answer:</strong> B) Positively skewed</p>
-
-      <p class="explanation"><strong>Why this is correct:</strong> A positively skewed distribution has a long tail extending to the right (higher values). Most scores cluster on the left side, with fewer extreme high scores creating the "tail."</p>
-
-      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
-      <ul>
-        <li><strong>A) Rectangle:</strong> A rectangular distribution would have equal frequency across all values, which is rare in real data.</li>
-        <li><strong>C) Negatively skewed:</strong> A negatively skewed distribution would have a long tail to the left (lower values), with most scores clustering on the right.</li>
-        <li><strong>D) Symmetrical:</strong> A symmetrical distribution would have equal tails on both sides, like a normal distribution.</li>
-      </ul>
-
-      <p class="review-tip"><em>💭 Need to review?</em> See Part 5.3: Shape of Distributions for identifying skewness patterns.</p>
-    </div>
-
-  </details>
-
-  <div class="quiz-question">
-    <p><strong>Question 2:</strong> A test that has a floor effect would produce a _____ distribution.</p>
-    <div class="options">
-      <p>A) Negatively skewed</p>
-      <p>B) Positively skewed</p>
-      <p>C) Rectangle</p>
-      <p>D) Normal</p>
-    </div>
-  </div>
-
-  <details class="answer-section">
-    <summary>💡 Click to reveal answer and explanation</summary>
-    <div class="answer-content">
-      <p class="correct-answer"><strong>✓ Answer:</strong> B) Positively skewed</p>
-
-      <p class="explanation"><strong>Why this is correct:</strong> A floor effect occurs when a test is too difficult, causing many participants to score at or near the minimum possible score. This creates a cluster of low scores with a tail extending toward higher scores, resulting in positive skewness.</p>
-
-      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
-      <ul>
-        <li><strong>A) Negatively skewed:</strong> This would occur with a ceiling effect (test too easy), where scores cluster at the high end.</li>
-        <li><strong>C) Rectangle:</strong> This would only occur if the test somehow produced equal frequencies across all possible scores.</li>
-        <li><strong>D) Normal:</strong> A normal distribution would result from a well-designed test without floor or ceiling effects.</li>
-      </ul>
-
-      <p class="application-tip"><em>💡 Application Tip:</em> Floor effects suggest a test is too difficult; ceiling effects suggest a test is too easy. Both create skewed distributions that may require different statistical approaches.</p>
-    </div>
-
-  </details>
-
-  <div class="quiz-question">
-    <p><strong>Question 3:</strong> When interpreting a histogram, what should you look for first?</p>
-    <div class="options">
-      <p>A) The exact frequencies in each bar</p>
-      <p>B) The overall shape and pattern of the distribution</p>
-      <p>C) The tallest bar</p>
-      <p>D) The range of values</p>
-    </div>
-  </div>
-
-  <details class="answer-section">
-    <summary>💡 Click to reveal answer and explanation</summary>
-    <div class="answer-content">
-      <p class="correct-answer"><strong>✓ Answer:</strong> B) The overall shape and pattern of the distribution</p>
-
-      <p class="explanation"><strong>Why this is correct:</strong> The shape of the distribution (symmetrical, skewed, bimodal, etc.) gives you the most important information about your data. It affects which statistics are appropriate and how you should interpret your results.</p>
-
-      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
-      <ul>
-        <li><strong>A) Exact frequencies:</strong> While useful, these are secondary to understanding the overall pattern.</li>
-        <li><strong>C) Tallest bar:</strong> The mode is important, but the overall shape is more fundamental.</li>
-        <li><strong>D) Range of values:</strong> Range is one piece of information, but distribution shape tells you much more about the data's characteristics.</li>
-      </ul>
-
-      <p class="review-tip"><em>💭 Need to review?</em> See Part 5: Visualizing Data for guidelines on interpreting histograms and frequency distributions.</p>
-    </div>
-
-  </details>
-
-  <div class="quiz-question">
-    <p><strong>Question 4:</strong> Which distribution shape would be most concerning for using the mean as your primary measure of central tendency?</p>
-    <div class="options">
-      <p>A) Normal distribution</p>
-      <p>B) Positively skewed distribution</p>
-      <p>C) Symmetrical distribution</p>
-      <p>D) Bimodal distribution</p>
-    </div>
-  </div>
-
-  <details class="answer-section">
-    <summary>💡 Click to reveal answer and explanation</summary>
-    <div class="answer-content">
-      <p class="correct-answer"><strong>✓ Answer:</strong> B) Positively skewed distribution</p>
-
-      <p class="explanation"><strong>Why this is correct:</strong> In a positively skewed distribution, the mean is pulled toward the tail (higher values), making it higher than the median and potentially misleading as a "typical" value. The median would be more representative.</p>
-
-      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
-      <ul>
-        <li><strong>A) Normal distribution:</strong> The mean works perfectly for normal distributions since it equals the median and mode.</li>
-        <li><strong>C) Symmetrical distribution:</strong> In symmetrical distributions, the mean and median are equal, so the mean is appropriate.</li>
-        <li><strong>D) Bimodal distribution:</strong> While bimodal distributions have two peaks, they can still be symmetrical, and the mean can be meaningful if not used as the sole measure.</li>
-      </ul>
-
-      <p class="application-tip"><em>💡 Application Tip:</em> Always check your data's shape before choosing statistics. Skewed distributions often require the median instead of the mean for accurate representation.</p>
-    </div>
-
-  </details>
-</div>
-
----
-
-## Part 6: From Sample to Population
-
-This is where statistics gets its real power—using information from a small group to make educated guesses about a much larger group.
-
-### Key Definitions
-
-**Population:** The entire group you're interested in studying.
-
-- Examples: All college students in the U.S., all people with depression, all registered voters
-
-**Sample:** The subset of the population you actually collect data from.
-
-- Examples: 200 students from your university, 50 patients in a clinical trial, 1,000 voters surveyed by phone
-
-**Why We Use Samples:**
-
-- **Practical:** Studying entire populations is usually impossible (too expensive, time-consuming, or logistically infeasible)
-- **Sufficient:** A well-chosen sample can provide accurate estimates of population characteristics
-- **Necessary:** Sometimes the population is infinite or hypothetical (e.g., all possible outcomes of a cognitive task)
-
-### Parameters vs. Statistics
-
-We use different symbols depending on whether we're describing a population or a sample:
-
-| Measure                | Population (Parameter) | Sample (Statistic) |
-| :--------------------- | :--------------------- | :----------------- |
-| **Size**               | N                      | n                  |
-| **Mean**               | μ (mu)                 | M or X̄             |
-| **Standard Deviation** | σ (sigma)              | s or SD            |
-| **Variance**           | σ²                     | s²                 |
-
-**Mnemonic:**
-
-- **P**opulation → **P**arameter → (G)reek letters
-- **S**ample → **S**tatistic → (R)oman letters
-
-**Key Concept:** We almost never know the true population parameters. We use sample statistics to **estimate** them.
-
-### The Problem of Bias and the n-1 Correction
-
-Here's a surprising fact: **Samples tend to be less variable than their populations.**
-
-**Why?** By random chance, extreme values in the population are less likely to appear in a small sample. This means if we calculate variance using the sample formula [Σ(X-M)² / n], we systematically **underestimate** the true population variance.
-
-**The Solution:** Use (n-1) instead of (n) in the denominator when estimating population variance from a sample.
-
-**Formulas:**
-
-**Sample Variance (describes only your sample):**
-
-Variance = SS / n = Σ(X-M)² / n
-
-**Estimated Population Variance (what SPSS calculates):**
-
-s² = SS / (n-1) = Σ(X-M)² / (n-1)
-
-**Why This Works:** Dividing by a smaller number (n-1) makes the variance estimate slightly larger, correcting for the systematic underestimation. This is called **Bessel's correction** or the **degrees of freedom correction**.
-
-**Degrees of Freedom (df):** df = n - 1
-
-- Represents the number of values that are "free to vary" when calculating variance
-- Once you know the mean and n-1 values, the last value is determined
-
-### Worked Example: Sample vs. Population Calculation
-
-**Data:** Quiz scores for 5 students: 6, 7, 8, 9, 10
-
-**Mean:** M = 40 / 5 = 8
-
-**Sum of Squares (SS):**
-
-- Deviations: -2, -1, 0, 1, 2
-- Squared: 4, 1, 0, 1, 4
-- SS = 10
-
-**Sample Variance (describes only these 5 students):**
-
-Variance = 10 / 5 = 2.0
-
-SD = √2 = 1.41
-
-**Estimated Population Variance (estimates all students in the class):**
-
-s² = 10 / 4 = 2.5
-
-s = √2.5 = 1.58
-
-**Notice:** The population estimate (s = 1.58) is larger than the sample SD (1.41), correcting for the underestimation bias.
-
-**SPSS Always Uses n-1:** When you run descriptive statistics in SPSS, it calculates s (using n-1), not the sample SD. This is because we're almost always interested in making inferences about populations.
-
-### Why This Matters for Your Assignment
-
-**In Question 5 of the M1 assignment:**
-
-- You calculate SD manually using the sample formula (dividing by n)
-- SPSS calculates SD using the population estimate formula (dividing by n-1)
-- **Your values will differ!**
-- This isn't an error—it's demonstrating your understanding of the difference between describing a sample and estimating a population parameter
-
-### Quick Check
-
-True or False?
-
-1. A sample statistic is always equal to the population parameter.
-2. Greek letters (μ, σ) represent sample values.
-3. SPSS calculates standard deviation using n-1 in the denominator.
-4. We use samples because populations are usually too large to study completely.
-
-<details>
-<summary>Click to see answers</summary>
-
-1. **False** - Sample statistics are estimates that vary from the true parameter
-2. **False** - Greek letters represent population parameters; Roman letters represent sample statistics
-3. **True** - SPSS estimates population SD using n-1 (degrees of freedom)
-4. **True** - Samples are practical and cost-effective
-</details>
-
-<div class="knowledge-check">
-  <h4>🧠 Knowledge Check: Research Design and Sampling</h4>
-
-  <div class="quiz-question">
-    <p><strong>Question 1:</strong> Which of these situations is an example of randomly assigning participants to conditions in a study?</p>
-    <div class="options">
-      <p>A) Every time a participant shows up for his study, Mark flips a coin to determine which condition to put the participant in.</p>
-      <p>B) Clarice randomly chooses high school students for her study by having a random number generator generate possible high school ID numbers.</p>
-      <p>C) Devon gives his problem-solving task to a group of first graders in the classroom for which he is a student teacher.</p>
-      <p>D) Susie places the first six people to show up for her study in the experimental group and the next six people in the control group.</p>
-    </div>
-  </div>
-
-  <details class="answer-section">
-    <summary>💡 Click to reveal answer and explanation</summary>
-    <div class="answer-content">
-      <p class="correct-answer"><strong>✓ Answer:</strong> A) Every time a participant shows up for his study, Mark flips a coin to determine which condition to put the participant in.</p>
-
-      <p class="explanation"><strong>Why this is correct:</strong> Random assignment means randomly deciding which condition (treatment or control) each participant will experience. Flipping a coin for each participant is a true random assignment procedure.</p>
-
-      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
-      <ul>
-        <li><strong>B) Random sampling:</strong> This is random sampling (choosing who participates), not random assignment (choosing which condition they experience).</li>
-        <li><strong>C) Convenience sample:</strong> This is using whoever is available (convenience), with no randomization involved.</li>
-        <li><strong>D) Systematic assignment:</strong> This is systematic (first six, next six), not random assignment.</li>
-      </ul>
-
-      <p class="review-tip"><em>💭 Need to review?</em> See Part 6.2: Random Sampling vs. Random Assignment for the distinction between these concepts.</p>
-    </div>
-
-  </details>
-
-  <div class="quiz-question">
-    <p><strong>Question 2:</strong> A researcher interested in the concept of preparedness sets up a booth at a local mall. Her idea is to compare men and women in terms of what they carry on their person. She has chosen a mall setting because people are readily available there. In this sense, people at the mall are a _____.</p>
-    <div class="options">
-      <p>A) Convenience sample</p>
-      <p>B) Random sample</p>
-      <p>C) Random assignment</p>
-      <p>D) Selected sample</p>
-    </div>
-  </div>
-
-  <details class="answer-section">
-    <summary>💡 Click to reveal answer and explanation</summary>
-    <div class="answer-content">
-      <p class="correct-answer"><strong>✓ Answer:</strong> A) Convenience sample</p>
-
-      <p class="explanation"><strong>Why this is correct:</strong> A convenience sample is selected based on availability and ease of access. The researcher chose the mall because "people are readily available there," which is the hallmark of convenience sampling.</p>
-
-      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
-      <ul>
-        <li><strong>B) Random sample:</strong> A random sample would involve randomly selecting from a defined population, not just choosing whoever is available.</li>
-        <li><strong>C) Random assignment:</strong> This refers to randomly assigning participants to conditions, not to the sampling method.</li>
-        <li><strong>D) Selected sample:</strong> This is too vague. All samples are "selected" in some way, but this doesn't specify the selection method.</li>
-      </ul>
-
-      <p class="application-tip"><em>💡 Application Tip:</em> Convenience samples are common in research but limit generalizability. Always consider whether your sample represents the population you want to study.</p>
-    </div>
-
-  </details>
-
-  <div class="quiz-question">
-    <p><strong>Question 3:</strong> Successful replication of research builds a case for the generalizability of findings. In order for replications to build that strong case, it is important that they occur in _____.</p>
-    <div class="options">
-      <p>A) A new context or with samples that have different characteristics</p>
-      <p>B) Designs with experimental and control groups that used random sampling</p>
-      <p>C) Inconsistent contexts using different measures from the original study</p>
-      <p>D) Similar situations with similar participants so as to encourage the same findings</p>
-    </div>
-  </div>
-
-  <details class="answer-section">
-    <summary>💡 Click to reveal answer and explanation</summary>
-    <div class="answer-content">
-      <p class="correct-answer"><strong>✓ Answer:</strong> A) A new context or with samples that have different characteristics</p>
-
-      <p class="explanation"><strong>Why this is correct:</strong> For replications to demonstrate generalizability, they need to test whether the findings hold across different contexts, populations, and conditions. This builds confidence that the effect is robust and not limited to specific circumstances.</p>
-
-      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
-      <ul>
-        <li><strong>B) Random sampling:</strong> While random sampling is good practice, it doesn't address the key issue of testing generalizability across different contexts.</li>
-        <li><strong>C) Inconsistent contexts:</strong> Using completely different measures would make it impossible to know if you're testing the same phenomenon.</li>
-        <li><strong>D) Similar situations:</strong> This would only show the effect works in the same circumstances, not that it generalizes to other situations.</li>
-      </ul>
-
-      <p class="review-tip"><em>💭 Need to review?</em> See Part 6.3: Generalizability and Replication for the importance of testing across different contexts.</p>
-    </div>
-
-  </details>
-
-  <div class="quiz-question">
-    <p><strong>Question 4:</strong> What is the key difference between random sampling and random assignment?</p>
-    <div class="options">
-      <p>A) Random sampling is about choosing participants; random assignment is about assigning them to conditions</p>
-      <p>B) Random sampling is more important than random assignment</p>
-      <p>C) They are the same thing</p>
-      <p>D) Random assignment is only used in correlational studies</p>
-    </div>
-  </div>
-
-  <details class="answer-section">
-    <summary>💡 Click to reveal answer and explanation</summary>
-    <div class="answer-content">
-      <p class="correct-answer"><strong>✓ Answer:</strong> A) Random sampling is about choosing participants; random assignment is about assigning them to conditions</p>
-
-      <p class="explanation"><strong>Why this is correct:</strong> Random sampling determines who participates in your study (selection from a population). Random assignment determines which condition or treatment each participant experiences (allocation to groups).</p>
-
-      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
-      <ul>
-        <li><strong>B) More important:</strong> Both are important for different reasons—random sampling affects external validity, random assignment affects internal validity.</li>
-        <li><strong>C) Same thing:</strong> They are completely different procedures serving different purposes.</li>
-        <li><strong>D) Only correlational:</strong> Random assignment is actually used in experimental designs, not correlational ones.</li>
-      </ul>
-
-      <p class="application-tip"><em>💡 Application Tip:</em> Random sampling helps you generalize to a population; random assignment helps you make causal claims. Both are crucial for high-quality research.</p>
-    </div>
-
-  </details>
-</div>
-
----
-
-## Part 7: The Normal Distribution and Z-Scores
-
-> **Why Part 7 is crucial:** The normal distribution is the foundation for almost all inferential statistics you'll learn in this course.
->
-> - **Part 7 concepts** (normal distribution, z-scores, standard deviation) lead directly to **Module 2** (t-tests and hypothesis testing)
-> - Understanding the normal distribution now will make Module 2 much easier!
-> - Z-scores are your first step toward understanding standardization, which underlies all statistical tests
->
-> **Connection to Part 4:** The mean and SD you learned in Part 4 define the shape and location of the normal distribution.
-
-### The Normal Distribution (The Bell Curve)
-
-The normal distribution is the most important distribution in statistics.
-
-**Characteristics:**
-
-- **Symmetrical:** Mirror image on both sides of the mean
-- **Bell-shaped:** Highest point at the center, tapering off toward the tails
-- **Unimodal:** One peak at the mean
-- **Mean = Median = Mode:** All three measures of central tendency are equal and located at the center
-- **Asymptotic:** The tails never quite touch the x-axis (theoretically extend to infinity)
-
-**Why It's Important:**
-
-1. **Common in nature:** Many human characteristics (height, IQ, blood pressure) are normally distributed
-2. **Foundation for inference:** Most statistical tests assume or rely on normality
-3. **Predictable proportions:** The percentages of scores in different regions are always the same
-
-### The 68-95-99.7 Rule (Empirical Rule)
-
-In a normal distribution:
-
-- **68%** of scores fall within **1 SD** of the mean (μ ± 1σ)
-- **95%** of scores fall within **2 SDs** of the mean (μ ± 2σ)
-- **99.7%** of scores fall within **3 SDs** of the mean (μ ± 3σ)
-
-**Example:** IQ scores are normally distributed with μ = 100 and σ = 15
-
-- **68%** of people have IQs between 85 and 115 (100 ± 15)
-- **95%** of people have IQs between 70 and 130 (100 ± 30)
-- **99.7%** of people have IQs between 55 and 145 (100 ± 45)
-
-**Application:** If someone tells you they have an IQ of 145, you know they're in the top ~0.15% (above 3 SDs from the mean).
-
-### Z-Scores: The Universal Translator
-
-**The Problem:** How can you compare completely different measurements?
-
-- Is a score of 85 on a test good or bad? (Depends on the test difficulty)
-- Is being 6 feet tall more unusual than having an IQ of 120? (Different scales!)
-
-**The Solution:** Convert everything to **z-scores**.
-
-**Definition:** A z-score tells you **how many standard deviations** a score is away from the mean.
-
-**Formula:**
-
-z = (X - μ) / σ
-
-Or for a sample:
-
-z = (X - M) / s
-
-Where:
-
-- X = the individual score
-- μ or M = the mean
-- σ or s = the standard deviation
-
-**Interpretation:**
-
-- **z = 0:** Score is exactly at the mean
-- **z = +1:** Score is 1 SD above the mean
-- **z = -1:** Score is 1 SD below the mean
-- **z = +2:** Score is 2 SDs above the mean (better than ~97.5% of scores)
-- **z = -2.5:** Score is 2.5 SDs below the mean (worse than ~99% of scores)
-
-### Worked Examples of Z-Scores
-
-**Example 1:** Test scores with M = 75, SD = 10
-
-- **Your score: 85**
-
-  z = (85 - 75) / 10 = 10 / 10 = +1.0
-
-  **Interpretation:** You scored 1 SD above average, better than about 84% of students
-
-- **Your score: 60**
-
-  z = (60 - 75) / 10 = -15 / 10 = -1.5
-
-  **Interpretation:** You scored 1.5 SDs below average, worse than about 93% of students
-
-**Example 2:** Comparing apples and oranges
-
-- **SAT Math:** Score = 650, μ = 500, σ = 100
-
-  z = (650 - 500) / 100 = +1.5
-
-- **ACT Math:** Score = 28, μ = 21, σ = 5
-
-  z = (28 - 21) / 5 = +1.4
-
-**Question:** Which test performance was better?
-**Answer:** SAT (z = +1.5 is more above average than z = +1.4)
-
-### Using Z-Scores to Find Probabilities
-
-With a **z-table** (standard normal table), you can find the proportion of scores below, above, or between any z-score(s).
-
-**Example:** IQ scores: μ = 100, σ = 15
-**Question:** What percentage of people have IQ above 115?
-
-**Step 1:** Convert to z-score
-
-z = (115 - 100) / 15 = +1.0
-
-**Step 2:** Look up z = 1.0 in a z-table (or remember the 68-95-99.7 rule)
-
-- z = 1.0 means 84% of scores are _below_ this value
-- Therefore, 16% are _above_ (100% - 84% = 16%)
-
-**Answer:** 16% of people have IQ above 115
-
-### Properties of Z-Scores
-
-When you convert all scores in a distribution to z-scores:
-
-- **Mean of z-scores = 0**
-- **SD of z-scores = 1**
-- **Shape stays the same** (if original was normal, z-distribution is normal)
-
-This creates a **standard normal distribution** (μ = 0, σ = 1) that's the same for everyone.
-
-### Real-World Application
-
-**Clinical Psychology:** Depression screening scores (M = 20, SD = 5)
-
-- Your patient scores 32
-- z = (32 - 20) / 5 = +2.4
-- This is more than 2 SDs above the mean → Very high depression symptoms (top ~1% of the population)
-- Warrants immediate clinical attention
-
-**Education:** Standardized test scores are often reported as z-scores (or transformations of z-scores)
-
-- SAT scores: Mean = 500, SD = 100 (basically z-scores × 100 + 500)
-- IQ scores: Mean = 100, SD = 15 (basically z-scores × 15 + 100)
-
-### Quick Check
-
-Calculate and interpret these z-scores:
-
-1. Reaction time: X = 450ms, M = 500ms, SD = 50ms
-2. Height: X = 72 inches, M = 68 inches, SD = 3 inches
-3. Which is more extreme: z = -1.8 or z = +1.5?
-
-<details>
-<summary>Click to see answers</summary>
-
-1. z = (450-500)/50 = -1.0 → 1 SD faster than average (better performance)
-2. z = (72-68)/3 = +1.33 → 1.33 SDs taller than average
-3. z = -1.8 is more extreme (farther from zero, more unusual)
-</details>
-
-<div class="knowledge-check">
-  <h4>🧠 Knowledge Check: Z-Scores and Standardization</h4>
-
-  <div class="quiz-question">
-    <p><strong>Question 1:</strong> Adam scored 60 on his final exam. His class's average score was 50, with a standard deviation of 10. How many standard deviations is Adam's score from the mean?</p>
-    <div class="options">
-      <p>A) 1 standard deviation below the mean</p>
-      <p>B) 2 standard deviations below the mean</p>
-      <p>C) 1 standard deviation above the mean</p>
-      <p>D) 2 standard deviations above the mean</p>
-    </div>
-  </div>
-
-  <details class="answer-section">
-    <summary>💡 Click to reveal answer and explanation</summary>
-    <div class="answer-content">
-      <p class="correct-answer"><strong>✓ Answer:</strong> C) 1 standard deviation above the mean</p>
-
-      <p class="explanation"><strong>Why this is correct:</strong> z = (X - μ) / σ = (60 - 50) / 10 = 10 / 10 = 1.0. A positive z-score means the score is above the mean, and z = 1.0 means exactly 1 standard deviation above the mean.</p>
-
-      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
-      <ul>
-        <li><strong>A) 1 SD below:</strong> This would be z = -1.0, meaning a score of 40.</li>
-        <li><strong>B) 2 SD below:</strong> This would be z = -2.0, meaning a score of 30.</li>
-        <li><strong>D) 2 SD above:</strong> This would be z = 2.0, meaning a score of 70.</li>
-      </ul>
-
-      <p class="review-tip"><em>💭 Need to review?</em> See Part 7.3: Calculating Z-Scores for the formula and interpretation.</p>
-    </div>
-
-  </details>
-
-  <div class="quiz-question">
-    <p><strong>Question 2:</strong> The Z distribution has a standard deviation of _____.</p>
-    <div class="options">
-      <p>A) 0</p>
-      <p>B) 1</p>
-      <p>C) Any value between 0 and 1</p>
-      <p>D) The standard deviation of the raw score distribution</p>
-    </div>
-  </div>
-
-  <details class="answer-section">
-    <summary>💡 Click to reveal answer and explanation</summary>
-    <div class="answer-content">
-      <p class="correct-answer"><strong>✓ Answer:</strong> B) 1</p>
-
-      <p class="explanation"><strong>Why this is correct:</strong> By definition, the standard normal (Z) distribution has a mean of 0 and a standard deviation of 1. This is what makes it "standard"—it's the same for all z-scores regardless of the original data.</p>
-
-      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
-      <ul>
-        <li><strong>A) 0:</strong> The mean of the Z distribution is 0, but the standard deviation is 1.</li>
-        <li><strong>C) Variable:</strong> The Z distribution is standardized, so its standard deviation is always exactly 1.</li>
-        <li><strong>D) Raw score SD:</strong> Z-scores standardize the data, so the Z distribution's SD is always 1, regardless of the original data's standard deviation.</li>
-      </ul>
-
-      <p class="review-tip"><em>💭 Need to review?</em> See Part 7.1: The Normal Distribution for the properties of the standard normal distribution.</p>
-    </div>
-
-  </details>
-
-  <div class="quiz-question">
-    <p><strong>Question 3:</strong> Which Z score is more extreme, 0.68 or -0.92?</p>
-    <div class="options">
-      <p>A) 0.68</p>
-      <p>B) -0.92</p>
-      <p>C) They are equally extreme</p>
-      <p>D) It depends on the raw score distribution</p>
-    </div>
-  </div>
-
-  <details class="answer-section">
-    <summary>💡 Click to reveal answer and explanation</summary>
-    <div class="answer-content">
-      <p class="correct-answer"><strong>✓ Answer:</strong> B) -0.92</p>
-
-      <p class="explanation"><strong>Why this is correct:</strong> The extremity of a z-score is determined by its distance from zero (the mean). |0.68| = 0.68, while |-0.92| = 0.92. Since 0.92 > 0.68, -0.92 is more extreme.</p>
-
-      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
-      <ul>
-        <li><strong>A) 0.68:</strong> This is less extreme because 0.68 < 0.92 in absolute value.</li>
-        <li><strong>C) Equally extreme:</strong> They have different absolute values, so they're not equally extreme.</li>
-        <li><strong>D) Depends on distribution:</strong> Z-scores are standardized, so extremity is always determined by distance from zero, regardless of the original distribution.</li>
-      </ul>
-
-      <p class="application-tip"><em>💡 Application Tip:</em> To compare z-scores for extremity, ignore the sign and compare absolute values. The larger absolute value is more extreme.</p>
-    </div>
-
-  </details>
-
-  <div class="quiz-question">
-    <p><strong>Question 4:</strong> A z score is a measure of:</p>
-    <div class="options">
-      <p>A) The strength of the relationship between a score and its mean</p>
-      <p>B) How far away from the mean a score is in terms of inches</p>
-      <p>C) How far away from the mean a score is in terms of standard deviations</p>
-      <p>D) The strength of the relationship between two variables</p>
-    </div>
-  </div>
-
-  <details class="answer-section">
-    <summary>💡 Click to reveal answer and explanation</summary>
-    <div class="answer-content">
-      <p class="correct-answer"><strong>✓ Answer:</strong> C) How far away from the mean a score is in terms of standard deviations</p>
-
-      <p class="explanation"><strong>Why this is correct:</strong> A z-score tells you exactly how many standard deviations a particular score is from the mean. It's a standardized measure that allows comparison across different scales and distributions.</p>
-
-      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
-      <ul>
-        <li><strong>A) Relationship strength:</strong> Z-scores don't measure relationships between variables; they measure individual scores relative to their distribution.</li>
-        <li><strong>B) Inches:</strong> Z-scores are unitless and standardized. They don't use the original units of measurement.</li>
-        <li><strong>D) Two variables:</strong> Z-scores are calculated for individual scores, not relationships between variables.</li>
-      </ul>
-
-      <p class="review-tip"><em>💭 Need to review?</em> See Part 7.3: Calculating Z-Scores for the definition and interpretation of z-scores.</p>
-    </div>
-
-  </details>
-
-  <div class="quiz-question">
-    <p><strong>Question 5:</strong> A distribution of means would be more likely to have a(n) _____ compared to a distribution of raw scores.</p>
-    <div class="options">
-      <p>A) Lower variance</p>
-      <p>B) Lower mean</p>
-      <p>C) Higher variance</p>
-      <p>D) Higher mean</p>
-    </div>
-  </div>
-
-  <details class="answer-section">
-    <summary>💡 Click to reveal answer and explanation</summary>
-    <div class="answer-content">
-      <p class="correct-answer"><strong>✓ Answer:</strong> A) Lower variance</p>
-
-      <p class="explanation"><strong>Why this is correct:</strong> The distribution of sample means has less variability than the distribution of raw scores. This is because means tend to be more stable and closer to the population mean than individual scores. The standard error of the mean is smaller than the standard deviation of raw scores.</p>
-
-      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
-      <ul>
-        <li><strong>B) Lower mean:</strong> The distribution of means has the same mean as the population (assuming random sampling), not a lower mean.</li>
-        <li><strong>C) Higher variance:</strong> Sample means are more stable than individual scores, so they have less variance, not more.</li>
-        <li><strong>D) Higher mean:</strong> The distribution of means centers on the population mean, not a higher value.</li>
-      </ul>
-
-      <p class="review-tip"><em>💭 Need to review?</em> See Part 6.4: The Distribution of Sample Means for why sample means are more stable than individual scores.</p>
-    </div>
-
-  </details>
-</div>
-
----
-
-## Part 8: Probability and Inference
-
-### What is Probability?
-
-**Definition:** The likelihood of an event occurring, expressed as a number between 0 and 1.
-
-- **p = 0:** Impossible (0% chance)
-- **p = 0.50:** Equally likely to occur or not (50% chance)
-- **p = 1.0:** Certain (100% chance)
-
-**Examples:**
-
-- Probability of heads on a fair coin flip: p = 0.50
-- Probability of rolling a 3 on a six-sided die: p = 1/6 ≈ 0.167
-- Probability of drawing a heart from a deck: p = 13/52 = 0.25
-
-### Probability in Normal Distributions
-
-The **area under the curve** represents probability (or proportion of cases).
-
-**Example:** In a normal distribution, what's the probability of randomly selecting someone with a z-score less than -1?
-
-Using the 68-95-99.7 rule:
-
-- 68% fall between z = -1 and z = +1
-- That leaves 32% in the two tails
-- Half of that (16%) is below z = -1
-
-**Answer:** p = 0.16 (or 16%)
-
-### The Logic of Inferential Statistics (Preview)
-
-Here's the fundamental logic that underlies all hypothesis testing:
-
-**Step 1: Make an Assumption**
-
-- Assume your sample comes from a known population (the "null hypothesis")
-- Example: "This group receiving the drug is no different from the general population"
-
-**Step 2: Calculate Probability**
-
-- Given that assumption, what's the probability of getting results as extreme as yours?
-- Example: If the drug does nothing, what's the probability of seeing an improvement this large?
-
-**Step 3: Make a Decision**
-
-- **If probability is high** (p > 0.05): Your results look typical → No evidence against the assumption → "We fail to reject the null hypothesis"
-- **If probability is low** (p < 0.05): Your results look rare/unusual → Evidence against the assumption → "We reject the null hypothesis"
-
-### Concrete Example: Does This Drug Work?
-
-**Scenario:** A new medication claims to improve memory. Normal memory test scores have μ = 100, σ = 15.
-
-You test 25 patients on the drug. They average M = 108.
-
-**Question:** Is this evidence the drug works, or just random chance?
-
-**Step 1:** Assume the drug does nothing (null hypothesis)
-
-- If true, these patients are just a random sample from the normal population (μ = 100)
-
-**Step 2:** Calculate how unusual this result is
-
-- _Note: The actual calculation involves standard error, which you'll learn about later. For now, focus on the logic._
-- Suppose the probability of getting M = 108 or higher (if the drug does nothing) is p = 0.02
-
-**Step 3:** Make a decision
-
-- p = 0.02 means only a 2% chance of this result if the drug has no effect
-- This is rare! (Less than our standard cutoff of 5%)
-- **Conclusion:** We reject the null hypothesis. The drug probably does improve memory.
-
-**If instead p = 0.25:**
-
-- A 25% chance is not unusual
-- **Conclusion:** We fail to reject the null hypothesis. No convincing evidence the drug works.
-
-### The p < 0.05 Convention
-
-**Statistical Significance:** A result is called "statistically significant" if p < 0.05
-
-**What this means:**
-
-- Less than 5% chance of getting this result if the null hypothesis is true
-- Conventional cutoff (arbitrary but widely used)
-- Doesn't mean "important" or "large"—just "unlikely to be due to chance alone"
-
-**Common Misconception:**
-❌ "p < 0.05 means there's a 95% chance my hypothesis is true"
-✓ "p < 0.05 means if the null hypothesis were true, I'd get results this extreme less than 5% of the time"
-
-### Sampling Error
-
-**Definition:** The natural variability in sample statistics due to random chance.
-
-**Key Insight:** Every sample is different. If you took 100 samples from the same population, you'd get 100 slightly different means.
-
-**Example:** True population mean IQ = 100
-
-- Sample 1 (n=30): M = 98
-- Sample 2 (n=30): M = 102
-- Sample 3 (n=30): M = 99.5
-- Sample 4 (n=30): M = 101
-
-All four samples come from the same population, but random chance creates variability.
-
-**Implication:** Not all differences between samples indicate real population differences. Statistics helps us distinguish:
-
-- **Real effects** (systematic differences)
-- **Sampling error** (random noise)
-
-### Building Toward Hypothesis Testing
-
-Everything in this module builds toward inferential statistics:
-
-1. **Variables** → What we measure
-2. **Descriptive statistics** → Summarizing sample data
-3. **Sampling** → Understanding the sample-population relationship
-4. **Normal distribution** → Model for most inferential tests
-5. **Z-scores** → Standardizing scores for comparison
-6. **Probability** → Quantifying likelihood
-7. **Inference** → Drawing conclusions about populations from samples
-
-**Coming in Module 2:** You'll learn your first formal hypothesis test—the one-sample t-test!
-
-### Why This Matters
-
-Statistical inference allows us to:
-
-- **Test theories** (Does therapy reduce depression?)
-- **Make predictions** (Will this student succeed in college?)
-- **Inform decisions** (Should we approve this drug?)
-- **Generalize findings** (Do results from our lab apply to the real world?)
-
-Without inferential statistics, research would be limited to describing what we directly observe. We couldn't make claims about the broader world.
-
-### Quick Check
-
-1. What does p = 0.03 mean in hypothesis testing?
-2. If you reject the null hypothesis, have you "proven" your alternative hypothesis is true?
-3. Which provides stronger evidence: p = 0.001 or p = 0.04?
-
-<details>
-<summary>Click to see answers</summary>
-
-1. If the null hypothesis were true, we'd see results this extreme only 3% of the time (rare, so we reject the null)
-2. No - we've only shown the null hypothesis is unlikely. We haven't "proven" anything; we've provided evidence.
-3. p = 0.001 provides stronger evidence (more unlikely under the null hypothesis)
-</details>
-
----
-
-## Part 9: Practical Guide: Working with SPSS
-
-This section provides step-by-step guidance for completing the M1 assignment tasks in SPSS.
-
-### Setting Up Your Dataset
-
-**Step 1: Import Data from Excel**
-
-1. Open SPSS
-2. `File → Import Data → Excel`
-3. Navigate to your data file
-4. Select the worksheet containing your data
-5. **Important:** Check "Read variable names from the first row of data"
-6. Click OK
-
-**Step 2: Configure Variables in Variable View**
-
-After importing, click the **Variable View** tab at the bottom of the screen. This is where you define how SPSS interprets each variable.
-
-**For Each Variable, Set:**
-
-**a) Name:**
-
-- Short, descriptive, no spaces
-- Examples: `Age`, `Gender`, `Sleep_Hours`
-
-**b) Type:**
-
-- Usually "Numeric" (default)
-- Use "String" only for text data like ID codes
-
-**c) Width & Decimals:**
-
-- Set decimals to 0 for whole numbers (age, counts)
-- Set decimals to 1-2 for continuous measurements
-
-**d) Label:**
-
-- A longer, descriptive label
-- Example: Name = `Sleep_Hours`, Label = `Hours of sleep per night`
-
-**e) Values** (CRITICAL for categorical variables):
-
-- Click in the Values cell → Click the `...` button
-- For each numeric code, enter the value and its label:
-  - Value: `1`, Label: `Male` → Add
-  - Value: `2`, Label: `Female` → Add
-  - Continue for all categories
-- **Do this for EVERY nominal and ordinal variable!**
-
-**f) Measure:**
-
-- **Scale:** For continuous numerical data (age, test scores, income)
-- **Ordinal:** For ranked categories (education level, class standing)
-- **Nominal:** For unordered categories (gender, major, treatment group)
-
-**Getting the Measure Right is Critical!** This determines which analyses SPSS will allow.
-
-**Step 3: Save Your Work**
-
-- `File → Save As`
-- Save as a `.sav` file (SPSS data file)
-- Also save output: `File → Save` in the Output window (creates `.spv` file)
-
-### Creating Frequency Tables
-
-**For Categorical Variables (Nominal/Ordinal):**
-
-1. `Analyze → Descriptive Statistics → Frequencies`
-2. Move your categorical variable(s) to the "Variable(s)" box
-3. Click OK
-
-**Reading the Output:**
-
-- **Frequency:** Count in each category
-- **Percent:** Percentage of total (including missing)
-- **Valid Percent:** Percentage excluding missing data (usually what you report)
-- **Cumulative Percent:** Running total (useful for ordinal data)
-
-### Creating Grouped Frequency Tables
-
-**For Scale Variables (to create bins):**
-
-**Step 1: Use Visual Binning**
-
-1. `Transform → Visual Binning`
-2. Move your scale variable to "Variables to Bin" → Continue
-3. Enter a name for your new binned variable (e.g., `Age_Grouped`)
-4. Click `Make Cutpoints`
-5. Select "Equal Width Intervals"
-6. Set:
-   - **First Cutpoint Location:** At or below your minimum value
-   - **Number of Cutpoints:** One less than the number of bins you want (for 8 bins, enter 7)
-   - **Width:** The size of each interval
-7. Click Apply → OK
-
-**Step 2: Create Frequency Table**
-
-1. `Analyze → Descriptive Statistics → Frequencies`
-2. Select your NEW binned variable
-3. Click OK
-
-### Creating Graphs
-
-**Bar Chart (for Nominal/Ordinal Data):**
-
-1. `Graphs → Chart Builder`
-2. In the Gallery, select **Bar**
-3. Drag "Simple Bar" to the chart preview area
-4. Drag your categorical variable from the Variables list to the **X-Axis**
-5. Y-Axis will automatically be "Count"
-6. Click OK
-7. Double-click the graph in output to edit (add title, format labels)
-
-**Histogram (for Scale Data):**
-
-1. `Graphs → Chart Builder`
-2. In the Gallery, select **Histogram**
-3. Drag "Simple Histogram" to the chart preview area
-4. Drag your scale variable to the **X-Axis**
-5. Optional: Check "Display normal curve" in Element Properties
-6. Click OK
-7. Double-click the graph to edit
-
-**Graph Formatting Tips:**
-
-- Always include a descriptive title
-- Label axes clearly
-- For bar charts, consider ordering bars by frequency or logical order
-- Remove unnecessary gridlines for cleaner appearance
-
-### Calculating Descriptive Statistics
-
-**Method 1: For Basic Statistics (Mean, SD, Range)**
-
-1. `Analyze → Descriptive Statistics → Descriptives`
-2. Move your scale variable(s) to "Variable(s)"
-3. Click `Options` to select which statistics to display:
-   - Mean
-   - Std. deviation
-   - Minimum, Maximum (to calculate range)
-4. Click Continue → OK
-
-**Method 2: For Median and More Detail**
-
-1. `Analyze → Descriptive Statistics → Frequencies`
-2. Move your scale variable to "Variable(s)"
-3. **Uncheck** "Display frequency tables" (unless you want them)
-4. Click `Statistics` button
-5. Select:
-   - Mean, Median, Mode
-   - Std. deviation, Variance
-   - Range, Minimum, Maximum
-6. Click Continue → OK
-
-**Reading SPSS Output:**
-
-- **N:** Sample size
-- **Mean:** Average
-- **Std. Deviation:** Standard deviation (calculated using n-1)
-- **Variance:** SD squared
-- **Minimum/Maximum:** Lowest and highest values
-- **Range:** Maximum - Minimum (if reported)
-
-### Common SPSS Errors and Troubleshooting
-
-**Problem:** SPSS won't let me create a histogram for my variable
-**Solution:** Check that the variable's Measure is set to "Scale" in Variable View
-
-**Problem:** My frequency table shows numbers (1, 2, 3) instead of labels (Male, Female, Other)
-**Solution:** You didn't define Value Labels in Variable View. Go back and add them.
-
-**Problem:** SPSS is including missing data in my percentages
-**Solution:** Report "Valid Percent" instead of "Percent" (excludes missing)
-
-**Problem:** My histogram has too many/too few bars
-**Solution:** Double-click the graph and adjust bin width in the chart editor
-
-**Problem:** I can't find my output
-**Solution:** Look for a separate Output window. If closed, you can reopen saved .spv files
-
-### Try It Yourself: Practice Exercise
-
-Using the M1 assignment data:
-
-1. Import the data and configure all variables with appropriate:
-
-   - Measure types (Nominal, Ordinal, or Scale)
-   - Value labels for all categorical variables
-
-2. Create a frequency table for Employment Status
-
-3. Create a bar chart for Computer Type
-
-4. Create a grouped frequency table for Age (use Visual Binning with 8 equal-width bins)
-
-5. Create a histogram for Hours of Sleep
-
-6. Calculate mean, median, SD, and range for Cell Phone Minutes
-
-**Check Your Understanding:**
-
-- Does your employment frequency table show text labels or just numbers?
-- Do the bars in your computer type bar chart have gaps between them?
-- Does your age frequency table have 8 rows (bins)?
-- Do the bars in your sleep histogram touch each other?
-- Is your mean for cell phone minutes reasonable given the range?
-
-<div class="knowledge-check">
-  <h4>🧠 Knowledge Check: SPSS Skills</h4>
-
-  <div class="quiz-question">
-    <p><strong>Question 1:</strong> In SPSS, to show class names (Freshman, Sophomore, Junior, Senior) in a frequency table instead of numeric codes, which column in the Variable View needs to be properly configured?</p>
-    <div class="options">
-      <p>A) Type</p>
-      <p>B) Measures</p>
-      <p>C) Labels</p>
-      <p>D) Values</p>
-    </div>
-  </div>
-
-  <details class="answer-section">
-    <summary>💡 Click to reveal answer and explanation</summary>
-    <div class="answer-content">
-      <p class="correct-answer"><strong>✓ Answer:</strong> D) Values</p>
-
-      <p class="explanation"><strong>Why this is correct:</strong> The Values column is where you define value labels that convert numeric codes (1, 2, 3, 4) into meaningful text labels (Freshman, Sophomore, Junior, Senior). This makes your output much more readable.</p>
-
-      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
-      <ul>
-        <li><strong>A) Type:</strong> The Type column defines the data type (numeric, string, etc.), not the labels for values.</li>
-        <li><strong>B) Measures:</strong> The Measures column defines the measurement level (nominal, ordinal, scale), not value labels.</li>
-        <li><strong>C) Labels:</strong> The Labels column provides a variable label (description of what the variable measures), not labels for individual values.</li>
-      </ul>
-
-      <p class="review-tip"><em>💭 Need to review?</em> See Part 9.1: Setting Up Variables for how to configure value labels in SPSS.</p>
-    </div>
-
-  </details>
-
-  <div class="quiz-question">
-    <p><strong>Question 2:</strong> When creating a bar chart to show mean "Sleep Time" for different employment statuses, what should go in the "Variable" field and what should go in the "Category Axis" field?</p>
-    <div class="options">
-      <p>A) Variable: Employment; Category Axis: Sleep Time</p>
-      <p>B) Variable: Sleep Time; Category Axis: Employment</p>
-      <p>C) Either way works the same</p>
-      <p>D) It depends on your research question</p>
-    </div>
-  </div>
-
-  <details class="answer-section">
-    <summary>💡 Click to reveal answer and explanation</summary>
-    <div class="answer-content">
-      <p class="correct-answer"><strong>✓ Answer:</strong> B) Variable: Sleep Time; Category Axis: Employment</p>
-
-      <p class="explanation"><strong>Why this is correct:</strong> You want to compare mean sleep time across employment groups. "Sleep Time" is the variable you're measuring (goes in Variable), and "Employment" defines the groups you're comparing (goes in Category Axis).</p>
-
-      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
-      <ul>
-        <li><strong>A) Reversed:</strong> This would show mean employment across sleep time groups, which doesn't make sense since employment is categorical.</li>
-        <li><strong>C) Either way:</strong> The placement matters! Reversing them changes what the chart shows.</li>
-        <li><strong>D) Depends:</strong> The question specifically asks about mean sleep time by employment, so the placement is determined by the research question.</li>
-      </ul>
-
-      <p class="application-tip"><em>💡 Application Tip:</em> Always think: "What am I measuring?" (Variable) and "What groups am I comparing?" (Category Axis).</p>
-    </div>
-
-  </details>
-
-  <div class="quiz-question">
-    <p><strong>Question 3:</strong> In SPSS descriptive statistics output, if the variance is 113.00, what is the standard deviation?</p>
-    <div class="options">
-      <p>A) 10.63</p>
-      <p>B) 113.00</p>
-      <p>C) 12,769.00</p>
-      <p>D) SPSS doesn't calculate this automatically</p>
-    </div>
-  </div>
-
-  <details class="answer-section">
-    <summary>💡 Click to reveal answer and explanation</summary>
-    <div class="answer-content">
-      <p class="correct-answer"><strong>✓ Answer:</strong> A) 10.63</p>
-
-      <p class="explanation"><strong>Why this is correct:</strong> Standard deviation is the square root of variance. √113.00 = 10.63 (rounded to two decimal places). While SPSS shows both variance and standard deviation in the output, understanding this relationship helps verify your calculations.</p>
-
-      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
-      <ul>
-        <li><strong>B) 113.00:</strong> This is the variance, not the standard deviation. Standard deviation is always smaller than variance (unless variance = 1).</li>
-        <li><strong>C) 12,769.00:</strong> This would be variance squared (113²), which doesn't make statistical sense.</li>
-        <li><strong>D) SPSS doesn't calculate:</strong> SPSS automatically calculates and displays both variance and standard deviation in descriptive statistics output.</li>
-      </ul>
-
-      <p class="review-tip"><em>💭 Need to review?</em> See Part 9.2: Descriptive Statistics for how to read SPSS descriptive statistics output.</p>
-    </div>
-
-  </details>
-
-  <div class="quiz-question">
-    <p><strong>Question 4:</strong> When creating a histogram in SPSS, which measure should you select to show the mean on the chart?</p>
-    <div class="options">
-      <p>A) Cum %</p>
-      <p>B) Other statistic</p>
-      <p>C) Cum N</p>
-      <p>D) % of cases</p>
-    </div>
-  </div>
-
-  <details class="answer-section">
-    <summary>💡 Click to reveal answer and explanation</summary>
-    <div class="answer-content">
-      <p class="correct-answer"><strong>✓ Answer:</strong> B) Other statistic</p>
-
-      <p class="explanation"><strong>Why this is correct:</strong> "Other statistic" allows you to select additional statistics like the mean to display on your chart. This is useful for showing where the mean falls relative to the distribution.</p>
-
-      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
-      <ul>
-        <li><strong>A) Cum %:</strong> This shows cumulative percentages, not the mean.</li>
-        <li><strong>C) Cum N:</strong> This shows cumulative counts, not the mean.</li>
-        <li><strong>D) % of cases:</strong> This shows the percentage of cases in each bin, not the mean.</li>
-      </ul>
-
-      <p class="application-tip"><em>💡 Application Tip:</em> Adding the mean to histograms helps you see how the mean relates to the distribution shape, especially useful for identifying skewness.</p>
-    </div>
-
-  </details>
-
-  <div class="quiz-question">
-    <p><strong>Question 5:</strong> The variable "Tech Dependence" (measured as 1 = Low, 2 = Medium, 3 = High) should be set to _____ under Measures in the SPSS Variable View.</p>
-    <div class="options">
-      <p>A) Nominal</p>
-      <p>B) Ordinal</p>
-      <p>C) Scale</p>
-      <p>D) String</p>
-    </div>
-  </div>
-
-  <details class="answer-section">
-    <summary>💡 Click to reveal answer and explanation</summary>
-    <div class="answer-content">
-      <p class="correct-answer"><strong>✓ Answer:</strong> B) Ordinal</p>
-
-      <p class="explanation"><strong>Why this is correct:</strong> "Tech Dependence" has ordered categories (Low < Medium < High) with meaningful ranking, but the intervals between levels are not necessarily equal. This is the definition of ordinal measurement.</p>
-
-      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
-      <ul>
-        <li><strong>A) Nominal:</strong> Nominal variables have no inherent order. Low, Medium, High clearly have an order.</li>
-        <li><strong>C) Scale:</strong> Scale variables have equal intervals and a true zero point. We can't assume the difference between Low and Medium equals the difference between Medium and High.</li>
-        <li><strong>D) String:</strong> This is a data type (text), not a measurement level. The variable is coded numerically.</li>
-      </ul>
-
-      <p class="review-tip"><em>💭 Need to review?</em> See Part 9.1: Setting Up Variables for guidelines on choosing the correct measurement level in SPSS.</p>
-    </div>
-
-  </details>
-
-  <div class="quiz-question">
-    <p><strong>Question 6:</strong> When reading SPSS frequency table output, what information tells you which category has the most participants?</p>
-    <div class="options">
-      <p>A) The Percent column</p>
-      <p>B) The Frequency column</p>
-      <p>C) The Valid Percent column</p>
-      <p>D) All of the above</p>
-    </div>
-  </div>
-
-  <details class="answer-section">
-    <summary>💡 Click to reveal answer and explanation</summary>
-    <div class="answer-content">
-      <p class="correct-answer"><strong>✓ Answer:</strong> B) The Frequency column</p>
-
-      <p class="explanation"><strong>Why this is correct:</strong> The Frequency column shows the actual count of participants in each category. The highest number in this column indicates the category with the most participants.</p>
-
-      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
-      <ul>
-        <li><strong>A) Percent column:</strong> Percentages tell you proportions, but you need the actual counts to determine which category has the most participants.</li>
-        <li><strong>C) Valid Percent column:</strong> This excludes missing data, but still shows percentages rather than raw counts.</li>
-        <li><strong>D) All of the above:</strong> While percentages are useful, the frequency column directly answers "which has the most" in terms of raw numbers.</li>
-      </ul>
-
-      <p class="application-tip"><em>💡 Application Tip:</em> Always check the Frequency column first to see actual counts, then use percentages to understand proportions and make comparisons.</p>
-    </div>
-
-  </details>
-</div>
-
----
-
-## Quick Reference Card
-
-### Variable Classification Decision Tree
-
-```
-Step 1: What are the possible values?
-    |
-    ├─ CATEGORIES or NAMES (e.g., gender, major, color)
-    |   └─→ Is there a natural order?
-    |       ├─ NO  → NOMINAL (e.g., blood type, ethnicity)
-    |       └─ YES → ORDINAL (e.g., class rank, education level)
-    |
-    └─ TRUE NUMBERS (can do meaningful math)
-        └─→ SCALE (e.g., age, height, test scores)
-```
-
-### Measurement Level Quick Guide
-
-| Level       | Examples                  | Central Tendency   | Graph Type           | Can You Calculate Mean? |
-| ----------- | ------------------------- | ------------------ | -------------------- | ----------------------- |
-| **Nominal** | Gender, Major, Blood Type | Mode only          | Bar chart, Pie chart | ❌ No                   |
-| **Ordinal** | Class rank, Likert items  | Median, Mode       | Bar chart            | ⚠️ Debatable            |
-| **Scale**   | Age, Height, Test scores  | Mean, Median, Mode | Histogram, Scatter   | ✓ Yes                   |
-
-> **Critical Rule:** Your measurement level determines which statistics you can use!
-
-### Essential Formulas at a Glance
-
-| Statistic                       | Formula                | When to Use                               |
-| ------------------------------- | ---------------------- | ----------------------------------------- |
-| **Mean**                        | M = ΣX / N             | Symmetrical data, no outliers             |
-| **Standard Deviation (Sample)** | s = √[Σ(X-M)² / (n-1)] | Always report with mean                   |
-| **Variance**                    | s² = Σ(X-M)² / (n-1)   | Foundation for many tests                 |
-| **Z-Score**                     | z = (X - μ) / σ        | Standardize scores, compare across scales |
-| **Range**                       | Max - Min              | Quick measure of spread                   |
-
-### Central Tendency Decision Guide
-
-**When to use MEAN:**
-
-- ✓ Scale data
-- ✓ Roughly symmetrical distribution
-- ✓ No extreme outliers
-- ✓ Need to do further statistical tests
-
-**When to use MEDIAN:**
-
-- ✓ Ordinal data
-- ✓ Skewed distribution
-- ✓ Extreme outliers present
-- ✓ Income, housing prices, reaction times
-
-**When to use MODE:**
-
-- ✓ Nominal data (only option!)
-- ✓ Identifying most common category
-- ✓ Finding peaks in distribution
-
-### Z-Score Interpretation Guide
-
-| Z-Score | Interpretation      | Percentile (approx) |
-| ------- | ------------------- | ------------------- | ------------------- | ----------------- |
-| z = 0   | Exactly at the mean | 50th percentile     |
-| z = +1  | 1 SD above mean     | 84th percentile     |
-| z = -1  | 1 SD below mean     | 16th percentile     |
-| z = +2  | 2 SDs above mean    | 98th percentile     |
-| z = -2  | 2 SDs below mean    | 2nd percentile      |
-| z = +3  | 3 SDs above mean    | 99.7th percentile   |
-|         | z                   | > 3                 | **Extreme outlier** | Very rare (<0.3%) |
-
-**68-95-99.7 Rule:**
-
-- 68% of scores within ±1 SD (z between -1 and +1)
-- 95% of scores within ±2 SDs (z between -2 and +2)
-- 99.7% of scores within ±3 SDs (z between -3 and +3)
-
-### SPSS Variable Setup Checklist
-
-Before any analysis, verify in Variable View:
-
-✓ **Name:** Short, clear, no spaces (e.g., `age`, `test_score`)
-✓ **Type:** Usually "Numeric" (use "String" only for text like names)
-✓ **Width:** Default is fine for most cases
-✓ **Decimals:** Set to 0 for whole numbers, 2 for continuous
-✓ **Label:** Full descriptive name (e.g., "Test Score out of 100")
-✓ **Values:** Define labels for ALL categorical variables (1="Male", 2="Female")
-✓ **Measure:**
-
-- Nominal → Categories with no order
-- Ordinal → Categories with order
-- Scale → True numbers
-
-### Common Mistakes Checklist
-
-❌ **Don't calculate mean of nominal data** → No such thing as "average gender"
-❌ **Don't use histogram for categorical data** → Use bar chart instead
-❌ **Don't forget value labels in SPSS** → Numbers alone (1, 2, 3) are meaningless
-❌ **Don't confuse n and n-1** → SPSS always uses n-1 (assumes inference)
-❌ **Don't ignore outliers** → Always report both mean and median when present
-❌ **Don't confuse standard deviation with standard error** → SD describes spread; SE comes later (M2)
-
-### Graph Selection Quick Guide
-
-| Data Type               | Appropriate Graph             | Why                                   |
-| ----------------------- | ----------------------------- | ------------------------------------- |
-| **Nominal**             | Bar chart (gaps between bars) | Shows frequency of categories         |
-| **Ordinal**             | Bar chart (gaps between bars) | Shows frequency of ordered categories |
-| **Scale**               | Histogram (bars touch)        | Shows distribution of continuous data |
-| **Two Scale Variables** | Scatterplot                   | Shows relationship between variables  |
-
-### IV vs. DV Identification Trick
-
-Ask: "Does [Variable A] depend on [Variable B]?"
-
-**Example:** "Does test score depend on study time?"
-
-- Answer: YES → Test score is **DV** (depends on study time)
-- Study time is **IV** (doesn't depend on test score)
-
-**Memory aid:** DV = Depends on the IV
-
-### Sample vs. Population Symbols
-
-| Concept            | Population (Parameter) | Sample (Statistic) |
-| ------------------ | ---------------------- | ------------------ |
-| Size               | N                      | n                  |
-| Mean               | μ (mu)                 | M or X̄             |
-| Standard Deviation | σ (sigma)              | s or SD            |
-| Variance           | σ²                     | s²                 |
-
-**Remember:**
-
-- Greek letters (μ, σ) = Population
-- Roman letters (M, s) = Sample
-
-### n vs. n-1 Decision
-
-| Goal                                | Formula Uses  | Why                   |
-| ----------------------------------- | ------------- | --------------------- |
-| **Describe only your sample**       | Divide by n   | You have all the data |
-| **Estimate population from sample** | Divide by n-1 | Corrects for bias     |
-
-**In practice:** Almost always use n-1 (and SPSS always does!)
-
-**Why n-1?** Using n would underestimate population variability. The n-1 adjustment (called "Bessel's correction") fixes this.
-
-### Module 1 Key Takeaways
-
-1. **Measurement level is EVERYTHING** → Determines which analyses are valid
-2. **Variables must vary** → Clear naming matters for all downstream work
-3. **Mean is sensitive to outliers** → Always look at your data before choosing central tendency
-4. **Z-scores are the universal translator** → Allow comparison across different scales
-5. **Normal distribution is the foundation** → Most statistics assume or rely on normality
-6. **SPSS setup is crucial** → Garbage in = garbage out
-
-### Connection to Future Modules
-
-**Module 1 → Module 2:**
-
-- Normal distribution → Basis for t-distribution
-- Samples vs. populations → Foundation for hypothesis testing
-- Variability (SD) → Leads to standard error
-- Z-scores → Lead to t-scores
-
-**Module 1 → Module 3:**
-
-- Independent vs. dependent variables → Experimental design
-- Measurement levels → Which t-test to use
-
-**Module 1 → Module 6:**
-
-- Scale variables → Required for correlation and regression
-- Scatterplots → Visualizing relationships
-
----
-
-## Summary and Key Formulas
-
-### Core Concepts
-
-**Statistics:** Mathematical tools for organizing, summarizing, and interpreting data
-
-**Two Branches:**
-
-- **Descriptive:** Summarize the data you have
-- **Inferential:** Make predictions about populations from samples
-
-**Variables:** Characteristics that vary between individuals or situations
-
-**Classification:**
-
-- By role: Independent (predictor) vs. Dependent (outcome)
-- By scale: Nominal (categories) → Ordinal (ranked) → Scale (true numbers)
-
-### Measures of Central Tendency
-
-**Mean:**
-
-M = ΣX / N
-
-- Best for: Symmetrical distributions, no outliers
-- Sensitive to: Extreme values
-
-**Median:** Middle score when ordered
-
-- Best for: Skewed distributions, ordinal data
-- Resistant to: Outliers
-
-**Mode:** Most frequent value
-
-- Best for: Nominal data, identifying peaks
-- Can have: Multiple modes or no mode
-
-### Measures of Variability
-
-**Range:**
-
-Range = X<sub>max</sub> - X<sub>min</sub>
-
-**Variance (Population):**
-
-σ² = Σ(X - μ)² / N
-
-**Variance (Sample Estimate):**
-
-s² = Σ(X - M)² / (n - 1)
-
-**Standard Deviation:**
-
-σ = √(σ²) or s = √(s²)
-
-- Interpretation: Average distance from the mean
-- Small SD = less variability (homogeneous group)
-- Large SD = more variability (heterogeneous group)
-
-### Z-Scores
-
-**Formula:**
-
-z = (X - μ) / σ or z = (X - M) / s
-
-**Interpretation:**
-
-- Number of standard deviations from the mean
-- z = 0 → at the mean
-- z = +1 → 1 SD above mean
-- z = -1.5 → 1.5 SDs below mean
-
-**68-95-99.7 Rule:**
-
-- 68% within 1 SD (z = ±1)
-- 95% within 2 SDs (z = ±2)
-- 99.7% within 3 SDs (z = ±3)
-
-### Symbols Reference
-
-| Concept            | Population | Sample  |
-| :----------------- | :--------- | :------ |
-| Size               | N          | n       |
-| Mean               | μ (mu)     | M or X̄  |
-| Standard Deviation | σ (sigma)  | s or SD |
-| Variance           | σ²         | s²      |
-
-### Key Distinctions
-
-| Descriptive vs. Inferential                         |
-| :-------------------------------------------------- |
-| **Descriptive:** Summarize collected data           |
-| **Inferential:** Make predictions about populations |
-
-| Sample vs. Population                      |
-| :----------------------------------------- |
-| **Sample:** Subset studied                 |
-| **Population:** Entire group of interest   |
-| **Statistic:** Describes sample (M, s)     |
-| **Parameter:** Describes population (μ, σ) |
-
-| Nominal vs. Ordinal vs. Scale                         |
-| :---------------------------------------------------- |
-| **Nominal:** Categories, no order                     |
-| **Ordinal:** Ranked categories, unequal intervals     |
-| **Scale:** True numbers, equal intervals, can do math |
-
-### Analysis Decision Guide
-
-**What graph should I use?**
-
-- Nominal/Ordinal → Bar chart or pie chart
-- Scale → Histogram
-
-**What central tendency should I report?**
-
-- Nominal → Mode only
-- Ordinal → Median (and mode)
-- Scale (symmetrical) → Mean (and SD)
-- Scale (skewed) → Median (and range/IQR)
-
-**When should I use n vs. n-1?**
-
-- Describing only your sample → divide by n
-- Estimating population from sample → divide by n-1
-- **SPSS always uses n-1** (assumes you're inferring)
-
----
-
-## Glossary
-
-**Bar Chart:** Graph for categorical data with separated bars
-
-**Central Tendency:** The "typical" or "center" value (mean, median, mode)
-
-**Continuous Variable:** Can take any value within a range
-
-**Dependent Variable (DV):** The outcome being measured
-
-**Descriptive Statistics:** Tools to summarize collected data
-
-**Discrete Variable:** Can only take specific values
-
-**Frequency Distribution:** Summary of how often each value occurs
-
-**Histogram:** Graph for continuous data with touching bars
-
-**Independent Variable (IV):** The predictor or presumed cause
-
-**Inferential Statistics:** Tools to make predictions about populations from samples
-
-**Mean:** Arithmetic average
-
-**Median:** Middle score when ordered
-
-**Mode:** Most frequent value
-
-**Nominal:** Categorical data with no inherent order
-
-**Normal Distribution:** Symmetrical, bell-shaped distribution
-
-**Ordinal:** Ranked categories with unequal intervals
-
-**Outlier:** An extremely unusual value
-
-**Parameter:** A measure describing a population (μ, σ)
-
-**Population:** The entire group of interest
-
-**Range:** Distance between highest and lowest scores
-
-**Sample:** A subset of the population actually studied
-
-**Scale:** Continuous numerical data with equal intervals
-
-**Standard Deviation:** Average distance from the mean
-
-**Statistic:** A measure describing a sample (M, s)
-
-**Variable:** A characteristic that varies between individuals
-
-**Variance:** Average squared deviation from the mean
-
-**Z-Score:** Number of standard deviations from the mean
-
----
-
-## Frequently Asked Questions
-
-**Q: Why do we study samples instead of populations?**
-A: Populations are usually too large, expensive, or impossible to study completely. A well-selected sample provides accurate estimates at a fraction of the cost and time.
-
-**Q: When should I use mean vs. median?**
-A: Use the mean for symmetrical distributions without extreme outliers. Use the median for skewed distributions or when outliers are present. The median is also appropriate for ordinal data.
-
-**Q: What's the difference between variance and standard deviation?**
-A: Variance is the average squared deviation. Standard deviation is the square root of variance, returning the measure to the original units. SD is easier to interpret because it's in the same units as your data.
-
-**Q: Why does SPSS divide by n-1 instead of n?**
-A: SPSS assumes you want to estimate population parameters from your sample. Dividing by n-1 corrects for the tendency of samples to underestimate population variability.
-
-**Q: What does "statistically significant" mean?**
-A: It means the probability of getting your results (if the null hypothesis were true) is less than 5% (p < 0.05). It suggests your results are unlikely to be due to chance alone.
-
-**Q: Can I calculate a mean for nominal data?**
-A: Technically you can, but it's meaningless. If gender is coded 1=Male, 2=Female, a mean of 1.6 tells you nothing useful. Only calculate means for scale data.
-
-**Q: What's the difference between a bar chart and a histogram?**
-A: Bar charts are for categorical data (bars have gaps). Histograms are for continuous data (bars touch). The gaps in bar charts emphasize that categories are distinct.
-
-**Q: How do I know if my distribution is normal?**
-A: Create a histogram and look for a symmetrical, bell-shaped curve. For formal testing, you can use tests like Shapiro-Wilk (covered in advanced courses), but visual inspection is usually sufficient at this level.
-
-**Q: What's a "good" standard deviation?**
-A: There's no universal answer. SD depends on the scale of measurement. What matters is interpreting it in context: small SD means consistency, large SD means variability.
-
-**Q: Why can't I use certain tests with ordinal data?**
-A: Many powerful statistical tests assume interval/ratio data with equal intervals. Ordinal data violates this assumption. You can use specialized non-parametric tests for ordinal data.
-
----
-
-## Connections to Future Modules
-
-**Module 1 Foundation →**
-
-**Module 2 (One-Sample t-Test):**
-
-- Uses z-score logic extended to t-distributions
-- Compares sample mean to known population
-- Applies hypothesis testing framework introduced here
-
-**Module 3 (Independent & Paired t-Tests):**
-
-- Compares means between two groups or conditions
-- Uses SD to quantify variability in both groups
-- IV/DV distinction becomes critical
-
-**Module 4 (ANOVA):**
-
-- Extends t-test logic to 3+ groups
-- Heavy reliance on variance calculations
-- Uses F-ratio (ratio of variances)
-
-**Module 5 (Two-Way ANOVA):**
-
-- Multiple IVs with one DV
-- Everything from M1 about variables applies
-
-**Module 6 (Correlation & Regression):**
-
-- Relationship between two scale variables
-- Z-scores used in correlation calculations
-- Both variables often treated as continuous
-
-**The Through-Line:** Every module builds on these fundamentals. Understanding variables, distributions, means, and standard deviations is essential for all future statistical analyses.
-
----
-
-## Final Thoughts
-
-Statistics is not just about numbers and formulas—it's about **thinking critically about evidence**. The concepts in this module form the foundation for understanding how we:
-
-- Transform messy real-world observations into organized data
-- Summarize complex patterns into interpretable statistics
-- Make informed decisions despite uncertainty
-- Distinguish signal from noise
-
-As you work through the M1 assignment, focus not just on getting the right answers, but on understanding **why** we do each step. When you calculate a standard deviation, think about what it tells you. When you create a histogram, consider what patterns the shape reveals. When you compare your manual calculations to SPSS output, reflect on the purpose of the n-1 adjustment.
-
-These fundamental statistical reasoning skills will serve you throughout your academic career and beyond—whether you're reading research papers, evaluating news headlines, or making data-driven decisions in your future career.
-
-**You've got this!** Statistics builds logically, step by step. Master these foundations, and everything that follows will make sense.
-
----
-
-_Remember: The goal isn't to memorize formulas—it's to understand the logic behind them. When in doubt, think about what the numbers mean in the context of your research question._
+<script>
+function showTab(tabNumber) {
+    // Hide all panels
+    const panels = document.querySelectorAll('.tab-panel');
+    panels.forEach(panel => panel.classList.remove('active'));
+    
+    // Remove active from all buttons
+    const buttons = document.querySelectorAll('.tab-button');
+    buttons.forEach(button => button.classList.remove('active'));
+    
+    // Show selected panel and activate button
+    document.getElementById(`tab-${tabNumber}`).classList.add('active');
+    event.target.classList.add('active');
+}
+</script>
