@@ -35,361 +35,462 @@ By the end of this module, you will be able to:
     
     <div class="tab-content">
         <div id="tab-1" class="tab-panel active">
-            ## Part 1: The Purpose of Statistics
+            <h2>Part 1: The Purpose of Statistics</h2>
 
-            ### Why Do We Need Statistics?
+            <h3>Why Do We Need Statistics?</h3>
 
-            Imagine you're a researcher trying to answer the question: "Does meditation reduce anxiety?" You could rely on personal experience, anecdotes, or intuition. But science demands something more rigorous—**objective evidence** based on systematic data collection and analysis.
+            <p>Imagine you're a researcher trying to answer the question: "Does meditation reduce anxiety?" You could rely on personal experience, anecdotes, or intuition. But science demands something more rigorous—<strong>objective evidence</strong> based on systematic data collection and analysis.</p>
 
-            This is where statistics comes in.
+            <p>This is where statistics comes in.</p>
 
-            **Key Concept:** Statistics is the set of mathematical tools we use to organize, summarize, and interpret numerical data, allowing us to move from subjective opinion to objective evidence.
+            <p><strong>Key Concept:</strong> Statistics is the set of mathematical tools we use to organize, summarize, and interpret numerical data, allowing us to move from subjective opinion to objective evidence.</p>
 
-            ### The Two Branches of Statistics
+            <h3>The Two Branches of Statistics</h3>
 
-            Statistics serves two fundamental purposes, reflected in its two main branches:
+            <p>Statistics serves two fundamental purposes, reflected in its two main branches:</p>
 
-            #### 1. Descriptive Statistics
+            <h4>1. Descriptive Statistics</h4>
 
-            **Purpose:** To summarize and describe the data you have collected from your specific group.
+            <p><strong>Purpose:</strong> To summarize and describe the data you have collected from your specific group.</p>
 
-            **Example:** "In our study of 50 college students, the average hours of sleep per night was 6.8 hours, with most students sleeping between 6 and 8 hours."
+            <p><strong>Example:</strong> "In our study of 50 college students, the average hours of sleep per night was 6.8 hours, with most students sleeping between 6 and 8 hours."</p>
 
-            **When to Use:**
+            <p><strong>When to Use:</strong></p>
 
-            - When you want to understand patterns in your collected data
-            - When presenting a summary of survey results
-            - When creating a profile of your participant group
-            - Any time you need to communicate "what the data looks like"
+            <ul>
+                <li>When you want to understand patterns in your collected data</li>
+                <li>When presenting a summary of survey results</li>
+                <li>When creating a profile of your participant group</li>
+                <li>Any time you need to communicate "what the data looks like"</li>
+            </ul>
 
-            **Common Tools:**
+            <p><strong>Common Tools:</strong></p>
 
-            - Averages (mean, median, mode)
-            - Measures of spread (range, standard deviation)
-            - Frequency tables
-            - Graphs and charts
+            <ul>
+                <li>Averages (mean, median, mode)</li>
+                <li>Measures of spread (range, standard deviation)</li>
+                <li>Frequency tables</li>
+                <li>Graphs and charts</li>
+            </ul>
 
-            #### 2. Inferential Statistics
+            <h4>2. Inferential Statistics</h4>
 
-            **Purpose:** To make educated guesses (inferences) about a larger group (population) based on data from a smaller subset (sample).
+            <p><strong>Purpose:</strong> To make educated guesses (inferences) about a larger group (population) based on data from a smaller subset (sample).</p>
 
-            **Example:** "Based on our sample of 50 college students, we can infer with 95% confidence that the average sleep time for _all_ college students at this university falls between 6.3 and 7.3 hours."
+            <p><strong>Example:</strong> "Based on our sample of 50 college students, we can infer with 95% confidence that the average sleep time for <em>all</em> college students at this university falls between 6.3 and 7.3 hours."</p>
 
-            **When to Use:**
+            <p><strong>When to Use:</strong></p>
 
-            - When you want to generalize findings beyond your specific participants
-            - When testing hypotheses about population characteristics
-            - When determining if observed differences are "real" or due to chance
-            - Most research scenarios in psychology and social sciences
+            <ul>
+                <li>When you want to generalize findings beyond your specific participants</li>
+                <li>When testing hypotheses about population characteristics</li>
+                <li>When determining if observed differences are "real" or due to chance</li>
+                <li>Most research scenarios in psychology and social sciences</li>
+            </ul>
 
-            **Common Tools:**
+            <p><strong>Common Tools:</strong></p>
 
-            - Hypothesis tests (t-tests, ANOVA, etc.)
-            - Confidence intervals
-            - p-values and significance testing
+            <ul>
+                <li>Hypothesis tests (t-tests, ANOVA, etc.)</li>
+                <li>Confidence intervals</li>
+                <li>p-values and significance testing</li>
+            </ul>
 
-            **Why This Matters:** Almost all psychological research uses inferential statistics because we can never study every single person. We study samples to learn about populations.
+            <p><strong>Why This Matters:</strong> Almost all psychological research uses inferential statistics because we can never study every single person. We study samples to learn about populations.</p>
 
-            ### Real-World Applications
+            <h3>Real-World Applications</h3>
 
-            **Medical Research:** A pharmaceutical company tests a new drug on 500 patients. They use _descriptive_ statistics to summarize the results in their sample (e.g., "60% showed improvement") and _inferential_ statistics to estimate effectiveness in the broader population (e.g., "We are 95% confident the drug helps between 55% and 65% of all patients with this condition").
+            <p><strong>Medical Research:</strong> A pharmaceutical company tests a new drug on 500 patients. They use <em>descriptive</em> statistics to summarize the results in their sample (e.g., "60% showed improvement") and <em>inferential</em> statistics to estimate effectiveness in the broader population (e.g., "We are 95% confident the drug helps between 55% and 65% of all patients with this condition").</p>
 
-            **Educational Psychology:** A school psychologist measures reading scores for 30 third-graders using a new teaching method. Descriptive statistics show what happened in this specific classroom. Inferential statistics help determine if the method would likely work in other classrooms.
+            <p><strong>Educational Psychology:</strong> A school psychologist measures reading scores for 30 third-graders using a new teaching method. Descriptive statistics show what happened in this specific classroom. Inferential statistics help determine if the method would likely work in other classrooms.</p>
 
-            **Business Decisions:** A company surveys 200 customers about a product redesign. They describe their sample's preferences, then use inference to predict how their entire customer base (millions) would respond.
+            <p><strong>Business Decisions:</strong> A company surveys 200 customers about a product redesign. They describe their sample's preferences, then use inference to predict how their entire customer base (millions) would respond.</p>
 
-            ### Common Misconceptions
+            <h3>Common Misconceptions</h3>
 
-            ❌ **Misconception:** "Statistics can prove anything you want."
-            ✓ **Reality:** When used correctly, statistics provide objective evidence. Misleading statistics usually involve inappropriate methods, selective reporting, or misinterpretation.
+            <p>❌ <strong>Misconception:</strong> "Statistics can prove anything you want."<br>
+            ✓ <strong>Reality:</strong> When used correctly, statistics provide objective evidence. Misleading statistics usually involve inappropriate methods, selective reporting, or misinterpretation.</p>
 
-            ❌ **Misconception:** "A statistic is just a number."
-            ✓ **Reality:** Statistics are numbers _with context_. The interpretation matters as much as the calculation.
+            <p>❌ <strong>Misconception:</strong> "A statistic is just a number."<br>
+            ✓ <strong>Reality:</strong> Statistics are numbers <em>with context</em>. The interpretation matters as much as the calculation.</p>
 
-            ❌ **Misconception:** "I only need statistics if I'm doing research."
-            ✓ **Reality:** Statistical thinking helps you evaluate claims in news, advertising, health information, and everyday decision-making.
+            <p>❌ <strong>Misconception:</strong> "I only need statistics if I'm doing research."<br>
+            ✓ <strong>Reality:</strong> Statistical thinking helps you evaluate claims in news, advertising, health information, and everyday decision-making.</p>
 
-            **Think About It:** When you see a headline like "New study shows coffee reduces heart disease risk by 30%," what questions should you ask? (Sample size? How was the study designed? What does "30%" actually mean?)
+            <p><strong>Think About It:</strong> When you see a headline like "New study shows coffee reduces heart disease risk by 30%," what questions should you ask? (Sample size? How was the study designed? What does "30%" actually mean?)</p>
 
-            ---
+            <hr>
 
-            ## Part 2: Variables: The Building Blocks
+            <h2>Part 2: Variables: The Building Blocks</h2>
 
-            ### What is a Variable?
+            <h3>What is a Variable?</h3>
 
-            **Definition:** A variable is any characteristic that can take on different values or categories across individuals, objects, or situations.
+            <p><strong>Definition:</strong> A variable is any characteristic that can take on different values or categories across individuals, objects, or situations.</p>
 
-            **Key Point:** The word "variable" comes from "vary"—it's something that changes or differs.
+            <p><strong>Key Point:</strong> The word "variable" comes from "vary"—it's something that changes or differs.</p>
 
-            ### The Golden Rule of Naming Variables
+            <h3>The Golden Rule of Naming Variables</h3>
 
-            **Always name variables based on WHAT you are measuring, not HOW you are measuring it.**
+            <p><strong>Always name variables based on WHAT you are measuring, not HOW you are measuring it.</strong></p>
 
-            **Example:**
-            - ❌ "Survey_Question_5" 
-            - ✅ "Anxiety_Level"
-
-            ### Practice: Identifying Variables
-
-            **Scenario 1: Sleep Study**
-            A researcher wants to know if people who exercise regularly get better sleep. They ask 100 participants two questions:
-            1. "How many minutes do you exercise per week?"
-            2. "How many hours of sleep do you get per night on average?"
-
-            **Variables:**
-            - **Exercise_Time** (measured in minutes per week)
-            - **Sleep_Duration** (measured in hours per night)
-
-            **Scenario 2: Classroom Environment**
-            An educational psychologist studies whether classroom lighting affects student performance. She measures:
-            1. The brightness of classroom lights (in lumens)
-            2. Students' test scores on a standardized math test
-
-            **Variables:**
-            - **Lighting_Brightness** (measured in lumens)
-            - **Math_Test_Score** (measured in points)
-
-            **Scenario 3: Social Media Study**
-            A researcher investigates the relationship between social media usage and self-esteem. They collect:
-            1. Number of hours spent on social media per day
-            2. Responses to a self-esteem questionnaire (scores range from 10-50)
-
-            **Variables:**
-            - **Social_Media_Usage** (measured in hours per day)
-            - **Self_Esteem_Score** (measured on a 10-50 scale)
-
-            **Scenario 4: Job Satisfaction**
-            An organizational psychologist wants to understand what affects employee satisfaction. She measures:
-            1. Employee age (in years)
-            2. Years of experience in current job
-            3. Annual salary (in dollars)
-            4. Job satisfaction rating (1 = very dissatisfied, 5 = very satisfied)
-            5. Department (Engineering, Marketing, HR, Sales)
-            6. Whether the employee works remotely (Yes/No)
-
-            **Variables:**
-            - **Employee_Age** (measured in years)
-            - **Job_Experience** (measured in years)
-            - **Annual_Salary** (measured in dollars)
-            - **Job_Satisfaction** (measured on a 1-5 scale)
-            - **Department** (categories: Engineering, Marketing, HR, Sales)
-            - **Remote_Work** (categories: Yes, No)
-
-            **Scenario 5: Memory Experiment**
-            A cognitive psychologist tests whether background music affects memory performance. She:
-            1. Assigns participants to either listen to classical music, rock music, or no music while studying
-            2. Tests their memory with a recall task (number of words correctly remembered)
-            3. Records their heart rate during the study session
-
-            **Variables:**
-            - **Music_Condition** (categories: Classical, Rock, None)
-            - **Memory_Performance** (measured as number of words recalled)
-            - **Heart_Rate** (measured in beats per minute)
-
-            **Scenario 6: Customer Satisfaction**
-            A retail company wants to improve customer experience. They collect data on:
-            1. Customer age group (18-25, 26-35, 36-45, 46-55, 56+)
-            2. Time spent shopping (in minutes)
-            3. Amount spent (in dollars)
-            4. Overall satisfaction rating (1-10 scale)
-            5. Whether they would recommend the store (Yes/No)
-
-            **Variables:**
-            - **Age_Group** (categories: 18-25, 26-35, 36-45, 46-55, 56+)
-            - **Shopping_Time** (measured in minutes)
-            - **Purchase_Amount** (measured in dollars)
-            - **Satisfaction_Rating** (measured on a 1-10 scale)
-            - **Recommendation_Likelihood** (categories: Yes, No)
-
-            **Scenario 7: Health and Lifestyle**
-            A public health researcher studies factors related to physical fitness. She measures:
-            1. Participants' height (in inches)
-            2. Participants' weight (in pounds)
-            3. Number of servings of fruits/vegetables consumed per day
-            4. Minutes of moderate exercise per week
-            5. Blood pressure reading (systolic pressure in mmHg)
-            6. Whether participants smoke (Yes/No)
-
-            **Variables:**
-            - **Height** (measured in inches)
-            - **Weight** (measured in pounds)
-            - **Fruit_Vegetable_Intake** (measured in servings per day)
-            - **Exercise_Time** (measured in minutes per week)
-            - **Blood_Pressure** (measured in mmHg)
-            - **Smoking_Status** (categories: Yes, No)
-
-            **Scenario 8: Academic Performance**
-            A university researcher investigates factors that predict college success. They collect:
-            1. High school GPA (0.0-4.0 scale)
-            2. SAT score (400-1600 range)
-            3. Number of hours studied per week
-            4. Whether students live on campus or commute
-            5. First-year college GPA
-            6. Number of extracurricular activities
-
-            **Variables:**
-            - **High_School_GPA** (measured on a 0.0-4.0 scale)
-            - **SAT_Score** (measured on a 400-1600 scale)
-            - **Study_Hours** (measured in hours per week)
-            - **Housing_Type** (categories: On-campus, Commute)
-            - **College_GPA** (measured on a 0.0-4.0 scale)
-            - **Extracurricular_Count** (measured as number of activities)
-
-            ### Why Proper Variable Naming Matters
-
-            1. **Clarity:** Other researchers (and future you) can understand what was measured
-            2. **Reproducibility:** Studies can be replicated when variables are clearly defined
-            3. **Communication:** Results make sense when variables have meaningful names
-            4. **Data Analysis:** Statistical software works better with descriptive variable names
-
-            **Remember:** Good variable names are like good street signs—they tell you exactly where you are and where you're going.
-
-            ---
-
-            ## Part 3: Classifying Variables
-
-            ### Classification System 1: By Role in Research
-
-            Variables can be classified by their **role** in a research study:
-
-            #### Independent Variable (IV)
-            - **Definition:** The variable that the researcher manipulates or assumes causes changes in another variable
-            - **Also called:** Predictor variable, explanatory variable, treatment variable
-            - **Purpose:** This is what you're testing to see if it has an effect
-            - **Examples:**
-              - Teaching method (traditional vs. new method)
-              - Drug dosage (0mg, 10mg, 20mg)
-              - Study environment (quiet vs. noisy)
-
-            #### Dependent Variable (DV)
-            - **Definition:** The variable that is measured to see if it changes in response to the IV
-            - **Also called:** Outcome variable, response variable, criterion variable
-            - **Purpose:** This is what you're measuring to see the effect
-            - **Examples:**
-              - Test scores (after different teaching methods)
-              - Pain level (after different drug dosages)
-              - Concentration (in different study environments)
-
-            **Memory Trick:** Think of the IV as the "cause" and the DV as the "effect." The IV is independent (doesn't depend on other variables), while the DV depends on the IV.
-
-            ### How to Identify IV and DV
-
-            1. **Ask "What is the researcher trying to find out?"** → This is usually the DV
-            2. **Ask "What does the researcher control or manipulate?"** → This is usually the IV
-            3. **Look for causal language:** "Does X affect Y?" → X is IV, Y is DV
-
-            **Example:** "Does exercise improve mood?"
-            - IV: Exercise (manipulated: some people exercise, others don't)
-            - DV: Mood (measured: how happy people report feeling)
-
-            ### Practice Scenarios
-
-            **Scenario 1:** A researcher wants to know if background music affects productivity. She assigns some workers to listen to classical music and others to work in silence, then measures how many tasks they complete.
-
-            - **IV:** Background Music (Classical vs. Silence)
-            - **DV:** Productivity (Number of tasks completed)
-
-            **Scenario 2:** A psychologist studies whether meditation reduces anxiety. She measures anxiety levels before and after participants complete a 4-week meditation program.
-
-            - **IV:** Meditation Program (Before vs. After)
-            - **DV:** Anxiety Level
-
-            **Scenario 3:** A teacher wants to test if using technology improves student engagement. She teaches one class with traditional methods and another with tablets and apps, then measures how often students participate.
-
-            - **IV:** Teaching Method (Traditional vs. Technology)
-            - **DV:** Student Engagement (Participation frequency)
-
-            ### Classification System 2: By Measurement Scale
-
-            Variables can also be classified by their **measurement scale** (also called level of measurement):
-
-            #### 1. Nominal (Categorical)
-            - **Definition:** Categories with no inherent order or ranking
-            - **Characteristics:**
-              - Categories are mutually exclusive
-              - No mathematical operations possible (can't add, subtract, etc.)
-              - Can count frequency of each category
-            - **Examples:**
-              - Gender (Male, Female, Other)
-              - Eye Color (Blue, Brown, Green, Hazel)
-              - Department (Psychology, Biology, English)
-              - Blood Type (A, B, AB, O)
-
-            **Think About It:** You can say "There are 25 males and 30 females," but you can't say "Male is greater than Female."
-
-            #### 2. Ordinal (Ranked)
-            - **Definition:** Categories with a meaningful order, but intervals between categories are not equal
-            - **Characteristics:**
-              - Categories can be ranked from low to high
-              - Can determine which is greater/lesser
-              - Cannot perform mathematical operations (because intervals aren't equal)
-            - **Examples:**
-              - Likert Scale (Strongly Disagree, Disagree, Neutral, Agree, Strongly Agree)
-              - Education Level (High School, Bachelor's, Master's, PhD)
-              - Pain Rating (Mild, Moderate, Severe)
-              - Letter Grades (A, B, C, D, F)
-
-            **Think About It:** You can say "Master's is higher than Bachelor's," but you can't say the difference between Master's and Bachelor's equals the difference between Bachelor's and High School.
-
-            #### 3. Scale (Interval/Ratio)
-            - **Definition:** Numeric data where intervals between values are equal
-            - **Two types:**
-              - **Interval:** Equal intervals, no true zero (e.g., temperature in Celsius)
-              - **Ratio:** Equal intervals, true zero point (e.g., height, weight, age)
-
-            **Characteristics:**
-            - All mathematical operations are meaningful
-            - Can calculate means, standard deviations, etc.
-            - True zero point (ratio) or arbitrary zero (interval)
-
-            **Examples:**
-            - **Interval:** Temperature (°C or °F), IQ scores, SAT scores
-            - **Ratio:** Height (inches), Weight (pounds), Age (years), Income (dollars)
-
-            **Think About It:** You can say "Person A is twice as tall as Person B" (ratio) but not "Today is twice as hot as yesterday" (interval).
-
-            ### Discrete vs. Continuous
-
-            **Discrete Variables:**
-            - Can only take specific, separate values
-            - Usually counted (not measured)
-            - Examples: Number of children, Number of correct answers, Number of pets
-
-            **Continuous Variables:**
-            - Can take any value within a range
-            - Usually measured (not counted)
-            - Examples: Height, Weight, Time, Temperature
-
-            ### Decision Tree: Determining Measurement Level
-
-            1. **Can you perform meaningful mathematical operations?**
-               - **No** → Go to question 2
-               - **Yes** → Scale (Interval/Ratio)
-
-            2. **Do the categories have a meaningful order?**
-               - **No** → Nominal
-               - **Yes** → Ordinal
-
-            **Quick Examples:**
-            - **Number of siblings:** Scale (Ratio) - you can add, subtract, and there's a true zero
-            - **Letter grade:** Ordinal - A > B > C, but A-B ≠ B-C
-            - **Favorite color:** Nominal - no order, no math operations
-
-            ### Why Measurement Level Matters
-
-            **Determines which statistics you can use:**
-
-            - **Nominal:** Mode, frequency counts, chi-square tests
-            - **Ordinal:** Mode, median, non-parametric tests
-            - **Scale:** Mean, standard deviation, parametric tests (t-tests, ANOVA, correlation)
-
-            **Real-world impact:** Using the wrong statistic for your measurement level can lead to incorrect conclusions!
-
-            **Example:** You can't calculate the mean of "Favorite Color" (nominal), but you can calculate the mean of "Age" (scale).
-
-            ---
+            <p><strong>Example:</strong></p>
+            <ul>
+                <li>❌ "Survey_Question_5"</li>
+                <li>✅ "Anxiety_Level"</li>
+            </ul>
+
+            <h3>Practice: Identifying Variables</h3>
+
+            <p><strong>Scenario 1: Sleep Study</strong><br>
+            A researcher wants to know if people who exercise regularly get better sleep. They ask 100 participants two questions:</p>
+            <ol>
+                <li>"How many minutes do you exercise per week?"</li>
+                <li>"How many hours of sleep do you get per night on average?"</li>
+            </ol>
+
+            <p><strong>Variables:</strong></p>
+            <ul>
+                <li><strong>Exercise_Time</strong> (measured in minutes per week)</li>
+                <li><strong>Sleep_Duration</strong> (measured in hours per night)</li>
+            </ul>
+
+            <p><strong>Scenario 2: Classroom Environment</strong><br>
+            An educational psychologist studies whether classroom lighting affects student performance. She measures:</p>
+            <ol>
+                <li>The brightness of classroom lights (in lumens)</li>
+                <li>Students' test scores on a standardized math test</li>
+            </ol>
+
+            <p><strong>Variables:</strong></p>
+            <ul>
+                <li><strong>Lighting_Brightness</strong> (measured in lumens)</li>
+                <li><strong>Math_Test_Score</strong> (measured in points)</li>
+            </ul>
+
+            <p><strong>Scenario 3: Social Media Study</strong><br>
+            A researcher investigates the relationship between social media usage and self-esteem. They collect:</p>
+            <ol>
+                <li>Number of hours spent on social media per day</li>
+                <li>Responses to a self-esteem questionnaire (scores range from 10-50)</li>
+            </ol>
+
+            <p><strong>Variables:</strong></p>
+            <ul>
+                <li><strong>Social_Media_Usage</strong> (measured in hours per day)</li>
+                <li><strong>Self_Esteem_Score</strong> (measured on a 10-50 scale)</li>
+            </ul>
+
+            <p><strong>Scenario 4: Job Satisfaction</strong><br>
+            An organizational psychologist wants to understand what affects employee satisfaction. She measures:</p>
+            <ol>
+                <li>Employee age (in years)</li>
+                <li>Years of experience in current job</li>
+                <li>Annual salary (in dollars)</li>
+                <li>Job satisfaction rating (1 = very dissatisfied, 5 = very satisfied)</li>
+                <li>Department (Engineering, Marketing, HR, Sales)</li>
+                <li>Whether the employee works remotely (Yes/No)</li>
+            </ol>
+
+            <p><strong>Variables:</strong></p>
+            <ul>
+                <li><strong>Employee_Age</strong> (measured in years)</li>
+                <li><strong>Job_Experience</strong> (measured in years)</li>
+                <li><strong>Annual_Salary</strong> (measured in dollars)</li>
+                <li><strong>Job_Satisfaction</strong> (measured on a 1-5 scale)</li>
+                <li><strong>Department</strong> (categories: Engineering, Marketing, HR, Sales)</li>
+                <li><strong>Remote_Work</strong> (categories: Yes, No)</li>
+            </ul>
+
+            <p><strong>Scenario 5: Memory Experiment</strong><br>
+            A cognitive psychologist tests whether background music affects memory performance. She:</p>
+            <ol>
+                <li>Assigns participants to either listen to classical music, rock music, or no music while studying</li>
+                <li>Tests their memory with a recall task (number of words correctly remembered)</li>
+                <li>Records their heart rate during the study session</li>
+            </ol>
+
+            <p><strong>Variables:</strong></p>
+            <ul>
+                <li><strong>Music_Condition</strong> (categories: Classical, Rock, None)</li>
+                <li><strong>Memory_Performance</strong> (measured as number of words recalled)</li>
+                <li><strong>Heart_Rate</strong> (measured in beats per minute)</li>
+            </ul>
+
+            <p><strong>Scenario 6: Customer Satisfaction</strong><br>
+            A retail company wants to improve customer experience. They collect data on:</p>
+            <ol>
+                <li>Customer age group (18-25, 26-35, 36-45, 46-55, 56+)</li>
+                <li>Time spent shopping (in minutes)</li>
+                <li>Amount spent (in dollars)</li>
+                <li>Overall satisfaction rating (1-10 scale)</li>
+                <li>Whether they would recommend the store (Yes/No)</li>
+            </ol>
+
+            <p><strong>Variables:</strong></p>
+            <ul>
+                <li><strong>Age_Group</strong> (categories: 18-25, 26-35, 36-45, 46-55, 56+)</li>
+                <li><strong>Shopping_Time</strong> (measured in minutes)</li>
+                <li><strong>Purchase_Amount</strong> (measured in dollars)</li>
+                <li><strong>Satisfaction_Rating</strong> (measured on a 1-10 scale)</li>
+                <li><strong>Recommendation_Likelihood</strong> (categories: Yes, No)</li>
+            </ul>
+
+            <p><strong>Scenario 7: Health and Lifestyle</strong><br>
+            A public health researcher studies factors related to physical fitness. She measures:</p>
+            <ol>
+                <li>Participants' height (in inches)</li>
+                <li>Participants' weight (in pounds)</li>
+                <li>Number of servings of fruits/vegetables consumed per day</li>
+                <li>Minutes of moderate exercise per week</li>
+                <li>Blood pressure reading (systolic pressure in mmHg)</li>
+                <li>Whether participants smoke (Yes/No)</li>
+            </ol>
+
+            <p><strong>Variables:</strong></p>
+            <ul>
+                <li><strong>Height</strong> (measured in inches)</li>
+                <li><strong>Weight</strong> (measured in pounds)</li>
+                <li><strong>Fruit_Vegetable_Intake</strong> (measured in servings per day)</li>
+                <li><strong>Exercise_Time</strong> (measured in minutes per week)</li>
+                <li><strong>Blood_Pressure</strong> (measured in mmHg)</li>
+                <li><strong>Smoking_Status</strong> (categories: Yes, No)</li>
+            </ul>
+
+            <p><strong>Scenario 8: Academic Performance</strong><br>
+            A university researcher investigates factors that predict college success. They collect:</p>
+            <ol>
+                <li>High school GPA (0.0-4.0 scale)</li>
+                <li>SAT score (400-1600 range)</li>
+                <li>Number of hours studied per week</li>
+                <li>Whether students live on campus or commute</li>
+                <li>First-year college GPA</li>
+                <li>Number of extracurricular activities</li>
+            </ol>
+
+            <p><strong>Variables:</strong></p>
+            <ul>
+                <li><strong>High_School_GPA</strong> (measured on a 0.0-4.0 scale)</li>
+                <li><strong>SAT_Score</strong> (measured on a 400-1600 scale)</li>
+                <li><strong>Study_Hours</strong> (measured in hours per week)</li>
+                <li><strong>Housing_Type</strong> (categories: On-campus, Commute)</li>
+                <li><strong>College_GPA</strong> (measured on a 0.0-4.0 scale)</li>
+                <li><strong>Extracurricular_Count</strong> (measured as number of activities)</li>
+            </ul>
+
+            <h3>Why Proper Variable Naming Matters</h3>
+
+            <ol>
+                <li><strong>Clarity:</strong> Other researchers (and future you) can understand what was measured</li>
+                <li><strong>Reproducibility:</strong> Studies can be replicated when variables are clearly defined</li>
+                <li><strong>Communication:</strong> Results make sense when variables have meaningful names</li>
+                <li><strong>Data Analysis:</strong> Statistical software works better with descriptive variable names</li>
+            </ol>
+
+            <p><strong>Remember:</strong> Good variable names are like good street signs—they tell you exactly where you are and where you're going.</p>
+
+            <hr>
+
+            <h2>Part 3: Classifying Variables</h2>
+
+            <h3>Classification System 1: By Role in Research</h3>
+
+            <p>Variables can be classified by their <strong>role</strong> in a research study:</p>
+
+            <h4>Independent Variable (IV)</h4>
+            <ul>
+                <li><strong>Definition:</strong> The variable that the researcher manipulates or assumes causes changes in another variable</li>
+                <li><strong>Also called:</strong> Predictor variable, explanatory variable, treatment variable</li>
+                <li><strong>Purpose:</strong> This is what you're testing to see if it has an effect</li>
+                <li><strong>Examples:</strong>
+                    <ul>
+                        <li>Teaching method (traditional vs. new method)</li>
+                        <li>Drug dosage (0mg, 10mg, 20mg)</li>
+                        <li>Study environment (quiet vs. noisy)</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h4>Dependent Variable (DV)</h4>
+            <ul>
+                <li><strong>Definition:</strong> The variable that is measured to see if it changes in response to the IV</li>
+                <li><strong>Also called:</strong> Outcome variable, response variable, criterion variable</li>
+                <li><strong>Purpose:</strong> This is what you're measuring to see the effect</li>
+                <li><strong>Examples:</strong>
+                    <ul>
+                        <li>Test scores (after different teaching methods)</li>
+                        <li>Pain level (after different drug dosages)</li>
+                        <li>Concentration (in different study environments)</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <p><strong>Memory Trick:</strong> Think of the IV as the "cause" and the DV as the "effect." The IV is independent (doesn't depend on other variables), while the DV depends on the IV.</p>
+
+            <h3>How to Identify IV and DV</h3>
+
+            <ol>
+                <li><strong>Ask "What is the researcher trying to find out?"</strong> → This is usually the DV</li>
+                <li><strong>Ask "What does the researcher control or manipulate?"</strong> → This is usually the IV</li>
+                <li><strong>Look for causal language:</strong> "Does X affect Y?" → X is IV, Y is DV</li>
+            </ol>
+
+            <p><strong>Example:</strong> "Does exercise improve mood?"</p>
+            <ul>
+                <li>IV: Exercise (manipulated: some people exercise, others don't)</li>
+                <li>DV: Mood (measured: how happy people report feeling)</li>
+            </ul>
+
+            <h3>Practice Scenarios</h3>
+
+            <p><strong>Scenario 1:</strong> A researcher wants to know if background music affects productivity. She assigns some workers to listen to classical music and others to work in silence, then measures how many tasks they complete.</p>
+            <ul>
+                <li><strong>IV:</strong> Background Music (Classical vs. Silence)</li>
+                <li><strong>DV:</strong> Productivity (Number of tasks completed)</li>
+            </ul>
+
+            <p><strong>Scenario 2:</strong> A psychologist studies whether meditation reduces anxiety. She measures anxiety levels before and after participants complete a 4-week meditation program.</p>
+            <ul>
+                <li><strong>IV:</strong> Meditation Program (Before vs. After)</li>
+                <li><strong>DV:</strong> Anxiety Level</li>
+            </ul>
+
+            <p><strong>Scenario 3:</strong> A teacher wants to test if using technology improves student engagement. She teaches one class with traditional methods and another with tablets and apps, then measures how often students participate.</p>
+            <ul>
+                <li><strong>IV:</strong> Teaching Method (Traditional vs. Technology)</li>
+                <li><strong>DV:</strong> Student Engagement (Participation frequency)</li>
+            </ul>
+
+            <h3>Classification System 2: By Measurement Scale</h3>
+
+            <p>Variables can also be classified by their <strong>measurement scale</strong> (also called level of measurement):</p>
+
+            <h4>1. Nominal (Categorical)</h4>
+            <ul>
+                <li><strong>Definition:</strong> Categories with no inherent order or ranking</li>
+                <li><strong>Characteristics:</strong>
+                    <ul>
+                        <li>Categories are mutually exclusive</li>
+                        <li>No mathematical operations possible (can't add, subtract, etc.)</li>
+                        <li>Can count frequency of each category</li>
+                    </ul>
+                </li>
+                <li><strong>Examples:</strong>
+                    <ul>
+                        <li>Gender (Male, Female, Other)</li>
+                        <li>Eye Color (Blue, Brown, Green, Hazel)</li>
+                        <li>Department (Psychology, Biology, English)</li>
+                        <li>Blood Type (A, B, AB, O)</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <p><strong>Think About It:</strong> You can say "There are 25 males and 30 females," but you can't say "Male is greater than Female."</p>
+
+            <h4>2. Ordinal (Ranked)</h4>
+            <ul>
+                <li><strong>Definition:</strong> Categories with a meaningful order, but intervals between categories are not equal</li>
+                <li><strong>Characteristics:</strong>
+                    <ul>
+                        <li>Categories can be ranked from low to high</li>
+                        <li>Can determine which is greater/lesser</li>
+                        <li>Cannot perform mathematical operations (because intervals aren't equal)</li>
+                    </ul>
+                </li>
+                <li><strong>Examples:</strong>
+                    <ul>
+                        <li>Likert Scale (Strongly Disagree, Disagree, Neutral, Agree, Strongly Agree)</li>
+                        <li>Education Level (High School, Bachelor's, Master's, PhD)</li>
+                        <li>Pain Rating (Mild, Moderate, Severe)</li>
+                        <li>Letter Grades (A, B, C, D, F)</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <p><strong>Think About It:</strong> You can say "Master's is higher than Bachelor's," but you can't say the difference between Master's and Bachelor's equals the difference between Bachelor's and High School.</p>
+
+            <h4>3. Scale (Interval/Ratio)</h4>
+            <ul>
+                <li><strong>Definition:</strong> Numeric data where intervals between values are equal</li>
+                <li><strong>Two types:</strong>
+                    <ul>
+                        <li><strong>Interval:</strong> Equal intervals, no true zero (e.g., temperature in Celsius)</li>
+                        <li><strong>Ratio:</strong> Equal intervals, true zero point (e.g., height, weight, age)</li>
+                    </ul>
+                </li>
+                <li><strong>Characteristics:</strong>
+                    <ul>
+                        <li>All mathematical operations are meaningful</li>
+                        <li>Can calculate means, standard deviations, etc.</li>
+                        <li>True zero point (ratio) or arbitrary zero (interval)</li>
+                    </ul>
+                </li>
+                <li><strong>Examples:</strong>
+                    <ul>
+                        <li><strong>Interval:</strong> Temperature (°C or °F), IQ scores, SAT scores</li>
+                        <li><strong>Ratio:</strong> Height (inches), Weight (pounds), Age (years), Income (dollars)</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <p><strong>Think About It:</strong> You can say "Person A is twice as tall as Person B" (ratio) but not "Today is twice as hot as yesterday" (interval).</p>
+
+            <h3>Discrete vs. Continuous</h3>
+
+            <p><strong>Discrete Variables:</strong></p>
+            <ul>
+                <li>Can only take specific, separate values</li>
+                <li>Usually counted (not measured)</li>
+                <li>Examples: Number of children, Number of correct answers, Number of pets</li>
+            </ul>
+
+            <p><strong>Continuous Variables:</strong></p>
+            <ul>
+                <li>Can take any value within a range</li>
+                <li>Usually measured (not counted)</li>
+                <li>Examples: Height, Weight, Time, Temperature</li>
+            </ul>
+
+            <h3>Decision Tree: Determining Measurement Level</h3>
+
+            <ol>
+                <li><strong>Can you perform meaningful mathematical operations?</strong>
+                    <ul>
+                        <li><strong>No</strong> → Go to question 2</li>
+                        <li><strong>Yes</strong> → Scale (Interval/Ratio)</li>
+                    </ul>
+                </li>
+                <li><strong>Do the categories have a meaningful order?</strong>
+                    <ul>
+                        <li><strong>No</strong> → Nominal</li>
+                        <li><strong>Yes</strong> → Ordinal</li>
+                    </ul>
+                </li>
+            </ol>
+
+            <p><strong>Quick Examples:</strong></p>
+            <ul>
+                <li><strong>Number of siblings:</strong> Scale (Ratio) - you can add, subtract, and there's a true zero</li>
+                <li><strong>Letter grade:</strong> Ordinal - A > B > C, but A-B ≠ B-C</li>
+                <li><strong>Favorite color:</strong> Nominal - no order, no math operations</li>
+            </ul>
+
+            <h3>Why Measurement Level Matters</h3>
+
+            <p><strong>Determines which statistics you can use:</strong></p>
+
+            <ul>
+                <li><strong>Nominal:</strong> Mode, frequency counts, chi-square tests</li>
+                <li><strong>Ordinal:</strong> Mode, median, non-parametric tests</li>
+                <li><strong>Scale:</strong> Mean, standard deviation, parametric tests (t-tests, ANOVA, correlation)</li>
+            </ul>
+
+            <p><strong>Real-world impact:</strong> Using the wrong statistic for your measurement level can lead to incorrect conclusions!</p>
+
+            <p><strong>Example:</strong> You can't calculate the mean of "Favorite Color" (nominal), but you can calculate the mean of "Age" (scale).</p>
+
+            <hr>
         </div>
-        
+
         <div id="tab-2" class="tab-panel">
             ## Part 4: Describing Data with Numbers
 
@@ -596,7 +697,7 @@ By the end of this module, you will be able to:
 
             ---
         </div>
-        
+
         <div id="tab-3" class="tab-panel">
             ## Part 5: Visualizing Data: Frequency Distributions
 
@@ -757,7 +858,7 @@ By the end of this module, you will be able to:
 
             ---
         </div>
-        
+
         <div id="tab-4" class="tab-panel">
             ## Part 6: From Sample to Population
 
@@ -1038,7 +1139,7 @@ By the end of this module, you will be able to:
 
             ---
         </div>
-        
+
         <div id="tab-5" class="tab-panel">
             ## Part 8: Probability and Inference
 
@@ -1584,6 +1685,7 @@ By the end of this module, you will be able to:
             _Remember: The goal isn't to memorize formulas—it's to understand the logic behind them. When in doubt, think about what the numbers mean in the context of your research question._
         </div>
     </div>
+
 </div>
 
 <script>
