@@ -26,6 +26,7 @@ _More resources may be added as needed._
 - [M3 Lecture: Comparing Two Means](/m3-lecture) - A comprehensive lecture on independent-samples and paired-samples t-tests, research design decisions, and statistical assumptions
 - [M4 Lecture: Analysis of Variance (ANOVA)](/m4-lecture) - A comprehensive lecture on one-way between-groups and repeated-measures ANOVA, F-ratios, post-hoc tests, and effect sizes
 - [M5 Lecture: Two-Way Factorial ANOVA](/m5-lecture) - A comprehensive lecture on factorial designs, main effects, interactions, simple effects tests, and the decision tree for interpreting complex results
+- [M6 Lecture: Correlation and Regression](/m6-lecture) - A comprehensive lecture on bivariate correlation, simple and multiple regression, multicollinearity, model comparison, and APA reporting
 
 ## Additional Topics
 

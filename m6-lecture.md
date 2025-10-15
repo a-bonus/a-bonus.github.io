@@ -2747,3 +2747,268 @@ Always interpret your results in the context of your research question.
 
 ---
 
+
+## Part 11: Summary and Key Formulas
+
+### 11.1 Key Formulas
+
+**Regression Equation (Bivariate):**
+Ŷ = bX + a
+
+Where:
+- Ŷ = Predicted value of Y
+- b = Slope (regression coefficient)
+- X = Value of the predictor
+- a = Y-intercept (constant)
+
+**Regression Equation (Multiple):**
+Ŷ = b₁X₁ + b₂X₂ + b₃X₃ + ... + a
+
+**Coefficient of Determination:**
+r² = r × r
+
+Interpretation: Proportion of variance in Y explained by X
+
+**Effect Size Formulas:**
+
+**For Correlation:**
+- r² = proportion of variance explained
+
+**For Regression:**
+- R² = proportion of variance explained by the model
+- Adjusted R² = R² adjusted for number of predictors (always report this)
+
+**For Individual Predictors in Multiple Regression:**
+- sr² = semipartial correlation squared = unique variance explained by one predictor
+- β² = squared standardized coefficient (for bivariate regression, β² = R²)
+
+**Degrees of Freedom for Regression:**
+- df₁ = k (number of predictors)
+- df₂ = N - k - 1
+
+**Variance Inflation Factor:**
+- VIF = 1 / Tolerance
+- Tolerance = 1 / VIF
+
+### 11.2 Decision Tree for Choosing Analyses
+
+**Start Here: What is your research question?**
+
+**↓**
+
+**Do you want to examine relationships between variables? (YES → Continue | NO → Use t-tests/ANOVA)**
+
+**↓**
+
+**How many variables?**
+
+**Two Variables:**
+- Want to describe the relationship? → **Bivariate Correlation**
+- Want to predict one from the other? → **Bivariate Regression**
+
+**More than Two Variables:**
+- Multiple predictors, one outcome → **Multiple Regression**
+- Multiple predictors, multiple outcomes → Multivariate Analysis (beyond this course)
+- Looking for patterns/groupings → Factor Analysis/PCA (beyond this course)
+
+**↓**
+
+**For Regression: How many predictors?**
+
+**One Predictor:**
+- Use **Bivariate (Simple Linear) Regression**
+- Report: F(1, df₂), Adjusted R², β, regression equation
+
+**Multiple Predictors:**
+- Use **Multiple Regression**
+- Report: F(df₁, df₂), Adjusted R², individual βs, sr² for unique contributions
+- Consider: Multicollinearity (VIF), model comparison (ΔR²)
+
+**↓**
+
+**Method for Entering Predictors:**
+
+**Theory-Driven (recommended):**
+- Use **Enter** method (simultaneous)
+- Include all theoretically relevant predictors
+
+**Exploratory:**
+- Use **Forward** method (only significant predictors)
+- Or **Backward** method (remove non-significant predictors)
+- **Caution:** Results may not replicate in new samples
+
+### 11.3 Common Mistakes to Avoid
+
+**1. Confusing Correlation with Causation**
+- ✗ "Study hours cause higher exam scores" (from correlation)
+- ✓ "Study hours are associated with higher exam scores"
+
+**2. Mixing Up r and r²**
+- ✗ "r = .50, so 50% of variance is explained"
+- ✓ "r = .50, so r² = .25, meaning 25% of variance is explained"
+
+**3. Using R² Instead of Adjusted R²**
+- ✗ "The model explained 65.8% of variance, R² = .658"
+- ✓ "The model explained 65.3% of variance, Adjusted R² = .653"
+
+**4. Reporting p = .000**
+- ✗ F(3, 203) = 133.02, p = .000
+- ✓ F(3, 203) = 133.02, p < .001
+
+**5. Ignoring Degrees of Freedom**
+- ✗ F = 49.78, p < .001
+- ✓ F(1, 205) = 49.78, p < .001
+
+**6. Misinterpreting Beta (β)**
+- ✗ "β = .50 means the predictor is 50% effective"
+- ✓ "β = .50 indicates a moderate-to-strong standardized relationship"
+
+**7. Assuming All Predictors in a Significant Model are Significant**
+- ✗ "F is significant, so all predictors must be significant"
+- ✓ "Check individual t-tests for each predictor, even if F is significant"
+
+**8. Extrapolating Beyond Your Data**
+- ✗ Predicting for X = 50 when your data ranged from X = 1-20
+- ✓ Only predict within the range of observed X values
+
+**9. Ignoring Multicollinearity**
+- ✗ "VIF = 12 is fine, I'll interpret all coefficients"
+- ✓ "VIF = 12 indicates serious multicollinearity—interpret individual coefficients with caution"
+
+**10. Adding Too Many Predictors**
+- ✗ 50 predictors with N = 60
+- ✓ At least 10-15 participants per predictor
+
+### 11.4 Key Terms Glossary
+
+**Adjusted R²:** R² adjusted for the number of predictors; preferred over R² for reporting
+
+**Beta (β):** Standardized regression coefficient; allows comparison of predictors on different scales
+
+**Bivariate Correlation:** Analysis examining the relationship between two continuous variables
+
+**Bivariate Regression:** Prediction of one variable from another using one predictor
+
+**Coefficient of Determination (r²):** Proportion of variance in one variable explained by another
+
+**Collinearity:** See Multicollinearity
+
+**Correlation Coefficient (r):** Measure of the strength and direction of a linear relationship (-1 to +1)
+
+**Degrees of Freedom (df):** Number of independent pieces of information in a calculation
+
+**Forward Method:** Model-building approach that adds predictors one at a time
+
+**Intercept (a):** The predicted value of Y when all X variables equal 0; where the line crosses the Y-axis
+
+**Line of Best Fit:** The regression line that minimizes the sum of squared residuals
+
+**Multicollinearity:** High correlation among predictor variables, making it difficult to separate their unique effects
+
+**Multiple Correlation (R):** Overall correlation between the set of predictors and the outcome (always positive)
+
+**Multiple Regression:** Prediction of one variable from two or more predictors
+
+**Omnibus F-Test:** Overall test of whether the regression model significantly predicts the outcome
+
+**Ordinary Least Squares (OLS):** Method for finding the regression line that minimizes squared residuals
+
+**Pearson Correlation:** Most common correlation coefficient for continuous variables (Pearson product-moment correlation)
+
+**Predicted Value (Ŷ):** The value of Y predicted by the regression equation for a given X
+
+**Predictor (IV):** The independent variable used to predict the outcome in regression
+
+**R²:** Coefficient of determination for regression; proportion of variance explained by the model
+
+**Residual:** The difference between observed Y and predicted Ŷ; error in prediction
+
+**Scatterplot:** Graph showing the relationship between two continuous variables
+
+**Semipartial Correlation (sr):** Correlation between a predictor (with other IVs removed) and the outcome
+
+**Semipartial Correlation Squared (sr²):** Unique variance explained by one predictor
+
+**Shared Variance:** Variance in the outcome explained by multiple predictors together (overlapping)
+
+**Slope (b):** The change in Y for every one-unit increase in X; the regression coefficient
+
+**Standardized Coefficient:** See Beta (β)
+
+**Tolerance:** 1 / VIF; indicator of multicollinearity (Tolerance < .10 is problematic)
+
+**Unique Variance:** Variance explained by one predictor after removing effects of other predictors
+
+**Variance Inflation Factor (VIF):** Measure of multicollinearity (VIF > 10 is problematic)
+
+**Y-Intercept:** See Intercept (a)
+
+**Ŷ (Y-hat):** See Predicted Value
+
+### 11.5 Final Checklist for Regression Analysis
+
+**Before Running the Analysis:**
+- [ ] Check that all variables are scale (continuous)
+- [ ] Examine scatterplots for linearity
+- [ ] Check for outliers
+- [ ] Ensure adequate sample size (at least 10-15 participants per predictor)
+
+**Running the Analysis in SPSS:**
+- [ ] Select appropriate analysis (Bivariate Correlation, Bivariate Regression, or Multiple Regression)
+- [ ] Move correct variables to DV and IV boxes
+- [ ] Request necessary statistics (Estimates, Model fit, Collinearity diagnostics)
+- [ ] Choose appropriate method (Enter, Forward, Backward, Stepwise)
+
+**Interpreting the Output:**
+- [ ] Check omnibus F-test (is the overall model significant?)
+- [ ] Note Adjusted R² (how much variance is explained?)
+- [ ] Check individual t-tests (which predictors are significant?)
+- [ ] Examine VIF values (is multicollinearity a problem?)
+- [ ] Note Beta values (which predictor is strongest?)
+- [ ] Calculate sr² if needed (unique contributions)
+
+**Reporting Results:**
+- [ ] Report degrees of freedom: F(df₁, df₂)
+- [ ] Report Adjusted R² (not R²)
+- [ ] Use correct p-value format (p < .001, not p = .000)
+- [ ] Include effect sizes (Adjusted R², sr²)
+- [ ] Interpret findings in context
+- [ ] Avoid causal language (unless experimental design)
+
+---
+
+## Conclusion
+
+Congratulations! You've completed a comprehensive journey through correlation and regression analysis. You've learned to:
+
+- Distinguish between describing relationships (correlation) and making predictions (regression)
+- Understand the fundamental concepts: r, r², regression equations, slopes, and intercepts
+- Run and interpret bivariate and multiple regression analyses in SPSS
+- Understand unique vs. shared variance in multiple regression
+- Detect and address multicollinearity
+- Compare regression models using Adjusted R²
+- Report regression results in proper APA format
+
+**Key Takeaways:**
+
+1. **Correlation describes, regression predicts** (but neither proves causation)
+2. **r² and R² are effect sizes** (proportion of variance explained)
+3. **Always report Adjusted R²** for regression models
+4. **Multiple regression partitions variance** into unique and shared components
+5. **Beta (β) allows comparison** of predictors on different scales
+6. **Multicollinearity affects individual coefficients** but not overall model fit
+7. **APA format matters:** F(df₁, df₂) = value, p < .001, Adjusted R² = value
+
+**Moving Forward:**
+
+These regression skills are fundamental to psychological research and data analysis in many fields. Practice applying them to real datasets, always:
+- Visualize your data first (scatterplots!)
+- Check your assumptions
+- Interpret results in context
+- Remember: correlation ≠ causation
+
+Best of luck with your regression analyses, and remember—the goal is not just to run the test, but to understand and communicate what your data are telling you about the relationships between variables!
+
+---
+
+*This concludes the M6 Lecture on Correlation and Regression. For additional practice, work through the M6 assignment guide and practice quiz.*
