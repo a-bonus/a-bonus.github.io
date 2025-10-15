@@ -492,147 +492,198 @@ By the end of this module, you will be able to:
         </div>
 
         <div id="tab-2" class="tab-panel">
-            ## Part 4: Describing Data with Numbers
+            <h2>Part 4: Describing Data with Numbers</h2>
 
-            Now that we understand what variables are and how to classify them, let's learn how to describe them with numbers. This is where **descriptive statistics** comes in—the tools we use to summarize and make sense of our data.
+            <p>Now that we understand what variables are and how to classify them, let's learn how to describe them with numbers. This is where <strong>descriptive statistics</strong> comes in—the tools we use to summarize and make sense of our data.</p>
 
-            ### Measures of Central Tendency
+            <h3>Measures of Central Tendency</h3>
 
-            These tell us about the "typical" or "average" value in our dataset.
+            <p>These tell us about the "typical" or "average" value in our dataset.</p>
 
-            #### 1. Mean (Average)
-            **Formula:** Mean = Sum of all values ÷ Number of values
+            <h4>1. Mean (Average)</h4>
+            <p><strong>Formula:</strong> Mean = Sum of all values ÷ Number of values</p>
 
-            **Symbol:** μ (population) or x̄ (sample)
+            <p><strong>Symbol:</strong> μ (population) or x̄ (sample)</p>
 
-            **When to use:** Best for scale data that is roughly normally distributed
+            <p><strong>When to use:</strong> Best for scale data that is roughly normally distributed</p>
 
-            **Example:** Test scores: 85, 90, 78, 92, 88
-            Mean = (85 + 90 + 78 + 92 + 88) ÷ 5 = 433 ÷ 5 = 86.6
+            <p><strong>Example:</strong> Test scores: 85, 90, 78, 92, 88<br>
+            Mean = (85 + 90 + 78 + 92 + 88) ÷ 5 = 433 ÷ 5 = 86.6</p>
 
-            **Pros:**
-            - Uses all data points
-            - Mathematically useful for further calculations
-            - Most common measure of central tendency
+            <p><strong>Pros:</strong></p>
+            <ul>
+                <li>Uses all data points</li>
+                <li>Mathematically useful for further calculations</li>
+                <li>Most common measure of central tendency</li>
+            </ul>
 
-            **Cons:**
-            - Sensitive to outliers (extreme values)
-            - Can be misleading with skewed data
+            <p><strong>Cons:</strong></p>
+            <ul>
+                <li>Sensitive to outliers (extreme values)</li>
+                <li>Can be misleading with skewed data</li>
+            </ul>
 
-            #### 2. Median
-            **Definition:** The middle value when data is arranged in order
+            <h4>2. Median</h4>
+            <p><strong>Definition:</strong> The middle value when data is arranged in order</p>
 
-            **When to use:** Best when you have outliers or skewed data
+            <p><strong>When to use:</strong> Best when you have outliers or skewed data</p>
 
-            **How to find:**
-            1. Arrange values from lowest to highest
-            2. If odd number of values: middle value is median
-            3. If even number of values: average of two middle values
+            <p><strong>How to find:</strong></p>
+            <ol>
+                <li>Arrange values from lowest to highest</li>
+                <li>If odd number of values: middle value is median</li>
+                <li>If even number of values: average of two middle values</li>
+            </ol>
 
-            **Example:** Test scores: 85, 90, 78, 92, 88
-            Ordered: 78, 85, 88, 90, 92
-            Median = 88 (middle value)
+            <p><strong>Example:</strong> Test scores: 85, 90, 78, 92, 88<br>
+            Ordered: 78, 85, 88, 90, 92<br>
+            Median = 88 (middle value)</p>
 
-            **Example with even numbers:** 78, 85, 88, 90, 92, 95
-            Two middle values: 88 and 90
-            Median = (88 + 90) ÷ 2 = 89
+            <p><strong>Example with even numbers:</strong> 78, 85, 88, 90, 92, 95<br>
+            Two middle values: 88 and 90<br>
+            Median = (88 + 90) ÷ 2 = 89</p>
 
-            **Pros:**
-            - Not affected by outliers
-            - Good for skewed distributions
-            - Easy to understand
+            <p><strong>Pros:</strong></p>
+            <ul>
+                <li>Not affected by outliers</li>
+                <li>Good for skewed distributions</li>
+                <li>Easy to understand</li>
+            </ul>
 
-            **Cons:**
-            - Doesn't use all data points
-            - Less useful for mathematical calculations
+            <p><strong>Cons:</strong></p>
+            <ul>
+                <li>Doesn't use all data points</li>
+                <li>Less useful for mathematical calculations</li>
+            </ul>
 
-            #### 3. Mode
-            **Definition:** The most frequently occurring value
+            <h4>3. Mode</h4>
+            <p><strong>Definition:</strong> The most frequently occurring value</p>
 
-            **When to use:** Best for nominal data or when you want to know the most common category
+            <p><strong>When to use:</strong> Best for nominal data or when you want to know the most common category</p>
 
-            **Example:** Eye colors in a class: Blue (12), Brown (18), Green (5), Hazel (3)
-            Mode = Brown (most frequent)
+            <p><strong>Example:</strong> Eye colors in a class: Blue (12), Brown (18), Green (5), Hazel (3)<br>
+            Mode = Brown (most frequent)</p>
 
-            **Pros:**
-            - Only measure that works with nominal data
-            - Easy to find and understand
-            - Good for categorical data
+            <p><strong>Pros:</strong></p>
+            <ul>
+                <li>Only measure that works with nominal data</li>
+                <li>Easy to find and understand</li>
+                <li>Good for categorical data</li>
+            </ul>
 
-            **Cons:**
-            - May not exist (no repeated values)
-            - May have multiple modes
-            - Doesn't provide much information for scale data
+            <p><strong>Cons:</strong></p>
+            <ul>
+                <li>May not exist (no repeated values)</li>
+                <li>May have multiple modes</li>
+                <li>Doesn't provide much information for scale data</li>
+            </ul>
 
-            ### Choosing the Right Measure
+            <h3>Choosing the Right Measure</h3>
 
-            **For Scale Data:**
-            - **Normal distribution:** Use mean
-            - **Skewed distribution:** Use median
-            - **Many outliers:** Use median
+            <p><strong>For Scale Data:</strong></p>
+            <ul>
+                <li><strong>Normal distribution:</strong> Use mean</li>
+                <li><strong>Skewed distribution:</strong> Use median</li>
+                <li><strong>Many outliers:</strong> Use median</li>
+            </ul>
 
-            **For Ordinal Data:**
-            - Use median (most appropriate)
+            <p><strong>For Ordinal Data:</strong></p>
+            <ul>
+                <li>Use median (most appropriate)</li>
+            </ul>
 
-            **For Nominal Data:**
-            - Use mode (only option)
+            <p><strong>For Nominal Data:</strong></p>
+            <ul>
+                <li>Use mode (only option)</li>
+            </ul>
 
-            **Real-world example:** Income data is usually right-skewed (few very high earners). Median income is often more representative than mean income.
+            <p><strong>Real-world example:</strong> Income data is usually right-skewed (few very high earners). Median income is often more representative than mean income.</p>
 
-            ### Measures of Variability
+            <h3>Measures of Variability</h3>
 
-            These tell us how spread out our data is—how much the values differ from each other.
+            <p>These tell us how spread out our data is—how much the values differ from each other.</p>
 
-            #### 1. Range
-            **Formula:** Range = Highest value - Lowest value
+            <h4>1. Range</h4>
+            <p><strong>Formula:</strong> Range = Highest value - Lowest value</p>
 
-            **Example:** Test scores: 78, 85, 88, 90, 92
-            Range = 92 - 78 = 14
+            <p><strong>Example:</strong> Test scores: 78, 85, 88, 90, 92<br>
+            Range = 92 - 78 = 14</p>
 
-            **Pros:** Simple to calculate and understand
+            <p><strong>Pros:</strong> Simple to calculate and understand</p>
 
-            **Cons:** Only uses two values (min and max), very sensitive to outliers
+            <p><strong>Cons:</strong> Only uses two values (min and max), very sensitive to outliers</p>
 
-            #### 2. Standard Deviation
-            **Purpose:** Measures how much values typically deviate from the mean
+            <h4>2. Standard Deviation</h4>
+            <p><strong>Purpose:</strong> Measures how much values typically deviate from the mean</p>
 
-            **Symbol:** σ (population) or s (sample)
+            <p><strong>Symbol:</strong> σ (population) or s (sample)</p>
 
-            **Formula (Conceptual):** Average distance from the mean
+            <p><strong>Formula (Conceptual):</strong> Average distance from the mean</p>
 
-            **Step-by-step calculation:**
-            1. Calculate the mean
-            2. Find the difference between each value and the mean
-            3. Square each difference (to remove negative signs)
-            4. Add up all the squared differences
-            5. Divide by n-1 (for sample) or N (for population)
-            6. Take the square root
+            <p><strong>Step-by-step calculation:</strong></p>
+            <ol>
+                <li>Calculate the mean</li>
+                <li>Find the difference between each value and the mean</li>
+                <li>Square each difference (to remove negative signs)</li>
+                <li>Add up all the squared differences</li>
+                <li>Divide by n-1 (for sample) or N (for population)</li>
+                <li>Take the square root</li>
+            </ol>
 
-            **Example:** Test scores: 85, 90, 78, 92, 88
-            Mean = 86.6
+            <p><strong>Example:</strong> Test scores: 85, 90, 78, 92, 88<br>
+            Mean = 86.6</p>
 
-            | Score | (Score - Mean) | (Score - Mean)² |
-            |-------|----------------|-----------------|
-            | 85    | 85 - 86.6 = -1.6 | (-1.6)² = 2.56 |
-            | 90    | 90 - 86.6 = 3.4  | (3.4)² = 11.56 |
-            | 78    | 78 - 86.6 = -8.6 | (-8.6)² = 73.96 |
-            | 92    | 92 - 86.6 = 5.4  | (5.4)² = 29.16 |
-            | 88    | 88 - 86.6 = 1.4  | (1.4)² = 1.96  |
-            |       | Sum = 0          | Sum = 119.2    |
+            <table>
+                <tr>
+                    <th>Score</th>
+                    <th>(Score - Mean)</th>
+                    <th>(Score - Mean)²</th>
+                </tr>
+                <tr>
+                    <td>85</td>
+                    <td>85 - 86.6 = -1.6</td>
+                    <td>(-1.6)² = 2.56</td>
+                </tr>
+                <tr>
+                    <td>90</td>
+                    <td>90 - 86.6 = 3.4</td>
+                    <td>(3.4)² = 11.56</td>
+                </tr>
+                <tr>
+                    <td>78</td>
+                    <td>78 - 86.6 = -8.6</td>
+                    <td>(-8.6)² = 73.96</td>
+                </tr>
+                <tr>
+                    <td>92</td>
+                    <td>92 - 86.6 = 5.4</td>
+                    <td>(5.4)² = 29.16</td>
+                </tr>
+                <tr>
+                    <td>88</td>
+                    <td>88 - 86.6 = 1.4</td>
+                    <td>(1.4)² = 1.96</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>Sum = 0</td>
+                    <td>Sum = 119.2</td>
+                </tr>
+            </table>
 
-            Variance = 119.2 ÷ (5-1) = 119.2 ÷ 4 = 29.8
-            Standard Deviation = √29.8 = 5.46
+            <p>Variance = 119.2 ÷ (5-1) = 119.2 ÷ 4 = 29.8<br>
+            Standard Deviation = √29.8 = 5.46</p>
 
-            **Interpretation:** On average, scores deviate about 5.46 points from the mean of 86.6.
+            <p><strong>Interpretation:</strong> On average, scores deviate about 5.46 points from the mean of 86.6.</p>
 
-            **Why n-1 for samples?** This is called the "degrees of freedom" correction. It makes our estimate of the population standard deviation more accurate when working with sample data.
+            <p><strong>Why n-1 for samples?</strong> This is called the "degrees of freedom" correction. It makes our estimate of the population standard deviation more accurate when working with sample data.</p>
 
-            #### 3. Variance
-            **Definition:** The square of the standard deviation
+            <h4>3. Variance</h4>
+            <p><strong>Definition:</strong> The square of the standard deviation</p>
 
-            **Symbol:** σ² (population) or s² (sample)
+            <p><strong>Symbol:</strong> σ² (population) or s² (sample)</p>
 
-            **Why use variance?** It's easier to work with mathematically (no square roots), but harder to interpret (units are squared)
+            <p><strong>Why use variance?</strong> It's easier to work with mathematically (no square roots), but harder to interpret (units are squared)</p>
 
             ### Worked Example: Calculating Descriptive Statistics
 
@@ -699,17 +750,19 @@ By the end of this module, you will be able to:
         </div>
 
         <div id="tab-3" class="tab-panel">
-            ## Part 5: Visualizing Data: Frequency Distributions
+            <h2>Part 5: Visualizing Data: Frequency Distributions</h2>
 
-            Numbers can tell us a lot, but sometimes a picture is worth a thousand data points. In this section, we'll learn how to create visual representations of our data that make patterns and relationships easier to see.
+            <p>Numbers can tell us a lot, but sometimes a picture is worth a thousand data points. In this section, we'll learn how to create visual representations of our data that make patterns and relationships easier to see.</p>
 
-            ### What is a Frequency Distribution?
+            <h3>What is a Frequency Distribution?</h3>
 
-            A **frequency distribution** is a summary of how often each value (or range of values) occurs in your dataset. It shows the pattern of your data at a glance.
+            <p>A <strong>frequency distribution</strong> is a summary of how often each value (or range of values) occurs in your dataset. It shows the pattern of your data at a glance.</p>
 
-            **Two main types:**
-            1. **Categorical frequency distribution** - for nominal and ordinal data
-            2. **Grouped frequency distribution** - for scale data
+            <p><strong>Two main types:</strong></p>
+            <ol>
+                <li><strong>Categorical frequency distribution</strong> - for nominal and ordinal data</li>
+                <li><strong>Grouped frequency distribution</strong> - for scale data</li>
+            </ol>
 
             ### For Categorical Data: Frequency Tables and Bar Charts
 
