@@ -22,12 +22,15 @@ By the end of this capstone module, you will be able to:
 1. [Part 1: The Blueprint — Choosing Your Research Design](#part-1-the-blueprint---choosing-your-research-design)
 2. [Part 2: The "Data Janitor" Phase — Examining and Preparing Your Data](#part-2-the-data-janitor-phase---examining-and-preparing-your-data)
 3. [Part 3: The Pre-Flight Check — Testing Statistical Assumptions](#part-3-the-pre-flight-check---testing-statistical-assumptions)
-4. [Part 4: The Art and Ethics of Statistics — Beyond the Numbers](#part-4-the-art-and-ethics-of-statistics---beyond-the-numbers)
-5. [Part 5: Test Selection Decision Tree](#part-5-test-selection-decision-tree)
-6. [Part 6: APA Reporting Quick Reference](#part-6-apa-reporting-quick-reference)
-7. [Part 7: SPSS Playbook — Where to Click and What to Read](#part-7-spss-playbook---where-to-click-and-what-to-read)
-8. [Part 8: Knowledge Checks (Capstone Practice)](#part-8-knowledge-checks-capstone-practice)
-9. [Module 7 Key Takeaways](#module-7-key-takeaways-a-researchers-mental-checklist)
+4. [Part 3.5: Master Comparison Tables](#part-35-master-comparison-tables)
+5. [Part 4: The Art and Ethics of Statistics — Beyond the Numbers](#part-4-the-art-and-ethics-of-statistics---beyond-the-numbers)
+6. [Part 5: Test Selection Decision Tree](#part-5-test-selection-decision-tree)
+7. [Part 6: APA Reporting Quick Reference](#part-6-apa-reporting-quick-reference)
+8. [Part 7: SPSS Playbook — Where to Click and What to Read](#part-7-spss-playbook---where-to-click-and-what-to-read)
+9. [Part 8: Real Research Scenarios — Full Workflow Examples](#part-8-real-research-scenarios---full-workflow-examples)
+10. [Part 9: Troubleshooting Guide](#part-9-troubleshooting-guide)
+11. [Part 10: Knowledge Checks (Capstone Practice)](#part-10-knowledge-checks-capstone-practice)
+12. [Module 7 Key Takeaways](#module-7-key-takeaways-a-researchers-mental-checklist)
 
 #### **Part 1: The Blueprint - Choosing Your Research Design**
 
@@ -69,6 +72,59 @@ The parametric tests we've learned (t-tests, ANOVA, Regression) are powerful, bu
 
 3.  **Homogeneity of Variances (for group comparisons):** The variance (spread) of the DV should be roughly **equal across all groups** being compared.
     - **How to check:** Use **Levene's Test**. If its p-value is _greater_ than .05, the assumption is met. We've seen this in the independent t-test and ANOVA outputs.
+
+---
+
+#### **Part 3.5: Master Comparison Tables**
+
+These tables synthesize assumptions, requirements, and key information across all statistical tests covered in this course.
+
+**Table 1: Assumptions by Test Type**
+
+| Statistical Test | Scale of DV | Normality | Homogeneity of Variance | Independence | Additional Notes |
+|:-----------------|:-----------|:----------|:------------------------|:-------------|:-----------------|
+| **One-Sample t-test** | Scale (continuous) | DV approximately normal | N/A (one group) | Observations independent | Robust with n > 30 |
+| **Paired-Samples t-test** | Scale | Differences approximately normal | N/A (within-subjects) | Pairs independent of each other | Check normality of difference scores |
+| **Independent t-test** | Scale | DV normal in each group | Equal variances (Levene's test) | Groups independent | Can use Welch's correction if violated |
+| **One-Way ANOVA** | Scale | DV normal in each group | Equal variances across groups | Observations independent | Robust to mild violations with equal n |
+| **Factorial ANOVA** | Scale | DV normal in each cell | Equal variances across cells | Observations independent | More complex with unequal cell sizes |
+| **Correlation** | Both variables scale | Bivariate normality | N/A | Observations independent | Check scatterplot for linearity |
+| **Regression** | DV scale, IVs scale | **Residuals** normally distributed | Homoscedasticity of residuals | Observations independent | Check residual plots |
+
+**Table 2: Effect Sizes Across Tests**
+
+| Test Type | Effect Size Measure | Formula/Calculation | Interpretation Guidelines |
+|:----------|:-------------------|:-------------------|:-------------------------|
+| **t-tests** | Cohen's d | d = (M₁ - M₂) / SD_pooled | Small = 0.2, Medium = 0.5, Large = 0.8 |
+| **ANOVA** | Eta-squared (η²) | η² = SS_between / SS_total | Small = .01, Medium = .06, Large = .14 |
+| **ANOVA** | Partial η² | Partial η² = SS_effect / (SS_effect + SS_error) | Same as η² guidelines |
+| **Correlation** | r² | r² = r × r | Proportion of shared variance |
+| **Regression** | R² or Adjusted R² | From SPSS output | Proportion of variance explained by model |
+| **Regression** | sr² (semipartial) | Square the "Part" column in SPSS | Unique variance from one predictor |
+
+**Table 3: Degrees of Freedom Quick Reference**
+
+| Test Type | df Formula | Example (N=60) |
+|:----------|:-----------|:---------------|
+| **One-Sample t** | df = N - 1 | df = 59 |
+| **Paired t** | df = N - 1 (N = number of pairs) | df = 59 |
+| **Independent t** | df = N₁ + N₂ - 2 | df = 58 (if n₁=30, n₂=30) |
+| **One-Way ANOVA** | df_between = k - 1; df_within = N - k | df = 2, 57 (if k=3 groups) |
+| **Factorial ANOVA (2×2)** | df_A = a-1; df_B = b-1; df_A×B = (a-1)(b-1); df_error = N-ab | df = 1, 1, 1, 56 |
+| **Correlation** | df = N - 2 | df = 58 |
+| **Regression** | df₁ = k (predictors); df₂ = N - k - 1 | df = 3, 56 (if 3 predictors) |
+
+**Table 4: What to Do When Assumptions Are Violated**
+
+| Assumption Violated | Options | Notes |
+|:-------------------|:--------|:------|
+| **Normality** | 1. Proceed if n > 30 (CLT)<br>2. Transform data (log, sqrt)<br>3. Use non-parametric test | t-tests/ANOVA fairly robust |
+| **Homogeneity of Variance** | 1. Welch's correction (t-test)<br>2. Proceed if equal group sizes<br>3. Transform DV | Levene's p < .05 indicates violation |
+| **Independence** | **STOP** - Use different analysis<br>(multilevel model, RM design) | Most serious violation - cannot ignore |
+| **Linearity (correlation/regression)** | 1. Transform variables<br>2. Use polynomial regression<br>3. Use non-parametric (Spearman's rho) | Check scatterplot first |
+| **Homoscedasticity (regression)** | 1. Transform DV<br>2. Use robust standard errors<br>3. Acknowledge limitation | Check residual plots |
+
+---
 
 #### **Part 4: The Art and Ethics of Statistics - Beyond the Numbers**
 
@@ -139,7 +195,120 @@ Notes:
 
 ---
 
-#### **Part 8: Knowledge Checks (Capstone Practice)**
+#### **Part 8: Real Research Scenarios — Full Workflow Examples**
+
+These scenarios walk you through the complete research workflow, from research question to final APA write-up. Use these as templates for your own analyses.
+
+**Scenario 1: Experimental Design — Testing a New Study Technique**
+
+**Research Question:** Does a new mnemonic study technique improve memory test scores compared to traditional rereading?
+
+**Step 1: Design Decision**
+- **Design Type:** Experimental (random assignment to conditions)
+- **IV:** Study method (mnemonic vs. rereading) — categorical, 2 levels
+- **DV:** Memory test score (0-100) — scale/continuous
+- **Sample:** 60 undergraduate students randomly assigned (n = 30 per group)
+- **Analysis Plan:** Independent-samples t-test (comparing 2 independent groups on a continuous DV)
+
+**Step 2: Data Cleaning**
+- Run descriptive statistics: Min = 42, Max = 98, no impossible values detected
+- Check for outliers: Create boxplot, calculate z-scores. One score (z = 3.1) flagged; investigate participant notes—legitimate high performer, keep in dataset
+- Missing data: 2 participants dropped out (n = 29 mnemonic, n = 29 rereading)—still balanced groups
+
+**Step 3: Check Assumptions**
+- **Scale DV:** ✓ Memory score is continuous
+- **Normality:** Run Shapiro-Wilk test for each group. Mnemonic group: p = .18; Rereading group: p = .24. Both p > .05 → assumption met ✓
+- **Homogeneity of variance:** Levene's test p = .31 → assumption met ✓
+- **Independence:** ✓ Participants randomly assigned, tested individually
+
+**Step 4: Run Analysis in SPSS**
+- Analyze → Compare Means → Independent-Samples T Test
+- DV: Memory score; Grouping variable: Study method
+- Options: Check "Descriptive statistics"
+- Results from output:
+  - Mnemonic group: M = 78.5, SD = 12.3
+  - Rereading group: M = 69.2, SD = 11.8
+  - Levene's test: F = 1.05, p = .31 (use equal variances assumed row)
+  - t(56) = 3.04, p = .004
+  - Calculate Cohen's d: d = (78.5 - 69.2) / 12.05 = 0.77 (medium-to-large effect)
+
+**Step 5: Interpret Results**
+- t-test is significant (p = .004 < .05) → reject null hypothesis
+- Mnemonic group scored significantly higher than rereading group
+- Effect size (d = 0.77) indicates a medium-to-large practical difference
+- **Can we claim causation?** YES! This is a true experiment with random assignment
+
+**Step 6: APA Write-Up**
+
+"An independent-samples t-test compared memory test scores between the mnemonic technique group and the traditional rereading group. The mnemonic group (M = 78.5, SD = 12.3) scored significantly higher than the rereading group (M = 69.2, SD = 11.8), t(56) = 3.04, p = .004, d = 0.77. This represents a medium-to-large effect, suggesting that the mnemonic technique is an effective strategy for improving memory performance."
+
+---
+
+**Scenario 2: Correlational Design — Screen Time and Sleep Quality**
+
+**Research Question:** Is there a relationship between daily screen time and sleep quality in college students?
+
+**Step 1: Design Decision**
+- **Design Type:** Non-experimental/correlational (measuring existing variables)
+- **Variable 1:** Daily screen time (hours) — scale/continuous
+- **Variable 2:** Sleep quality index (1-10 scale) — treated as continuous
+- **Sample:** 85 college students
+- **Analysis Plan:** Bivariate correlation (examining relationship between two continuous variables)
+
+**Step 2: Data Cleaning**
+- Run descriptive statistics:
+  - Screen time: M = 6.2 hours, SD = 2.1, Min = 2.0, Max = 12.5—all plausible
+  - Sleep quality: M = 5.8, SD = 1.9, Min = 2, Max = 9—reasonable range
+- Check for outliers: One participant reported 12.5 hours screen time (z = 3.0). Review data—valid response from heavy social media user; retain
+- Missing data: 5 participants missing sleep quality data → use pairwise exclusion (n = 80 for this correlation)
+
+**Step 3: Check Assumptions**
+- **Both variables scale:** ✓ Both continuous measures
+- **Linearity:** Create scatterplot—points show linear pattern, no obvious curve ✓
+- **Normality:** Check histograms—both approximately normal ✓
+- **Independence:** ✓ Each participant measured once
+
+**Step 4: Run Analysis in SPSS**
+- Analyze → Correlate → Bivariate
+- Select both variables (screen time, sleep quality)
+- Pearson correlation selected
+- Results from output:
+  - r = -.42, p < .001, N = 80
+  - Calculate r²: (-.42)² = .18 (18% shared variance)
+
+**Step 5: Interpret Results**
+- Moderate negative correlation (r = -.42)
+- Statistically significant (p < .001)
+- As screen time increases, sleep quality tends to decrease
+- 18% of variance in sleep quality is explained by screen time (moderate effect)
+- **Can we claim causation?** NO! This is correlational—could be reverse causation or third variables
+
+**Step 6: APA Write-Up**
+
+"A bivariate correlation examined the relationship between daily screen time and sleep quality. There was a significant negative correlation between the two variables, r(78) = -.42, p < .001, r² = .18. Students who reported higher daily screen time tended to report lower sleep quality, with screen time accounting for 18% of the variance in sleep quality. However, as this is a correlational design, causation cannot be inferred—the direction of the relationship and potential third variables (e.g., stress levels affecting both variables) remain unclear."
+
+**Common Pitfall to Avoid:** Do NOT write "increased screen time causes poor sleep." The correlation allows prediction but not causal claims.
+
+---
+
+#### **Part 9: Troubleshooting Guide**
+
+**When Things Go Wrong: Common Problems and Solutions**
+
+| Problem | Possible Cause | Solution |
+|:--------|:--------------|:---------|
+| **Levene's test significant (p < .05)** | Unequal variances across groups | 1. Check group sizes—if equal, proceed cautiously<br>2. Use Welch's correction (SPSS provides this)<br>3. Consider transforming DV<br>4. Report violation and robust results |
+| **Shapiro-Wilk significant (p < .05)** | Non-normal distribution | 1. If n > 30, proceed (robust to mild violations)<br>2. Check histogram—severe skew?<br>3. Transform data (log, sqrt) or use non-parametric test<br>4. Report limitation |
+| **SPSS won't run analysis** | Missing data or wrong variable type | 1. Check for missing values—remove or recode<br>2. Verify variable types (Measure column)<br>3. Ensure grouping variables are nominal/ordinal |
+| **All F-tests non-significant** | Insufficient power or no real effect | 1. Check sample size—underpowered?<br>2. Verify IV manipulation worked<br>3. Check descriptive statistics—are means actually different?<br>4. Consider effect size—small but real? |
+| **Interaction significant but main effects not** | Effect depends on combination of factors | **This is valid!** Focus interpretation on the interaction. Describe the pattern clearly. |
+| **Very large F-statistic** | Possible data entry error | 1. Check descriptive statistics for outliers<br>2. Verify no typos in data entry<br>3. Check if variance is artificially small |
+| **VIF > 10 in regression** | Multicollinearity among predictors | 1. Remove one of the correlated predictors<br>2. Combine correlated predictors<br>3. Interpret coefficients with extreme caution<br>4. Focus on overall model fit, not individual βs |
+| **R² very low despite significant F** | Small effect that's statistically significant | **This happens with large samples!** Report honestly—statistically significant but limited practical importance. |
+
+---
+
+#### **Part 10: Knowledge Checks (Capstone Practice)**
 
 <div class="knowledge-check">
   <h4>🧠 Knowledge Check: Missing Data Strategy</h4>
@@ -374,6 +543,132 @@ Notes:
     <p>p > .05 suggests no evidence against normality (see M4/M5 assumption checks).</p>
   </details>
 </div>
+
+---
+
+## Statistics Quick Reference Cheat Sheet
+
+**Print this page for exams and assignments!**
+
+### Core Statistical Tests At-A-Glance
+
+| When to Use | Statistical Test | SPSS Path | Key Output | Effect Size |
+|:-----------|:----------------|:----------|:-----------|:------------|
+| Compare sample to known value | One-Sample t-test | Compare Means → One-Sample T Test | t, df, p | Cohen's d |
+| Compare 2 means, same people | Paired t-test | Compare Means → Paired-Samples T Test | t, df, p | Cohen's d |
+| Compare 2 means, different people | Independent t-test | Compare Means → Independent-Samples T Test | t, df, p, Levene's | Cohen's d |
+| Compare 3+ groups, 1 factor | One-Way ANOVA | Compare Means → One-Way ANOVA | F, df, p, post-hoc | η² or partial η² |
+| Compare groups, 2 factors | Factorial ANOVA | GLM → Univariate | F for main effects & interaction | Partial η² |
+| Relationship between 2 variables | Correlation | Correlate → Bivariate | r, p, N | r² |
+| Predict DV from 1 IV | Simple Regression | Regression → Linear | R², F, β, t | R² or Adjusted R² |
+| Predict DV from 2+ IVs | Multiple Regression | Regression → Linear | R², F, β, t, VIF | Adjusted R², sr² |
+
+### All Formulas You Need
+
+**Degrees of Freedom:**
+- One-Sample t: df = N - 1
+- Paired t: df = N - 1 (N = pairs)
+- Independent t: df = N₁ + N₂ - 2
+- One-Way ANOVA: df_between = k - 1; df_within = N - k
+- Factorial (2×2): df_A = a-1; df_B = b-1; df_A×B = (a-1)(b-1); df_error = N-ab
+- Correlation: df = N - 2
+- Regression: df₁ = k; df₂ = N - k - 1
+
+**Effect Sizes:**
+- Cohen's d: (M₁ - M₂) / SD_pooled
+- η²: SS_between / SS_total
+- Partial η²: SS_effect / (SS_effect + SS_error)
+- r²: r × r
+- sr²: (Part correlation)²
+
+**Interpretation Guidelines:**
+- Cohen's d: .20 (small), .50 (medium), .80 (large)
+- η² / Partial η²: .01 (small), .06 (medium), .14 (large)
+- r: .10 (small), .30 (medium), .50 (large)
+
+### Assumption Checklist
+
+✓ **All parametric tests require:**
+- Scale (continuous) DV
+- Approximate normality
+- Independence of observations
+
+✓ **Group comparison tests (t-tests, ANOVA) also need:**
+- Homogeneity of variance (Levene's test p > .05)
+
+✓ **Correlation/Regression also need:**
+- Linearity (check scatterplot)
+- For regression: homoscedasticity of residuals
+
+### Test Selection Flowchart
+
+```
+START: What type of variables do you have?
+
+Categorical IV + Scale DV →
+  ├─ 1 IV, 2 levels, same people → Paired t-test
+  ├─ 1 IV, 2 levels, different people → Independent t-test
+  ├─ 1 IV, 3+ levels → One-Way ANOVA
+  └─ 2+ IVs → Factorial ANOVA
+
+Scale IV + Scale DV →
+  ├─ Examine relationship → Correlation
+  └─ Predict DV from IV(s) →
+      ├─ 1 predictor → Simple Regression
+      └─ 2+ predictors → Multiple Regression
+
+Comparing to known value →
+  └─ One-Sample t-test
+```
+
+### APA Reporting Essentials
+
+**Format Rules:**
+- Italicize: F, t, r, p, df, n, M, SD
+- Degrees of freedom in parentheses: t(df), F(df₁, df₂), r(df)
+- No zero before decimal for p: p < .001 (not p < 0.001)
+- Never report p = .000, use p < .001
+- Report exact p when p > .001: p = .023
+- Include effect sizes with all tests
+
+**Templates:**
+- t-test: "M = **, SD = **, t(df) = **, p = **, d = **"
+- ANOVA: "F(df₁, df₂) = **, p = **, η² = **"
+- Correlation: "r(df) = **, p = **, r² = **"
+- Regression: "F(df₁, df₂) = **, p = **, Adjusted R² = **, β = **"
+
+### Common Mistakes - Don't Do This!
+
+❌ Claiming causation from correlation
+❌ Forgetting to check assumptions
+❌ Reporting main effects when interaction is significant
+❌ Using p = .000 instead of p < .001
+❌ Forgetting effect sizes
+❌ Not reporting degrees of freedom
+❌ Confusing r with r² (r = .50 means 25% variance, not 50%)
+❌ Running post-hoc tests for 2-level factors
+❌ Ignoring Levene's test results
+❌ Extrapolating beyond your data range (regression)
+
+### Critical Values to Remember
+
+- α = .05 (most common significance level)
+- |z| ≥ 3 = potential outlier
+- VIF > 10 = serious multicollinearity problem
+- Levene's p < .05 = violation of homogeneity
+- Shapiro-Wilk p < .05 = violation of normality
+
+### The Golden Rules
+
+1. **Always visualize first** (scatterplots, boxplots, histograms)
+2. **Check assumptions before testing**
+3. **Report effect sizes, not just p-values**
+4. **Correlation ≠ Causation** (only experiments can claim causation)
+5. **Check the interaction first** (in factorial designs)
+6. **Document all data cleaning decisions**
+7. **Be honest about limitations**
+
+---
 
 ### **Module 7 Key Takeaways: A Researcher's Mental Checklist**
 
