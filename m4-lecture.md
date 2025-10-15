@@ -1,9 +1,9 @@
 ---
 layout: lecture
-title: "M4 Lecture: Analysis of Variance (ANOVA)"
+title: "Module 4: Analysis of Variance (ANOVA)"
 ---
 
-# M4 Lecture: Analysis of Variance (ANOVA)
+# Module 4: Analysis of Variance (ANOVA)
 
 ## Comparing Multiple Groups with Statistical Power
 
@@ -78,6 +78,20 @@ When you run multiple statistical tests on the same data, the probability of mak
 
 This inflation of Type I error rate is unacceptable in statistical analysis.
 
+> **⚠️ THE MULTIPLE COMPARISONS PROBLEM: Why ANOVA is Essential**
+>
+> **The Risk:** Running multiple t-tests on the same data inflates Type I error dramatically!
+>
+> - 1 test at α = .05 → 5% error rate ✓
+> - 3 tests at α = .05 → 14.3% error rate ⚠️
+> - 10 tests at α = .05 → 40% error rate ❌
+>
+> **The Solution:** ANOVA tests all groups simultaneously in one test
+> - Maintains α = .05 across all comparisons
+> - Then uses "protected" post-hoc tests if significant
+>
+> **Remember:** Never run multiple t-tests when you have 3+ groups!
+
 ### The ANOVA Solution
 
 **Analysis of Variance (ANOVA)** solves this problem by:
@@ -88,11 +102,17 @@ This inflation of Type I error rate is unacceptable in statistical analysis.
 
 ### Research Scenarios Requiring ANOVA
 
+> **🔗 Connection to Module 3:** Remember independent-samples t-tests from Module 3? They compare TWO groups. ANOVA extends this logic to THREE OR MORE groups, while controlling Type I error. Think of ANOVA as the "big sibling" of the t-test!
+
 **When to Use ANOVA:**
 
 - Comparing **3 or more groups** on a continuous dependent variable
 - Testing the effect of one independent variable with multiple levels
 - Both between-subjects and within-subjects designs
+
+**Quick Decision:**
+- 2 groups → Use t-test (see [Module 3: Comparing Two Means](#))
+- 3+ groups → Use ANOVA (this module)
 
 **Examples:**
 
@@ -298,6 +318,22 @@ The F-statistic is simply:
 - **F > 1:** The difference between groups is larger than the random variation within groups. This suggests a real effect. **Reject H₀.**
 
 - **F >> 1:** The effect is much larger than the error. This suggests a strong effect.
+
+> **📊 UNDERSTANDING THE F-RATIO: The Signal-to-Noise Metaphor**
+>
+> **Think of F as a Signal-to-Noise Ratio:**
+>
+> **F = Signal / Noise = Between-Groups Variance / Within-Groups Variance**
+>
+> - **High F:** Strong signal (clear group differences) relative to noise (random variation)
+> - **Low F:** Weak signal (small group differences) buried in noise
+>
+> **Practical Interpretation:**
+> - F = 1.0 → Signal equals noise → No real effect
+> - F = 3.5 → Signal is 3.5× stronger than noise → Probably significant
+> - F = 10.0 → Signal is 10× stronger than noise → Very significant
+>
+> **Key Insight:** ANOVA asks "Are group differences bigger than random individual differences?"
 
 ### Why F Cannot Be Negative
 
@@ -531,6 +567,25 @@ SPSS produces an ANOVA table with this structure:
 - Consider using a more robust test (Welch's ANOVA)
 - Transform the data if appropriate
 
+> **🔍 LEVENE'S TEST: The "Backwards" Logic**
+>
+> **This confuses almost everyone at first!**
+>
+> **What you want:** Equal variances (assumption met)
+> **What you need:** p > .05
+>
+> **Interpretation:**
+> - **p > .05:** ✓ Assumption met (variances are equal)
+> - **p ≤ .05:** ✗ Assumption violated (variances are NOT equal)
+>
+> **Why it's backwards:** In most tests, p < .05 is "good" (significant result). But for Levene's test, you WANT p > .05!
+>
+> **H₀ for Levene's test:** "Variances are equal"
+> - p > .05 → Fail to reject → Variances are equal ✓
+> - p < .05 → Reject → Variances are NOT equal ✗
+>
+> **Remember:** For assumption tests, you want HIGH p-values (> .05)!
+
 ### Reading ANOVA Output in SPSS
 
 **Example Output:**
@@ -686,6 +741,22 @@ Total           53425.910        154
 
 **Remember:** A significant F-test only tells you that a difference exists somewhere among the groups, not where the differences are.
 
+> **🎯 POST-HOC TESTS: When and Why**
+>
+> **CRITICAL RULE:** Only run post-hoc tests if the F-test is significant!
+>
+> **The Three Requirements:**
+> 1. ✓ F-test must be significant (p ≤ .05)
+> 2. ✓ Must have 3+ groups
+> 3. ✓ Want to know which specific groups differ
+>
+> **Why this rule?**
+> - Running post-hoc tests after non-significant F = "fishing" for significance
+> - The significant F-test "protects" post-hoc tests from inflating error rate
+> - Without significant F, there's nothing to follow up on!
+>
+> **Think of it as:** F-test is the gatekeeper. Only if it says "yes, differences exist" can you go investigate WHERE those differences are.
+
 ### The Problem Post-Hoc Tests Solve
 
 **The Omnibus F-Test Limitation:**
@@ -760,6 +831,8 @@ Hands-on      Lecture        15.20*                 3.45          .001     6.47 
 - ✅ Drinking affects gaming style somehow
 - ❌ She doesn't know if more alcohol = more/less prosocial behavior
 - ❌ She doesn't know if the effect is linear or more complex
+
+> **🔗 How to Report Post-Hoc Results:** Once you've run post-hoc tests and identified specific differences, see [Part 9: Decision Framework and Reporting](#part-9-decision-framework-and-reporting) for APA format examples showing how to report both the omnibus F-test and post-hoc test results together.
 
 <div class="knowledge-check">
   <h4>🧠 Knowledge Check: Post-Hoc Tests and Interpretation</h4>
@@ -901,6 +974,8 @@ Hands-on      Lecture        15.20*                 3.45          .001     6.47 
 
 ### Advantages of Repeated-Measures Design
 
+> **🔗 Comparison to Between-Groups:** Repeated-measures and between-groups ANOVA (see [Part 3](#part-3-one-way-between-groups-anova)) answer similar questions but with different designs. The key difference: same vs. different participants. Both use the F-ratio logic from [Part 2](#part-2-the-f-ratio-core-logic-of-anova), but repeated-measures removes individual differences from error variance, making it more powerful.
+
 **1. Controls Individual Differences:**
 
 - Each person serves as their own control
@@ -935,6 +1010,27 @@ Hands-on      Lecture        15.20*                 3.45          .001     6.47 
 - Use Greenhouse-Geisser correction
 - Use Huynh-Feldt correction
 - Report the violation
+
+> **⚖️ SPHERICITY: The Unique Repeated-Measures Assumption**
+>
+> **What makes sphericity special:**
+> - Only applies to repeated-measures ANOVA (NOT between-groups!)
+> - More complex than homogeneity of variances
+> - Tests equality of variance of DIFFERENCES between conditions
+>
+> **Mauchly's Test Interpretation:** (Same "backwards" logic as Levene's!)
+> - **p > .05:** ✓ Assumption met (sphericity assumed)
+> - **p ≤ .05:** ✗ Assumption violated (use corrections)
+>
+> **If violated, use corrections:**
+> - **Greenhouse-Geisser:** More conservative, always works
+> - **Huynh-Feldt:** Less conservative, better with larger samples
+>
+> **SPSS tip:** SPSS shows all corrections in output. Look at:
+> - "Sphericity Assumed" row if Mauchly's p > .05
+> - "Greenhouse-Geisser" row if Mauchly's p ≤ .05
+>
+> **Remember:** Sphericity is to repeated-measures what Levene's test is to between-groups!
 
 ### Degrees of Freedom in Repeated-Measures
 
@@ -1340,6 +1436,8 @@ SPSS often provides effect size automatically in the output. Look for:
 - Account for clustering in analysis
 - Consider multilevel modeling
 
+> **🔗 Where to Check These in SPSS:** See [Part 8: SPSS Practical Guide](#part-8-spss-practical-guide) for step-by-step instructions on how to check each assumption in SPSS. The Options dialog has settings for Levene's test (between-groups) and sphericity tests (repeated-measures).
+
 <div class="knowledge-check">
   <h4>🧠 Knowledge Check: Assumptions and Homogeneity Tests</h4>
 
@@ -1710,6 +1808,246 @@ SPSS often provides effect size automatically in the output. Look for:
 
 **Discussion:** "The results suggest that hands-on teaching methods are more effective than traditional lecture methods for improving student performance. The medium effect size (η² = .11) indicates that teaching method explains 11% of the variance in test scores, which is practically meaningful."
 
+### Additional APA Reporting Examples
+
+**Example 2: Non-Significant Result (Between-Groups)**
+
+"A one-way between-groups ANOVA was conducted to compare customer satisfaction across three store locations (downtown, suburban, rural). There was no statistically significant difference in satisfaction ratings among the three locations, F(2, 147) = 1.23, p = .295, η² = .02. All three locations showed similar satisfaction levels (downtown: M = 7.2, SD = 1.5; suburban: M = 7.5, SD = 1.4; rural: M = 7.0, SD = 1.6)."
+
+**Example 3: Reporting Assumption Violations (Between-Groups)**
+
+"A one-way between-groups ANOVA was conducted to compare productivity scores across three work environments. Levene's test indicated that the assumption of homogeneity of variances was violated, F(2, 87) = 4.25, p = .017. Therefore, Welch's ANOVA was used instead. Results showed a statistically significant difference among the groups, Welch's F(2, 56.3) = 8.45, p = .001, η² = .16. Post-hoc comparisons using Games-Howell test indicated that the open-office environment (M = 78.5, SD = 12.3) had significantly lower productivity than both the private-office (M = 92.1, SD = 8.7) and hybrid (M = 89.3, SD = 9.2) environments."
+
+**Example 4: Repeated-Measures with Sphericity Violation**
+
+"A one-way repeated-measures ANOVA was conducted to examine changes in anxiety scores across four therapy sessions. Mauchly's test indicated that the assumption of sphericity was violated, χ²(5) = 15.24, p = .009. Therefore, degrees of freedom were corrected using Greenhouse-Geisser estimates of sphericity (ε = .78). There was a statistically significant effect of therapy session on anxiety scores, F(2.34, 44.46) = 12.87, p < .001, η² = .40, indicating a large effect. Post-hoc pairwise comparisons with Bonferroni correction revealed that anxiety scores significantly decreased from Session 1 (M = 45.2, SD = 6.8) to Session 4 (M = 28.5, SD = 7.2), p < .001."
+
+**Example 5: Multiple Comparisons with Detailed Post-Hoc Results**
+
+"A one-way between-groups ANOVA was conducted to compare reading comprehension scores across four instructional methods (phonics-only, whole-language, balanced-literacy, and technology-enhanced). There was a statistically significant difference among the groups, F(3, 156) = 7.32, p < .001, η² = .12. Post-hoc comparisons using Tukey's HSD test revealed several significant differences:
+
+- Balanced-literacy (M = 85.3, SD = 8.2) scored significantly higher than phonics-only (M = 76.8, SD = 9.1), p = .002
+- Technology-enhanced (M = 88.1, SD = 7.5) scored significantly higher than both phonics-only, p < .001, and whole-language (M = 79.2, SD = 8.6), p = .001
+- No significant difference was found between balanced-literacy and technology-enhanced approaches, p = .485
+
+These results suggest that integrated approaches (balanced-literacy and technology-enhanced) are more effective for reading comprehension than single-strategy approaches."
+
+### Common APA Reporting Errors to Avoid
+
+❌ **ERROR 1: Not reporting effect size**
+- Wrong: "F(2, 57) = 3.45, p = .038"
+- Right: "F(2, 57) = 3.45, p = .038, η² = .11"
+
+❌ **ERROR 2: Reporting post-hoc without mentioning the omnibus F-test**
+- Wrong: "Tukey's HSD showed that Group A differed from Group B, p = .015"
+- Right: "ANOVA revealed significant differences, F(2, 57) = 3.45, p = .038, η² = .11. Post-hoc comparisons using Tukey's HSD showed..."
+
+❌ **ERROR 3: Not reporting what test was used**
+- Wrong: "There was a significant difference among groups"
+- Right: "A one-way between-groups ANOVA revealed a significant difference among groups"
+
+❌ **ERROR 4: Forgetting to report assumption violations**
+- Wrong: [Ignoring failed Levene's test]
+- Right: "Levene's test indicated violated assumptions (p = .017), so Welch's ANOVA was used..."
+
+❌ **ERROR 5: Not including descriptive statistics**
+- Wrong: "Group A was significantly higher than Group B"
+- Right: "Group A (M = 85.2, SD = 8.1) was significantly higher than Group B (M = 75.0, SD = 7.3)"
+
+❌ **ERROR 6: Saying "proves" instead of "suggests"**
+- Wrong: "The results prove that Method A is better"
+- Right: "The results suggest that Method A is more effective"
+
+### Quick Checklist for APA-Style ANOVA Reporting
+
+When writing up your ANOVA results, include:
+
+☐ **1. Name of test:** "A one-way [between-groups/repeated-measures] ANOVA"
+
+☐ **2. Purpose:** "was conducted to compare [DV] across [IV with levels]"
+
+☐ **3. Assumption checks:** Report Levene's test (between) or Mauchly's test (repeated)
+
+☐ **4. Corrections if needed:** Welch's ANOVA or Greenhouse-Geisser correction
+
+☐ **5. F-statistic:** F(df_between, df_within) = [value]
+
+☐ **6. P-value:** p = [exact value] or p < .001
+
+☐ **7. Effect size:** η² = [value]
+
+☐ **8. Descriptive statistics:** Means and SDs for all groups
+
+☐ **9. Post-hoc results:** Which groups differed (if omnibus F was significant)
+
+☐ **10. Interpretation:** Practical meaning of findings
+
+---
+
+## 📋 Quick Reference Card: ANOVA at a Glance
+
+### ANOVA Decision Tree
+
+```
+START: Do you have 3+ groups to compare?
+    |
+    ├─ NO → Use t-test (see Module 3)
+    |
+    └─ YES → Continue
+        |
+        Are the same participants in all conditions?
+        |
+        ├─ YES → ONE-WAY REPEATED-MEASURES ANOVA
+        |    • Controls individual differences
+        |    • More statistical power
+        |    • Check Mauchly's test for sphericity
+        |    • Use Greenhouse-Geisser if violated
+        |    • SPSS: Analyze → General Linear Model → Repeated Measures
+        |
+        └─ NO → ONE-WAY BETWEEN-GROUPS ANOVA
+             • Different participants per group
+             • More participants needed
+             • Check Levene's test for equal variances
+             • Use Welch's ANOVA if violated
+             • SPSS: Analyze → Compare Means → One-Way ANOVA
+```
+
+### Degrees of Freedom Quick Reference
+
+| Design Type | df_between | df_within | df_total |
+|------------|------------|-----------|----------|
+| **Between-Groups** | k - 1 | N - k | N - 1 |
+| **Repeated-Measures** | k - 1 | (k-1)(N-1) | (N×k) - 1 |
+
+**Where:** k = number of groups/conditions, N = total number of participants
+
+**Examples:**
+- 3 groups, 60 participants (between): df = (2, 57)
+- 4 conditions, 15 participants (repeated): df = (3, 42)
+
+### Post-Hoc Test Selection Guide
+
+| Test | When to Use | Conservativeness |
+|------|-------------|------------------|
+| **Tukey's HSD** | Equal sample sizes, most common | Moderate |
+| **Bonferroni** | Few comparisons, want strict control | Very conservative |
+| **Scheffe** | Complex comparisons, unequal n | Most conservative |
+
+**⚠️ CRITICAL:** Only run post-hoc tests if F-test is significant (p ≤ .05)!
+
+### Effect Size Interpretation (Eta Squared)
+
+**Formula:** η² = SS_between / SS_total
+
+| η² Value | Effect Size | Interpretation |
+|----------|-------------|----------------|
+| .01 | Small | IV explains 1% of variance |
+| .06 | Medium | IV explains 6% of variance |
+| .14 | Large | IV explains 14% of variance |
+
+**Example:** η² = .08 means teaching method explains 8% of variance in test scores (medium effect)
+
+### SPSS Menu Paths Quick Reference
+
+**Between-Groups ANOVA:**
+```
+Analyze → Compare Means → One-Way ANOVA
+↓
+Options: ✓ Descriptive statistics
+         ✓ Homogeneity of variance test
+         ✓ Means plot
+↓
+Post Hoc: ✓ Tukey (most common)
+```
+
+**Repeated-Measures ANOVA:**
+```
+Analyze → General Linear Model → Repeated Measures
+↓
+Define Factor: Name = "Time" (or condition name)
+               Number of Levels = [enter number]
+↓
+Options: ✓ Descriptive statistics
+         ✓ Estimates of effect size
+```
+
+### Assumption Checklist
+
+**All ANOVA Designs:**
+- ☐ **Normality:** Visual inspection, tests if n < 30
+- ☐ **Independence:** Check study design
+- ☐ **Random selection:** Document sampling method
+
+**Between-Groups ONLY:**
+- ☐ **Homogeneity of variances:** Levene's test (want p > .05)
+
+**Repeated-Measures ONLY:**
+- ☐ **Sphericity:** Mauchly's test (want p > .05)
+
+### Common Mistakes to Avoid
+
+❌ **Running post-hoc tests when F is not significant**
+   - Post-hoc tests are only valid after rejecting H₀
+
+❌ **Ignoring assumption violations**
+   - Always check Levene's test (between-groups) or Mauchly's test (repeated-measures)
+   - Report violations and use corrections
+
+❌ **Running multiple t-tests instead of ANOVA**
+   - Inflates Type I error rate dramatically
+
+❌ **Forgetting to report effect size**
+   - Always report η² along with F-statistic
+
+❌ **Misinterpreting "no difference"**
+   - Failing to reject H₀ ≠ "groups are the same"
+   - It means "not enough evidence of difference"
+
+❌ **Wrong ANOVA type**
+   - Same participants = Repeated-measures
+   - Different participants = Between-groups
+
+### APA Reporting Template
+
+**Between-Groups:**
+"A one-way between-groups ANOVA was conducted to compare [DV] across [IV: levels]. There was a [significant/non-significant] difference among the groups, F(df_between, df_within) = [F-value], p = [p-value], η² = [effect size]. Post-hoc comparisons using [test name] indicated that [specific findings]."
+
+**Repeated-Measures:**
+"A one-way repeated-measures ANOVA was conducted to compare [DV] across [IV: levels]. Mauchly's test indicated that the assumption of sphericity [was/was not] violated, χ²([df]) = [value], p = [p-value]. [If violated: Therefore, degrees of freedom were corrected using [correction].] There was a [significant/non-significant] effect, F(df_between, df_within) = [F-value], p = [p-value], η² = [effect size]."
+
+### F-Ratio Interpretation
+
+**F = Between-Groups Variance / Within-Groups Variance**
+
+- **F ≈ 1:** Effect ≈ Error (no real difference) → Fail to reject H₀
+- **F > 1:** Effect > Error (possible real difference) → Check p-value
+- **F >> 1:** Effect >> Error (strong difference) → Likely reject H₀
+
+**Remember:** F is always ≥ 0 (negative F = calculation error!)
+
+### Key Decision Points
+
+**1. Check Assumptions First**
+   - Visual inspection + statistical tests
+   - Document any violations
+
+**2. Run Appropriate ANOVA**
+   - Match design to research question
+   - Use SPSS menu paths above
+
+**3. Interpret F-Test**
+   - p ≤ .05 → Reject H₀ → Run post-hoc tests
+   - p > .05 → Fail to reject H₀ → Stop here
+
+**4. Calculate Effect Size**
+   - Always report η²
+   - Interpret using guidelines above
+
+**5. Report Results**
+   - Use APA format templates
+   - Include all necessary statistics
+   - Discuss practical significance
+
 ---
 
 ## Summary and Key Formulas
@@ -1774,7 +2112,7 @@ SPSS often provides effect size automatically in the output. Look for:
 
 ---
 
-**Congratulations!** You've completed the comprehensive M4 lecture on Analysis of Variance. You now have the knowledge and skills to:
+**Congratulations!** You've completed the comprehensive Module 4 on Analysis of Variance. You now have the knowledge and skills to:
 
 - Understand when and why to use ANOVA
 - Distinguish between between-groups and within-groups designs
