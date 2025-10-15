@@ -36,7 +36,6 @@
             padding: 12px;
             margin-top: 10px;
             border-radius: 4px;
-            display: none;
         }
 
         .answer-text {
@@ -68,186 +67,6 @@
             background-color: #218838;
         }
 
-        /* Content Box Styling */
-        .highlight-box {
-            background-color: #fff3cd;
-            border: 1px solid #ffeaa7;
-            border-left: 4px solid #f39c12;
-            padding: 15px;
-            margin: 15px 0;
-            border-radius: 4px;
-        }
-
-        .solution-box {
-            background-color: #d1ecf1;
-            border: 1px solid #bee5eb;
-            border-left: 4px solid #17a2b8;
-            padding: 15px;
-            margin: 15px 0;
-            border-radius: 4px;
-        }
-
-        .comparison-box {
-            background-color: #f8f9fa;
-            border: 1px solid #dee2e6;
-            border-left: 4px solid #6c757d;
-            padding: 15px;
-            margin: 15px 0;
-            border-radius: 4px;
-        }
-
-        .key-concept {
-            background-color: #e2e3e5;
-            border: 1px solid #d6d8db;
-            border-left: 4px solid #495057;
-            padding: 15px;
-            margin: 15px 0;
-            border-radius: 4px;
-        }
-
-        .question-box {
-            background-color: #f8d7da;
-            border: 1px solid #f5c6cb;
-            border-left: 4px solid #dc3545;
-            padding: 15px;
-            margin: 15px 0;
-            border-radius: 4px;
-        }
-
-        .approach-comparison {
-            display: flex;
-            gap: 20px;
-            margin: 15px 0;
-        }
-
-        .approach-direct, .approach-indirect {
-            flex: 1;
-            padding: 15px;
-            border-radius: 4px;
-        }
-
-        .approach-direct {
-            background-color: #f8d7da;
-            border: 1px solid #f5c6cb;
-        }
-
-        .approach-indirect {
-            background-color: #d4edda;
-            border: 1px solid #c3e6cb;
-        }
-
-        .mathematical-analogy {
-            background-color: #e2e3e5;
-            border: 1px solid #d6d8db;
-            padding: 15px;
-            margin: 15px 0;
-            border-radius: 4px;
-            font-style: italic;
-        }
-
-        .process-steps {
-            counter-reset: step-counter;
-        }
-
-        .process-steps > li {
-            counter-increment: step-counter;
-            margin-bottom: 15px;
-            padding-left: 10px;
-        }
-
-        .process-steps > li::before {
-            content: counter(step-counter);
-            background-color: #007bff;
-            color: white;
-            border-radius: 50%;
-            width: 25px;
-            height: 25px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 10px;
-            font-weight: bold;
-        }
-
-        .example-scenario {
-            background-color: #d1ecf1;
-            border: 1px solid #bee5eb;
-            padding: 15px;
-            margin: 15px 0;
-            border-radius: 4px;
-        }
-
-        .error-matrix {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 15px 0;
-        }
-
-        .error-matrix th, .error-matrix td {
-            border: 1px solid #dee2e6;
-            padding: 12px;
-            text-align: center;
-        }
-
-        .error-matrix th {
-            background-color: #f8f9fa;
-            font-weight: bold;
-        }
-
-        .error-definition {
-            background-color: #f8f9fa;
-            border: 1px solid #dee2e6;
-            padding: 15px;
-            margin: 15px 0;
-            border-radius: 4px;
-        }
-
-        .real-world-examples {
-            background-color: #fff3cd;
-            border: 1px solid #ffeaa7;
-            padding: 15px;
-            margin: 15px 0;
-            border-radius: 4px;
-        }
-
-        .example-context {
-            margin: 10px 0;
-            padding: 10px;
-            background-color: white;
-            border-radius: 4px;
-        }
-
-        .why-it-happens {
-            background-color: #d1ecf1;
-            border: 1px solid #bee5eb;
-            padding: 15px;
-            margin: 15px 0;
-            border-radius: 4px;
-        }
-
-        .how-to-reduce {
-            background-color: #d4edda;
-            border: 1px solid #c3e6cb;
-            padding: 15px;
-            margin: 15px 0;
-            border-radius: 4px;
-        }
-
-        .trade-off {
-            background-color: #f8d7da;
-            border: 1px solid #f5c6cb;
-            padding: 15px;
-            margin: 15px 0;
-            border-radius: 4px;
-        }
-
-        .quiz-question {
-            background-color: #f8f9fa;
-            border: 1px solid #dee2e6;
-            padding: 15px;
-            margin: 15px 0;
-            border-radius: 4px;
-        }
 
         .options p {
             margin: 5px 0;
@@ -2883,6 +2702,30 @@
                     <p><strong>Remember:</strong> Statistics is a way of thinking about evidence. The formulas are tools, but understanding the logic behind hypothesis testing is what will serve you throughout your statistical journey.</p>
                 </div>
             </div>
+        </div>
+
+        <!-- Single Bottom Navigation -->
+        <div class="tab-navigation bottom-nav">
+            <button class="tab-button" onclick="showTab(1)">
+                <input type="checkbox" id="progress-1-bottom" class="tab-checkbox" onchange="toggleTabComplete(1)">
+                <span class="tab-label">Hypothesis Testing Logic</span>
+            </button>
+            <button class="tab-button" onclick="showTab(2)">
+                <input type="checkbox" id="progress-2-bottom" class="tab-checkbox" onchange="toggleTabComplete(2)">
+                <span class="tab-label">Decision Making & Errors</span>
+            </button>
+            <button class="tab-button" onclick="showTab(3)">
+                <input type="checkbox" id="progress-3-bottom" class="tab-checkbox" onchange="toggleTabComplete(3)">
+                <span class="tab-label">Sampling & t-Tests</span>
+            </button>
+            <button class="tab-button" onclick="showTab(4)">
+                <input type="checkbox" id="progress-4-bottom" class="tab-checkbox" onchange="toggleTabComplete(4)">
+                <span class="tab-label">Effect Size & Power</span>
+            </button>
+            <button class="tab-button" onclick="showTab(5)">
+                <input type="checkbox" id="progress-5-bottom" class="tab-checkbox" onchange="toggleTabComplete(5)">
+                <span class="tab-label">Application & Summary</span>
+            </button>
         </div>
     </main>
 
