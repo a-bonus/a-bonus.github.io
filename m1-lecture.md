@@ -1700,253 +1700,357 @@ By the end of this module, you will be able to:
 
             Now let's put theory into practice! SPSS (Statistical Package for the Social Sciences) is a powerful tool for statistical analysis. This section will walk you through the basics you'll need for your M1 assignment.
 
-            ### Setting Up Your Dataset
+            <h3>Setting Up Your Dataset</h3>
 
-            **Step 1: Open SPSS**
-            - Launch SPSS from your computer or university lab
-            - You'll see the Data Editor window with two tabs: "Data View" and "Variable View"
+            <p><strong>Step 1: Open SPSS</strong></p>
+            <ul>
+                <li>Launch SPSS from your computer or university lab</li>
+                <li>You'll see the Data Editor window with two tabs: "Data View" and "Variable View"</li>
+            </ul>
 
-            **Step 2: Define Variables (Variable View)**
-            - Click on "Variable View" tab
-            - Each row represents one variable
-            - Key columns to fill out:
-              - **Name:** Variable name (no spaces, start with letter)
-              - **Type:** Numeric (for numbers), String (for text)
-              - **Label:** Full description of the variable
-              - **Values:** Define value labels for categories
-              - **Measure:** Scale, Ordinal, or Nominal
+            <p><strong>Step 2: Define Variables (Variable View)</strong></p>
+            <ul>
+                <li>Click on "Variable View" tab</li>
+                <li>Each row represents one variable</li>
+                <li>Key columns to fill out:
+                    <ul>
+                        <li><strong>Name:</strong> Variable name (no spaces, start with letter)</li>
+                        <li><strong>Type:</strong> Numeric (for numbers), String (for text)</li>
+                        <li><strong>Label:</strong> Full description of the variable</li>
+                        <li><strong>Values:</strong> Define value labels for categories</li>
+                        <li><strong>Measure:</strong> Scale, Ordinal, or Nominal</li>
+                    </ul>
+                </li>
+            </ul>
 
-            **Example Variable Setup:**
-            | Name | Label | Type | Values | Measure |
-            |------|-------|------|--------|---------|
-            | ID | Student ID | Numeric | | Scale |
-            | Gender | Gender | Numeric | 1=Male, 2=Female | Nominal |
-            | Hours | Study Hours | Numeric | | Scale |
-            | Grade | Course Grade | Numeric | 1=F, 2=D, 3=C, 4=B, 5=A | Ordinal |
+            <p><strong>Example Variable Setup:</strong></p>
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Label</th>
+                    <th>Type</th>
+                    <th>Values</th>
+                    <th>Measure</th>
+                </tr>
+                <tr>
+                    <td>ID</td>
+                    <td>Student ID</td>
+                    <td>Numeric</td>
+                    <td></td>
+                    <td>Scale</td>
+                </tr>
+                <tr>
+                    <td>Gender</td>
+                    <td>Gender</td>
+                    <td>Numeric</td>
+                    <td>1=Male, 2=Female</td>
+                    <td>Nominal</td>
+                </tr>
+                <tr>
+                    <td>Hours</td>
+                    <td>Study Hours</td>
+                    <td>Numeric</td>
+                    <td></td>
+                    <td>Scale</td>
+                </tr>
+                <tr>
+                    <td>Grade</td>
+                    <td>Course Grade</td>
+                    <td>Numeric</td>
+                    <td>1=F, 2=D, 3=C, 4=B, 5=A</td>
+                    <td>Ordinal</td>
+                </tr>
+            </table>
 
-            **Step 3: Enter Data (Data View)**
-            - Click on "Data View" tab
-            - Each row is one participant
-            - Each column is one variable
-            - Enter your data carefully (double-check for errors)
+            <p><strong>Step 3: Enter Data (Data View)</strong></p>
+            <ul>
+                <li>Click on "Data View" tab</li>
+                <li>Each row is one participant</li>
+                <li>Each column is one variable</li>
+                <li>Enter your data carefully (double-check for errors)</li>
+            </ul>
 
-            **Step 4: Save Your File**
-            - File → Save As
-            - Choose a location and descriptive filename
-            - SPSS files have .sav extension
+            <p><strong>Step 4: Save Your File</strong></p>
+            <ul>
+                <li>File → Save As</li>
+                <li>Choose a location and descriptive filename</li>
+                <li>SPSS files have .sav extension</li>
+            </ul>
 
-            ### Creating Frequency Tables
+            <h3>Creating Frequency Tables</h3>
 
-            **For Categorical Variables:**
+            <p><strong>For Categorical Variables:</strong></p>
 
-            **Steps:**
-            1. Analyze → Descriptive Statistics → Frequencies
-            2. Move your categorical variable(s) to the "Variable(s)" box
-            3. Click "Statistics" if you want additional statistics
-            4. Click "Charts" if you want bar charts
-            5. Click OK
+            <p><strong>Steps:</strong></p>
+            <ol>
+                <li>Analyze → Descriptive Statistics → Frequencies</li>
+                <li>Move your categorical variable(s) to the "Variable(s)" box</li>
+                <li>Click "Statistics" if you want additional statistics</li>
+                <li>Click "Charts" if you want bar charts</li>
+                <li>Click OK</li>
+            </ol>
 
-            **Output includes:**
-            - Frequency count for each category
-            - Valid and missing percentages
-            - Cumulative percentages
+            <p><strong>Output includes:</strong></p>
+            <ul>
+                <li>Frequency count for each category</li>
+                <li>Valid and missing percentages</li>
+                <li>Cumulative percentages</li>
+            </ul>
 
-            **Example Output:**
-            ```
+            <p><strong>Example Output:</strong></p>
+            <pre>
             Gender
                         Frequency    Percent    Valid Percent    Cumulative Percent
             Valid   Male        25      50.0           50.0                50.0
                     Female      25      50.0           50.0               100.0
             Total              50     100.0          100.0
-            ```
+            </pre>
 
-            ### Creating Grouped Frequency Tables
+            <h3>Creating Grouped Frequency Tables</h3>
 
-            **For Scale Variables:**
+            <p><strong>For Scale Variables:</strong></p>
 
-            **Method 1: Using Visual Binning**
-            1. Transform → Visual Binning
-            2. Select your scale variable
-            3. Click "Make Cutpoints" → Equal Width Intervals
-            4. Choose number of intervals (e.g., 5)
-            5. Click "Make Labels" to create descriptive labels
-            6. Click OK to create new grouped variable
-            7. Run Frequencies on the new grouped variable
+            <p><strong>Method 1: Using Visual Binning</strong></p>
+            <ol>
+                <li>Transform → Visual Binning</li>
+                <li>Select your scale variable</li>
+                <li>Click "Make Cutpoints" → Equal Width Intervals</li>
+                <li>Choose number of intervals (e.g., 5)</li>
+                <li>Click "Make Labels" to create descriptive labels</li>
+                <li>Click OK to create new grouped variable</li>
+                <li>Run Frequencies on the new grouped variable</li>
+            </ol>
 
-            **Method 2: Manual Grouping**
-            1. Transform → Recode into Different Variables
-            2. Select your scale variable
-            3. Define ranges for each group
-            4. Create new variable with group labels
-            5. Run Frequencies on the new variable
+            <p><strong>Method 2: Manual Grouping</strong></p>
+            <ol>
+                <li>Transform → Recode into Different Variables</li>
+                <li>Select your scale variable</li>
+                <li>Define ranges for each group</li>
+                <li>Create new variable with group labels</li>
+                <li>Run Frequencies on the new variable</li>
+            </ol>
 
-            ### Creating Graphs
+            <h3>Creating Graphs</h3>
 
-            **Bar Charts (for categorical data):**
-            1. Graphs → Chart Builder
-            2. Choose "Bar" from gallery
-            3. Drag your categorical variable to X-axis
-            4. Choose "Count" for Y-axis
-            5. Click OK
+            <p><strong>Bar Charts (for categorical data):</strong></p>
+            <ol>
+                <li>Graphs → Chart Builder</li>
+                <li>Choose "Bar" from gallery</li>
+                <li>Drag your categorical variable to X-axis</li>
+                <li>Choose "Count" for Y-axis</li>
+                <li>Click OK</li>
+            </ol>
 
-            **Histograms (for scale data):**
-            1. Graphs → Chart Builder
-            2. Choose "Histogram" from gallery
-            3. Drag your scale variable to X-axis
-            4. Click OK
+            <p><strong>Histograms (for scale data):</strong></p>
+            <ol>
+                <li>Graphs → Chart Builder</li>
+                <li>Choose "Histogram" from gallery</li>
+                <li>Drag your scale variable to X-axis</li>
+                <li>Click OK</li>
+            </ol>
 
-            **Customizing Graphs:**
-            - Double-click on graph to open Chart Editor
-            - Change colors, titles, axis labels
-            - Add gridlines, legends, etc.
+            <p><strong>Customizing Graphs:</strong></p>
+            <ul>
+                <li>Double-click on graph to open Chart Editor</li>
+                <li>Change colors, titles, axis labels</li>
+                <li>Add gridlines, legends, etc.</li>
+            </ul>
 
-            ### Calculating Descriptive Statistics
+            <h3>Calculating Descriptive Statistics</h3>
 
-            **For Scale Variables:**
+            <p><strong>For Scale Variables:</strong></p>
 
-            **Steps:**
-            1. Analyze → Descriptive Statistics → Descriptives
-            2. Move your scale variable(s) to the "Variable(s)" box
-            3. Click "Options" to choose which statistics to calculate
-            4. Recommended statistics: Mean, Std. Deviation, Min, Max
-            5. Click OK
+            <p><strong>Steps:</strong></p>
+            <ol>
+                <li>Analyze → Descriptive Statistics → Descriptives</li>
+                <li>Move your scale variable(s) to the "Variable(s)" box</li>
+                <li>Click "Options" to choose which statistics to calculate</li>
+                <li>Recommended statistics: Mean, Std. Deviation, Min, Max</li>
+                <li>Click OK</li>
+            </ol>
 
-            **Output includes:**
-            - Sample size (N)
-            - Mean
-            - Standard deviation
-            - Minimum and maximum values
-            - Range
+            <p><strong>Output includes:</strong></p>
+            <ul>
+                <li>Sample size (N)</li>
+                <li>Mean</li>
+                <li>Standard deviation</li>
+                <li>Minimum and maximum values</li>
+                <li>Range</li>
+            </ul>
 
-            **Example Output:**
-            ```
+            <p><strong>Example Output:</strong></p>
+            <pre>
             Study Hours
                         N    Mean    Std. Deviation    Minimum    Maximum
             Valid       50   12.40            3.25        6.00       20.00
-            ```
+            </pre>
 
-            **For All Variables (including categorical):**
-            1. Analyze → Descriptive Statistics → Frequencies
-            2. Move all variables to the "Variable(s)" box
-            3. Click "Statistics" and select desired statistics
-            4. Click OK
+            <p><strong>For All Variables (including categorical):</strong></p>
+            <ol>
+                <li>Analyze → Descriptive Statistics → Frequencies</li>
+                <li>Move all variables to the "Variable(s)" box</li>
+                <li>Click "Statistics" and select desired statistics</li>
+                <li>Click OK</li>
+            </ol>
 
-            ### Common SPSS Errors and Troubleshooting
+            <h3>Common SPSS Errors and Troubleshooting</h3>
 
-            **Error: "Variable names must be unique"**
-            - Solution: Check for duplicate variable names in Variable View
+            <p><strong>Error: "Variable names must be unique"</strong></p>
+            <ul>
+                <li>Solution: Check for duplicate variable names in Variable View</li>
+            </ul>
 
-            **Error: "String variables cannot be used in arithmetic operations"**
-            - Solution: Use Numeric type for variables you want to analyze
+            <p><strong>Error: "String variables cannot be used in arithmetic operations"</strong></p>
+            <ul>
+                <li>Solution: Use Numeric type for variables you want to analyze</li>
+            </ul>
 
-            **Error: "No cases in analysis"**
-            - Solution: Check for missing data codes; use "Missing" column in Variable View
+            <p><strong>Error: "No cases in analysis"</strong></p>
+            <ul>
+                <li>Solution: Check for missing data codes; use "Missing" column in Variable View</li>
+            </ul>
 
-            **Graphs not displaying properly:**
-            - Solution: Check that you have the right variable type (Scale for histograms, Nominal for bar charts)
+            <p><strong>Graphs not displaying properly:</strong></p>
+            <ul>
+                <li>Solution: Check that you have the right variable type (Scale for histograms, Nominal for bar charts)</li>
+            </ul>
 
-            **Statistics showing as missing:**
-            - Solution: Check for invalid data entry; use "Values" column to define valid codes
+            <p><strong>Statistics showing as missing:</strong></p>
+            <ul>
+                <li>Solution: Check for invalid data entry; use "Values" column to define valid codes</li>
+            </ul>
 
-            ### Try It Yourself: Practice Exercise
+            <h3>Try It Yourself: Practice Exercise</h3>
 
-            **Dataset:** Create a dataset with the following variables:
-            - Student_ID (Scale): 1, 2, 3, 4, 5
-            - Study_Method (Nominal): 1=Reading, 2=Practice Problems, 3=Group Study
-            - Hours_Studied (Scale): 5, 8, 12, 6, 10
-            - Test_Score (Scale): 78, 85, 92, 67, 89
+            <p><strong>Dataset:</strong> Create a dataset with the following variables:</p>
+            <ul>
+                <li>Student_ID (Scale): 1, 2, 3, 4, 5</li>
+                <li>Study_Method (Nominal): 1=Reading, 2=Practice Problems, 3=Group Study</li>
+                <li>Hours_Studied (Scale): 5, 8, 12, 6, 10</li>
+                <li>Test_Score (Scale): 78, 85, 92, 67, 89</li>
+            </ul>
 
-            **Tasks:**
-            1. Set up variables in Variable View
-            2. Enter data in Data View
-            3. Create frequency table for Study_Method
-            4. Create histogram for Test_Score
-            5. Calculate descriptive statistics for Hours_Studied and Test_Score
-            6. Interpret your results
+            <p><strong>Tasks:</strong></p>
+            <ol>
+                <li>Set up variables in Variable View</li>
+                <li>Enter data in Data View</li>
+                <li>Create frequency table for Study_Method</li>
+                <li>Create histogram for Test_Score</li>
+                <li>Calculate descriptive statistics for Hours_Studied and Test_Score</li>
+                <li>Interpret your results</li>
+            </ol>
 
-            **Expected Results:**
-            - Study_Method frequencies: Reading (1), Practice Problems (1), Group Study (1), Other (2)
-            - Test_Score mean: 82.2, Standard deviation: 9.8
-            - Hours_Studied mean: 8.2, Standard deviation: 2.9
+            <p><strong>Expected Results:</strong></p>
+            <ul>
+                <li>Study_Method frequencies: Reading (1), Practice Problems (1), Group Study (1), Other (2)</li>
+                <li>Test_Score mean: 82.2, Standard deviation: 9.8</li>
+                <li>Hours_Studied mean: 8.2, Standard deviation: 2.9</li>
+            </ul>
 
             ---
 
             ## Quick Reference Card
 
-            ### Variable Classification Decision Tree
-            1. **Can you do math with it?** No → Go to 2. Yes → Scale
-            2. **Does it have order?** No → Nominal. Yes → Ordinal
+            <h3>Variable Classification Decision Tree</h3>
+            <ol>
+                <li><strong>Can you do math with it?</strong> No → Go to 2. Yes → Scale</li>
+                <li><strong>Does it have order?</strong> No → Nominal. Yes → Ordinal</li>
+            </ol>
 
-            ### Measurement Level Quick Guide
-            - **Nominal:** Categories only (Gender, Eye Color)
-            - **Ordinal:** Ordered categories (Grade, Satisfaction Rating)
-            - **Scale:** Numbers with meaning (Age, Height, Score)
+            <h3>Measurement Level Quick Guide</h3>
+            <ul>
+                <li><strong>Nominal:</strong> Categories only (Gender, Eye Color)</li>
+                <li><strong>Ordinal:</strong> Ordered categories (Grade, Satisfaction Rating)</li>
+                <li><strong>Scale:</strong> Numbers with meaning (Age, Height, Score)</li>
+            </ul>
 
-            ### Essential Formulas at a Glance
-            - **Mean:** Sum ÷ Count
-            - **Median:** Middle value (or average of two middle values)
-            - **Mode:** Most frequent value
-            - **Range:** Highest - Lowest
-            - **Standard Deviation:** √(Sum of squared differences ÷ (n-1))
-            - **Z-Score:** (Value - Mean) ÷ Standard Deviation
+            <h3>Essential Formulas at a Glance</h3>
+            <ul>
+                <li><strong>Mean:</strong> Sum ÷ Count</li>
+                <li><strong>Median:</strong> Middle value (or average of two middle values)</li>
+                <li><strong>Mode:</strong> Most frequent value</li>
+                <li><strong>Range:</strong> Highest - Lowest</li>
+                <li><strong>Standard Deviation:</strong> √(Sum of squared differences ÷ (n-1))</li>
+                <li><strong>Z-Score:</strong> (Value - Mean) ÷ Standard Deviation</li>
+            </ul>
 
-            ### Central Tendency Decision Guide
-            - **Normal distribution:** Use mean
-            - **Skewed distribution:** Use median
-            - **Nominal data:** Use mode
+            <h3>Central Tendency Decision Guide</h3>
+            <ul>
+                <li><strong>Normal distribution:</strong> Use mean</li>
+                <li><strong>Skewed distribution:</strong> Use median</li>
+                <li><strong>Nominal data:</strong> Use mode</li>
+            </ul>
 
-            ### Z-Score Interpretation Guide
-            - **z = 0:** At the mean
-            - **z = ±1:** 1 standard deviation from mean (68% rule)
-            - **z = ±2:** 2 standard deviations from mean (95% rule)
-            - **z = ±3:** 3 standard deviations from mean (99.7% rule)
+            <h3>Z-Score Interpretation Guide</h3>
+            <ul>
+                <li><strong>z = 0:</strong> At the mean</li>
+                <li><strong>z = ±1:</strong> 1 standard deviation from mean (68% rule)</li>
+                <li><strong>z = ±2:</strong> 2 standard deviations from mean (95% rule)</li>
+                <li><strong>z = ±3:</strong> 3 standard deviations from mean (99.7% rule)</li>
+            </ul>
 
-            ### SPSS Variable Setup Checklist
-            - [ ] Name: No spaces, starts with letter
-            - [ ] Type: Numeric for numbers, String for text
-            - [ ] Label: Clear description
-            - [ ] Values: Define categories
-            - [ ] Measure: Correct level (Scale/Ordinal/Nominal)
+            <h3>SPSS Variable Setup Checklist</h3>
+            <ul>
+                <li>☐ Name: No spaces, starts with letter</li>
+                <li>☐ Type: Numeric for numbers, String for text</li>
+                <li>☐ Label: Clear description</li>
+                <li>☐ Values: Define categories</li>
+                <li>☐ Measure: Correct level (Scale/Ordinal/Nominal)</li>
+            </ul>
 
-            ### Common Mistakes Checklist
-            - [ ] Using mean for ordinal data
-            - [ ] Forgetting n-1 in standard deviation
-            - [ ] Using wrong graph type
-            - [ ] Not defining variable labels in SPSS
-            - [ ] Confusing sample and population
+            <h3>Common Mistakes Checklist</h3>
+            <ul>
+                <li>☐ Using mean for ordinal data</li>
+                <li>☐ Forgetting n-1 in standard deviation</li>
+                <li>☐ Using wrong graph type</li>
+                <li>☐ Not defining variable labels in SPSS</li>
+                <li>☐ Confusing sample and population</li>
+            </ul>
 
-            ### Graph Selection Quick Guide
-            - **Bar Chart:** Categorical data (nominal/ordinal)
-            - **Histogram:** Scale data (continuous)
-            - **Line Graph:** Time series or continuous relationships
+            <h3>Graph Selection Quick Guide</h3>
+            <ul>
+                <li><strong>Bar Chart:</strong> Categorical data (nominal/ordinal)</li>
+                <li><strong>Histogram:</strong> Scale data (continuous)</li>
+                <li><strong>Line Graph:</strong> Time series or continuous relationships</li>
+            </ul>
 
-            ### IV vs. DV Identification Trick
-            - **IV:** What the researcher manipulates or assumes causes change
-            - **DV:** What the researcher measures to see if it changes
-            - **Memory:** IV is the "cause," DV is the "effect"
+            <h3>IV vs. DV Identification Trick</h3>
+            <ul>
+                <li><strong>IV:</strong> What the researcher manipulates or assumes causes change</li>
+                <li><strong>DV:</strong> What the researcher measures to see if it changes</li>
+                <li><strong>Memory:</strong> IV is the "cause," DV is the "effect"</li>
+            </ul>
 
-            ### Sample vs. Population Symbols
-            - **Population:** μ (mean), σ (standard deviation), N (size)
-            - **Sample:** x̄ (mean), s (standard deviation), n (size)
+            <h3>Sample vs. Population Symbols</h3>
+            <ul>
+                <li><strong>Population:</strong> μ (mean), σ (standard deviation), N (size)</li>
+                <li><strong>Sample:</strong> x̄ (mean), s (standard deviation), n (size)</li>
+            </ul>
 
-            ### n vs. n-1 Decision
-            - **Population standard deviation:** Divide by N
-            - **Sample standard deviation:** Divide by n-1 (bias correction)
+            <h3>n vs. n-1 Decision</h3>
+            <ul>
+                <li><strong>Population standard deviation:</strong> Divide by N</li>
+                <li><strong>Sample standard deviation:</strong> Divide by n-1 (bias correction)</li>
+            </ul>
 
-            ### Module 1 Key Takeaways
-            1. **Statistics organizes and interprets data** to move from opinion to evidence
-            2. **Variables are the building blocks** of all research
-            3. **Measurement level determines** which statistics are appropriate
-            4. **Descriptive statistics summarize** what you have; inferential statistics generalize to populations
-            5. **Normal distributions and z-scores** are the foundation of statistical inference
-            6. **Probability concepts** help us understand statistical significance
+            <h3>Module 1 Key Takeaways</h3>
+            <ol>
+                <li><strong>Statistics organizes and interprets data</strong> to move from opinion to evidence</li>
+                <li><strong>Variables are the building blocks</strong> of all research</li>
+                <li><strong>Measurement level determines</strong> which statistics are appropriate</li>
+                <li><strong>Descriptive statistics summarize</strong> what you have; inferential statistics generalize to populations</li>
+                <li><strong>Normal distributions and z-scores</strong> are the foundation of statistical inference</li>
+                <li><strong>Probability concepts</strong> help us understand statistical significance</li>
+            </ol>
 
-            ### Connection to Future Modules
-            - **Module 2:** One-sample t-tests (testing if sample mean differs from population mean)
-            - **Module 3:** Independent and paired t-tests (comparing two groups)
-            - **Module 4:** ANOVA (comparing multiple groups)
-            - **Module 5:** Factorial designs (multiple independent variables)
-            - **Module 6:** Correlation and regression (relationships between variables)
+            <h3>Connection to Future Modules</h3>
+            <ul>
+                <li><strong>Module 2:</strong> One-sample t-tests (testing if sample mean differs from population mean)</li>
+                <li><strong>Module 3:</strong> Independent and paired t-tests (comparing two groups)</li>
+                <li><strong>Module 4:</strong> ANOVA (comparing multiple groups)</li>
+                <li><strong>Module 5:</strong> Factorial designs (multiple independent variables)</li>
+                <li><strong>Module 6:</strong> Correlation and regression (relationships between variables)</li>
+            </ul>
 
             Each module builds on these foundations, so master these concepts now!
 
@@ -2125,8 +2229,8 @@ By the end of this module, you will be able to:
                     <input type="checkbox" id="progress-5-bottom" class="tab-checkbox" onchange="toggleTabComplete(5)">
                     <span class="tab-label">Probability, SPSS & Summary</span>
                 </button>
-            </div>
         </div>
+    </div>
     </div>
 
 </div>
