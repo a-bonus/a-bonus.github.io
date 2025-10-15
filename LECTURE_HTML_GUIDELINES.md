@@ -48,6 +48,13 @@ All lecture HTML files should follow the same structure and styling patterns to 
             <!-- Tab Navigation and Content -->
         </div>
 
+        <hr>
+
+        <h2>Glossary</h2>
+        <div class="glossary-section">
+            <!-- Glossary items -->
+        </div>
+
         <!-- Bottom Navigation -->
         <div class="tab-navigation bottom-nav">
             <!-- Duplicate tab buttons -->
@@ -335,14 +342,19 @@ function showTab(tabNumber) {
   const buttons = document.querySelectorAll(".tab-button");
   buttons.forEach((button) => button.classList.remove("active"));
 
-  // Show selected panel and activate button
-  document.getElementById(`tab-${tabNumber}`).classList.add("active");
-  const activeButton = document.querySelector(
-    `.tab-button:nth-child(${tabNumber})`
-  );
-  if (activeButton) activeButton.classList.add("active");
+  // Show selected panel
+  const selectedPanel = document.getElementById(`tab-${tabNumber}`);
+  if (selectedPanel) {
+    selectedPanel.classList.add("active");
+  }
 
-  // Scroll to tabs
+  // Add active class to clicked button
+  const clickedButton = event.target.closest(".tab-button");
+  if (clickedButton) {
+    clickedButton.classList.add("active");
+  }
+
+  // Scroll to top of the tab navigation for better UX
   const tabContainer = document.querySelector(".lecture-tabs");
   if (tabContainer) {
     tabContainer.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -518,7 +530,46 @@ Use the convention: `assets/mX-assets/image-name.png`
 - Provide clear captions
 - Keep content focused and educational
 
-### 5. Tab Content Organization
+### 5. Required Structure Standards
+
+**CRITICAL: Follow this exact structure order:**
+
+1. **Learning Objectives** (with `class="learning-objectives"`)
+2. **Main Tab Content** (inside `<div class="lecture-tabs">`)
+3. **Glossary** (OUTSIDE tabs, between main content and bottom navigation)
+4. **Bottom Navigation** (duplicate of top navigation)
+
+**❌ WRONG Structure:**
+
+```html
+<div class="lecture-tabs">
+  <!-- tab content -->
+  <h2>Glossary</h2>
+  <!-- DON'T put glossary inside tabs -->
+</div>
+```
+
+**✅ CORRECT Structure:**
+
+```html
+<div class="lecture-tabs">
+  <!-- tab content only -->
+</div>
+
+<hr />
+
+<h2>Glossary</h2>
+<!-- OUTSIDE tabs -->
+<div class="glossary-section">
+  <!-- glossary items -->
+</div>
+
+<div class="tab-navigation bottom-nav">
+  <!-- bottom navigation -->
+</div>
+```
+
+### 6. Tab Content Organization
 
 - Each tab should be a logical unit of content
 - Use clear headings (h2, h3) within tabs
@@ -526,6 +577,7 @@ Use the convention: `assets/mX-assets/image-name.png`
 - Include knowledge checks at appropriate points
 - Add "Quick Check" sections throughout content
 - Include visual diagrams where helpful
+- **NEVER put glossary inside tab content**
 
 ## Conversion Checklist
 
@@ -543,11 +595,13 @@ Use the convention: `assets/mX-assets/image-name.png`
 - [ ] Implement tab navigation (top and bottom)
 - [ ] Convert markdown content to HTML
 - [ ] Add knowledge checks with proper HTML structure and toggle functionality
-- [ ] Create professional glossary with grid layout
+- [ ] Create professional glossary with grid layout **OUTSIDE of tabs**
 - [ ] Add visual diagrams where appropriate
 - [ ] Update image paths to use asset folders
 - [ ] Add all required JavaScript functions (including knowledge check storage)
+- [ ] **VERIFY correct structure**: Learning Objectives → Tab Content → Glossary → Bottom Nav
 - [ ] Test tab switching functionality
+- [ ] Test bottom tab navigation scrolls to top
 - [ ] Test progress tracking (localStorage)
 - [ ] Test knowledge check show/hide functionality
 
@@ -556,7 +610,9 @@ Use the convention: `assets/mX-assets/image-name.png`
 - [ ] Verify all tabs display correctly
 - [ ] Test knowledge check show/hide toggle functionality
 - [ ] Verify progress tracking works for both top and bottom nav
+- [ ] **Test bottom tab navigation scrolls to top of page**
 - [ ] Test knowledge check localStorage persistence
+- [ ] **Verify glossary is accessible from all tabs (outside tab content)**
 - [ ] Verify glossary displays in proper grid format
 - [ ] Test visual diagrams display correctly
 - [ ] Check responsive design on mobile
@@ -564,6 +620,7 @@ Use the convention: `assets/mX-assets/image-name.png`
 - [ ] Test with different browsers
 - [ ] Ensure consistent styling with M1/M2
 - [ ] Verify learning objectives display without redundant numbering
+- [ ] **Verify correct document structure order**
 
 ## File Naming Convention
 
@@ -597,6 +654,35 @@ Use the convention: `assets/mX-assets/image-name.png`
 - **Clean Numbering**: No redundant circular icons
 - **Consistent Spacing**: Proper margins and typography
 
+### Navigation Improvements:
+
+- **Bottom Tab Scroll**: Bottom navigation tabs scroll to top when clicked
+- **Proper Structure**: Glossary outside tabs for accessibility
+- **Consistent Behavior**: All navigation works identically across modules
+
+## Critical Requirements
+
+### ✅ MANDATORY Structure Order:
+
+1. Learning Objectives (with proper CSS class)
+2. Main Tab Content (inside lecture-tabs div)
+3. Glossary (OUTSIDE tabs, between main content and bottom nav)
+4. Bottom Navigation (with scroll functionality)
+
+### ✅ MANDATORY JavaScript Features:
+
+- **Scroll Functionality**: Bottom tabs must scroll to top
+- **Toggle Knowledge Checks**: Show/Hide Answer buttons
+- **Progress Persistence**: localStorage for both tabs and knowledge checks
+- **Proper Event Handling**: Click events work for both top and bottom nav
+
+### ❌ Common Mistakes to Avoid:
+
+- **DON'T** put glossary inside tab content
+- **DON'T** forget scroll functionality in showTab function
+- **DON'T** use redundant numbering in learning objectives
+- **DON'T** skip the knowledge check storage functions
+
 ## Notes
 
 - Keep custom CSS minimal - rely on `main.css` for most styling
@@ -606,6 +692,8 @@ Use the convention: `assets/mX-assets/image-name.png`
 - **Always include ALL required CSS** for full functionality
 - **Test knowledge check toggle functionality** before publishing
 - **Ensure glossary uses grid layout** for professional appearance
+- **Test bottom tab scroll functionality** before publishing
+- **Verify glossary is outside tabs** for accessibility
 
 ## Module-Specific Considerations
 
