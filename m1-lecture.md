@@ -167,21 +167,93 @@ Let's practice with some research scenarios:
 - `Caffeine consumption` or `Caffeine condition` (e.g., caffeine vs. no caffeine)
 - `Reaction time` (measured in milliseconds)
 
-### Quick Check
-
-For each research question, identify the variables:
-
-1. "Do children who watch more TV have shorter attention spans?"
-2. "Is there a relationship between income level and job satisfaction?"
-3. "Does listening to music while studying help or hurt test performance?"
-
-<details>
-<summary>Click to see answers</summary>
-
-1. Variables: `TV viewing hours`, `Attention span` (measured in some standardized way)
-2. Variables: `Income level`, `Job satisfaction` (perhaps measured on a rating scale)
-3. Variables: `Music condition` (music vs. no music), `Test performance` (test score)
-</details>
+<div class="knowledge-check">
+  <h4>🧠 Knowledge Check: Identifying Variables</h4>
+  
+  <div class="quiz-question">
+    <p><strong>Question 1:</strong> For the research question "Do children who watch more TV have shorter attention spans?", which of these are good variable names?</p>
+    <div class="options">
+      <p>A) "Children" and "TV"</p>
+      <p>B) "TV viewing hours" and "Attention span"</p>
+      <p>C) "Watching TV" and "Attention"</p>
+      <p>D) "TV time" and "Focus"</p>
+    </div>
+  </div>
+  
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> B) "TV viewing hours" and "Attention span"</p>
+      
+      <p class="explanation"><strong>Why this is correct:</strong> These names clearly indicate what is being measured and can vary between individuals. "TV viewing hours" specifies the exact measurement (hours), and "Attention span" describes the psychological construct being assessed.</p>
+      
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>A) "Children" and "TV":</strong> These are too vague. "Children" doesn't indicate what aspect of children is being measured, and "TV" doesn't specify what about TV is relevant.</li>
+        <li><strong>C) "Watching TV" and "Attention":</strong> "Watching TV" is an activity, not a measurable variable. "Attention" is too broad—attention span, attention quality, or attention duration?</li>
+        <li><strong>D) "TV time" and "Focus":</strong> "TV time" is better but less specific than "TV viewing hours." "Focus" is vague—focus on what? For how long?</li>
+      </ul>
+      
+      <p class="review-tip"><em>💭 Need to review?</em> See Part 2: Variables: The Building Blocks for the golden rule of variable naming.</p>
+    </div>
+  </details>
+  
+  <div class="quiz-question">
+    <p><strong>Question 2:</strong> For the research question "Is there a relationship between income level and job satisfaction?", what makes these good variable names?</p>
+    <div class="options">
+      <p>A) They are short and simple</p>
+      <p>B) They represent characteristics that can vary between people</p>
+      <p>C) They are easy to spell</p>
+      <p>D) They sound professional</p>
+    </div>
+  </div>
+  
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> B) They represent characteristics that can vary between people</p>
+      
+      <p class="explanation"><strong>Why this is correct:</strong> The key principle of variable naming is that variables must represent something that can change or vary from one person to another. "Income level" varies (some people earn $30K, others $100K), and "job satisfaction" varies (some people love their job, others hate it).</p>
+      
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>A) Short and simple:</strong> While clarity is important, being short isn't the main criterion. "Income level" is longer than "money" but much more specific.</li>
+        <li><strong>C) Easy to spell:</strong> Spelling is important for communication, but it's not the defining characteristic of a good variable name.</li>
+        <li><strong>D) Sound professional:</strong> Professional language is good, but the most important thing is that the name clearly represents something that varies.</li>
+      </ul>
+      
+      <p class="application-tip"><em>🌟 Real-world tip:</em> In SPSS, you'll use these variable names in all your analyses. Clear, descriptive names make your output much easier to interpret!</p>
+    </div>
+  </details>
+  
+  <div class="quiz-question">
+    <p><strong>Question 3:</strong> For the research question "Does listening to music while studying help or hurt test performance?", which variable represents the independent variable (the presumed cause)?</p>
+    <div class="options">
+      <p>A) "Test performance"</p>
+      <p>B) "Music condition" (music vs. no music)</p>
+      <p>C) "Studying"</p>
+      <p>D) "Listening"</p>
+    </div>
+  </div>
+  
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> B) "Music condition" (music vs. no music)</p>
+      
+      <p class="explanation"><strong>Why this is correct:</strong> The independent variable is the presumed cause or predictor. In this study, the researcher is manipulating whether students listen to music or not, and then measuring the effect on test performance. The music condition is what the researcher controls or varies.</p>
+      
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>A) "Test performance":</strong> This is the dependent variable (the outcome being measured). Test performance is what we expect to change based on the music condition.</li>
+        <li><strong>C) "Studying":</strong> This is too vague. All participants are studying—the question is about the conditions under which they study.</li>
+        <li><strong>D) "Listening":</strong> This is an activity, not a variable. The variable is whether they're in the music condition or the no-music condition.</li>
+      </ul>
+      
+      <p class="review-tip"><em>💭 Need to review?</em> See Part 3: Classifying Variables for more on independent vs. dependent variables.</p>
+    </div>
+  </details>
+</div>
 
 ### Why Proper Variable Naming Matters
 
@@ -398,27 +470,120 @@ This is another way to classify **scale** variables:
 
 **Common Mistake:** Students sometimes calculate the mean of a nominal variable because SPSS doesn't stop you. If you set `Gender` as 1=Male, 2=Female and calculate a mean of 1.6, what does that mean? Nothing! Always check your measurement level before choosing an analysis.
 
-### Quick Check
-
-Classify each variable:
-
-1. Blood type (A, B, AB, O)
-2. Pain rating (0 = No pain, 10 = Worst pain imaginable)
-3. Salary in dollars
-4. Political party (Republican, Democrat, Independent, Other)
-5. Finishing position in a race (1st, 2nd, 3rd, etc.)
-6. Reaction time in milliseconds
-
-<details>
-<summary>Click to see answers</summary>
-
-1. **Nominal** (categories, no order)
-2. **Ordinal** (or arguably scale if treating as continuous—this is a judgment call)
-3. **Scale/Ratio** (true numbers with meaningful zero)
-4. **Nominal** (categories, no inherent order)
-5. **Ordinal** (ranked, but distances between ranks aren't equal)
-6. **Scale/Ratio** (continuous measurement)
-</details>
+<div class="knowledge-check">
+  <h4>🧠 Knowledge Check: Classifying Variables by Measurement Scale</h4>
+  
+  <div class="quiz-question">
+    <p><strong>Question 1:</strong> What measurement level is "blood type" (A, B, AB, O)?</p>
+    <div class="options">
+      <p>A) Nominal</p>
+      <p>B) Ordinal</p>
+      <p>C) Scale</p>
+      <p>D) It depends on how you measure it</p>
+    </div>
+  </div>
+  
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> A) Nominal</p>
+      
+      <p class="explanation"><strong>Why this is correct:</strong> Blood type represents distinct categories with no inherent order or ranking. Type A is not "more" or "less" than Type B—they're just different categories. The letters are arbitrary labels.</p>
+      
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>B) Ordinal:</strong> There's no meaningful order to blood types. You can't say A > B > AB > O in any meaningful way.</li>
+        <li><strong>C) Scale:</strong> You can't do meaningful math with blood types. What's the average of A and B? It doesn't make sense.</li>
+        <li><strong>D) It depends:</strong> Blood type is always nominal regardless of how you code it (A=1, B=2, etc.). The measurement level is about the nature of the variable, not the coding.</li>
+      </ul>
+      
+      <p class="review-tip"><em>💭 Need to review?</em> See Part 3.2: Classification by Measurement Scale for the decision tree.</p>
+    </div>
+  </details>
+  
+  <div class="quiz-question">
+    <p><strong>Question 2:</strong> What measurement level is "pain rating" (0 = No pain, 10 = Worst pain imaginable)?</p>
+    <div class="options">
+      <p>A) Nominal</p>
+      <p>B) Ordinal</p>
+      <p>C) Scale</p>
+      <p>D) It could be either ordinal or scale</p>
+    </div>
+  </div>
+  
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> D) It could be either ordinal or scale</p>
+      
+      <p class="explanation"><strong>Why this is correct:</strong> This is a "gray area" case! Pain ratings can be treated as either ordinal or scale depending on your research question and assumptions.</p>
+      
+      <p class="explanation"><strong>Arguments for Ordinal:</strong> The distance between pain levels might not be equal. Is the difference between 2 and 3 the same as between 8 and 9? Maybe not—pain perception isn't linear.</p>
+      
+      <p class="explanation"><strong>Arguments for Scale:</strong> Many researchers treat pain scales as interval data, assuming roughly equal intervals. This allows for more powerful statistical analyses (calculating means, correlations, etc.).</p>
+      
+      <p class="application-tip"><em>🌟 Real-world tip:</em> In practice, most researchers treat Likert scales and pain ratings as scale data for analysis purposes, but acknowledge the ordinal nature in their limitations section.</p>
+    </div>
+  </details>
+  
+  <div class="quiz-question">
+    <p><strong>Question 3:</strong> What measurement level is "finishing position in a race" (1st, 2nd, 3rd, etc.)?</p>
+    <div class="options">
+      <p>A) Nominal</p>
+      <p>B) Ordinal</p>
+      <p>C) Scale</p>
+      <p>D) It depends on the race</p>
+    </div>
+  </div>
+  
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> B) Ordinal</p>
+      
+      <p class="explanation"><strong>Why this is correct:</strong> Finishing positions have a meaningful order (1st is better than 2nd, which is better than 3rd), but the distances between positions aren't equal. The time difference between 1st and 2nd place might be 0.1 seconds, while the difference between 2nd and 3rd might be 5 seconds.</p>
+      
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>A) Nominal:</strong> There IS a meaningful order—1st place is clearly better than 2nd place.</li>
+        <li><strong>C) Scale:</strong> You can't do meaningful math with positions. What's the average of 1st and 3rd place? It's not 2nd place!</li>
+        <li><strong>D) It depends:</strong> The measurement level is about the nature of the variable, not the specific race. All finishing positions work the same way.</li>
+      </ul>
+      
+      <p class="review-tip"><em>💭 Need to review?</em> See Part 3.2 for more examples of ordinal variables and why unequal intervals matter.</p>
+    </div>
+  </details>
+  
+  <div class="quiz-question">
+    <p><strong>Question 4:</strong> Which of these variables would be classified as "Scale" in SPSS?</p>
+    <div class="options">
+      <p>A) Salary in dollars</p>
+      <p>B) Reaction time in milliseconds</p>
+      <p>C) Number of siblings</p>
+      <p>D) All of the above</p>
+    </div>
+  </div>
+  
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> D) All of the above</p>
+      
+      <p class="explanation"><strong>Why this is correct:</strong> All three represent true numerical values where you can do meaningful math operations.</p>
+      
+      <p class="explanation"><strong>Why each is scale:</strong></p>
+      <ul>
+        <li><strong>A) Salary:</strong> You can add, subtract, average salaries. $50,000 + $30,000 = $80,000 makes sense.</li>
+        <li><strong>B) Reaction time:</strong> You can calculate means, differences, etc. 250ms + 300ms = 550ms is meaningful.</li>
+        <li><strong>C) Number of siblings:</strong> Even though it's discrete (whole numbers), you can still do math. Average of 2 and 4 siblings = 3 siblings.</li>
+      </ul>
+      
+      <p class="explanation"><strong>Key insight:</strong> Scale variables can be either discrete (like number of siblings) or continuous (like reaction time). What matters is that the numbers represent true quantities, not just labels.</p>
+      
+      <p class="application-tip"><em>🌟 SPSS tip:</em> In SPSS, set all of these to "Scale" in the Measure column. This allows you to calculate means, standard deviations, and run most statistical tests.</p>
+    </div>
+  </details>
+</div>
 
 ---
 
@@ -701,22 +866,101 @@ The mean doesn't tell the whole story! We need measures of **variability** (spre
 
 **Interpretation:** The average sleep time is 7 hours, with students typically varying by about 1.4 hours above or below this average.
 
-### Quick Check
-
-Calculate mean, median, mode, and range for these reaction times (in milliseconds):
-250, 275, 280, 280, 290, 310, 500
-
-<details>
-<summary>Click to see answers</summary>
-
-- **Mean:** (250+275+280+280+290+310+500)/7 = 312.1 ms
-- **Median:** 280 ms (middle value)
-- **Mode:** 280 ms (appears twice)
-- **Range:** 500 - 250 = 250 ms
-
-**Note:** The mean (312.1) is pulled up by the outlier (500). The median (280) better represents the typical response time.
-
-</details>
+<div class="knowledge-check">
+  <h4>🧠 Knowledge Check: Descriptive Statistics and Outliers</h4>
+  
+  <div class="quiz-question">
+    <p><strong>Question 1:</strong> For these reaction times (in ms): 250, 275, 280, 280, 290, 310, 500, which measure of central tendency is most affected by the outlier (500)?</p>
+    <div class="options">
+      <p>A) Mean</p>
+      <p>B) Median</p>
+      <p>C) Mode</p>
+      <p>D) Range</p>
+    </div>
+  </div>
+  
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> A) Mean</p>
+      
+      <p class="explanation"><strong>Why this is correct:</strong> The mean is calculated by adding all values and dividing by the count. The outlier (500) gets included in this sum, pulling the average up significantly. Mean = (250+275+280+280+290+310+500)/7 = 312.1 ms, which is much higher than the other values.</p>
+      
+      <p class="explanation"><strong>Why the others are less affected:</strong></p>
+      <ul>
+        <li><strong>B) Median:</strong> The median is the middle value when ordered. With 7 values, the median is the 4th value (280), regardless of how extreme the highest value is.</li>
+        <li><strong>C) Mode:</strong> The mode is the most frequent value (280, which appears twice). Outliers don't affect the mode unless they're also the most frequent.</li>
+        <li><strong>D) Range:</strong> While the range is affected (500-250=250), the question asks about central tendency measures specifically.</li>
+      </ul>
+      
+      <p class="application-tip"><em>🌟 Real-world tip:</em> When you have outliers, always report both mean and median. The median gives a better sense of the "typical" value, while the mean shows the full impact of extreme values.</p>
+    </div>
+  </details>
+  
+  <div class="quiz-question">
+    <p><strong>Question 2:</strong> In the same dataset, what is the median reaction time?</p>
+    <div class="options">
+      <p>A) 280 ms</p>
+      <p>B) 290 ms</p>
+      <p>C) 312.1 ms</p>
+      <p>D) 500 ms</p>
+    </div>
+  </div>
+  
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> A) 280 ms</p>
+      
+      <p class="explanation"><strong>How to find the median:</strong></p>
+      <ol>
+        <li>Order the values: 250, 275, 280, 280, 290, 310, 500</li>
+        <li>Count the values: n = 7 (odd number)</li>
+        <li>Find the middle position: (7+1)/2 = 4th position</li>
+        <li>The 4th value is 280 ms</li>
+      </ol>
+      
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>B) 290 ms:</strong> This is the 5th value, not the middle.</li>
+        <li><strong>C) 312.1 ms:</strong> This is the mean, not the median.</li>
+        <li><strong>D) 500 ms:</strong> This is the maximum value (outlier), not the median.</li>
+      </ul>
+      
+      <p class="review-tip"><em>💭 Need to review?</em> See Part 4.1: Measures of Central Tendency for the step-by-step process.</p>
+    </div>
+  </details>
+  
+  <div class="quiz-question">
+    <p><strong>Question 3:</strong> Which measure would you choose to describe the "typical" reaction time in this dataset?</p>
+    <div class="options">
+      <p>A) Mean (312.1 ms) because it uses all the data</p>
+      <p>B) Median (280 ms) because it's not affected by the outlier</p>
+      <p>C) Mode (280 ms) because it's the most common</p>
+      <p>D) It doesn't matter—they're all equally good</p>
+    </div>
+  </div>
+  
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> B) Median (280 ms) because it's not affected by the outlier</p>
+      
+      <p class="explanation"><strong>Why the median is best here:</strong> The median represents the "typical" value better when outliers are present. Most participants (5 out of 7) had reaction times between 250-310 ms, so 280 ms better represents the typical performance than 312.1 ms.</p>
+      
+      <p class="explanation"><strong>Why the others are less ideal:</strong></p>
+      <ul>
+        <li><strong>A) Mean:</strong> While it uses all data, it's pulled up by the outlier and doesn't represent typical performance well.</li>
+        <li><strong>C) Mode:</strong> The mode is good, but the median is generally preferred for describing central tendency in skewed distributions.</li>
+        <li><strong>D) It does matter:</strong> The choice of measure affects how you interpret and communicate your results.</li>
+      </ul>
+      
+      <p class="explanation"><strong>General rule:</strong> Use the median when you have outliers or skewed distributions. Use the mean when your data is roughly symmetrical and has no extreme outliers.</p>
+      
+      <p class="application-tip"><em>🌟 Reporting tip:</em> Always report both mean and median when outliers are present. This gives readers a complete picture: "Mean reaction time was 312.1 ms (SD = 89.2), but the median was 280 ms, suggesting the mean was influenced by one slow outlier."</p>
+    </div>
+  </details>
+</div>
 
 ---
 

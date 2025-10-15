@@ -474,21 +474,125 @@ This is where the directional vs. non-directional distinction becomes concrete.
 
 **Important:** You must decide one-tailed vs. two-tailed BEFORE seeing your data. Otherwise it's cheating (p-hacking).
 
-### Quick Check
-
-1. What does p = .08 mean?
-2. If p = .08 and α = .05, what decision do you make?
-3. Can a result be statistically significant but practically unimportant?
-4. If SPSS reports p = .06 for a two-tailed test, what would the one-tailed p be?
-
-<details>
-<summary>Click to see answers</summary>
-
-1. If H₀ is true, there's an 8% chance of getting a result this extreme by random chance
-2. Fail to reject H₀ (p ≥ α, so not statistically significant)
-3. Yes! Large samples can detect tiny, meaningless differences
-4. p_one-tailed = .06 / 2 = .03 (if result is in predicted direction)
-</details>
+<div class="knowledge-check">
+  <h4>🧠 Knowledge Check: Understanding p-Values and Statistical Decisions</h4>
+  
+  <div class="quiz-question">
+    <p><strong>Question 1:</strong> What does p = .08 mean in hypothesis testing?</p>
+    <div class="options">
+      <p>A) There's an 8% chance the null hypothesis is true</p>
+      <p>B) There's an 8% chance of getting results this extreme if the null hypothesis is true</p>
+      <p>C) There's an 8% chance your alternative hypothesis is correct</p>
+      <p>D) The effect size is 0.08</p>
+    </div>
+  </div>
+  
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> B) There's an 8% chance of getting results this extreme if the null hypothesis is true</p>
+      
+      <p class="explanation"><strong>Why this is correct:</strong> The p-value is the probability of obtaining a result as extreme as (or more extreme than) the one observed, assuming the null hypothesis is true. It's NOT the probability that the null hypothesis is true.</p>
+      
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>A) 8% chance null is true:</strong> This is a common misconception! The p-value doesn't tell us the probability that H₀ is true.</li>
+        <li><strong>C) 8% chance alternative is correct:</strong> The p-value doesn't directly tell us about the probability of H₁ being true either.</li>
+        <li><strong>D) Effect size is 0.08:</strong> The p-value and effect size are completely different concepts. Effect size measures how big the difference is.</li>
+      </ul>
+      
+      <p class="review-tip"><em>💭 Need to review?</em> See Part 3: The Decision-Making Framework for the definition of p-values.</p>
+    </div>
+  </details>
+  
+  <div class="quiz-question">
+    <p><strong>Question 2:</strong> If p = .08 and α = .05, what decision should you make?</p>
+    <div class="options">
+      <p>A) Reject the null hypothesis</p>
+      <p>B) Fail to reject the null hypothesis</p>
+      <p>C) Accept the null hypothesis</p>
+      <p>D) The result is inconclusive</p>
+    </div>
+  </div>
+  
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> B) Fail to reject the null hypothesis</p>
+      
+      <p class="explanation"><strong>Why this is correct:</strong> Since p (.08) ≥ α (.05), the result is not statistically significant. We fail to reject the null hypothesis because we don't have sufficient evidence against it.</p>
+      
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>A) Reject H₀:</strong> You only reject H₀ when p < α. Since .08 > .05, you don't have strong enough evidence.</li>
+        <li><strong>C) Accept H₀:</strong> We never "accept" the null hypothesis. We either reject it or fail to reject it. Failing to reject doesn't mean H₀ is true.</li>
+        <li><strong>D) Inconclusive:</strong> The result is conclusive—it's not statistically significant. We just can't conclude there's an effect.</li>
+      </ul>
+      
+      <p class="application-tip"><em>🌟 Real-world tip:</em> p = .08 is close to .05, so you might want to mention this in your discussion. "While not statistically significant (p = .08), the result approaches significance and warrants further investigation with a larger sample."</p>
+    </div>
+  </details>
+  
+  <div class="quiz-question">
+    <p><strong>Question 3:</strong> Can a result be statistically significant but practically unimportant?</p>
+    <div class="options">
+      <p>A) No, statistical significance always means practical importance</p>
+      <p>B) Yes, large samples can detect tiny, meaningless differences</p>
+      <p>C) No, if it's significant, it must be important</p>
+      <p>D) It depends on the research field</p>
+    </div>
+  </div>
+  
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> B) Yes, large samples can detect tiny, meaningless differences</p>
+      
+      <p class="explanation"><strong>Why this is correct:</strong> Statistical significance (p < .05) only tells you that the result is unlikely due to chance. It doesn't tell you how big or important the effect is. With very large samples, even tiny differences become statistically significant.</p>
+      
+      <p class="explanation"><strong>Example:</strong> A new diet pill might help people lose 0.1 pounds more than a placebo. With 10,000 participants, this tiny difference could be statistically significant (p < .001), but who cares about 0.1 pounds?</p>
+      
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>A) Always means importance:</strong> Statistical significance and practical significance are different concepts.</li>
+        <li><strong>C) Must be important:</strong> Significance ≠ importance. You need to look at effect size to judge importance.</li>
+        <li><strong>D) Depends on field:</strong> While interpretation varies by field, the principle that significance ≠ importance is universal.</li>
+      </ul>
+      
+      <p class="application-tip"><em>🌟 Key insight:</em> Always report both statistical significance (p-value) AND effect size (Cohen's d) to give readers the complete picture!</p>
+    </div>
+  </details>
+  
+  <div class="quiz-question">
+    <p><strong>Question 4:</strong> If SPSS reports p = .06 for a two-tailed test, what would the one-tailed p be (if the result is in the predicted direction)?</p>
+    <div class="options">
+      <p>A) .06</p>
+      <p>B) .03</p>
+      <p>C) .12</p>
+      <p>D) It depends on the sample size</p>
+    </div>
+  </div>
+  
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> B) .03</p>
+      
+      <p class="explanation"><strong>Why this is correct:</strong> For one-tailed tests, you divide the two-tailed p-value by 2 (if the result is in the predicted direction). .06 ÷ 2 = .03.</p>
+      
+      <p class="explanation"><strong>Why this works:</strong> In a two-tailed test, alpha is split between both tails (.025 in each tail for α = .05). In a one-tailed test, all alpha goes in one tail (.05 in the predicted direction). So the one-tailed p-value is half the two-tailed p-value.</p>
+      
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>A) .06:</strong> This would be the two-tailed p-value, not the one-tailed.</li>
+        <li><strong>C) .12:</strong> This would be doubling the p-value, which doesn't make sense.</li>
+        <li><strong>D) Depends on sample size:</strong> The conversion from two-tailed to one-tailed p is always divide by 2, regardless of sample size.</li>
+      </ul>
+      
+      <p class="review-tip"><em>💭 Important reminder:</em> You must decide one-tailed vs. two-tailed BEFORE seeing your data. Converting after seeing results is p-hacking!</p>
+    </div>
+  </details>
+</div>
 
 ---
 
