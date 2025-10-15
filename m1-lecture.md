@@ -764,101 +764,204 @@ By the end of this module, you will be able to:
                 <li><strong>Grouped frequency distribution</strong> - for scale data</li>
             </ol>
 
-            ### For Categorical Data: Frequency Tables and Bar Charts
+            <h3>For Categorical Data: Frequency Tables and Bar Charts</h3>
 
-            #### Frequency Tables
-            Simply count how many times each category appears.
+            <h4>Frequency Tables</h4>
+            <p>Simply count how many times each category appears.</p>
 
-            **Example: Favorite Pizza Toppings**
-            Data: Pepperoni, Cheese, Mushroom, Pepperoni, Cheese, Pepperoni, Sausage, Cheese, Pepperoni, Mushroom
+            <p><strong>Example: Favorite Pizza Toppings</strong><br>
+            Data: Pepperoni, Cheese, Mushroom, Pepperoni, Cheese, Pepperoni, Sausage, Cheese, Pepperoni, Mushroom</p>
 
-            | Topping    | Frequency | Percentage |
-            |------------|-----------|------------|
-            | Pepperoni  | 4         | 40%        |
-            | Cheese     | 3         | 30%        |
-            | Mushroom   | 2         | 20%        |
-            | Sausage    | 1         | 10%        |
-            | **Total**  | **10**    | **100%**   |
+            <table>
+                <tr>
+                    <th>Topping</th>
+                    <th>Frequency</th>
+                    <th>Percentage</th>
+                </tr>
+                <tr>
+                    <td>Pepperoni</td>
+                    <td>4</td>
+                    <td>40%</td>
+                </tr>
+                <tr>
+                    <td>Cheese</td>
+                    <td>3</td>
+                    <td>30%</td>
+                </tr>
+                <tr>
+                    <td>Mushroom</td>
+                    <td>2</td>
+                    <td>20%</td>
+                </tr>
+                <tr>
+                    <td>Sausage</td>
+                    <td>1</td>
+                    <td>10%</td>
+                </tr>
+                <tr>
+                    <td><strong>Total</strong></td>
+                    <td><strong>10</strong></td>
+                    <td><strong>100%</strong></td>
+                </tr>
+            </table>
 
-            #### Bar Charts
-            Visual representation of frequency tables.
+            <h4>Bar Charts</h4>
+            <p>Visual representation of frequency tables.</p>
 
-            **When to use bar charts:**
-            - Nominal data (categories with no order)
-            - Ordinal data (categories with order)
-            - Comparing frequencies across categories
+            <p><strong>When to use bar charts:</strong></p>
+            <ul>
+                <li>Nominal data (categories with no order)</li>
+                <li>Ordinal data (categories with order)</li>
+                <li>Comparing frequencies across categories</li>
+            </ul>
 
-            **Characteristics:**
-            - Bars don't touch (categories are separate)
-            - Height represents frequency
-            - Can be horizontal or vertical
+            <p><strong>Characteristics:</strong></p>
+            <ul>
+                <li>Bars don't touch (categories are separate)</li>
+                <li>Height represents frequency</li>
+                <li>Can be horizontal or vertical</li>
+            </ul>
 
-            **Example Bar Chart Data:**
-            ```
+            <p><strong>Example Bar Chart Data:</strong></p>
+            <pre>
             Pepperoni  ████████ 4
             Cheese     ██████   3
             Mushroom   ████     2
             Sausage    ██       1
-            ```
+            </pre>
 
-            ### For Scale Data: Grouped Frequency Tables and Histograms
+            <h3>For Scale Data: Grouped Frequency Tables and Histograms</h3>
 
-            #### Grouped Frequency Tables
-            When you have many different values, group them into ranges (called "bins" or "intervals").
+            <h4>Grouped Frequency Tables</h4>
+            <p>When you have many different values, group them into ranges (called "bins" or "intervals").</p>
 
-            **Example: Test Scores (0-100 scale)**
-            Raw data: 78, 85, 92, 67, 89, 94, 76, 83, 91, 88, 79, 86, 93, 75, 87
+            <p><strong>Example: Test Scores (0-100 scale)</strong><br>
+            Raw data: 78, 85, 92, 67, 89, 94, 76, 83, 91, 88, 79, 86, 93, 75, 87</p>
 
-            **Step 1: Determine range**
-            Highest: 94, Lowest: 67
-            Range = 94 - 67 = 27
+            <p><strong>Step 1: Determine range</strong><br>
+            Highest: 94, Lowest: 67<br>
+            Range = 94 - 67 = 27</p>
 
-            **Step 2: Choose appropriate interval width**
-            Common rule: Use 5-15 intervals
-            With 15 data points, let's use 5-point intervals
+            <p><strong>Step 2: Choose appropriate interval width</strong><br>
+            Common rule: Use 5-15 intervals<br>
+            With 15 data points, let's use 5-point intervals</p>
 
-            **Step 3: Create intervals**
-            Start just below the lowest value: 65-69, 70-74, 75-79, 80-84, 85-89, 90-94, 95-99
+            <p><strong>Step 3: Create intervals</strong><br>
+            Start just below the lowest value: 65-69, 70-74, 75-79, 80-84, 85-89, 90-94, 95-99</p>
 
-            **Step 4: Count frequencies**
-            | Score Range | Tally | Frequency |
-            |-------------|-------|-----------|
-            | 95-99       |       | 0         |
-            | 90-94       | ||||  | 4         |
-            | 85-89       | ||||| | 5         |
-            | 80-84       | ||    | 2         |
-            | 75-79       | |||   | 3         |
-            | 70-74       |       | 0         |
-            | 65-69       | |     | 1         |
+            <p><strong>Step 4: Count frequencies</strong></p>
+            <table>
+                <tr>
+                    <th>Score Range</th>
+                    <th>Tally</th>
+                    <th>Frequency</th>
+                </tr>
+                <tr>
+                    <td>95-99</td>
+                    <td></td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>90-94</td>
+                    <td>||||</td>
+                    <td>4</td>
+                </tr>
+                <tr>
+                    <td>85-89</td>
+                    <td>|||||</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>80-84</td>
+                    <td>||</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>75-79</td>
+                    <td>|||</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>70-74</td>
+                    <td></td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>65-69</td>
+                    <td>|</td>
+                    <td>1</td>
+                </tr>
+            </table>
 
-            **Step 5: Calculate percentages**
-            | Score Range | Frequency | Percentage |
-            |-------------|-----------|------------|
-            | 95-99       | 0         | 0%         |
-            | 90-94       | 4         | 27%        |
-            | 85-89       | 5         | 33%        |
-            | 80-84       | 2         | 13%        |
-            | 75-79       | 3         | 20%        |
-            | 70-74       | 0         | 0%         |
-            | 65-69       | 1         | 7%         |
-            | **Total**   | **15**    | **100%**   |
+            <p><strong>Step 5: Calculate percentages</strong></p>
+            <table>
+                <tr>
+                    <th>Score Range</th>
+                    <th>Frequency</th>
+                    <th>Percentage</th>
+                </tr>
+                <tr>
+                    <td>95-99</td>
+                    <td>0</td>
+                    <td>0%</td>
+                </tr>
+                <tr>
+                    <td>90-94</td>
+                    <td>4</td>
+                    <td>27%</td>
+                </tr>
+                <tr>
+                    <td>85-89</td>
+                    <td>5</td>
+                    <td>33%</td>
+                </tr>
+                <tr>
+                    <td>80-84</td>
+                    <td>2</td>
+                    <td>13%</td>
+                </tr>
+                <tr>
+                    <td>75-79</td>
+                    <td>3</td>
+                    <td>20%</td>
+                </tr>
+                <tr>
+                    <td>70-74</td>
+                    <td>0</td>
+                    <td>0%</td>
+                </tr>
+                <tr>
+                    <td>65-69</td>
+                    <td>1</td>
+                    <td>7%</td>
+                </tr>
+                <tr>
+                    <td><strong>Total</strong></td>
+                    <td><strong>15</strong></td>
+                    <td><strong>100%</strong></td>
+                </tr>
+            </table>
 
-            #### Histograms
-            Visual representation of grouped frequency data.
+            <h4>Histograms</h4>
+            <p>Visual representation of grouped frequency data.</p>
 
-            **When to use histograms:**
-            - Scale data (interval or ratio)
-            - Showing distribution shape
-            - Identifying patterns, outliers, skewness
+            <p><strong>When to use histograms:</strong></p>
+            <ul>
+                <li>Scale data (interval or ratio)</li>
+                <li>Showing distribution shape</li>
+                <li>Identifying patterns, outliers, skewness</li>
+            </ul>
 
-            **Characteristics:**
-            - Bars touch (continuous scale)
-            - Width represents interval range
-            - Height represents frequency
-            - No gaps between bars (unless frequency is zero)
+            <p><strong>Characteristics:</strong></p>
+            <ul>
+                <li>Bars touch (continuous scale)</li>
+                <li>Width represents interval range</li>
+                <li>Height represents frequency</li>
+                <li>No gaps between bars (unless frequency is zero)</li>
+            </ul>
 
-            **Example Histogram:**
-            ```
+            <p><strong>Example Histogram:</strong></p>
+            <pre>
             Frequency
                 5 |     ███
                 4 | ███ ███ ███
@@ -868,112 +971,130 @@ By the end of this module, you will be able to:
                   +----+----+----+----+----+
                   65  70   75   80   85   90
                   Score Range
-            ```
+            </pre>
 
-            **What this histogram tells us:**
-            - Most scores are in the 85-89 range (5 students)
-            - Distribution is roughly bell-shaped
-            - No extreme outliers
-            - Scores are concentrated in the upper ranges
+            <p><strong>What this histogram tells us:</strong></p>
+            <ul>
+                <li>Most scores are in the 85-89 range (5 students)</li>
+                <li>Distribution is roughly bell-shaped</li>
+                <li>No extreme outliers</li>
+                <li>Scores are concentrated in the upper ranges</li>
+            </ul>
 
-            ### Common Mistake: Choosing the Wrong Graph
+            <h3>Common Mistake: Choosing the Wrong Graph</h3>
 
-            **❌ Wrong:** Using a line graph for categorical data
-            **✅ Correct:** Use bar charts for categories
+            <p>❌ <strong>Wrong:</strong> Using a line graph for categorical data<br>
+            ✅ <strong>Correct:</strong> Use bar charts for categories</p>
 
-            **❌ Wrong:** Using a bar chart for continuous scale data
-            **✅ Correct:** Use histograms for scale data
+            <p>❌ <strong>Wrong:</strong> Using a bar chart for continuous scale data<br>
+            ✅ <strong>Correct:</strong> Use histograms for scale data</p>
 
-            **Why this matters:** Different graph types are designed for different types of data. Using the wrong type can mislead readers about your data's characteristics.
+            <p><strong>Why this matters:</strong> Different graph types are designed for different types of data. Using the wrong type can mislead readers about your data's characteristics.</p>
 
-            ### Quick Check
+            <h3>Quick Check</h3>
 
-            **Question 1:** You survey 50 students about their favorite subject. Which graph should you use?
-            - A) Histogram
-            - B) Bar chart
-            - C) Line graph
+            <p><strong>Question 1:</strong> You survey 50 students about their favorite subject. Which graph should you use?</p>
+            <ul>
+                <li>A) Histogram</li>
+                <li>B) Bar chart</li>
+                <li>C) Line graph</li>
+            </ul>
 
-            **Answer:** B) Bar chart - because "favorite subject" is categorical data (nominal level)
+            <p><strong>Answer:</strong> B) Bar chart - because "favorite subject" is categorical data (nominal level)</p>
 
-            **Question 2:** You measure the height of 100 people. Which graph should you use?
-            - A) Histogram
-            - B) Bar chart
-            - C) Pie chart
+            <p><strong>Question 2:</strong> You measure the height of 100 people. Which graph should you use?</p>
+            <ul>
+                <li>A) Histogram</li>
+                <li>B) Bar chart</li>
+                <li>C) Pie chart</li>
+            </ul>
 
-            **Answer:** A) Histogram - because height is continuous scale data
+            <p><strong>Answer:</strong> A) Histogram - because height is continuous scale data</p>
 
-            **Question 3:** Looking at your histogram, you notice the bars on the left are much taller than those on the right. What does this suggest?
-            - A) Your data is normally distributed
-            - B) Your data is right-skewed (positively skewed)
-            - C) Your data is left-skewed (negatively skewed)
+            <p><strong>Question 3:</strong> Looking at your histogram, you notice the bars on the left are much taller than those on the right. What does this suggest?</p>
+            <ul>
+                <li>A) Your data is normally distributed</li>
+                <li>B) Your data is right-skewed (positively skewed)</li>
+                <li>C) Your data is left-skewed (negatively skewed)</li>
+            </ul>
 
-            **Answer:** C) Left-skewed - most values are on the higher end, with a tail extending to the lower end
+            <p><strong>Answer:</strong> C) Left-skewed - most values are on the higher end, with a tail extending to the lower end</p>
 
-            ---
+            <hr>
         </div>
 
         <div id="tab-4" class="tab-panel">
-            ## Part 6: From Sample to Population
+            <h2>Part 6: From Sample to Population</h2>
 
-            So far, we've focused on describing the data we actually collected. But in most research, we want to make conclusions about a larger group than just our participants. This is where the distinction between **samples** and **populations** becomes crucial.
+            <p>So far, we've focused on describing the data we actually collected. But in most research, we want to make conclusions about a larger group than just our participants. This is where the distinction between <strong>samples</strong> and <strong>populations</strong> becomes crucial.</p>
 
-            ### Key Definitions
+            <h3>Key Definitions</h3>
 
-            **Population:** The entire group of individuals, objects, or events that you want to study and make conclusions about.
+            <p><strong>Population:</strong> The entire group of individuals, objects, or events that you want to study and make conclusions about.</p>
 
-            **Sample:** A subset of the population that you actually study and collect data from.
+            <p><strong>Sample:</strong> A subset of the population that you actually study and collect data from.</p>
 
-            **Examples:**
-            - **Population:** All college students in the United States
-            - **Sample:** 500 college students from your university
+            <p><strong>Examples:</strong></p>
+            <ul>
+                <li><strong>Population:</strong> All college students in the United States</li>
+                <li><strong>Sample:</strong> 500 college students from your university</li>
+            </ul>
 
-            - **Population:** All smartphones sold last year
-            - **Sample:** 1,000 smartphones tested for battery life
+            <ul>
+                <li><strong>Population:</strong> All smartphones sold last year</li>
+                <li><strong>Sample:</strong> 1,000 smartphones tested for battery life</li>
+            </ul>
 
-            - **Population:** All patients with diabetes
-            - **Sample:** 200 patients who received a new medication
+            <ul>
+                <li><strong>Population:</strong> All patients with diabetes</li>
+                <li><strong>Sample:</strong> 200 patients who received a new medication</li>
+            </ul>
 
-            **Why use samples?** Because studying entire populations is usually impractical, expensive, or impossible.
+            <p><strong>Why use samples?</strong> Because studying entire populations is usually impractical, expensive, or impossible.</p>
 
-            ### Parameters vs. Statistics
+            <h3>Parameters vs. Statistics</h3>
 
-            **Parameter:** A numerical characteristic of a population (usually unknown)
+            <p><strong>Parameter:</strong> A numerical characteristic of a population (usually unknown)</p>
 
-            **Statistic:** A numerical characteristic of a sample (what we actually calculate)
+            <p><strong>Statistic:</strong> A numerical characteristic of a sample (what we actually calculate)</p>
 
-            **Symbols:**
-            - Population mean: μ (mu)
-            - Sample mean: x̄ (x-bar)
-            - Population standard deviation: σ (sigma)
-            - Sample standard deviation: s
+            <p><strong>Symbols:</strong></p>
+            <ul>
+                <li>Population mean: μ (mu)</li>
+                <li>Sample mean: x̄ (x-bar)</li>
+                <li>Population standard deviation: σ (sigma)</li>
+                <li>Sample standard deviation: s</li>
+            </ul>
 
-            **Example:**
-            - **Parameter:** Average height of all adult women in the US (μ = unknown)
-            - **Statistic:** Average height of 100 adult women in our sample (x̄ = 65.2 inches)
+            <p><strong>Example:</strong></p>
+            <ul>
+                <li><strong>Parameter:</strong> Average height of all adult women in the US (μ = unknown)</li>
+                <li><strong>Statistic:</strong> Average height of 100 adult women in our sample (x̄ = 65.2 inches)</li>
+            </ul>
 
-            **Key insight:** We use sample statistics to estimate population parameters.
+            <p><strong>Key insight:</strong> We use sample statistics to estimate population parameters.</p>
 
-            ### The Problem of Bias and the n-1 Correction
+            <h3>The Problem of Bias and the n-1 Correction</h3>
 
-            When we calculate the sample standard deviation, we divide by **n-1** instead of **n**. Why?
+            <p>When we calculate the sample standard deviation, we divide by <strong>n-1</strong> instead of <strong>n</strong>. Why?</p>
 
-            **The bias problem:** If we divide by n, our sample standard deviation tends to underestimate the true population standard deviation.
+            <p><strong>The bias problem:</strong> If we divide by n, our sample standard deviation tends to underestimate the true population standard deviation.</p>
 
-            **Why this happens:** In a sample, the values are closer to the sample mean than they would be to the true population mean. This makes our sample look less variable than it really is.
+            <p><strong>Why this happens:</strong> In a sample, the values are closer to the sample mean than they would be to the true population mean. This makes our sample look less variable than it really is.</p>
 
-            **The solution:** Dividing by n-1 (called "degrees of freedom") corrects for this bias and gives us a better estimate of the population standard deviation.
+            <p><strong>The solution:</strong> Dividing by n-1 (called "degrees of freedom") corrects for this bias and gives us a better estimate of the population standard deviation.</p>
 
-            **Example:**
-            Population: 1, 2, 3, 4, 5 (μ = 3, σ = √2 ≈ 1.41)
-            Sample: 2, 3, 4 (x̄ = 3)
+            <p><strong>Example:</strong><br>
+            Population: 1, 2, 3, 4, 5 (μ = 3, σ = √2 ≈ 1.41)<br>
+            Sample: 2, 3, 4 (x̄ = 3)</p>
 
-            **Wrong way (divide by n):**
-            s = √[(2-3)² + (3-3)² + (4-3)²] ÷ 3 = √[1+0+1] ÷ 3 = √(2/3) ≈ 0.82
+            <p><strong>Wrong way (divide by n):</strong><br>
+            s = √[(2-3)² + (3-3)² + (4-3)²] ÷ 3 = √[1+0+1] ÷ 3 = √(2/3) ≈ 0.82</p>
 
-            **Right way (divide by n-1):**
-            s = √[(2-3)² + (3-3)² + (4-3)²] ÷ 2 = √[1+0+1] ÷ 2 = √1 = 1.00
+            <p><strong>Right way (divide by n-1):</strong><br>
+            s = √[(2-3)² + (3-3)² + (4-3)²] ÷ 2 = √[1+0+1] ÷ 2 = √1 = 1.00</p>
 
-            The n-1 correction gives us a better estimate of the true population standard deviation.
+            <p>The n-1 correction gives us a better estimate of the true population standard deviation.</p>
 
             ### Worked Example: Sample vs. Population Calculation
 
@@ -1194,24 +1315,28 @@ By the end of this module, you will be able to:
         </div>
 
         <div id="tab-5" class="tab-panel">
-            ## Part 8: Probability and Inference
+            <h2>Part 8: Probability and Inference</h2>
 
-            Probability is the foundation of statistical inference—the process of drawing conclusions about populations based on sample data. Understanding basic probability concepts helps us make sense of statistical tests and their results.
+            <p>Probability is the foundation of statistical inference—the process of drawing conclusions about populations based on sample data. Understanding basic probability concepts helps us make sense of statistical tests and their results.</p>
 
-            ### What is Probability?
+            <h3>What is Probability?</h3>
 
-            **Definition:** Probability is the likelihood that a particular event will occur, expressed as a number between 0 and 1.
+            <p><strong>Definition:</strong> Probability is the likelihood that a particular event will occur, expressed as a number between 0 and 1.</p>
 
-            - **0** = Event will never happen (impossible)
-            - **0.5** = Event has equal chance of happening or not (50-50)
-            - **1** = Event will always happen (certain)
+            <ul>
+                <li><strong>0</strong> = Event will never happen (impossible)</li>
+                <li><strong>0.5</strong> = Event has equal chance of happening or not (50-50)</li>
+                <li><strong>1</strong> = Event will always happen (certain)</li>
+            </ul>
 
-            **Examples:**
-            - Probability of flipping heads: 0.5 (50%)
-            - Probability of rolling a 6 on a die: 0.167 (16.7%)
-            - Probability of rain tomorrow: 0.3 (30%)
+            <p><strong>Examples:</strong></p>
+            <ul>
+                <li>Probability of flipping heads: 0.5 (50%)</li>
+                <li>Probability of rolling a 6 on a die: 0.167 (16.7%)</li>
+                <li>Probability of rain tomorrow: 0.3 (30%)</li>
+            </ul>
 
-            **Key insight:** In statistics, we're often interested in the probability of getting certain sample results if our hypothesis about the population is true.
+            <p><strong>Key insight:</strong> In statistics, we're often interested in the probability of getting certain sample results if our hypothesis about the population is true.</p>
 
             ### Probability in Normal Distributions
 
