@@ -3437,6 +3437,35 @@ The one-sample t-test is just the beginning. The logic you've learned here will 
   </details>
 </div>
 
+            <!-- Bottom Navigation -->
+            <div class="tab-navigation bottom-nav">
+                <button class="tab-button" onclick="showTab(1)">
+                    <input type="checkbox" id="progress-1-bottom" class="tab-checkbox" onchange="toggleTabComplete(1)">
+                    <span class="tab-label">Hypothesis Testing Logic</span>
+                </button>
+                <button class="tab-button" onclick="showTab(2)">
+                    <input type="checkbox" id="progress-2-bottom" class="tab-checkbox" onchange="toggleTabComplete(2)">
+                    <span class="tab-label">Decision Making & Errors</span>
+                </button>
+                <button class="tab-button" onclick="showTab(3)">
+                    <input type="checkbox" id="progress-3-bottom" class="tab-checkbox" onchange="toggleTabComplete(3)">
+                    <span class="tab-label">Sampling & t-Tests</span>
+                </button>
+                <button class="tab-button" onclick="showTab(4)">
+                    <input type="checkbox" id="progress-4-bottom" class="tab-checkbox" onchange="toggleTabComplete(4)">
+                    <span class="tab-label">Effect Size & Power</span>
+                </button>
+                <button class="tab-button active" onclick="showTab(5)">
+                    <input type="checkbox" id="progress-5-bottom" class="tab-checkbox" onchange="toggleTabComplete(5)">
+                    <span class="tab-label">Application & Summary</span>
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
 ---
 
 _Remember: Statistics is a way of thinking about evidence, not just a set of formulas. When in doubt, ask yourself: "What question am I trying to answer, and what would constitute convincing evidence?"_
