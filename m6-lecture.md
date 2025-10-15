@@ -2446,3 +2446,304 @@ Answer: "X₂ is a significant predictor but X₁ is not." OR "X₁ is a signifi
 </div>
 
 ---
+
+## Part 10: Reporting Regression in APA Format
+
+### 10.1 Reporting Correlation Results
+
+**Basic Format:**
+
+"There was a [strong/moderate/weak] [positive/negative] correlation between [Variable 1] and [Variable 2], r = [value], p [< or =] [value]."
+
+**Example 1:**
+
+"There was a strong positive correlation between study hours and exam scores, r = .68, p < .001."
+
+**Example 2:**
+
+"Weight was strongly correlated with acceleration time, r = -.86, p < .001, indicating that heavier cars took longer to accelerate."
+
+**Including Effect Size:**
+
+"Study hours and exam scores were significantly correlated, r = .68, p < .001. Study hours explained 46% of the variance in exam scores (r² = .46)."
+
+**Multiple Correlations:**
+
+"Bivariate correlations revealed that acceleration time was significantly correlated with engine size (r = .84, p < .001), horsepower (r = .79, p < .001), and weight (r = .86, p < .001). Weight showed the strongest relationship with acceleration."
+
+### 10.2 Reporting Bivariate Regression
+
+**Complete APA Format:**
+
+A bivariate regression was conducted to examine whether [IV] could predict [DV]. The overall model was significant, F(1, [df₂]) = [F-value], p [< or =] [p-value], with [IV] explaining [Adjusted R² × 100]% of the variance in [DV], Adjusted R² = [value]. [IV] was a significant predictor, β = [Beta], t([df₂]) = [t-value], p [< or =] [p-value]. The regression equation was: Ŷ = [b](X) + [a].
+
+**Example:**
+
+"A bivariate regression was conducted to examine whether weight could predict acceleration time. The overall model was significant, F(1, 205) = 49.78, p < .001, with weight explaining 73.6% of the variance in acceleration, Adjusted R² = .736. Weight was a significant predictor, β = -.86, t(205) = -7.06, p < .001. The regression equation was: Ŷ = -.006(Weight) + 17.85. Heavier cars took significantly longer to accelerate from 0 to 60 mph."
+
+**Shorter Version:**
+
+"Weight significantly predicted acceleration time, F(1, 205) = 49.78, p < .001, Adjusted R² = .736, β = -.86."
+
+### 10.3 Reporting Multiple Regression
+
+**Complete APA Format:**
+
+A multiple regression was conducted to examine whether [list IVs] could predict [DV]. The overall model was significant, F([df₁], [df₂]) = [F-value], p [< or =] [p-value], with the predictors explaining [Adjusted R² × 100]% of the variance in [DV], Adjusted R² = [value]. [List significant predictors with their statistics]. [List non-significant predictors].
+
+**Example:**
+
+"A multiple regression was conducted to examine whether horsepower, engine size, and weight could predict acceleration time. The overall model was significant, F(3, 203) = 133.02, p < .001, with the three predictors explaining 65.3% of the variance in acceleration, Adjusted R² = .653. Weight was a significant predictor, β = -.86, t(203) = -5.78, p < .001, uniquely explaining 13.6% of the variance (sr² = .136). Horsepower was also a significant predictor, β = .37, t(203) = 2.52, p = .012, uniquely explaining 3.7% of the variance (sr² = .037). However, engine size was not a significant predictor after controlling for weight and horsepower, β = .34, t(203) = 2.32, p = .021."
+
+**Note:** In this example, p = .021 is actually significant if using α = .05, so you would say "Engine size was also a significant predictor..."
+
+**Reporting Only Significant Predictors:**
+
+"A multiple regression with three predictors (horsepower, engine size, and weight) significantly predicted acceleration time, F(3, 203) = 133.02, p < .001, Adjusted R² = .653. Weight (β = -.86, p < .001) and horsepower (β = .37, p = .012) were significant predictors, while engine size was not (β = .34, p = .504)."
+
+### 10.4 APA Format for F-Tests
+
+**Key Rules:**
+
+1. **Italicize statistics:** F, p, df
+2. **Degrees of freedom in parentheses:** F(df₁, df₂)
+3. **No zero before decimal for p-values:** p < .001, not p < 0.001
+4. **Never report p = .000:** Use p < .001 instead
+5. **Report exact p-values when p > .001:** p = .023, not p < .05
+6. **Use "< .001" for very small p-values:** Not "p = .0003"
+
+**Correct Examples:**
+
+- F(1, 205) = 49.78, p < .001 ✓
+- F(3, 203) = 133.024, p < .001 ✓
+- F(2, 97) = 5.63, p = .005 ✓
+
+**Incorrect Examples:**
+
+- F(1, 205) = 49.78, p = .000 ✗ (use p < .001)
+- F(3, 203) = 133.024, p < 0.001 ✗ (no zero before decimal)
+- F(2, 97) = 5.63, p < .05 ✗ (report exact p if p > .001)
+- F = 49.78, p < .001 ✗ (missing df)
+
+**Quiz Question Format:**
+
+"Select the correct answer to complete the F test result in APA format:
+F(\_\_, \_\_) = 133.024, p \_\_"
+
+**Options:**
+A) 3; 203; < .001 ✓ Correct
+B) 3; 206; = .000 ✗ (Wrong df₂, wrong p format)
+C) 3; 206; < .001 ✗ (Wrong df₂)
+D) 3; 203; = .000 ✗ (Wrong p format)
+
+### 10.5 Reporting Effect Sizes
+
+**For Correlation:**
+
+"r² = .46, indicating that study hours explained 46% of the variance in exam scores."
+
+**For Bivariate Regression:**
+
+"Adjusted R² = .736, indicating that weight explained 73.6% of the variance in acceleration time."
+
+**For Multiple Regression (Overall Model):**
+
+"Adjusted R² = .653, indicating that the three predictors together explained 65.3% of the variance in acceleration time."
+
+**For Multiple Regression (Individual Predictors):**
+
+"Weight uniquely explained 13.6% of the variance (sr² = .136), while horsepower uniquely explained 3.7% (sr² = .037)."
+
+**For Model Comparison:**
+
+"Adding X₂ to the model increased the explained variance from 75.4% to 77.1%, ΔAdjusted R² = .017, representing a 1.7 percentage point improvement."
+
+### 10.6 Interpreting and Describing Results
+
+**Beyond Just Numbers:**
+
+Always interpret your results in the context of your research question.
+
+**Example 1: Positive Relationship**
+
+**Numbers only:**
+"SAT scores significantly predicted first-year GPA, F(1, 148) = 32.5, p < .001, Adjusted R² = .179, β = .42."
+
+**With interpretation:**
+"SAT scores significantly predicted first-year GPA, F(1, 148) = 32.5, p < .001, Adjusted R² = .179, β = .42. Students with higher SAT scores tended to achieve higher GPAs in their first year, with SAT scores explaining approximately 18% of the variance in academic performance."
+
+**Example 2: Negative Relationship**
+
+**Numbers only:**
+"Exercise hours significantly predicted stress levels, F(1, 95) = 18.7, p < .001, Adjusted R² = .158, β = -.41."
+
+**With interpretation:**
+"Exercise hours significantly predicted stress levels, F(1, 95) = 18.7, p < .001, Adjusted R² = .158, β = -.41. Individuals who exercised more hours per week reported significantly lower stress levels, with exercise explaining approximately 16% of the variance in stress."
+
+**Example 3: Multiple Regression**
+
+"A multiple regression examined predictors of job satisfaction. The overall model was significant, F(4, 195) = 45.3, p < .001, Adjusted R² = .467, explaining 46.7% of the variance. Salary (β = .35, p < .001), work-life balance (β = .42, p < .001), and supervisor support (β = .28, p = .002) were all significant predictors, while commute time was not (β = -.08, p = .234). Work-life balance emerged as the strongest predictor, suggesting it plays a central role in employee satisfaction beyond financial compensation."
+
+---
+
+<div class="knowledge-check">
+  <h4>🧠 Knowledge Check: SPSS Output and APA Reporting</h4>
+
+  <div class="quiz-question">
+    <p><strong>Question 1:</strong> You run a bivariate regression and get the following output:
+    <br>F(1, 205) = 49.778, p < .001
+    <br>Which is the correct value to report for the F statistic?</p>
+    <div class="options">
+      <p>A) 49.778</p>
+      <p>B) 246.722</p>
+      <p>C) .739</p>
+      <p>D) 854.396</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> A) 49.778</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> The F-statistic is found in the ANOVA table under the "F" column in the "Regression" row. Report the exact number provided by SPSS, keeping all decimal places as shown in the output.</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>B) 246.722:</strong> This might be a value from elsewhere in the output (perhaps Sum of Squares), but it's not the F-statistic.</li>
+        <li><strong>C) .739:</strong> This looks like it could be R² or Adjusted R², which is found in the Model Summary table, not the F-statistic.</li>
+        <li><strong>D) 854.396:</strong> This doesn't match typical SPSS output values for this analysis.</li>
+      </ul>
+
+      <p class="review-tip"><em>💭 Need to review?</em> See Part 9.4: Extracting F-Statistics and Degrees of Freedom.</p>
+    </div>
+  </details>
+
+  <div class="quiz-question">
+    <p><strong>Question 2:</strong> Select the correct answer to complete the F test result in APA format for a multiple regression with 3 predictors and N = 207:
+    <br>F(\_\_, \_\_) = 133.024, p \_\_</p>
+    <div class="options">
+      <p>A) 3; 203; < .001</p>
+      <p>B) 3; 206; = .000</p>
+      <p>C) 3; 206; < .001</p>
+      <p>D) 3; 203; = .000</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> A) 3; 203; < .001</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong>
+        <br>• df₁ = k (number of predictors) = 3
+        <br>• df₂ = N - k - 1 = 207 - 3 - 1 = 203
+        <br>• p-values < .001 should be reported as "< .001" not "= .000" in APA format</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>B) 3; 206; = .000:</strong> Wrong df₂ (should be 203, not 206) and wrong p format (should be < .001, not = .000).</li>
+        <li><strong>C) 3; 206; < .001:</strong> Wrong df₂. This would be N - 1 = 206, which is not correct for regression error df.</li>
+        <li><strong>D) 3; 203; = .000:</strong> Correct df values, but APA format requires p < .001, never p = .000.</li>
+      </ul>
+
+      <p class="review-tip"><em>💭 Need to review?</em> See Part 10.4: APA Format for F-Tests.</p>
+    </div>
+  </details>
+
+  <div class="quiz-question">
+    <p><strong>Question 3:</strong> In your multiple regression output, you see:
+    <br>Horsepower: p = .012
+    <br>Engine: p = .504
+    <br>Weight: p < .001
+    <br><br>Which variable is NOT a significant predictor?</p>
+    <div class="options">
+      <p>A) All predictors are significant</p>
+      <p>B) Acceleration</p>
+      <p>C) Horsepower</p>
+      <p>D) Weight</p>
+      <p>E) Engine</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> E) Engine</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> Engine has p = .504, which is greater than the typical alpha level of .05. This means Engine is NOT a significant predictor of the outcome after controlling for the other predictors in the model.</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>A) All significant:</strong> This is false because Engine has p = .504 > .05.</li>
+        <li><strong>B) Acceleration:</strong> Acceleration is the outcome variable (DV), not a predictor, so this doesn't make sense.</li>
+        <li><strong>C) Horsepower:</strong> Horsepower is significant (p = .012 < .05).</li>
+        <li><strong>D) Weight:</strong> Weight is highly significant (p < .001).</li>
+      </ul>
+
+      <p class="review-tip"><em>💭 Need to review?</em> See Part 9.6: Identifying Non-Significant Predictors.</p>
+    </div>
+  </details>
+
+  <div class="quiz-question">
+    <p><strong>Question 4:</strong> Based on the SPSS output showing R = .644, R² = .415, Adjusted R² = .396, which statement is most accurate?</p>
+    <div class="options">
+      <p>A) The model explains 64.4% of the variance</p>
+      <p>B) The model explains 41.5% of the variance</p>
+      <p>C) The model explains 39.6% of the variance</p>
+      <p>D) The F statistic is .396</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> C) The model explains 39.6% of the variance</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> When reporting model fit for regression, you should use Adjusted R² (not R or R²) because it accounts for the number of predictors and provides a more honest estimate. Adjusted R² = .396 = 39.6% of variance explained.</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>A) 64.4%:</strong> This is R (.644), not R². R is the multiple correlation coefficient, not the proportion of variance explained.</li>
+        <li><strong>B) 41.5%:</strong> This is R² (.415), which is technically correct but Adjusted R² is the preferred value to report in APA format.</li>
+        <li><strong>D) F = .396:</strong> The F-statistic is not shown in the Model Summary table. .396 is Adjusted R², not F.</li>
+      </ul>
+
+      <p class="review-tip"><em>💭 Need to review?</em> See Part 9.5: Reading SPSS Output for Model Summary.</p>
+    </div>
+  </details>
+
+  <div class="quiz-question">
+    <p><strong>Question 5:</strong> Which statement is accurate based on SPSS output showing:
+    <br>Overall Model: F(2, 53) = 15.8, p < .001
+    <br>Coefficients: X₁: t = 0.9, p = .372; X₂: t = 5.2, p < .001</p>
+    <div class="options">
+      <p>A) The model is not significant so neither predictor has a significant effect</p>
+      <p>B) X₁ is a significant predictor but X₂ is not</p>
+      <p>C) The model is significant so both X₁ and X₂ are significant predictors</p>
+      <p>D) X₂ is a significant predictor but X₁ is not</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> D) X₂ is a significant predictor but X₁ is not</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> The overall model is significant (F test p < .001), meaning the predictors together significantly predict the outcome. However, looking at individual predictors: X₁ is not significant (p = .372 > .05), while X₂ is significant (p < .001). The overall model can be significant even when not all individual predictors are significant.</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>A) Model not significant:</strong> False. F(2, 53) = 15.8, p < .001 indicates a highly significant model.</li>
+        <li><strong>B) X₁ significant, X₂ not:</strong> Backwards. X₁ has p = .372 (not significant), X₂ has p < .001 (significant).</li>
+        <li><strong>C) Both significant because model is significant:</strong> This is faulty logic. A significant overall model doesn't guarantee all individual predictors are significant. You must check each predictor's individual t-test.</li>
+      </ul>
+
+      <p class="review-tip"><em>💭 Need to review?</em> See Part 9.7: Understanding SPSS Output for Significance.</p>
+    </div>
+  </details>
+
+</div>
+
+---
+

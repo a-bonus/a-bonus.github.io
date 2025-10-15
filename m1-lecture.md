@@ -265,6 +265,7 @@ Let's practice with some research scenarios:
 - ✓ `Age`, `Depression_Score` → Immediately clear!
 
 > **⚠️ CRITICAL:** Variable names you choose at the beginning affect EVERYTHING that follows. Poor variable naming leads to:
+>
 > - Confusion in SPSS output (which variable is which?)
 > - Errors in analysis (using the wrong variable)
 > - Difficulty reproducing your work
@@ -406,15 +407,18 @@ This classification describes the **nature of the values** a variable can take. 
 > Likert scales (e.g., 1=Strongly Disagree to 5=Strongly Agree) create controversy:
 >
 > **Technically:** Ordinal
+>
 > - We can't prove the distance from "Disagree" to "Neutral" equals "Agree" to "Strongly Agree"
 > - Different people may interpret scale points differently
 >
 > **In Practice:** Often treated as Scale
+>
 > - Most researchers calculate means of Likert items
 > - Required for common analyses (t-tests, ANOVA, regression)
 > - Especially acceptable when averaging multiple items into a scale score
 >
 > **What You Should Do:**
+>
 > 1. **Single Likert item:** Consider treating as ordinal, use median
 > 2. **Multiple items averaged (Likert scale):** Usually treat as scale, calculate mean
 > 3. **In assignments:** Follow your instructor's guidance
@@ -490,6 +494,7 @@ This is another way to classify **scale** variables:
 > **Measurement level determines EVERYTHING you can do with your data!**
 >
 > Get this wrong and:
+>
 > - ❌ Your analysis is invalid (e.g., calculating mean of blood types)
 > - ❌ Your conclusions are meaningless
 > - ❌ You'll lose major points on assignments
@@ -644,7 +649,7 @@ Once you've collected data, the first step is to summarize it. With scale (numer
 
 ### Measures of Central Tendency
 
-#### The Mean (M or \(\bar{X}\))
+#### The Mean (M or X̄)
 
 **Definition:** The arithmetic average—the sum of all scores divided by the number of scores.
 
@@ -757,14 +762,15 @@ M = (75 + 80 + 85 + 90 + 95) / 5 = 425 / 5 = 85
 
 > **🎯 CENTRAL TENDENCY DECISION GUIDE**
 >
-> | Your Data Type | Best Measure | Why |
-> |---------------|--------------|-----|
-> | **Nominal** (categories) | **Mode only** | Mean and median are meaningless for categories |
-> | **Ordinal** (ranked) | **Median** | Intervals aren't equal, but order matters |
-> | **Scale + Symmetrical** | **Mean** | Uses all data, best for statistical tests |
-> | **Scale + Skewed/Outliers** | **Median** | Not affected by extreme values |
+> | Your Data Type              | Best Measure  | Why                                            |
+> | --------------------------- | ------------- | ---------------------------------------------- |
+> | **Nominal** (categories)    | **Mode only** | Mean and median are meaningless for categories |
+> | **Ordinal** (ranked)        | **Median**    | Intervals aren't equal, but order matters      |
+> | **Scale + Symmetrical**     | **Mean**      | Uses all data, best for statistical tests      |
+> | **Scale + Skewed/Outliers** | **Median**    | Not affected by extreme values                 |
 >
 > **Quick Decision Rule:**
+>
 > 1. Check measurement level → If Nominal, must use Mode
 > 2. Look at your data → See outliers or skew? Use Median
 > 3. Otherwise → Use Mean (but always report SD with it!)
@@ -848,11 +854,13 @@ s² = Σ(X - M)² / (n - 1)
 > **Why two formulas?** It depends on your goal:
 >
 > **Divide by n:**
+>
 > - Goal: Describe ONLY your specific sample
 > - You have all the data you care about
 > - Rare in practice (usually we want to generalize)
 >
 > **Divide by n-1:** ⭐ **Most Common!**
+>
 > - Goal: Estimate population variance from your sample
 > - You're inferring beyond your data
 > - Corrects for bias (samples underestimate population variance)
@@ -861,6 +869,7 @@ s² = Σ(X - M)² / (n - 1)
 > **Why n-1?** Samples are less variable than populations. The n-1 adjustment (called "Bessel's correction") compensates for this. Without it, we'd consistently underestimate population variability.
 >
 > **What should YOU do?**
+>
 > - **In this course:** Almost always use n-1
 > - **In SPSS:** It automatically uses n-1
 > - **On exams:** Unless told otherwise, use n-1
@@ -1495,12 +1504,12 @@ This is where statistics gets its real power—using information from a small gr
 
 We use different symbols depending on whether we're describing a population or a sample:
 
-| Measure                | Population (Parameter) | Sample (Statistic)   |
-| :--------------------- | :--------------------- | :------------------- |
-| **Size**               | \(N\)                  | \(n\)                |
-| **Mean**               | \(\mu\) (mu)           | \(M\) or \(\bar{X}\) |
-| **Standard Deviation** | \(\sigma\) (sigma)     | \(s\) or \(SD\)      |
-| **Variance**           | \(\sigma^2\)           | \(s^2\)              |
+| Measure                | Population (Parameter) | Sample (Statistic) |
+| :--------------------- | :--------------------- | :----------------- |
+| **Size**               | N                      | n                  |
+| **Mean**               | μ (mu)                 | M or X̄             |
+| **Standard Deviation** | σ (sigma)              | s or SD            |
+| **Variance**           | σ²                     | s²                 |
 
 **Mnemonic:**
 
@@ -1714,6 +1723,7 @@ True or False?
 ## Part 7: The Normal Distribution and Z-Scores
 
 > **Why Part 7 is crucial:** The normal distribution is the foundation for almost all inferential statistics you'll learn in this course.
+>
 > - **Part 7 concepts** (normal distribution, z-scores, standard deviation) lead directly to **Module 2** (t-tests and hypothesis testing)
 > - Understanding the normal distribution now will make Module 2 much easier!
 > - Z-scores are your first step toward understanding standardization, which underlies all statistical tests
@@ -1766,16 +1776,18 @@ In a normal distribution:
 **Definition:** A z-score tells you **how many standard deviations** a score is away from the mean.
 
 **Formula:**
-\[ z = \frac{X - \mu}{\sigma} \]
+
+z = (X - μ) / σ
 
 Or for a sample:
-\[ z = \frac{X - M}{s} \]
+
+z = (X - M) / s
 
 Where:
 
-- \(X\) = the individual score
-- \(\mu\) or \(M\) = the mean
-- \(\sigma\) or \(s\) = the standard deviation
+- X = the individual score
+- μ or M = the mean
+- σ or s = the standard deviation
 
 **Interpretation:**
 
@@ -1790,20 +1802,26 @@ Where:
 **Example 1:** Test scores with M = 75, SD = 10
 
 - **Your score: 85**
-  \[ z = \frac{85 - 75}{10} = \frac{10}{10} = +1.0 \]
+
+  z = (85 - 75) / 10 = 10 / 10 = +1.0
+
   **Interpretation:** You scored 1 SD above average, better than about 84% of students
 
 - **Your score: 60**
-  \[ z = \frac{60 - 75}{10} = \frac{-15}{10} = -1.5 \]
+
+  z = (60 - 75) / 10 = -15 / 10 = -1.5
+
   **Interpretation:** You scored 1.5 SDs below average, worse than about 93% of students
 
 **Example 2:** Comparing apples and oranges
 
 - **SAT Math:** Score = 650, μ = 500, σ = 100
-  \[ z = \frac{650 - 500}{100} = +1.5 \]
+
+  z = (650 - 500) / 100 = +1.5
 
 - **ACT Math:** Score = 28, μ = 21, σ = 5
-  \[ z = \frac{28 - 21}{5} = +1.4 \]
+
+  z = (28 - 21) / 5 = +1.4
 
 **Question:** Which test performance was better?
 **Answer:** SAT (z = +1.5 is more above average than z = +1.4)
@@ -1816,7 +1834,8 @@ With a **z-table** (standard normal table), you can find the proportion of score
 **Question:** What percentage of people have IQ above 115?
 
 **Step 1:** Convert to z-score
-\[ z = \frac{115 - 100}{15} = +1.0 \]
+
+z = (115 - 100) / 15 = +1.0
 
 **Step 2:** Look up z = 1.0 in a z-table (or remember the 68-95-99.7 rule)
 
@@ -1840,7 +1859,7 @@ This creates a **standard normal distribution** (μ = 0, σ = 1) that's the same
 **Clinical Psychology:** Depression screening scores (M = 20, SD = 5)
 
 - Your patient scores 32
-- \( z = \frac{32-20}{5} = +2.4 \)
+- z = (32 - 20) / 5 = +2.4
 - This is more than 2 SDs above the mean → Very high depression symptoms (top ~1% of the population)
 - Warrants immediate clinical attention
 
@@ -2574,56 +2593,60 @@ Step 1: What are the possible values?
 
 ### Measurement Level Quick Guide
 
-| Level | Examples | Central Tendency | Graph Type | Can You Calculate Mean? |
-|-------|----------|------------------|------------|------------------------|
-| **Nominal** | Gender, Major, Blood Type | Mode only | Bar chart, Pie chart | ❌ No |
-| **Ordinal** | Class rank, Likert items | Median, Mode | Bar chart | ⚠️ Debatable |
-| **Scale** | Age, Height, Test scores | Mean, Median, Mode | Histogram, Scatter | ✓ Yes |
+| Level       | Examples                  | Central Tendency   | Graph Type           | Can You Calculate Mean? |
+| ----------- | ------------------------- | ------------------ | -------------------- | ----------------------- |
+| **Nominal** | Gender, Major, Blood Type | Mode only          | Bar chart, Pie chart | ❌ No                   |
+| **Ordinal** | Class rank, Likert items  | Median, Mode       | Bar chart            | ⚠️ Debatable            |
+| **Scale**   | Age, Height, Test scores  | Mean, Median, Mode | Histogram, Scatter   | ✓ Yes                   |
 
 > **Critical Rule:** Your measurement level determines which statistics you can use!
 
 ### Essential Formulas at a Glance
 
-| Statistic | Formula | When to Use |
-|-----------|---------|-------------|
-| **Mean** | M = ΣX / N | Symmetrical data, no outliers |
-| **Standard Deviation (Sample)** | s = √[Σ(X-M)² / (n-1)] | Always report with mean |
-| **Variance** | s² = Σ(X-M)² / (n-1) | Foundation for many tests |
-| **Z-Score** | z = (X - μ) / σ | Standardize scores, compare across scales |
-| **Range** | Max - Min | Quick measure of spread |
+| Statistic                       | Formula                | When to Use                               |
+| ------------------------------- | ---------------------- | ----------------------------------------- |
+| **Mean**                        | M = ΣX / N             | Symmetrical data, no outliers             |
+| **Standard Deviation (Sample)** | s = √[Σ(X-M)² / (n-1)] | Always report with mean                   |
+| **Variance**                    | s² = Σ(X-M)² / (n-1)   | Foundation for many tests                 |
+| **Z-Score**                     | z = (X - μ) / σ        | Standardize scores, compare across scales |
+| **Range**                       | Max - Min              | Quick measure of spread                   |
 
 ### Central Tendency Decision Guide
 
 **When to use MEAN:**
+
 - ✓ Scale data
 - ✓ Roughly symmetrical distribution
 - ✓ No extreme outliers
 - ✓ Need to do further statistical tests
 
 **When to use MEDIAN:**
+
 - ✓ Ordinal data
 - ✓ Skewed distribution
 - ✓ Extreme outliers present
 - ✓ Income, housing prices, reaction times
 
 **When to use MODE:**
+
 - ✓ Nominal data (only option!)
 - ✓ Identifying most common category
 - ✓ Finding peaks in distribution
 
 ### Z-Score Interpretation Guide
 
-| Z-Score | Interpretation | Percentile (approx) |
-|---------|----------------|---------------------|
-| z = 0 | Exactly at the mean | 50th percentile |
-| z = +1 | 1 SD above mean | 84th percentile |
-| z = -1 | 1 SD below mean | 16th percentile |
-| z = +2 | 2 SDs above mean | 98th percentile |
-| z = -2 | 2 SDs below mean | 2nd percentile |
-| z = +3 | 3 SDs above mean | 99.7th percentile |
-| |z| > 3 | **Extreme outlier** | Very rare (<0.3%) |
+| Z-Score | Interpretation      | Percentile (approx) |
+| ------- | ------------------- | ------------------- | ------------------- | ----------------- |
+| z = 0   | Exactly at the mean | 50th percentile     |
+| z = +1  | 1 SD above mean     | 84th percentile     |
+| z = -1  | 1 SD below mean     | 16th percentile     |
+| z = +2  | 2 SDs above mean    | 98th percentile     |
+| z = -2  | 2 SDs below mean    | 2nd percentile      |
+| z = +3  | 3 SDs above mean    | 99.7th percentile   |
+|         | z                   | > 3                 | **Extreme outlier** | Very rare (<0.3%) |
 
 **68-95-99.7 Rule:**
+
 - 68% of scores within ±1 SD (z between -1 and +1)
 - 95% of scores within ±2 SDs (z between -2 and +2)
 - 99.7% of scores within ±3 SDs (z between -3 and +3)
@@ -2639,9 +2662,10 @@ Before any analysis, verify in Variable View:
 ✓ **Label:** Full descriptive name (e.g., "Test Score out of 100")
 ✓ **Values:** Define labels for ALL categorical variables (1="Male", 2="Female")
 ✓ **Measure:**
-  - Nominal → Categories with no order
-  - Ordinal → Categories with order
-  - Scale → True numbers
+
+- Nominal → Categories with no order
+- Ordinal → Categories with order
+- Scale → True numbers
 
 ### Common Mistakes Checklist
 
@@ -2654,18 +2678,19 @@ Before any analysis, verify in Variable View:
 
 ### Graph Selection Quick Guide
 
-| Data Type | Appropriate Graph | Why |
-|-----------|------------------|-----|
-| **Nominal** | Bar chart (gaps between bars) | Shows frequency of categories |
-| **Ordinal** | Bar chart (gaps between bars) | Shows frequency of ordered categories |
-| **Scale** | Histogram (bars touch) | Shows distribution of continuous data |
-| **Two Scale Variables** | Scatterplot | Shows relationship between variables |
+| Data Type               | Appropriate Graph             | Why                                   |
+| ----------------------- | ----------------------------- | ------------------------------------- |
+| **Nominal**             | Bar chart (gaps between bars) | Shows frequency of categories         |
+| **Ordinal**             | Bar chart (gaps between bars) | Shows frequency of ordered categories |
+| **Scale**               | Histogram (bars touch)        | Shows distribution of continuous data |
+| **Two Scale Variables** | Scatterplot                   | Shows relationship between variables  |
 
 ### IV vs. DV Identification Trick
 
 Ask: "Does [Variable A] depend on [Variable B]?"
 
 **Example:** "Does test score depend on study time?"
+
 - Answer: YES → Test score is **DV** (depends on study time)
 - Study time is **IV** (doesn't depend on test score)
 
@@ -2673,23 +2698,24 @@ Ask: "Does [Variable A] depend on [Variable B]?"
 
 ### Sample vs. Population Symbols
 
-| Concept | Population (Parameter) | Sample (Statistic) |
-|---------|----------------------|-------------------|
-| Size | N | n |
-| Mean | μ (mu) | M or X̄ |
-| Standard Deviation | σ (sigma) | s or SD |
-| Variance | σ² | s² |
+| Concept            | Population (Parameter) | Sample (Statistic) |
+| ------------------ | ---------------------- | ------------------ |
+| Size               | N                      | n                  |
+| Mean               | μ (mu)                 | M or X̄             |
+| Standard Deviation | σ (sigma)              | s or SD            |
+| Variance           | σ²                     | s²                 |
 
 **Remember:**
+
 - Greek letters (μ, σ) = Population
 - Roman letters (M, s) = Sample
 
 ### n vs. n-1 Decision
 
-| Goal | Formula Uses | Why |
-|------|-------------|-----|
-| **Describe only your sample** | Divide by n | You have all the data |
-| **Estimate population from sample** | Divide by n-1 | Corrects for bias |
+| Goal                                | Formula Uses  | Why                   |
+| ----------------------------------- | ------------- | --------------------- |
+| **Describe only your sample**       | Divide by n   | You have all the data |
+| **Estimate population from sample** | Divide by n-1 | Corrects for bias     |
 
 **In practice:** Almost always use n-1 (and SPSS always does!)
 
@@ -2707,16 +2733,19 @@ Ask: "Does [Variable A] depend on [Variable B]?"
 ### Connection to Future Modules
 
 **Module 1 → Module 2:**
+
 - Normal distribution → Basis for t-distribution
 - Samples vs. populations → Foundation for hypothesis testing
 - Variability (SD) → Leads to standard error
 - Z-scores → Lead to t-scores
 
 **Module 1 → Module 3:**
+
 - Independent vs. dependent variables → Experimental design
 - Measurement levels → Which t-test to use
 
 **Module 1 → Module 6:**
+
 - Scale variables → Required for correlation and regression
 - Scatterplots → Visualizing relationships
 
@@ -2743,7 +2772,8 @@ Ask: "Does [Variable A] depend on [Variable B]?"
 ### Measures of Central Tendency
 
 **Mean:**
-\[ M = \frac{\sum X}{N} \]
+
+M = ΣX / N
 
 - Best for: Symmetrical distributions, no outliers
 - Sensitive to: Extreme values
@@ -2761,16 +2791,20 @@ Ask: "Does [Variable A] depend on [Variable B]?"
 ### Measures of Variability
 
 **Range:**
-\[ \text{Range} = X*{max} - X*{min} \]
+
+Range = X<sub>max</sub> - X<sub>min</sub>
 
 **Variance (Population):**
-\[ \sigma^2 = \frac{\sum(X-\mu)^2}{N} \]
+
+σ² = Σ(X - μ)² / N
 
 **Variance (Sample Estimate):**
-\[ s^2 = \frac{\sum(X-M)^2}{n-1} \]
+
+s² = Σ(X - M)² / (n - 1)
 
 **Standard Deviation:**
-\[ \sigma = \sqrt{\sigma^2} \text{ or } s = \sqrt{s^2} \]
+
+σ = √(σ²) or s = √(s²)
 
 - Interpretation: Average distance from the mean
 - Small SD = less variability (homogeneous group)
@@ -2779,7 +2813,8 @@ Ask: "Does [Variable A] depend on [Variable B]?"
 ### Z-Scores
 
 **Formula:**
-\[ z = \frac{X - \mu}{\sigma} \text{ or } z = \frac{X - M}{s} \]
+
+z = (X - μ) / σ or z = (X - M) / s
 
 **Interpretation:**
 
@@ -2796,12 +2831,12 @@ Ask: "Does [Variable A] depend on [Variable B]?"
 
 ### Symbols Reference
 
-| Concept            | Population         | Sample               |
-| :----------------- | :----------------- | :------------------- |
-| Size               | \(N\)              | \(n\)                |
-| Mean               | \(\mu\) (mu)       | \(M\) or \(\bar{X}\) |
-| Standard Deviation | \(\sigma\) (sigma) | \(s\) or \(SD\)      |
-| Variance           | \(\sigma^2\)       | \(s^2\)              |
+| Concept            | Population | Sample  |
+| :----------------- | :--------- | :------ |
+| Size               | N          | n       |
+| Mean               | μ (mu)     | M or X̄  |
+| Standard Deviation | σ (sigma)  | s or SD |
+| Variance           | σ²         | s²      |
 
 ### Key Distinctions
 
