@@ -66,6 +66,57 @@
         .reveal-answer-btn.answered:hover {
             background-color: #218838;
         }
+
+        /* Glossary Styling */
+        .glossary-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .glossary-item {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 6px;
+            padding: 15px;
+        }
+
+        .glossary-item h4 {
+            color: #007bff;
+            margin-bottom: 8px;
+            font-size: 1.1em;
+        }
+
+        .glossary-item p {
+            margin: 0;
+            color: #495057;
+            line-height: 1.5;
+        }
+
+        /* Visual Diagrams Styling */
+        .visual-diagram {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .visual-diagram h4 {
+            color: #495057;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 5px;
+        }
+
+        .diagram-caption {
+            text-align: center;
+            font-size: 0.9em;
+            color: #6c757d;
+            margin-top: 10px;
+            font-style: italic;
+        }
     </style>
 </head>
 <body>
@@ -2128,49 +2179,117 @@ Valid       50   12.40            3.25        6.00       20.00
 
                     <h2>Glossary</h2>
 
-                    <p><strong>Bias:</strong> Systematic error that affects the accuracy of estimates</p>
+                    <div class="glossary-section">
+                        <div class="glossary-item">
+                            <h4>Bias</h4>
+                            <p>Systematic error that affects the accuracy of estimates</p>
+                        </div>
 
-                    <p><strong>Central Tendency:</strong> Measures that describe the "typical" value in a dataset</p>
+                        <div class="glossary-item">
+                            <h4>Central Tendency</h4>
+                            <p>Measures that describe the "typical" value in a dataset</p>
+                        </div>
 
-                    <p><strong>Continuous Variable:</strong> Variable that can take any value within a range</p>
+                        <div class="glossary-item">
+                            <h4>Continuous Variable</h4>
+                            <p>Variable that can take any value within a range</p>
+                        </div>
 
-                    <p><strong>Degrees of Freedom:</strong> Number of values free to vary (n-1 for sample standard deviation)</p>
+                        <div class="glossary-item">
+                            <h4>Degrees of Freedom</h4>
+                            <p>Number of values free to vary (n-1 for sample standard deviation)</p>
+                        </div>
 
-                    <p><strong>Descriptive Statistics:</strong> Methods for summarizing and describing data</p>
+                        <div class="glossary-item">
+                            <h4>Descriptive Statistics</h4>
+                            <p>Methods for summarizing and describing data</p>
+                        </div>
 
-                    <p><strong>Discrete Variable:</strong> Variable that can only take specific, separate values</p>
+                        <div class="glossary-item">
+                            <h4>Discrete Variable</h4>
+                            <p>Variable that can only take specific, separate values</p>
+                        </div>
 
-                    <p><strong>Frequency Distribution:</strong> Summary showing how often each value occurs</p>
+                        <div class="glossary-item">
+                            <h4>Frequency Distribution</h4>
+                            <p>Summary showing how often each value occurs</p>
+                        </div>
 
-                    <p><strong>Histogram:</strong> Graph showing distribution of continuous data using bars that touch</p>
+                        <div class="glossary-item">
+                            <h4>Histogram</h4>
+                            <p>Graph showing distribution of continuous data using bars that touch</p>
+                        </div>
 
-                    <p><strong>Inferential Statistics:</strong> Methods for drawing conclusions about populations from samples</p>
+                        <div class="glossary-item">
+                            <h4>Inferential Statistics</h4>
+                            <p>Methods for drawing conclusions about populations from samples</p>
+                        </div>
 
-                    <p><strong>Mean:</strong> Average value (sum divided by count)</p>
+                        <div class="glossary-item">
+                            <h4>Mean</h4>
+                            <p>Average value (sum divided by count)</p>
+                        </div>
 
-                    <p><strong>Median:</strong> Middle value when data is ordered</p>
+                        <div class="glossary-item">
+                            <h4>Median</h4>
+                            <p>Middle value when data is ordered</p>
+                        </div>
 
-                    <p><strong>Mode:</strong> Most frequently occurring value</p>
+                        <div class="glossary-item">
+                            <h4>Mode</h4>
+                            <p>Most frequently occurring value</p>
+                        </div>
 
-                    <p><strong>Normal Distribution:</strong> Bell-shaped distribution where most values cluster around the mean</p>
+                        <div class="glossary-item">
+                            <h4>Normal Distribution</h4>
+                            <p>Bell-shaped distribution where most values cluster around the mean</p>
+                        </div>
 
-                    <p><strong>Parameter:</strong> Numerical characteristic of a population</p>
+                        <div class="glossary-item">
+                            <h4>Parameter</h4>
+                            <p>Numerical characteristic of a population</p>
+                        </div>
 
-                    <p><strong>Population:</strong> Entire group of interest in a study</p>
+                        <div class="glossary-item">
+                            <h4>Population</h4>
+                            <p>Entire group of interest in a study</p>
+                        </div>
 
-                    <p><strong>Probability:</strong> Likelihood that an event will occur (0 to 1)</p>
+                        <div class="glossary-item">
+                            <h4>Probability</h4>
+                            <p>Likelihood that an event will occur (0 to 1)</p>
+                        </div>
 
-                    <p><strong>Range:</strong> Difference between highest and lowest values</p>
+                        <div class="glossary-item">
+                            <h4>Range</h4>
+                            <p>Difference between highest and lowest values</p>
+                        </div>
 
-                    <p><strong>Sample:</strong> Subset of population actually studied</p>
+                        <div class="glossary-item">
+                            <h4>Sample</h4>
+                            <p>Subset of population actually studied</p>
+                        </div>
 
-                    <p><strong>Standard Deviation:</strong> Measure of how spread out values are from the mean</p>
+                        <div class="glossary-item">
+                            <h4>Standard Deviation</h4>
+                            <p>Measure of how spread out values are from the mean</p>
+                        </div>
 
-                    <p><strong>Statistic:</strong> Numerical characteristic of a sample</p>
+                        <div class="glossary-item">
+                            <h4>Statistic</h4>
+                            <p>Numerical characteristic of a sample</p>
+                        </div>
 
-                    <p><strong>Variable:</strong> Characteristic that can take different values</p>
+                        <div class="glossary-item">
+                            <h4>Variable</h4>
+                            <p>Characteristic that can take different values</p>
+                        </div>
 
-                    <p><strong>Z-Score:</strong> Number of standard deviations a value is from the mean</p>
+                        <div class="glossary-item">
+                            <h4>Z-Score</h4>
+                            <p>Number of standard deviations a value is from the mean</p>
+                        </div>
+                    </div>
 
                     <hr>
 
@@ -2403,26 +2522,30 @@ Valid       50   12.40            3.25        6.00       20.00
             const answerDiv = questionItem.querySelector('.answer-reveal');
             const button = questionItem.querySelector('.reveal-answer-btn');
             
-            // Show the answer
-            answerDiv.style.display = 'block';
-            
-            // Mark as answered
-            markQuestionAsAnswered(questionId, true);
+            if (answerDiv && button) {
+                if (answerDiv.style.display === 'none' || answerDiv.style.display === '') {
+                    // Show the answer
+                    answerDiv.style.display = 'block';
+                    button.textContent = 'Hide Answer';
+                    button.classList.add('answered');
+                    questionItem.classList.add('answered');
+                    
+                    // Save to storage
+                    markQuestionAsAnswered(questionId, true);
+                } else {
+                    // Hide the answer
+                    answerDiv.style.display = 'none';
+                    button.textContent = 'Show Answer';
+                    button.classList.remove('answered');
+                    questionItem.classList.remove('answered');
+                }
+            }
         }
 
         // Mark question as answered (visually and in storage)
         function markQuestionAsAnswered(questionId, saveToStorage) {
             const questionItem = document.querySelector(`[data-question-id="${questionId}"]`);
             if (!questionItem) return;
-            
-            const answerDiv = questionItem.querySelector('.answer-reveal');
-            const button = questionItem.querySelector('.reveal-answer-btn');
-            
-            // Update visual state
-            questionItem.classList.add('answered');
-            button.classList.add('answered');
-            button.textContent = 'Answer Shown ✓';
-            answerDiv.style.display = 'block';
             
             // Save to storage if requested
             if (saveToStorage) {
