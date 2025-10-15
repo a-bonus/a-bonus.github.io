@@ -2617,6 +2617,7 @@ Always interpret your results in the context of your research question.
 
       <p class="review-tip"><em>💭 Need to review?</em> See Part 9.4: Extracting F-Statistics and Degrees of Freedom.</p>
     </div>
+
   </details>
 
   <div class="quiz-question">
@@ -2649,6 +2650,7 @@ Always interpret your results in the context of your research question.
 
       <p class="review-tip"><em>💭 Need to review?</em> See Part 10.4: APA Format for F-Tests.</p>
     </div>
+
   </details>
 
   <div class="quiz-question">
@@ -2683,6 +2685,7 @@ Always interpret your results in the context of your research question.
 
       <p class="review-tip"><em>💭 Need to review?</em> See Part 9.6: Identifying Non-Significant Predictors.</p>
     </div>
+
   </details>
 
   <div class="quiz-question">
@@ -2711,6 +2714,7 @@ Always interpret your results in the context of your research question.
 
       <p class="review-tip"><em>💭 Need to review?</em> See Part 9.5: Reading SPSS Output for Model Summary.</p>
     </div>
+
   </details>
 
   <div class="quiz-question">
@@ -2741,12 +2745,12 @@ Always interpret your results in the context of your research question.
 
       <p class="review-tip"><em>💭 Need to review?</em> See Part 9.7: Understanding SPSS Output for Significance.</p>
     </div>
+
   </details>
 
 </div>
 
 ---
-
 
 ## Part 11: Summary and Key Formulas
 
@@ -2756,6 +2760,7 @@ Always interpret your results in the context of your research question.
 Ŷ = bX + a
 
 Where:
+
 - Ŷ = Predicted value of Y
 - b = Slope (regression coefficient)
 - X = Value of the predictor
@@ -2772,21 +2777,26 @@ Interpretation: Proportion of variance in Y explained by X
 **Effect Size Formulas:**
 
 **For Correlation:**
+
 - r² = proportion of variance explained
 
 **For Regression:**
+
 - R² = proportion of variance explained by the model
 - Adjusted R² = R² adjusted for number of predictors (always report this)
 
 **For Individual Predictors in Multiple Regression:**
+
 - sr² = semipartial correlation squared = unique variance explained by one predictor
 - β² = squared standardized coefficient (for bivariate regression, β² = R²)
 
 **Degrees of Freedom for Regression:**
+
 - df₁ = k (number of predictors)
 - df₂ = N - k - 1
 
 **Variance Inflation Factor:**
+
 - VIF = 1 / Tolerance
 - Tolerance = 1 / VIF
 
@@ -2803,10 +2813,12 @@ Interpretation: Proportion of variance in Y explained by X
 **How many variables?**
 
 **Two Variables:**
+
 - Want to describe the relationship? → **Bivariate Correlation**
 - Want to predict one from the other? → **Bivariate Regression**
 
 **More than Two Variables:**
+
 - Multiple predictors, one outcome → **Multiple Regression**
 - Multiple predictors, multiple outcomes → Multivariate Analysis (beyond this course)
 - Looking for patterns/groupings → Factor Analysis/PCA (beyond this course)
@@ -2816,10 +2828,12 @@ Interpretation: Proportion of variance in Y explained by X
 **For Regression: How many predictors?**
 
 **One Predictor:**
+
 - Use **Bivariate (Simple Linear) Regression**
 - Report: F(1, df₂), Adjusted R², β, regression equation
 
 **Multiple Predictors:**
+
 - Use **Multiple Regression**
 - Report: F(df₁, df₂), Adjusted R², individual βs, sr² for unique contributions
 - Consider: Multicollinearity (VIF), model comparison (ΔR²)
@@ -2829,10 +2843,12 @@ Interpretation: Proportion of variance in Y explained by X
 **Method for Entering Predictors:**
 
 **Theory-Driven (recommended):**
+
 - Use **Enter** method (simultaneous)
 - Include all theoretically relevant predictors
 
 **Exploratory:**
+
 - Use **Forward** method (only significant predictors)
 - Or **Backward** method (remove non-significant predictors)
 - **Caution:** Results may not replicate in new samples
@@ -2840,42 +2856,52 @@ Interpretation: Proportion of variance in Y explained by X
 ### 11.3 Common Mistakes to Avoid
 
 **1. Confusing Correlation with Causation**
+
 - ✗ "Study hours cause higher exam scores" (from correlation)
 - ✓ "Study hours are associated with higher exam scores"
 
 **2. Mixing Up r and r²**
+
 - ✗ "r = .50, so 50% of variance is explained"
 - ✓ "r = .50, so r² = .25, meaning 25% of variance is explained"
 
 **3. Using R² Instead of Adjusted R²**
+
 - ✗ "The model explained 65.8% of variance, R² = .658"
 - ✓ "The model explained 65.3% of variance, Adjusted R² = .653"
 
 **4. Reporting p = .000**
+
 - ✗ F(3, 203) = 133.02, p = .000
 - ✓ F(3, 203) = 133.02, p < .001
 
 **5. Ignoring Degrees of Freedom**
+
 - ✗ F = 49.78, p < .001
 - ✓ F(1, 205) = 49.78, p < .001
 
 **6. Misinterpreting Beta (β)**
+
 - ✗ "β = .50 means the predictor is 50% effective"
 - ✓ "β = .50 indicates a moderate-to-strong standardized relationship"
 
 **7. Assuming All Predictors in a Significant Model are Significant**
+
 - ✗ "F is significant, so all predictors must be significant"
 - ✓ "Check individual t-tests for each predictor, even if F is significant"
 
 **8. Extrapolating Beyond Your Data**
+
 - ✗ Predicting for X = 50 when your data ranged from X = 1-20
 - ✓ Only predict within the range of observed X values
 
 **9. Ignoring Multicollinearity**
+
 - ✗ "VIF = 12 is fine, I'll interpret all coefficients"
 - ✓ "VIF = 12 indicates serious multicollinearity—interpret individual coefficients with caution"
 
 **10. Adding Too Many Predictors**
+
 - ✗ 50 predictors with N = 60
 - ✓ At least 10-15 participants per predictor
 
@@ -2948,18 +2974,21 @@ Interpretation: Proportion of variance in Y explained by X
 ### 11.5 Final Checklist for Regression Analysis
 
 **Before Running the Analysis:**
+
 - [ ] Check that all variables are scale (continuous)
 - [ ] Examine scatterplots for linearity
 - [ ] Check for outliers
 - [ ] Ensure adequate sample size (at least 10-15 participants per predictor)
 
 **Running the Analysis in SPSS:**
+
 - [ ] Select appropriate analysis (Bivariate Correlation, Bivariate Regression, or Multiple Regression)
 - [ ] Move correct variables to DV and IV boxes
 - [ ] Request necessary statistics (Estimates, Model fit, Collinearity diagnostics)
 - [ ] Choose appropriate method (Enter, Forward, Backward, Stepwise)
 
 **Interpreting the Output:**
+
 - [ ] Check omnibus F-test (is the overall model significant?)
 - [ ] Note Adjusted R² (how much variance is explained?)
 - [ ] Check individual t-tests (which predictors are significant?)
@@ -2968,6 +2997,7 @@ Interpretation: Proportion of variance in Y explained by X
 - [ ] Calculate sr² if needed (unique contributions)
 
 **Reporting Results:**
+
 - [ ] Report degrees of freedom: F(df₁, df₂)
 - [ ] Report Adjusted R² (not R²)
 - [ ] Use correct p-value format (p < .001, not p = .000)
@@ -3002,6 +3032,7 @@ Congratulations! You've completed a comprehensive journey through correlation an
 **Moving Forward:**
 
 These regression skills are fundamental to psychological research and data analysis in many fields. Practice applying them to real datasets, always:
+
 - Visualize your data first (scatterplots!)
 - Check your assumptions
 - Interpret results in context
@@ -3011,4 +3042,4 @@ Best of luck with your regression analyses, and remember—the goal is not just 
 
 ---
 
-*This concludes the M6 Lecture on Correlation and Regression. For additional practice, work through the M6 assignment guide and practice quiz.*
+_This concludes the M6 Lecture on Correlation and Regression. For additional practice, work through the M6 assignment guide and practice quiz._
