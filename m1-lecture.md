@@ -2214,51 +2214,63 @@ By the end of this module, you will be able to:
 
             <h2>Connections to Future Modules</h2>
 
-            **Module 2: One-Sample Tests**
-            - Uses z-scores and normal distributions to test if a sample mean differs from a known population mean
-            - Applies probability concepts to hypothesis testing
+            <h3>Module 2: One-Sample Tests</h3>
+            <ul>
+                <li>Uses z-scores and normal distributions to test if a sample mean differs from a known population mean</li>
+                <li>Applies probability concepts to hypothesis testing</li>
+            </ul>
 
-            **Module 3: Two-Sample Tests**
-            - Compares means between two groups using the same statistical reasoning
-            - Builds on understanding of sampling error and probability
+            <h3>Module 3: Two-Sample Tests</h3>
+            <ul>
+                <li>Compares means between two groups using the same statistical reasoning</li>
+                <li>Builds on understanding of sampling error and probability</li>
+            </ul>
 
-            **Module 4: Analysis of Variance (ANOVA)**
-            - Extends t-test logic to compare multiple groups simultaneously
-            - Uses the same probability framework for decision-making
+            <h3>Module 4: Analysis of Variance (ANOVA)</h3>
+            <ul>
+                <li>Extends t-test logic to compare multiple groups simultaneously</li>
+                <li>Uses the same probability framework for decision-making</li>
+            </ul>
 
-            **Module 5: Factorial Designs**
-            - Combines multiple independent variables
-            - Requires understanding of variable classification and measurement levels
+            <h3>Module 5: Factorial Designs</h3>
+            <ul>
+                <li>Combines multiple independent variables</li>
+                <li>Requires understanding of variable classification and measurement levels</li>
+            </ul>
 
-            **Module 6: Correlation and Regression**
-            - Examines relationships between variables
-            - Uses similar probability concepts for testing relationships
+            <h3>Module 6: Correlation and Regression</h3>
+            <ul>
+                <li>Examines relationships between variables</li>
+                <li>Uses similar probability concepts for testing relationships</li>
+            </ul>
 
-            Each module builds on the foundations you've learned here. Master these concepts, and you'll have a solid foundation for all future statistical analysis!
+            <p><strong>Key Takeaway:</strong> Each module builds on the foundations you've learned here. Master these concepts, and you'll have a solid foundation for all future statistical analysis!</p>
 
             ---
 
             <h2>Final Thoughts</h2>
 
-            Congratulations! You've completed Module 1 and learned the fundamental concepts that form the foundation of statistical reasoning. You now understand:
+            <p>Congratulations! You've completed Module 1 and learned the fundamental concepts that form the foundation of statistical reasoning. You now understand:</p>
 
-            - How statistics helps us move from subjective opinion to objective evidence
-            - How to identify and classify variables appropriately
-            - How to describe data with numbers and visualizations
-            - How samples relate to populations
-            - How the normal distribution and z-scores work
-            - How probability forms the basis of statistical inference
-            - How to use SPSS for basic data analysis
+            <ul>
+                <li>How statistics helps us move from subjective opinion to objective evidence</li>
+                <li>How to identify and classify variables appropriately</li>
+                <li>How to describe data with numbers and visualizations</li>
+                <li>How samples relate to populations</li>
+                <li>How the normal distribution and z-scores work</li>
+                <li>How probability forms the basis of statistical inference</li>
+                <li>How to use SPSS for basic data analysis</li>
+            </ul>
 
-            These concepts might seem abstract now, but they will become your tools for understanding research, evaluating claims, and making data-driven decisions throughout your academic and professional career.
+            <p>These concepts might seem abstract now, but they will become your tools for understanding research, evaluating claims, and making data-driven decisions throughout your academic and professional career.</p>
 
-            **Remember:** Statistics is not about memorizing formulas—it's about understanding the logic behind them. When you encounter new statistical concepts in future modules, always ask yourself: "What is this trying to tell me about my data? What does this mean in the context of my research question?"
+            <p><strong>Remember:</strong> Statistics is not about memorizing formulas—it's about understanding the logic behind them. When you encounter new statistical concepts in future modules, always ask yourself: "What is this trying to tell me about my data? What does this mean in the context of my research question?"</p>
 
-            As you work through the M1 assignment, focus not just on getting the right answers, but on understanding **why** we do each step. When you calculate a standard deviation, think about what it tells you. When you create a histogram, consider what patterns the shape reveals. When you compare your manual calculations to SPSS output, reflect on the purpose of the n-1 adjustment.
+            <p>As you work through the M1 assignment, focus not just on getting the right answers, but on understanding <strong>why</strong> we do each step. When you calculate a standard deviation, think about what it tells you. When you create a histogram, consider what patterns the shape reveals. When you compare your manual calculations to SPSS output, reflect on the purpose of the n-1 adjustment.</p>
 
-            These fundamental statistical reasoning skills will serve you throughout your academic career and beyond—whether you're reading research papers, evaluating news headlines, or making data-driven decisions in your future career.
+            <p>These fundamental statistical reasoning skills will serve you throughout your academic career and beyond—whether you're reading research papers, evaluating news headlines, or making data-driven decisions in your future career.</p>
 
-            **You've got this!** Statistics builds logically, step by step. Master these foundations, and everything that follows will make sense.
+            <p><strong>You've got this!</strong> Statistics builds logically, step by step. Master these foundations, and everything that follows will make sense.</p>
 
             ---
 
