@@ -967,38 +967,38 @@ You can't eliminate both types of errors simultaneously. There's always a trade-
 <details>
 <summary>Click to see answers</summary>
 
-1. Type I error (false positive)
-2. Decreases Type II error (increases power to detect real effects)
-3. 5% of the time (when H₀ is true, we'll wrongly reject it 5% of the time)
-4. Trick question! Type I rate is fixed at α. Type II rate (β) varies. Generally, Type II errors are more common because most studies are underpowered.
-</details>
+1.  Type I error (false positive)
+2.  Decreases Type II error (increases power to detect real effects)
+3.  5% of the time (when H₀ is true, we'll wrongly reject it 5% of the time)
+4.  Trick question! Type I rate is fixed at α. Type II rate (β) varies. Generally, Type II errors are more common because most studies are underpowered.
+    </details>
 
-            <!-- Bottom Navigation -->
-            <div class="tab-navigation bottom-nav">
-                <button class="tab-button" onclick="showTab(1)">
-                    <input type="checkbox" id="progress-1-bottom" class="tab-checkbox" onchange="toggleTabComplete(1)">
-                    <span class="tab-label">Hypothesis Testing Logic</span>
-                </button>
-                <button class="tab-button active" onclick="showTab(2)">
-                    <input type="checkbox" id="progress-2-bottom" class="tab-checkbox" onchange="toggleTabComplete(2)">
-                    <span class="tab-label">Decision Making & Errors</span>
-                </button>
-                <button class="tab-button" onclick="showTab(3)">
-                    <input type="checkbox" id="progress-3-bottom" class="tab-checkbox" onchange="toggleTabComplete(3)">
-                    <span class="tab-label">Sampling & t-Tests</span>
-                </button>
-                <button class="tab-button" onclick="showTab(4)">
-                    <input type="checkbox" id="progress-4-bottom" class="tab-checkbox" onchange="toggleTabComplete(4)">
-                    <span class="tab-label">Effect Size & Power</span>
-                </button>
-                <button class="tab-button" onclick="showTab(5)">
-                    <input type="checkbox" id="progress-5-bottom" class="tab-checkbox" onchange="toggleTabComplete(5)">
-                    <span class="tab-label">Application & Summary</span>
-                </button>
+                <!-- Bottom Navigation -->
+                <div class="tab-navigation bottom-nav">
+                    <button class="tab-button" onclick="showTab(1)">
+                        <input type="checkbox" id="progress-1-bottom" class="tab-checkbox" onchange="toggleTabComplete(1)">
+                        <span class="tab-label">Hypothesis Testing Logic</span>
+                    </button>
+                    <button class="tab-button active" onclick="showTab(2)">
+                        <input type="checkbox" id="progress-2-bottom" class="tab-checkbox" onchange="toggleTabComplete(2)">
+                        <span class="tab-label">Decision Making & Errors</span>
+                    </button>
+                    <button class="tab-button" onclick="showTab(3)">
+                        <input type="checkbox" id="progress-3-bottom" class="tab-checkbox" onchange="toggleTabComplete(3)">
+                        <span class="tab-label">Sampling & t-Tests</span>
+                    </button>
+                    <button class="tab-button" onclick="showTab(4)">
+                        <input type="checkbox" id="progress-4-bottom" class="tab-checkbox" onchange="toggleTabComplete(4)">
+                        <span class="tab-label">Effect Size & Power</span>
+                    </button>
+                    <button class="tab-button" onclick="showTab(5)">
+                        <input type="checkbox" id="progress-5-bottom" class="tab-checkbox" onchange="toggleTabComplete(5)">
+                        <span class="tab-label">Application & Summary</span>
+                    </button>
+                </div>
             </div>
-        </div>
 
-        <div id="tab-3" class="tab-panel">
+            <div id="tab-3" class="tab-panel">
 
 ## Part 5: The Central Limit Theorem
 
