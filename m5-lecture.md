@@ -40,9 +40,10 @@ By the end of this module, you will be able to:
 6. [The Decision Tree: Interpreting Factorial ANOVA Results](#part-6-the-decision-tree-interpreting-factorial-anova-results)
 7. [Simple Effects Tests](#part-7-simple-effects-tests)
 8. [Effect Size in Factorial ANOVA](#part-8-effect-size-in-factorial-anova)
-9. [SPSS Practical Guide](#part-9-spss-practical-guide)
-10. [Reporting Factorial ANOVA in APA Format](#part-10-reporting-factorial-anova-in-apa-format)
-11. [Summary and Key Formulas](#summary-and-key-formulas)
+9. [Assumptions of Factorial ANOVA](#part-9-assumptions-of-factorial-anova)
+10. [SPSS Practical Guide](#part-10-spss-practical-guide)
+11. [Reporting Factorial ANOVA in APA Format](#part-11-reporting-factorial-anova-in-apa-format)
+12. [Summary and Key Formulas](#summary-and-key-formulas)
 
 ---
 
@@ -146,6 +147,26 @@ You could run two separate one-way ANOVAs:
 - Testing how product features and marketing strategies influence sales
 - Investigating how teaching methods and student characteristics affect learning
 - Studying how environmental factors and genetic factors affect behavior
+
+### Quick Review: Building on One-Way ANOVA
+
+Before diving into factorial ANOVA, let's briefly connect to what you already know. In one-way ANOVA, we tested one independent variable with multiple levels (e.g., three teaching methods) and partitioned variance into between-groups and within-groups components. **Factorial ANOVA extends this logic**: we still partition variance, but now the between-groups variance is further divided into separate main effects for each factor PLUS an interaction effect. The fundamental principle remains the same—we're comparing group means—but now we can examine multiple factors and how they work together. Everything you learned about F-ratios, assumptions, and effect sizes still applies.
+
+### Why This Matters: Real Research Examples
+
+**Research Example 1: Stereotype Threat (Steele & Aronson, 1995)**
+
+Famous study examining test performance with factors: Race (Black, White) × Test Description (intelligence test, problem-solving task). The interaction revealed that Black students performed worse ONLY when the test was framed as an intelligence test—not when it was described as problem solving. This interaction changed our understanding of stereotype threat and led to practical interventions.
+
+**Research Example 2: Memory and Sleep (Mednick et al., 2003)**
+
+Researchers studied memory improvement with Time of Day (morning, evening) × Condition (nap, no nap). The interaction showed that napping improved memory performance for evening learners but had minimal effect for morning learners. Without examining the interaction, we'd miss that napping's benefits depend on individual chronotype.
+
+**Research Example 3: Social Media and Well-Being (Current Research)**
+
+Studies examine Screen Time (low, moderate, high) × Usage Type (active, passive). Interactions show that high screen time is associated with poor well-being ONLY for passive users (scrolling). Active users (messaging friends) don't show the same negative effects. The interaction reveals nuance that main effects alone would miss.
+
+**The Bottom Line:** Factorial ANOVA reveals the complexity of real-world phenomena. Most psychological effects aren't universal—they depend on context, individual differences, and other factors. Learning factorial ANOVA makes you a better researcher and critical thinker.
 
 ---
 
@@ -510,6 +531,16 @@ Each main effect is tested with its own **F-test**:
 - If F is significant, marginal means might be: 70%, 75%, 85%
 - Post-hoc tests tell you: Large > Small, Large > Medium, Medium = Small
 
+<div class="common-mistakes">
+  <h4>⚠️ Common Mistakes with Main Effects</h4>
+  <ul>
+    <li><strong>Mistake 1:</strong> Confusing main effects with interactions. Main effects look at each factor SEPARATELY, averaging across the other factor.</li>
+    <li><strong>Mistake 2:</strong> Comparing cell means instead of marginal means for main effects. Main effects use marginal means (averages across rows or columns).</li>
+    <li><strong>Mistake 3:</strong> Interpreting main effects as meaningful when there's a significant interaction. Always check the interaction first!</li>
+    <li><strong>Mistake 4:</strong> Forgetting to run post-hoc tests when a main effect has 3+ levels. The F-test only tells you differences exist, not which groups differ.</li>
+  </ul>
+</div>
+
 <div class="knowledge-check">
   <h4>🧠 Knowledge Check: Main Effects</h4>
 
@@ -698,47 +729,51 @@ An **interaction effect** occurs when **the effect of one independent variable d
 
 ### Visualizing Interactions with Line Graphs
 
-**No Interaction (Parallel Lines):**
+Interaction plots show the dependent variable on the Y-axis, one factor on the X-axis, and separate lines for each level of the other factor.
+
+**No Interaction Pattern (Parallel Lines):**
+
+Imagine a graph where:
+- X-axis shows Teaching Method: Lecture → Hands-on
+- Y-axis shows Test Scores (0-100)
+- Two lines: one for Males (solid), one for Females (dashed)
 
 ```
-Test Score
-    |
-100 |                    * Female-Hands-on
-    |               *----
- 80 |         * Female-Lecture
-    |    *----
- 60 |    * Male-Hands-on
-    |----
- 40 | * Male-Lecture
-    |____________________________
-      Lecture          Hands-on
+Both lines rise from left to right at the SAME angle:
+  Males: 40 → 60 (increase of 20 points)
+  Females: 80 → 100 (increase of 20 points)
+
+The lines stay parallel and never meet.
 ```
 
-Lines are parallel → No interaction
+**What this means:** Hands-on is better than lecture for BOTH groups by the same amount (20 points). The effect of teaching method doesn't depend on gender.
 
-**Interaction (Non-Parallel Lines):**
+---
+
+**Interaction Pattern (Non-Parallel Lines):**
+
+Imagine a graph where:
+- X-axis shows Teaching Method: Lecture → Hands-on
+- Y-axis shows Test Scores (0-100)
+- Two lines: one for Males (solid), one for Females (dashed)
 
 ```
-Test Score
-    |
-100 |    * Female-Hands-on
-    |    |
- 80 |    |        * Female-Lecture
-    |    |   *----
- 60 |    *----    Male-Lecture
-    |         ----*
- 40 |             * Male-Hands-on
-    |____________________________
-      Lecture          Hands-on
+Lines move in opposite directions and CROSS:
+  Males: 60 → 40 (decrease of 20 points)
+  Females: 80 → 100 (increase of 20 points)
+
+The lines intersect in the middle of the graph.
 ```
 
-Lines cross or diverge → Interaction present
+**What this means:** The effect of teaching method DEPENDS on gender. Females benefit from hands-on while males do worse. Males do better with lecture.
+
+---
 
 **Key Visual Cues:**
 
-- **Parallel lines** = No interaction
-- **Non-parallel lines** = Possible interaction
-- **Crossing lines** = Definite interaction (crossover interaction)
+- **Parallel lines** = No interaction (consistent effect across groups)
+- **Non-parallel lines** = Possible interaction (effect varies by group)
+- **Crossing lines** = Definite interaction (effect reverses across groups)
 
 ### Types of Interactions
 
@@ -784,6 +819,16 @@ Lines cross or diverge → Interaction present
 
 **Example Interpretation:**
 "The effect of teaching method on test scores depends on student level. Hands-on instruction is more effective for beginners, while lecture is more effective for advanced students."
+
+<div class="common-mistakes">
+  <h4>⚠️ Common Mistakes with Interactions</h4>
+  <ul>
+    <li><strong>Mistake 1:</strong> Thinking non-parallel lines always mean a significant interaction. Lines must be NON-PARALLEL ENOUGH for statistical significance. Always check the p-value!</li>
+    <li><strong>Mistake 2:</strong> Ignoring the interaction when it's significant and only reporting main effects. The interaction is usually your most important finding.</li>
+    <li><strong>Mistake 3:</strong> Confusing "no main effect" with "no interaction." These are independent - you can have an interaction without main effects.</li>
+    <li><strong>Mistake 4:</strong> Saying "Factor A and Factor B interact" without explaining WHAT the interaction means. Always describe the pattern in plain language.</li>
+  </ul>
+</div>
 
 <div class="knowledge-check">
   <h4>🧠 Knowledge Check: Interaction Effects</h4>
@@ -1010,6 +1055,45 @@ Total Variance in DV
 
 - Example: 1 + 1 + 1 + 56 = 59 ✓
 
+### Worked Example: Calculating Degrees of Freedom
+
+**Research Scenario:**
+A researcher conducts a 3×2 factorial ANOVA examining the effects of study method (flashcards, practice tests, re-reading) and study time (1 hour vs. 3 hours) on exam scores. There are 60 total participants with 10 participants per cell.
+
+**Step 1: Identify the design**
+- Factor A (Study Method): 3 levels (a = 3)
+- Factor B (Study Time): 2 levels (b = 2)
+- Total N = 60
+- Number of cells = 3 × 2 = 6 cells
+- Participants per cell = 10
+
+**Step 2: Calculate df for Main Effect A (Study Method)**
+- df_A = a - 1 = 3 - 1 = **2**
+
+**Step 3: Calculate df for Main Effect B (Study Time)**
+- df_B = b - 1 = 2 - 1 = **1**
+
+**Step 4: Calculate df for Interaction (A×B)**
+- df_A×B = (a - 1) × (b - 1) = (3 - 1) × (2 - 1) = 2 × 1 = **2**
+
+**Step 5: Calculate df for Within-Groups (Error)**
+- df_within = N - (a × b) = 60 - (3 × 2) = 60 - 6 = **54**
+- Alternative: (10-1) + (10-1) + (10-1) + (10-1) + (10-1) + (10-1) = 9×6 = 54 ✓
+
+**Step 6: Calculate df for Total**
+- df_total = N - 1 = 60 - 1 = **59**
+
+**Step 7: Verify the calculations**
+- df_A + df_B + df_A×B + df_within = df_total
+- 2 + 1 + 2 + 54 = 59 ✓
+
+**How to report in APA format:**
+- Main effect of Study Method: F(2, 54) = ...
+- Main effect of Study Time: F(1, 54) = ...
+- Interaction: F(2, 54) = ...
+
+---
+
 ### Reading the SPSS Output Table
 
 SPSS produces a "Tests of Between-Subjects Effects" table that looks like this:
@@ -1067,6 +1151,51 @@ Corrected Total           30871.960      59
 4. **Interaction** (IV1 × IV2 row)
 
 **Tip:** SPSS provides many decimal places—use all of them when reporting F-statistics in assignments.
+
+### Example: Interpreting SPSS Output Step-by-Step
+
+**Scenario:** You run a 2×2 ANOVA on college-going rates with Community (city, suburb) and Religious affiliation (yes, no).
+
+**Your SPSS Output Table:**
+
+| Source | Type III SS | df | Mean Square | F | Sig. | Partial η² |
+|--------|------------|-----|-------------|---------|------|------------|
+| Corrected Model | 24255.640 | 3 | 8085.213 | 68.502 | <.001 | .786 |
+| Intercept | 285120.000 | 1 | 285120.000 | 2416.00 | <.001 | .977 |
+| Community | 12600.840 | 1 | 12600.840 | 106.736 | <.001 | .656 |
+| Religious | 8294.400 | 1 | 8294.400 | 70.285 | <.001 | .557 |
+| Community * Religious | 3360.400 | 1 | 3360.400 | 28.476 | <.001 | .337 |
+| Error | 6616.320 | 56 | 118.113 | | | |
+| Total | 316000.000 | 60 | | | | |
+| Corrected Total | 30871.960 | 59 | | | | |
+
+**Step-by-Step Interpretation:**
+
+**Step 1: Check the Omnibus Test (Corrected Model)**
+- F(3, 56) = 68.502, p < .001, partial η² = .786
+- ✓ Model is significant - at least one effect is significant
+- ✓ Model explains 78.6% of variance (very strong!)
+
+**Step 2: Check the Interaction FIRST**
+- Community × Religious: F(1, 56) = 28.476, p < .001, partial η² = .337
+- ✓ Interaction IS significant - this is your main story!
+- ✓ Large effect size (33.7% of variance)
+
+**Step 3: Note the Main Effects (but interpret cautiously)**
+- Community: F(1, 56) = 106.736, p < .001, partial η² = .656 (significant)
+- Religious: F(1, 56) = 70.285, p < .001, partial η² = .557 (significant)
+- ⚠️ Both significant, but must interpret in light of the interaction
+
+**Step 4: Next Steps**
+- Because interaction is significant → Run SIMPLE EFFECTS tests
+- Split by Community and test effect of Religious in each
+- This will reveal the pattern of the interaction
+
+**Step 5: Check Levene's Test (in different table)**
+- If p > .05 → Assumption of homogeneity met ✓
+- If p < .05 → Assumption violated, note in write-up
+
+---
 
 <div class="knowledge-check">
   <h4>🧠 Knowledge Check: Omnibus Test and Variance Partitioning</h4>
@@ -1424,6 +1553,16 @@ This statement might be true on average (the marginal means), but it hides the c
 
 **Better Approach:**
 "The effect of religious affiliation depends on community type. In city schools, religious schools have much higher rates (85% vs. 60%), but in suburban schools, the difference is smaller (88% vs. 75%)."
+
+<div class="common-mistakes">
+  <h4>⚠️ Common Mistakes with the Decision Tree</h4>
+  <ul>
+    <li><strong>Mistake 1:</strong> Looking at main effects BEFORE checking the interaction. Always start with the interaction!</li>
+    <li><strong>Mistake 2:</strong> Running post-hoc tests when you should run simple effects (or vice versa). Post-hoc = main effects with 3+ levels. Simple effects = significant interaction.</li>
+    <li><strong>Mistake 3:</strong> Running post-hoc tests for a 2-level factor. With only 2 levels, just compare the two marginal means.</li>
+    <li><strong>Mistake 4:</strong> Reporting main effects as the "answer" when there's a significant interaction. The interaction changes everything!</li>
+  </ul>
+</div>
 
 <div class="knowledge-check">
   <h4>🧠 Knowledge Check: The Decision Tree</h4>
@@ -1841,6 +1980,53 @@ R² = 24255.640 / 30871.960 = .786 (78.6%)
 
 **Interpretation:** The combined model (community type, religious affiliation, and their interaction) explains 78.6% of the variance in college-going rates.
 
+### Worked Example: Calculating Effect Sizes
+
+**Given SPSS Output:**
+
+```
+Source                     SS          df    MS          F        Sig.
+Community                 12600.840    1     12600.840   106.74   <.001
+Religious                 8294.400     1     8294.400    70.29    <.001
+Community * Religious     3360.400     1     3360.400    28.48    <.001
+Error                     6616.320     56    118.113
+Corrected Total          30871.960    59
+```
+
+**Calculate Partial η² for Each Effect:**
+
+**1. Partial η² for Community:**
+- Formula: Partial η² = SS_Community / (SS_Community + SS_error)
+- Calculation: 12600.840 / (12600.840 + 6616.320)
+- = 12600.840 / 19217.160
+- = **.656** (large effect - explains 65.6% of variance)
+
+**2. Partial η² for Religious:**
+- Formula: Partial η² = SS_Religious / (SS_Religious + SS_error)
+- Calculation: 8294.400 / (8294.400 + 6616.320)
+- = 8294.400 / 14910.720
+- = **.556** (large effect - explains 55.6% of variance)
+
+**3. Partial η² for Interaction:**
+- Formula: Partial η² = SS_Interaction / (SS_Interaction + SS_error)
+- Calculation: 3360.400 / (3360.400 + 6616.320)
+- = 3360.400 / 9976.720
+- = **.337** (large effect - explains 33.7% of variance)
+
+**Calculate Total R² for the Model:**
+
+**Total R²:**
+- Formula: R² = SS_between_total / SS_total
+- First, find SS_between_total = SS_Community + SS_Religious + SS_Interaction
+- = 12600.840 + 8294.400 + 3360.400 = 24255.640
+- Now: R² = 24255.640 / 30871.960
+- = **.786** (78.6% of variance explained by entire model)
+
+**Interpretation:**
+All three effects show large effect sizes according to Cohen's guidelines (> .14). The overall model explains nearly 79% of the variance in college-going rates, indicating a very strong model.
+
+---
+
 ### Cohen's Guidelines for η²
 
 **Small effect:** η² = .01 (1% of variance)
@@ -1949,7 +2135,82 @@ R² = 24255.640 / 30871.960 = .786 (78.6%)
 
 ---
 
-## Part 9: SPSS Practical Guide
+## Part 9: Assumptions of Factorial ANOVA
+
+### The Four Critical Assumptions
+
+Like all statistical tests, factorial ANOVA has assumptions that must be reasonably met for results to be valid.
+
+**Assumption 1: Independence of Observations**
+
+- Each participant's score must be independent of all other participants
+- Violated by: Related participants (siblings, couples), repeated measures, clustered data
+- **How to check:** Consider your research design and data collection method
+- **Most important assumption** - violations seriously compromise results
+
+**Assumption 2: Normality**
+
+- The dependent variable should be approximately normally distributed **within each cell**
+- More important with small sample sizes (n < 30 per cell)
+- ANOVA is robust to mild violations, especially with equal cell sizes
+- **How to check in SPSS:**
+  - Run Analyze → Descriptive Statistics → Explore
+  - Request histograms and Shapiro-Wilk test for each cell
+  - Look for extreme skewness (±2) or kurtosis (±7)
+
+**Assumption 3: Homogeneity of Variance**
+
+- Variance should be approximately equal across all cells
+- Tested with Levene's test in SPSS output
+- ANOVA is fairly robust if cell sizes are equal
+- **How to check:** Levene's test in SPSS (p > .05 indicates assumption met)
+- **Rule of thumb:** Largest cell SD should be < 2× smallest cell SD
+
+**Assumption 4: No Significant Outliers**
+
+- Extreme outliers can distort means and inflate variance
+- **How to check in SPSS:**
+  - Look at boxplots (values beyond 3× IQR)
+  - Check standardized residuals (values > ±3.29 are concerning)
+
+### What to Do When Assumptions Are Violated
+
+**If Independence is Violated:**
+- ⚠️ STOP - This is serious
+- Consider multilevel modeling or repeated-measures ANOVA instead
+- Cannot proceed with standard factorial ANOVA
+
+**If Normality is Violated:**
+- With n > 30 per cell: Probably okay (Central Limit Theorem)
+- With smaller samples: Consider data transformation (log, square root)
+- Alternative: Use non-parametric methods or bootstrapping
+
+**If Homogeneity of Variance is Violated:**
+- If cell sizes are equal (within 10%): Probably okay to proceed
+- If cell sizes are unequal: Use Welch's correction or report robust statistics
+- Consider reporting with caution and noting the violation
+
+**If Outliers are Present:**
+- Investigate: Data entry error? True extreme case?
+- Options: Remove (if error), winsorize (cap at less extreme value), or transform data
+- Always report how you handled outliers
+
+### Unequal Cell Sizes
+
+**The Problem:**
+- Unequal cell sizes complicate interpretation and reduce power
+- Main effects and interaction become harder to interpret
+- SPSS uses Type III sums of squares to handle this, but it's not perfect
+
+**What to Do:**
+- Try to balance cell sizes at the design stage
+- If unavoidable: Use Type III sums of squares (SPSS default)
+- Report cell sizes in your write-up
+- Be extra cautious interpreting results with highly unbalanced designs
+
+---
+
+## Part 10: SPSS Practical Guide
 
 ### Running Two-Way Between-Groups ANOVA in SPSS
 
@@ -2171,7 +2432,7 @@ Shows means and SDs for each cell
 
 ---
 
-## Part 10: Reporting Factorial ANOVA in APA Format
+## Part 11: Reporting Factorial ANOVA in APA Format
 
 ### APA Format Structure
 
@@ -2329,3 +2590,82 @@ Simple effects tests revealed that the effect of religious affiliation differed 
 - Make informed decisions about statistical analysis with multiple factors
 
 Remember: **Always check the interaction first!** It's the golden rule of factorial ANOVA and will guide all your subsequent interpretations.
+
+---
+
+## Quick Reference Sheet
+
+**Print or save this one-page summary for quick review!**
+
+### Design Notation
+- **2×2 design:** 2 factors, each with 2 levels = 4 cells
+- **3×2 design:** 2 factors (3 levels × 2 levels) = 6 cells
+- **Number of cells = Level₁ × Level₂**
+
+### Key Concepts
+- **Main Effect:** Effect of one IV, averaging across the other IV(s)
+- **Interaction:** Effect of one IV depends on level of other IV
+- **Marginal Means:** Averages for each level of one factor (collapsed across other)
+- **Simple Effects:** Effect of one IV at specific level of other IV
+
+### Three Null Hypotheses Tested
+1. H₀: Main effect of Factor A
+2. H₀: Main effect of Factor B
+3. H₀: Interaction between A and B
+
+### Degrees of Freedom Formulas
+- **df_A** = a - 1
+- **df_B** = b - 1
+- **df_A×B** = (a - 1) × (b - 1)
+- **df_within** = N - (a × b)
+- **df_total** = N - 1
+
+### Effect Size Formulas
+- **Partial η²** = SS_effect / (SS_effect + SS_error)
+- **Total R²** = SS_between_total / SS_total
+- **Cohen's Guidelines:** Small = .01, Medium = .06, Large = .14
+
+### The Decision Tree (MEMORIZE THIS!)
+```
+1. Check INTERACTION first (p < .05?)
+   │
+   ├─ YES (Significant Interaction)
+   │   → Run SIMPLE EFFECTS tests
+   │   → Report interaction pattern
+   │   → Cautiously interpret main effects
+   │
+   └─ NO (Not Significant)
+       → Interpret MAIN EFFECTS independently
+       → For each significant main effect:
+           • 2 levels → Compare marginal means
+           • 3+ levels → Run POST-HOC tests
+```
+
+### Four Assumptions
+1. **Independence** (most critical!)
+2. **Normality** (check per cell)
+3. **Homogeneity of Variance** (Levene's test)
+4. **No extreme outliers**
+
+### SPSS Steps
+1. Analyze → General Linear Model → Univariate
+2. Move DV to "Dependent Variable"
+3. Move IVs to "Fixed Factor(s)"
+4. Options → Check "Descriptive statistics" and "Estimates of effect size"
+5. OK
+
+### APA Reporting Template
+"A [design] between-groups factorial ANOVA examined the effects of [Factor A] and [Factor B] on [DV]. The interaction was [significant/not significant], F(df₁, df₂) = X.XX, p = .XXX, partial η² = .XX. [Describe pattern if significant]. Main effects showed [describe if interaction not significant]."
+
+### Common Mistakes to Avoid
+❌ Checking main effects before interaction
+❌ Running post-hoc tests when you need simple effects
+❌ Reporting p = .000 (use p < .001)
+❌ Forgetting effect sizes
+❌ Interpreting main effects when interaction is significant
+
+### Study Tips
+- Practice the decision tree until it's automatic
+- Always draw the interaction plot
+- Calculate degrees of freedom first to check your understanding
+- Memorize: Interaction > Main Effects in importance!
