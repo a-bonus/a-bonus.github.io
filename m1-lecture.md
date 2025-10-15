@@ -2265,8 +2265,8 @@ By the end of this module, you will be able to:
                     <input type="checkbox" id="progress-5-bottom" class="tab-checkbox" onchange="toggleTabComplete(5)">
                     <span class="tab-label">Probability, SPSS & Summary</span>
                 </button>
+            </div>
         </div>
-    </div>
 
 </div>
 
