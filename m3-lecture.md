@@ -1,10 +1,10 @@
 ---
 layout: lecture
-title: M3 Lecture - Comparing Two Means
+title: Module 3: Comparing Two Means
 subtitle: Independent-Samples and Paired-Samples t-Tests
 ---
 
-# M3 Lecture: Comparing Two Means
+# Module 3: Comparing Two Means
 
 ## Independent-Samples and Paired-Samples t-Tests
 
@@ -15,7 +15,7 @@ subtitle: Independent-Samples and Paired-Samples t-Tests
 
 ## Learning Objectives
 
-By the end of this lecture, you will be able to:
+By the end of this module, you will be able to:
 
 1. **Distinguish between independent-samples and paired-samples designs** and choose the appropriate t-test
 2. **Understand the conceptual foundation** of comparing two means using distributions of mean differences
@@ -2296,4 +2296,4 @@ Remember: **The research design determines the statistical test, not the other w
 
 ---
 
-_This lecture provides a comprehensive foundation for understanding and applying t-tests for comparing two means. Practice with real data and always remember that statistical analysis begins with understanding your research design._
+_This module provides a comprehensive foundation for understanding and applying t-tests for comparing two means. Practice with real data and always remember that statistical analysis begins with understanding your research design._
