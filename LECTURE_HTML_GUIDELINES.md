@@ -4,7 +4,7 @@ This document provides standards and guidelines for converting markdown lecture 
 
 ## Overview
 
-All lecture HTML files should follow the same structure and styling patterns to maintain visual consistency and user experience across modules. The design is based on M1-lecture.html as the standard template.
+All lecture HTML files should follow the same structure and styling patterns to maintain visual consistency and user experience across modules. The design is based on the enhanced M1 and M2 lecture templates, which include improved knowledge check functionality, professional glossary formatting, and visual diagram styling.
 
 ## Required HTML Structure
 
@@ -19,7 +19,7 @@ All lecture HTML files should follow the same structure and styling patterns to 
     <title>Module X: [Module Title]</title>
     <link rel="stylesheet" href="assets/css/main.css" />
     <style>
-      /* Knowledge Check Styling Only */
+      /* Required CSS for Knowledge Checks, Glossary, and Visual Elements */
     </style>
   </head>
 </html>
@@ -36,7 +36,7 @@ All lecture HTML files should follow the same structure and styling patterns to 
 
         <h2>Learning Objectives</h2>
         <p>By the end of this module, you will be able to:</p>
-        <ol>
+        <ol class="learning-objectives">
             <li>Objective 1</li>
             <li>Objective 2</li>
             <!-- etc. -->
@@ -63,7 +63,7 @@ All lecture HTML files should follow the same structure and styling patterns to 
 
 ## Required CSS in `<style>` Section
 
-### Include ONLY these knowledge check styles:
+### Include ALL of these styles for consistency:
 
 ```css
 /* Knowledge Check Styling */
@@ -126,6 +126,66 @@ All lecture HTML files should follow the same structure and styling patterns to 
 .reveal-answer-btn.answered:hover {
   background-color: #218838;
 }
+
+/* Learning Objectives Styling */
+.learning-objectives {
+  margin: 15px 0;
+}
+
+.learning-objectives > li {
+  margin-bottom: 8px;
+}
+
+/* Glossary Styling */
+.glossary-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.glossary-item {
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  padding: 15px;
+}
+
+.glossary-item h4 {
+  color: #007bff;
+  margin-bottom: 8px;
+  font-size: 1.1em;
+}
+
+.glossary-item p {
+  margin: 0;
+  color: #495057;
+  line-height: 1.5;
+}
+
+/* Visual Diagrams Styling */
+.visual-diagram {
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 20px 0;
+}
+
+.visual-diagram h4 {
+  color: #495057;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 5px;
+}
+
+.diagram-caption {
+  text-align: center;
+  font-size: 0.9em;
+  color: #6c757d;
+  margin-top: 10px;
+  font-style: italic;
+}
 ```
 
 ### DO NOT include:
@@ -133,7 +193,7 @@ All lecture HTML files should follow the same structure and styling patterns to 
 - Custom content box styles (`.highlight-box`, `.solution-box`, etc.)
 - Custom table styles
 - Custom list styles
-- Any module-specific styling
+- Any module-specific styling beyond the required styles above
 
 ## Tab Navigation Pattern
 
@@ -293,28 +353,67 @@ function showTab(tabNumber) {
 ### 7. Knowledge Check Functions
 
 ```javascript
+// Knowledge check functionality with toggle
 function revealAnswer(questionId) {
-  const questionItem = document.getElementById(questionId);
+  const questionItem = document.querySelector(
+    `[data-question-id="${questionId}"]`
+  );
   const answerDiv = questionItem.querySelector(".answer-reveal");
   const button = questionItem.querySelector(".reveal-answer-btn");
 
-  // Show the answer
-  answerDiv.style.display = "block";
+  if (answerDiv && button) {
+    if (answerDiv.style.display === "none" || answerDiv.style.display === "") {
+      // Show the answer
+      answerDiv.style.display = "block";
+      button.textContent = "Hide Answer";
+      button.classList.add("answered");
+      questionItem.classList.add("answered");
 
-  // Update visual state
-  questionItem.classList.add("answered");
-  button.classList.add("answered");
-  button.textContent = "Answer Revealed";
+      // Save to storage
+      markQuestionAsAnswered(questionId, true);
+    } else {
+      // Hide the answer
+      answerDiv.style.display = "none";
+      button.textContent = "Show Answer";
+      button.classList.remove("answered");
+      questionItem.classList.remove("answered");
+    }
+  }
 }
 
-function markAsAnswered(questionId) {
-  const questionItem = document.getElementById(questionId);
-  const answerDiv = questionItem.querySelector(".answer-reveal");
-  const button = questionItem.querySelector(".reveal-answer-btn");
+// Knowledge check storage functions
+const KC_STORAGE_KEY = "mX-knowledge-checks"; // Replace X with module number
 
-  // Update visual state
-  questionItem.classList.add("answered");
-  button.classList.add("answered");
+function saveAnsweredQuestion(questionId) {
+  const savedProgress = localStorage.getItem(KC_STORAGE_KEY);
+  const answeredQuestions = savedProgress ? JSON.parse(savedProgress) : [];
+
+  if (!answeredQuestions.includes(questionId)) {
+    answeredQuestions.push(questionId);
+    localStorage.setItem(KC_STORAGE_KEY, JSON.stringify(answeredQuestions));
+  }
+}
+
+function markQuestionAsAnswered(questionId, saveToStorage) {
+  const questionItem = document.querySelector(
+    `[data-question-id="${questionId}"]`
+  );
+  if (!questionItem) return;
+
+  // Save to storage if requested
+  if (saveToStorage) {
+    saveAnsweredQuestion(questionId);
+  }
+}
+
+function loadKnowledgeCheckProgress() {
+  const savedProgress = localStorage.getItem(KC_STORAGE_KEY);
+  if (savedProgress) {
+    const answeredQuestions = JSON.parse(savedProgress);
+    answeredQuestions.forEach((questionId) => {
+      markQuestionAsAnswered(questionId, false);
+    });
+  }
 }
 ```
 
@@ -323,6 +422,7 @@ function markAsAnswered(questionId) {
 ```javascript
 document.addEventListener("DOMContentLoaded", function () {
   loadProgress();
+  loadKnowledgeCheckProgress();
 });
 ```
 
@@ -339,31 +439,93 @@ Use the convention: `assets/mX-assets/image-name.png`
 ### 2. Knowledge Check HTML Pattern
 
 ```html
-<div class="knowledge-check-item" id="question-1">
-  <div class="question-text">
-    <p>Question text here?</p>
-  </div>
-  <div class="question-options">
-    <p>A) Option A</p>
-    <p>B) Option B</p>
-    <p>C) Option C</p>
-    <p>D) Option D</p>
-  </div>
-  <button class="reveal-answer-btn" onclick="revealAnswer('question-1')">
-    Reveal Answer
-  </button>
+<div class="knowledge-check-item" data-question-id="tabX-q1">
+  <p class="question-text"><strong>Question 1:</strong> Question text here?</p>
+  <ul class="question-options">
+    <li>A) Option A</li>
+    <li>B) Option B</li>
+    <li>C) Option C</li>
+    <li>D) Option D</li>
+  </ul>
   <div class="answer-reveal" style="display: none;">
-    <p class="answer-text">Correct answer and explanation here.</p>
+    <div class="answer-content">
+      <p class="correct-answer">Correct Answer: B) Option B</p>
+      <p class="explanation">
+        Explanation of why this answer is correct and why others are incorrect.
+      </p>
+    </div>
   </div>
+  <button class="reveal-answer-btn" onclick="revealAnswer('tabX-q1')">
+    Show Answer
+  </button>
 </div>
 ```
 
-### 3. Tab Content Organization
+**Important Notes:**
+
+- Use `data-question-id` instead of `id` for consistency
+- Include question number in the ID (e.g., `tab1-q1`, `tab2-q3`)
+- Use proper semantic HTML with `<ul>` for options
+- Include both correct answer and explanation
+- Button text should start as "Show Answer"
+
+### 3. Glossary HTML Pattern
+
+```html
+<h2>Glossary</h2>
+
+<div class="glossary-section">
+  <div class="glossary-item">
+    <h4>Term Name</h4>
+    <p>Clear, concise definition of the term</p>
+  </div>
+
+  <div class="glossary-item">
+    <h4>Another Term</h4>
+    <p>Definition for this term</p>
+  </div>
+
+  <!-- Continue for all terms -->
+</div>
+```
+
+**Important Notes:**
+
+- Use the grid layout for professional appearance
+- Keep definitions concise but complete
+- Include all key statistical terms from the module
+- Maintain alphabetical order when possible
+
+### 4. Visual Diagram HTML Pattern
+
+```html
+<div class="visual-diagram">
+  <h4>📊 Diagram Title</h4>
+  <div class="diagram-content">
+    <!-- Your diagram content here -->
+    <p>Explanation text for the diagram</p>
+  </div>
+  <p class="diagram-caption">
+    <em>Figure X.Y: Caption describing the diagram</em>
+  </p>
+</div>
+```
+
+**Important Notes:**
+
+- Use emoji icons for visual appeal (📊, 🔄, 📈, etc.)
+- Include figure numbering for reference
+- Provide clear captions
+- Keep content focused and educational
+
+### 5. Tab Content Organization
 
 - Each tab should be a logical unit of content
 - Use clear headings (h2, h3) within tabs
 - Maintain consistent spacing and structure
 - Include knowledge checks at appropriate points
+- Add "Quick Check" sections throughout content
+- Include visual diagrams where helpful
 
 ## Conversion Checklist
 
@@ -377,24 +539,31 @@ Use the convention: `assets/mX-assets/image-name.png`
 ### During Conversion:
 
 - [ ] Create proper HTML document structure
-- [ ] Add required CSS (knowledge check styles only)
+- [ ] Add ALL required CSS (knowledge checks, glossary, visual diagrams)
 - [ ] Implement tab navigation (top and bottom)
 - [ ] Convert markdown content to HTML
-- [ ] Add knowledge checks with proper HTML structure
+- [ ] Add knowledge checks with proper HTML structure and toggle functionality
+- [ ] Create professional glossary with grid layout
+- [ ] Add visual diagrams where appropriate
 - [ ] Update image paths to use asset folders
-- [ ] Add all required JavaScript functions
+- [ ] Add all required JavaScript functions (including knowledge check storage)
 - [ ] Test tab switching functionality
 - [ ] Test progress tracking (localStorage)
+- [ ] Test knowledge check show/hide functionality
 
 ### Post-Conversion:
 
 - [ ] Verify all tabs display correctly
-- [ ] Test knowledge check reveal functionality
+- [ ] Test knowledge check show/hide toggle functionality
 - [ ] Verify progress tracking works for both top and bottom nav
+- [ ] Test knowledge check localStorage persistence
+- [ ] Verify glossary displays in proper grid format
+- [ ] Test visual diagrams display correctly
 - [ ] Check responsive design on mobile
 - [ ] Validate HTML syntax
 - [ ] Test with different browsers
 - [ ] Ensure consistent styling with M1/M2
+- [ ] Verify learning objectives display without redundant numbering
 
 ## File Naming Convention
 
@@ -402,12 +571,41 @@ Use the convention: `assets/mX-assets/image-name.png`
 - Asset folders: `assets/mX-assets/`
 - Images: descriptive names in kebab-case
 
+## Enhanced Features (M1/M2 Standard)
+
+### Knowledge Check Improvements:
+
+- **Toggle Functionality**: Show/Hide Answer buttons that work properly
+- **Visual Feedback**: Green borders and styling when answered
+- **LocalStorage Persistence**: Remembers which questions have been answered
+- **Improved UX**: Better button text and state management
+
+### Glossary Enhancements:
+
+- **Professional Grid Layout**: Responsive 2-3 column grid
+- **Consistent Styling**: Blue headers, clean backgrounds
+- **Better Typography**: Improved readability and spacing
+
+### Visual Diagram Support:
+
+- **Ready-to-Use CSS**: Professional styling for educational diagrams
+- **Figure Captions**: Consistent caption formatting
+- **Icon Support**: Emoji icons for visual appeal
+
+### Learning Objectives:
+
+- **Clean Numbering**: No redundant circular icons
+- **Consistent Spacing**: Proper margins and typography
+
 ## Notes
 
 - Keep custom CSS minimal - rely on `main.css` for most styling
 - Maintain consistency with established patterns
 - Test thoroughly before publishing
 - Update this guide if new patterns are established
+- **Always include ALL required CSS** for full functionality
+- **Test knowledge check toggle functionality** before publishing
+- **Ensure glossary uses grid layout** for professional appearance
 
 ## Module-Specific Considerations
 
