@@ -36,13 +36,18 @@ By the end of this lecture, you should be able to:
 6. [Understanding Unique Contributions](#part-6-understanding-unique-contributions)
 7. [Multicollinearity](#part-7-multicollinearity)
 8. [Model Building and Comparison](#part-8-model-building-and-comparison)
-9. [SPSS Practical Guide](#part-9-spss-practical-guide)
-10. [Reporting Regression in APA Format](#part-10-reporting-regression-in-apa-format)
-11. [Summary and Key Formulas](#part-11-summary-and-key-formulas)
+9. [Assumptions of Correlation and Regression](#part-9-assumptions-of-correlation-and-regression)
+10. [SPSS Practical Guide](#part-10-spss-practical-guide)
+11. [Reporting Regression in APA Format](#part-11-reporting-regression-in-apa-format)
+12. [Summary and Key Formulas](#part-12-summary-and-key-formulas)
 
 ---
 
 ## Part 1: Introduction to Correlation and Regression
+
+### Quick Review: From Group Comparisons to Relationships
+
+So far in this course, you've learned to compare groups using t-tests (two groups) and ANOVA (multiple groups). These analyses test whether **categorical** independent variables (e.g., treatment vs. control, three teaching methods) affect a continuous dependent variable. **Now we shift gears completely**: Instead of comparing groups, we examine how **continuous variables relate to each other**. This opens up a whole new set of research questions—not "Do groups differ?" but "How strongly do two variables co-vary?" and "Can we predict one variable from another?" The logic is different, but the goal remains the same: understanding patterns in data to answer psychological research questions.
 
 ### 1.1 A Fundamental Shift in Research Questions
 
@@ -156,6 +161,30 @@ Why? Because correlation and regression assume a **linear** relationship. If the
 - **Non-existent:** You might find spurious relationships
 
 **Key Principle:** Never run correlation or regression blindly. **Look at your data first.**
+
+### 1.6 Why This Matters: Real Research Examples
+
+**Research Example 1: The ACE Study (Adverse Childhood Experiences)**
+
+One of the most influential studies in psychology used correlation and regression to examine relationships between childhood trauma and adult health outcomes. Felitti et al. (1998) found strong correlations (r = .40 to .60) between number of adverse childhood experiences and risks for depression, substance abuse, and chronic disease in adulthood. Multiple regression revealed that ACEs uniquely predicted health outcomes even after controlling for demographic factors, fundamentally changing how we understand long-term effects of childhood trauma.
+
+**Research Example 2: Growth Mindset and Academic Achievement (Dweck, 2006)**
+
+Carol Dweck's research on growth mindset extensively uses correlation and regression. Studies show that students' beliefs about intelligence (fixed vs. growth mindset) correlate with academic performance (r = .25 to .35). Multiple regression analyses revealed that mindset predicts GPA above and beyond IQ and prior achievement, demonstrating that psychological factors uniquely contribute to success beyond raw ability.
+
+**Research Example 3: Social Support and Mental Health**
+
+Meta-analyses consistently show moderate-to-strong negative correlations (r = -.30 to -.50) between social support and depression/anxiety. Multiple regression studies reveal that different types of support (emotional, instrumental, informational) each uniquely predict well-being, helping researchers understand which interventions are most effective.
+
+**The Bottom Line**
+
+Most psychological phenomena involve continuous variables that relate to each other in complex ways. Correlation and regression are essential tools for:
+- Understanding risk factors and protective factors
+- Identifying which variables matter most (multiple regression)
+- Making predictions for clinical or educational applications
+- Building and testing psychological theories about how variables relate
+
+Learning these techniques makes you a better consumer of research and prepares you for real-world data analysis.
 
 ---
 
@@ -290,6 +319,17 @@ This is perhaps the most important principle in correlational research:
 - **Experimental design** with random assignment
 - **Temporal precedence** (cause comes before effect)
 - **Control** over confounding variables
+
+<div class="common-mistakes">
+  <h4>⚠️ Common Mistakes with Correlation</h4>
+  <ul>
+    <li><strong>Mistake 1:</strong> Confusing r with r². Remember: r = .50 means r² = .25 (25% variance explained, not 50%).</li>
+    <li><strong>Mistake 2:</strong> Saying "correlation proves causation." It doesn't! Always use language like "associated with" or "related to," not "causes."</li>
+    <li><strong>Mistake 3:</strong> Thinking r is a percentage of people. r = .40 doesn't mean 40% of people follow the pattern—it's the strength of the relationship.</li>
+    <li><strong>Mistake 4:</strong> Ignoring the sign. r = -.70 is just as strong as r = +.70; the negative just indicates direction.</li>
+    <li><strong>Mistake 5:</strong> Assuming no relationship when r is small. Even r = .20 can be meaningful in psychology, where many factors influence behavior.</li>
+  </ul>
+</div>
 
 ### 2.5 Running Correlations in SPSS
 
@@ -714,6 +754,32 @@ Regression has two df values, just like ANOVA:
 - df₁ = 1
 - df₂ = 207 - 1 - 1 = 205
 - APA format: F(1, 205) = ...
+
+**Worked Example: Calculating df for Multiple Regression**
+
+**Research Scenario:**
+A researcher conducts a multiple regression to predict job satisfaction (DV) from three predictors: salary, work-life balance, and supervisor support. The study has 100 participants.
+
+**Step 1: Identify the values**
+- N (total sample size) = 100
+- k (number of predictors) = 3
+
+**Step 2: Calculate df₁ (Model df)**
+- df₁ = k = 3
+
+**Step 3: Calculate df₂ (Error df)**
+- df₂ = N - k - 1
+- df₂ = 100 - 3 - 1
+- df₂ = 96
+
+**Step 4: Write in APA format**
+- F(3, 96) = [F-value], p = [p-value]
+
+**Step 5: Verify your work**
+- Total df = df₁ + df₂ = 3 + 96 = 99
+- This should equal N - 1 = 100 - 1 = 99 ✓
+
+**Common Mistake:** Forgetting to subtract the "1" in df₂ = N - k - 1. Many students calculate N - k and forget the extra -1.
 
 **Why These Matter:**
 
@@ -1313,6 +1379,42 @@ Weight           -.859        .136
 
 **Key Insight:**
 More than half of the explained variance (37.1% out of 65.8%) is **shared** among the predictors. This is why multiple regression is better than separate bivariate regressions!
+
+**Worked Example: Calculating sr² from SPSS Output**
+
+**Given:** SPSS Coefficients table shows the following values in the "Part" column:
+```
+Predictor         Part (sr)
+Salary            .245
+WorkLifeBalance   .412
+SupervisorSupport .189
+```
+
+**Step 1: Understand what the "Part" column represents**
+- The "Part" column shows the semipartial correlation (sr)
+- This is already the unique correlation for each predictor
+- We need to square it to get the proportion of variance
+
+**Step 2: Calculate sr² for each predictor**
+- Salary: sr² = (.245)² = .060
+- WorkLifeBalance: sr² = (.412)² = .170
+- SupervisorSupport: sr² = (.189)² = .036
+
+**Step 3: Interpret the results**
+- Salary uniquely explains **6.0%** of variance in job satisfaction
+- WorkLifeBalance uniquely explains **17.0%** of variance (strongest predictor)
+- SupervisorSupport uniquely explains **3.6%** of variance
+
+**Step 4: Calculate total unique variance**
+- Sum of unique contributions = 6.0% + 17.0% + 3.6% = 26.6%
+
+**Step 5: Calculate shared variance (if you know total R²)**
+- If total R² = .45 (45%), then:
+- Shared variance = 45% - 26.6% = 18.4%
+- This means 18.4% of explained variance is shared among the three predictors
+
+**In Your Write-Up:**
+"Work-life balance was the strongest predictor, uniquely explaining 17.0% of the variance in job satisfaction (sr² = .170), followed by salary (sr² = .060) and supervisor support (sr² = .036)."
 
 ### 6.4 Part Correlation vs. Semipartial Correlation
 
@@ -2052,9 +2154,116 @@ How do you know if your model is actually better?
 
 ---
 
-## Part 9: SPSS Practical Guide
+## Part 9: Assumptions of Correlation and Regression
 
-### 9.1 Running Bivariate Correlations
+### The Four Critical Assumptions
+
+Like all parametric statistical tests, correlation and regression have assumptions that must be reasonably met for results to be valid and interpretable.
+
+**Assumption 1: Linearity**
+
+- The relationship between X and Y must be **linear** (straight-line relationship)
+- Pearson correlation and linear regression only detect linear relationships
+- **Why it matters:** If the relationship is curved (e.g., inverted U-shape), r will underestimate the true strength of the relationship
+- **How to check:** Examine the scatterplot—points should cluster around an imaginary straight line, not a curve
+- **Most important check:** Always look at your scatterplot before running analysis
+
+**Assumption 2: Normality**
+
+- For correlation: Both X and Y should be approximately normally distributed
+- For regression: **Residuals** (errors) should be approximately normally distributed
+- **Why it matters:** Extreme skewness affects significance tests and confidence intervals
+- Less critical with large samples (n > 30) due to Central Limit Theorem
+- **How to check in SPSS:**
+  - For correlation: Check histograms of both variables
+  - For regression: Request residual plots (Analyze → Regression → Plots → Histogram of residuals)
+
+**Assumption 3: Homoscedasticity**
+
+- The variability of Y scores should be roughly equal across all levels of X
+- In regression: Residuals should have constant variance across predicted values
+- **Why it matters:** Heteroscedasticity (unequal variance) makes standard errors unreliable
+- **How to check:** In a scatterplot, the vertical spread of points should be similar at all X values
+- **What to look for in residual plots:** Random scatter with no fan or cone shape
+
+**Assumption 4: Independence of Observations**
+
+- Each data point must be independent (not influenced by other data points)
+- **Violated by:** Related participants (twins, couples), repeated measures, clustered data (students within classrooms)
+- **Why it matters:** Most serious assumption—violations invalidate significance tests
+- **How to check:** Consider your research design and data collection
+- **Cannot proceed with standard correlation/regression if violated** (need multilevel modeling or other advanced techniques)
+
+### Additional Considerations
+
+**Outliers and Influential Cases**
+
+- **Outliers:** Data points far from the rest of the data
+- **Influential cases:** Points that dramatically change the regression line if removed
+- **Why they matter:** A single outlier can create or destroy a correlation
+- **How to check:**
+  - Visual inspection of scatterplots
+  - In regression: Check standardized residuals (values > ±3.29 are concerning)
+  - Cook's Distance (values > 1.0 indicate highly influential cases)
+- **What to do:**
+  - Investigate: Data entry error? True extreme case?
+  - Options: Correct errors, remove if justified (and report this), or use robust statistics
+
+**Restriction of Range**
+
+- If X or Y has limited variability in your sample, correlations will be artificially weakened
+- Example: Correlating IQ and GPA in a gifted program (everyone has high IQ) yields lower r than in general population
+- **Solution:** Be aware when interpreting results; acknowledge limitation
+
+### What to Do When Assumptions Are Violated
+
+**If Linearity is Violated:**
+- Consider transforming variables (log, square root)
+- Use polynomial regression for curvilinear relationships
+- Report Spearman's rho (nonparametric) instead of Pearson's r
+- Or acknowledge that linear correlation underestimates the relationship
+
+**If Normality is Violated:**
+- With n > 30: Probably okay to proceed (Central Limit Theorem)
+- With smaller samples: Consider transformations or nonparametric alternatives (Spearman's rho)
+- In regression: Focus on residual normality, not predictor normality
+
+**If Homoscedasticity is Violated:**
+- Use robust standard errors (available in advanced statistics software)
+- Transform the outcome variable (Y)
+- Acknowledge the limitation in your write-up
+
+**If Independence is Violated:**
+- ⚠️ STOP - This is serious
+- Use multilevel modeling, repeated-measures analysis, or other specialized techniques
+- Cannot proceed with standard correlation/regression
+
+**If Outliers Are Present:**
+- Check for data entry errors first
+- Consider reporting results with and without outliers
+- Use robust regression techniques that downweight outliers
+- Consider Spearman's rho (less sensitive to outliers than Pearson's r)
+
+### Checking Assumptions in SPSS
+
+**For Correlation:**
+1. Create scatterplot: Graphs → Legacy Dialogs → Scatter/Dot
+2. Check histograms: Graphs → Legacy Dialogs → Histogram
+3. Visual inspection is primary method
+
+**For Regression:**
+1. After running regression, click "Plots" button
+2. Put *ZRESID (standardized residuals) on Y-axis
+3. Put *ZPRED (standardized predicted values) on X-axis
+4. Also check "Histogram" and "Normal probability plot"
+5. Click Continue and run analysis
+6. Examine plots for patterns, outliers, non-normality
+
+---
+
+## Part 10: SPSS Practical Guide
+
+### 10.1 Running Bivariate Correlations
 
 **Step-by-Step Instructions:**
 
@@ -2102,7 +2311,7 @@ Acceleration      .843**      .790**      .859**        1
 - Find the largest absolute value: .859 (Weight)
 - **Answer: Weight** has the strongest correlation with Acceleration
 
-### 9.2 Running Bivariate Regression
+### 12.2 Running Bivariate Regression
 
 **Step-by-Step Instructions:**
 
@@ -2161,7 +2370,7 @@ Weight         -.006         .001        -.859   -7.06   <.001
 - Regression equation: Ŷ = -.006(Weight) + 17.850
 - Weight significantly predicts Acceleration, t(205) = -7.06, p < .001
 
-### 9.3 Running Multiple Regression
+### 12.3 Running Multiple Regression
 
 **Step-by-Step Instructions:**
 
@@ -2253,7 +2462,7 @@ Weight      -.005       .001       -.859   -5.78  <.001    -.369        2.67
   - Horsepower: sr² = (.192)² = .037
 - Answer: .136 (strongest); .037 (weakest)
 
-### 9.4 Extracting F-Statistics and Degrees of Freedom
+### 12.4 Extracting F-Statistics and Degrees of Freedom
 
 **Common Quiz Question Format:**
 
@@ -2279,7 +2488,7 @@ Weight      -.005       .001       -.859   -5.78  <.001    -.369        2.67
 - p < .001 (never report as = .000)
 - **Answer: F(3, 203) = 133.024, p < .001**
 
-### 9.5 Reading SPSS Output for Model Summary
+### 12.5 Reading SPSS Output for Model Summary
 
 **Question: "Which statement is accurate based on the SPSS output for a multiple regression model?"**
 
@@ -2318,7 +2527,7 @@ R       R²      Adjusted R²    Std. Error
 - Individual predictors can still have negative correlations
 - **Incorrect**
 
-### 9.6 Identifying Non-Significant Predictors
+### 11.6 Identifying Non-Significant Predictors
 
 **Question: "Select the variable that is NOT a significant predictor in this multiple regression model."**
 
@@ -2343,7 +2552,7 @@ Weight      -.005       .001       -.859   -5.78  <.001
 
 **Note:** If all p-values < .05, the answer is "all predictors are significant"
 
-### 9.7 Understanding SPSS Output for Significance
+### 10.7 Understanding SPSS Output for Significance
 
 **Question: "Which statement is accurate based on the SPSS output for multiple regression with two predictors?"**
 
@@ -2447,9 +2656,9 @@ Answer: "X₂ is a significant predictor but X₁ is not." OR "X₁ is a signifi
 
 ---
 
-## Part 10: Reporting Regression in APA Format
+## Part 11: Reporting Regression in APA Format
 
-### 10.1 Reporting Correlation Results
+### 12.1 Reporting Correlation Results
 
 **Basic Format:**
 
@@ -2471,7 +2680,7 @@ Answer: "X₂ is a significant predictor but X₁ is not." OR "X₁ is a signifi
 
 "Bivariate correlations revealed that acceleration time was significantly correlated with engine size (r = .84, p < .001), horsepower (r = .79, p < .001), and weight (r = .86, p < .001). Weight showed the strongest relationship with acceleration."
 
-### 10.2 Reporting Bivariate Regression
+### 12.2 Reporting Bivariate Regression
 
 **Complete APA Format:**
 
@@ -2485,7 +2694,7 @@ A bivariate regression was conducted to examine whether [IV] could predict [DV].
 
 "Weight significantly predicted acceleration time, F(1, 205) = 49.78, p < .001, Adjusted R² = .736, β = -.86."
 
-### 10.3 Reporting Multiple Regression
+### 12.3 Reporting Multiple Regression
 
 **Complete APA Format:**
 
@@ -2501,7 +2710,7 @@ A multiple regression was conducted to examine whether [list IVs] could predict 
 
 "A multiple regression with three predictors (horsepower, engine size, and weight) significantly predicted acceleration time, F(3, 203) = 133.02, p < .001, Adjusted R² = .653. Weight (β = -.86, p < .001) and horsepower (β = .37, p = .012) were significant predictors, while engine size was not (β = .34, p = .504)."
 
-### 10.4 APA Format for F-Tests
+### 12.4 APA Format for F-Tests
 
 **Key Rules:**
 
@@ -2536,7 +2745,7 @@ B) 3; 206; = .000 ✗ (Wrong df₂, wrong p format)
 C) 3; 206; < .001 ✗ (Wrong df₂)
 D) 3; 203; = .000 ✗ (Wrong p format)
 
-### 10.5 Reporting Effect Sizes
+### 12.5 Reporting Effect Sizes
 
 **For Correlation:**
 
@@ -2558,7 +2767,7 @@ D) 3; 203; = .000 ✗ (Wrong p format)
 
 "Adding X₂ to the model increased the explained variance from 75.4% to 77.1%, ΔAdjusted R² = .017, representing a 1.7 percentage point improvement."
 
-### 10.6 Interpreting and Describing Results
+### 11.6 Interpreting and Describing Results
 
 **Beyond Just Numbers:**
 
@@ -2752,9 +2961,9 @@ Always interpret your results in the context of your research question.
 
 ---
 
-## Part 11: Summary and Key Formulas
+## Part 12: Summary and Key Formulas
 
-### 11.1 Key Formulas
+### 12.1 Key Formulas
 
 **Regression Equation (Bivariate):**
 Ŷ = bX + a
@@ -2800,7 +3009,7 @@ Interpretation: Proportion of variance in Y explained by X
 - VIF = 1 / Tolerance
 - Tolerance = 1 / VIF
 
-### 11.2 Decision Tree for Choosing Analyses
+### 12.2 Decision Tree for Choosing Analyses
 
 **Start Here: What is your research question?**
 
@@ -2853,7 +3062,7 @@ Interpretation: Proportion of variance in Y explained by X
 - Or **Backward** method (remove non-significant predictors)
 - **Caution:** Results may not replicate in new samples
 
-### 11.3 Common Mistakes to Avoid
+### 12.3 Common Mistakes to Avoid
 
 **1. Confusing Correlation with Causation**
 
@@ -2905,7 +3114,7 @@ Interpretation: Proportion of variance in Y explained by X
 - ✗ 50 predictors with N = 60
 - ✓ At least 10-15 participants per predictor
 
-### 11.4 Key Terms Glossary
+### 12.4 Key Terms Glossary
 
 **Adjusted R²:** R² adjusted for the number of predictors; preferred over R² for reporting
 
@@ -2971,7 +3180,7 @@ Interpretation: Proportion of variance in Y explained by X
 
 **Ŷ (Y-hat):** See Predicted Value
 
-### 11.5 Final Checklist for Regression Analysis
+### 12.5 Final Checklist for Regression Analysis
 
 **Before Running the Analysis:**
 
@@ -3004,6 +3213,112 @@ Interpretation: Proportion of variance in Y explained by X
 - [ ] Include effect sizes (Adjusted R², sr²)
 - [ ] Interpret findings in context
 - [ ] Avoid causal language (unless experimental design)
+
+---
+
+## Quick Reference Sheet
+
+**Print or save this one-page summary for quick review!**
+
+### Key Formulas
+
+**Correlation:**
+- r² = r × r (coefficient of determination)
+- Interpretation: Proportion of variance shared between two variables
+
+**Regression Equation:**
+- Bivariate: Ŷ = bX + a
+- Multiple: Ŷ = b₁X₁ + b₂X₂ + b₃X₃ + ... + a
+
+**Degrees of Freedom:**
+- df₁ = k (number of predictors)
+- df₂ = N - k - 1
+- Total df = N - 1
+
+**Effect Sizes:**
+- r² or R²: Proportion of variance explained
+- Adjusted R²: R² adjusted for number of predictors (always report this!)
+- sr²: Semipartial correlation squared = unique variance from one predictor
+- VIF = 1 / Tolerance (multicollinearity diagnostic)
+
+### Decision Tree
+
+```
+What's your research question?
+   ↓
+Examining relationships between continuous variables?
+   ↓
+YES →  Two variables?
+       ├─ Describe relationship → BIVARIATE CORRELATION
+       └─ Predict one from other → BIVARIATE REGRESSION
+
+       Multiple predictors, one outcome?
+       └─ MULTIPLE REGRESSION
+```
+
+### Four Critical Assumptions
+
+1. **Linearity** - Relationship must be linear (check scatterplot)
+2. **Normality** - Variables/residuals should be normally distributed
+3. **Homoscedasticity** - Equal variance across levels of X
+4. **Independence** - Observations must be independent (MOST CRITICAL!)
+
+### Interpreting Statistics
+
+**Correlation (r):**
+- Range: -1.0 to +1.0
+- Sign = direction (+ or -)
+- |r| = strength (.10 = small, .30 = medium, .50 = large)
+- r² = variance explained
+
+**Beta (β):**
+- Standardized coefficient
+- Compare predictors on same scale
+- Largest |β| = strongest predictor
+
+**VIF (Multicollinearity):**
+- VIF < 5: Acceptable
+- VIF 5-10: Moderate concern
+- VIF > 10: Serious problem
+
+### APA Reporting Templates
+
+**Correlation:**
+"There was a [strength] [direction] correlation between X and Y, r = .XX, p [< or =] .XXX."
+
+**Bivariate Regression:**
+"X significantly predicted Y, F(1, df₂) = X.XX, p < .001, Adjusted R² = .XXX, β = .XX."
+
+**Multiple Regression:**
+"The overall model was significant, F(df₁, df₂) = X.XX, p < .001, Adjusted R² = .XXX. [Predictor] was the strongest predictor, β = .XX, p < .001, sr² = .XXX."
+
+### Common Mistakes to Avoid
+
+❌ Confusing r with r² (r = .50 ≠ 50% variance explained)
+❌ Saying correlation proves causation
+❌ Reporting R² instead of Adjusted R²
+❌ Reporting p = .000 (use p < .001)
+❌ Forgetting df: Always report F(df₁, df₂)
+❌ Extrapolating beyond your data range
+❌ Ignoring VIF when interpreting coefficients
+❌ Assuming all predictors are significant if F is significant
+
+### SPSS Quick Steps
+
+**Correlation:**
+Analyze → Correlate → Bivariate → Select variables → OK
+
+**Regression:**
+Analyze → Regression → Linear → DV to Dependent, IVs to Independent(s) → Statistics (check Estimates, Model fit, Collinearity diagnostics) → OK
+
+### Study Tips
+
+- Always plot your data first (scatterplots!)
+- Check assumptions before interpreting results
+- For multiple regression: Unique variance (sr²) + Shared variance = Total R²
+- Beta answers "which predictor is strongest?"
+- sr² answers "how much unique variance does each explain?"
+- Remember: Correlation ≠ Causation!
 
 ---
 
