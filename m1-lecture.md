@@ -962,6 +962,126 @@ The mean doesn't tell the whole story! We need measures of **variability** (spre
   </details>
 </div>
 
+<div class="knowledge-check">
+  <h4>🧠 Knowledge Check: Variance, Standard Deviation, and Choosing Measures</h4>
+
+  <div class="quiz-question">
+    <p><strong>Question 1:</strong> A researcher calculated the variance of scores at 113.00. What is the standard deviation?</p>
+    <div class="options">
+      <p>A) 12769.00</p>
+      <p>B) 37.67</p>
+      <p>C) 113.00</p>
+      <p>D) 10.63</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> D) 10.63</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> Standard deviation is the square root of variance. √113.00 = 10.63 (rounded to two decimal places).</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>A) 12769.00:</strong> This would be variance squared (113²), which doesn't make statistical sense.</li>
+        <li><strong>B) 37.67:</strong> This might be the result of dividing by n instead of n-1, or a calculation error.</li>
+        <li><strong>C) 113.00:</strong> This is the variance, not the standard deviation. Standard deviation is always smaller than variance (unless variance = 1).</li>
+      </ul>
+
+      <p class="review-tip"><em>💭 Need to review?</em> See Part 4.3: Measures of Variability for the relationship between variance and standard deviation.</p>
+    </div>
+
+  </details>
+
+  <div class="quiz-question">
+    <p><strong>Question 2:</strong> What is the best measure of central tendency for the following data set: 18, 99, 14, 16, 21, 33, 12, 14, 13, 55, 12?</p>
+    <div class="options">
+      <p>A) Mean</p>
+      <p>B) Median</p>
+      <p>C) Mode</p>
+      <p>D) Range</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> B) Median</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> This data set has a clear outlier (99) that would pull the mean upward. The median (16) better represents the "typical" value since it's not affected by extreme values.</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>A) Mean:</strong> The mean (29.5) is inflated by the outlier (99) and doesn't represent the typical value.</li>
+        <li><strong>C) Mode:</strong> The mode (12 and 14 both appear twice) might be useful, but the median is better for this skewed distribution.</li>
+        <li><strong>D) Range:</strong> Range is a measure of variability, not central tendency.</li>
+      </ul>
+
+      <p class="application-tip"><em>💡 Application Tip:</em> When you see extreme values in your data, always check how they affect the mean. If the mean seems "pulled" toward the outliers, use the median instead.</p>
+    </div>
+
+  </details>
+
+  <div class="quiz-question">
+    <p><strong>Question 3:</strong> In a physical geography course, the average score on the first exam was 79 percent, based on a sample of 48 students. This mean was calculated on the class grades to summarize overall performance. The test average is a:</p>
+    <div class="options">
+      <p>A) Parameter</p>
+      <p>B) Statistic</p>
+      <p>C) Mode</p>
+      <p>D) Variability measure</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> B) Statistic</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> Since this mean was calculated from a sample (48 students), it's a statistic. Statistics describe samples; parameters describe populations.</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>A) Parameter:</strong> Parameters describe population characteristics. If this were the average for ALL students who ever took this course, it would be a parameter.</li>
+        <li><strong>C) Mode:</strong> The mode is a measure of central tendency, but this question is asking about the nature of the 79% value (statistic vs. parameter).</li>
+        <li><strong>D) Variability measure:</strong> The mean (79%) is a measure of central tendency, not variability.</li>
+      </ul>
+
+      <p class="review-tip"><em>💭 Need to review?</em> See Part 6: From Sample to Population for the distinction between statistics and parameters.</p>
+    </div>
+
+  </details>
+
+  <div class="quiz-question">
+    <p><strong>Question 4:</strong> Which statement best describes when to use the mean versus the median?</p>
+    <div class="options">
+      <p>A) Always use the mean for scale variables</p>
+      <p>B) Use the median when there are outliers or the distribution is skewed</p>
+      <p>C) Use the mean only for normal distributions</p>
+      <p>D) The median is always better than the mean</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> B) Use the median when there are outliers or the distribution is skewed</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> The median is robust to outliers and skewness because it's based on the middle value, not the average. When data is skewed or has extreme values, the median better represents the "typical" value.</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>A) Always use mean for scale variables:</strong> Even with scale variables, outliers can make the mean misleading.</li>
+        <li><strong>C) Use mean only for normal distributions:</strong> The mean is useful for many distributions, not just normal ones. The key is whether there are outliers.</li>
+        <li><strong>D) Median is always better:</strong> The mean has advantages too—it uses all the data and is mathematically convenient for further calculations.</li>
+      </ul>
+
+      <p class="application-tip"><em>💡 Application Tip:</em> Check your data for outliers first. If present, report both mean and median to give a complete picture of your data.</p>
+    </div>
+
+  </details>
+</div>
+
 ---
 
 ## Part 5: Visualizing Data: Frequency Distributions
@@ -1132,6 +1252,126 @@ What type of graph should you create for each variable?
 4. **Histogram** (scale data - discrete but treated as continuous)
 </details>
 
+<div class="knowledge-check">
+  <h4>🧠 Knowledge Check: Distribution Shapes and Patterns</h4>
+
+  <div class="quiz-question">
+    <p><strong>Question 1:</strong> What seems to be the shape of this distribution?</p>
+    <div class="options">
+      <p>A) Rectangle</p>
+      <p>B) Positively skewed</p>
+      <p>C) Negatively skewed</p>
+      <p>D) Symmetrical</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> B) Positively skewed</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> A positively skewed distribution has a long tail extending to the right (higher values). Most scores cluster on the left side, with fewer extreme high scores creating the "tail."</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>A) Rectangle:</strong> A rectangular distribution would have equal frequency across all values, which is rare in real data.</li>
+        <li><strong>C) Negatively skewed:</strong> A negatively skewed distribution would have a long tail to the left (lower values), with most scores clustering on the right.</li>
+        <li><strong>D) Symmetrical:</strong> A symmetrical distribution would have equal tails on both sides, like a normal distribution.</li>
+      </ul>
+
+      <p class="review-tip"><em>💭 Need to review?</em> See Part 5.3: Shape of Distributions for identifying skewness patterns.</p>
+    </div>
+
+  </details>
+
+  <div class="quiz-question">
+    <p><strong>Question 2:</strong> A test that has a floor effect would produce a _____ distribution.</p>
+    <div class="options">
+      <p>A) Negatively skewed</p>
+      <p>B) Positively skewed</p>
+      <p>C) Rectangle</p>
+      <p>D) Normal</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> B) Positively skewed</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> A floor effect occurs when a test is too difficult, causing many participants to score at or near the minimum possible score. This creates a cluster of low scores with a tail extending toward higher scores, resulting in positive skewness.</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>A) Negatively skewed:</strong> This would occur with a ceiling effect (test too easy), where scores cluster at the high end.</li>
+        <li><strong>C) Rectangle:</strong> This would only occur if the test somehow produced equal frequencies across all possible scores.</li>
+        <li><strong>D) Normal:</strong> A normal distribution would result from a well-designed test without floor or ceiling effects.</li>
+      </ul>
+
+      <p class="application-tip"><em>💡 Application Tip:</em> Floor effects suggest a test is too difficult; ceiling effects suggest a test is too easy. Both create skewed distributions that may require different statistical approaches.</p>
+    </div>
+
+  </details>
+
+  <div class="quiz-question">
+    <p><strong>Question 3:</strong> When interpreting a histogram, what should you look for first?</p>
+    <div class="options">
+      <p>A) The exact frequencies in each bar</p>
+      <p>B) The overall shape and pattern of the distribution</p>
+      <p>C) The tallest bar</p>
+      <p>D) The range of values</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> B) The overall shape and pattern of the distribution</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> The shape of the distribution (symmetrical, skewed, bimodal, etc.) gives you the most important information about your data. It affects which statistics are appropriate and how you should interpret your results.</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>A) Exact frequencies:</strong> While useful, these are secondary to understanding the overall pattern.</li>
+        <li><strong>C) Tallest bar:</strong> The mode is important, but the overall shape is more fundamental.</li>
+        <li><strong>D) Range of values:</strong> Range is one piece of information, but distribution shape tells you much more about the data's characteristics.</li>
+      </ul>
+
+      <p class="review-tip"><em>💭 Need to review?</em> See Part 5: Visualizing Data for guidelines on interpreting histograms and frequency distributions.</p>
+    </div>
+
+  </details>
+
+  <div class="quiz-question">
+    <p><strong>Question 4:</strong> Which distribution shape would be most concerning for using the mean as your primary measure of central tendency?</p>
+    <div class="options">
+      <p>A) Normal distribution</p>
+      <p>B) Positively skewed distribution</p>
+      <p>C) Symmetrical distribution</p>
+      <p>D) Bimodal distribution</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> B) Positively skewed distribution</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> In a positively skewed distribution, the mean is pulled toward the tail (higher values), making it higher than the median and potentially misleading as a "typical" value. The median would be more representative.</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>A) Normal distribution:</strong> The mean works perfectly for normal distributions since it equals the median and mode.</li>
+        <li><strong>C) Symmetrical distribution:</strong> In symmetrical distributions, the mean and median are equal, so the mean is appropriate.</li>
+        <li><strong>D) Bimodal distribution:</strong> While bimodal distributions have two peaks, they can still be symmetrical, and the mean can be meaningful if not used as the sole measure.</li>
+      </ul>
+
+      <p class="application-tip"><em>💡 Application Tip:</em> Always check your data's shape before choosing statistics. Skewed distributions often require the median instead of the mean for accurate representation.</p>
+    </div>
+
+  </details>
+</div>
+
 ---
 
 ## Part 6: From Sample to Population
@@ -1245,6 +1485,126 @@ True or False?
 3. **True** - SPSS estimates population SD using n-1 (degrees of freedom)
 4. **True** - Samples are practical and cost-effective
 </details>
+
+<div class="knowledge-check">
+  <h4>🧠 Knowledge Check: Research Design and Sampling</h4>
+
+  <div class="quiz-question">
+    <p><strong>Question 1:</strong> Which of these situations is an example of randomly assigning participants to conditions in a study?</p>
+    <div class="options">
+      <p>A) Every time a participant shows up for his study, Mark flips a coin to determine which condition to put the participant in.</p>
+      <p>B) Clarice randomly chooses high school students for her study by having a random number generator generate possible high school ID numbers.</p>
+      <p>C) Devon gives his problem-solving task to a group of first graders in the classroom for which he is a student teacher.</p>
+      <p>D) Susie places the first six people to show up for her study in the experimental group and the next six people in the control group.</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> A) Every time a participant shows up for his study, Mark flips a coin to determine which condition to put the participant in.</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> Random assignment means randomly deciding which condition (treatment or control) each participant will experience. Flipping a coin for each participant is a true random assignment procedure.</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>B) Random sampling:</strong> This is random sampling (choosing who participates), not random assignment (choosing which condition they experience).</li>
+        <li><strong>C) Convenience sample:</strong> This is using whoever is available (convenience), with no randomization involved.</li>
+        <li><strong>D) Systematic assignment:</strong> This is systematic (first six, next six), not random assignment.</li>
+      </ul>
+
+      <p class="review-tip"><em>💭 Need to review?</em> See Part 6.2: Random Sampling vs. Random Assignment for the distinction between these concepts.</p>
+    </div>
+
+  </details>
+
+  <div class="quiz-question">
+    <p><strong>Question 2:</strong> A researcher interested in the concept of preparedness sets up a booth at a local mall. Her idea is to compare men and women in terms of what they carry on their person. She has chosen a mall setting because people are readily available there. In this sense, people at the mall are a _____.</p>
+    <div class="options">
+      <p>A) Convenience sample</p>
+      <p>B) Random sample</p>
+      <p>C) Random assignment</p>
+      <p>D) Selected sample</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> A) Convenience sample</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> A convenience sample is selected based on availability and ease of access. The researcher chose the mall because "people are readily available there," which is the hallmark of convenience sampling.</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>B) Random sample:</strong> A random sample would involve randomly selecting from a defined population, not just choosing whoever is available.</li>
+        <li><strong>C) Random assignment:</strong> This refers to randomly assigning participants to conditions, not to the sampling method.</li>
+        <li><strong>D) Selected sample:</strong> This is too vague. All samples are "selected" in some way, but this doesn't specify the selection method.</li>
+      </ul>
+
+      <p class="application-tip"><em>💡 Application Tip:</em> Convenience samples are common in research but limit generalizability. Always consider whether your sample represents the population you want to study.</p>
+    </div>
+
+  </details>
+
+  <div class="quiz-question">
+    <p><strong>Question 3:</strong> Successful replication of research builds a case for the generalizability of findings. In order for replications to build that strong case, it is important that they occur in _____.</p>
+    <div class="options">
+      <p>A) A new context or with samples that have different characteristics</p>
+      <p>B) Designs with experimental and control groups that used random sampling</p>
+      <p>C) Inconsistent contexts using different measures from the original study</p>
+      <p>D) Similar situations with similar participants so as to encourage the same findings</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> A) A new context or with samples that have different characteristics</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> For replications to demonstrate generalizability, they need to test whether the findings hold across different contexts, populations, and conditions. This builds confidence that the effect is robust and not limited to specific circumstances.</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>B) Random sampling:</strong> While random sampling is good practice, it doesn't address the key issue of testing generalizability across different contexts.</li>
+        <li><strong>C) Inconsistent contexts:</strong> Using completely different measures would make it impossible to know if you're testing the same phenomenon.</li>
+        <li><strong>D) Similar situations:</strong> This would only show the effect works in the same circumstances, not that it generalizes to other situations.</li>
+      </ul>
+
+      <p class="review-tip"><em>💭 Need to review?</em> See Part 6.3: Generalizability and Replication for the importance of testing across different contexts.</p>
+    </div>
+
+  </details>
+
+  <div class="quiz-question">
+    <p><strong>Question 4:</strong> What is the key difference between random sampling and random assignment?</p>
+    <div class="options">
+      <p>A) Random sampling is about choosing participants; random assignment is about assigning them to conditions</p>
+      <p>B) Random sampling is more important than random assignment</p>
+      <p>C) They are the same thing</p>
+      <p>D) Random assignment is only used in correlational studies</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> A) Random sampling is about choosing participants; random assignment is about assigning them to conditions</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> Random sampling determines who participates in your study (selection from a population). Random assignment determines which condition or treatment each participant experiences (allocation to groups).</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>B) More important:</strong> Both are important for different reasons—random sampling affects external validity, random assignment affects internal validity.</li>
+        <li><strong>C) Same thing:</strong> They are completely different procedures serving different purposes.</li>
+        <li><strong>D) Only correlational:</strong> Random assignment is actually used in experimental designs, not correlational ones.</li>
+      </ul>
+
+      <p class="application-tip"><em>💡 Application Tip:</em> Random sampling helps you generalize to a population; random assignment helps you make causal claims. Both are crucial for high-quality research.</p>
+    </div>
+
+  </details>
+</div>
 
 ---
 
@@ -1394,6 +1754,155 @@ Calculate and interpret these z-scores:
 2. z = (72-68)/3 = +1.33 → 1.33 SDs taller than average
 3. z = -1.8 is more extreme (farther from zero, more unusual)
 </details>
+
+<div class="knowledge-check">
+  <h4>🧠 Knowledge Check: Z-Scores and Standardization</h4>
+
+  <div class="quiz-question">
+    <p><strong>Question 1:</strong> Adam scored 60 on his final exam. His class's average score was 50, with a standard deviation of 10. How many standard deviations is Adam's score from the mean?</p>
+    <div class="options">
+      <p>A) 1 standard deviation below the mean</p>
+      <p>B) 2 standard deviations below the mean</p>
+      <p>C) 1 standard deviation above the mean</p>
+      <p>D) 2 standard deviations above the mean</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> C) 1 standard deviation above the mean</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> z = (X - μ) / σ = (60 - 50) / 10 = 10 / 10 = 1.0. A positive z-score means the score is above the mean, and z = 1.0 means exactly 1 standard deviation above the mean.</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>A) 1 SD below:</strong> This would be z = -1.0, meaning a score of 40.</li>
+        <li><strong>B) 2 SD below:</strong> This would be z = -2.0, meaning a score of 30.</li>
+        <li><strong>D) 2 SD above:</strong> This would be z = 2.0, meaning a score of 70.</li>
+      </ul>
+
+      <p class="review-tip"><em>💭 Need to review?</em> See Part 7.3: Calculating Z-Scores for the formula and interpretation.</p>
+    </div>
+
+  </details>
+
+  <div class="quiz-question">
+    <p><strong>Question 2:</strong> The Z distribution has a standard deviation of _____.</p>
+    <div class="options">
+      <p>A) 0</p>
+      <p>B) 1</p>
+      <p>C) Any value between 0 and 1</p>
+      <p>D) The standard deviation of the raw score distribution</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> B) 1</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> By definition, the standard normal (Z) distribution has a mean of 0 and a standard deviation of 1. This is what makes it "standard"—it's the same for all z-scores regardless of the original data.</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>A) 0:</strong> The mean of the Z distribution is 0, but the standard deviation is 1.</li>
+        <li><strong>C) Variable:</strong> The Z distribution is standardized, so its standard deviation is always exactly 1.</li>
+        <li><strong>D) Raw score SD:</strong> Z-scores standardize the data, so the Z distribution's SD is always 1, regardless of the original data's standard deviation.</li>
+      </ul>
+
+      <p class="review-tip"><em>💭 Need to review?</em> See Part 7.1: The Normal Distribution for the properties of the standard normal distribution.</p>
+    </div>
+
+  </details>
+
+  <div class="quiz-question">
+    <p><strong>Question 3:</strong> Which Z score is more extreme, 0.68 or -0.92?</p>
+    <div class="options">
+      <p>A) 0.68</p>
+      <p>B) -0.92</p>
+      <p>C) They are equally extreme</p>
+      <p>D) It depends on the raw score distribution</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> B) -0.92</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> The extremity of a z-score is determined by its distance from zero (the mean). |0.68| = 0.68, while |-0.92| = 0.92. Since 0.92 > 0.68, -0.92 is more extreme.</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>A) 0.68:</strong> This is less extreme because 0.68 < 0.92 in absolute value.</li>
+        <li><strong>C) Equally extreme:</strong> They have different absolute values, so they're not equally extreme.</li>
+        <li><strong>D) Depends on distribution:</strong> Z-scores are standardized, so extremity is always determined by distance from zero, regardless of the original distribution.</li>
+      </ul>
+
+      <p class="application-tip"><em>💡 Application Tip:</em> To compare z-scores for extremity, ignore the sign and compare absolute values. The larger absolute value is more extreme.</p>
+    </div>
+
+  </details>
+
+  <div class="quiz-question">
+    <p><strong>Question 4:</strong> A z score is a measure of:</p>
+    <div class="options">
+      <p>A) The strength of the relationship between a score and its mean</p>
+      <p>B) How far away from the mean a score is in terms of inches</p>
+      <p>C) How far away from the mean a score is in terms of standard deviations</p>
+      <p>D) The strength of the relationship between two variables</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> C) How far away from the mean a score is in terms of standard deviations</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> A z-score tells you exactly how many standard deviations a particular score is from the mean. It's a standardized measure that allows comparison across different scales and distributions.</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>A) Relationship strength:</strong> Z-scores don't measure relationships between variables; they measure individual scores relative to their distribution.</li>
+        <li><strong>B) Inches:</strong> Z-scores are unitless and standardized. They don't use the original units of measurement.</li>
+        <li><strong>D) Two variables:</strong> Z-scores are calculated for individual scores, not relationships between variables.</li>
+      </ul>
+
+      <p class="review-tip"><em>💭 Need to review?</em> See Part 7.3: Calculating Z-Scores for the definition and interpretation of z-scores.</p>
+    </div>
+
+  </details>
+
+  <div class="quiz-question">
+    <p><strong>Question 5:</strong> A distribution of means would be more likely to have a(n) _____ compared to a distribution of raw scores.</p>
+    <div class="options">
+      <p>A) Lower variance</p>
+      <p>B) Lower mean</p>
+      <p>C) Higher variance</p>
+      <p>D) Higher mean</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> A) Lower variance</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> The distribution of sample means has less variability than the distribution of raw scores. This is because means tend to be more stable and closer to the population mean than individual scores. The standard error of the mean is smaller than the standard deviation of raw scores.</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>B) Lower mean:</strong> The distribution of means has the same mean as the population (assuming random sampling), not a lower mean.</li>
+        <li><strong>C) Higher variance:</strong> Sample means are more stable than individual scores, so they have less variance, not more.</li>
+        <li><strong>D) Higher mean:</strong> The distribution of means centers on the population mean, not a higher value.</li>
+      </ul>
+
+      <p class="review-tip"><em>💭 Need to review?</em> See Part 6.4: The Distribution of Sample Means for why sample means are more stable than individual scores.</p>
+    </div>
+
+  </details>
+</div>
 
 ---
 
@@ -1756,6 +2265,184 @@ Using the M1 assignment data:
 - Does your age frequency table have 8 rows (bins)?
 - Do the bars in your sleep histogram touch each other?
 - Is your mean for cell phone minutes reasonable given the range?
+
+<div class="knowledge-check">
+  <h4>🧠 Knowledge Check: SPSS Skills</h4>
+
+  <div class="quiz-question">
+    <p><strong>Question 1:</strong> In SPSS, to show class names (Freshman, Sophomore, Junior, Senior) in a frequency table instead of numeric codes, which column in the Variable View needs to be properly configured?</p>
+    <div class="options">
+      <p>A) Type</p>
+      <p>B) Measures</p>
+      <p>C) Labels</p>
+      <p>D) Values</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> D) Values</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> The Values column is where you define value labels that convert numeric codes (1, 2, 3, 4) into meaningful text labels (Freshman, Sophomore, Junior, Senior). This makes your output much more readable.</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>A) Type:</strong> The Type column defines the data type (numeric, string, etc.), not the labels for values.</li>
+        <li><strong>B) Measures:</strong> The Measures column defines the measurement level (nominal, ordinal, scale), not value labels.</li>
+        <li><strong>C) Labels:</strong> The Labels column provides a variable label (description of what the variable measures), not labels for individual values.</li>
+      </ul>
+
+      <p class="review-tip"><em>💭 Need to review?</em> See Part 9.1: Setting Up Variables for how to configure value labels in SPSS.</p>
+    </div>
+
+  </details>
+
+  <div class="quiz-question">
+    <p><strong>Question 2:</strong> When creating a bar chart to show mean "Sleep Time" for different employment statuses, what should go in the "Variable" field and what should go in the "Category Axis" field?</p>
+    <div class="options">
+      <p>A) Variable: Employment; Category Axis: Sleep Time</p>
+      <p>B) Variable: Sleep Time; Category Axis: Employment</p>
+      <p>C) Either way works the same</p>
+      <p>D) It depends on your research question</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> B) Variable: Sleep Time; Category Axis: Employment</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> You want to compare mean sleep time across employment groups. "Sleep Time" is the variable you're measuring (goes in Variable), and "Employment" defines the groups you're comparing (goes in Category Axis).</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>A) Reversed:</strong> This would show mean employment across sleep time groups, which doesn't make sense since employment is categorical.</li>
+        <li><strong>C) Either way:</strong> The placement matters! Reversing them changes what the chart shows.</li>
+        <li><strong>D) Depends:</strong> The question specifically asks about mean sleep time by employment, so the placement is determined by the research question.</li>
+      </ul>
+
+      <p class="application-tip"><em>💡 Application Tip:</em> Always think: "What am I measuring?" (Variable) and "What groups am I comparing?" (Category Axis).</p>
+    </div>
+
+  </details>
+
+  <div class="quiz-question">
+    <p><strong>Question 3:</strong> In SPSS descriptive statistics output, if the variance is 113.00, what is the standard deviation?</p>
+    <div class="options">
+      <p>A) 10.63</p>
+      <p>B) 113.00</p>
+      <p>C) 12,769.00</p>
+      <p>D) SPSS doesn't calculate this automatically</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> A) 10.63</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> Standard deviation is the square root of variance. √113.00 = 10.63 (rounded to two decimal places). While SPSS shows both variance and standard deviation in the output, understanding this relationship helps verify your calculations.</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>B) 113.00:</strong> This is the variance, not the standard deviation. Standard deviation is always smaller than variance (unless variance = 1).</li>
+        <li><strong>C) 12,769.00:</strong> This would be variance squared (113²), which doesn't make statistical sense.</li>
+        <li><strong>D) SPSS doesn't calculate:</strong> SPSS automatically calculates and displays both variance and standard deviation in descriptive statistics output.</li>
+      </ul>
+
+      <p class="review-tip"><em>💭 Need to review?</em> See Part 9.2: Descriptive Statistics for how to read SPSS descriptive statistics output.</p>
+    </div>
+
+  </details>
+
+  <div class="quiz-question">
+    <p><strong>Question 4:</strong> When creating a histogram in SPSS, which measure should you select to show the mean on the chart?</p>
+    <div class="options">
+      <p>A) Cum %</p>
+      <p>B) Other statistic</p>
+      <p>C) Cum N</p>
+      <p>D) % of cases</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> B) Other statistic</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> "Other statistic" allows you to select additional statistics like the mean to display on your chart. This is useful for showing where the mean falls relative to the distribution.</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>A) Cum %:</strong> This shows cumulative percentages, not the mean.</li>
+        <li><strong>C) Cum N:</strong> This shows cumulative counts, not the mean.</li>
+        <li><strong>D) % of cases:</strong> This shows the percentage of cases in each bin, not the mean.</li>
+      </ul>
+
+      <p class="application-tip"><em>💡 Application Tip:</em> Adding the mean to histograms helps you see how the mean relates to the distribution shape, especially useful for identifying skewness.</p>
+    </div>
+
+  </details>
+
+  <div class="quiz-question">
+    <p><strong>Question 5:</strong> The variable "Tech Dependence" (measured as 1 = Low, 2 = Medium, 3 = High) should be set to _____ under Measures in the SPSS Variable View.</p>
+    <div class="options">
+      <p>A) Nominal</p>
+      <p>B) Ordinal</p>
+      <p>C) Scale</p>
+      <p>D) String</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> B) Ordinal</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> "Tech Dependence" has ordered categories (Low < Medium < High) with meaningful ranking, but the intervals between levels are not necessarily equal. This is the definition of ordinal measurement.</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>A) Nominal:</strong> Nominal variables have no inherent order. Low, Medium, High clearly have an order.</li>
+        <li><strong>C) Scale:</strong> Scale variables have equal intervals and a true zero point. We can't assume the difference between Low and Medium equals the difference between Medium and High.</li>
+        <li><strong>D) String:</strong> This is a data type (text), not a measurement level. The variable is coded numerically.</li>
+      </ul>
+
+      <p class="review-tip"><em>💭 Need to review?</em> See Part 9.1: Setting Up Variables for guidelines on choosing the correct measurement level in SPSS.</p>
+    </div>
+
+  </details>
+
+  <div class="quiz-question">
+    <p><strong>Question 6:</strong> When reading SPSS frequency table output, what information tells you which category has the most participants?</p>
+    <div class="options">
+      <p>A) The Percent column</p>
+      <p>B) The Frequency column</p>
+      <p>C) The Valid Percent column</p>
+      <p>D) All of the above</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> B) The Frequency column</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> The Frequency column shows the actual count of participants in each category. The highest number in this column indicates the category with the most participants.</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>A) Percent column:</strong> Percentages tell you proportions, but you need the actual counts to determine which category has the most participants.</li>
+        <li><strong>C) Valid Percent column:</strong> This excludes missing data, but still shows percentages rather than raw counts.</li>
+        <li><strong>D) All of the above:</strong> While percentages are useful, the frequency column directly answers "which has the most" in terms of raw numbers.</li>
+      </ul>
+
+      <p class="application-tip"><em>💡 Application Tip:</em> Always check the Frequency column first to see actual counts, then use percentages to understand proportions and make comparisons.</p>
+    </div>
+
+  </details>
+</div>
 
 ---
 

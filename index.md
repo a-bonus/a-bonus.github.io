@@ -23,6 +23,7 @@ _More resources may be added as needed._
 
 - [M1 Lecture: Foundations of Statistical Reasoning and Data Analysis](/m1-lecture) - A comprehensive lecture covering all core concepts from Module 1
 - [M2 Lecture: Introduction to Hypothesis Testing and the One-Sample t-Test](/m2-lecture) - A comprehensive lecture on hypothesis testing logic, one-sample t-tests, effect sizes, and statistical power
+- [M3 Lecture: Comparing Two Means](/m3-lecture) - A comprehensive lecture on independent-samples and paired-samples t-tests, research design decisions, and statistical assumptions
 
 ## Additional Topics
 
