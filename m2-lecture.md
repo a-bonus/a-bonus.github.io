@@ -473,9 +473,9 @@ title: "Module 2: Introduction to Hypothesis Testing and the One-Sample t-Test"
     <div class="scenario">
         <h4>Scenario 1:</h4>
         <p>"A researcher wants to know if college students sleep less than the recommended 8 hours per night."</p>
-        
-        <details>
-            <summary>Click to see answer</summary>
+
+<details>
+<summary>Click to see answer</summary>
             <div class="answer">
                 <ul>
                     <li><strong>Type:</strong> One-tailed (predicts "less than")</li>
@@ -483,15 +483,15 @@ title: "Module 2: Introduction to Hypothesis Testing and the One-Sample t-Test"
                     <li><strong>H₁:</strong> μ < 8 hours (students sleep less than 8 hours)</li>
                 </ul>
             </div>
-        </details>
+</details>
     </div>
-    
+
     <div class="scenario">
         <h4>Scenario 2:</h4>
         <p>"Does listening to classical music while studying affect test scores? The national average is 75."</p>
-        
-        <details>
-            <summary>Click to see answer</summary>
+
+<details>
+<summary>Click to see answer</summary>
             <div class="answer">
                 <ul>
                     <li><strong>Type:</strong> Two-tailed (asks "affect" without direction)</li>
@@ -499,15 +499,15 @@ title: "Module 2: Introduction to Hypothesis Testing and the One-Sample t-Test"
                     <li><strong>H₁:</strong> μ ≠ 75 (music affects scores, either way)</li>
                 </ul>
             </div>
-        </details>
+</details>
     </div>
-    
+
     <div class="scenario">
         <h4>Scenario 3:</h4>
         <p>"A therapist predicts that cognitive-behavioral therapy will lower depression scores below the clinical cutoff of 30."</p>
-        
-        <details>
-            <summary>Click to see answer</summary>
+
+<details>
+<summary>Click to see answer</summary>
             <div class="answer">
                 <ul>
                     <li><strong>Type:</strong> One-tailed (predicts "lower")</li>
@@ -515,15 +515,15 @@ title: "Module 2: Introduction to Hypothesis Testing and the One-Sample t-Test"
                     <li><strong>H₁:</strong> μ < 30 (therapy lowers scores below cutoff)</li>
                 </ul>
             </div>
-        </details>
+</details>
     </div>
-    
+
     <div class="scenario">
         <h4>Scenario 4:</h4>
         <p>"Is the average IQ of chess champions different from the population mean of 100?"</p>
-        
-        <details>
-            <summary>Click to see answer</summary>
+
+<details>
+<summary>Click to see answer</summary>
             <div class="answer">
                 <ul>
                     <li><strong>Type:</strong> Two-tailed (asks "different from")</li>
@@ -531,7 +531,7 @@ title: "Module 2: Introduction to Hypothesis Testing and the One-Sample t-Test"
                     <li><strong>H₁:</strong> μ ≠ 100 (chess champions differ from average)</li>
                 </ul>
             </div>
-        </details>
+</details>
     </div>
 </div>
 
@@ -870,72 +870,115 @@ title: "Module 2: Introduction to Hypothesis Testing and the One-Sample t-Test"
     </div>
 </div>
 
-### Statistical Significance vs. Practical Significance
+<h3>Statistical Significance vs. Practical Significance</h3>
 
-This is a crucial distinction that students often miss.
+<p>This is a crucial distinction that students often miss.</p>
 
-**Statistical Significance:** p < .05
+<div class="significance-comparison">
+    <div class="statistical-significance">
+        <h4>Statistical Significance: p < .05</h4>
+        <ul>
+            <li><strong>Means:</strong> The difference is unlikely due to chance</li>
+            <li><strong>Answers:</strong> "Is there an effect?"</li>
+        </ul>
+    </div>
+    
+    <div class="practical-significance">
+        <h4>Practical Significance: Effect is large/meaningful enough to matter</h4>
+        <ul>
+            <li><strong>Means:</strong> The difference is big enough to care about</li>
+            <li><strong>Answers:</strong> "Is the effect important?"</li>
+        </ul>
+    </div>
+</div>
 
-- Means: The difference is unlikely due to chance
-- Answers: "Is there an effect?"
+<div class="key-distinction">
+    <p><strong>These are NOT the same thing!</strong></p>
+</div>
 
-**Practical Significance:** Effect is large/meaningful enough to matter
+<div class="examples-section">
+    <div class="example-box">
+        <h4>Example 1: Statistically Significant but Practically Trivial</h4>
+        <ul>
+            <li>New diet pill produces weight loss: M = 0.5 pounds</li>
+            <li>With 10,000 participants, p = .001 (highly significant!)</li>
+            <li>But who cares about half a pound? Not practically meaningful.</li>
+        </ul>
+    </div>
+    
+    <div class="example-box">
+        <h4>Example 2: Practically Important but Not Statistically Significant</h4>
+        <ul>
+            <li>New cancer treatment extends life: M = 6 months longer</li>
+            <li>With only 15 participants, p = .08 (not significant)</li>
+            <li>Six months of life is hugely important! But our sample was too small to prove it statistically.</li>
+        </ul>
+    </div>
+</div>
 
-- Means: The difference is big enough to care about
-- Answers: "Is the effect important?"
+<div class="solution-box">
+    <p><strong>The Solution:</strong> Always consider BOTH statistical significance (p-value) AND effect size (how big the difference is).</p>
+</div>
 
-**These are NOT the same thing!**
+<h3>One-Tailed vs. Two-Tailed: How p-Values Differ</h3>
 
-**Example 1: Statistically Significant but Practically Trivial**
+<p>This is where the directional vs. non-directional distinction becomes concrete.</p>
 
-- New diet pill produces weight loss: M = 0.5 pounds
-- With 10,000 participants, p = .001 (highly significant!)
-- But who cares about half a pound? Not practically meaningful.
+<div class="test-comparison">
+    <div class="test-type">
+        <h4>Two-Tailed Test:</h4>
+        <ul>
+            <li>Splits alpha between both tails of the distribution</li>
+            <li>α = .05 means .025 in each tail</li>
+            <li>SPSS always reports two-tailed p-values</li>
+            <li>Use the reported p-value directly</li>
+        </ul>
+    </div>
+    
+    <div class="test-type">
+        <h4>One-Tailed Test:</h4>
+        <ul>
+            <li>Puts all alpha in one tail</li>
+            <li>α = .05 means .05 in the predicted direction only</li>
+            <li>Must divide SPSS p-value by 2 (if result is in predicted direction)</li>
+            <li>Only reject H₀ if result is in the predicted direction</li>
+        </ul>
+    </div>
+</div>
 
-**Example 2: Practically Important but Not Statistically Significant**
+<div class="worked-example">
+    <div class="example-scenario">
+        <p><strong>Example:</strong> Testing if exercise reduces stress (predicting decrease)</p>
+        <ul>
+            <li>Sample shows M_stress = 45, population μ = 50</li>
+            <li>SPSS output: p = .04 (two-tailed)</li>
+        </ul>
+    </div>
+    
+    <div class="scenario-comparison">
+        <div class="scenario">
+            <h4>If you planned a ONE-TAILED test:</h4>
+            <ul>
+                <li>p_one-tailed = .04 / 2 = .02</li>
+                <li>Result is in predicted direction (decrease) AND p < .05</li>
+                <li><strong>Reject H₀</strong></li>
+            </ul>
+        </div>
+        
+        <div class="scenario">
+            <h4>If you planned a TWO-TAILED test:</h4>
+            <ul>
+                <li>p = .04 (use as reported)</li>
+                <li>p < .05</li>
+                <li><strong>Reject H₀</strong></li>
+            </ul>
+        </div>
+    </div>
+</div>
 
-- New cancer treatment extends life: M = 6 months longer
-- With only 15 participants, p = .08 (not significant)
-- Six months of life is hugely important! But our sample was too small to prove it statistically.
-
-**The Solution:** Always consider BOTH statistical significance (p-value) AND effect size (how big the difference is).
-
-### One-Tailed vs. Two-Tailed: How p-Values Differ
-
-This is where the directional vs. non-directional distinction becomes concrete.
-
-**Two-Tailed Test:**
-
-- Splits alpha between both tails of the distribution
-- α = .05 means .025 in each tail
-- SPSS always reports two-tailed p-values
-- Use the reported p-value directly
-
-**One-Tailed Test:**
-
-- Puts all alpha in one tail
-- α = .05 means .05 in the predicted direction only
-- Must divide SPSS p-value by 2 (if result is in predicted direction)
-- Only reject H₀ if result is in the predicted direction
-
-**Example:** Testing if exercise reduces stress (predicting decrease)
-
-- Sample shows M_stress = 45, population μ = 50
-- SPSS output: p = .04 (two-tailed)
-
-**If you planned a ONE-TAILED test:**
-
-- p_one-tailed = .04 / 2 = .02
-- Result is in predicted direction (decrease) AND p < .05
-- **Reject H₀**
-
-**If you planned a TWO-TAILED test:**
-
-- p = .04 (use as reported)
-- p < .05
-- **Reject H₀**
-
-**Important:** You must decide one-tailed vs. two-tailed BEFORE seeing your data. Otherwise it's cheating (p-hacking).
+<div class="important-warning">
+    <p><strong>Important:</strong> You must decide one-tailed vs. two-tailed BEFORE seeing your data. Otherwise it's cheating (p-hacking).</p>
+</div>
 
 <div class="knowledge-check">
   <h4>🧠 Knowledge Check: Understanding p-Values and Statistical Decisions</h4>
@@ -1059,162 +1102,297 @@ This is where the directional vs. non-directional distinction becomes concrete.
 
 ---
 
-## Part 4: Understanding Errors in Hypothesis Testing
+<h2>Part 4: Understanding Errors in Hypothesis Testing</h2>
 
-Because hypothesis testing is based on probability, not certainty, we can make mistakes. Understanding these errors is crucial for interpreting research.
+<p>Because hypothesis testing is based on probability, not certainty, we can make mistakes. Understanding these errors is crucial for interpreting research.</p>
 
-### The Two Types of Errors
+<h3>The Two Types of Errors</h3>
 
-Every hypothesis test can result in four possible outcomes:
+<p>Every hypothesis test can result in four possible outcomes:</p>
 
-|                                                               | **Reality: H₀ is TRUE** (No real effect)                       | **Reality: H₀ is FALSE** (Real effect exists)                  |
-| :------------------------------------------------------------ | :------------------------------------------------------------- | :------------------------------------------------------------- |
-| **Decision: Reject H₀** (Claim effect exists)                 | **TYPE I ERROR** ❌<br>False Positive<br>Probability = α       | **CORRECT DECISION** ✓<br>True Positive<br>Probability = Power |
-| **Decision: Fail to reject H₀** (Claim no evidence of effect) | **CORRECT DECISION** ✓<br>True Negative<br>Probability = 1 - α | **TYPE II ERROR** ❌<br>False Negative<br>Probability = β      |
+<table class="error-matrix">
+    <thead>
+        <tr>
+            <th></th>
+            <th><strong>Reality: H₀ is TRUE</strong> (No real effect)</th>
+            <th><strong>Reality: H₀ is FALSE</strong> (Real effect exists)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>Decision: Reject H₀</strong> (Claim effect exists)</td>
+            <td><strong>TYPE I ERROR</strong> ❌<br>False Positive<br>Probability = α</td>
+            <td><strong>CORRECT DECISION</strong> ✓<br>True Positive<br>Probability = Power</td>
+        </tr>
+        <tr>
+            <td><strong>Decision: Fail to reject H₀</strong> (Claim no evidence of effect)</td>
+            <td><strong>CORRECT DECISION</strong> ✓<br>True Negative<br>Probability = 1 - α</td>
+            <td><strong>TYPE II ERROR</strong> ❌<br>False Negative<br>Probability = β</td>
+        </tr>
+    </tbody>
+</table>
 
-### Type I Error (False Positive)
+<h3>Type I Error (False Positive)</h3>
 
-**Definition:** Rejecting H₀ when it's actually true. Concluding there's an effect when there isn't one.
+<div class="error-definition">
+    <p><strong>Definition:</strong> Rejecting H₀ when it's actually true. Concluding there's an effect when there isn't one.</p>
+    <p><strong>Probability:</strong> α (your alpha level, usually .05)</p>
+</div>
 
-**Probability:** α (your alpha level, usually .05)
+<div class="real-world-examples">
+    <h4>Real-World Examples:</h4>
+    
+    <div class="example-context">
+        <h5>Medical:</h5>
+        <p>Approving a drug that doesn't actually work</p>
+        <ul>
+            <li>Consequences: Patients waste money, experience side effects, don't get real treatment</li>
+        </ul>
+    </div>
+    
+    <div class="example-context">
+        <h5>Legal:</h5>
+        <p>Convicting an innocent person</p>
+        <ul>
+            <li>Consequences: Injustice, real criminal goes free</li>
+        </ul>
+    </div>
+    
+    <div class="example-context">
+        <h5>Education:</h5>
+        <p>Adopting a teaching program that doesn't actually help</p>
+        <ul>
+            <li>Consequences: Wasted resources, missed opportunity for real improvements</li>
+        </ul>
+    </div>
+    
+    <div class="example-context">
+        <h5>Psychology Research:</h5>
+        <p>Publishing a finding that's actually just random chance</p>
+        <ul>
+            <li>Consequences: Other researchers waste time trying to replicate, field is misled</li>
+        </ul>
+    </div>
+</div>
 
-**Real-World Examples:**
+<div class="why-it-happens">
+    <p><strong>Why It Happens:</strong> Random sampling variation can produce "lucky" samples that look like there's an effect when there isn't one. With α = .05, this happens 5% of the time.</p>
+</div>
 
-**Medical:** Approving a drug that doesn't actually work
+<div class="how-to-reduce">
+    <h4>How to Reduce Type I Errors:</h4>
+    <ul>
+        <li>Use lower α (e.g., .01 instead of .05)</li>
+        <li>Require replication before accepting findings</li>
+        <li>Use more conservative statistical tests</li>
+    </ul>
+</div>
 
-- Consequences: Patients waste money, experience side effects, don't get real treatment
+<div class="trade-off">
+    <p><strong>Trade-off:</strong> Being more conservative increases Type II errors</p>
+</div>
 
-**Legal:** Convicting an innocent person
+<h3>Type II Error (False Negative)</h3>
 
-- Consequences: Injustice, real criminal goes free
+<div class="error-definition">
+    <p><strong>Definition:</strong> Failing to reject H₀ when it's actually false. Missing a real effect.</p>
+    <p><strong>Probability:</strong> β (beta, varies based on sample size, effect size, and alpha)</p>
+</div>
 
-**Education:** Adopting a teaching program that doesn't actually help
+<div class="real-world-examples">
+    <h4>Real-World Examples:</h4>
+    
+    <div class="example-context">
+        <h5>Medical:</h5>
+        <p>Rejecting a drug that actually works</p>
+        <ul>
+            <li>Consequences: Patients don't get effective treatment</li>
+        </ul>
+    </div>
+    
+    <div class="example-context">
+        <h5>Legal:</h5>
+        <p>Failing to convict a guilty person</p>
+        <ul>
+            <li>Consequences: Dangerous person remains free</li>
+        </ul>
+    </div>
+    
+    <div class="example-context">
+        <h5>Education:</h5>
+        <p>Discarding a teaching program that actually helps</p>
+        <ul>
+            <li>Consequences: Students miss out on better instruction</li>
+        </ul>
+    </div>
+    
+    <div class="example-context">
+        <h5>Psychology Research:</h5>
+        <p>Concluding "no effect" when there really is one</p>
+        <ul>
+            <li>Consequences: Important findings are missed, research direction is misguided</li>
+        </ul>
+    </div>
+</div>
 
-- Consequences: Wasted resources, missed opportunity for real improvements
+<div class="why-it-happens">
+    <h4>Why It Happens:</h4>
+    <ul>
+        <li>Sample size too small to detect the effect</li>
+        <li>Effect is real but small</li>
+        <li>Too much random variation in data</li>
+    </ul>
+</div>
 
-**Psychology Research:** Publishing a finding that's actually just random chance
+<div class="how-to-reduce">
+    <h4>How to Reduce Type II Errors:</h4>
+    <ul>
+        <li>Increase sample size (most important!)</li>
+        <li>Use more sensitive measures</li>
+        <li>Reduce random variation in procedures</li>
+        <li>Use higher α (but this increases Type I errors)</li>
+    </ul>
+</div>
 
-- Consequences: Other researchers waste time trying to replicate, field is misled
+<div class="trade-off">
+    <p><strong>Trade-off:</strong> Being less conservative increases Type I errors</p>
+</div>
 
-**Why It Happens:** Random sampling variation can produce "lucky" samples that look like there's an effect when there isn't one. With α = .05, this happens 5% of the time.
+<h3>Balancing the Two Errors</h3>
 
-**How to Reduce Type I Errors:**
+<p>You can't eliminate both types of errors simultaneously. There's always a trade-off.</p>
 
-- Use lower α (e.g., .01 instead of .05)
-- Require replication before accepting findings
-- Use more conservative statistical tests
+<div class="alpha-comparison">
+    <div class="alpha-scenario">
+        <h4>Making α more stringent (.01 instead of .05):</h4>
+        <ul>
+            <li>↓ Decreases Type I errors (fewer false positives)</li>
+            <li>↑ Increases Type II errors (more false negatives)</li>
+        </ul>
+    </div>
+    
+    <div class="alpha-scenario">
+        <h4>Making α more lenient (.10 instead of .05):</h4>
+        <ul>
+            <li>↑ Increases Type I errors (more false positives)</li>
+            <li>↓ Decreases Type II errors (fewer false negatives)</li>
+        </ul>
+    </div>
+</div>
 
-**Trade-off:** Being more conservative increases Type II errors
+<div class="sample-size-impact">
+    <h4>Increasing sample size:</h4>
+    <ul>
+        <li>↓ Decreases Type II errors (more power to detect real effects)</li>
+        <li>→ Does NOT change Type I error rate (α stays the same)</li>
+    </ul>
+</div>
+<p><strong>This is why larger samples are almost always better!</strong></p>
 
-### Type II Error (False Negative)
+<div class="summary-box">
+    <h4>📋 ERROR TYPES SUMMARY</h4>
+    
+    <table class="error-summary-table">
+        <thead>
+            <tr>
+                <th>Aspect</th>
+                <th>Type I Error (α)</th>
+                <th>Type II Error (β)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>What happens</strong></td>
+                <td>Reject true H₀</td>
+                <td>Fail to reject false H₀</td>
+            </tr>
+            <tr>
+                <td><strong>In plain English</strong></td>
+                <td>False positive</td>
+                <td>False negative</td>
+            </tr>
+            <tr>
+                <td><strong>Analogy</strong></td>
+                <td>Convict innocent person</td>
+                <td>Let guilty person go free</td>
+            </tr>
+            <tr>
+                <td><strong>Probability</strong></td>
+                <td>α (usually .05 = 5%)</td>
+                <td>β (varies, often 20-50%)</td>
+            </tr>
+            <tr>
+                <td><strong>To reduce</strong></td>
+                <td>Lower α, replicate studies</td>
+                <td>Increase n, increase power</td>
+            </tr>
+            <tr>
+                <td><strong>Controlled by</strong></td>
+                <td>Researcher (set α)</td>
+                <td>Study design (sample size, effect size)</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <div class="key-points">
+        <p><strong>Key Trade-off:</strong> ↓ Type I → ↑ Type II (and vice versa)</p>
+        <p><strong>Solution:</strong> Increase sample size (reduces Type II without affecting Type I)</p>
+    </div>
+</div>
 
-**Definition:** Failing to reject H₀ when it's actually false. Missing a real effect.
+<h3>Which Error is Worse?</h3>
 
-**Probability:** β (beta, varies based on sample size, effect size, and alpha)
+<p><strong>It depends on context!</strong></p>
 
-**Real-World Examples:**
+<div class="error-contexts">
+    <div class="context-scenario">
+        <h4>When Type I is worse (false positives):</h4>
+        <ul>
+            <li>Approving dangerous medications</li>
+            <li>Convicting innocent people</li>
+            <li>Making expensive policy changes</li>
+        </ul>
+        <p><strong>Strategy:</strong> Use lower α, require strong evidence</p>
+    </div>
+    
+    <div class="context-scenario">
+        <h4>When Type II is worse (false negatives):</h4>
+        <ul>
+            <li>Screening for serious diseases (better to have false alarms than miss real cases)</li>
+            <li>Exploratory research (missing real effects is costly)</li>
+            <li>Safety testing (better to err on the side of caution)</li>
+        </ul>
+        <p><strong>Strategy:</strong> Use higher α, larger samples</p>
+    </div>
+</div>
 
-**Medical:** Rejecting a drug that actually works
+<h3>Mnemonics for Remembering</h3>
 
-- Consequences: Patients don't get effective treatment
-
-**Legal:** Failing to convict a guilty person
-
-- Consequences: Dangerous person remains free
-
-**Education:** Discarding a teaching program that actually helps
-
-- Consequences: Students miss out on better instruction
-
-**Psychology Research:** Concluding "no effect" when there really is one
-
-- Consequences: Important findings are missed, research direction is misguided
-
-**Why It Happens:**
-
-- Sample size too small to detect the effect
-- Effect is real but small
-- Too much random variation in data
-
-**How to Reduce Type II Errors:**
-
-- Increase sample size (most important!)
-- Use more sensitive measures
-- Reduce random variation in procedures
-- Use higher α (but this increases Type I errors)
-
-**Trade-off:** Being less conservative increases Type I errors
-
-### Balancing the Two Errors
-
-You can't eliminate both types of errors simultaneously. There's always a trade-off.
-
-**Making α more stringent (.01 instead of .05):**
-
-- ↓ Decreases Type I errors (fewer false positives)
-- ↑ Increases Type II errors (more false negatives)
-
-**Making α more lenient (.10 instead of .05):**
-
-- ↑ Increases Type I errors (more false positives)
-- ↓ Decreases Type II errors (fewer false negatives)
-
-**Increasing sample size:**
-
-- ↓ Decreases Type II errors (more power to detect real effects)
-- → Does NOT change Type I error rate (α stays the same)
-- **This is why larger samples are almost always better!**
-
-> **📋 ERROR TYPES SUMMARY**
->
-> | Aspect               | Type I Error (α)           | Type II Error (β)                       |
-> | -------------------- | -------------------------- | --------------------------------------- |
-> | **What happens**     | Reject true H₀             | Fail to reject false H₀                 |
-> | **In plain English** | False positive             | False negative                          |
-> | **Analogy**          | Convict innocent person    | Let guilty person go free               |
-> | **Probability**      | α (usually .05 = 5%)       | β (varies, often 20-50%)                |
-> | **To reduce**        | Lower α, replicate studies | Increase n, increase power              |
-> | **Controlled by**    | Researcher (set α)         | Study design (sample size, effect size) |
->
-> **Key Trade-off:** ↓ Type I → ↑ Type II (and vice versa)
-> **Solution:** Increase sample size (reduces Type II without affecting Type I)
-
-### Which Error is Worse?
-
-**It depends on context!**
-
-**When Type I is worse (false positives):**
-
-- Approving dangerous medications
-- Convicting innocent people
-- Making expensive policy changes
-
-**Strategy:** Use lower α, require strong evidence
-
-**When Type II is worse (false negatives):**
-
-- Screening for serious diseases (better to have false alarms than miss real cases)
-- Exploratory research (missing real effects is costly)
-- Safety testing (better to err on the side of caution)
-
-**Strategy:** Use higher α, larger samples
-
-### Mnemonics for Remembering
-
-**Type I Error:**
-
-- "Type I, α (first letter of alphabet), reject when shouldn't"
-- Think: "I wrongly claimed I found something" (I = Type I)
-
-**Type II Error:**
-
-- "Type II, β (second letter of Greek alphabet), fail to reject when should"
-- Think: "Two blind to see the real effect" (Two = Type II)
-
-**Or use the pregnancy test analogy:**
-
-- Type I: Test says pregnant when not (false positive)
-- Type II: Test says not pregnant when actually pregnant (false negative)
+<div class="mnemonics">
+    <div class="mnemonic-type">
+        <h4>Type I Error:</h4>
+        <ul>
+            <li>"Type I, α (first letter of alphabet), reject when shouldn't"</li>
+            <li>Think: "I wrongly claimed I found something" (I = Type I)</li>
+        </ul>
+    </div>
+    
+    <div class="mnemonic-type">
+        <h4>Type II Error:</h4>
+        <ul>
+            <li>"Type II, β (second letter of Greek alphabet), fail to reject when should"</li>
+            <li>Think: "Two blind to see the real effect" (Two = Type II)</li>
+        </ul>
+    </div>
+    
+    <div class="analogy-box">
+        <h4>Or use the pregnancy test analogy:</h4>
+        <ul>
+            <li>Type I: Test says pregnant when not (false positive)</li>
+            <li>Type II: Test says not pregnant when actually pregnant (false negative)</li>
+        </ul>
+    </div>
+</div>
 
 ### Real-World Example
 

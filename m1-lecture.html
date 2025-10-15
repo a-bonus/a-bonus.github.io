@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 1: Foundations of Statistical Reasoning and Data Analysis</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <style>
+        /* Knowledge Check Styling */
+        .knowledge-check-item {
+            background-color: #f8f9fa;
+            border-left: 4px solid #007bff;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+
+        .knowledge-check-item.answered {
+            border-left-color: #28a745;
+            background-color: #f0f8f4;
+        }
+
+        .question-text {
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .question-options {
+            margin: 10px 0;
+            list-style-position: inside;
+        }
+
+        .answer-reveal {
+            background-color: #e7f3ff;
+            border: 1px solid #b3d9ff;
+            padding: 12px;
+            margin-top: 10px;
+            border-radius: 4px;
+        }
+
+        .answer-text {
+            margin: 0;
+            color: #004085;
+        }
+
+        .reveal-answer-btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-top: 10px;
+            transition: background-color 0.2s;
+        }
+
+        .reveal-answer-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .reveal-answer-btn.answered {
+            background-color: #28a745;
+        }
+
+        .reveal-answer-btn.answered:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>Module 1: Foundations of Statistical Reasoning and Data Analysis</h1>
+        
+        <p><strong>Estimated Study Time:</strong> 2-3 hours</p>
+
+        <h2>Learning Objectives</h2>
+        
+        <p>By the end of this module, you will be able to:</p>
+        
+        <ol>
+            <li>Explain the fundamental purpose of statistics in scientific research</li>
+            <li>Distinguish between descriptive and inferential statistics</li>
+            <li>Identify and correctly name variables in research scenarios</li>
+            <li>Classify variables by their role (IV/DV) and measurement scale (nominal, ordinal, scale)</li>
+            <li>Calculate and interpret measures of central tendency and variability</li>
+            <li>Create and interpret frequency distributions and appropriate visualizations</li>
+            <li>Understand the relationship between samples and populations</li>
+            <li>Use z-scores to standardize and compare values across different scales</li>
+            <li>Apply basic probability concepts to statistical inference</li>
+            <li>Perform data setup and basic analyses in SPSS</li>
+        </ol>
+
+        <hr>
+
+        <div class="lecture-tabs">
+            <div class="tab-navigation">
+                <button class="tab-button active" onclick="showTab(1)">
+                    <input type="checkbox" id="progress-1" class="tab-checkbox" onchange="toggleTabComplete(1)">
+                    <span class="tab-label">Foundations & Variables</span>
+                </button>
+                <button class="tab-button" onclick="showTab(2)">
+                    <input type="checkbox" id="progress-2" class="tab-checkbox" onchange="toggleTabComplete(2)">
+                    <span class="tab-label">Descriptive Statistics</span>
+                </button>
+                <button class="tab-button" onclick="showTab(3)">
+                    <input type="checkbox" id="progress-3" class="tab-checkbox" onchange="toggleTabComplete(3)">
+                    <span class="tab-label">Data Visualization</span>
+                </button>
+                <button class="tab-button" onclick="showTab(4)">
+                    <input type="checkbox" id="progress-4" class="tab-checkbox" onchange="toggleTabComplete(4)">
+                    <span class="tab-label">Population & Normal Distribution</span>
+                </button>
+                <button class="tab-button" onclick="showTab(5)">
+                    <input type="checkbox" id="progress-5" class="tab-checkbox" onchange="toggleTabComplete(5)">
+                    <span class="tab-label">Probability, SPSS & Summary</span>
+                </button>
+            </div>
+            
+            <div class="tab-content">
+                <div id="tab-1" class="tab-panel active">
+                    <h2>Part 1: The Purpose of Statistics</h2>
+
+                    <h3>Why Do We Need Statistics?</h3>
+
+                    <p>Imagine you're a researcher trying to answer the question: "Does meditation reduce anxiety?" You could rely on personal experience, anecdotes, or intuition. But science demands something more rigorous—<strong>objective evidence</strong> based on systematic data collection and analysis.</p>
+
+                    <p>This is where statistics comes in.</p>
+
+                    <p><strong>Key Concept:</strong> Statistics is the set of mathematical tools we use to organize, summarize, and interpret numerical data, allowing us to move from subjective opinion to objective evidence.</p>
+
+                    <h3>The Two Branches of Statistics</h3>
+
+                    <p>Statistics serves two fundamental purposes, reflected in its two main branches:</p>
+
+                    <h4>1. Descriptive Statistics</h4>
+
+                    <p><strong>Purpose:</strong> To summarize and describe the data you have collected from your specific group.</p>
+
+                    <p><strong>Example:</strong> "In our study of 50 college students, the average hours of sleep per night was 6.8 hours, with most students sleeping between 6 and 8 hours."</p>
+
+                    <p><strong>When to Use:</strong></p>
+
+                    <ul>
+                        <li>When you want to understand patterns in your collected data</li>
+                        <li>When presenting a summary of survey results</li>
+                        <li>When creating a profile of your participant group</li>
+                        <li>Any time you need to communicate "what the data looks like"</li>
+                    </ul>
+
+                    <p><strong>Common Tools:</strong></p>
+
+                    <ul>
+                        <li>Averages (mean, median, mode)</li>
+                        <li>Measures of spread (range, standard deviation)</li>
+                        <li>Frequency tables</li>
+                        <li>Graphs and charts</li>
+                    </ul>
+
+                    <h4>2. Inferential Statistics</h4>
+
+                    <p><strong>Purpose:</strong> To make educated guesses (inferences) about a larger group (population) based on data from a smaller subset (sample).</p>
+
+                    <p><strong>Example:</strong> "Based on our sample of 50 college students, we can infer with 95% confidence that the average sleep time for <em>all</em> college students at this university falls between 6.3 and 7.3 hours."</p>
+
+                    <p><strong>When to Use:</strong></p>
+
+                    <ul>
+                        <li>When you want to generalize findings beyond your specific participants</li>
+                        <li>When testing hypotheses about population characteristics</li>
+                        <li>When determining if observed differences are "real" or due to chance</li>
+                        <li>Most research scenarios in psychology and social sciences</li>
+                    </ul>
+
+                    <p><strong>Common Tools:</strong></p>
+
+                    <ul>
+                        <li>Hypothesis tests (t-tests, ANOVA, etc.)</li>
+                        <li>Confidence intervals</li>
+                        <li>p-values and significance testing</li>
+                    </ul>
+
+                    <p><strong>Why This Matters:</strong> Almost all psychological research uses inferential statistics because we can never study every single person. We study samples to learn about populations.</p>
+
+                    <h3>Real-World Applications</h3>
+
+                    <p><strong>Medical Research:</strong> A pharmaceutical company tests a new drug on 500 patients. They use <em>descriptive</em> statistics to summarize the results in their sample (e.g., "60% showed improvement") and <em>inferential</em> statistics to estimate effectiveness in the broader population (e.g., "We are 95% confident the drug helps between 55% and 65% of all patients with this condition").</p>
+
+                    <p><strong>Educational Psychology:</strong> A school psychologist measures reading scores for 30 third-graders using a new teaching method. Descriptive statistics show what happened in this specific classroom. Inferential statistics help determine if the method would likely work in other classrooms.</p>
+
+                    <p><strong>Business Decisions:</strong> A company surveys 200 customers about a product redesign. They describe their sample's preferences, then use inference to predict how their entire customer base (millions) would respond.</p>
+
+                    <h3>Common Misconceptions</h3>
+
+                    <p>❌ <strong>Misconception:</strong> "Statistics can prove anything you want."<br>
+                    ✓ <strong>Reality:</strong> When used correctly, statistics provide objective evidence. Misleading statistics usually involve inappropriate methods, selective reporting, or misinterpretation.</p>
+
+                    <p>❌ <strong>Misconception:</strong> "A statistic is just a number."<br>
+                    ✓ <strong>Reality:</strong> Statistics are numbers <em>with context</em>. The interpretation matters as much as the calculation.</p>
+
+                    <p>❌ <strong>Misconception:</strong> "I only need statistics if I'm doing research."<br>
+                    ✓ <strong>Reality:</strong> Statistical thinking helps you evaluate claims in news, advertising, health information, and everyday decision-making.</p>
+
+                    <p><strong>Think About It:</strong> When you see a headline like "New study shows coffee reduces heart disease risk by 30%," what questions should you ask? (Sample size? How was the study designed? What does "30%" actually mean?)</p>
+
+                    <hr>
+
+                    <h2>Part 2: Variables: The Building Blocks</h2>
+
+                    <h3>What is a Variable?</h3>
+
+                    <p><strong>Definition:</strong> A variable is any characteristic that can take on different values or categories across individuals, objects, or situations.</p>
+
+                    <p><strong>Key Point:</strong> The word "variable" comes from "vary"—it's something that changes or differs.</p>
+
+                    <h3>The Golden Rule of Naming Variables</h3>
+
+                    <p><strong>Always name variables based on WHAT you are measuring, not HOW you are measuring it.</strong></p>
+
+                    <p><strong>Example:</strong></p>
+                    <ul>
+                        <li>❌ "Survey_Question_5"</li>
+                        <li>✅ "Anxiety_Level"</li>
+                    </ul>
+
+                    <h3>Practice: Identifying Variables</h3>
+
+                    <p><strong>Scenario 1: Sleep Study</strong><br>
+                    A researcher wants to know if people who exercise regularly get better sleep. They ask 100 participants two questions:</p>
+                    <ol>
+                        <li>"How many minutes do you exercise per week?"</li>
+                        <li>"How many hours of sleep do you get per night on average?"</li>
+                    </ol>
+
+                    <p><strong>Variables:</strong></p>
+                    <ul>
+                        <li><strong>Exercise_Time</strong> (measured in minutes per week)</li>
+                        <li><strong>Sleep_Duration</strong> (measured in hours per night)</li>
+                    </ul>
+
+                    <h3>Classification System 1: By Role in Research</h3>
+
+                    <h4>Independent Variable (IV)</h4>
+
+                    <p><strong>Definition:</strong> The variable that the researcher manipulates or selects to see if it has an effect on something else.</p>
+
+                    <p><strong>Key characteristics:</strong></p>
+                    <ul>
+                        <li>It comes first in time (cause)</li>
+                        <li>It's what you're testing or comparing</li>
+                        <li>It's the "input" or "treatment"</li>
+                    </ul>
+
+                    <p><strong>Examples:</strong></p>
+                    <ul>
+                        <li>Teaching method (traditional vs. new)</li>
+                        <li>Medication dosage (low, medium, high)</li>
+                        <li>Study environment (quiet vs. noisy)</li>
+                    </ul>
+
+                    <h4>Dependent Variable (DV)</h4>
+
+                    <p><strong>Definition:</strong> The variable that the researcher measures to see if it's affected by the independent variable.</p>
+
+                    <p><strong>Key characteristics:</strong></p>
+                    <ul>
+                        <li>It comes second in time (effect)</li>
+                        <li>It's what you're trying to predict or explain</li>
+                        <li>It's the "output" or "outcome"</li>
+                    </ul>
+
+                    <p><strong>Examples:</strong></p>
+                    <ul>
+                        <li>Test scores (affected by teaching method)</li>
+                        <li>Pain level (affected by medication)</li>
+                        <li>Memory performance (affected by study environment)</li>
+                    </ul>
+
+                    <h3>How to Identify IV and DV</h3>
+
+                    <p><strong>Ask these questions:</strong></p>
+                    <ol>
+                        <li><strong>"What is the researcher trying to find out?"</strong> → This is usually the DV</li>
+                        <li><strong>"What is being manipulated or compared?"</strong> → This is usually the IV</li>
+                        <li><strong>"Which comes first in time?"</strong> → This is usually the IV</li>
+                    </ol>
+
+                    <p><strong>Memory trick:</strong> IV = "I manipulate this" | DV = "I measure this"</p>
+                </div>
+
+                <div id="tab-2" class="tab-panel">
+                    <h2>Part 4: Describing Data with Numbers</h2>
+
+                    <p>Now that we understand what variables are and how to classify them, let's learn how to describe them with numbers. This is where <strong>descriptive statistics</strong> comes in—the tools we use to summarize and make sense of our data.</p>
+
+                    <h3>Measures of Central Tendency</h3>
+
+                    <p>These tell us about the "typical" or "average" value in our dataset.</p>
+
+                    <h4>1. Mean (Average)</h4>
+                    <p><strong>Formula:</strong> Mean = Sum of all values ÷ Number of values</p>
+
+                    <p><strong>Symbol:</strong> μ (population) or x̄ (sample)</p>
+
+                    <p><strong>When to use:</strong> Best for scale data that is roughly normally distributed</p>
+
+                    <p><strong>Example:</strong> Test scores: 85, 90, 78, 92, 88<br>
+                    Mean = (85 + 90 + 78 + 92 + 88) ÷ 5 = 433 ÷ 5 = 86.6</p>
+
+                    <p><strong>Pros:</strong></p>
+                    <ul>
+                        <li>Uses all data points</li>
+                        <li>Mathematically useful for further calculations</li>
+                        <li>Most common measure of central tendency</li>
+                    </ul>
+
+                    <p><strong>Cons:</strong></p>
+                    <ul>
+                        <li>Sensitive to outliers (extreme values)</li>
+                        <li>Can be misleading with skewed data</li>
+                    </ul>
+
+                    <h4>2. Median</h4>
+                    <p><strong>Definition:</strong> The middle value when data is arranged in order</p>
+
+                    <p><strong>When to use:</strong> Best when you have outliers or skewed data</p>
+
+                    <p><strong>How to find:</strong></p>
+                    <ol>
+                        <li>Arrange values from lowest to highest</li>
+                        <li>If odd number of values: middle value is median</li>
+                        <li>If even number of values: average of two middle values</li>
+                    </ol>
+
+                    <p><strong>Example:</strong> Test scores: 85, 90, 78, 92, 88<br>
+                    Ordered: 78, 85, 88, 90, 92<br>
+                    Median = 88 (middle value)</p>
+
+                    <h4>3. Mode</h4>
+                    <p><strong>Definition:</strong> The most frequently occurring value</p>
+
+                    <p><strong>When to use:</strong> Best for nominal data or when you want to know the most common category</p>
+
+                    <p><strong>Example:</strong> Eye colors in a class: Blue (12), Brown (18), Green (5), Hazel (3)<br>
+                    Mode = Brown (most frequent)</p>
+
+                    <h3>Measures of Variability</h3>
+
+                    <p>These tell us how spread out our data is—how much the values differ from each other.</p>
+
+                    <h4>1. Range</h4>
+                    <p><strong>Formula:</strong> Range = Highest value - Lowest value</p>
+
+                    <p><strong>Example:</strong> Test scores: 78, 85, 88, 90, 92<br>
+                    Range = 92 - 78 = 14</p>
+
+                    <h4>2. Standard Deviation</h4>
+                    <p><strong>Purpose:</strong> Measures how much values typically deviate from the mean</p>
+
+                    <p><strong>Symbol:</strong> σ (population) or s (sample)</p>
+
+                    <p><strong>Step-by-step calculation:</strong></p>
+                    <ol>
+                        <li>Calculate the mean</li>
+                        <li>Find the difference between each value and the mean</li>
+                        <li>Square each difference (to remove negative signs)</li>
+                        <li>Add up all the squared differences</li>
+                        <li>Divide by n-1 (for sample) or N (for population)</li>
+                        <li>Take the square root</li>
+                    </ol>
+
+                    <p><strong>Example:</strong> Test scores: 85, 90, 78, 92, 88<br>
+                    Mean = 86.6</p>
+
+                    <table>
+                        <tr>
+                            <th>Score</th>
+                            <th>(Score - Mean)</th>
+                            <th>(Score - Mean)²</th>
+                        </tr>
+                        <tr>
+                            <td>85</td>
+                            <td>85 - 86.6 = -1.6</td>
+                            <td>(-1.6)² = 2.56</td>
+                        </tr>
+                        <tr>
+                            <td>90</td>
+                            <td>90 - 86.6 = 3.4</td>
+                            <td>(3.4)² = 11.56</td>
+                        </tr>
+                        <tr>
+                            <td>78</td>
+                            <td>78 - 86.6 = -8.6</td>
+                            <td>(-8.6)² = 73.96</td>
+                        </tr>
+                        <tr>
+                            <td>92</td>
+                            <td>92 - 86.6 = 5.4</td>
+                            <td>(5.4)² = 29.16</td>
+                        </tr>
+                        <tr>
+                            <td>88</td>
+                            <td>88 - 86.6 = 1.4</td>
+                            <td>(1.4)² = 1.96</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Total</strong></td>
+                            <td></td>
+                            <td><strong>119.2</strong></td>
+                        </tr>
+                    </table>
+
+                    <p>Sum of squared differences = 119.2<br>
+                    Divide by n-1 = 119.2 ÷ 4 = 29.8<br>
+                    Standard deviation = √29.8 = 5.46</p>
+
+                    <p><strong>Interpretation:</strong> On average, scores deviate from the mean by about 5.46 points.</p>
+                </div>
+
+                <div id="tab-3" class="tab-panel">
+                    <h2>Part 5: Data Visualization</h2>
+
+                    <p>Visualizing data is crucial for understanding patterns and communicating findings. Different types of data require different types of graphs.</p>
+
+                    <h3>Choosing the Right Graph</h3>
+
+                    <h4>For Nominal Data:</h4>
+                    <ul>
+                        <li><strong>Bar Chart:</strong> Shows frequency or percentage of each category</li>
+                        <li><strong>Pie Chart:</strong> Shows proportions of the whole (use sparingly)</li>
+                    </ul>
+
+                    <h4>For Ordinal Data:</h4>
+                    <ul>
+                        <li><strong>Bar Chart:</strong> Maintains the order of categories</li>
+                        <li><strong>Histogram:</strong> If treating as continuous</li>
+                    </ul>
+
+                    <h4>For Scale Data:</h4>
+                    <ul>
+                        <li><strong>Histogram:</strong> Shows distribution shape</li>
+                        <li><strong>Box Plot:</strong> Shows median, quartiles, and outliers</li>
+                        <li><strong>Scatterplot:</strong> Shows relationship between two variables</li>
+                    </ul>
+
+                    <h3>Frequency Distributions</h3>
+
+                    <p>A frequency distribution shows how often each value or range of values occurs in your dataset.</p>
+
+                    <h4>Creating a Frequency Table</h4>
+
+                    <p><strong>Example:</strong> Test scores from 20 students: 85, 90, 78, 92, 88, 76, 85, 91, 89, 87, 83, 90, 88, 85, 92, 79, 86, 89, 87, 84</p>
+
+                    <table>
+                        <tr>
+                            <th>Score Range</th>
+                            <th>Frequency</th>
+                            <th>Percentage</th>
+                            <th>Cumulative %</th>
+                        </tr>
+                        <tr>
+                            <td>75-79</td>
+                            <td>2</td>
+                            <td>10%</td>
+                            <td>10%</td>
+                        </tr>
+                        <tr>
+                            <td>80-84</td>
+                            <td>3</td>
+                            <td>15%</td>
+                            <td>25%</td>
+                        </tr>
+                        <tr>
+                            <td>85-89</td>
+                            <td>10</td>
+                            <td>50%</td>
+                            <td>75%</td>
+                        </tr>
+                        <tr>
+                            <td>90-94</td>
+                            <td>5</td>
+                            <td>25%</td>
+                            <td>100%</td>
+                        </tr>
+                    </table>
+
+                    <h3>Distribution Shapes</h3>
+
+                    <h4>Normal Distribution (Bell Curve)</h4>
+                    <ul>
+                        <li>Symmetric around the mean</li>
+                        <li>Most values cluster around the center</li>
+                        <li>Tails extend equally on both sides</li>
+                        <li>Mean = Median = Mode</li>
+                    </ul>
+
+                    <h4>Skewed Distributions</h4>
+                    <ul>
+                        <li><strong>Right-skewed (positive skew):</strong> Tail extends to the right, mean > median</li>
+                        <li><strong>Left-skewed (negative skew):</strong> Tail extends to the left, mean < median</li>
+                    </ul>
+
+                    <h4>Bimodal Distribution</h4>
+                    <ul>
+                        <li>Has two peaks</li>
+                        <li>Often indicates two different groups in the data</li>
+                    </ul>
+                </div>
+
+                <div id="tab-4" class="tab-panel">
+                    <h2>Part 6: Population vs. Sample</h2>
+
+                    <h3>Key Definitions</h3>
+
+                    <h4>Population</h4>
+                    <p><strong>Definition:</strong> The entire group of individuals or objects that you want to study.</p>
+
+                    <p><strong>Examples:</strong></p>
+                    <ul>
+                        <li>All college students in the United States</li>
+                        <li>All patients with a specific disease</li>
+                        <li>All employees at a company</li>
+                    </ul>
+
+                    <h4>Sample</h4>
+                    <p><strong>Definition:</strong> A subset of the population that you actually study.</p>
+
+                    <p><strong>Examples:</strong></p>
+                    <ul>
+                        <li>500 college students from your university</li>
+                        <li>100 patients with the disease</li>
+                        <li>50 employees from the company</li>
+                    </ul>
+
+                    <h3>Why We Use Samples</h3>
+
+                    <p><strong>Practical reasons:</strong></p>
+                    <ul>
+                        <li>Studying entire populations is often impossible or impractical</li>
+                        <li>Costs too much money and time</li>
+                        <li>Some populations are too large (e.g., all humans)</li>
+                    </ul>
+
+                    <p><strong>Statistical reasons:</strong></p>
+                    <ul>
+                        <li>Well-chosen samples can accurately represent populations</li>
+                        <li>Statistical methods allow us to make inferences</li>
+                        <li>We can quantify our uncertainty</li>
+                    </ul>
+
+                    <h3>The Normal Distribution</h3>
+
+                    <p>The normal distribution is a fundamental concept in statistics because:</p>
+
+                    <ul>
+                        <li>Many natural phenomena follow this pattern</li>
+                        <li>It's mathematically well-understood</li>
+                        <li>Statistical tests assume normality</li>
+                        <li>It provides a reference point for comparison</li>
+                    </ul>
+
+                    <h4>Properties of the Normal Distribution</h4>
+
+                    <ul>
+                        <li><strong>Bell-shaped:</strong> Symmetric around the mean</li>
+                        <li><strong>Mean = Median = Mode:</strong> All three measures are equal</li>
+                        <li><strong>68-95-99.7 Rule:</strong> 
+                            <ul>
+                                <li>68% of values fall within 1 standard deviation of the mean</li>
+                                <li>95% of values fall within 2 standard deviations of the mean</li>
+                                <li>99.7% of values fall within 3 standard deviations of the mean</li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <h3>Z-Scores</h3>
+
+                    <p><strong>Definition:</strong> A z-score tells you how many standard deviations a value is from the mean.</p>
+
+                    <p><strong>Formula:</strong> z = (X - μ) / σ</p>
+
+                    <p><strong>Where:</strong></p>
+                    <ul>
+                        <li>X = the value you're interested in</li>
+                        <li>μ = population mean</li>
+                        <li>σ = population standard deviation</li>
+                    </ul>
+
+                    <h4>Interpreting Z-Scores</h4>
+
+                    <ul>
+                        <li><strong>z = 0:</strong> The value equals the mean</li>
+                        <li><strong>z = +1:</strong> The value is 1 standard deviation above the mean</li>
+                        <li><strong>z = -2:</strong> The value is 2 standard deviations below the mean</li>
+                        <li><strong>z > +2 or z < -2:</strong> Unusual values (outliers)</li>
+                    </ul>
+
+                    <h4>Example</h4>
+
+                    <p>If test scores have μ = 80 and σ = 10:</p>
+                    <ul>
+                        <li>Score of 90: z = (90 - 80) / 10 = +1.0</li>
+                        <li>Score of 65: z = (65 - 80) / 10 = -1.5</li>
+                        <li>Score of 100: z = (100 - 80) / 10 = +2.0</li>
+                    </ul>
+
+                    <p><strong>Benefits of Z-Scores:</strong></p>
+                    <ul>
+                        <li>Allow comparison across different scales</li>
+                        <li>Identify outliers</li>
+                        <li>Essential for many statistical tests</li>
+                    </ul>
+                </div>
+
+                <div id="tab-5" class="tab-panel">
+                    <h2>Part 7: Probability and Statistical Inference</h2>
+
+                    <h3>Basic Probability Concepts</h3>
+
+                    <h4>Probability</h4>
+                    <p><strong>Definition:</strong> The likelihood that an event will occur, expressed as a number between 0 and 1.</p>
+
+                    <ul>
+                        <li><strong>P = 0:</strong> Event never happens</li>
+                        <li><strong>P = 1:</strong> Event always happens</li>
+                        <li><strong>P = 0.5:</strong> Event happens 50% of the time</li>
+                    </ul>
+
+                    <h4>Sampling Distributions</h4>
+                    <p>If you take many samples from a population and calculate the same statistic (like the mean) for each sample, the distribution of those statistics is called a <strong>sampling distribution</strong>.</p>
+
+                    <p><strong>Key insight:</strong> Even if individual scores are not normally distributed, the sampling distribution of the mean will be approximately normal (Central Limit Theorem).</p>
+
+                    <h3>SPSS Basics</h3>
+
+                    <p>SPSS (Statistical Package for the Social Sciences) is a powerful tool for statistical analysis. Here are the basics:</p>
+
+                    <h4>Data Entry</h4>
+                    <ul>
+                        <li>Each row represents one participant (case)</li>
+                        <li>Each column represents one variable</li>
+                        <li>Use the Variable View to define variable properties</li>
+                        <li>Use the Data View to enter actual data</li>
+                    </ul>
+
+                    <h4>Basic Analyses</h4>
+                    <ul>
+                        <li><strong>Descriptive Statistics:</strong> Analyze → Descriptive Statistics → Descriptives</li>
+                        <li><strong>Frequencies:</strong> Analyze → Descriptive Statistics → Frequencies</li>
+                        <li><strong>Charts:</strong> Graphs → Chart Builder</li>
+                    </ul>
+
+                    <h3>Module Summary</h3>
+
+                    <p>In this module, we've covered the fundamental concepts that form the foundation of statistical reasoning:</p>
+
+                    <ol>
+                        <li><strong>Statistics Purpose:</strong> Moving from subjective opinion to objective evidence</li>
+                        <li><strong>Two Branches:</strong> Descriptive (summarizing) vs. Inferential (generalizing)</li>
+                        <li><strong>Variables:</strong> The building blocks of research, properly named and classified</li>
+                        <li><strong>Measurement Scales:</strong> Nominal, ordinal, and scale data require different approaches</li>
+                        <li><strong>Descriptive Statistics:</strong> Mean, median, mode, range, and standard deviation</li>
+                        <li><strong>Data Visualization:</strong> Choosing appropriate graphs for different data types</li>
+                        <li><strong>Populations vs. Samples:</strong> Understanding what we study and what we want to know</li>
+                        <li><strong>Normal Distribution:</strong> The mathematical foundation for many statistical tests</li>
+                        <li><strong>Z-Scores:</strong> Standardizing values for comparison</li>
+                        <li><strong>Probability:</strong> The foundation of statistical inference</li>
+                    </ol>
+
+                    <h3>Looking Ahead</h3>
+
+                    <p>These concepts provide the foundation for all the statistical tests we'll learn in future modules. Understanding these fundamentals will make it much easier to learn and apply more advanced statistical techniques.</p>
+
+                    <p><strong>Key takeaway:</strong> Statistics is not just about calculations—it's about thinking systematically about data and evidence.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Single Bottom Navigation -->
+        <div class="tab-navigation bottom-nav">
+            <button class="tab-button" onclick="showTab(1)">
+                <input type="checkbox" id="progress-1-bottom" class="tab-checkbox" onchange="toggleTabComplete(1)">
+                <span class="tab-label">Foundations & Variables</span>
+            </button>
+            <button class="tab-button" onclick="showTab(2)">
+                <input type="checkbox" id="progress-2-bottom" class="tab-checkbox" onchange="toggleTabComplete(2)">
+                <span class="tab-label">Descriptive Statistics</span>
+            </button>
+            <button class="tab-button" onclick="showTab(3)">
+                <input type="checkbox" id="progress-3-bottom" class="tab-checkbox" onchange="toggleTabComplete(3)">
+                <span class="tab-label">Data Visualization</span>
+            </button>
+            <button class="tab-button" onclick="showTab(4)">
+                <input type="checkbox" id="progress-4-bottom" class="tab-checkbox" onchange="toggleTabComplete(4)">
+                <span class="tab-label">Population & Normal Distribution</span>
+            </button>
+            <button class="tab-button" onclick="showTab(5)">
+                <input type="checkbox" id="progress-5-bottom" class="tab-checkbox" onchange="toggleTabComplete(5)">
+                <span class="tab-label">Probability, SPSS & Summary</span>
+            </button>
+        </div>
+    </main>
+
+    <script>
+        // Progress tracking storage key
+        const PROGRESS_KEY = 'm1-lecture-progress';
+
+        // Load saved progress on page load
+        function loadProgress() {
+            const savedProgress = localStorage.getItem(PROGRESS_KEY);
+            if (savedProgress) {
+                const progress = JSON.parse(savedProgress);
+                Object.keys(progress).forEach(tabNumber => {
+                    const isComplete = progress[tabNumber];
+                    document.getElementById(`progress-${tabNumber}`).checked = isComplete;
+                    document.getElementById(`progress-${tabNumber}-bottom`).checked = isComplete;
+                    updateTabVisualState(parseInt(tabNumber), isComplete);
+                });
+            }
+        }
+
+        // Save progress to localStorage
+        function saveProgress(tabNumber, isComplete) {
+            const savedProgress = localStorage.getItem(PROGRESS_KEY);
+            const progress = savedProgress ? JSON.parse(savedProgress) : {};
+            progress[tabNumber] = isComplete;
+            localStorage.setItem(PROGRESS_KEY, JSON.stringify(progress));
+        }
+
+        // Toggle tab completion
+        function toggleTabComplete(tabNumber) {
+            // Determine which checkbox was clicked (top or bottom)
+            const clickedCheckbox = event.target;
+            const isComplete = clickedCheckbox.checked;
+            
+            // Update both top and bottom checkboxes to stay in sync
+            document.getElementById(`progress-${tabNumber}`).checked = isComplete;
+            document.getElementById(`progress-${tabNumber}-bottom`).checked = isComplete;
+            
+            // Update visual state
+            updateTabVisualState(tabNumber, isComplete);
+            
+            // Save to localStorage
+            saveProgress(tabNumber, isComplete);
+        }
+
+        // Update visual state of tab buttons when completed
+        function updateTabVisualState(tabNumber, isComplete) {
+            // Update all tab buttons for this tab (top and bottom)
+            const tabButtons = document.querySelectorAll(`button[onclick="showTab(${tabNumber})"]`);
+            tabButtons.forEach(button => {
+                if (isComplete) {
+                    button.classList.add('completed');
+                } else {
+                    button.classList.remove('completed');
+                }
+            });
+        }
+
+        // Main tab switching function
+        function showTab(tabNumber) {
+            // Hide all panels
+            const panels = document.querySelectorAll('.tab-panel');
+            panels.forEach(panel => panel.classList.remove('active'));
+            
+            // Remove active from all buttons
+            const buttons = document.querySelectorAll('.tab-button');
+            buttons.forEach(button => button.classList.remove('active'));
+            
+            // Show selected panel and activate button
+            document.getElementById(`tab-${tabNumber}`).classList.add('active');
+            
+            // Activate the button that was clicked (could be top or bottom)
+            event.target.classList.add('active');
+            
+            // Scroll to top of the tab navigation for better UX
+            const tabContainer = document.querySelector('.lecture-tabs');
+            if (tabContainer) {
+                tabContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        // Knowledge Check functionality
+        const KC_STORAGE_KEY = 'm1-knowledge-checks';
+
+        // Load answered questions on page load
+        function loadKnowledgeCheckProgress() {
+            const savedProgress = localStorage.getItem(KC_STORAGE_KEY);
+            if (savedProgress) {
+                const answeredQuestions = JSON.parse(savedProgress);
+                answeredQuestions.forEach(questionId => {
+                    markQuestionAsAnswered(questionId, false);
+                });
+            }
+        }
+
+        // Save answered question to localStorage
+        function saveAnsweredQuestion(questionId) {
+            const savedProgress = localStorage.getItem(KC_STORAGE_KEY);
+            const answeredQuestions = savedProgress ? JSON.parse(savedProgress) : [];
+            
+            if (!answeredQuestions.includes(questionId)) {
+                answeredQuestions.push(questionId);
+                localStorage.setItem(KC_STORAGE_KEY, JSON.stringify(answeredQuestions));
+            }
+        }
+
+        // Reveal answer for a question
+        function revealAnswer(questionId) {
+            const questionItem = document.querySelector(`[data-question-id="${questionId}"]`);
+            const answerDiv = questionItem.querySelector('.answer-reveal');
+            const button = questionItem.querySelector('.reveal-answer-btn');
+            
+            // Show the answer
+            answerDiv.style.display = 'block';
+            
+            // Mark as answered
+            markQuestionAsAnswered(questionId, true);
+        }
+
+        // Mark question as answered (visually and in storage)
+        function markQuestionAsAnswered(questionId, saveToStorage) {
+            const questionItem = document.querySelector(`[data-question-id="${questionId}"]`);
+            if (!questionItem) return;
+            
+            const answerDiv = questionItem.querySelector('.answer-reveal');
+            const button = questionItem.querySelector('.reveal-answer-btn');
+            
+            // Update visual state
+            questionItem.classList.add('answered');
+            button.classList.add('answered');
+            button.textContent = 'Answer Shown ✓';
+            answerDiv.style.display = 'block';
+            
+            // Save to storage if requested
+            if (saveToStorage) {
+                saveAnsweredQuestion(questionId);
+            }
+        }
+
+        // Load progress when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            loadProgress();
+            loadKnowledgeCheckProgress();
+        });
+    </script>
+</body>
+</html>
