@@ -480,11 +480,13 @@ We conclude #2 is more plausible.
 > **📊 UNDERSTANDING P-VALUES: The Most Misunderstood Concept**
 >
 > **What p-values ARE:**
+>
 > - The probability of getting your data (or more extreme) IF H₀ is true
 > - A measure of how surprising your results are under the null hypothesis
 > - Conditional on H₀ being true
 >
 > **What p-values are NOT:**
+>
 > - ❌ The probability that H₀ is true
 > - ❌ The probability that your results are due to chance
 > - ❌ The probability that H₁ is true
@@ -841,14 +843,14 @@ You can't eliminate both types of errors simultaneously. There's always a trade-
 
 > **📋 ERROR TYPES SUMMARY**
 >
-> | Aspect | Type I Error (α) | Type II Error (β) |
-> |--------|------------------|-------------------|
-> | **What happens** | Reject true H₀ | Fail to reject false H₀ |
-> | **In plain English** | False positive | False negative |
-> | **Analogy** | Convict innocent person | Let guilty person go free |
-> | **Probability** | α (usually .05 = 5%) | β (varies, often 20-50%) |
-> | **To reduce** | Lower α, replicate studies | Increase n, increase power |
-> | **Controlled by** | Researcher (set α) | Study design (sample size, effect size) |
+> | Aspect               | Type I Error (α)           | Type II Error (β)                       |
+> | -------------------- | -------------------------- | --------------------------------------- |
+> | **What happens**     | Reject true H₀             | Fail to reject false H₀                 |
+> | **In plain English** | False positive             | False negative                          |
+> | **Analogy**          | Convict innocent person    | Let guilty person go free               |
+> | **Probability**      | α (usually .05 = 5%)       | β (varies, often 20-50%)                |
+> | **To reduce**        | Lower α, replicate studies | Increase n, increase power              |
+> | **Controlled by**    | Researcher (set α)         | Study design (sample size, effect size) |
 >
 > **Key Trade-off:** ↓ Type I → ↑ Type II (and vice versa)
 > **Solution:** Increase sample size (reduces Type II without affecting Type I)
@@ -1002,12 +1004,14 @@ The Central Limit Theorem (CLT) is one of the most important concepts in statist
 ### Key Properties
 
 **1. The mean of the sampling distribution equals the population mean**
-\[ \mu_M = \mu \]
+
+μ<sub>M</sub> = μ
 
 The average of all possible sample means equals the true population mean.
 
 **2. The standard deviation of the sampling distribution (Standard Error) is smaller than the population SD**
-\[ \sigma_M = \frac{\sigma}{\sqrt{n}} \]
+
+σ<sub>M</sub> = σ / √n
 
 Sample means vary less than individual scores. Larger samples have even less variation.
 
@@ -1024,7 +1028,8 @@ Sample means vary less than individual scores. Larger samples have even less var
 **Standard Error (σ_M or SE):** Measures how much sample means vary around the population mean
 
 **Formula:**
-\[ SE = \frac{s}{\sqrt{n}} \]
+
+SE = s / √n
 
 Where:
 
@@ -1087,10 +1092,12 @@ Where:
 **Question:** Is this sample mean unusual?
 
 **Step 1: Calculate Standard Error**
-\[ SE = \frac{s}{\sqrt{n}} = \frac{108}{\sqrt{36}} = \frac{108}{6} = 18 \text{ ms} \]
+
+SE = s / √n = 108 / √36 = 108 / 6 = 18 ms
 
 **Step 2: Calculate z-score for the sample mean**
-\[ z = \frac{M - \mu}{SE} = \frac{520 - 500}{18} = \frac{20}{18} = 1.11 \]
+
+z = (M - μ) / SE = (520 - 500) / 18 = 20 / 18 = 1.11
 
 **Step 3: Interpret**
 
@@ -1123,6 +1130,7 @@ Where:
 Now we put everything together into our first formal hypothesis test!
 
 > **Before proceeding:** Make sure you understand these prerequisite concepts:
+>
 > - Hypothesis formulation ([Part 2](#part-2-formulating-hypotheses))
 > - p-values and decision-making ([Part 3](#part-3-the-decision-making-framework))
 > - Type I and Type II errors ([Part 4](#part-4-understanding-errors-in-hypothesis-testing))
@@ -1150,12 +1158,14 @@ Now we put everything together into our first formal hypothesis test!
 ### Why "t-Test" and Not "z-Test"?
 
 **If we knew σ (population SD):** We'd use a z-test
-\[ z = \frac{M - \mu}{\sigma / \sqrt{n}} \]
+
+z = (M - μ) / (σ / √n)
 
 **But we almost never know σ!**
 
 **Solution:** Use the sample SD (s) to estimate it, giving us the t-test
-\[ t = \frac{M - \mu}{s / \sqrt{n}} \]
+
+t = (M - μ) / (s / √n)
 
 **The catch:** Using s instead of σ adds uncertainty, so we need a different distribution (t-distribution, covered in Part 9).
 
@@ -1192,11 +1202,11 @@ From your sample data:
 
 #### Step 4: Calculate Standard Error
 
-\[ SE = \frac{s}{\sqrt{n}} \]
+SE = s / √n
 
 #### Step 5: Calculate t-Statistic
 
-\[ t = \frac{M - \mu}{SE} = \frac{M - \mu}{s / \sqrt{n}} \]
+t = (M - μ) / SE = (M - μ) / (s / √n)
 
 **Interpretation:** How many standard errors is your sample mean from the population mean?
 
@@ -1239,10 +1249,12 @@ From your sample data:
 - s = 12 (standard deviation of stress scores)
 
 **Step 4: Standard Error**
-\[ SE = \frac{s}{\sqrt{n}} = \frac{12}{\sqrt{25}} = \frac{12}{5} = 2.4 \]
+
+SE = s / √n = 12 / √25 = 12 / 5 = 2.4
 
 **Step 5: Calculate t**
-\[ t = \frac{M - \mu}{SE} = \frac{45 - 50}{2.4} = \frac{-5}{2.4} = -2.08 \]
+
+t = (M - μ) / SE = (45 - 50) / 2.4 = -5 / 2.4 = -2.08
 
 **Interpretation:** Our sample mean is 2.08 standard errors below the population mean.
 
@@ -1264,20 +1276,24 @@ From your sample data:
 **What This Means in Practice:**
 
 **Effect Size:** Let's calculate Cohen's d to understand practical significance:
-\[ d = \frac{M - \mu}{s} = \frac{45 - 50}{12} = \frac{-5}{12} = -0.42 \]
+
+d = (M - μ) / s = (45 - 50) / 12 = -5 / 12 = -0.42
 
 This is a **small to medium effect** (between 0.2 and 0.5), meaning:
+
 - The difference is not just statistically significant, but also practically meaningful
 - Meditators score about 0.4 standard deviations lower on stress than the general population
 - This represents a noticeable improvement in real-world terms
 
 **Practical Interpretation:**
+
 - **For researchers:** This provides evidence that meditation programs may be worth investigating further
 - **For practitioners:** A 5-point reduction in stress (on this scale) could represent meaningful relief for clients
 - **For policymakers:** This effect size suggests meditation could be a cost-effective stress management intervention
 - **Limitations:** This is correlational (people who meditate may differ in other ways); a randomized experiment would provide stronger evidence
 
 **Next Steps:**
+
 - Replicate with larger sample (n = 25 is modest)
 - Use random assignment (assign people to meditate vs. control)
 - Follow up over time to see if effects persist
@@ -1352,22 +1368,27 @@ The t-value (like a z-score) measures how many standard errors your sample mean 
 > Before finalizing your t-test calculations, verify:
 >
 > ✓ **Standard Error vs. Standard Deviation**
+>
 > - Did you use SE = s/√n (NOT just s)?
 > - SE should always be smaller than s
 >
 > ✓ **Degrees of Freedom**
+>
 > - Did you use df = n - 1 (NOT n)?
 > - Example: If n = 25, then df = 24
 >
 > ✓ **Sign of t-Value**
+>
 > - Keep the negative sign if M < μ
 > - The sign indicates direction
 >
 > ✓ **Formula Check**
+>
 > - t = (M - μ) / SE
 > - NOT t = (μ - M) / SE (order matters!)
 >
 > ✓ **One-Tailed p-Value**
+>
 > - Did you divide SPSS p by 2?
 > - Only if result is in predicted direction!
 
@@ -1431,7 +1452,8 @@ Statistical significance tells you IF there's an effect. Effect size tells you H
 **Definition:** Cohen's d measures the standardized difference between a sample mean and population mean (or between two means).
 
 **For One-Sample t-Test:**
-\[ d = \frac{M - \mu}{s} \]
+
+d = (M - μ) / s
 
 Where:
 
@@ -1463,17 +1485,18 @@ Jacob Cohen proposed rough guidelines for interpreting d:
 
 - Population mean: μ = 50
 - Sample: M = 45, s = 12
-- \[ d = \frac{45 - 50}{12} = \frac{-5}{12} = -0.42 \]
+- d = (45 - 50) / 12 = -5 / 12 = -0.42
 - **Interpretation:** Small to medium effect (stress is 0.42 SD below population mean)
 
 **Example 2:** Reading program effectiveness
 
 - Population mean: μ = 100
 - Sample: M = 112, s = 15
-- \[ d = \frac{112 - 100}{15} = \frac{12}{15} = 0.80 \]
+- d = (112 - 100) / 15 = 12 / 15 = 0.80
 - **Interpretation:** Large effect (reading scores are 0.80 SD above population mean)
 
 **What This Means in Practice:**
+
 - This is a **substantial improvement** - students improved by 12 points on average
 - A Cohen's d of 0.80 is considered educationally significant
 - In practical terms: If the program works, it could move an average student from the 50th percentile to approximately the 79th percentile
@@ -1484,7 +1507,7 @@ Jacob Cohen proposed rough guidelines for interpreting d:
 
 - Population mean: μ = 50
 - Sample: M = 52, s = 10
-- \[ d = \frac{52 - 50}{10} = \frac{2}{10} = 0.20 \]
+- d = (52 - 50) / 10 = 2 / 10 = 0.20
 - **Interpretation:** Small effect (memory is 0.20 SD above population mean)
 
 ### Interpreting Effect Sizes in Context
@@ -1572,13 +1595,13 @@ Jacob Cohen proposed rough guidelines for interpreting d:
 
 **Reporting p-Values:**
 
-| SPSS Output | How to Report | Why |
-|-------------|---------------|-----|
-| p = .000 | **p < .001** | Never report p = .000; it's rounded |
-| p = .0234 | **p = .023** | Round to 2-3 decimal places |
-| p = .050 | **p = .050** | Report exactly (borderline case) |
-| p = .0499 | **p = .050** | Round to 3 decimals, or report exactly |
-| p = .347 | **p = .347** or **p = .35** | Either is acceptable |
+| SPSS Output | How to Report               | Why                                    |
+| ----------- | --------------------------- | -------------------------------------- |
+| p = .000    | **p < .001**                | Never report p = .000; it's rounded    |
+| p = .0234   | **p = .023**                | Round to 2-3 decimal places            |
+| p = .050    | **p = .050**                | Report exactly (borderline case)       |
+| p = .0499   | **p = .050**                | Round to 3 decimals, or report exactly |
+| p = .347    | **p = .347** or **p = .35** | Either is acceptable                   |
 
 **Common Reporting Mistakes to Avoid:**
 
@@ -1791,6 +1814,7 @@ Jacob Cohen proposed rough guidelines for interpreting d:
 Power is your study's ability to detect a real effect when one exists. Understanding power helps you design better studies and interpret null results.
 
 > **Connection to previous concepts:**
+>
 > - Power is directly related to **Type II errors** from [Part 4](#part-4-understanding-errors-in-hypothesis-testing): Power = 1 - β
 > - Power depends on **effect size** from [Part 7](#part-7-effect-size-measuring-practical-significance): Larger effects are easier to detect
 > - Power is why we care about **sample size**: Bigger samples = more power to detect real effects
@@ -2188,15 +2212,18 @@ We've been using the t-test, but what exactly is this "t-distribution"?
 ### Why Not Use the Normal Distribution (z)?
 
 **Remember the z-score formula:**
-\[ z = \frac{X - \mu}{\sigma} \]
+
+z = (X - μ) / σ
 
 **For testing sample means:**
-\[ z = \frac{M - \mu}{\sigma / \sqrt{n}} \]
+
+z = (M - μ) / (σ / √n)
 
 **The problem:** We almost never know σ (population standard deviation)!
 
 **Our solution:** Substitute s (sample standard deviation)
-\[ t = \frac{M - \mu}{s / \sqrt{n}} \]
+
+t = (M - μ) / (s / √n)
 
 **New problem:** Using s instead of σ adds uncertainty. The regular normal distribution doesn't account for this extra uncertainty.
 
@@ -2228,7 +2255,8 @@ We've been using the t-test, but what exactly is this "t-distribution"?
 **Definition:** The number of values that are "free to vary" when calculating a statistic.
 
 **For One-Sample t-Test:**
-\[ df = n - 1 \]
+
+df = n - 1
 
 **Why n - 1?**
 
@@ -2846,42 +2874,42 @@ Start: Do you have a research question?
 
 ### Critical Decision Rules
 
-| Situation | Decision | Action |
-|-----------|----------|--------|
-| p < α (.05) | Reject H₀ | Result is statistically significant |
-| p ≥ α (.05) | Fail to reject H₀ | Result is not statistically significant |
-| Result in predicted direction (one-tailed) | Divide SPSS p by 2 | p_one-tailed = p_SPSS / 2 |
-| Result in wrong direction (one-tailed) | Fail to reject H₀ | Don't divide p-value |
+| Situation                                  | Decision           | Action                                  |
+| ------------------------------------------ | ------------------ | --------------------------------------- |
+| p < α (.05)                                | Reject H₀          | Result is statistically significant     |
+| p ≥ α (.05)                                | Fail to reject H₀  | Result is not statistically significant |
+| Result in predicted direction (one-tailed) | Divide SPSS p by 2 | p_one-tailed = p_SPSS / 2               |
+| Result in wrong direction (one-tailed)     | Fail to reject H₀  | Don't divide p-value                    |
 
 ### Essential Formulas Quick Reference
 
-| Formula | Equation | When to Use |
-|---------|----------|-------------|
-| Standard Error | SE = s/√n | Always needed for t-test |
-| t-Statistic | t = (M - μ)/SE | One-sample t-test |
-| Degrees of Freedom | df = n - 1 | One-sample t-test |
-| Cohen's d | d = (M - μ)/s | Effect size for one-sample |
+| Formula            | Equation       | When to Use                |
+| ------------------ | -------------- | -------------------------- |
+| Standard Error     | SE = s/√n      | Always needed for t-test   |
+| t-Statistic        | t = (M - μ)/SE | One-sample t-test          |
+| Degrees of Freedom | df = n - 1     | One-sample t-test          |
+| Cohen's d          | d = (M - μ)/s  | Effect size for one-sample |
 
 ### Effect Size Interpretation
 
-| Cohen's d | Interpretation | Example |
-|-----------|----------------|---------|
-| 0.2 | Small effect | Noticeable to experts |
-| 0.5 | Medium effect | Visible to careful observer |
-| 0.8 | Large effect | Obvious to anyone |
+| Cohen's d | Interpretation | Example                     |
+| --------- | -------------- | --------------------------- |
+| 0.2       | Small effect   | Noticeable to experts       |
+| 0.5       | Medium effect  | Visible to careful observer |
+| 0.8       | Large effect   | Obvious to anyone           |
 
 > **Remember:** These are guidelines, not rigid rules. Context matters!
 
 ### One-Tailed vs. Two-Tailed Quick Guide
 
-| Aspect | One-Tailed | Two-Tailed |
-|--------|------------|------------|
-| **When to use** | Specific directional prediction | Any difference/change |
-| **Power** | Higher (for predicted direction) | Lower but safer |
-| **p-value** | Divide SPSS p by 2* | Use SPSS p as reported |
-| **Risk** | Miss effects in opposite direction | More conservative |
+| Aspect          | One-Tailed                         | Two-Tailed             |
+| --------------- | ---------------------------------- | ---------------------- |
+| **When to use** | Specific directional prediction    | Any difference/change  |
+| **Power**       | Higher (for predicted direction)   | Lower but safer        |
+| **p-value**     | Divide SPSS p by 2\*               | Use SPSS p as reported |
+| **Risk**        | Miss effects in opposite direction | More conservative      |
 
-*Only if result is in predicted direction!
+\*Only if result is in predicted direction!
 
 ### APA Format Template
 
@@ -2902,21 +2930,21 @@ Start: Do you have a research question?
 
 ### Statistical Power Quick Facts
 
-| Factor | Effect on Power | How to Improve |
-|--------|----------------|----------------|
-| Sample size (n) | ↑ n = ↑ Power | **Recruit more participants** |
-| Effect size (d) | ↑ d = ↑ Power | Use stronger interventions |
-| Alpha (α) | ↑ α = ↑ Power | Usually keep at .05 |
-| One vs. two-tailed | One-tailed has more power | Only if appropriate |
+| Factor             | Effect on Power           | How to Improve                |
+| ------------------ | ------------------------- | ----------------------------- |
+| Sample size (n)    | ↑ n = ↑ Power             | **Recruit more participants** |
+| Effect size (d)    | ↑ d = ↑ Power             | Use stronger interventions    |
+| Alpha (α)          | ↑ α = ↑ Power             | Usually keep at .05           |
+| One vs. two-tailed | One-tailed has more power | Only if appropriate           |
 
 **Target:** Aim for power ≥ .80 (80% chance of detecting real effects)
 
 ### Error Types at a Glance
 
-| Error | What It Is | Probability | How to Reduce |
-|-------|-----------|-------------|---------------|
-| **Type I** | False positive (reject true H₀) | α (typically .05) | Lower α, replicate |
-| **Type II** | False negative (miss real effect) | β (varies) | Increase n, increase power |
+| Error       | What It Is                        | Probability       | How to Reduce              |
+| ----------- | --------------------------------- | ----------------- | -------------------------- |
+| **Type I**  | False positive (reject true H₀)   | α (typically .05) | Lower α, replicate         |
+| **Type II** | False negative (miss real effect) | β (varies)        | Increase n, increase power |
 
 **Trade-off:** Can't minimize both simultaneously!
 
@@ -2955,16 +2983,20 @@ Start: Do you have a research question?
 ### Key Formulas
 
 **Standard Error:**
-\[ SE = \frac{s}{\sqrt{n}} \]
+
+SE = s / √n
 
 **t-Statistic (One-Sample):**
-\[ t = \frac{M - \mu}{SE} = \frac{M - \mu}{s / \sqrt{n}} \]
+
+t = (M - μ) / SE = (M - μ) / (s / √n)
 
 **Degrees of Freedom (One-Sample t-Test):**
-\[ df = n - 1 \]
+
+df = n - 1
 
 **Cohen's d (One-Sample):**
-\[ d = \frac{M - \mu}{s} \]
+
+d = (M - μ) / s
 
 **Interpretation:**
 
