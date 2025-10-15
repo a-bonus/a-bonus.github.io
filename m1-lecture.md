@@ -2138,56 +2138,77 @@ By the end of this module, you will be able to:
 
             <h2>Glossary</h2>
 
-            **Bias:** Systematic error that affects the accuracy of estimates
-            **Central Tendency:** Measures that describe the "typical" value in a dataset
-            **Continuous Variable:** Variable that can take any value within a range
-            **Degrees of Freedom:** Number of values free to vary (n-1 for sample standard deviation)
-            **Descriptive Statistics:** Methods for summarizing and describing data
-            **Discrete Variable:** Variable that can only take specific, separate values
-            **Frequency Distribution:** Summary showing how often each value occurs
-            **Histogram:** Graph showing distribution of continuous data using bars that touch
-            **Inferential Statistics:** Methods for drawing conclusions about populations from samples
-            **Mean:** Average value (sum divided by count)
-            **Median:** Middle value when data is ordered
-            **Mode:** Most frequently occurring value
-            **Normal Distribution:** Bell-shaped distribution where most values cluster around the mean
-            **Parameter:** Numerical characteristic of a population
-            **Population:** Entire group of interest in a study
-            **Probability:** Likelihood that an event will occur (0 to 1)
-            **Range:** Difference between highest and lowest values
-            **Sample:** Subset of population actually studied
-            **Standard Deviation:** Measure of how spread out values are from the mean
-            **Statistic:** Numerical characteristic of a sample
-            **Variable:** Characteristic that can take different values
-            **Z-Score:** Number of standard deviations a value is from the mean
+            <p><strong>Bias:</strong> Systematic error that affects the accuracy of estimates</p>
+
+            <p><strong>Central Tendency:</strong> Measures that describe the "typical" value in a dataset</p>
+
+            <p><strong>Continuous Variable:</strong> Variable that can take any value within a range</p>
+
+            <p><strong>Degrees of Freedom:</strong> Number of values free to vary (n-1 for sample standard deviation)</p>
+
+            <p><strong>Descriptive Statistics:</strong> Methods for summarizing and describing data</p>
+
+            <p><strong>Discrete Variable:</strong> Variable that can only take specific, separate values</p>
+
+            <p><strong>Frequency Distribution:</strong> Summary showing how often each value occurs</p>
+
+            <p><strong>Histogram:</strong> Graph showing distribution of continuous data using bars that touch</p>
+
+            <p><strong>Inferential Statistics:</strong> Methods for drawing conclusions about populations from samples</p>
+
+            <p><strong>Mean:</strong> Average value (sum divided by count)</p>
+
+            <p><strong>Median:</strong> Middle value when data is ordered</p>
+
+            <p><strong>Mode:</strong> Most frequently occurring value</p>
+
+            <p><strong>Normal Distribution:</strong> Bell-shaped distribution where most values cluster around the mean</p>
+
+            <p><strong>Parameter:</strong> Numerical characteristic of a population</p>
+
+            <p><strong>Population:</strong> Entire group of interest in a study</p>
+
+            <p><strong>Probability:</strong> Likelihood that an event will occur (0 to 1)</p>
+
+            <p><strong>Range:</strong> Difference between highest and lowest values</p>
+
+            <p><strong>Sample:</strong> Subset of population actually studied</p>
+
+            <p><strong>Standard Deviation:</strong> Measure of how spread out values are from the mean</p>
+
+            <p><strong>Statistic:</strong> Numerical characteristic of a sample</p>
+
+            <p><strong>Variable:</strong> Characteristic that can take different values</p>
+
+            <p><strong>Z-Score:</strong> Number of standard deviations a value is from the mean</p>
 
             ---
 
-            ## Frequently Asked Questions
+            <h2>Frequently Asked Questions</h2>
 
-            **Q: Why do we divide by n-1 instead of n for sample standard deviation?**
-            A: This corrects for bias. Samples tend to underestimate population variability because values are closer to the sample mean than the true population mean. Dividing by n-1 gives a better estimate of the population standard deviation.
+            <p><strong>Q: Why do we divide by n-1 instead of n for sample standard deviation?</strong><br>
+            A: This corrects for bias. Samples tend to underestimate population variability because values are closer to the sample mean than the true population mean. Dividing by n-1 gives a better estimate of the population standard deviation.</p>
 
-            **Q: Can I use the mean for ordinal data?**
-            A: No. Ordinal data has meaningful order but unequal intervals, so mathematical operations like averaging aren't appropriate. Use the median instead.
+            <p><strong>Q: Can I use the mean for ordinal data?</strong><br>
+            A: No. Ordinal data has meaningful order but unequal intervals, so mathematical operations like averaging aren't appropriate. Use the median instead.</p>
 
-            **Q: What's the difference between a parameter and a statistic?**
-            A: A parameter is a characteristic of the entire population (usually unknown). A statistic is a characteristic of your sample (what you actually calculate). We use statistics to estimate parameters.
+            <p><strong>Q: What's the difference between a parameter and a statistic?</strong><br>
+            A: A parameter is a characteristic of the entire population (usually unknown). A statistic is a characteristic of your sample (what you actually calculate). We use statistics to estimate parameters.</p>
 
-            **Q: When should I use a histogram vs. a bar chart?**
-            A: Use histograms for continuous scale data (bars touch). Use bar charts for categorical data (bars don't touch).
+            <p><strong>Q: When should I use a histogram vs. a bar chart?</strong><br>
+            A: Use histograms for continuous scale data (bars touch). Use bar charts for categorical data (bars don't touch).</p>
 
-            **Q: What does p < 0.05 really mean?**
-            A: It means there's less than a 5% chance of getting your sample results if the null hypothesis is true. It doesn't prove your hypothesis is correct or that the effect is large.
+            <p><strong>Q: What does p < 0.05 really mean?</strong><br>
+            A: It means there's less than a 5% chance of getting your sample results if the null hypothesis is true. It doesn't prove your hypothesis is correct or that the effect is large.</p>
 
-            **Q: Can I calculate a z-score for any type of data?**
-            A: Z-scores are most meaningful for data that follows a normal distribution. They're less useful for highly skewed or categorical data.
+            <p><strong>Q: Can I calculate a z-score for any type of data?</strong><br>
+            A: Z-scores are most meaningful for data that follows a normal distribution. They're less useful for highly skewed or categorical data.</p>
 
-            **Q: How do I know if my data is normally distributed?**
-            A: Look at a histogram. Normal data should be roughly bell-shaped and symmetrical. You can also use statistical tests (like Shapiro-Wilk) that you'll learn about in future modules.
+            <p><strong>Q: How do I know if my data is normally distributed?</strong><br>
+            A: Look at a histogram. Normal data should be roughly bell-shaped and symmetrical. You can also use statistical tests (like Shapiro-Wilk) that you'll learn about in future modules.</p>
 
-            **Q: What's the difference between descriptive and inferential statistics?**
-            A: Descriptive statistics summarize the data you have (e.g., "the average age in our sample is 22"). Inferential statistics make conclusions about a larger population (e.g., "we estimate the average age of all college students is 22").
+            <p><strong>Q: What's the difference between descriptive and inferential statistics?</strong><br>
+            A: Descriptive statistics summarize the data you have (e.g., "the average age in our sample is 22"). Inferential statistics make conclusions about a larger population (e.g., "we estimate the average age of all college students is 22").</p>
 
             ---
 
