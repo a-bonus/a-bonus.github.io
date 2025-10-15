@@ -871,6 +871,155 @@ Equal variances not assumed 2.089  41.2  .043          5.2
 3. **Don't report Levene's test** in your final results
 4. **Consider why variances might be unequal** - it can provide additional insights
 
+<div class="knowledge-check">
+  <h4>🧠 Knowledge Check: Levene's Test and Variance Assumptions</h4>
+
+  <div class="quiz-question">
+    <p><strong>Question 1:</strong> In an independent-samples t-test, Levene's test produces p = .023. What does this tell us about the assumption of equal variances?</p>
+    <div class="options">
+      <p>A) The assumption is met because p < .05</p>
+      <p>B) The assumption is not met because p < .05</p>
+      <p>C) The assumption is met because p > .05</p>
+      <p>D) The assumption is not met because p > .05</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> B) The assumption is not met because p < .05</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> Levene's test null hypothesis is that variances are equal. When p < .05, we reject this null hypothesis, concluding that variances are NOT equal. Therefore, the assumption of equal variances is violated.</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>A) Assumption met because p < .05:</strong> This is backwards. p < .05 means we reject equal variances, so the assumption is NOT met.</li>
+        <li><strong>C) Assumption met because p > .05:</strong> This would be correct if p > .05, but here p = .023 < .05.</li>
+        <li><strong>D) Assumption not met because p > .05:</strong> This is backwards. p > .05 would mean we fail to reject equal variances, so the assumption WOULD be met.</li>
+      </ul>
+
+      <p class="review-tip"><em>💭 Need to review?</em> See Part 5: Levene's Test - Understanding Homogeneity of Variance for the interpretation rules.</p>
+    </div>
+
+  </details>
+
+  <div class="quiz-question">
+    <p><strong>Question 2:</strong> Based on the Levene's test result in the previous question (p = .023), which row of the t-test output should you use?</p>
+    <div class="options">
+      <p>A) "Equal variances assumed" row</p>
+      <p>B) "Equal variances not assumed" row</p>
+      <p>C) Either row is acceptable</p>
+      <p>D) You need to run the test again</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> B) "Equal variances not assumed" row</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> Since Levene's test showed unequal variances (p = .023 < .05), you should use the "Equal variances not assumed" row, which applies Welch's correction for unequal variances.</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>A) "Equal variances assumed" row:</strong> This row should only be used when Levene's test shows p > .05 (equal variances).</li>
+        <li><strong>C) Either row is acceptable:</strong> You must use the appropriate row based on Levene's test results.</li>
+        <li><strong>D) Run test again:</strong> The test is fine; you just need to use the correct row from the existing output.</li>
+      </ul>
+
+      <p class="application-tip"><em>💡 Application Tip:</em> Always check Levene's test first, then use the appropriate row. This ensures you're using the correct statistical procedure.</p>
+    </div>
+
+  </details>
+
+  <div class="quiz-question">
+    <p><strong>Question 3:</strong> A researcher reports that Levene's test showed F(1, 38) = 0.847, p = .364. What can be concluded about the variances?</p>
+    <div class="options">
+      <p>A) The two populations have equal variances</p>
+      <p>B) The two populations have unequal variances</p>
+      <p>C) The groups differ significantly in their means</p>
+      <p>D) The groups do not differ significantly in their means</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> A) The two populations have equal variances</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> Levene's test has p = .364 > .05, so we fail to reject the null hypothesis of equal variances. This means we can conclude that the assumption of equal variances is met.</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>B) Unequal variances:</strong> This would be true if p < .05, but here p = .364 > .05.</li>
+        <li><strong>C) Groups differ in means:</strong> Levene's test doesn't tell us about differences in means—only about differences in variances.</li>
+        <li><strong>D) Groups don't differ in means:</strong> Again, Levene's test is about variances, not means.</li>
+      </ul>
+
+      <p class="review-tip"><em>💭 Need to review?</em> See Part 5.1: What is Levene's Test for what this test actually measures.</p>
+    </div>
+
+  </details>
+
+  <div class="quiz-question">
+    <p><strong>Question 4:</strong> In SPSS output for an independent-samples t-test, you see two rows of results. What determines which row you should use?</p>
+    <div class="options">
+      <p>A) The larger t-value</p>
+      <p>B) The smaller p-value</p>
+      <p>C) The result of Levene's test</p>
+      <p>D) The sample sizes of the groups</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> C) The result of Levene's test</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> The choice between "Equal variances assumed" and "Equal variances not assumed" rows depends entirely on Levene's test. If Levene's p > .05, use "assumed" row; if p < .05, use "not assumed" row.</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>A) Larger t-value:</strong> You don't choose based on which t-value is larger—you use the correct statistical procedure.</li>
+        <li><strong>B) Smaller p-value:</strong> You don't cherry-pick the more significant result—you use the appropriate test.</li>
+        <li><strong>D) Sample sizes:</strong> Sample sizes don't determine which row to use—only Levene's test does.</li>
+      </ul>
+
+      <p class="application-tip"><em>💡 Application Tip:</em> Always follow the statistical procedure correctly. Don't choose results based on what looks better—use the appropriate test for the data.</p>
+    </div>
+
+  </details>
+
+  <div class="quiz-question">
+    <p><strong>Question 5:</strong> What is the null hypothesis for Levene's test?</p>
+    <div class="options">
+      <p>A) The two groups have equal means</p>
+      <p>B) The two groups have equal variances</p>
+      <p>C) The two groups have different means</p>
+      <p>D) The two groups have different variances</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> B) The two groups have equal variances</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> Levene's test specifically tests the null hypothesis that the variances of the two groups are equal (homogeneity of variance). The alternative hypothesis is that the variances are unequal.</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>A) Equal means:</strong> This would be the null hypothesis for the t-test itself, not Levene's test.</li>
+        <li><strong>C) Different means:</strong> This would be the alternative hypothesis for the t-test, not related to Levene's test.</li>
+        <li><strong>D) Different variances:</strong> This is the alternative hypothesis for Levene's test, not the null hypothesis.</li>
+      </ul>
+
+      <p class="review-tip"><em>💭 Need to review?</em> See Part 5.1: What is Levene's Test for the specific hypotheses being tested.</p>
+    </div>
+
+  </details>
+</div>
+
 ---
 
 ## Part 6: Effect Sizes for Comparing Means
@@ -979,6 +1128,184 @@ Effect sizes help us judge **practical significance**:
 
 **Example:**
 "A paired-samples t-test revealed that executive function scores at age 80 (M = 89.9, SD = 4.9) were significantly lower than at age 70 (M = 94.6, SD = 7.7), _t_(19) = 3.05, _p_ = .007, _d_ = 0.68."
+
+<div class="knowledge-check">
+  <h4>🧠 Knowledge Check: Effect Sizes for Two-Sample Tests</h4>
+
+  <div class="quiz-question">
+    <p><strong>Question 1:</strong> A study found statistically significant results for a hypothesis tested with an independent-samples t-test. The author reported the effect size as 1.24. What is true of the two sample means?</p>
+    <div class="options">
+      <p>A) The two sample means overlap 85 percent</p>
+      <p>B) The two sample means are 1.24 standard deviations apart</p>
+      <p>C) The two sample means likely come from the same distribution</p>
+      <p>D) The two sample means do not indicate meaningful differences between groups</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> B) The two sample means are 1.24 standard deviations apart</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> Cohen's d measures the standardized difference between means. A d = 1.24 means the two sample means are 1.24 standard deviation units apart, which is a very large effect size.</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>A) Overlap 85 percent:</strong> A large effect size (d = 1.24) means LESS overlap, not more. Large effects mean the distributions are well-separated.</li>
+        <li><strong>C) Same distribution:</strong> If means are 1.24 SDs apart, they clearly don't come from the same distribution.</li>
+        <li><strong>D) No meaningful differences:</strong> A d = 1.24 is a very large effect, indicating highly meaningful differences between groups.</li>
+      </ul>
+
+      <p class="review-tip"><em>💭 Need to review?</em> See Part 6.2: Cohen's d for Independent-Samples t-Tests for the interpretation of effect sizes.</p>
+    </div>
+
+  </details>
+
+  <div class="quiz-question">
+    <p><strong>Question 2:</strong> What would be the effect size interpretation for Cohen's d = 0.50 in a paired-samples t-test?</p>
+    <div class="options">
+      <p>A) Small effect</p>
+      <p>B) Medium effect</p>
+      <p>C) Large effect</p>
+      <p>D) Very large effect</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> B) Medium effect</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> According to Cohen's (1988) guidelines: d = 0.2 is small, d = 0.5 is medium, and d = 0.8 is large. This applies to both independent-samples and paired-samples t-tests.</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>A) Small effect:</strong> Small effects are around d = 0.2, which is smaller than 0.5.</li>
+        <li><strong>C) Large effect:</strong> Large effects are around d = 0.8, which is larger than 0.5.</li>
+        <li><strong>D) Very large effect:</strong> Cohen's original guidelines only go up to "large" (d = 0.8). Values above 0.8 are typically considered very large.</li>
+      </ul>
+
+      <p class="application-tip"><em>💡 Application Tip:</em> Remember Cohen's benchmarks: 0.2 (small), 0.5 (medium), 0.8 (large). These are rough guidelines but useful for initial interpretation.</p>
+    </div>
+
+  </details>
+
+  <div class="quiz-question">
+    <p><strong>Question 3:</strong> In SPSS output for an independent-samples t-test, where would you typically find Cohen's d?</p>
+    <div class="options">
+      <p>A) In the main t-test table</p>
+      <p>B) In a separate "Effect Sizes" table</p>
+      <p>C) In the descriptive statistics table</p>
+      <p>D) Cohen's d is never available in SPSS</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> B) In a separate "Effect Sizes" table</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> Cohen's d is not automatically calculated in SPSS. You must request it in the Options (Effect Sizes → Cohen's d), and it appears in a separate table, not in the main t-test output.</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>A) Main t-test table:</strong> This table shows t-statistics, p-values, and confidence intervals, but not effect sizes unless specifically requested.</li>
+        <li><strong>C) Descriptive statistics table:</strong> This shows means, standard deviations, and sample sizes, but not effect sizes.</li>
+        <li><strong>D) Never available:</strong> SPSS can calculate Cohen's d, but only if you specifically request it in the Options before running the test.</li>
+      </ul>
+
+      <p class="application-tip"><em>💡 Application Tip:</em> Always remember to request effect sizes in SPSS Options before running your t-test. You can't add them after the fact.</p>
+    </div>
+
+  </details>
+
+  <div class="quiz-question">
+    <p><strong>Question 4:</strong> What does it mean when Cohen's d = 0.20 in a two-sample comparison?</p>
+    <div class="options">
+      <p>A) The groups are very different</p>
+      <p>B) The groups have a small but meaningful difference</p>
+      <p>C) The groups are essentially identical</p>
+      <p>D) The test was not significant</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> B) The groups have a small but meaningful difference</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> According to Cohen's guidelines, d = 0.20 represents a small effect size. While small, it still indicates a meaningful difference between groups, just not a large one.</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>A) Very different:</strong> d = 0.20 is classified as a small effect, not a very large difference.</li>
+        <li><strong>C) Essentially identical:</strong> Even a small effect (d = 0.20) indicates some difference between groups.</li>
+        <li><strong>D) Not significant:</strong> Effect size and statistical significance are independent. A small effect can still be statistically significant with sufficient power.</li>
+      </ul>
+
+      <p class="review-tip"><em>💭 Need to review?</em> See Part 6.1: Why Effect Size Matters for the distinction between statistical significance and effect size.</p>
+    </div>
+
+  </details>
+
+  <div class="quiz-question">
+    <p><strong>Question 5:</strong> How do you calculate Cohen's d for a paired-samples t-test?</p>
+    <div class="options">
+      <p>A) d = (M₁ - M₂) / SD_pooled</p>
+      <p>B) d = (M₁ - M₂) / SD₁</p>
+      <p>C) d = M_diff / SD_diff</p>
+      <p>D) d = t / √n</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> C) d = M_diff / SD_diff</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> For paired-samples t-tests, Cohen's d is calculated using the mean of the difference scores (M_diff) divided by the standard deviation of the difference scores (SD_diff).</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>A) Using pooled SD:</strong> This is the formula for independent-samples t-tests, not paired-samples.</li>
+        <li><strong>B) Using SD₁:</strong> This doesn't use the appropriate standard deviation for paired-samples tests.</li>
+        <li><strong>D) t / √n:</strong> This is an alternative formula but not the most common one for paired-samples Cohen's d.</li>
+      </ul>
+
+      <p class="review-tip"><em>💭 Need to review?</em> See Part 6.3: Cohen's d for Paired-Samples t-Tests for the correct formula.</p>
+    </div>
+
+  </details>
+
+  <div class="quiz-question">
+    <p><strong>Question 6:</strong> A researcher reports Cohen's d = 0.85 for an independent-samples t-test. What can be concluded about the practical significance?</p>
+    <div class="options">
+      <p>A) The effect is small and not practically important</p>
+      <p>B) The effect is medium and somewhat important</p>
+      <p>C) The effect is large and practically important</p>
+      <p>D) Effect size tells us nothing about practical significance</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> C) The effect is large and practically important</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> Cohen's d = 0.85 is slightly above the 0.8 threshold for "large" effects. Large effect sizes typically indicate practically important differences that have real-world significance.</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>A) Small and not important:</strong> d = 0.85 is well above the 0.2 threshold for small effects.</li>
+        <li><strong>B) Medium and somewhat important:</strong> d = 0.85 is above the 0.5 threshold for medium effects and approaches the 0.8 threshold for large effects.</li>
+        <li><strong>D) Tells us nothing:</strong> Effect size is specifically designed to provide information about practical significance.</li>
+      </ul>
+
+      <p class="application-tip"><em>💡 Application Tip:</em> Large effect sizes (d > 0.8) generally indicate findings that are not just statistically significant but also practically meaningful.</p>
+    </div>
+
+  </details>
+</div>
 
 ---
 
@@ -1097,6 +1424,184 @@ Effect sizes help us judge **practical significance**:
 
 □ **Practical Significance:** Is the effect meaningful in context?
 
+<div class="knowledge-check">
+  <h4>🧠 Knowledge Check: Degrees of Freedom and Sample Sizes</h4>
+
+  <div class="quiz-question">
+    <p><strong>Question 1:</strong> The results of an independent-samples t-test were t(19) = 4.02, p = 0.01. In this example, the degrees of freedom are _____.</p>
+    <div class="options">
+      <p>A) 4.02</p>
+      <p>B) 20</p>
+      <p>C) 18</p>
+      <p>D) 19</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> D) 19</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> The degrees of freedom are explicitly stated in the t-statistic: t(19). The number in parentheses is always the degrees of freedom. For independent-samples t-tests, df = n₁ + n₂ - 2.</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>A) 4.02:</strong> This is the t-value, not the degrees of freedom.</li>
+        <li><strong>B) 20:</strong> If df = 19, then total sample size = df + 2 = 19 + 2 = 21, not 20.</li>
+        <li><strong>C) 18:</strong> This would be correct if the t-statistic was t(18), but it's t(19).</li>
+      </ul>
+
+      <p class="review-tip"><em>💭 Need to review?</em> See Part 7: Assumptions and Diagnostics for the degrees of freedom formulas.</p>
+    </div>
+
+  </details>
+
+  <div class="quiz-question">
+    <p><strong>Question 2:</strong> Based on the previous question (t(19) = 4.02), what is the total sample size in this independent-samples t-test?</p>
+    <div class="options">
+      <p>A) 19</p>
+      <p>B) 20</p>
+      <p>C) 21</p>
+      <p>D) Cannot be determined</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> C) 21</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> For independent-samples t-tests, df = n₁ + n₂ - 2. If df = 19, then n₁ + n₂ = df + 2 = 19 + 2 = 21. The total sample size is 21.</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>A) 19:</strong> This is the degrees of freedom, not the total sample size.</li>
+        <li><strong>B) 20:</strong> This would be correct if df = 18, but df = 19.</li>
+        <li><strong>D) Cannot be determined:</strong> We can calculate the total sample size from the degrees of freedom using the formula.</li>
+      </ul>
+
+      <p class="application-tip"><em>💡 Application Tip:</em> Remember: Total sample size = df + 2 for independent-samples t-tests. This helps you check your work and understand your sample.</p>
+    </div>
+
+  </details>
+
+  <div class="quiz-question">
+    <p><strong>Question 3:</strong> A researcher reported the result from an independent-samples t-test as t(43) = 3.56, p = .04. The data were collected from how many subjects?</p>
+    <div class="options">
+      <p>A) 43</p>
+      <p>B) 42</p>
+      <p>C) 45</p>
+      <p>D) 44</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> C) 45</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> For independent-samples t-tests, total sample size = df + 2. If df = 43, then total sample size = 43 + 2 = 45 subjects.</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>A) 43:</strong> This is the degrees of freedom, not the total sample size.</li>
+        <li><strong>B) 42:</strong> This would be correct if df = 40, but df = 43.</li>
+        <li><strong>D) 44:</strong> This would be correct if df = 42, but df = 43.</li>
+      </ul>
+
+      <p class="review-tip"><em>💭 Need to review?</em> See Part 7: Assumptions and Diagnostics for the relationship between df and sample size.</p>
+    </div>
+
+  </details>
+
+  <div class="quiz-question">
+    <p><strong>Question 4:</strong> Researchers were interested in whether relaxation training works better than fitness training in decreasing headaches. They randomly assigned 20 participants to either the fitness training group or relaxation training group. The dependent variable in this study is _____.</p>
+    <div class="options">
+      <p>A) Training type</p>
+      <p>B) Fitness training</p>
+      <p>C) Change in number of headaches</p>
+      <p>D) Relaxation training</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> C) Change in number of headaches</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> The dependent variable is what you're measuring—the outcome variable. In this study, they're measuring the change in number of headaches, which is the outcome they're interested in.</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>A) Training type:</strong> This is the independent variable—what they're manipulating (fitness vs. relaxation training).</li>
+        <li><strong>B) Fitness training:</strong> This is one level of the independent variable, not the dependent variable.</li>
+        <li><strong>D) Relaxation training:</strong> This is one level of the independent variable, not the dependent variable.</li>
+      </ul>
+
+      <p class="review-tip"><em>💭 Need to review?</em> See Part 1: Introduction to Comparing Two Means for the distinction between independent and dependent variables.</p>
+    </div>
+
+  </details>
+
+  <div class="quiz-question">
+    <p><strong>Question 5:</strong> _____ is a weighted average of the two estimates of _____.</p>
+    <div class="options">
+      <p>A) Population standard deviation; pooled variance</p>
+      <p>B) Variance; pooled variance</p>
+      <p>C) Pooled variance; population variance</p>
+      <p>D) Pooled variance; population standard deviation</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> C) Pooled variance; population variance</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> Pooled variance is a weighted average of the two sample variances, which are estimates of the population variance. It combines information from both groups to get a better estimate of the common population variance.</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>A) Population SD; pooled variance:</strong> Pooled variance is not a weighted average of population standard deviation.</li>
+        <li><strong>B) Variance; pooled variance:</strong> This is backwards—pooled variance is the weighted average, not what's being averaged.</li>
+        <li><strong>D) Pooled variance; population SD:</strong> Pooled variance estimates population variance, not population standard deviation.</li>
+      </ul>
+
+      <p class="review-tip"><em>💭 Need to review?</em> See Part 3: The Independent-Samples t-Test for the concept of pooled variance.</p>
+    </div>
+
+  </details>
+
+  <div class="quiz-question">
+    <p><strong>Question 6:</strong> Which of the following dependent variables would suggest the use of a non-parametric test like the Mann-Whitney U test?</p>
+    <div class="options">
+      <p>A) Number of customers served daily through the customer service call center</p>
+      <p>B) Customer satisfaction score on a rating scale from 1 to 5</p>
+      <p>C) Quarterly profit (in dollar amount) of a company</p>
+      <p>D) Monthly sales volume of a product</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> B) Customer satisfaction score on a rating scale from 1 to 5</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> Customer satisfaction scores on a 1-5 scale are ordinal data. The intervals between ratings may not be equal (the difference between "1" and "2" may not equal the difference between "4" and "5"). Non-parametric tests like Mann-Whitney U are appropriate for ordinal data.</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>A) Number of customers served:</strong> This is ratio data (count data with a true zero), which is appropriate for parametric tests.</li>
+        <li><strong>C) Quarterly profit:</strong> This is ratio data (dollar amounts with a true zero), which is appropriate for parametric tests.</li>
+        <li><strong>D) Monthly sales volume:</strong> This is ratio data (quantities with a true zero), which is appropriate for parametric tests.</li>
+      </ul>
+
+      <p class="application-tip"><em>💡 Application Tip:</em> Use non-parametric tests when data are ordinal or when parametric assumptions are severely violated. Ordinal scales with few categories are prime candidates for non-parametric alternatives.</p>
+    </div>
+
+  </details>
+</div>
+
 ---
 
 ## Part 8: Putting It All Together
@@ -1179,6 +1684,184 @@ Do you want to compare two means?
 3. **Use the right row:** Levene's test tells you which output to trust
 4. **Report completely:** Include means, significance, and effect size
 5. **Consider practical significance:** Statistical significance isn't everything
+
+<div class="knowledge-check">
+  <h4>🧠 Knowledge Check: Test Selection and APA Reporting</h4>
+
+  <div class="quiz-question">
+    <p><strong>Question 1:</strong> Mehl et al. (2007) published a study comparing the number of words uttered per day by men and women (396 participants total). Which statistical test should they use to analyze their data?</p>
+    <div class="options">
+      <p>A) Independent-samples t-test</p>
+      <p>B) Single-sample t-test</p>
+      <p>C) Z-test</p>
+      <p>D) Paired-samples t-test</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> A) Independent-samples t-test</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> The researchers are comparing two different groups (men vs. women) on the same variable (words per day). This is a classic independent-samples design where different people are in each group.</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>B) Single-sample t-test:</strong> This would compare one group to a known population value, but here they're comparing two groups to each other.</li>
+        <li><strong>C) Z-test:</strong> This requires knowing the population standard deviation, which they don't have.</li>
+        <li><strong>D) Paired-samples t-test:</strong> This would be used if the same people were measured twice or if there were matched pairs, but here they have two separate groups.</li>
+      </ul>
+
+      <p class="review-tip"><em>💭 Need to review?</em> See Part 2: Research Design Decisions for when to use independent-samples t-tests.</p>
+    </div>
+
+  </details>
+
+  <div class="quiz-question">
+    <p><strong>Question 2:</strong> A researcher would like to find out whether taking the GRE a second time produces a significantly higher score compared to the first time. This question can be answered by performing _____.</p>
+    <div class="options">
+      <p>A) Paired-samples t-test</p>
+      <p>B) One-sample t-test</p>
+      <p>C) Descriptive statistics</p>
+      <p>D) Independent-samples t-test</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> A) Paired-samples t-test</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> The same people are being measured twice (first GRE score vs. second GRE score). This is a within-subjects design where you compare the same participants' scores across two time points.</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>B) One-sample t-test:</strong> This would compare one group to a known population value, but here they're comparing the same people's two scores.</li>
+        <li><strong>C) Descriptive statistics:</strong> Descriptive statistics alone can't test for significance—you need inferential statistics.</li>
+        <li><strong>D) Independent-samples t-test:</strong> This would compare two different groups, but here the same people are measured twice.</li>
+      </ul>
+
+      <p class="application-tip"><em>💡 Application Tip:</em> Ask yourself: "Are these the same people measured twice, or different groups?" Same people = paired-samples; different groups = independent-samples.</p>
+    </div>
+
+  </details>
+
+  <div class="quiz-question">
+    <p><strong>Question 3:</strong> Which of these illustrates the APA format for reporting statistically significant results for an independent-samples t-test?</p>
+    <div class="options">
+      <p>A) t(15) = 3.89, p = 0.5</p>
+      <p>B) t(15) = 3.89, p < 0.05</p>
+      <p>C) t(15) = 3.89, p = 0.013</p>
+      <p>D) t(15) = 3.89, p > 0.05</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> C) t(15) = 3.89, p = 0.013</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> APA format requires: t(df) = value, p = exact value. The exact p-value should be reported when available. Since p = 0.013 < 0.05, this would be statistically significant.</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>A) p = 0.5:</strong> This would not be statistically significant (p > 0.05), and the question asks for significant results.</li>
+        <li><strong>B) p < 0.05:</strong> When the exact p-value is available (0.013), report it exactly rather than using the inequality.</li>
+        <li><strong>D) p > 0.05:</strong> This would not be statistically significant, and the question asks for significant results.</li>
+      </ul>
+
+      <p class="review-tip"><em>💭 Need to review?</em> See Part 8: Putting It All Together for APA reporting guidelines.</p>
+    </div>
+
+  </details>
+
+  <div class="quiz-question">
+    <p><strong>Question 4:</strong> I am planning to implement a new collaborative learning tool for next semester. To examine its effect on learning, I can analyze this semester's class performance and next semester's class performance with _____.</p>
+    <div class="options">
+      <p>A) Z-test</p>
+      <p>B) One-sample t-test</p>
+      <p>C) Independent-samples t-test</p>
+      <p>D) Paired-samples t-test</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> C) Independent-samples t-test</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> You're comparing two different groups of students (this semester's class vs. next semester's class) on the same outcome variable (class performance). These are different people in each group, making it an independent-samples design.</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>A) Z-test:</strong> This requires knowing the population standard deviation, which you don't have.</li>
+        <li><strong>B) One-sample t-test:</strong> This would compare one group to a known population value, but you're comparing two groups to each other.</li>
+        <li><strong>D) Paired-samples t-test:</strong> This would be used if the same students were measured twice, but here you have two different groups of students.</li>
+      </ul>
+
+      <p class="application-tip"><em>💡 Application Tip:</em> Even though it's the same course, different semesters mean different students, so it's an independent-samples design.</p>
+    </div>
+
+  </details>
+
+  <div class="quiz-question">
+    <p><strong>Question 5:</strong> What is an adequate conclusion from SPSS output showing a paired-samples t-test comparing writing scores and reading scores of the same test takers?</p>
+    <div class="options">
+      <p>A) Writing score and reading score of the same test taker are not significantly different</p>
+      <p>B) A sample of writing scores are not significantly different from a separate sample of reading scores</p>
+      <p>C) Writing score and reading score of the same test taker are significantly different</p>
+      <p>D) A sample of writing scores are significantly different from a separate sample of reading scores</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> A) Writing score and reading score of the same test taker are not significantly different</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> A paired-samples t-test compares the same people on two different variables. The conclusion should reflect that you're comparing the same test takers' writing vs. reading scores, and the result is non-significant (assuming p > 0.05).</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>B) Separate samples:</strong> This describes an independent-samples design, but paired-samples compares the same people.</li>
+        <li><strong>C) Significantly different:</strong> The question asks for an "adequate" conclusion, and if the test is non-significant, you shouldn't conclude significance.</li>
+        <li><strong>D) Separate samples, significant:</strong> Again, this describes independent-samples design, not paired-samples.</li>
+      </ul>
+
+      <p class="review-tip"><em>💭 Need to review?</em> See Part 4: The Paired-Samples t-Test for how to interpret paired-samples results.</p>
+    </div>
+
+  </details>
+
+  <div class="quiz-question">
+    <p><strong>Question 6:</strong> According to SPSS output for an independent-samples t-test, how many subjects were in the study if the output shows N = 200 for Group 1 and N = 200 for Group 2?</p>
+    <div class="options">
+      <p>A) 400</p>
+      <p>B) 200</p>
+      <p>C) 398</p>
+      <p>D) 199</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> A) 400</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> The total sample size is the sum of both groups: N₁ + N₂ = 200 + 200 = 400 subjects. SPSS shows the sample size for each group separately, so you add them together for the total.</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>B) 200:</strong> This is the sample size for one group, not the total.</li>
+        <li><strong>C) 398:</strong> This would be the degrees of freedom (df = n₁ + n₂ - 2 = 200 + 200 - 2 = 398), not the sample size.</li>
+        <li><strong>D) 199:</strong> This doesn't match any calculation from the given information.</li>
+      </ul>
+
+      <p class="application-tip"><em>💡 Application Tip:</em> Remember: Total N = N₁ + N₂, while df = N₁ + N₂ - 2. Don't confuse sample size with degrees of freedom.</p>
+    </div>
+
+  </details>
+</div>
 
 ---
 
@@ -1403,6 +2086,213 @@ Remember: **The research design determines the statistical test, not the other w
 **Pooled Standard Deviation:** A weighted average of the standard deviations from two groups, used in independent-samples t-tests.
 
 **Within-Subjects Design:** A research design where the same participants are measured under different conditions.
+
+<div class="knowledge-check">
+  <h4>🧠 Knowledge Check: Reading SPSS Output for t-Tests</h4>
+
+  <div class="quiz-question">
+    <p><strong>Question 1:</strong> In SPSS output for an independent-samples t-test, you need to report the exact p-value from Levene's test. If SPSS shows "Sig." = .000, how should you report it?</p>
+    <div class="options">
+      <p>A) p = .000</p>
+      <p>B) p < .001</p>
+      <p>C) p = .001</p>
+      <p>D) p = 0.000</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> B) p < .001</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> When SPSS shows "Sig." = .000, it means the p-value is less than .001 (but not actually zero). According to APA format, you should report this as "p < .001" rather than "p = .000".</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>A) p = .000:</strong> You should never report p = .000 because p-values are never actually zero.</li>
+        <li><strong>C) p = .001:</strong> This would be incorrect because the actual p-value is less than .001.</li>
+        <li><strong>D) p = 0.000:</strong> Same issue as A - you should never report p = .000 or p = 0.000.</li>
+      </ul>
+
+      <p class="review-tip"><em>💭 Need to review?</em> See Part 9: Practical Guide - SPSS for reporting conventions.</p>
+    </div>
+
+  </details>
+
+  <div class="quiz-question">
+    <p><strong>Question 2:</strong> You're reading SPSS output for an independent-samples t-test. Levene's test shows F = 2.847, p = .023. Which row should you use for your t-test results?</p>
+    <div class="options">
+      <p>A) "Equal variances assumed" row</p>
+      <p>B) "Equal variances not assumed" row</p>
+      <p>C) Either row is acceptable</p>
+      <p>D) You need to run the test again</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> B) "Equal variances not assumed" row</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> Since Levene's test has p = .023 < .05, we reject the null hypothesis of equal variances. Therefore, you should use the "Equal variances not assumed" row, which applies Welch's correction.</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>A) "Equal variances assumed" row:</strong> This should only be used when Levene's test shows p > .05.</li>
+        <li><strong>C) Either row is acceptable:</strong> You must use the appropriate row based on Levene's test results.</li>
+        <li><strong>D) Run test again:</strong> The test is fine; you just need to use the correct row from the existing output.</li>
+      </ul>
+
+      <p class="application-tip"><em>💡 Application Tip:</em> Always check Levene's test first, then use the appropriate row. This ensures you're using the correct statistical procedure.</p>
+    </div>
+
+  </details>
+
+  <div class="quiz-question">
+    <p><strong>Question 3:</strong> In SPSS output for a paired-samples t-test, you see "t = -2.386" and "Sig. (2-tailed) = .021". What is the correct t-statistic and p-value to report?</p>
+    <div class="options">
+      <p>A) t = -2.386, p = .021</p>
+      <p>B) t = 2.386, p = .021</p>
+      <p>C) t = -2.386, p = .042</p>
+      <p>D) t = -2.386, p = .0105</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> A) t = -2.386, p = .021</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> Report the t-statistic exactly as shown (including the negative sign) and the exact p-value from the "Sig. (2-tailed)" column. The negative t-value indicates the direction of the difference.</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>B) t = 2.386:</strong> Don't remove the negative sign from the t-statistic - it indicates direction.</li>
+        <li><strong>C) p = .042:</strong> Don't double the p-value - SPSS already gives you the correct 2-tailed p-value.</li>
+        <li><strong>D) p = .0105:</strong> Don't halve the p-value - use the exact value from SPSS output.</li>
+      </ul>
+
+      <p class="review-tip"><em>💭 Need to review?</em> See Part 9: Practical Guide - SPSS for reading paired-samples output.</p>
+    </div>
+
+  </details>
+
+  <div class="quiz-question">
+    <p><strong>Question 4:</strong> The following SPSS output indicates that a(n) _____ was performed.</p>
+    <div class="options">
+      <p>A) Independent-samples t-test</p>
+      <p>B) One-sample t-test</p>
+      <p>C) Z-test</p>
+      <p>D) Paired-samples t-test</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> D) Paired-samples t-test</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> SPSS output for paired-samples t-tests typically shows "Paired Samples Test" in the table header, lists the two variables being compared (e.g., "Variable1 - Variable2"), and shows a single row of results (not two rows like independent-samples tests).</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>A) Independent-samples t-test:</strong> This would show "Independent Samples Test" and have two rows of results (equal variances assumed/not assumed).</li>
+        <li><strong>B) One-sample t-test:</strong> This would show "One-Sample Test" and compare to a test value.</li>
+        <li><strong>C) Z-test:</strong> SPSS doesn't typically provide z-test output in the same format as t-tests.</li>
+      </ul>
+
+      <p class="application-tip"><em>💡 Application Tip:</em> Look at the table header and structure to identify the test type. Paired-samples shows variable differences, independent-samples shows two rows of results.</p>
+    </div>
+
+  </details>
+
+  <div class="quiz-question">
+    <p><strong>Question 5:</strong> In SPSS output for an independent-samples t-test, you need to extract the effect size (Cohen's d). Where would you find this information?</p>
+    <div class="options">
+      <p>A) In the main "Independent Samples Test" table</p>
+      <p>B) In the "Group Statistics" table</p>
+      <p>C) In a separate "Effect Sizes" table</p>
+      <p>D) Cohen's d is never available in SPSS</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> C) In a separate "Effect Sizes" table</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> Cohen's d is not automatically calculated in SPSS. You must request it in the Options (Effect Sizes → Cohen's d), and it appears in a separate "Effect Sizes" table, not in the main t-test output.</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>A) Main test table:</strong> This shows t-statistics, p-values, and confidence intervals, but not effect sizes unless specifically requested.</li>
+        <li><strong>B) Group Statistics table:</strong> This shows means, standard deviations, and sample sizes, but not effect sizes.</li>
+        <li><strong>D) Never available:</strong> SPSS can calculate Cohen's d, but only if you specifically request it in the Options before running the test.</li>
+      </ul>
+
+      <p class="application-tip"><em>💡 Application Tip:</em> Always remember to request effect sizes in SPSS Options before running your t-test. You can't add them after the fact.</p>
+    </div>
+
+  </details>
+
+  <div class="quiz-question">
+    <p><strong>Question 6:</strong> You're reading SPSS output for a paired-samples t-test comparing blood pressure before and after treatment. The output shows "Mean = -8.50" in the "Paired Differences" section. What does this mean?</p>
+    <div class="options">
+      <p>A) Blood pressure increased by 8.50 points</p>
+      <p>B) Blood pressure decreased by 8.50 points</p>
+      <p>C) The groups are 8.50 points apart</p>
+      <p>D) The standard deviation is 8.50</p>
+    </div>
+  </details>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> B) Blood pressure decreased by 8.50 points</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> The mean difference of -8.50 means that, on average, blood pressure after treatment was 8.50 points lower than before treatment. The negative sign indicates a decrease.</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>A) Increased by 8.50:</strong> This would be true if the mean difference was +8.50, but it's -8.50.</li>
+        <li><strong>C) Groups are 8.50 apart:</strong> This describes independent-samples design, not paired-samples.</li>
+        <li><strong>D) Standard deviation is 8.50:</strong> The mean difference and standard deviation are different statistics.</li>
+      </ul>
+
+      <p class="review-tip"><em>💭 Need to review?</em> See Part 4: The Paired-Samples t-Test for interpreting difference scores.</p>
+    </div>
+
+  </details>
+
+  <div class="quiz-question">
+    <p><strong>Question 7:</strong> Based on SPSS output for an independent-samples t-test, which statement correctly describes how to make a statistical decision?</p>
+    <div class="options">
+      <p>A) If p > .05, reject the null hypothesis</p>
+      <p>B) If p ≤ .05, reject the null hypothesis</p>
+      <p>C) If t > 2.0, reject the null hypothesis</p>
+      <p>D) If the confidence interval contains zero, reject the null hypothesis</p>
+    </div>
+  </div>
+
+  <details class="answer-section">
+    <summary>💡 Click to reveal answer and explanation</summary>
+    <div class="answer-content">
+      <p class="correct-answer"><strong>✓ Answer:</strong> B) If p ≤ .05, reject the null hypothesis</p>
+
+      <p class="explanation"><strong>Why this is correct:</strong> The standard decision rule is: if p ≤ α (typically .05), reject the null hypothesis; if p > α, fail to reject the null hypothesis. This is the fundamental rule for hypothesis testing.</p>
+
+      <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+      <ul>
+        <li><strong>A) p > .05, reject:</strong> This is backwards—you reject when p is small (≤ .05), not large.</li>
+        <li><strong>C) t > 2.0, reject:</strong> The critical t-value depends on degrees of freedom and alpha level, not a fixed value of 2.0.</li>
+        <li><strong>D) CI contains zero, reject:</strong> If the confidence interval contains zero, you typically fail to reject the null hypothesis.</li>
+      </ul>
+
+      <p class="application-tip"><em>💡 Application Tip:</em> Always use the p-value for statistical decisions. Compare p to your chosen alpha level (usually .05).</p>
+    </div>
+
+  </details>
+</div>
 
 ---
 
