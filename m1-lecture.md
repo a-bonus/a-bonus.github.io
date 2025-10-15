@@ -504,6 +504,30 @@ By the end of this module, you will be able to:
             <p><strong>Example:</strong> You can't calculate the mean of "Favorite Color" (nominal), but you can calculate the mean of "Age" (scale).</p>
 
             <hr>
+
+            <!-- Bottom Navigation -->
+            <div class="tab-navigation bottom-nav">
+                <button class="tab-button active" onclick="showTab(1)">
+                    <input type="checkbox" id="progress-1-bottom" class="tab-checkbox" onchange="toggleTabComplete(1)">
+                    <span class="tab-label">Foundations & Variables</span>
+                </button>
+                <button class="tab-button" onclick="showTab(2)">
+                    <input type="checkbox" id="progress-2-bottom" class="tab-checkbox" onchange="toggleTabComplete(2)">
+                    <span class="tab-label">Descriptive Statistics</span>
+                </button>
+                <button class="tab-button" onclick="showTab(3)">
+                    <input type="checkbox" id="progress-3-bottom" class="tab-checkbox" onchange="toggleTabComplete(3)">
+                    <span class="tab-label">Data Visualization</span>
+                </button>
+                <button class="tab-button" onclick="showTab(4)">
+                    <input type="checkbox" id="progress-4-bottom" class="tab-checkbox" onchange="toggleTabComplete(4)">
+                    <span class="tab-label">Population & Normal Distribution</span>
+                </button>
+                <button class="tab-button" onclick="showTab(5)">
+                    <input type="checkbox" id="progress-5-bottom" class="tab-checkbox" onchange="toggleTabComplete(5)">
+                    <span class="tab-label">Probability, SPSS & Summary</span>
+                </button>
+            </div>
         </div>
 
         <div id="tab-2" class="tab-panel">
@@ -700,68 +724,145 @@ By the end of this module, you will be able to:
 
             <p><strong>Why use variance?</strong> It's easier to work with mathematically (no square roots), but harder to interpret (units are squared)</p>
 
-            ### Worked Example: Calculating Descriptive Statistics
+            <h3>Worked Example: Calculating Descriptive Statistics</h3>
 
-            **Data:** Hours of sleep per night for 10 college students
-            6, 7, 8, 5, 9, 6, 7, 8, 7, 6
+            <p><strong>Data:</strong> Hours of sleep per night for 10 college students<br>
+            6, 7, 8, 5, 9, 6, 7, 8, 7, 6</p>
 
-            **Step 1: Organize the data**
-            Ordered: 5, 6, 6, 6, 7, 7, 7, 8, 8, 9
+            <p><strong>Step 1: Organize the data</strong><br>
+            Ordered: 5, 6, 6, 6, 7, 7, 7, 8, 8, 9</p>
 
-            **Step 2: Calculate measures of central tendency**
+            <p><strong>Step 2: Calculate measures of central tendency</strong></p>
 
-            **Mean:**
-            Sum = 5 + 6 + 6 + 6 + 7 + 7 + 7 + 8 + 8 + 9 = 69
-            Mean = 69 ÷ 10 = 6.9 hours
+            <p><strong>Mean:</strong><br>
+            Sum = 5 + 6 + 6 + 6 + 7 + 7 + 7 + 8 + 8 + 9 = 69<br>
+            Mean = 69 ÷ 10 = 6.9 hours</p>
 
-            **Median:**
-            Even number of values (10), so average of 5th and 6th values
-            Median = (7 + 7) ÷ 2 = 7 hours
+            <p><strong>Median:</strong><br>
+            Even number of values (10), so average of 5th and 6th values<br>
+            Median = (7 + 7) ÷ 2 = 7 hours</p>
 
-            **Mode:**
-            Most frequent values: 6 and 7 (each appears 3 times)
-            Bimodal: 6 and 7 hours
+            <p><strong>Mode:</strong><br>
+            Most frequent values: 6 and 7 (each appears 3 times)<br>
+            Bimodal: 6 and 7 hours</p>
 
-            **Step 3: Calculate measures of variability**
+            <p><strong>Step 3: Calculate measures of variability</strong></p>
 
-            **Range:**
-            Range = 9 - 5 = 4 hours
+            <p><strong>Range:</strong><br>
+            Range = 9 - 5 = 4 hours</p>
 
-            **Standard Deviation:**
-            Mean = 6.9
+            <p><strong>Standard Deviation:</strong><br>
+            Mean = 6.9</p>
 
-            | Hours | (Hours - Mean) | (Hours - Mean)² |
-            |-------|----------------|-----------------|
-            | 6     | 6 - 6.9 = -0.9 | (-0.9)² = 0.81 |
-            | 7     | 7 - 6.9 = 0.1  | (0.1)² = 0.01 |
-            | 8     | 8 - 6.9 = 1.1  | (1.1)² = 1.21 |
-            | 5     | 5 - 6.9 = -1.9 | (-1.9)² = 3.61 |
-            | 9     | 9 - 6.9 = 2.1  | (2.1)² = 4.41 |
-            | 6     | 6 - 6.9 = -0.9 | (-0.9)² = 0.81 |
-            | 7     | 7 - 6.9 = 0.1  | (0.1)² = 0.01 |
-            | 8     | 8 - 6.9 = 1.1  | (1.1)² = 1.21 |
-            | 7     | 7 - 6.9 = 0.1  | (0.1)² = 0.01 |
-            | 6     | 6 - 6.9 = -0.9 | (-0.9)² = 0.81 |
-            |       | Sum = 0        | Sum = 12.9     |
+            <table>
+                <tr>
+                    <th>Hours</th>
+                    <th>(Hours - Mean)</th>
+                    <th>(Hours - Mean)²</th>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>6 - 6.9 = -0.9</td>
+                    <td>(-0.9)² = 0.81</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>7 - 6.9 = 0.1</td>
+                    <td>(0.1)² = 0.01</td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>8 - 6.9 = 1.1</td>
+                    <td>(1.1)² = 1.21</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>5 - 6.9 = -1.9</td>
+                    <td>(-1.9)² = 3.61</td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>9 - 6.9 = 2.1</td>
+                    <td>(2.1)² = 4.41</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>6 - 6.9 = -0.9</td>
+                    <td>(-0.9)² = 0.81</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>7 - 6.9 = 0.1</td>
+                    <td>(0.1)² = 0.01</td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>8 - 6.9 = 1.1</td>
+                    <td>(1.1)² = 1.21</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>7 - 6.9 = 0.1</td>
+                    <td>(0.1)² = 0.01</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>6 - 6.9 = -0.9</td>
+                    <td>(-0.9)² = 0.81</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>Sum = 0</td>
+                    <td>Sum = 12.9</td>
+                </tr>
+            </table>
 
-            Variance = 12.9 ÷ (10-1) = 12.9 ÷ 9 = 1.43
-            Standard Deviation = √1.43 = 1.20 hours
+            <p>Variance = 12.9 ÷ (10-1) = 12.9 ÷ 9 = 1.43<br>
+            Standard Deviation = √1.43 = 1.20 hours</p>
 
-            **Step 4: Interpret the results**
+            <p><strong>Step 4: Interpret the results</strong></p>
 
-            **Central Tendency:**
-            - Mean sleep time is 6.9 hours
-            - Median sleep time is 7 hours (half sleep less, half sleep more)
-            - Most common sleep times are 6 and 7 hours
+            <p><strong>Central Tendency:</strong></p>
+            <ul>
+                <li>Mean sleep time is 6.9 hours</li>
+                <li>Median sleep time is 7 hours (half sleep less, half sleep more)</li>
+                <li>Most common sleep times are 6 and 7 hours</li>
+            </ul>
 
-            **Variability:**
-            - Sleep times range from 5 to 9 hours (4-hour spread)
-            - On average, sleep times deviate about 1.2 hours from the mean
-            - This suggests relatively consistent sleep patterns
+            <p><strong>Variability:</strong></p>
+            <ul>
+                <li>Sleep times range from 5 to 9 hours (4-hour spread)</li>
+                <li>On average, sleep times deviate about 1.2 hours from the mean</li>
+                <li>This suggests relatively consistent sleep patterns</li>
+            </ul>
 
-            **Summary:** These college students sleep an average of 6.9 hours per night, with most sleeping 6-7 hours. The variation is relatively small (standard deviation = 1.2 hours), indicating fairly consistent sleep habits.
+            <p><strong>Summary:</strong> These college students sleep an average of 6.9 hours per night, with most sleeping 6-7 hours. The variation is relatively small (standard deviation = 1.2 hours), indicating fairly consistent sleep habits.</p>
 
             ---
+
+            <!-- Bottom Navigation -->
+            <div class="tab-navigation bottom-nav">
+                <button class="tab-button" onclick="showTab(1)">
+                    <input type="checkbox" id="progress-1-bottom" class="tab-checkbox" onchange="toggleTabComplete(1)">
+                    <span class="tab-label">Foundations & Variables</span>
+                </button>
+                <button class="tab-button active" onclick="showTab(2)">
+                    <input type="checkbox" id="progress-2-bottom" class="tab-checkbox" onchange="toggleTabComplete(2)">
+                    <span class="tab-label">Descriptive Statistics</span>
+                </button>
+                <button class="tab-button" onclick="showTab(3)">
+                    <input type="checkbox" id="progress-3-bottom" class="tab-checkbox" onchange="toggleTabComplete(3)">
+                    <span class="tab-label">Data Visualization</span>
+                </button>
+                <button class="tab-button" onclick="showTab(4)">
+                    <input type="checkbox" id="progress-4-bottom" class="tab-checkbox" onchange="toggleTabComplete(4)">
+                    <span class="tab-label">Population & Normal Distribution</span>
+                </button>
+                <button class="tab-button" onclick="showTab(5)">
+                    <input type="checkbox" id="progress-5-bottom" class="tab-checkbox" onchange="toggleTabComplete(5)">
+                    <span class="tab-label">Probability, SPSS & Summary</span>
+                </button>
+            </div>
         </div>
 
         <div id="tab-3" class="tab-panel">
@@ -1036,6 +1137,30 @@ By the end of this module, you will be able to:
             <p><strong>Answer:</strong> C) Left-skewed - most values are on the higher end, with a tail extending to the lower end</p>
 
             <hr>
+
+            <!-- Bottom Navigation -->
+            <div class="tab-navigation bottom-nav">
+                <button class="tab-button" onclick="showTab(1)">
+                    <input type="checkbox" id="progress-1-bottom" class="tab-checkbox" onchange="toggleTabComplete(1)">
+                    <span class="tab-label">Foundations & Variables</span>
+                </button>
+                <button class="tab-button" onclick="showTab(2)">
+                    <input type="checkbox" id="progress-2-bottom" class="tab-checkbox" onchange="toggleTabComplete(2)">
+                    <span class="tab-label">Descriptive Statistics</span>
+                </button>
+                <button class="tab-button active" onclick="showTab(3)">
+                    <input type="checkbox" id="progress-3-bottom" class="tab-checkbox" onchange="toggleTabComplete(3)">
+                    <span class="tab-label">Data Visualization</span>
+                </button>
+                <button class="tab-button" onclick="showTab(4)">
+                    <input type="checkbox" id="progress-4-bottom" class="tab-checkbox" onchange="toggleTabComplete(4)">
+                    <span class="tab-label">Population & Normal Distribution</span>
+                </button>
+                <button class="tab-button" onclick="showTab(5)">
+                    <input type="checkbox" id="progress-5-bottom" class="tab-checkbox" onchange="toggleTabComplete(5)">
+                    <span class="tab-label">Probability, SPSS & Summary</span>
+                </button>
+            </div>
         </div>
 
         <div id="tab-4" class="tab-panel">
@@ -1380,6 +1505,30 @@ By the end of this module, you will be able to:
             <p><strong>Answer:</strong> IQ = 100 + (-1.5 × 15) = 100 - 22.5 = 77.5</p>
 
             <hr>
+
+            <!-- Bottom Navigation -->
+            <div class="tab-navigation bottom-nav">
+                <button class="tab-button" onclick="showTab(1)">
+                    <input type="checkbox" id="progress-1-bottom" class="tab-checkbox" onchange="toggleTabComplete(1)">
+                    <span class="tab-label">Foundations & Variables</span>
+                </button>
+                <button class="tab-button" onclick="showTab(2)">
+                    <input type="checkbox" id="progress-2-bottom" class="tab-checkbox" onchange="toggleTabComplete(2)">
+                    <span class="tab-label">Descriptive Statistics</span>
+                </button>
+                <button class="tab-button" onclick="showTab(3)">
+                    <input type="checkbox" id="progress-3-bottom" class="tab-checkbox" onchange="toggleTabComplete(3)">
+                    <span class="tab-label">Data Visualization</span>
+                </button>
+                <button class="tab-button active" onclick="showTab(4)">
+                    <input type="checkbox" id="progress-4-bottom" class="tab-checkbox" onchange="toggleTabComplete(4)">
+                    <span class="tab-label">Population & Normal Distribution</span>
+                </button>
+                <button class="tab-button" onclick="showTab(5)">
+                    <input type="checkbox" id="progress-5-bottom" class="tab-checkbox" onchange="toggleTabComplete(5)">
+                    <span class="tab-label">Probability, SPSS & Summary</span>
+                </button>
+            </div>
         </div>
 
         <div id="tab-5" class="tab-panel">
@@ -1953,12 +2102,90 @@ By the end of this module, you will be able to:
             ---
 
             _Remember: The goal isn't to memorize formulas—it's to understand the logic behind them. When in doubt, think about what the numbers mean in the context of your research question._
+
+            <!-- Bottom Navigation -->
+            <div class="tab-navigation bottom-nav">
+                <button class="tab-button" onclick="showTab(1)">
+                    <input type="checkbox" id="progress-1-bottom" class="tab-checkbox" onchange="toggleTabComplete(1)">
+                    <span class="tab-label">Foundations & Variables</span>
+                </button>
+                <button class="tab-button" onclick="showTab(2)">
+                    <input type="checkbox" id="progress-2-bottom" class="tab-checkbox" onchange="toggleTabComplete(2)">
+                    <span class="tab-label">Descriptive Statistics</span>
+                </button>
+                <button class="tab-button" onclick="showTab(3)">
+                    <input type="checkbox" id="progress-3-bottom" class="tab-checkbox" onchange="toggleTabComplete(3)">
+                    <span class="tab-label">Data Visualization</span>
+                </button>
+                <button class="tab-button" onclick="showTab(4)">
+                    <input type="checkbox" id="progress-4-bottom" class="tab-checkbox" onchange="toggleTabComplete(4)">
+                    <span class="tab-label">Population & Normal Distribution</span>
+                </button>
+                <button class="tab-button active" onclick="showTab(5)">
+                    <input type="checkbox" id="progress-5-bottom" class="tab-checkbox" onchange="toggleTabComplete(5)">
+                    <span class="tab-label">Probability, SPSS & Summary</span>
+                </button>
+            </div>
         </div>
     </div>
 
 </div>
 
 <script>
+// Progress tracking storage key
+const PROGRESS_KEY = 'm1-lecture-progress';
+
+// Load saved progress on page load
+function loadProgress() {
+    const savedProgress = localStorage.getItem(PROGRESS_KEY);
+    if (savedProgress) {
+        const progress = JSON.parse(savedProgress);
+        // Update all checkboxes based on saved progress
+        for (let i = 1; i <= 5; i++) {
+            const isComplete = progress[i] || false;
+            document.getElementById(`progress-${i}`).checked = isComplete;
+            document.getElementById(`progress-${i}-bottom`).checked = isComplete;
+            updateTabVisualState(i, isComplete);
+        }
+    }
+}
+
+// Save progress to localStorage
+function saveProgress(tabNumber, isComplete) {
+    const savedProgress = localStorage.getItem(PROGRESS_KEY);
+    const progress = savedProgress ? JSON.parse(savedProgress) : {};
+    progress[tabNumber] = isComplete;
+    localStorage.setItem(PROGRESS_KEY, JSON.stringify(progress));
+}
+
+// Toggle tab completion state
+function toggleTabComplete(tabNumber) {
+    const isComplete = document.getElementById(`progress-${tabNumber}`).checked;
+    
+    // Update both top and bottom checkboxes
+    document.getElementById(`progress-${tabNumber}-bottom`).checked = isComplete;
+    
+    // Update visual state
+    updateTabVisualState(tabNumber, isComplete);
+    
+    // Save to localStorage
+    saveProgress(tabNumber, isComplete);
+}
+
+// Update visual state of tab buttons when completed
+function updateTabVisualState(tabNumber, isComplete) {
+    // Update all tab buttons for this tab (top and bottom)
+    const tabButtons = document.querySelectorAll(`button[onclick="showTab(${tabNumber})"]`);
+    tabButtons.forEach(button => {
+        if (isComplete) {
+            button.classList.add('completed');
+        } else {
+            button.classList.remove('completed');
+        }
+    });
+}
+
+// Main tab switching function
 function showTab(tabNumber) {
     // Hide all panels
     const panels = document.querySelectorAll('.tab-panel');
@@ -1970,6 +2197,11 @@ function showTab(tabNumber) {
     
     // Show selected panel and activate button
     document.getElementById(`tab-${tabNumber}`).classList.add('active');
+    
+    // Activate the button that was clicked (could be top or bottom)
     event.target.classList.add('active');
 }
+
+// Load progress when page loads
+document.addEventListener('DOMContentLoaded', loadProgress);
 </script>

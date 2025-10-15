@@ -443,6 +443,72 @@ img {
     to { opacity: 1; transform: translateY(0); }
 }
 
+/* Tab checkbox styling */
+.tab-checkbox {
+    margin-right: 0.5rem;
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.tab-label {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* Completed tab styling */
+.tab-button.completed {
+    background-color: #d4edda;
+    border-color: #28a745;
+    color: #155724;
+    position: relative;
+}
+
+.tab-button.completed::after {
+    content: "✓";
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: #28a745;
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+    border: 2px solid white;
+}
+
+.tab-button.completed.active {
+    background-color: #28a745;
+    color: white;
+    border-color: #28a745;
+}
+
+.tab-button.completed.active::after {
+    background-color: white;
+    color: #28a745;
+}
+
+/* Bottom navigation styling */
+.bottom-nav {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 2px solid var(--border-color);
+    border-bottom: none;
+}
+
+/* Enhanced tab button layout */
+.tab-button {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: left;
+    padding-left: 0.8rem;
+}
+
 /* Mobile responsiveness for tabs */
 @media screen and (max-width: 800px) {
     .tab-navigation {
@@ -461,8 +527,22 @@ img {
         box-shadow: 0 1px 3px rgba(52, 152, 219, 0.3);
     }
     
+    .tab-button.completed.active {
+        box-shadow: 0 1px 3px rgba(40, 167, 69, 0.3);
+    }
+    
     .tab-content {
         min-height: 400px;
+    }
+    
+    .tab-checkbox {
+        transform: scale(1.2);
+        margin-right: 0.7rem;
+    }
+    
+    .bottom-nav {
+        margin-top: 2rem;
+        padding-top: 1.5rem;
     }
 }
 
