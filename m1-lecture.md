@@ -264,6 +264,14 @@ Let's practice with some research scenarios:
 - ❌ `VAR001`, `VAR002` → What do these mean?
 - ✓ `Age`, `Depression_Score` → Immediately clear!
 
+> **⚠️ CRITICAL:** Variable names you choose at the beginning affect EVERYTHING that follows. Poor variable naming leads to:
+> - Confusion in SPSS output (which variable is which?)
+> - Errors in analysis (using the wrong variable)
+> - Difficulty reproducing your work
+> - Lower grades on assignments (unclear what you measured)
+>
+> **Best Practice:** Spend time getting variable names right during initial setup. It's much harder to fix later!
+
 ---
 
 ## Part 3: Classifying Variables
@@ -393,7 +401,26 @@ This classification describes the **nature of the values** a variable can take. 
 
 **SPSS Note:** Set "Measure" to "Ordinal" when the categories have an order but aren't true numbers.
 
-**The Likert Scale Debate:** Many researchers treat Likert scales as interval/scale data and calculate means. This is acceptable when you have multiple items combined into a scale score, but be aware it's a simplification.
+> **⚖️ THE LIKERT SCALE DEBATE: A Gray Area**
+>
+> Likert scales (e.g., 1=Strongly Disagree to 5=Strongly Agree) create controversy:
+>
+> **Technically:** Ordinal
+> - We can't prove the distance from "Disagree" to "Neutral" equals "Agree" to "Strongly Agree"
+> - Different people may interpret scale points differently
+>
+> **In Practice:** Often treated as Scale
+> - Most researchers calculate means of Likert items
+> - Required for common analyses (t-tests, ANOVA, regression)
+> - Especially acceptable when averaging multiple items into a scale score
+>
+> **What You Should Do:**
+> 1. **Single Likert item:** Consider treating as ordinal, use median
+> 2. **Multiple items averaged (Likert scale):** Usually treat as scale, calculate mean
+> 3. **In assignments:** Follow your instructor's guidance
+> 4. **In research:** Be aware you're making an assumption and note it in limitations
+>
+> **Bottom Line:** There's no universal "right answer" – it depends on context and conventions in your field.
 
 #### Scale Variables (Interval and Ratio)
 
@@ -457,6 +484,21 @@ This is another way to classify **scale** variables:
    - Can you perform meaningful arithmetic (add, average)?
      - **Yes** → Scale
      - **No** → Probably ordinal (reconsider if they're really numbers)
+
+> **📊 MOST IMPORTANT CONCEPT IN MODULE 1**
+>
+> **Measurement level determines EVERYTHING you can do with your data!**
+>
+> Get this wrong and:
+> - ❌ Your analysis is invalid (e.g., calculating mean of blood types)
+> - ❌ Your conclusions are meaningless
+> - ❌ You'll lose major points on assignments
+> - ❌ You might get published research retracted
+>
+> **Before ANY analysis, always ask:**
+> "What measurement level is this variable?"
+>
+> This single question prevents 80% of statistical errors in student work!
 
 ### Why Measurement Level Matters
 
@@ -589,6 +631,12 @@ This is another way to classify **scale** variables:
 
 ## Part 4: Describing Data with Numbers
 
+> **Before proceeding:** Make sure you understand variable classification from [Part 3](#part-3-classifying-variables).
+> The measurement level of your variable (nominal, ordinal, scale) determines which descriptive statistics you can use.
+> Using the wrong statistic for your measurement level is one of the most common errors in statistics!
+>
+> **Key connection:** Measurement level (Part 3) → Appropriate statistics (Part 4)
+
 Once you've collected data, the first step is to summarize it. With scale (numerical) data, we use two types of summary statistics:
 
 1. **Central Tendency** - Where is the "center" or "typical" value?
@@ -705,6 +753,22 @@ Where:
 
 ### Choosing the Right Measure
 
+> **🎯 CENTRAL TENDENCY DECISION GUIDE**
+>
+> | Your Data Type | Best Measure | Why |
+> |---------------|--------------|-----|
+> | **Nominal** (categories) | **Mode only** | Mean and median are meaningless for categories |
+> | **Ordinal** (ranked) | **Median** | Intervals aren't equal, but order matters |
+> | **Scale + Symmetrical** | **Mean** | Uses all data, best for statistical tests |
+> | **Scale + Skewed/Outliers** | **Median** | Not affected by extreme values |
+>
+> **Quick Decision Rule:**
+> 1. Check measurement level → If Nominal, must use Mode
+> 2. Look at your data → See outliers or skew? Use Median
+> 3. Otherwise → Use Mean (but always report SD with it!)
+>
+> **Pro Tip:** When in doubt, report both mean and median. This gives readers the full picture!
+
 **Use the Mean when:**
 
 - Data is scale/interval
@@ -773,7 +837,30 @@ The mean doesn't tell the whole story! We need measures of **variability** (spre
 **Formula (for estimating population variance from a sample):**
 \[ s^2 = \frac{\sum(X - M)^2}{n - 1} \]
 
-(More on this \(n - 1\) distinction in Part 6)
+> **🔍 THE n vs. n-1 CONFUSION (Most Common Student Question!)**
+>
+> **Why two formulas?** It depends on your goal:
+>
+> **Divide by n:**
+> - Goal: Describe ONLY your specific sample
+> - You have all the data you care about
+> - Rare in practice (usually we want to generalize)
+>
+> **Divide by n-1:** ⭐ **Most Common!**
+> - Goal: Estimate population variance from your sample
+> - You're inferring beyond your data
+> - Corrects for bias (samples underestimate population variance)
+> - **SPSS ALWAYS uses n-1**
+>
+> **Why n-1?** Samples are less variable than populations. The n-1 adjustment (called "Bessel's correction") compensates for this. Without it, we'd consistently underestimate population variability.
+>
+> **What should YOU do?**
+> - **In this course:** Almost always use n-1
+> - **In SPSS:** It automatically uses n-1
+> - **On exams:** Unless told otherwise, use n-1
+> - **For very large samples:** The difference becomes negligible
+>
+> (More mathematical explanation in Part 6)
 
 **Example:** Scores: 2, 4, 6, 8, 10
 
@@ -1610,6 +1697,13 @@ True or False?
 
 ## Part 7: The Normal Distribution and Z-Scores
 
+> **Why Part 7 is crucial:** The normal distribution is the foundation for almost all inferential statistics you'll learn in this course.
+> - **Part 7 concepts** (normal distribution, z-scores, standard deviation) lead directly to **Module 2** (t-tests and hypothesis testing)
+> - Understanding the normal distribution now will make Module 2 much easier!
+> - Z-scores are your first step toward understanding standardization, which underlies all statistical tests
+>
+> **Connection to Part 4:** The mean and SD you learned in Part 4 define the shape and location of the normal distribution.
+
 ### The Normal Distribution (The Bell Curve)
 
 The normal distribution is the most important distribution in statistics.
@@ -2443,6 +2537,172 @@ Using the M1 assignment data:
 
   </details>
 </div>
+
+---
+
+## Quick Reference Card
+
+### Variable Classification Decision Tree
+
+```
+Step 1: What are the possible values?
+    |
+    ├─ CATEGORIES or NAMES (e.g., gender, major, color)
+    |   └─→ Is there a natural order?
+    |       ├─ NO  → NOMINAL (e.g., blood type, ethnicity)
+    |       └─ YES → ORDINAL (e.g., class rank, education level)
+    |
+    └─ TRUE NUMBERS (can do meaningful math)
+        └─→ SCALE (e.g., age, height, test scores)
+```
+
+### Measurement Level Quick Guide
+
+| Level | Examples | Central Tendency | Graph Type | Can You Calculate Mean? |
+|-------|----------|------------------|------------|------------------------|
+| **Nominal** | Gender, Major, Blood Type | Mode only | Bar chart, Pie chart | ❌ No |
+| **Ordinal** | Class rank, Likert items | Median, Mode | Bar chart | ⚠️ Debatable |
+| **Scale** | Age, Height, Test scores | Mean, Median, Mode | Histogram, Scatter | ✓ Yes |
+
+> **Critical Rule:** Your measurement level determines which statistics you can use!
+
+### Essential Formulas at a Glance
+
+| Statistic | Formula | When to Use |
+|-----------|---------|-------------|
+| **Mean** | M = ΣX / N | Symmetrical data, no outliers |
+| **Standard Deviation (Sample)** | s = √[Σ(X-M)² / (n-1)] | Always report with mean |
+| **Variance** | s² = Σ(X-M)² / (n-1) | Foundation for many tests |
+| **Z-Score** | z = (X - μ) / σ | Standardize scores, compare across scales |
+| **Range** | Max - Min | Quick measure of spread |
+
+### Central Tendency Decision Guide
+
+**When to use MEAN:**
+- ✓ Scale data
+- ✓ Roughly symmetrical distribution
+- ✓ No extreme outliers
+- ✓ Need to do further statistical tests
+
+**When to use MEDIAN:**
+- ✓ Ordinal data
+- ✓ Skewed distribution
+- ✓ Extreme outliers present
+- ✓ Income, housing prices, reaction times
+
+**When to use MODE:**
+- ✓ Nominal data (only option!)
+- ✓ Identifying most common category
+- ✓ Finding peaks in distribution
+
+### Z-Score Interpretation Guide
+
+| Z-Score | Interpretation | Percentile (approx) |
+|---------|----------------|---------------------|
+| z = 0 | Exactly at the mean | 50th percentile |
+| z = +1 | 1 SD above mean | 84th percentile |
+| z = -1 | 1 SD below mean | 16th percentile |
+| z = +2 | 2 SDs above mean | 98th percentile |
+| z = -2 | 2 SDs below mean | 2nd percentile |
+| z = +3 | 3 SDs above mean | 99.7th percentile |
+| |z| > 3 | **Extreme outlier** | Very rare (<0.3%) |
+
+**68-95-99.7 Rule:**
+- 68% of scores within ±1 SD (z between -1 and +1)
+- 95% of scores within ±2 SDs (z between -2 and +2)
+- 99.7% of scores within ±3 SDs (z between -3 and +3)
+
+### SPSS Variable Setup Checklist
+
+Before any analysis, verify in Variable View:
+
+✓ **Name:** Short, clear, no spaces (e.g., `age`, `test_score`)
+✓ **Type:** Usually "Numeric" (use "String" only for text like names)
+✓ **Width:** Default is fine for most cases
+✓ **Decimals:** Set to 0 for whole numbers, 2 for continuous
+✓ **Label:** Full descriptive name (e.g., "Test Score out of 100")
+✓ **Values:** Define labels for ALL categorical variables (1="Male", 2="Female")
+✓ **Measure:**
+  - Nominal → Categories with no order
+  - Ordinal → Categories with order
+  - Scale → True numbers
+
+### Common Mistakes Checklist
+
+❌ **Don't calculate mean of nominal data** → No such thing as "average gender"
+❌ **Don't use histogram for categorical data** → Use bar chart instead
+❌ **Don't forget value labels in SPSS** → Numbers alone (1, 2, 3) are meaningless
+❌ **Don't confuse n and n-1** → SPSS always uses n-1 (assumes inference)
+❌ **Don't ignore outliers** → Always report both mean and median when present
+❌ **Don't confuse standard deviation with standard error** → SD describes spread; SE comes later (M2)
+
+### Graph Selection Quick Guide
+
+| Data Type | Appropriate Graph | Why |
+|-----------|------------------|-----|
+| **Nominal** | Bar chart (gaps between bars) | Shows frequency of categories |
+| **Ordinal** | Bar chart (gaps between bars) | Shows frequency of ordered categories |
+| **Scale** | Histogram (bars touch) | Shows distribution of continuous data |
+| **Two Scale Variables** | Scatterplot | Shows relationship between variables |
+
+### IV vs. DV Identification Trick
+
+Ask: "Does [Variable A] depend on [Variable B]?"
+
+**Example:** "Does test score depend on study time?"
+- Answer: YES → Test score is **DV** (depends on study time)
+- Study time is **IV** (doesn't depend on test score)
+
+**Memory aid:** DV = Depends on the IV
+
+### Sample vs. Population Symbols
+
+| Concept | Population (Parameter) | Sample (Statistic) |
+|---------|----------------------|-------------------|
+| Size | N | n |
+| Mean | μ (mu) | M or X̄ |
+| Standard Deviation | σ (sigma) | s or SD |
+| Variance | σ² | s² |
+
+**Remember:**
+- Greek letters (μ, σ) = Population
+- Roman letters (M, s) = Sample
+
+### n vs. n-1 Decision
+
+| Goal | Formula Uses | Why |
+|------|-------------|-----|
+| **Describe only your sample** | Divide by n | You have all the data |
+| **Estimate population from sample** | Divide by n-1 | Corrects for bias |
+
+**In practice:** Almost always use n-1 (and SPSS always does!)
+
+**Why n-1?** Using n would underestimate population variability. The n-1 adjustment (called "Bessel's correction") fixes this.
+
+### Module 1 Key Takeaways
+
+1. **Measurement level is EVERYTHING** → Determines which analyses are valid
+2. **Variables must vary** → Clear naming matters for all downstream work
+3. **Mean is sensitive to outliers** → Always look at your data before choosing central tendency
+4. **Z-scores are the universal translator** → Allow comparison across different scales
+5. **Normal distribution is the foundation** → Most statistics assume or rely on normality
+6. **SPSS setup is crucial** → Garbage in = garbage out
+
+### Connection to Future Modules
+
+**Module 1 → Module 2:**
+- Normal distribution → Basis for t-distribution
+- Samples vs. populations → Foundation for hypothesis testing
+- Variability (SD) → Leads to standard error
+- Z-scores → Lead to t-scores
+
+**Module 1 → Module 3:**
+- Independent vs. dependent variables → Experimental design
+- Measurement levels → Which t-test to use
+
+**Module 1 → Module 6:**
+- Scale variables → Required for correlation and regression
+- Scatterplots → Visualizing relationships
 
 ---
 
