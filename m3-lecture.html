@@ -1,0 +1,2004 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 3: Comparing Two Means</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <style>
+        /* Knowledge Check Styling */
+        .knowledge-check-item {
+            background-color: #f8f9fa;
+            border-left: 4px solid #007bff;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+
+        .knowledge-check-item.answered {
+            border-left-color: #28a745;
+            background-color: #f0f8f4;
+        }
+
+        .question-text {
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .question-options {
+            margin: 10px 0;
+            list-style-position: inside;
+        }
+
+        .answer-reveal {
+            background-color: #e7f3ff;
+            border: 1px solid #b3d9ff;
+            padding: 12px;
+            margin-top: 10px;
+            border-radius: 4px;
+        }
+
+        .answer-text {
+            margin: 0;
+            color: #004085;
+        }
+
+        .reveal-answer-btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-top: 10px;
+            transition: background-color 0.2s;
+        }
+
+        .reveal-answer-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .reveal-answer-btn.answered {
+            background-color: #28a745;
+        }
+
+        .reveal-answer-btn.answered:hover {
+            background-color: #218838;
+        }
+
+        /* Learning Objectives Styling */
+        .learning-objectives {
+            margin: 15px 0;
+        }
+
+        .learning-objectives > li {
+            margin-bottom: 8px;
+        }
+
+        /* Glossary Styling */
+        .glossary-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .glossary-item {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 6px;
+            padding: 15px;
+        }
+
+        .glossary-item h4 {
+            color: #007bff;
+            margin-bottom: 8px;
+            font-size: 1.1em;
+        }
+
+        .glossary-item p {
+            margin: 0;
+            color: #495057;
+            line-height: 1.5;
+        }
+
+        /* Visual Diagrams Styling */
+        .visual-diagram {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .visual-diagram h4 {
+            color: #495057;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 5px;
+        }
+
+        .diagram-caption {
+            text-align: center;
+            font-size: 0.9em;
+            color: #6c757d;
+            margin-top: 10px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>Module 3: Comparing Two Means</h1>
+        
+        <p><strong>Estimated Study Time:</strong> 1-2 hours</p>
+
+        <h2>Learning Objectives</h2>
+        
+        <p>By the end of this module, you will be able to:</p>
+        
+        <ol class="learning-objectives">
+            <li>Distinguish between independent-samples and paired-samples designs and choose the appropriate t-test</li>
+            <li>Understand the conceptual foundation of comparing two means using distributions of mean differences</li>
+            <li>Execute and interpret independent-samples t-tests including Levene's test for equality of variances</li>
+            <li>Execute and interpret paired-samples t-tests using the difference score approach</li>
+            <li>Calculate and interpret effect sizes (Cohen's d) for both types of t-tests</li>
+            <li>Check and understand assumptions underlying two-sample t-tests</li>
+            <li>Report results in proper APA format with complete statistical information</li>
+            <li>Apply decision-making frameworks to real-world research scenarios</li>
+        </ol>
+
+        <hr>
+
+        <div class="lecture-tabs">
+            <div class="tab-navigation">
+                <button class="tab-button active" onclick="showTab(1)">
+                    <input type="checkbox" id="progress-1" class="tab-checkbox" onchange="toggleTabComplete(1)">
+                    <span class="tab-label">Introduction & Research Designs</span>
+                </button>
+                <button class="tab-button" onclick="showTab(2)">
+                    <input type="checkbox" id="progress-2" class="tab-checkbox" onchange="toggleTabComplete(2)">
+                    <span class="tab-label">Independent-Samples t-Test</span>
+                </button>
+                <button class="tab-button" onclick="showTab(3)">
+                    <input type="checkbox" id="progress-3" class="tab-checkbox" onchange="toggleTabComplete(3)">
+                    <span class="tab-label">Paired-Samples t-Test</span>
+                </button>
+                <button class="tab-button" onclick="showTab(4)">
+                    <input type="checkbox" id="progress-4" class="tab-checkbox" onchange="toggleTabComplete(4)">
+                    <span class="tab-label">Effect Sizes & Assumptions</span>
+                </button>
+                <button class="tab-button" onclick="showTab(5)">
+                    <input type="checkbox" id="progress-5" class="tab-checkbox" onchange="toggleTabComplete(5)">
+                    <span class="tab-label">Application & Summary</span>
+                </button>
+            </div>
+            
+            <div class="tab-content">
+                <div id="tab-1" class="tab-panel active">
+                    <h2>Part 1: Introduction to Comparing Two Means</h2>
+
+                    <h3>The Evolution from One Sample to Two Samples</h3>
+
+                    <p>In M2, we learned to compare a single sample mean to a known population value using the one-sample t-test. Now we're taking the next logical step: <strong>comparing two sample means to each other</strong>. This is where most real-world research happens.</p>
+
+                    <p><strong>The Fundamental Shift:</strong></p>
+
+                    <ul>
+                        <li><strong>M2 (One-Sample):</strong> Compare sample mean (M) to known population mean (μ)</li>
+                        <li><strong>M3 (Two-Sample):</strong> Compare sample mean 1 (M₁) to sample mean 2 (M₂)</li>
+                    </ul>
+
+                    <h3>Why We Need Different Tests for Different Designs</h3>
+
+                    <p>When comparing two means, we face a critical question that didn't exist in one-sample testing: <strong>What's the relationship between the data points in our two samples?</strong></p>
+
+                    <p>This relationship is determined by your <strong>research design</strong>, and it fundamentally changes how we approach the statistical test:</p>
+
+                    <ul>
+                        <li><strong>Different people in each group</strong> → Independent-Samples t-Test</li>
+                        <li><strong>Same people measured twice</strong> → Paired-Samples t-Test</li>
+                    </ul>
+
+                    <h3>The Core Challenge</h3>
+
+                    <p>With two samples, we have two challenges the one-sample test didn't have:</p>
+
+                    <ol>
+                        <li><strong>Two means, one decision:</strong> We have M₁ and M₂, but hypothesis testing requires evaluating a single value</li>
+                        <li><strong>Two unknown populations:</strong> Unlike M2 where we had a known population mean, both populations are hypothetical</li>
+                    </ol>
+
+                    <p><strong>The Solution:</strong> We shift our entire framework to focus on the <strong>difference</strong> between the groups.</p>
+
+                    <ul>
+                        <li><strong>New Research Question:</strong> "Is the difference between Population A and Population B significantly different from 0?"</li>
+                        <li><strong>New Null Hypothesis:</strong> "The difference between the two populations is 0 (they are the same)"</li>
+                        <li><strong>New Comparison Distribution:</strong> A distribution of mean differences, centered at 0</li>
+                    </ul>
+
+                    <h3>Real-World Examples</h3>
+
+                    <p><strong>Independent-Samples (Between-Subjects):</strong></p>
+
+                    <ul>
+                        <li>Comparing test scores of students who received tutoring vs. those who didn't</li>
+                        <li>Comparing salary between male and female employees</li>
+                        <li>Comparing reaction time between coffee drinkers and non-coffee drinkers</li>
+                    </ul>
+
+                    <p><strong>Paired-Samples (Within-Subjects):</strong></p>
+
+                    <ul>
+                        <li>Measuring blood pressure before and after medication</li>
+                        <li>Comparing memory performance at age 70 vs. age 80</li>
+                        <li>Testing the same students before and after a training program</li>
+                    </ul>
+
+                    <hr>
+
+                    <h2>Part 2: Research Designs and the Critical Decision</h2>
+
+                    <h3>The Golden Rule: One Group or Two?</h3>
+
+                    <p>The most important question you must ask is: <strong>"Are the two sets of scores from the same people or from two different, unrelated groups?"</strong></p>
+
+                    <p>This single question determines which t-test you will use.</p>
+
+                    <blockquote>
+                        <p><strong>⚠️ Critical Warning:</strong> Choosing the wrong test (independent vs. paired) is the most common error in Module 3. Using the wrong test will give you incorrect results and invalid conclusions. Always verify your research design before selecting a test.</p>
+                    </blockquote>
+
+                    <h3>Between-Subjects Design → Independent-Samples t-Test</h3>
+
+                    <p><strong>What it is:</strong> Two separate, unrelated groups of participants. Each person is in only one group.</p>
+
+                    <p><strong>Characteristics:</strong></p>
+
+                    <ul>
+                        <li>Different individuals in each group</li>
+                        <li>No systematic relationship between participants</li>
+                        <li>Each participant contributes one score</li>
+                        <li>Groups are independent of each other</li>
+                    </ul>
+
+                    <p><strong>Examples:</strong></p>
+
+                    <ul>
+                        <li>Treatment group vs. Control group</li>
+                        <li>Male vs. Female participants</li>
+                        <li>Experienced vs. Novice users</li>
+                        <li>High stress vs. Low stress conditions</li>
+                    </ul>
+
+                    <p><strong>Advantages:</strong></p>
+
+                    <ul>
+                        <li>No carryover effects between conditions</li>
+                        <li>Participants can't figure out the hypothesis</li>
+                        <li>Simpler experimental setup</li>
+                    </ul>
+
+                    <p><strong>Disadvantages:</strong></p>
+
+                    <ul>
+                        <li>Need more participants overall</li>
+                        <li>Individual differences between groups can mask effects</li>
+                        <li>Less statistical power (harder to detect true effects)</li>
+                    </ul>
+
+                    <h3>Within-Subjects Design → Paired-Samples t-Test</h3>
+
+                    <p><strong>What it is:</strong> The same individuals measured twice, or meaningfully linked pairs.</p>
+
+                    <p><strong>Characteristics:</strong></p>
+
+                    <ul>
+                        <li>Same participants in both conditions</li>
+                        <li>Each participant contributes two scores</li>
+                        <li>Scores are naturally paired or dependent</li>
+                        <li>Individual differences are controlled</li>
+                    </ul>
+
+                    <p><strong>Examples:</strong></p>
+
+                    <ul>
+                        <li>Before vs. After measurements</li>
+                        <li>Time 1 vs. Time 2</li>
+                        <li>Condition A vs. Condition B (same people)</li>
+                        <li>Matched pairs (twins, siblings, partners)</li>
+                    </ul>
+
+                    <p><strong>Advantages:</strong></p>
+
+                    <ul>
+                        <li>Controls for individual differences</li>
+                        <li>More statistical power (easier to detect effects)</li>
+                        <li>Fewer participants needed</li>
+                        <li>More efficient use of resources</li>
+                    </ul>
+
+                    <p><strong>Disadvantages:</strong></p>
+
+                    <ul>
+                        <li>Potential carryover effects</li>
+                        <li>Participants may figure out the hypothesis</li>
+                        <li>Dropout risk (need same people twice)</li>
+                        <li>Order effects (which condition comes first)</li>
+                    </ul>
+
+                    <h3>Matched Pairs: A Special Case</h3>
+
+                    <p>Sometimes you have <strong>natural pairs</strong> that aren't the same person:</p>
+
+                    <ul>
+                        <li>Identical twins</li>
+                        <li>Siblings</li>
+                        <li>Spouses or partners</li>
+                        <li>Matched participants (same age, gender, education)</li>
+                    </ul>
+
+                    <p><strong>Decision Rule:</strong> If the pairs are meaningfully linked and you expect them to be more similar to each other than to random people, treat as <strong>paired-samples</strong>.</p>
+
+                    <h3>The Decision Tree</h3>
+
+                    <pre><code>Do you have the same people measured twice?
+├─ YES → Paired-Samples t-Test
+└─ NO
+   ├─ Are the groups meaningfully matched?
+   │  ├─ YES → Paired-Samples t-Test
+   │  └─ NO → Independent-Samples t-Test
+</code></pre>
+
+                    <h3>Common Scenarios Practice</h3>
+
+                    <p><strong>Scenario 1:</strong> A researcher wants to compare the effectiveness of two teaching methods. She randomly assigns 20 students to Method A and 20 different students to Method B.</p>
+
+                    <ul>
+                        <li><strong>Design:</strong> Between-subjects</li>
+                        <li><strong>Test:</strong> Independent-samples t-test</li>
+                    </ul>
+
+                    <p><strong>Scenario 2:</strong> A psychologist measures anxiety levels in 15 patients before and after therapy.</p>
+
+                    <ul>
+                        <li><strong>Design:</strong> Within-subjects</li>
+                        <li><strong>Test:</strong> Paired-samples t-test</li>
+                    </ul>
+
+                    <p><strong>Scenario 3:</strong> A researcher compares job satisfaction between 25 married couples, testing both the husband and wife.</p>
+
+                    <ul>
+                        <li><strong>Design:</strong> Matched pairs (within-subjects)</li>
+                        <li><strong>Test:</strong> Paired-samples t-test</li>
+                    </ul>
+
+                    <p><strong>Scenario 4:</strong> An education researcher compares reading scores between 30 third-grade boys and 30 third-grade girls.</p>
+
+                    <ul>
+                        <li><strong>Design:</strong> Between-subjects</li>
+                        <li><strong>Test:</strong> Independent-samples t-test</li>
+                    </ul>
+
+                    <div class="knowledge-check-item" data-question-id="tab1-q1">
+                        <p class="question-text"><strong>Question 1:</strong> A researcher wants to test if a new study technique improves test scores. She has 40 students take a practice test, teaches them the new technique, then has the same 40 students take another practice test. What type of t-test should she use?</p>
+                        <ul class="question-options">
+                            <li>A) Independent-samples t-test</li>
+                            <li>B) Paired-samples t-test</li>
+                            <li>C) One-sample t-test</li>
+                            <li>D) It depends on the sample size</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <div class="answer-content">
+                                <p class="correct-answer">Correct Answer: B) Paired-samples t-test</p>
+                                <p class="explanation">Why this is correct: The same 40 students are measured twice - once before learning the technique and once after. This is a classic within-subjects (repeated measures) design where each participant contributes two scores that are naturally paired.</p>
+                                <p class="explanation">Why the others are incorrect:</p>
+                                <ul>
+                                    <li>A) Independent-samples t-test: This would be used if different groups of students were compared (e.g., one group gets the technique, another doesn't).</li>
+                                    <li>C) One-sample t-test: This compares a single sample to a known population value, not two groups to each other.</li>
+                                    <li>D) Sample size: The type of test depends on the research design, not the sample size.</li>
+                                </ul>
+                                <p class="review-tip">💭 Need to review? See Part 2: Research Designs and the Critical Decision for the decision tree.</p>
+                            </div>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab1-q1')">Show Answer</button>
+                    </div>
+
+                    <div class="knowledge-check-item" data-question-id="tab1-q2">
+                        <p class="question-text"><strong>Question 2:</strong> A researcher compares memory performance between 20 identical twins, testing one twin from each pair under high-stress conditions and the other under low-stress conditions. What type of t-test is appropriate?</p>
+                        <ul class="question-options">
+                            <li>A) Independent-samples t-test because they're different people</li>
+                            <li>B) Paired-samples t-test because they're meaningfully matched</li>
+                            <li>C) One-sample t-test because it's about memory</li>
+                            <li>D) Either independent or paired would work</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <div class="answer-content">
+                                <p class="correct-answer">Correct Answer: B) Paired-samples t-test because they're meaningfully matched</p>
+                                <p class="explanation">Why this is correct: Identical twins are genetically identical and share similar environmental backgrounds, making them meaningfully matched pairs. They're expected to be more similar to each other than to random people, so their scores should be treated as dependent/paired.</p>
+                                <p class="explanation">Why the others are incorrect:</p>
+                                <ul>
+                                    <li>A) Independent-samples: While they are different people, their genetic and environmental similarity makes them a matched pair, not independent groups.</li>
+                                    <li>C) One-sample t-test: This is still comparing two groups (high vs. low stress), not one group to a population.</li>
+                                    <li>D) Either would work: Using the wrong test would give incorrect results. The matched nature of twins requires paired-samples treatment.</li>
+                                </ul>
+                                <p class="application-tip">💡 Application Tip: When in doubt, ask: "Are these participants more similar to each other than they would be to random people?" If yes, use paired-samples.</p>
+                            </div>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab1-q2')">Show Answer</button>
+                    </div>
+
+                    <div class="knowledge-check-item" data-question-id="tab1-q3">
+                        <p class="question-text"><strong>Question 3:</strong> Which of the following is a key advantage of within-subjects designs over between-subjects designs?</p>
+                        <ul class="question-options">
+                            <li>A) They require fewer participants</li>
+                            <li>B) They have more statistical power</li>
+                            <li>C) They control for individual differences</li>
+                            <li>D) All of the above</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <div class="answer-content">
+                                <p class="correct-answer">Correct Answer: D) All of the above</p>
+                                <p class="explanation">Why this is correct: Within-subjects designs have multiple advantages: they control for individual differences (each person serves as their own control), they have more statistical power (easier to detect true effects), and they require fewer participants overall since each person provides data for both conditions.</p>
+                                <p class="explanation">Individual advantages explained:</p>
+                                <ul>
+                                    <li>Fewer participants: Each person contributes to both conditions, so you need half as many people as a between-subjects design.</li>
+                                    <li>More statistical power: By controlling individual differences, you eliminate "noise" that can hide true effects.</li>
+                                    <li>Control individual differences: Each person is compared to themselves, so factors like ability, motivation, and background are held constant.</li>
+                                </ul>
+                                <p class="review-tip">💭 Need to review? See Part 2: Research Designs and the Critical Decision for the advantages and disadvantages of each design.</p>
+                            </div>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab1-q3')">Show Answer</button>
+                    </div>
+                </div>
+
+                <div id="tab-2" class="tab-panel">
+                    <h2>Part 3: The Independent-Samples t-Test</h2>
+
+                    <blockquote>
+                        <p><strong>Before proceeding:</strong> Make sure you've determined that independent-samples is the right test for your design (see Part 2). If your data involves the same people measured twice or matched pairs, you need the paired-samples t-test instead.</p>
+                    </blockquote>
+
+                    <h3>Conceptual Foundation</h3>
+
+                    <p>The independent-samples t-test works by creating a <strong>distribution of mean differences</strong>. Here's the key insight:</p>
+
+                    <p><strong>If the null hypothesis is true</strong> (the two populations have the same mean), then when we take many random samples from both populations and calculate the difference between their means, these differences should center around <strong>0</strong>.</p>
+
+                    <p><strong>The Logic:</strong></p>
+
+                    <ol>
+                        <li>We calculate the observed difference: M₁ - M₂</li>
+                        <li>We compare this to a distribution of possible differences centered at 0</li>
+                        <li>We ask: "How likely is it to get a difference this extreme if the populations are really the same?"</li>
+                    </ol>
+
+                    <h3>The Mathematical Approach</h3>
+
+                    <p><strong>Test Statistic:</strong></p>
+
+                    <pre><code>t = (M₁ - M₂) / SE(M₁ - M₂)</code></pre>
+
+                    <p>Where:</p>
+
+                    <ul>
+                        <li>M₁ - M₂ = observed difference between sample means</li>
+                        <li>SE(M₁ - M₂) = standard error of the difference between means</li>
+                    </ul>
+
+                    <p><strong>Standard Error Calculation:</strong><br>
+                    The approach differs depending on whether the two groups have equal variances:</p>
+
+                    <p><strong>Equal Variances Assumed (Pooled Variance Method):</strong></p>
+
+                    <pre><code>s_pooled² = [(n₁-1)s₁² + (n₂-1)s₂²] / (n₁ + n₂ - 2)
+SE = √[s_pooled² × (1/n₁ + 1/n₂)]
+df = n₁ + n₂ - 2</code></pre>
+
+                    <p>This uses a weighted average (pooled variance) to estimate the common population variance.</p>
+
+                    <p><strong>Equal Variances Not Assumed (Welch's t-test):</strong></p>
+
+                    <pre><code>SE = √[(s₁²/n₁) + (s₂²/n₂)]
+df = (complex Welch-Satterthwaite approximation)</code></pre>
+
+                    <p>This uses each group's variance separately and adjusts the degrees of freedom. SPSS handles the df calculation automatically.</p>
+
+                    <h3>Step-by-Step Process</h3>
+
+                    <p><strong>Step 1: State Your Hypotheses</strong></p>
+
+                    <p>For a two-tailed test:</p>
+
+                    <ul>
+                        <li>H₀: μ₁ = μ₂ (population means are equal)</li>
+                        <li>H₁: μ₁ ≠ μ₂ (population means are different)</li>
+                    </ul>
+
+                    <p>For a one-tailed test:</p>
+
+                    <ul>
+                        <li>H₀: μ₁ = μ₂</li>
+                        <li>H₁: μ₁ > μ₂ (or μ₁ < μ₂, depending on your prediction)</li>
+                    </ul>
+
+                    <p><strong>Step 2: Check Assumptions</strong></p>
+
+                    <ul>
+                        <li>Independence of observations</li>
+                        <li>Normality (for each group)</li>
+                        <li>Homogeneity of variance (equal variances between groups)</li>
+                    </ul>
+
+                    <p><strong>Step 3: Run Levene's Test</strong></p>
+
+                    <ul>
+                        <li>This tells you whether to assume equal variances</li>
+                        <li>p > .05: Use "Equal variances assumed" row</li>
+                        <li>p ≤ .05: Use "Equal variances not assumed" row</li>
+                    </ul>
+
+                    <p><strong>Step 4: Calculate the t-statistic and p-value</strong></p>
+
+                    <ul>
+                        <li>SPSS does this automatically</li>
+                        <li>Use the appropriate row based on Levene's test</li>
+                    </ul>
+
+                    <p><strong>Step 5: Make a decision</strong></p>
+
+                    <ul>
+                        <li>Compare p-value to α (usually .05)</li>
+                        <li>p ≤ .05: Reject H₀</li>
+                        <li>p > .05: Fail to reject H₀</li>
+                    </ul>
+
+                    <p><strong>Step 6: Calculate effect size</strong></p>
+
+                    <ul>
+                        <li>Cohen's d = (M₁ - M₂) / pooled SD</li>
+                        <li>Interpret the magnitude of the effect</li>
+                    </ul>
+
+                    <h3>Worked Example: Salary Comparison</h3>
+
+                    <p><strong>Research Question:</strong> Do male and female employees have significantly different salaries?</p>
+
+                    <p><strong>Hypotheses:</strong></p>
+
+                    <ul>
+                        <li>H₀: μ_male = μ_female</li>
+                        <li>H₁: μ_male ≠ μ_female</li>
+                    </ul>
+
+                    <p><strong>Data:</strong></p>
+
+                    <ul>
+                        <li>Male employees: n₁ = 25, M₁ = $52,000, s₁ = $8,000</li>
+                        <li>Female employees: n₂ = 30, M₂ = $48,000, s₂ = $7,500</li>
+                    </ul>
+
+                    <p><strong>Levene's Test Result:</strong> p = .156 (not significant)</p>
+
+                    <p><strong>t-test Results (Equal variances assumed):</strong></p>
+
+                    <ul>
+                        <li>t(53) = 1.89, p = .064, d = 0.52</li>
+                    </ul>
+
+                    <p><strong>Interpretation:</strong></p>
+
+                    <ul>
+                        <li>Fail to reject H₀ (p > .05)</li>
+                        <li>The difference in salary is not statistically significant</li>
+                        <li>Effect size is medium (d = 0.52)</li>
+                    </ul>
+
+                    <h3>Common Mistakes</h3>
+
+                    <p><strong>Mistake 1:</strong> Forgetting to check Levene's test</p>
+
+                    <ul>
+                        <li>Always check which row to use before interpreting results</li>
+                    </ul>
+
+                    <p><strong>Mistake 2:</strong> Only reporting significance</p>
+
+                    <ul>
+                        <li>Always report the means and direction of difference</li>
+                    </ul>
+
+                    <p><strong>Mistake 3:</strong> Confusing statistical and practical significance</p>
+
+                    <ul>
+                        <li>A significant result doesn't guarantee practical importance</li>
+                        <li>Always consider effect size</li>
+                    </ul>
+
+                    <p><strong>Mistake 4:</strong> Using independent-samples when you should use paired-samples</p>
+
+                    <ul>
+                        <li>This is the most common error in M3</li>
+                        <li>Always verify your design choice</li>
+                    </ul>
+
+                    <div class="knowledge-check-item" data-question-id="tab2-q1">
+                        <p class="question-text"><strong>Question 1:</strong> In an independent-samples t-test, Levene's test has p = .023. Which row of the t-test output should you use?</p>
+                        <ul class="question-options">
+                            <li>A) "Equal variances assumed"</li>
+                            <li>B) "Equal variances not assumed"</li>
+                            <li>C) Either row, they're the same</li>
+                            <li>D) It doesn't matter</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <div class="answer-content">
+                                <p class="correct-answer">Correct Answer: B) "Equal variances not assumed"</p>
+                                <p class="explanation">Why this is correct: When Levene's test is significant (p ≤ .05), it means the assumption of equal variances is violated. Therefore, you must use the "Equal variances not assumed" row, which uses a modified calculation that doesn't assume the groups have equal variances.</p>
+                                <p class="explanation">Why the others are incorrect:</p>
+                                <ul>
+                                    <li>A) "Equal variances assumed": This row assumes the groups have equal variances, but Levene's test just told us they don't!</li>
+                                    <li>C) Either row: The rows can give different results. Using the wrong one can lead to incorrect conclusions.</li>
+                                    <li>D) It doesn't matter: It absolutely matters! Using the wrong assumption can affect your p-value and degrees of freedom.</li>
+                                </ul>
+                                <p class="application-tip">💡 Application Tip: Always check Levene's test first, then use the appropriate row. This is a critical step that many students miss!</p>
+                            </div>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab2-q1')">Show Answer</button>
+                    </div>
+
+                    <div class="knowledge-check-item" data-question-id="tab2-q2">
+                        <p class="question-text"><strong>Question 2:</strong> An independent-samples t-test comparing two groups yields t(38) = 2.45, p = .019, d = 0.78. The mean for Group A is 85.2 and the mean for Group B is 78.9. How should you interpret this result?</p>
+                        <ul class="question-options">
+                            <li>A) Group A is significantly higher than Group B, with a large effect size</li>
+                            <li>B) The difference is not significant because the means are close</li>
+                            <li>C) Group B is significantly higher than Group A</li>
+                            <li>D) The effect size is small</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <div class="answer-content">
+                                <p class="correct-answer">Correct Answer: A) Group A is significantly higher than Group B, with a large effect size</p>
+                                <p class="explanation">Why this is correct: The p-value (.019) is less than .05, so the difference is statistically significant. Group A's mean (85.2) is higher than Group B's mean (78.9), so Group A is significantly higher. Cohen's d = 0.78 is approaching the 0.8 threshold for a large effect size and represents a medium-to-large effect.</p>
+                                <p class="explanation">Why the others are incorrect:</p>
+                                <ul>
+                                    <li>B) Not significant: p = .019 is less than .05, so it IS significant.</li>
+                                    <li>C) Group B higher: Group A's mean (85.2) > Group B's mean (78.9), so A is higher, not B.</li>
+                                    <li>D) Small effect: d = 0.78 is approaching a large effect size, not small (small is typically d = 0.2).</li>
+                                </ul>
+                                <p class="application-tip">💡 Application Tip: Always report the direction of difference by looking at which mean is higher, and interpret effect sizes using standard guidelines (small: d = 0.2, medium: d = 0.5, large: d = 0.8).</p>
+                            </div>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab2-q2')">Show Answer</button>
+                    </div>
+
+                    <div class="knowledge-check-item" data-question-id="tab2-q3">
+                        <p class="question-text"><strong>Question 3:</strong> What is the null hypothesis for an independent-samples t-test?</p>
+                        <ul class="question-options">
+                            <li>A) The two sample means are equal</li>
+                            <li>B) The two population means are equal</li>
+                            <li>C) The difference between means is zero</li>
+                            <li>D) Both B and C</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <div class="answer-content">
+                                <p class="correct-answer">Correct Answer: D) Both B and C</p>
+                                <p class="explanation">Why this is correct: The null hypothesis states that the two population means are equal (μ₁ = μ₂). Since the population means are equal, their difference is zero (μ₁ - μ₂ = 0). These are two ways of expressing the same null hypothesis.</p>
+                                <p class="explanation">Why A is incorrect:</p>
+                                <ul>
+                                    <li>A) Sample means equal: We don't test whether sample means are equal - we test whether population means are equal. Sample means will almost never be exactly equal due to sampling error.</li>
+                                </ul>
+                                <p class="review-tip">💭 Need to review? See Part 3: The Independent-Samples t-Test for the hypothesis testing framework.</p>
+                            </div>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab2-q3')">Show Answer</button>
+                    </div>
+                </div>
+
+                <div id="tab-3" class="tab-panel">
+                    <h2>Part 4: The Paired-Samples t-Test</h2>
+
+                    <blockquote>
+                        <p><strong>Before proceeding:</strong> Make sure you've determined that paired-samples is the right test for your design (see Part 2). If your data involves two completely different groups (not the same people), you need the independent-samples t-test instead.</p>
+                    </blockquote>
+
+                    <h3>Why Paired-Samples Tests Are More Powerful</h3>
+
+                    <p>The paired-samples t-test has a major advantage: <strong>it eliminates individual differences</strong>. Here's why this matters:</p>
+
+                    <p><strong>The Problem with Independent Groups:</strong><br>
+                    When you compare two different groups, individual differences (ability, motivation, background) create "noise" that can hide true effects. Even if your treatment works, these individual differences might make it hard to detect.</p>
+
+                    <p><strong>The Solution with Paired Samples:</strong><br>
+                    By comparing each person to themselves, you control for all individual differences. This makes it much easier to detect true effects.</p>
+
+                    <h3>The Difference Score Approach</h3>
+
+                    <p>The paired-samples t-test is clever because it transforms a two-sample problem back into a one-sample problem:</p>
+
+                    <p><strong>Step 1:</strong> Calculate difference scores for each pair</p>
+
+                    <ul>
+                        <li>Difference = Score_Time2 - Score_Time1</li>
+                        <li>Or: Difference = Score_ConditionA - Score_ConditionB</li>
+                    </ul>
+
+                    <blockquote>
+                        <p><strong>💡 Important:</strong> The order matters! If Difference = Time2 - Time1:</p>
+                        <ul>
+                            <li><strong>Positive difference</strong> means Time2 scores are higher</li>
+                            <li><strong>Negative difference</strong> means Time2 scores are lower (Time1 was higher)</li>
+                        </ul>
+                        <p>Always note which direction you're subtracting to interpret your results correctly.</p>
+                    </blockquote>
+
+                    <p><strong>Step 2:</strong> Create a single sample of difference scores</p>
+
+                    <p><strong>Step 3:</strong> Run a one-sample t-test on the difference scores</p>
+
+                    <ul>
+                        <li>H₀: μ_difference = 0</li>
+                        <li>H₁: μ_difference ≠ 0</li>
+                    </ul>
+
+                    <h3>Conceptual Foundation</h3>
+
+                    <p><strong>The Logic:</strong><br>
+                    If there's no real difference between conditions, the difference scores should center around 0. If there is a real difference, the difference scores should be systematically positive or negative.</p>
+
+                    <p><strong>Test Statistic:</strong></p>
+
+                    <pre><code>t = M_difference / SE_difference</code></pre>
+
+                    <p>Where:</p>
+
+                    <ul>
+                        <li>M_difference = mean of the difference scores</li>
+                        <li>SE_difference = standard error of the difference scores</li>
+                    </ul>
+
+                    <h3>Step-by-Step Process</h3>
+
+                    <p><strong>Step 1: Calculate Difference Scores</strong><br>
+                    For each participant, calculate: D = X₂ - X₁</p>
+
+                    <p><strong>Step 2: State Your Hypotheses</strong></p>
+
+                    <ul>
+                        <li>H₀: μ_difference = 0 (no difference between conditions)</li>
+                        <li>H₁: μ_difference ≠ 0 (there is a difference between conditions)</li>
+                    </ul>
+
+                    <p><strong>Step 3: Check Assumptions</strong></p>
+
+                    <ul>
+                        <li>Independence of observations</li>
+                        <li>Normality of difference scores</li>
+                        <li>(No homogeneity of variance assumption needed)</li>
+                    </ul>
+
+                    <p><strong>Step 4: Calculate the t-statistic</strong></p>
+
+                    <ul>
+                        <li>t = M_difference / (s_difference / √n)</li>
+                        <li>df = n - 1 (where n is the number of pairs)</li>
+                    </ul>
+
+                    <p><strong>Step 5: Make a decision</strong></p>
+
+                    <ul>
+                        <li>Compare p-value to α</li>
+                        <li>Interpret the direction based on the sign of M_difference</li>
+                    </ul>
+
+                    <h3>Worked Example: Memory Decline</h3>
+
+                    <p><strong>Research Question:</strong> Do executive function scores decline significantly from age 70 to age 80?</p>
+
+                    <p><strong>Data (first 5 participants):</strong></p>
+
+                    <pre><code>Participant  Age70  Age80  Difference
+1            95     89     -6
+2            92     88     -4
+3            98     90     -8
+4            87     85     -2
+5            94     91     -3</code></pre>
+
+                    <p><strong>Calculations:</strong></p>
+
+                    <ul>
+                        <li>n = 20 pairs</li>
+                        <li>M_difference = -4.2</li>
+                        <li>s_difference = 2.8</li>
+                        <li>SE_difference = 2.8 / √20 = 0.626</li>
+                    </ul>
+
+                    <p><strong>t-test:</strong></p>
+
+                    <ul>
+                        <li>t = -4.2 / 0.626 = -6.71</li>
+                        <li>df = 19</li>
+                        <li>p < .001</li>
+                    </ul>
+
+                    <p><strong>Interpretation:</strong></p>
+
+                    <ul>
+                        <li>Reject H₀ (p < .001)</li>
+                        <li>Executive function scores significantly decline from age 70 to 80</li>
+                        <li>The negative difference score confirms the decline</li>
+                    </ul>
+
+                    <h3>When to Use vs. Avoid Paired-Samples</h3>
+
+                    <p><strong>Use Paired-Samples When:</strong></p>
+
+                    <ul>
+                        <li>Same participants measured twice</li>
+                        <li>Natural pairs (twins, siblings)</li>
+                        <li>Matched participants</li>
+                        <li>You want maximum power to detect effects</li>
+                    </ul>
+
+                    <p><strong>Avoid Paired-Samples When:</strong></p>
+
+                    <ul>
+                        <li>Carryover effects are likely</li>
+                        <li>Participants might figure out the hypothesis</li>
+                        <li>High dropout risk</li>
+                        <li>Order effects are a concern</li>
+                    </ul>
+
+                    <h3>Advantages of Paired-Samples Design</h3>
+
+                    <ol>
+                        <li><strong>Controls individual differences:</strong> Each person serves as their own control</li>
+                        <li><strong>More statistical power:</strong> Easier to detect true effects</li>
+                        <li><strong>Fewer participants needed:</strong> Each person contributes to both conditions</li>
+                        <li><strong>Eliminates between-group confounds:</strong> No need to worry about group differences</li>
+                    </ol>
+
+                    <h3>Disadvantages of Paired-Samples Design</h3>
+
+                    <ol>
+                        <li><strong>Carryover effects:</strong> First condition might affect second condition</li>
+                        <li><strong>Demand characteristics:</strong> Participants might figure out the hypothesis</li>
+                        <li><strong>Order effects:</strong> Which condition comes first might matter</li>
+                        <li><strong>Dropout risk:</strong> Need the same people for both measurements</li>
+                    </ol>
+
+                    <div class="knowledge-check-item" data-question-id="tab3-q1">
+                        <p class="question-text"><strong>Question 1:</strong> A researcher measures anxiety levels in 15 patients before and after therapy. The mean difference score is +8.5 points. What does this tell us?</p>
+                        <ul class="question-options">
+                            <li>A) Anxiety increased after therapy</li>
+                            <li>B) Anxiety decreased after therapy</li>
+                            <li>C) There was no change in anxiety</li>
+                            <li>D) We need the p-value to know</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <div class="answer-content">
+                                <p class="correct-answer">Correct Answer: A) Anxiety increased after therapy</p>
+                                <p class="explanation">Why this is correct: The positive difference score (+8.5) means that the "after" scores are higher than the "before" scores. Since difference = After - Before, a positive value indicates that anxiety levels increased after therapy.</p>
+                                <p class="explanation">Why the others are incorrect:</p>
+                                <ul>
+                                    <li>B) Anxiety decreased: A decrease would show a negative difference score (After - Before would be negative).</li>
+                                    <li>C) No change: No change would result in a difference score of 0.</li>
+                                    <li>D) Need p-value: The p-value tells us if the change is statistically significant, but the direction of change comes from the sign of the difference score.</li>
+                                </ul>
+                                <p class="application-tip">💡 Application Tip: Always pay attention to how you calculate difference scores. If Difference = Time2 - Time1, then positive values mean Time2 is higher. If Difference = Time1 - Time2, then positive values mean Time1 is higher.</p>
+                            </div>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab3-q1')">Show Answer</button>
+                    </div>
+
+                    <div class="knowledge-check-item" data-question-id="tab3-q2">
+                        <p class="question-text"><strong>Question 2:</strong> Why are paired-samples t-tests generally more powerful than independent-samples t-tests?</p>
+                        <ul class="question-options">
+                            <li>A) They use fewer participants</li>
+                            <li>B) They eliminate individual differences</li>
+                            <li>C) They have simpler calculations</li>
+                            <li>D) They don't require normality assumptions</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <div class="answer-content">
+                                <p class="correct-answer">Correct Answer: B) They eliminate individual differences</p>
+                                <p class="explanation">Why this is correct: By comparing each person to themselves, paired-samples tests control for all the individual differences (ability, motivation, background, etc.) that can create "noise" in independent-samples tests. This reduction in noise makes it easier to detect true effects.</p>
+                                <p class="explanation">Why the others are incorrect:</p>
+                                <ul>
+                                    <li>A) Fewer participants: While this is true, it's not why they're more powerful. Power comes from controlling variables, not sample size.</li>
+                                    <li>C) Simpler calculations: The calculations aren't necessarily simpler, and simplicity doesn't affect statistical power.</li>
+                                    <li>D) Don't require normality: Both tests have normality assumptions, just for different things (individual scores vs. difference scores).</li>
+                                </ul>
+                                <p class="review-tip">💭 Need to review? See Part 4: The Paired-Samples t-Test for why paired designs are more powerful.</p>
+                            </div>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab3-q2')">Show Answer</button>
+                    </div>
+
+                    <div class="knowledge-check-item" data-question-id="tab3-q3">
+                        <p class="question-text"><strong>Question 3:</strong> In a paired-samples t-test, what does the null hypothesis state?</p>
+                        <ul class="question-options">
+                            <li>A) The two sample means are equal</li>
+                            <li>B) The mean of the difference scores is zero</li>
+                            <li>C) The two population means are equal</li>
+                            <li>D) Both B and C</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <div class="answer-content">
+                                <p class="correct-answer">Correct Answer: D) Both B and C</p>
+                                <p class="explanation">Why this is correct: In a paired-samples t-test, the null hypothesis states that the mean of the difference scores is zero (μ_difference = 0). Since the difference scores represent the difference between the two conditions, if their mean is zero, it means the two population means are equal (μ₁ = μ₂). These are equivalent ways of stating the same null hypothesis.</p>
+                                <p class="explanation">Why A is incorrect:</p>
+                                <ul>
+                                    <li>A) Sample means equal: We don't test whether sample means are equal. We test whether the population means are equal by examining the difference scores.</li>
+                                </ul>
+                                <p class="review-tip">💭 Need to review? See Part 4: The Paired-Samples t-Test for the hypothesis testing framework.</p>
+                            </div>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab3-q3')">Show Answer</button>
+                    </div>
+                </div>
+
+                <div id="tab-4" class="tab-panel">
+                    <h2>Part 6: Effect Sizes for Comparing Means</h2>
+
+                    <h3>Why Effect Size Matters</h3>
+
+                    <p>Statistical significance tells us <strong>whether</strong> there's an effect, but effect size tells us <strong>how big</strong> the effect is. This is crucial for practical interpretation.</p>
+
+                    <h3>Cohen's d for Independent-Samples t-Test</h3>
+
+                    <p><strong>Formula:</strong></p>
+
+                    <pre><code>d = (M₁ - M₂) / s_pooled</code></pre>
+
+                    <p>Where s_pooled is the pooled standard deviation:</p>
+
+                    <p><strong>Equal Variances Assumed:</strong></p>
+
+                    <pre><code>s_pooled = √[((n₁-1)s₁² + (n₂-1)s₂²) / (n₁ + n₂ - 2)]</code></pre>
+
+                    <p><strong>Equal Variances Not Assumed:</strong></p>
+
+                    <pre><code>s_pooled = √[(s₁² + s₂²) / 2]</code></pre>
+
+                    <h3>Cohen's d for Paired-Samples t-Test</h3>
+
+                    <p><strong>Formula:</strong></p>
+
+                    <pre><code>d = M_difference / s_difference</code></pre>
+
+                    <p>Where:</p>
+
+                    <ul>
+                        <li>M_difference = mean of difference scores</li>
+                        <li>s_difference = standard deviation of difference scores</li>
+                    </ul>
+
+                    <h3>Interpretation Guidelines</h3>
+
+                    <p><strong>Cohen's (1988) Guidelines:</strong></p>
+
+                    <ul>
+                        <li><strong>Small effect:</strong> d = 0.2</li>
+                        <li><strong>Medium effect:</strong> d = 0.5</li>
+                        <li><strong>Large effect:</strong> d = 0.8</li>
+                    </ul>
+
+                    <p><strong>Important Notes:</strong></p>
+
+                    <ul>
+                        <li>These are rough guidelines, not strict rules</li>
+                        <li>Context matters - what's "small" in one field might be "large" in another</li>
+                        <li>Always interpret in the context of your research question</li>
+                    </ul>
+
+                    <h3>Worked Examples</h3>
+
+                    <p><strong>Independent-Samples Example:</strong></p>
+
+                    <ul>
+                        <li>Group A: M = 85.2, s = 12.4, n = 25</li>
+                        <li>Group B: M = 78.9, s = 11.8, n = 30</li>
+                        <li>s_pooled = √[((24)(12.4)² + (29)(11.8)²) / (25 + 30 - 2)] = 12.1</li>
+                        <li>d = (85.2 - 78.9) / 12.1 = 0.52 (medium effect)</li>
+                    </ul>
+
+                    <p><strong>Paired-Samples Example:</strong></p>
+
+                    <ul>
+                        <li>M_difference = -4.2</li>
+                        <li>s_difference = 2.8</li>
+                        <li>d = -4.2 / 2.8 = -1.50 (very large effect)</li>
+                        <li>Note: The negative sign indicates direction, but effect size magnitude is 1.50</li>
+                    </ul>
+
+                    <h3>Effect Size vs. Statistical Significance</h3>
+
+                    <p><strong>Key Distinction:</strong></p>
+
+                    <ul>
+                        <li><strong>Statistical significance:</strong> Is the effect real (not due to chance)?</li>
+                        <li><strong>Effect size:</strong> How big is the effect?</li>
+                    </ul>
+
+                    <p><strong>Why Both Matter:</strong></p>
+
+                    <ul>
+                        <li>A statistically significant result might have a tiny effect size</li>
+                        <li>A large effect size might not be statistically significant (small sample)</li>
+                        <li>You need both pieces of information for complete interpretation</li>
+                    </ul>
+
+                    <h3>Practical Significance</h3>
+
+                    <p>Effect sizes help us judge <strong>practical significance</strong>:</p>
+
+                    <p><strong>Example:</strong> A study finds that a new teaching method increases test scores by 2 points (d = 0.15, small effect).</p>
+
+                    <p><strong>Questions to consider:</strong></p>
+
+                    <ul>
+                        <li>Is a 2-point increase meaningful in this context?</li>
+                        <li>What would it cost to implement this method?</li>
+                        <li>Are there other methods with larger effects?</li>
+                    </ul>
+
+                    <h3>Reporting Effect Sizes</h3>
+
+                    <p><strong>APA Style:</strong></p>
+
+                    <ul>
+                        <li>Always report effect size alongside statistical significance</li>
+                        <li>Use the symbol <em>d</em> (italicized)</li>
+                        <li>Include confidence intervals when possible</li>
+                    </ul>
+
+                    <p><strong>Example:</strong><br>
+                    "A paired-samples t-test revealed that executive function scores at age 80 (M = 89.9, SD = 4.9) were significantly lower than at age 70 (M = 94.6, SD = 7.7), <em>t</em>(19) = 3.05, <em>p</em> = .007, <em>d</em> = 0.68."</p>
+
+                    <hr>
+
+                    <h2>Part 7: Assumptions and Diagnostics</h2>
+
+                    <h3>Assumptions of Independent-Samples t-Test</h3>
+
+                    <p><strong>1. Independence of Observations</strong></p>
+
+                    <ul>
+                        <li>Each observation is independent of all others</li>
+                        <li>No participant contributes more than one score per group</li>
+                        <li><strong>How to check:</strong> Review your research design</li>
+                        <li><strong>What to do if violated:</strong> Consider the implications for your conclusions</li>
+                    </ul>
+
+                    <p><strong>2. Normality</strong></p>
+
+                    <ul>
+                        <li>The outcome variable is normally distributed in each population</li>
+                        <li><strong>How to check:</strong> Histograms, Q-Q plots, Shapiro-Wilk test</li>
+                        <li><strong>What to do if violated:</strong>
+                            <ul>
+                                <li>Large samples (n > 30): Usually robust to violations</li>
+                                <li>Small samples: Consider nonparametric alternatives (Mann-Whitney U)</li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <p><strong>3. Homogeneity of Variance</strong></p>
+
+                    <ul>
+                        <li>The variances of the two populations are equal</li>
+                        <li><strong>How to check:</strong> Levene's test</li>
+                        <li><strong>What to do if violated:</strong> Use "Equal variances not assumed" row</li>
+                    </ul>
+
+                    <h3>Assumptions of Paired-Samples t-Test</h3>
+
+                    <p><strong>1. Independence of Observations</strong></p>
+
+                    <ul>
+                        <li>Each pair of observations is independent of all other pairs</li>
+                        <li><strong>How to check:</strong> Review your research design</li>
+                        <li><strong>What to do if violated:</strong> Consider the implications</li>
+                    </ul>
+
+                    <p><strong>2. Normality of Difference Scores</strong></p>
+
+                    <ul>
+                        <li>The difference scores are normally distributed</li>
+                        <li><strong>How to check:</strong> Histogram or Q-Q plot of difference scores</li>
+                        <li><strong>What to do if violated:</strong>
+                            <ul>
+                                <li>Large samples: Usually robust</li>
+                                <li>Small samples: Consider Wilcoxon signed-rank test</li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <p><strong>Note:</strong> Paired-samples t-test does NOT require equal variances between the original groups.</p>
+
+                    <h3>Checking Normality</h3>
+
+                    <p><strong>Visual Methods:</strong></p>
+
+                    <ul>
+                        <li><strong>Histogram:</strong> Look for roughly bell-shaped distribution</li>
+                        <li><strong>Q-Q Plot:</strong> Points should fall roughly on a straight line</li>
+                        <li><strong>Box Plot:</strong> Look for symmetry and appropriate tail lengths</li>
+                    </ul>
+
+                    <p><strong>Statistical Tests:</strong></p>
+
+                    <ul>
+                        <li><strong>Shapiro-Wilk test:</strong> Good for small samples (n < 50)</li>
+                        <li><strong>Kolmogorov-Smirnov test:</strong> Better for large samples</li>
+                        <li><strong>Interpretation:</strong> p > .05 suggests normality</li>
+                    </ul>
+
+                    <h3>What to Do When Assumptions Are Violated</h3>
+
+                    <p><strong>For Normality Violations:</strong></p>
+
+                    <p><strong>Small Samples (n < 30):</strong></p>
+
+                    <ul>
+                        <li>Consider nonparametric alternatives</li>
+                        <li>Independent-samples: Mann-Whitney U test</li>
+                        <li>Paired-samples: Wilcoxon signed-rank test</li>
+                    </ul>
+
+                    <p><strong>Large Samples (n ≥ 30):</strong></p>
+
+                    <ul>
+                        <li>t-tests are usually robust to normality violations</li>
+                        <li>Central Limit Theorem provides protection</li>
+                    </ul>
+
+                    <p><strong>For Variance Violations (Independent-Samples Only):</strong></p>
+
+                    <ul>
+                        <li>Use "Equal variances not assumed" row</li>
+                        <li>This automatically handles the violation</li>
+                    </ul>
+
+                    <h3>Robust Alternatives</h3>
+
+                    <p><strong>When Assumptions Are Severely Violated:</strong></p>
+
+                    <p><strong>Independent-Samples:</strong></p>
+
+                    <ul>
+                        <li><strong>Mann-Whitney U test:</strong> Nonparametric alternative</li>
+                        <li>Tests whether one group tends to have higher scores than the other</li>
+                        <li>Less powerful but more robust</li>
+                    </ul>
+
+                    <p><strong>Paired-Samples:</strong></p>
+
+                    <ul>
+                        <li><strong>Wilcoxon signed-rank test:</strong> Nonparametric alternative</li>
+                        <li>Tests whether the median difference is significantly different from zero</li>
+                        <li>Good alternative when difference scores are not normal</li>
+                    </ul>
+
+                    <h3>Diagnostic Checklist</h3>
+
+                    <p><strong>Before Running Your t-Test:</strong></p>
+
+                    <ul>
+                        <li>☐ <strong>Design Check:</strong> Are you using the right test (independent vs. paired)?</li>
+                        <li>☐ <strong>Independence:</strong> Are observations truly independent?</li>
+                        <li>☐ <strong>Normality:</strong> Check histograms/Q-Q plots of outcome variables (or difference scores for paired)</li>
+                        <li>☐ <strong>Variance:</strong> Run Levene's test for independent-samples</li>
+                        <li>☐ <strong>Sample Size:</strong> Is your sample large enough for the assumptions?</li>
+                    </ul>
+
+                    <p><strong>After Running Your Test:</strong></p>
+
+                    <ul>
+                        <li>☐ <strong>Levene's Test:</strong> Which row should you use?</li>
+                        <li>☐ <strong>Effect Size:</strong> Calculate and interpret Cohen's d</li>
+                        <li>☐ <strong>Practical Significance:</strong> Is the effect meaningful in context?</li>
+                    </ul>
+
+                    <div class="knowledge-check-item" data-question-id="tab4-q1">
+                        <p class="question-text"><strong>Question 1:</strong> A study found statistically significant results for a hypothesis tested with an independent-samples t-test. The author reported the effect size as 1.24. What is true of the two sample means?</p>
+                        <ul class="question-options">
+                            <li>A) The two sample means overlap 85 percent</li>
+                            <li>B) The two sample means are 1.24 standard deviations apart</li>
+                            <li>C) The two sample means likely come from the same distribution</li>
+                            <li>D) The two sample means do not indicate meaningful differences between groups</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <div class="answer-content">
+                                <p class="correct-answer">Correct Answer: B) The two sample means are 1.24 standard deviations apart</p>
+                                <p class="explanation">Why this is correct: Cohen's d measures the standardized difference between means. A d = 1.24 means the two sample means are 1.24 standard deviation units apart, which is a very large effect size.</p>
+                                <p class="explanation">Why the others are incorrect:</p>
+                                <ul>
+                                    <li>A) Overlap 85 percent: A large effect size (d = 1.24) means LESS overlap, not more. Large effects mean the distributions are well-separated.</li>
+                                    <li>C) Same distribution: If means are 1.24 SDs apart, they clearly don't come from the same distribution.</li>
+                                    <li>D) No meaningful differences: A d = 1.24 is a very large effect, indicating highly meaningful differences between groups.</li>
+                                </ul>
+                                <p class="review-tip">💭 Need to review? See Part 6.2: Cohen's d for Independent-Samples t-Tests for the interpretation of effect sizes.</p>
+                            </div>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab4-q1')">Show Answer</button>
+                    </div>
+
+                    <div class="knowledge-check-item" data-question-id="tab4-q2">
+                        <p class="question-text"><strong>Question 2:</strong> What would be the effect size interpretation for Cohen's d = 0.50 in a paired-samples t-test?</p>
+                        <ul class="question-options">
+                            <li>A) Small effect</li>
+                            <li>B) Medium effect</li>
+                            <li>C) Large effect</li>
+                            <li>D) Very large effect</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <div class="answer-content">
+                                <p class="correct-answer">Correct Answer: B) Medium effect</p>
+                                <p class="explanation">Why this is correct: According to Cohen's (1988) guidelines: d = 0.2 is small, d = 0.5 is medium, and d = 0.8 is large. This applies to both independent-samples and paired-samples t-tests.</p>
+                                <p class="explanation">Why the others are incorrect:</p>
+                                <ul>
+                                    <li>A) Small effect: Small effects are around d = 0.2, which is smaller than 0.5.</li>
+                                    <li>C) Large effect: Large effects are around d = 0.8, which is larger than 0.5.</li>
+                                    <li>D) Very large effect: Cohen's original guidelines only go up to "large" (d = 0.8). Values above 0.8 are typically considered very large.</li>
+                                </ul>
+                                <p class="application-tip">💡 Application Tip: Remember Cohen's benchmarks: 0.2 (small), 0.5 (medium), 0.8 (large). These are rough guidelines but useful for initial interpretation.</p>
+                            </div>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab4-q2')">Show Answer</button>
+                    </div>
+
+                    <div class="knowledge-check-item" data-question-id="tab4-q3">
+                        <p class="question-text"><strong>Question 3:</strong> How do you calculate Cohen's d for a paired-samples t-test?</p>
+                        <ul class="question-options">
+                            <li>A) d = (M₁ - M₂) / SD_pooled</li>
+                            <li>B) d = (M₁ - M₂) / SD₁</li>
+                            <li>C) d = M_diff / SD_diff</li>
+                            <li>D) d = t / √n</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <div class="answer-content">
+                                <p class="correct-answer">Correct Answer: C) d = M_diff / SD_diff</p>
+                                <p class="explanation">Why this is correct: For paired-samples t-tests, Cohen's d is calculated using the mean of the difference scores (M_diff) divided by the standard deviation of the difference scores (SD_diff).</p>
+                                <p class="explanation">Why the others are incorrect:</p>
+                                <ul>
+                                    <li>A) Using pooled SD: This is the formula for independent-samples t-tests, not paired-samples.</li>
+                                    <li>B) Using SD₁: This doesn't use the appropriate standard deviation for paired-samples tests.</li>
+                                    <li>D) t / √n: This is an alternative formula but not the most common one for paired-samples Cohen's d.</li>
+                                </ul>
+                                <p class="review-tip">💭 Need to review? See Part 6.3: Cohen's d for Paired-Samples t-Tests for the correct formula.</p>
+                            </div>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab4-q3')">Show Answer</button>
+                    </div>
+                </div>
+
+                <div id="tab-5" class="tab-panel">
+                    <h2>Part 8: Putting It All Together</h2>
+
+                    <h3>The Decision Flowchart</h3>
+
+                    <pre><code>Do you want to compare two means?
+├─ NO → Use one-sample t-test (M2)
+└─ YES
+   ├─ Are the scores from the same people or matched pairs?
+   │  ├─ YES → Paired-Samples t-Test
+   │  │   ├─ Check normality of difference scores
+   │  │   ├─ Run paired-samples t-test
+   │  │   ├─ Calculate Cohen's d
+   │  │   └─ Report results
+   │  └─ NO → Independent-Samples t-Test
+   │      ├─ Check normality for each group
+   │      ├─ Run Levene's test
+   │      ├─ Run independent-samples t-test
+   │      ├─ Use appropriate row based on Levene's test
+   │      ├─ Calculate Cohen's d
+   │      └─ Report results
+</code></pre>
+
+                    <h3>Comparison Table: One-Sample vs. Independent vs. Paired</h3>
+
+                    <table>
+                        <tr>
+                            <th>Aspect</th>
+                            <th>One-Sample</th>
+                            <th>Independent-Samples</th>
+                            <th>Paired-Samples</th>
+                        </tr>
+                        <tr>
+                            <td><strong>Purpose</strong></td>
+                            <td>Compare sample to known population</td>
+                            <td>Compare two different groups</td>
+                            <td>Compare same group twice</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Design</strong></td>
+                            <td>Single group</td>
+                            <td>Between-subjects</td>
+                            <td>Within-subjects</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Null Hypothesis</strong></td>
+                            <td>μ = known value</td>
+                            <td>μ₁ = μ₂</td>
+                            <td>μ_difference = 0</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Test Statistic</strong></td>
+                            <td>t = (M - μ) / SE</td>
+                            <td>t = (M₁ - M₂) / SE</td>
+                            <td>t = M_difference / SE</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Assumptions</strong></td>
+                            <td>Normality, Independence</td>
+                            <td>Normality, Independence, Equal variances</td>
+                            <td>Normality of differences, Independence</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Effect Size</strong></td>
+                            <td>Cohen's d = (M - μ) / s</td>
+                            <td>Cohen's d = (M₁ - M₂) / s_pooled</td>
+                            <td>Cohen's d = M_difference / s_difference</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Power</strong></td>
+                            <td>Medium</td>
+                            <td>Lower (due to individual differences)</td>
+                            <td>Higher (controls individual differences)</td>
+                        </tr>
+                    </table>
+
+                    <h3>Common Scenarios and Solutions</h3>
+
+                    <p><strong>Scenario 1: Comparing Two Different Groups</strong></p>
+
+                    <ul>
+                        <li><strong>Example:</strong> Male vs. female salaries</li>
+                        <li><strong>Design:</strong> Between-subjects</li>
+                        <li><strong>Test:</strong> Independent-samples t-test</li>
+                        <li><strong>Key Steps:</strong> Check Levene's test, use appropriate row</li>
+                    </ul>
+
+                    <p><strong>Scenario 2: Before and After Measurement</strong></p>
+
+                    <ul>
+                        <li><strong>Example:</strong> Test scores before and after training</li>
+                        <li><strong>Design:</strong> Within-subjects</li>
+                        <li><strong>Test:</strong> Paired-samples t-test</li>
+                        <li><strong>Key Steps:</strong> Calculate difference scores, check normality of differences</li>
+                    </ul>
+
+                    <p><strong>Scenario 3: Matched Pairs</strong></p>
+
+                    <ul>
+                        <li><strong>Example:</strong> Twin studies, married couples</li>
+                        <li><strong>Design:</strong> Within-subjects (matched)</li>
+                        <li><strong>Test:</strong> Paired-samples t-test</li>
+                        <li><strong>Key Steps:</strong> Treat as paired, calculate difference scores</li>
+                    </ul>
+
+                    <p><strong>Scenario 4: Multiple Time Points</strong></p>
+
+                    <ul>
+                        <li><strong>Example:</strong> Baseline, 6 months, 12 months</li>
+                        <li><strong>Design:</strong> Repeated measures</li>
+                        <li><strong>Test:</strong> Repeated measures ANOVA (M4)</li>
+                        <li><strong>Note:</strong> t-tests only compare two time points</li>
+                    </ul>
+
+                    <h3>APA Reporting Template</h3>
+
+                    <p><strong>Independent-Samples t-Test:</strong><br>
+                    "An independent-samples t-test [with Welch's correction if applicable] revealed that [Group A] (M = [mean], SD = [sd]) scored significantly [higher/lower] than [Group B] (M = [mean], SD = [sd]), t([df]) = [t-value], p = [p-value], d = [effect-size]."</p>
+
+                    <p><strong>Example:</strong> "An independent-samples t-test revealed that students who received tutoring (M = 85.2, SD = 12.4) scored significantly higher than students who did not receive tutoring (M = 78.9, SD = 11.8), t(53) = 2.15, p = .037, d = 0.52."</p>
+
+                    <p><strong>Paired-Samples t-Test:</strong><br>
+                    "A paired-samples t-test revealed that [Condition 2] scores (M = [mean], SD = [sd]) were significantly [higher/lower] than [Condition 1] scores (M = [mean], SD = [sd]), t([df]) = [t-value], p = [p-value], d = [effect-size]."</p>
+
+                    <p><strong>Example:</strong> "A paired-samples t-test revealed that post-intervention anxiety scores (M = 42.5, SD = 8.3) were significantly lower than pre-intervention scores (M = 51.0, SD = 9.1), t(14) = -3.45, p = .004, d = 0.89."</p>
+
+                    <h3>Key Takeaways</h3>
+
+                    <ol>
+                        <li><strong>Design determines the test:</strong> Always start by identifying your research design</li>
+                        <li><strong>Check assumptions:</strong> Don't skip the diagnostic steps</li>
+                        <li><strong>Use the right row:</strong> Levene's test tells you which output to trust</li>
+                        <li><strong>Report completely:</strong> Include means, significance, and effect size</li>
+                        <li><strong>Consider practical significance:</strong> Statistical significance isn't everything</li>
+                    </ol>
+
+                    <hr>
+
+                    <h2>Part 9: Practical Guide: SPSS</h2>
+
+                    <h3>Independent-Samples t-Test in SPSS</h3>
+
+                    <p><strong>Step 1: Data Setup</strong></p>
+
+                    <ul>
+                        <li>Ensure your grouping variable has proper value labels</li>
+                        <li>Check that your continuous variable is set to "Scale" measure</li>
+                    </ul>
+
+                    <p><strong>Step 2: Running the Test</strong></p>
+
+                    <ol>
+                        <li>Go to <code>Analyze</code> → <code>Compare Means</code> → <code>Independent-Samples T Test</code></li>
+                        <li>Move your continuous variable to "Test Variable(s)"</li>
+                        <li>Move your categorical variable to "Grouping Variable"</li>
+                        <li>Click <code>Define Groups</code> and enter the values for your two groups</li>
+                        <li>Click <code>Options</code> and check "Estimate effect sizes" (SPSS v27+)</li>
+                        <li>Click <code>Continue</code> and <code>OK</code></li>
+                    </ol>
+
+                    <p><strong>Step 3: Reading the Output</strong></p>
+
+                    <ul>
+                        <li><strong>Group Statistics:</strong> Shows means and standard deviations</li>
+                        <li><strong>Levene's Test:</strong> Check the "Sig." column</li>
+                        <li><strong>Independent Samples Test:</strong> Use the appropriate row based on Levene's test</li>
+                        <li><strong>Effect Sizes:</strong> If requested, appears in a separate table</li>
+                    </ul>
+
+                    <h3>Paired-Samples t-Test in SPSS</h3>
+
+                    <p><strong>Step 1: Data Setup</strong></p>
+
+                    <ul>
+                        <li>Ensure both variables are in the same row (same participant)</li>
+                        <li>Check that both variables are set to "Scale" measure</li>
+                    </ul>
+
+                    <p><strong>Step 2: Running the Test</strong></p>
+
+                    <ol>
+                        <li>Go to <code>Analyze</code> → <code>Compare Means</code> → <code>Paired-Samples T Test</code></li>
+                        <li>Select your first variable and then your second variable</li>
+                        <li>They will appear as a pair in the "Paired Variables" box</li>
+                        <li>Click <code>Options</code> and check "Estimate effect sizes" (SPSS v27+)</li>
+                        <li>Click <code>OK</code></li>
+                    </ol>
+
+                    <p><strong>Step 3: Reading the Output</strong></p>
+
+                    <ul>
+                        <li><strong>Paired Samples Statistics:</strong> Shows means and standard deviations for each variable</li>
+                        <li><strong>Paired Samples Correlations:</strong> Shows correlation between the two variables</li>
+                        <li><strong>Paired Samples Test:</strong> Shows the t-test results</li>
+                        <li><strong>Effect Sizes:</strong> If requested, appears in a separate table</li>
+                    </ul>
+
+                    <h3>Troubleshooting Common Issues</h3>
+
+                    <p><strong>Issue 1: "Grouping Variable has more than two groups"</strong></p>
+
+                    <ul>
+                        <li><strong>Solution:</strong> Your grouping variable has more than two values</li>
+                        <li><strong>Fix:</strong> Recode the variable or use a different grouping variable</li>
+                    </ul>
+
+                    <p><strong>Issue 2: "No cases to process"</strong></p>
+
+                    <ul>
+                        <li><strong>Solution:</strong> Check for missing data or incorrect group definitions</li>
+                        <li><strong>Fix:</strong> Define groups correctly or handle missing data</li>
+                    </ul>
+
+                    <p><strong>Issue 3: "Equal variances not assumed" row shows different results</strong></p>
+
+                    <ul>
+                        <li><strong>Solution:</strong> This is normal! Use the row indicated by Levene's test</li>
+                        <li><strong>Fix:</strong> Always check Levene's test first</li>
+                    </ul>
+
+                    <p><strong>Issue 4: Effect size not showing</strong></p>
+
+                    <ul>
+                        <li><strong>Solution:</strong> Your SPSS version might not have this option</li>
+                        <li><strong>Fix:</strong> Calculate manually using the formulas provided</li>
+                    </ul>
+
+                    <h3>Best Practices</h3>
+
+                    <ol>
+                        <li><strong>Always check Levene's test first</strong> before interpreting t-test results</li>
+                        <li><strong>Request effect sizes</strong> if your SPSS version supports it</li>
+                        <li><strong>Save your output file</strong> (.spv) along with your data file (.sav)</li>
+                        <li><strong>Use value labels</strong> for categorical variables to make output readable</li>
+                        <li><strong>Check assumptions</strong> before running tests</li>
+                        <li><strong>Report means and standard deviations</strong> along with significance tests</li>
+                    </ol>
+
+                    <hr>
+
+                    <h2>Part 10: Summary and Key Formulas</h2>
+
+                    <h3>Key Concepts Review</h3>
+
+                    <p><strong>The Fundamental Question:</strong> Are you comparing the same people twice (paired) or different people (independent)?</p>
+
+                    <p><strong>Independent-Samples t-Test:</strong></p>
+
+                    <ul>
+                        <li>Use when comparing two different groups</li>
+                        <li>Must check Levene's test for equal variances</li>
+                        <li>Less powerful due to individual differences</li>
+                        <li>Formula: t = (M₁ - M₂) / SE(M₁ - M₂)</li>
+                    </ul>
+
+                    <p><strong>Paired-Samples t-Test:</strong></p>
+
+                    <ul>
+                        <li>Use when comparing same people twice or matched pairs</li>
+                        <li>More powerful due to controlling individual differences</li>
+                        <li>Uses difference scores: t = M_difference / SE_difference</li>
+                        <li>No homogeneity of variance assumption needed</li>
+                    </ul>
+
+                    <h3>Essential Formulas</h3>
+
+                    <p><strong>Independent-Samples t-Test:</strong></p>
+
+                    <pre><code>t = (M₁ - M₂) / SE(M₁ - M₂)
+
+SE (equal variances) = √[(s₁²/n₁) + (s₂²/n₂)]
+
+s_pooled = √[((n₁-1)s₁² + (n₂-1)s₂²) / (n₁ + n₂ - 2)]
+
+df = n₁ + n₂ - 2</code></pre>
+
+                    <p><strong>Paired-Samples t-Test:</strong></p>
+
+                    <pre><code>t = M_difference / (s_difference / √n)
+
+df = n - 1
+
+d = M_difference / s_difference</code></pre>
+
+                    <p><strong>Effect Sizes:</strong></p>
+
+                    <pre><code>Independent: d = (M₁ - M₂) / s_pooled
+Paired: d = M_difference / s_difference</code></pre>
+
+                    <h3>Decision Framework</h3>
+
+                    <ol>
+                        <li><strong>Identify your design:</strong> Same people twice or different people?</li>
+                        <li><strong>Choose your test:</strong> Paired or independent?</li>
+                        <li><strong>Check assumptions:</strong> Normality, independence, equal variances (independent only)</li>
+                        <li><strong>Run Levene's test:</strong> If independent-samples</li>
+                        <li><strong>Interpret results:</strong> Use correct row, report effect size</li>
+                        <li><strong>Report in APA style:</strong> Include means, significance, effect size</li>
+                    </ol>
+
+                    <h3>Common Mistakes to Avoid</h3>
+
+                    <ol>
+                        <li><strong>Using the wrong test:</strong> Most common error in M3</li>
+                        <li><strong>Ignoring Levene's test:</strong> Always check which row to use</li>
+                        <li><strong>Only reporting significance:</strong> Include means and effect size</li>
+                        <li><strong>Confusing statistical and practical significance:</strong> Both matter</li>
+                        <li><strong>Not checking assumptions:</strong> Can invalidate your results</li>
+                    </ol>
+
+                    <h3>Connections to Other Modules</h3>
+
+                    <ul>
+                        <li><strong>From M2:</strong> One-sample t-test concepts apply to paired-samples (difference scores)</li>
+                        <li><strong>To M4:</strong> ANOVA extends t-tests to compare more than two groups</li>
+                        <li><strong>To M5:</strong> Two-way ANOVA allows for multiple independent variables</li>
+                        <li><strong>To M6:</strong> Regression provides more flexible modeling approaches</li>
+                    </ul>
+
+                    <h3>Final Thoughts</h3>
+
+                    <p>The choice between independent-samples and paired-samples t-tests is one of the most important decisions in statistical analysis. Getting this right is crucial because:</p>
+
+                    <ol>
+                        <li><strong>It affects your conclusions:</strong> Wrong test = wrong results</li>
+                        <li><strong>It affects your power:</strong> Paired tests are more sensitive</li>
+                        <li><strong>It affects your assumptions:</strong> Different tests have different requirements</li>
+                        <li><strong>It affects your interpretation:</strong> Different tests answer different questions</li>
+                    </ol>
+
+                    <p>Remember: <strong>The research design determines the statistical test, not the other way around.</strong> Always start with your research question and design, then choose the appropriate statistical approach.</p>
+
+                    <hr>
+
+                    <h2>Quick Reference Card</h2>
+
+                    <h3>When to Use Each Test</h3>
+
+                    <table>
+                        <tr>
+                            <th>Question to Ask</th>
+                            <th>Answer</th>
+                            <th>Test to Use</th>
+                        </tr>
+                        <tr>
+                            <td>Are the same people measured twice?</td>
+                            <td>YES</td>
+                            <td>Paired-Samples t-Test</td>
+                        </tr>
+                        <tr>
+                            <td>Are the participants meaningfully matched (twins, couples)?</td>
+                            <td>YES</td>
+                            <td>Paired-Samples t-Test</td>
+                        </tr>
+                        <tr>
+                            <td>Are there two completely different groups?</td>
+                            <td>YES</td>
+                            <td>Independent-Samples t-Test</td>
+                        </tr>
+                        <tr>
+                            <td>Do I need to check equal variances?</td>
+                            <td>Independent only</td>
+                            <td>Run Levene's test</td>
+                        </tr>
+                    </table>
+
+                    <h3>Critical Steps Checklist</h3>
+
+                    <p><strong>For Independent-Samples:</strong></p>
+
+                    <ul>
+                        <li>☐ Verify groups are truly independent</li>
+                        <li>☐ Check normality for each group</li>
+                        <li>☐ Run Levene's test (p > .05 = equal variances)</li>
+                        <li>☐ Use correct row in output based on Levene's test</li>
+                        <li>☐ Calculate Cohen's d using pooled SD</li>
+                        <li>☐ Report: groups, means, SDs, t, df, p, d</li>
+                    </ul>
+
+                    <p><strong>For Paired-Samples:</strong></p>
+
+                    <ul>
+                        <li>☐ Verify data is paired correctly</li>
+                        <li>☐ Calculate difference scores</li>
+                        <li>☐ Check normality of difference scores</li>
+                        <li>☐ Run paired-samples t-test</li>
+                        <li>☐ Calculate Cohen's d using difference SD</li>
+                        <li>☐ Report: conditions, means, SDs, t, df, p, d</li>
+                    </ul>
+
+                    <h3>Effect Size Interpretation</h3>
+
+                    <table>
+                        <tr>
+                            <th>Cohen's d</th>
+                            <th>Interpretation</th>
+                        </tr>
+                        <tr>
+                            <td>0.2</td>
+                            <td>Small effect</td>
+                        </tr>
+                        <tr>
+                            <td>0.5</td>
+                            <td>Medium effect</td>
+                        </tr>
+                        <tr>
+                            <td>0.8</td>
+                            <td>Large effect</td>
+                        </tr>
+                    </table>
+
+                    <div class="knowledge-check-item" data-question-id="tab5-q1">
+                        <p class="question-text"><strong>Question 1:</strong> Mehl et al. (2007) published a study comparing the number of words uttered per day by men and women (396 participants total). Which statistical test should they use to analyze their data?</p>
+                        <ul class="question-options">
+                            <li>A) Independent-samples t-test</li>
+                            <li>B) Single-sample t-test</li>
+                            <li>C) Z-test</li>
+                            <li>D) Paired-samples t-test</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <div class="answer-content">
+                                <p class="correct-answer">Correct Answer: A) Independent-samples t-test</p>
+                                <p class="explanation">Why this is correct: The researchers are comparing two different groups (men vs. women) on the same variable (words per day). This is a classic independent-samples design where different people are in each group.</p>
+                                <p class="explanation">Why the others are incorrect:</p>
+                                <ul>
+                                    <li>B) Single-sample t-test: This would compare one group to a known population value, but here they're comparing two groups to each other.</li>
+                                    <li>C) Z-test: This requires knowing the population standard deviation, which they don't have.</li>
+                                    <li>D) Paired-samples t-test: This would be used if the same people were measured twice or if there were matched pairs, but here they have two separate groups.</li>
+                                </ul>
+                                <p class="review-tip">💭 Need to review? See Part 2: Research Design Decisions for when to use independent-samples t-tests.</p>
+                            </div>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab5-q1')">Show Answer</button>
+                    </div>
+
+                    <div class="knowledge-check-item" data-question-id="tab5-q2">
+                        <p class="question-text"><strong>Question 2:</strong> A researcher would like to find out whether taking the GRE a second time produces a significantly higher score compared to the first time. This question can be answered by performing _____.</p>
+                        <ul class="question-options">
+                            <li>A) Paired-samples t-test</li>
+                            <li>B) One-sample t-test</li>
+                            <li>C) Descriptive statistics</li>
+                            <li>D) Independent-samples t-test</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <div class="answer-content">
+                                <p class="correct-answer">Correct Answer: A) Paired-samples t-test</p>
+                                <p class="explanation">Why this is correct: The same people are being measured twice (first GRE score vs. second GRE score). This is a within-subjects design where you compare the same participants' scores across two time points.</p>
+                                <p class="explanation">Why the others are incorrect:</p>
+                                <ul>
+                                    <li>B) One-sample t-test: This would compare one group to a known population value, but here they're comparing the same people's two scores.</li>
+                                    <li>C) Descriptive statistics: Descriptive statistics alone can't test for significance—you need inferential statistics.</li>
+                                    <li>D) Independent-samples t-test: This would compare two different groups, but here the same people are measured twice.</li>
+                                </ul>
+                                <p class="application-tip">💡 Application Tip: Ask yourself: "Are these the same people measured twice, or different groups?" Same people = paired-samples; different groups = independent-samples.</p>
+                            </div>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab5-q2')">Show Answer</button>
+                    </div>
+
+                    <div class="knowledge-check-item" data-question-id="tab5-q3">
+                        <p class="question-text"><strong>Question 3:</strong> Which of these illustrates the APA format for reporting statistically significant results for an independent-samples t-test?</p>
+                        <ul class="question-options">
+                            <li>A) t(15) = 3.89, p = 0.5</li>
+                            <li>B) t(15) = 3.89, p < 0.05</li>
+                            <li>C) t(15) = 3.89, p = 0.013</li>
+                            <li>D) t(15) = 3.89, p > 0.05</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <div class="answer-content">
+                                <p class="correct-answer">Correct Answer: C) t(15) = 3.89, p = 0.013</p>
+                                <p class="explanation">Why this is correct: APA format requires: t(df) = value, p = exact value. The exact p-value should be reported when available. Since p = 0.013 < 0.05, this would be statistically significant.</p>
+                                <p class="explanation">Why the others are incorrect:</p>
+                                <ul>
+                                    <li>A) p = 0.5: This would not be statistically significant (p > 0.05), and the question asks for significant results.</li>
+                                    <li>B) p < 0.05: When the exact p-value is available (0.013), report it exactly rather than using the inequality.</li>
+                                    <li>D) p > 0.05: This would not be statistically significant, and the question asks for significant results.</li>
+                                </ul>
+                                <p class="review-tip">💭 Need to review? See Part 8: Putting It All Together for APA reporting guidelines.</p>
+                            </div>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab5-q3')">Show Answer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+
+        <h2>Glossary</h2>
+        
+        <div class="glossary-section">
+            <div class="glossary-item">
+                <h4>Between-Subjects Design</h4>
+                <p>A research design where different participants are assigned to different conditions.</p>
+            </div>
+
+            <div class="glossary-item">
+                <h4>Cohen's d</h4>
+                <p>A standardized measure of effect size representing the difference between means in standard deviation units.</p>
+            </div>
+
+            <div class="glossary-item">
+                <h4>Difference Score</h4>
+                <p>The result of subtracting one measurement from another for the same participant (used in paired-samples t-tests).</p>
+            </div>
+
+            <div class="glossary-item">
+                <h4>Effect Size</h4>
+                <p>A measure of the magnitude or practical significance of a statistical result, independent of sample size.</p>
+            </div>
+
+            <div class="glossary-item">
+                <h4>Homogeneity of Variance</h4>
+                <p>The assumption that the variances of different groups are equal.</p>
+            </div>
+
+            <div class="glossary-item">
+                <h4>Independent-Samples t-Test</h4>
+                <p>A statistical test used to compare the means of two different, unrelated groups.</p>
+            </div>
+
+            <div class="glossary-item">
+                <h4>Levene's Test</h4>
+                <p>A statistical test that checks whether the assumption of equal variances is met in independent-samples t-tests.</p>
+            </div>
+
+            <div class="glossary-item">
+                <h4>Matched Pairs</h4>
+                <p>Participants who are meaningfully linked (e.g., twins, siblings, spouses) and expected to be more similar to each other than to random people.</p>
+            </div>
+
+            <div class="glossary-item">
+                <h4>Paired-Samples t-Test</h4>
+                <p>A statistical test used to compare the means of the same participants measured twice or meaningfully matched pairs.</p>
+            </div>
+
+            <div class="glossary-item">
+                <h4>Pooled Standard Deviation</h4>
+                <p>A weighted average of the standard deviations from two groups, used in independent-samples t-tests.</p>
+            </div>
+
+            <div class="glossary-item">
+                <h4>Within-Subjects Design</h4>
+                <p>A research design where the same participants are measured under different conditions.</p>
+            </div>
+        </div>
+
+        <!-- Bottom Navigation -->
+        <div class="tab-navigation bottom-nav">
+            <button class="tab-button" onclick="showTab(1)">
+                <input type="checkbox" id="progress-1-bottom" class="tab-checkbox" onchange="toggleTabComplete(1)">
+                <span class="tab-label">Introduction & Research Designs</span>
+            </button>
+            <button class="tab-button" onclick="showTab(2)">
+                <input type="checkbox" id="progress-2-bottom" class="tab-checkbox" onchange="toggleTabComplete(2)">
+                <span class="tab-label">Independent-Samples t-Test</span>
+            </button>
+            <button class="tab-button" onclick="showTab(3)">
+                <input type="checkbox" id="progress-3-bottom" class="tab-checkbox" onchange="toggleTabComplete(3)">
+                <span class="tab-label">Paired-Samples t-Test</span>
+            </button>
+            <button class="tab-button" onclick="showTab(4)">
+                <input type="checkbox" id="progress-4-bottom" class="tab-checkbox" onchange="toggleTabComplete(4)">
+                <span class="tab-label">Effect Sizes & Assumptions</span>
+            </button>
+            <button class="tab-button" onclick="showTab(5)">
+                <input type="checkbox" id="progress-5-bottom" class="tab-checkbox" onchange="toggleTabComplete(5)">
+                <span class="tab-label">Application & Summary</span>
+            </button>
+        </div>
+    </main>
+
+    <script>
+        // Progress tracking storage key
+        const PROGRESS_KEY = 'm3-lecture-progress';
+
+        // Load saved progress on page load
+        function loadProgress() {
+            const savedProgress = localStorage.getItem(PROGRESS_KEY);
+            if (savedProgress) {
+                const progress = JSON.parse(savedProgress);
+                // Update all checkboxes based on saved progress
+                for (let i = 1; i <= 5; i++) {
+                    const isComplete = progress[i] || false;
+                    const checkbox = document.getElementById(`progress-${i}`);
+                    const bottomCheckbox = document.getElementById(`progress-${i}-bottom`);
+                    if (checkbox) checkbox.checked = isComplete;
+                    if (bottomCheckbox) bottomCheckbox.checked = isComplete;
+                    updateTabVisualState(i, isComplete);
+                }
+            }
+        }
+
+        // Save progress to localStorage
+        function saveProgress(tabNumber, isComplete) {
+            const savedProgress = localStorage.getItem(PROGRESS_KEY);
+            const progress = savedProgress ? JSON.parse(savedProgress) : {};
+            progress[tabNumber] = isComplete;
+            localStorage.setItem(PROGRESS_KEY, JSON.stringify(progress));
+        }
+
+        // Toggle tab completion state
+        function toggleTabComplete(tabNumber) {
+            // Determine which checkbox was clicked (top or bottom)
+            const clickedCheckbox = event.target;
+            const isComplete = clickedCheckbox.checked;
+            
+            // Update both top and bottom checkboxes to stay in sync
+            const topCheckbox = document.getElementById(`progress-${tabNumber}`);
+            const bottomCheckbox = document.getElementById(`progress-${tabNumber}-bottom`);
+            if (topCheckbox) topCheckbox.checked = isComplete;
+            if (bottomCheckbox) bottomCheckbox.checked = isComplete;
+            
+            // Update visual state
+            updateTabVisualState(tabNumber, isComplete);
+            
+            // Save to localStorage
+            saveProgress(tabNumber, isComplete);
+        }
+
+        // Update visual state of tab buttons when completed
+        function updateTabVisualState(tabNumber, isComplete) {
+            const buttons = document.querySelectorAll(`.tab-button:nth-child(${tabNumber})`);
+            buttons.forEach((button) => {
+                if (isComplete) {
+                    button.classList.add('completed');
+                } else {
+                    button.classList.remove('completed');
+                }
+            });
+        }
+
+        // Main tab switching function
+        function showTab(tabNumber) {
+            // Hide all panels
+            const panels = document.querySelectorAll('.tab-panel');
+            panels.forEach((panel) => panel.classList.remove('active'));
+            
+            // Remove active class from all buttons
+            const buttons = document.querySelectorAll('.tab-button');
+            buttons.forEach((button) => button.classList.remove('active'));
+            
+            // Show selected panel
+            const selectedPanel = document.getElementById(`tab-${tabNumber}`);
+            if (selectedPanel) {
+                selectedPanel.classList.add('active');
+            }
+            
+            // Add active class to clicked button
+            const clickedButton = event.target.closest('.tab-button');
+            if (clickedButton) {
+                clickedButton.classList.add('active');
+            }
+            
+            // Scroll to top of the tab navigation for better UX
+            const tabContainer = document.querySelector('.lecture-tabs');
+            if (tabContainer) {
+                tabContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        // Knowledge check functionality with toggle
+        function revealAnswer(questionId) {
+            const questionItem = document.querySelector(`[data-question-id="${questionId}"]`);
+            const answerDiv = questionItem.querySelector('.answer-reveal');
+            const button = questionItem.querySelector('.reveal-answer-btn');
+
+            if (answerDiv && button) {
+                if (answerDiv.style.display === 'none' || answerDiv.style.display === '') {
+                    // Show the answer
+                    answerDiv.style.display = 'block';
+                    button.textContent = 'Hide Answer';
+                    button.classList.add('answered');
+                    questionItem.classList.add('answered');
+
+                    // Save to storage
+                    markQuestionAsAnswered(questionId, true);
+                } else {
+                    // Hide the answer
+                    answerDiv.style.display = 'none';
+                    button.textContent = 'Show Answer';
+                    button.classList.remove('answered');
+                    questionItem.classList.remove('answered');
+                }
+            }
+        }
+
+        // Knowledge check storage functions
+        const KC_STORAGE_KEY = 'm3-knowledge-checks';
+
+        function saveAnsweredQuestion(questionId) {
+            const savedProgress = localStorage.getItem(KC_STORAGE_KEY);
+            const answeredQuestions = savedProgress ? JSON.parse(savedProgress) : [];
+
+            if (!answeredQuestions.includes(questionId)) {
+                answeredQuestions.push(questionId);
+                localStorage.setItem(KC_STORAGE_KEY, JSON.stringify(answeredQuestions));
+            }
+        }
+
+        function markQuestionAsAnswered(questionId, saveToStorage) {
+            const questionItem = document.querySelector(`[data-question-id="${questionId}"]`);
+            if (!questionItem) return;
+
+            // Save to storage if requested
+            if (saveToStorage) {
+                saveAnsweredQuestion(questionId);
+            }
+        }
+
+        function loadKnowledgeCheckProgress() {
+            const savedProgress = localStorage.getItem(KC_STORAGE_KEY);
+            if (savedProgress) {
+                const answeredQuestions = JSON.parse(savedProgress);
+                answeredQuestions.forEach((questionId) => {
+                    markQuestionAsAnswered(questionId, false);
+                });
+            }
+        }
+
+        // Document ready function
+        document.addEventListener('DOMContentLoaded', function () {
+            loadProgress();
+            loadKnowledgeCheckProgress();
+        });
+    </script>
+</body>
+</html>
