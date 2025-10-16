@@ -1,0 +1,2515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 6: Correlation and Regression</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <style>
+        /* Knowledge Check Styling */
+        .knowledge-check-item {
+            background-color: #f8f9fa;
+            border-left: 4px solid #007bff;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+
+        .knowledge-check-item.answered {
+            border-left-color: #28a745;
+            background-color: #f0f8f4;
+        }
+
+        .question-text {
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .question-options {
+            margin: 10px 0;
+            list-style-position: inside;
+        }
+
+        .answer-reveal {
+            background-color: #e7f3ff;
+            border: 1px solid #b3d9ff;
+            padding: 12px;
+            margin-top: 10px;
+            border-radius: 4px;
+        }
+
+        .answer-text {
+            margin: 0;
+            color: #004085;
+        }
+
+        .reveal-answer-btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-top: 10px;
+            transition: background-color 0.2s;
+        }
+
+        .reveal-answer-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .reveal-answer-btn.answered {
+            background-color: #28a745;
+        }
+
+        .reveal-answer-btn.answered:hover {
+            background-color: #218838;
+        }
+
+        /* Learning Objectives Styling */
+        .learning-objectives {
+            margin: 15px 0;
+        }
+
+        .learning-objectives > li {
+            margin-bottom: 8px;
+        }
+
+        /* Glossary Styling */
+        .glossary-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .glossary-item {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 6px;
+            padding: 15px;
+        }
+
+        .glossary-item h4 {
+            color: #007bff;
+            margin-bottom: 8px;
+            font-size: 1.1em;
+        }
+
+        .glossary-item p {
+            margin: 0;
+            color: #495057;
+            line-height: 1.5;
+        }
+
+        /* Visual Diagrams Styling */
+        .visual-diagram {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .visual-diagram h4 {
+            color: #495057;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 5px;
+        }
+
+        .diagram-caption {
+            text-align: center;
+            font-size: 0.9em;
+            color: #6c757d;
+            margin-top: 10px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>Module 6: Correlation and Regression</h1>
+
+        <p><strong>Estimated Study Time:</strong> 2-3 hours</p>
+
+        <h2>Learning Objectives</h2>
+        <p>By the end of this module, you will be able to:</p>
+        <ol class="learning-objectives">
+            <li>Distinguish between correlation and regression analyses</li>
+            <li>Run and interpret bivariate correlations in SPSS</li>
+            <li>Identify the strongest correlation among multiple variables</li>
+            <li>Understand and apply the regression equation (Ŷ = bX + a)</li>
+            <li>Calculate predicted values using regression equations</li>
+            <li>Interpret omnibus F-tests for regression models</li>
+            <li>Report degrees of freedom correctly for regression analyses</li>
+            <li>Understand R² and Adjusted R² as effect size measures</li>
+            <li>Distinguish between bivariate and multiple regression</li>
+            <li>Understand unique contributions of predictors in multiple regression</li>
+            <li>Interpret standardized beta (β) coefficients</li>
+            <li>Understand and detect multicollinearity</li>
+            <li>Compare regression models using Adjusted R²</li>
+            <li>Report regression results in proper APA format</li>
+        </ol>
+
+        <hr>
+
+        <div class="lecture-tabs">
+            <div class="tab-navigation">
+                <button class="tab-button active" onclick="showTab(1)">
+                    <input
+                        type="checkbox"
+                        id="progress-1"
+                        class="tab-checkbox"
+                        onchange="toggleTabComplete(1)"
+                    />
+                    <span class="tab-label">Introduction & Bivariate Correlation</span>
+                </button>
+                <button class="tab-button" onclick="showTab(2)">
+                    <input
+                        type="checkbox"
+                        id="progress-2"
+                        class="tab-checkbox"
+                        onchange="toggleTabComplete(2)"
+                    />
+                    <span class="tab-label">Regression Equation & Bivariate Regression</span>
+                </button>
+                <button class="tab-button" onclick="showTab(3)">
+                    <input
+                        type="checkbox"
+                        id="progress-3"
+                        class="tab-checkbox"
+                        onchange="toggleTabComplete(3)"
+                    />
+                    <span class="tab-label">Multiple Regression Fundamentals</span>
+                </button>
+                <button class="tab-button" onclick="showTab(4)">
+                    <input
+                        type="checkbox"
+                        id="progress-4"
+                        class="tab-checkbox"
+                        onchange="toggleTabComplete(4)"
+                    />
+                    <span class="tab-label">Unique Contributions & Multicollinearity</span>
+                </button>
+                <button class="tab-button" onclick="showTab(5)">
+                    <input
+                        type="checkbox"
+                        id="progress-5"
+                        class="tab-checkbox"
+                        onchange="toggleTabComplete(5)"
+                    />
+                    <span class="tab-label">Model Building & Assumptions</span>
+                </button>
+                <button class="tab-button" onclick="showTab(6)">
+                    <input
+                        type="checkbox"
+                        id="progress-6"
+                        class="tab-checkbox"
+                        onchange="toggleTabComplete(6)"
+                    />
+                    <span class="tab-label">SPSS Practical Guide</span>
+                </button>
+                <button class="tab-button" onclick="showTab(7)">
+                    <input
+                        type="checkbox"
+                        id="progress-7"
+                        class="tab-checkbox"
+                        onchange="toggleTabComplete(7)"
+                    />
+                    <span class="tab-label">APA Reporting</span>
+                </button>
+                <button class="tab-button" onclick="showTab(8)">
+                    <input
+                        type="checkbox"
+                        id="progress-8"
+                        class="tab-checkbox"
+                        onchange="toggleTabComplete(8)"
+                    />
+                    <span class="tab-label">Summary & Key Formulas</span>
+                </button>
+            </div>
+
+            <div class="tab-content">
+                <div id="tab-1" class="tab-panel active">
+                    <h2>Introduction to Correlation and Regression</h2>
+
+                    <h3>Quick Review: From Group Comparisons to Relationships</h3>
+                    <p>So far in this course, you've learned to compare groups using t-tests (two groups) and ANOVA (multiple groups). These analyses test whether <strong>categorical</strong> independent variables (e.g., treatment vs. control, three teaching methods) affect a continuous dependent variable. <strong>Now we shift gears completely</strong>: Instead of comparing groups, we examine how <strong>continuous variables relate to each other</strong>. This opens up a whole new set of research questions—not "Do groups differ?" but "How strongly do two variables co-vary?" and "Can we predict one variable from another?" The logic is different, but the goal remains the same: understanding patterns in data to answer psychological research questions.</p>
+
+                    <h3>1.1 A Fundamental Shift in Research Questions</h3>
+                    <p>Throughout this course, we've focused on <strong>comparing groups</strong>: Does Group A differ from Group B? Do treatment groups show different outcomes? These questions led us through t-tests and ANOVA.</p>
+
+                    <p>Now we shift to a fundamentally different type of question: <strong>What is the relationship between two variables?</strong> Instead of dividing participants into groups and comparing means, we examine how two continuous (scale) variables <strong>co-vary</strong> together.</p>
+
+                    <p><strong>Examples of Relational Questions:</strong></p>
+                    <ul>
+                        <li>How does study time relate to exam scores?</li>
+                        <li>Is there a relationship between exercise frequency and stress levels?</li>
+                        <li>Can we predict job performance from personality test scores?</li>
+                        <li>How do age, income, and education together predict life satisfaction?</li>
+                    </ul>
+
+                    <h3>1.2 Linear Relationships and Scatterplots</h3>
+                    <p>The foundation of correlation and regression is the <strong>linear relationship</strong>, visualized through a <strong>scatterplot</strong>.</p>
+
+                    <p><strong>Scatterplot Basics:</strong></p>
+                    <ul>
+                        <li>Each point represents <strong>one participant</strong> with scores on both variables</li>
+                        <li>The <strong>X-axis</strong> (horizontal) shows the predictor variable</li>
+                        <li>The <strong>Y-axis</strong> (vertical) shows the outcome variable</li>
+                        <li>The <strong>pattern of points</strong> reveals the relationship</li>
+                    </ul>
+
+                    <p><strong>Types of Relationships:</strong></p>
+
+                    <p><strong>Positive Linear Relationship:</strong></p>
+                    <ul>
+                        <li>As X increases, Y tends to increase</li>
+                        <li>Points cluster around an upward-sloping line</li>
+                        <li>Example: Hours studying and exam scores</li>
+                    </ul>
+
+                    <p><strong>Negative Linear Relationship:</strong></p>
+                    <ul>
+                        <li>As X increases, Y tends to decrease</li>
+                        <li>Points cluster around a downward-sloping line</li>
+                        <li>Example: Hours of sleep deprivation and cognitive performance</li>
+                    </ul>
+
+                    <p><strong>No Relationship:</strong></p>
+                    <ul>
+                        <li>Points scattered randomly with no discernible pattern</li>
+                        <li>Knowing X tells you nothing about Y</li>
+                        <li>Example: Shoe size and IQ scores</li>
+                    </ul>
+
+                    <p><strong>Non-Linear Relationship:</strong></p>
+                    <ul>
+                        <li>Points follow a curved pattern (not a straight line)</li>
+                        <li>Important: Correlation and regression only detect <strong>linear</strong> relationships</li>
+                        <li>Example: Arousal and performance (inverted U-shape)</li>
+                    </ul>
+
+                    <h3>1.3 Correlation vs. Regression vs. Multiple Regression</h3>
+                    <p>While these techniques are related, they serve different purposes:</p>
+
+                    <p><strong>Bivariate Correlation:</strong></p>
+                    <ul>
+                        <li><strong>Purpose:</strong> Describe the strength and direction of the relationship</li>
+                        <li><strong>Question:</strong> "How closely are X and Y related?"</li>
+                        <li><strong>Symmetrical:</strong> Correlating X with Y gives the same result as Y with X</li>
+                        <li><strong>Output:</strong> Correlation coefficient (r) and coefficient of determination (r²)</li>
+                        <li><strong>Does not</strong> imply prediction or causation</li>
+                    </ul>
+
+                    <p><strong>Bivariate Regression (Simple Linear Regression):</strong></p>
+                    <ul>
+                        <li><strong>Purpose:</strong> Use one variable to predict another</li>
+                        <li><strong>Question:</strong> "How well can X predict Y?"</li>
+                        <li><strong>Directional:</strong> X is explicitly the predictor (IV), Y is the outcome (DV)</li>
+                        <li><strong>Output:</strong> Regression equation, F-test, R², slopes, and intercepts</li>
+                        <li><strong>Allows</strong> prediction but does not prove causation</li>
+                    </ul>
+
+                    <p><strong>Multiple Regression:</strong></p>
+                    <ul>
+                        <li><strong>Purpose:</strong> Use multiple variables to predict an outcome</li>
+                        <li><strong>Question:</strong> "How well can X₁, X₂, and X₃ together predict Y?"</li>
+                        <li><strong>Directional:</strong> Multiple predictors (IVs) predict one outcome (DV)</li>
+                        <li><strong>Output:</strong> Same as bivariate regression, plus unique contributions of each predictor</li>
+                        <li><strong>Advantage:</strong> Accounts for overlap between predictors</li>
+                    </ul>
+
+                    <h3>1.4 When to Use Each Approach</h3>
+                    <p><strong>Use Bivariate Correlation when:</strong></p>
+                    <ul>
+                        <li>You want to describe how two variables are related</li>
+                        <li>You're exploring relationships without making predictions</li>
+                        <li>You're checking assumptions (e.g., multicollinearity)</li>
+                        <li>Example: "Are anxiety and depression correlated in college students?"</li>
+                    </ul>
+
+                    <p><strong>Use Bivariate Regression when:</strong></p>
+                    <ul>
+                        <li>You have one predictor and one outcome</li>
+                        <li>You want to make predictions</li>
+                        <li>You want to test if the predictor significantly predicts the outcome</li>
+                        <li>Example: "Can GRE scores predict first-year graduate GPA?"</li>
+                    </ul>
+
+                    <p><strong>Use Multiple Regression when:</strong></p>
+                    <ul>
+                        <li>You have multiple predictors for one outcome</li>
+                        <li>You want to know each predictor's unique contribution</li>
+                        <li>You want the most powerful predictive model</li>
+                        <li>Example: "Can GRE scores, undergraduate GPA, and research experience together predict graduate success?"</li>
+                    </ul>
+
+                    <h3>1.5 The Importance of Visualization</h3>
+                    <p><strong>Always examine your scatterplot first!</strong></p>
+
+                    <p>Why? Because correlation and regression assume a <strong>linear</strong> relationship. If the relationship is:</p>
+                    <ul>
+                        <li><strong>Curvilinear:</strong> You'll underestimate the true relationship</li>
+                        <li><strong>Contains outliers:</strong> A few extreme points can distort your results</li>
+                        <li><strong>Non-existent:</strong> You might find spurious relationships</li>
+                    </ul>
+
+                    <p><strong>Key Principle:</strong> Never run correlation or regression blindly. <strong>Look at your data first.</strong></p>
+
+                    <h3>1.6 Why This Matters: Real Research Examples</h3>
+                    <p><strong>Research Example 1: The ACE Study (Adverse Childhood Experiences)</strong></p>
+                    <p>One of the most influential studies in psychology used correlation and regression to examine relationships between childhood trauma and adult health outcomes. Felitti et al. (1998) found strong correlations (r = .40 to .60) between number of adverse childhood experiences and risks for depression, substance abuse, and chronic disease in adulthood. Multiple regression revealed that ACEs uniquely predicted health outcomes even after controlling for demographic factors, fundamentally changing how we understand long-term effects of childhood trauma.</p>
+
+                    <p><strong>Research Example 2: Growth Mindset and Academic Achievement (Dweck, 2006)</strong></p>
+                    <p>Carol Dweck's research on growth mindset extensively uses correlation and regression. Studies show that students' beliefs about intelligence (fixed vs. growth mindset) correlate with academic performance (r = .25 to .35). Multiple regression analyses revealed that mindset predicts GPA above and beyond IQ and prior achievement, demonstrating that psychological factors uniquely contribute to success beyond raw ability.</p>
+
+                    <p><strong>Research Example 3: Social Support and Mental Health</strong></p>
+                    <p>Meta-analyses consistently show moderate-to-strong negative correlations (r = -.30 to -.50) between social support and depression/anxiety. Multiple regression studies reveal that different types of support (emotional, instrumental, informational) each uniquely predict well-being, helping researchers understand which interventions are most effective.</p>
+
+                    <p><strong>The Bottom Line</strong></p>
+                    <p>Most psychological phenomena involve continuous variables that relate to each other in complex ways. Correlation and regression are essential tools for:</p>
+                    <ul>
+                        <li>Understanding risk factors and protective factors</li>
+                        <li>Identifying which variables matter most (multiple regression)</li>
+                        <li>Making predictions for clinical or educational applications</li>
+                        <li>Building and testing psychological theories about how variables relate</li>
+                    </ul>
+
+                    <p>Learning these techniques makes you a better consumer of research and prepares you for real-world data analysis.</p>
+
+                    <hr>
+
+                    <h2>Bivariate Correlation</h2>
+
+                    <h3>2.1 The Pearson Correlation Coefficient (r)</h3>
+                    <p>The <strong>Pearson product-moment correlation coefficient</strong> (usually just called "r") is a single number that summarizes the <strong>strength</strong> and <strong>direction</strong> of a linear relationship between two scale variables.</p>
+
+                    <p><strong>Properties of r:</strong></p>
+
+                    <p><strong>Range:</strong></p>
+                    <ul>
+                        <li>r ranges from <strong>-1.0 to +1.0</strong></li>
+                        <li>r = +1.0: Perfect positive relationship (all points fall exactly on an upward-sloping line)</li>
+                        <li>r = -1.0: Perfect negative relationship (all points fall exactly on a downward-sloping line)</li>
+                        <li>r = 0: No linear relationship (points are scattered randomly)</li>
+                    </ul>
+
+                    <p><strong>Sign (Direction):</strong></p>
+                    <ul>
+                        <li><strong>Positive (+):</strong> As one variable increases, the other tends to increase</li>
+                        <li><strong>Negative (-):</strong> As one variable increases, the other tends to decrease</li>
+                    </ul>
+
+                    <p><strong>Magnitude (Strength):</strong></p>
+                    <ul>
+                        <li>We interpret the <strong>absolute value</strong> of r (ignoring the sign)</li>
+                        <li>Common guidelines (Cohen, 1988):
+                            <ul>
+                                <li>|r| = .10: Small effect</li>
+                                <li>|r| = .30: Medium effect</li>
+                                <li>|r| = .50: Large effect</li>
+                            </ul>
+                        </li>
+                        <li>Note: These are guidelines, not rigid rules. Context matters!</li>
+                    </ul>
+
+                    <p><strong>Examples:</strong></p>
+                    <ul>
+                        <li>r = +.75: Strong positive relationship</li>
+                        <li>r = -.40: Moderate negative relationship</li>
+                        <li>r = +.05: Virtually no relationship</li>
+                    </ul>
+
+                    <h3>2.2 The Coefficient of Determination (r²)</h3>
+                    <p>While r tells us about strength and direction, <strong>r²</strong> provides the most intuitive interpretation of effect size.</p>
+
+                    <p><strong>What r² Means:</strong></p>
+
+                    <p><strong>r² represents the proportion (or percentage) of variance in one variable that is "explained" or "shared" with the other variable.</strong></p>
+
+                    <p><strong>Calculation:</strong><br>
+                    Simply square the correlation coefficient: r² = r × r</p>
+
+                    <p><strong>Interpretation:</strong></p>
+                    <ul>
+                        <li>r² ranges from 0 to 1.0 (or 0% to 100%)</li>
+                        <li>Multiply by 100 to get percentage of explained variance</li>
+                        <li>The remaining variance (1 - r²) is unexplained or error variance</li>
+                    </ul>
+
+                    <p><strong>Example:</strong></p>
+                    <ul>
+                        <li>If r = +.70, then r² = .49</li>
+                        <li>Interpretation: "49% of the variance in Y is explained by X"</li>
+                        <li>Or: "49% of individual differences in Y can be accounted for by individual differences in X"</li>
+                        <li>The remaining 51% is due to other factors</li>
+                    </ul>
+
+                    <p><strong>Why r² is More Intuitive:</strong></p>
+
+                    <p>Compare these two correlations:</p>
+                    <ul>
+                        <li>r = .30 vs. r = .60</li>
+                    </ul>
+
+                    <p>At first glance, .60 seems "twice as strong" as .30. But look at r²:</p>
+                    <ul>
+                        <li>r² = .09 (9% variance explained)</li>
+                        <li>r² = .36 (36% variance explained)</li>
+                    </ul>
+
+                    <p>The second correlation actually explains <strong>four times</strong> as much variance, not twice as much!</p>
+
+                    <h3>2.3 Interpreting Correlation Strength in Context</h3>
+                    <p>While Cohen's guidelines are helpful, <strong>context is king</strong>:</p>
+
+                    <p><strong>In Physics or Chemistry:</strong></p>
+                    <ul>
+                        <li>r = .90 might be considered weak (high precision expected)</li>
+                    </ul>
+
+                    <p><strong>In Psychology or Social Sciences:</strong></p>
+                    <ul>
+                        <li>r = .30 might be considered substantial (human behavior is complex)</li>
+                    </ul>
+
+                    <p><strong>In Medical Research:</strong></p>
+                    <ul>
+                        <li>Even r = .10 might be clinically important if it relates to life-saving interventions</li>
+                    </ul>
+
+                    <p><strong>Important:</strong> Don't just recite "small, medium, large." Consider:</p>
+                    <ul>
+                        <li>What is typical in this field?</li>
+                        <li>What is the practical significance?</li>
+                        <li>What are the consequences of the relationship?</li>
+                    </ul>
+
+                    <h3>2.4 Correlation Does NOT Equal Causation</h3>
+                    <p>This is perhaps the most important principle in correlational research:</p>
+
+                    <p><strong>A significant correlation between X and Y does NOT prove that X causes Y.</strong></p>
+
+                    <p><strong>Why not?</strong></p>
+
+                    <p><strong>1. Directionality Problem:</strong></p>
+                    <ul>
+                        <li>If ice cream sales and drowning deaths are correlated, does ice cream cause drowning?</li>
+                        <li>Or does drowning cause ice cream sales?</li>
+                        <li>Actually, neither!</li>
+                    </ul>
+
+                    <p><strong>2. Third Variable Problem (Confounds):</strong></p>
+                    <ul>
+                        <li>Both variables might be caused by a third, unmeasured variable</li>
+                        <li>In the example above: Hot weather increases both ice cream sales AND swimming (leading to more drownings)</li>
+                        <li>The correlation is <strong>spurious</strong> (fake relationship)</li>
+                    </ul>
+
+                    <p><strong>3. Coincidence:</strong></p>
+                    <ul>
+                        <li>Sometimes unrelated variables correlate by chance</li>
+                        <li>Websites like "Spurious Correlations" show hilarious examples (e.g., margarine consumption and divorce rates)</li>
+                    </ul>
+
+                    <p><strong>What CAN correlation tell us?</strong></p>
+                    <ul>
+                        <li>Two variables are <strong>related</strong></li>
+                        <li>They <strong>co-vary together</strong></li>
+                        <li>Knowing one provides <strong>information</strong> about the other</li>
+                        <li>There's a <strong>potential</strong> avenue for further investigation</li>
+                    </ul>
+
+                    <p><strong>To establish causation, you need:</strong></p>
+                    <ul>
+                        <li><strong>Experimental design</strong> with random assignment</li>
+                        <li><strong>Temporal precedence</strong> (cause comes before effect)</li>
+                        <li><strong>Control</strong> over confounding variables</li>
+                    </ul>
+
+                    <div class="visual-diagram">
+                        <h4>⚠️ Common Mistakes with Correlation</h4>
+                        <ul>
+                            <li><strong>Mistake 1:</strong> Confusing r with r². Remember: r = .50 means r² = .25 (25% variance explained, not 50%).</li>
+                            <li><strong>Mistake 2:</strong> Saying "correlation proves causation." It doesn't! Always use language like "associated with" or "related to," not "causes."</li>
+                            <li><strong>Mistake 3:</strong> Thinking r is a percentage of people. r = .40 doesn't mean 40% of people follow the pattern—it's the strength of the relationship.</li>
+                            <li><strong>Mistake 4:</strong> Ignoring the sign. r = -.70 is just as strong as r = +.70; the negative just indicates direction.</li>
+                            <li><strong>Mistake 5:</strong> Assuming no relationship when r is small. Even r = .20 can be meaningful in psychology, where many factors influence behavior.</li>
+                        </ul>
+                    </div>
+
+                    <h3>2.5 Running Correlations in SPSS</h3>
+                    <p><strong>Step-by-Step: Bivariate Correlations</strong></p>
+
+                    <ol>
+                        <li><strong>Analyze → Correlate → Bivariate</strong></li>
+                        <li><strong>Select variables:</strong> Move all variables you want to correlate into the "Variables" box
+                            <ul>
+                                <li>You can select 2, 3, 4, or more variables</li>
+                                <li>SPSS will create a correlation matrix with all pairwise correlations</li>
+                            </ul>
+                        </li>
+                        <li><strong>Correlation Coefficient:</strong> Ensure "Pearson" is checked (default)</li>
+                        <li><strong>Test of Significance:</strong> Ensure "Two-tailed" is checked (unless you have a directional hypothesis)</li>
+                        <li><strong>Flag significant correlations:</strong> Check "Flag significant correlations" (adds asterisks)</li>
+                        <li><strong>Click OK</strong></li>
+                    </ol>
+
+                    <p><strong>Reading the Output: Correlation Matrix</strong></p>
+
+                    <p>SPSS produces a <strong>correlation matrix</strong> (a table showing all pairwise correlations):</p>
+
+                    <pre>
+              Variable1  Variable2  Variable3
+Variable1         1.000      .652**     .301*
+Variable2          .652**   1.000      .458**
+Variable3          .301*     .458**    1.000</pre>
+
+                    <p><strong>Interpreting the Matrix:</strong></p>
+                    <ul>
+                        <li><strong>Diagonal:</strong> Always 1.000 (each variable correlates perfectly with itself)</li>
+                        <li><strong>Above/Below diagonal:</strong> Mirror images (correlation is symmetrical)</li>
+                        <li><strong>Asterisks:</strong> * = p < .05, ** = p < .01</li>
+                        <li><strong>Find the strongest correlation:</strong> Look for the largest absolute value (ignoring sign)</li>
+                    </ul>
+
+                    <p><strong>Example Question:</strong><br>
+                    "Which variable has the strongest correlation with Acceleration?"</p>
+
+                    <p><strong>Answer:</strong> Look down the "Acceleration" column (or across the row), find the highest absolute value, ignoring the diagonal.</p>
+
+                    <h3>2.6 Interpreting Correlation Results</h3>
+                    <p><strong>Example Output:</strong></p>
+
+                    <pre>
+Correlations between Study Hours and Exam Score:
+r = .68, p < .001</pre>
+
+                    <p><strong>What this means:</strong></p>
+
+                    <ol>
+                        <li><strong>Direction:</strong> Positive relationship (more study = higher scores)</li>
+                        <li><strong>Strength:</strong> r = .68 is a strong relationship</li>
+                        <li><strong>Effect Size:</strong> r² = .46, so 46% of variance in exam scores is explained by study hours</li>
+                        <li><strong>Significance:</strong> p < .001, so this relationship is extremely unlikely due to chance</li>
+                        <li><strong>Practical Importance:</strong> Knowing study hours provides substantial information about likely exam performance</li>
+                    </ol>
+
+                    <p><strong>What this does NOT mean:</strong></p>
+                    <ul>
+                        <li>Studying causes higher scores (could be that smarter students both study more AND score higher)</li>
+                        <li>68% of students who study more will score higher (r is not a percentage of people)</li>
+                        <li>You can predict exact scores (there's still 54% unexplained variance)</li>
+                    </ul>
+                </div>
+                <div id="tab-2" class="tab-panel">
+                    <h2>The Regression Equation</h2>
+
+                    <h3>3.1 The Line of Best Fit</h3>
+                    <p>While correlation describes the relationship, regression goes further by <strong>fitting a line</strong> through the data points.</p>
+
+                    <p><strong>The Goal of Regression:</strong><br>
+                    Find the one straight line that <strong>best represents</strong> the relationship between X and Y. This line minimizes the total distance between the line and all the individual data points.</p>
+
+                    <p><strong>The Method:</strong> Ordinary Least Squares (OLS)</p>
+                    <ul>
+                        <li>Calculates the <strong>vertical distance</strong> from each point to the line</li>
+                        <li>These distances are called <strong>residuals</strong> or <strong>errors</strong></li>
+                        <li>Squares each residual (to make negative values positive)</li>
+                        <li>Finds the line that makes the sum of squared residuals as small as possible</li>
+                        <li>Hence: "Least Squares"</li>
+                    </ul>
+
+                    <p><strong>Why is this useful?</strong><br>
+                    Once we have the line, we can use it to <strong>make predictions</strong> for new values of X.</p>
+
+                    <h3>3.2 The Regression Equation</h3>
+                    <p>Every straight line can be represented by an equation. The regression equation is:</p>
+
+                    <p><strong>Ŷ = bX + a</strong></p>
+
+                    <p><strong>Components:</strong></p>
+
+                    <p><strong>Ŷ (pronounced "Y-hat"):</strong></p>
+                    <ul>
+                        <li>The <strong>predicted value</strong> of the outcome variable</li>
+                        <li>This is our best guess for Y based on knowing X</li>
+                        <li>It's an estimate, not a guarantee</li>
+                    </ul>
+
+                    <p><strong>X:</strong></p>
+                    <ul>
+                        <li>The <strong>known value</strong> of the predictor variable</li>
+                        <li>The value we plug into the equation</li>
+                        <li>Must be within the range of X values in your data (don't extrapolate wildly)</li>
+                    </ul>
+
+                    <p><strong>b (the slope):</strong></p>
+                    <ul>
+                        <li>Tells you <strong>how much Y is predicted to change</strong> for every one-unit increase in X</li>
+                        <li><strong>Positive b:</strong> Y increases as X increases (upward slope)</li>
+                        <li><strong>Negative b:</strong> Y decreases as X increases (downward slope)</li>
+                        <li><strong>b = 0:</strong> No relationship (horizontal line)</li>
+                    </ul>
+
+                    <p><strong>a (the y-intercept):</strong></p>
+                    <ul>
+                        <li>The <strong>predicted value of Y when X = 0</strong></li>
+                        <li>Where the regression line crosses the Y-axis</li>
+                        <li>May or may not have practical meaning (depends on whether X = 0 makes sense)</li>
+                    </ul>
+
+                    <h3>3.3 Understanding the Slope (b)</h3>
+                    <p>The slope is the <strong>heart of the regression equation</strong>. It quantifies the relationship.</p>
+
+                    <p><strong>Interpreting the Slope:</strong></p>
+
+                    <p><strong>Example 1: Positive Slope</strong></p>
+                    <ul>
+                        <li>Equation: Ŷ (Exam Score) = 3.5(Study Hours) + 45</li>
+                        <li>Slope (b) = 3.5</li>
+                        <li><strong>Interpretation:</strong> "For every additional hour of studying, exam scores are predicted to increase by 3.5 points, on average."</li>
+                    </ul>
+
+                    <p><strong>Example 2: Negative Slope</strong></p>
+                    <ul>
+                        <li>Equation: Ŷ (Stress) = -2.1(Exercise Hours) + 75</li>
+                        <li>Slope (b) = -2.1</li>
+                        <li><strong>Interpretation:</strong> "For every additional hour of exercise per week, stress scores are predicted to decrease by 2.1 points, on average."</li>
+                    </ul>
+
+                    <p><strong>Example 3: Near-Zero Slope</strong></p>
+                    <ul>
+                        <li>Equation: Ŷ (Happiness) = 0.02(Shoe Size) + 50</li>
+                        <li>Slope (b) = 0.02</li>
+                        <li><strong>Interpretation:</strong> "Shoe size has virtually no predictive relationship with happiness. For every unit increase in shoe size, happiness is predicted to increase by only 0.02 points—essentially negligible."</li>
+                    </ul>
+
+                    <p><strong>Key Point:</strong> The slope is in <strong>the units of your variables</strong>. Always include units when interpreting!</p>
+
+                    <h3>3.4 Understanding the Y-Intercept (a)</h3>
+                    <p>The y-intercept is where the line crosses the Y-axis (when X = 0).</p>
+
+                    <p><strong>When the Intercept is Meaningful:</strong></p>
+                    <ul>
+                        <li>Equation: Ŷ (Distance) = 60(Time) + 0</li>
+                        <li>Intercept (a) = 0</li>
+                        <li><strong>Interpretation:</strong> "When time = 0 hours, the car has traveled 0 miles." Makes sense!</li>
+                    </ul>
+
+                    <p><strong>When the Intercept is Not Meaningful:</strong></p>
+                    <ul>
+                        <li>Equation: Ŷ (Salary) = 2000(Years of Education) + 10,000</li>
+                        <li>Intercept (a) = 10,000</li>
+                        <li><strong>Interpretation:</strong> "When years of education = 0, predicted salary is $10,000."</li>
+                        <li>Problem: Nobody in your sample had 0 years of education. This is <strong>extrapolation beyond your data</strong> and may not be accurate.</li>
+                    </ul>
+
+                    <p><strong>Key Principle:</strong> The intercept is often less important than the slope for interpretation. Focus on the slope for understanding the relationship.</p>
+
+                    <h3>3.5 Making Predictions with the Equation</h3>
+                    <p>Once you have the regression equation, you can make predictions for new values of X.</p>
+
+                    <p><strong>Example Equation:</strong><br>
+                    Ŷ (Exam Score) = 3.5(Study Hours) + 45</p>
+
+                    <p><strong>Prediction Question:</strong><br>
+                    "What exam score would we predict for a student who studies 8 hours?"</p>
+
+                    <p><strong>Calculation:</strong></p>
+                    <ol>
+                        <li>Plug in X = 8</li>
+                        <li>Ŷ = 3.5(8) + 45</li>
+                        <li>Ŷ = 28 + 45</li>
+                        <li>Ŷ = 73</li>
+                    </ol>
+
+                    <p><strong>Answer:</strong> We predict an exam score of 73 points.</p>
+
+                    <p><strong>Important Caveats:</strong></p>
+
+                    <p><strong>1. It's a Prediction, Not a Guarantee:</strong></p>
+                    <ul>
+                        <li>The actual student might score 65 or 82</li>
+                        <li>There's always error/residual variance</li>
+                        <li>Ŷ represents the <strong>average</strong> predicted value for people with X = 8</li>
+                    </ul>
+
+                    <p><strong>2. Stay Within the Range of Your Data:</strong></p>
+                    <ul>
+                        <li>If your data ranged from 1-15 study hours, don't predict for 30 hours</li>
+                        <li><strong>Extrapolation</strong> (predicting beyond your data) is risky</li>
+                        <li>The relationship might not be linear outside your observed range</li>
+                    </ul>
+
+                    <p><strong>3. Remember: Correlation ≠ Causation:</strong></p>
+                    <ul>
+                        <li>Predicting doesn't mean causing</li>
+                        <li>We can predict Y from X without X causing Y</li>
+                        <li>Example: Ice cream sales predict drowning deaths, but don't cause them</li>
+                    </ul>
+
+                    <h3>3.6 Calculating Predicted Values Step-by-Step</h3>
+                    <p>Let's practice with a more complex example.</p>
+
+                    <p><strong>Given:</strong></p>
+                    <ul>
+                        <li>Equation: Ŷ (Cholesterol) = 5(Saturated Fat) - 4(Exercise Hours) + 130</li>
+                        <li>Saturated Fat = 15 grams per day</li>
+                        <li>Exercise Hours = 1 hour per day</li>
+                    </ul>
+
+                    <p><strong>Step 1:</strong> Identify your equation components</p>
+                    <ul>
+                        <li>Slope for Saturated Fat (b₁) = 5</li>
+                        <li>Slope for Exercise Hours (b₂) = -4</li>
+                        <li>Intercept (a) = 130</li>
+                    </ul>
+
+                    <p><strong>Step 2:</strong> Plug in the values</p>
+                    <ul>
+                        <li>Ŷ = 5(15) - 4(1) + 130</li>
+                    </ul>
+
+                    <p><strong>Step 3:</strong> Calculate each term</p>
+                    <ul>
+                        <li>5(15) = 75</li>
+                        <li>-4(1) = -4</li>
+                        <li>Intercept = 130</li>
+                    </ul>
+
+                    <p><strong>Step 4:</strong> Add them up</p>
+                    <ul>
+                        <li>Ŷ = 75 - 4 + 130</li>
+                        <li>Ŷ = 201</li>
+                    </ul>
+
+                    <p><strong>Answer:</strong> The predicted cholesterol level is 201.</p>
+
+                    <p><strong>Interpretation:</strong><br>
+                    "For an individual who consumes 15 grams of saturated fat daily and exercises 1 hour per day, we predict a cholesterol level of 201."</p>
+
+                    <div class="knowledge-check-item" data-question-id="tab2-q1">
+                        <p class="question-text"><strong>Question 1:</strong> In the equation Ŷ = 98 + 4.30(X₁) + 7.20(X₂), what is/are the slope(s)?</p>
+                        <ul class="question-options">
+                            <li>A) 7.20</li>
+                            <li>B) 4.30</li>
+                            <li>C) 98</li>
+                            <li>D) 4.30 and 7.20</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <div class="answer-content">
+                                <p class="correct-answer"><strong>✓ Answer:</strong> D) 4.30 and 7.20</p>
+                                <p class="explanation"><strong>Why this is correct:</strong> In a multiple regression equation, there is one slope for each predictor variable. Here, 4.30 is the slope for X₁ and 7.20 is the slope for X₂. Both are slopes (b coefficients).</p>
+                                <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+                                <ul>
+                                    <li><strong>A) 7.20 only:</strong> This is one slope, but it's not the only slope in the equation.</li>
+                                    <li><strong>B) 4.30 only:</strong> This is one slope, but it's not the only slope in the equation.</li>
+                                    <li><strong>C) 98:</strong> This is the y-intercept (a), not a slope. It's the predicted value when all X variables equal 0.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab2-q1')">Show Answer</button>
+                    </div>
+
+                    <div class="knowledge-check-item" data-question-id="tab2-q2">
+                        <p class="question-text"><strong>Question 2:</strong> In the equation Ŷ = 130 + 5(X₁) + 3(X₂), what is the y-intercept?</p>
+                        <ul class="question-options">
+                            <li>A) 3</li>
+                            <li>B) 130</li>
+                            <li>C) 5</li>
+                            <li>D) 8</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <div class="answer-content">
+                                <p class="correct-answer"><strong>✓ Answer:</strong> B) 130</p>
+                                <p class="explanation"><strong>Why this is correct:</strong> The y-intercept is the constant term in the regression equation—the value that remains when all X variables equal 0. In this equation, 130 is the y-intercept (a).</p>
+                                <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+                                <ul>
+                                    <li><strong>A) 3:</strong> This is the slope (b₂) for the second predictor variable X₂.</li>
+                                    <li><strong>C) 5:</strong> This is the slope (b₁) for the first predictor variable X₁.</li>
+                                    <li><strong>D) 8:</strong> This is the sum of the two slopes (5 + 3), which has no special meaning in regression.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab2-q2')">Show Answer</button>
+                    </div>
+
+                    <div class="knowledge-check-item" data-question-id="tab2-q3">
+                        <p class="question-text"><strong>Question 3:</strong> In a study designed to predict blood cholesterol levels from amount of daily saturated fat in grams (X₁) and the number of hours of daily exercise (X₂), the slope of X₁ is 5, the slope of X₂ is -4, and the y-intercept is 130. If an individual reports that he or she typically eats 15 grams of saturated fat daily and exercises 1 hour every day, what would be the predicted cholesterol level for this individual?</p>
+                        <ul class="question-options">
+                            <li>A) 145</li>
+                            <li>B) 75</li>
+                            <li>C) 180</li>
+                            <li>D) 201</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <div class="answer-content">
+                                <p class="correct-answer"><strong>✓ Answer:</strong> D) 201</p>
+                                <p class="explanation"><strong>Why this is correct:</strong> Using the regression equation Ŷ = 5(X₁) - 4(X₂) + 130, we plug in X₁ = 15 and X₂ = 1:<br>Ŷ = 5(15) - 4(1) + 130<br>Ŷ = 75 - 4 + 130<br>Ŷ = 201</p>
+                                <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+                                <ul>
+                                    <li><strong>A) 145:</strong> This might result from forgetting to include all terms or calculation errors.</li>
+                                    <li><strong>B) 75:</strong> This is only the contribution from saturated fat (5 × 15), not the complete prediction.</li>
+                                    <li><strong>C) 180:</strong> This might result from using +4 instead of -4 for the exercise slope, or other calculation errors.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab2-q3')">Show Answer</button>
+                    </div>
+
+                    <hr>
+
+                    <h2>Bivariate Regression (Simple Linear Regression)</h2>
+
+                    <h3>4.1 From Description to Prediction</h3>
+                    <p>While correlation simply describes the relationship between two variables, <strong>regression</strong> takes the next step: using one variable to <strong>predict</strong> another.</p>
+
+                    <p><strong>Key Distinction:</strong></p>
+                    <ul>
+                        <li><strong>Correlation:</strong> Symmetrical relationship (X with Y = Y with X)</li>
+                        <li><strong>Regression:</strong> Directional prediction (X predicts Y, but not necessarily vice versa)</li>
+                    </ul>
+
+                    <p><strong>In Regression, We Explicitly Define:</strong></p>
+                    <ul>
+                        <li><strong>Predictor (IV):</strong> The variable we use to make predictions (X)</li>
+                        <li><strong>Outcome (DV):</strong> The variable we're trying to predict (Ŷ)</li>
+                    </ul>
+
+                    <p><strong>Example:</strong></p>
+                    <ul>
+                        <li>Correlation: "Study hours and exam scores are correlated at r = .68"</li>
+                        <li>Regression: "Study hours (predictor) significantly predict exam scores (outcome), F(1, 48) = 32.15, p < .001"</li>
+                    </ul>
+
+                    <h3>4.2 The Omnibus F-Test</h3>
+                    <p>The first and most important result in regression is the <strong>omnibus F-test</strong> (also called the "overall model test").</p>
+
+                    <p><strong>What It Tests:</strong></p>
+
+                    <p><strong>H₀ (Null Hypothesis):</strong></p>
+                    <ul>
+                        <li>The regression model does NOT significantly predict the outcome variable</li>
+                        <li>The slope of the regression line equals 0 (b = 0)</li>
+                        <li>Knowing X provides no better prediction than just guessing the mean of Y</li>
+                    </ul>
+
+                    <p><strong>H₁ (Alternative Hypothesis):</strong></p>
+                    <ul>
+                        <li>The regression model DOES significantly predict the outcome</li>
+                        <li>The slope is significantly different from 0 (b ≠ 0)</li>
+                        <li>Knowing X improves our prediction beyond just guessing the mean</li>
+                    </ul>
+
+                    <p><strong>The F-Statistic:</strong></p>
+
+                    <p>Just like in ANOVA, the F-statistic represents a ratio:</p>
+
+                    <p><strong>F = Variance Explained by the Model / Variance Not Explained (Error)</strong></p>
+
+                    <p><strong>Interpretation:</strong></p>
+                    <ul>
+                        <li><strong>F > 1:</strong> Model explains more variance than error (good sign)</li>
+                        <li><strong>F >> 1:</strong> Model explains much more variance than error (better!)</li>
+                        <li><strong>F ≈ 1:</strong> Model is no better than chance</li>
+                        <li><strong>F < 1:</strong> Something went wrong (F can't be less than 0, but can be close to 0)</li>
+                    </ul>
+
+                    <p><strong>Example:</strong><br>
+                    F(1, 48) = 32.15, p < .001</p>
+
+                    <p><strong>What this means:</strong></p>
+                    <ul>
+                        <li>The model explains 32 times more variance than error variance</li>
+                        <li>This is extremely unlikely to occur by chance (p < .001)</li>
+                        <li>Therefore, we reject H₀: The model significantly predicts the outcome</li>
+                    </ul>
+
+                    <h3>4.3 Degrees of Freedom for Regression</h3>
+                    <p>Regression has two df values, just like ANOVA:</p>
+
+                    <p><strong>df₁ (Model df):</strong></p>
+                    <ul>
+                        <li>df₁ = k (number of predictors)</li>
+                        <li>For bivariate regression: df₁ = 1 (one predictor)</li>
+                        <li>For multiple regression with 3 predictors: df₁ = 3</li>
+                    </ul>
+
+                    <p><strong>df₂ (Error df):</strong></p>
+                    <ul>
+                        <li>df₂ = N - k - 1</li>
+                        <li>N = total sample size</li>
+                        <li>k = number of predictors</li>
+                    </ul>
+
+                    <p><strong>Example:</strong></p>
+                    <ul>
+                        <li>Sample size = 207</li>
+                        <li>Number of predictors = 1</li>
+                        <li>df₁ = 1</li>
+                        <li>df₂ = 207 - 1 - 1 = 205</li>
+                        <li>APA format: F(1, 205) = ...</li>
+                    </ul>
+
+                    <p><strong>Worked Example: Calculating df for Multiple Regression</strong></p>
+
+                    <p><strong>Research Scenario:</strong><br>
+                    A researcher conducts a multiple regression to predict job satisfaction (DV) from three predictors: salary, work-life balance, and supervisor support. The study has 100 participants.</p>
+
+                    <p><strong>Step 1:</strong> Identify the values</p>
+                    <ul>
+                        <li>N (total sample size) = 100</li>
+                        <li>k (number of predictors) = 3</li>
+                    </ul>
+
+                    <p><strong>Step 2:</strong> Calculate df₁ (Model df)</p>
+                    <ul>
+                        <li>df₁ = k = 3</li>
+                    </ul>
+
+                    <p><strong>Step 3:</strong> Calculate df₂ (Error df)</p>
+                    <ul>
+                        <li>df₂ = N - k - 1</li>
+                        <li>df₂ = 100 - 3 - 1</li>
+                        <li>df₂ = 96</li>
+                    </ul>
+
+                    <p><strong>Step 4:</strong> Write in APA format</p>
+                    <ul>
+                        <li>F(3, 96) = [F-value], p = [p-value]</li>
+                    </ul>
+
+                    <p><strong>Step 5:</strong> Verify your work</p>
+                    <ul>
+                        <li>Total df = df₁ + df₂ = 3 + 96 = 99</li>
+                        <li>This should equal N - 1 = 100 - 1 = 99 ✓</li>
+                    </ul>
+
+                    <p><strong>Common Mistake:</strong> Forgetting to subtract the "1" in df₂ = N - k - 1. Many students calculate N - k and forget the extra -1.</p>
+
+                    <p><strong>Why These Matter:</strong></p>
+                    <ul>
+                        <li>Needed for APA-style reporting</li>
+                        <li>Indicate sample size and model complexity</li>
+                        <li>Used to look up critical values (if not using p-values)</li>
+                    </ul>
+
+                    <h3>4.4 R² and Adjusted R²</h3>
+                    <p>The <strong>Model Summary</strong> table provides the effect size for your regression model.</p>
+
+                    <p><strong>R² (R-squared):</strong></p>
+                    <ul>
+                        <li>Same concept as r² in correlation</li>
+                        <li><strong>Proportion of variance in the outcome (DV) explained by the model</strong></li>
+                        <li>Ranges from 0 to 1.0 (or 0% to 100%)</li>
+                    </ul>
+
+                    <p><strong>Adjusted R²:</strong></p>
+                    <ul>
+                        <li>A more conservative estimate of R²</li>
+                        <li>Adjusts for the number of predictors in the model</li>
+                        <li>Penalizes you for adding predictors that don't improve the model much</li>
+                        <li>Always slightly smaller than R² (unless you have only one predictor)</li>
+                        <li><strong>This is the value you should report in APA format</strong></li>
+                    </ul>
+
+                    <p><strong>Why Use Adjusted R²?</strong></p>
+
+                    <p>Adding predictors to a model will <strong>always</strong> increase R², even if the new predictors are useless. Adjusted R² corrects for this:</p>
+                    <ul>
+                        <li>If a predictor genuinely improves the model: Adjusted R² increases</li>
+                        <li>If a predictor doesn't help: Adjusted R² stays the same or even decreases</li>
+                    </ul>
+
+                    <p><strong>Interpretation Example:</strong></p>
+                    <ul>
+                        <li>R² = .658</li>
+                        <li>Adjusted R² = .653</li>
+                    </ul>
+
+                    <p><strong>What to report:</strong> "The model explained 65.3% of the variance in acceleration, Adjusted R² = .653."</p>
+
+                    <h3>4.5 The Coefficients Table</h3>
+                    <p>After confirming the overall model is significant (via the F-test), we examine the <strong>Coefficients table</strong> to get the specific details of our regression equation.</p>
+
+                    <p><strong>What the Coefficients Table Provides:</strong></p>
+
+                    <p><strong>1. The Slope (b):</strong></p>
+                    <ul>
+                        <li>Found in the "B" column under "Unstandardized Coefficients"</li>
+                        <li>This is the value you plug into your equation: Ŷ = bX + a</li>
+                        <li>Interpret as: "For every 1-unit increase in X, Y changes by b units"</li>
+                    </ul>
+
+                    <p><strong>2. The Y-Intercept (a):</strong></p>
+                    <ul>
+                        <li>Found in the row labeled "(Constant)"</li>
+                        <li>This is the constant term in your equation</li>
+                        <li>Interpret as: "When X = 0, the predicted value of Y is a"</li>
+                    </ul>
+
+                    <p><strong>3. The t-Test for the Slope:</strong></p>
+                    <ul>
+                        <li>Tests H₀: b = 0 (slope is zero, no relationship)</li>
+                        <li>Provides t-statistic and p-value</li>
+                        <li>In <strong>bivariate regression</strong>, this p-value will be <strong>identical</strong> to the omnibus F-test p-value</li>
+                    </ul>
+
+                    <p><strong>4. Standardized Coefficient (Beta β):</strong></p>
+                    <ul>
+                        <li>Found in the "Standardized Coefficients" column</li>
+                        <li>Used to compare effect sizes when variables are on different scales</li>
+                        <li>For <strong>bivariate regression</strong>, Beta = r (the correlation coefficient)</li>
+                    </ul>
+
+                    <p><strong>Example Coefficients Table:</strong></p>
+
+                    <pre>
+                    B        Std. Error    Beta      t        p
+(Constant)       17.850        .652                 27.38   <.001
+Weight           -.006         .001        -.859   -7.05   <.001</pre>
+
+                    <p><strong>Interpretation:</strong></p>
+                    <ul>
+                        <li>Equation: Ŷ (Acceleration) = -.006(Weight) + 17.850</li>
+                        <li>Slope: For every 1-pound increase in weight, acceleration time decreases by .006 seconds</li>
+                        <li>Wait, that's backwards! Actually, weight is in hundreds of pounds, so for every 100-pound increase, acceleration decreases by .6 seconds (car takes longer to accelerate)</li>
+                        <li>The negative sign means heavier cars have slower acceleration (makes sense!)</li>
+                        <li>t(205) = -7.05, p < .001: The slope is significantly different from zero</li>
+                    </ul>
+
+                    <h3>4.6 Effect Size for Bivariate Regression</h3>
+                    <p>For bivariate regression, we have multiple ways to express effect size:</p>
+
+                    <p><strong>1. R² (or Adjusted R²):</strong></p>
+                    <ul>
+                        <li>Overall model effect size</li>
+                        <li>"The model explains 65.8% of the variance in the outcome"</li>
+                    </ul>
+
+                    <p><strong>2. r (Correlation Coefficient):</strong></p>
+                    <ul>
+                        <li>r = √R² (take the square root of R²)</li>
+                        <li>For bivariate regression: r = Beta (the standardized coefficient)</li>
+                        <li>Describes the strength of the linear relationship</li>
+                    </ul>
+
+                    <p><strong>3. Beta² (β²):</strong></p>
+                    <ul>
+                        <li>For bivariate regression: β² = R²</li>
+                        <li>Squared standardized coefficient</li>
+                        <li>Proportion of variance explained by this specific predictor</li>
+                    </ul>
+
+                    <p><strong>Example:</strong><br>
+                    If R² = .658 for a bivariate regression:</p>
+                    <ul>
+                        <li>r = √.658 = .811</li>
+                        <li>Beta (β) = .811 (or -.811 if negative relationship)</li>
+                        <li>β² = .658</li>
+                    </ul>
+
+                    <p><strong>Quiz Terminology:</strong><br>
+                    When a quiz asks about "Beta squared as the effect size," it's referring to β², which equals R² in bivariate regression.</p>
+
+                    <div class="knowledge-check-item" data-question-id="tab2-q4">
+                        <p class="question-text"><strong>Question 4:</strong> You run a bivariate regression using Weight as the predictor and Acceleration as the outcome. The SPSS output shows F(1, 205) = 49.778, p < .001. What does this tell you?</p>
+                        <ul class="question-options">
+                            <li>A) The model does not significantly predict Acceleration</li>
+                            <li>B) The model significantly predicts Acceleration</li>
+                            <li>C) Weight has a small effect size</li>
+                            <li>D) There is a calculation error (F should have two different df values)</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <div class="answer-content">
+                                <p class="correct-answer"><strong>✓ Answer:</strong> B) The model significantly predicts Acceleration</p>
+                                <p class="explanation"><strong>Why this is correct:</strong> The omnibus F-test yielded a large F-statistic (49.778) with p < .001, which is well below the typical alpha of .05. This means we reject the null hypothesis and conclude that Weight significantly predicts Acceleration.</p>
+                                <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+                                <ul>
+                                    <li><strong>A) Not significant:</strong> With p < .001, this is definitely significant.</li>
+                                    <li><strong>C) Small effect size:</strong> We can't determine effect size from the F-statistic alone—we need R² or Adjusted R². However, F = 49.778 suggests a substantial relationship.</li>
+                                    <li><strong>D) Calculation error:</strong> The df are different: df₁ = 1 (one predictor) and df₂ = 205 (N - 1 - 1 = 207 - 1 - 1).</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab2-q4')">Show Answer</button>
+                    </div>
+
+                    <div class="knowledge-check-item" data-question-id="tab2-q5">
+                        <p class="question-text"><strong>Question 5:</strong> When reporting the F-test result from this bivariate regression in APA format, what is the second df for the F statistic? F(1, ___) = </p>
+                        <ul class="question-options">
+                            <li>A) 246</li>
+                            <li>B) 854</li>
+                            <li>C) 206</li>
+                            <li>D) 205</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <div class="answer-content">
+                                <p class="correct-answer"><strong>✓ Answer:</strong> D) 205</p>
+                                <p class="explanation"><strong>Why this is correct:</strong> For a bivariate regression with sample size N = 207:<br>df₁ = k = 1 (one predictor)<br>df₂ = N - k - 1 = 207 - 1 - 1 = 205</p>
+                                <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+                                <ul>
+                                    <li><strong>A) 246:</strong> This doesn't match the formula N - k - 1 for any reasonable sample size.</li>
+                                    <li><strong>B) 854:</strong> This is way too large and doesn't fit the df formula.</li>
+                                    <li><strong>C) 206:</strong> This would be N - 1, which is df for a one-sample test, not regression error df.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab2-q5')">Show Answer</button>
+                    </div>
+
+                    <div class="knowledge-check-item" data-question-id="tab2-q6">
+                        <p class="question-text"><strong>Question 6:</strong> In the bivariate regression, Beta (β) = -.859. Based on the t-test result (p < .001) for the predictor variable and Beta² as the effect size estimate, we can conclude that _____.</p>
+                        <ul class="question-options">
+                            <li>A) The predictor can significantly predict Acceleration, with a medium to large effect size</li>
+                            <li>B) The predictor can significantly predict Acceleration, with a small effect size</li>
+                            <li>C) The predictor does not significantly predict Acceleration, with a small effect size</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <div class="answer-content">
+                                <p class="correct-answer"><strong>✓ Answer:</strong> A) The predictor can significantly predict Acceleration, with a medium to large effect size</p>
+                                <p class="explanation"><strong>Why this is correct:</strong><br>• Significance: p < .001, so the predictor is highly significant<br>• Effect size: β² = (-.859)² = .738, meaning 73.8% of variance explained<br>• This is a large effect by any standard (Cohen's guideline for large is .50 or r² = .25)</p>
+                                <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+                                <ul>
+                                    <li><strong>B) Small effect size:</strong> β² = .738 is a very large effect size, not small.</li>
+                                    <li><strong>C) Not significant:</strong> With p < .001, this is definitely statistically significant.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab2-q6')">Show Answer</button>
+                    </div>
+                </div>
+                <div id="tab-3" class="tab-panel">
+                    <h2>Multiple Regression Fundamentals</h2>
+
+                    <h3>5.1 Why Use Multiple Predictors?</h3>
+                    <p>Real-world outcomes are rarely determined by a single variable. <strong>Multiple regression</strong> allows us to create more realistic and powerful predictive models by using <strong>two or more predictor variables</strong> to predict a single outcome.</p>
+
+                    <p><strong>Advantages of Multiple Regression:</strong></p>
+
+                    <p><strong>1. More Realistic Models:</strong></p>
+                    <ul>
+                        <li>Academic success isn't just about IQ—it's also study habits, motivation, prior knowledge, etc.</li>
+                        <li>Job performance isn't just about experience—it's also personality, training, work environment, etc.</li>
+                        <li>Multiple regression captures this complexity</li>
+                    </ul>
+
+                    <p><strong>2. Better Predictions:</strong></p>
+                    <ul>
+                        <li>Combining multiple predictors usually explains more variance than any single predictor</li>
+                        <li>Higher R² = more accurate predictions</li>
+                        <li>Example: Predicting GPA from SAT alone (R² = .25) vs. SAT + HS GPA + Study Hours (R² = .52)</li>
+                    </ul>
+
+                    <p><strong>3. Control for Confounds:</strong></p>
+                    <ul>
+                        <li>Allows you to ask: "Does X₁ predict Y <strong>after controlling for</strong> X₂?"</li>
+                        <li>Example: Does gender predict salary after controlling for years of experience and education?</li>
+                        <li>Helps isolate unique effects</li>
+                    </ul>
+
+                    <p><strong>4. Identify the Most Important Predictors:</strong></p>
+                    <ul>
+                        <li>Which variables matter most?</li>
+                        <li>Which can be dropped without hurting the model?</li>
+                        <li>Useful for theory building and practical applications</li>
+                    </ul>
+
+                    <h3>5.2 The Expanded Regression Equation</h3>
+                    <p>The regression equation expands to include multiple predictors:</p>
+
+                    <p><strong>Ŷ = b₁X₁ + b₂X₂ + b₃X₃ + ... + a</strong></p>
+
+                    <p><strong>Components:</strong></p>
+                    <ul>
+                        <li><strong>Ŷ:</strong> Predicted value of the outcome (DV)</li>
+                        <li><strong>X₁, X₂, X₃, ...:</strong> Predictor variables (IVs)</li>
+                        <li><strong>b₁, b₂, b₃, ...:</strong> Slopes (regression coefficients) for each predictor</li>
+                        <li><strong>a:</strong> Y-intercept (constant)</li>
+                    </ul>
+
+                    <p><strong>Example:</strong><br>
+                    Ŷ (Acceleration) = .002(Horsepower) + .012(Engine) - .005(Weight) + 17.5</p>
+
+                    <p><strong>Interpretation:</strong></p>
+                    <ul>
+                        <li>For every 1-unit increase in Horsepower (holding Engine and Weight constant), Acceleration increases by .002 seconds</li>
+                        <li>For every 1-unit increase in Engine size (holding others constant), Acceleration increases by .012 seconds</li>
+                        <li>For every 1-unit increase in Weight (holding others constant), Acceleration decreases by .005 seconds</li>
+                        <li>The y-intercept is 17.5 seconds</li>
+                    </ul>
+
+                    <p><strong>Key Phrase: "Holding Other Variables Constant"</strong></p>
+
+                    <p>In multiple regression, each slope represents the unique effect of that predictor <strong>while controlling for</strong> or <strong>holding constant</strong> all other predictors in the model.</p>
+
+                    <h3>5.3 Unique vs. Shared Variance</h3>
+                    <p>This is the KEY concept that makes multiple regression superior to running separate bivariate regressions.</p>
+
+                    <p><strong>The Problem with Separate Bivariate Regressions:</strong></p>
+
+                    <p>Imagine you run three separate bivariate regressions:</p>
+                    <ul>
+                        <li>Acceleration predicted by Horsepower: R² = .62</li>
+                        <li>Acceleration predicted by Engine: R² = .71</li>
+                        <li>Acceleration predicted by Weight: R² = .74</li>
+                    </ul>
+
+                    <p><strong>Can you add these up?</strong> NO! If you did, you'd get R² = 2.07 (207% of variance explained)—impossible!</p>
+
+                    <p><strong>Why Not?</strong> Because the predictors <strong>overlap</strong>. They're correlated with each other:</p>
+                    <ul>
+                        <li>Heavier cars tend to have larger engines</li>
+                        <li>Cars with larger engines tend to have more horsepower</li>
+                        <li>So these predictors share some of their predictive power</li>
+                    </ul>
+
+                    <p><strong>The Solution: Multiple Regression</strong></p>
+
+                    <p>Multiple regression intelligently partitions the variance into:</p>
+
+                    <p><strong>1. Shared Variance:</strong></p>
+                    <ul>
+                        <li>Variance in Y explained by multiple predictors together</li>
+                        <li>"Overlap" between predictors</li>
+                        <li>Can't be attributed to any single predictor</li>
+                    </ul>
+
+                    <p><strong>2. Unique Variance:</strong></p>
+                    <ul>
+                        <li>Variance in Y explained by one predictor <strong>after removing</strong> the effects of all other predictors</li>
+                        <li>This is what each predictor contributes <strong>uniquely</strong></li>
+                        <li>Sum of all unique variances + shared variance = Total R²</li>
+                    </ul>
+
+                    <p><strong>Visual Analogy:</strong></p>
+
+                    <p>Imagine a Venn diagram:</p>
+                    <ul>
+                        <li>Circle A = Variance Horsepower explains</li>
+                        <li>Circle B = Variance Engine explains</li>
+                        <li>Circle C = Variance Weight explains</li>
+                        <li>Where circles overlap = Shared variance</li>
+                        <li>Where each circle is unique = Unique variance for that predictor</li>
+                    </ul>
+
+                    <p>Multiple regression gives you both the overlapping parts AND the unique parts.</p>
+
+                    <h3>5.4 When to Use Multiple Regression</h3>
+                    <p><strong>Appropriate Scenarios:</strong></p>
+
+                    <p><strong>1. Theory-Driven Models:</strong></p>
+                    <ul>
+                        <li>You have theoretical reasons to believe multiple factors influence the outcome</li>
+                        <li>Example: Social cognitive theory predicts that self-efficacy, outcome expectations, and social support all influence health behavior</li>
+                    </ul>
+
+                    <p><strong>2. Practical Prediction:</strong></p>
+                    <ul>
+                        <li>You want the most accurate predictions possible</li>
+                        <li>Example: Predicting college GPA for admissions decisions using all available info</li>
+                    </ul>
+
+                    <p><strong>3. Controlling for Covariates:</strong></p>
+                    <ul>
+                        <li>You want to test if X₁ predicts Y above and beyond known confounds</li>
+                        <li>Example: Does a new intervention predict recovery after controlling for baseline severity?</li>
+                    </ul>
+
+                    <p><strong>4. Exploratory Research:</strong></p>
+                    <ul>
+                        <li>You have several potential predictors and want to see which matter most</li>
+                        <li>Example: What factors predict employee retention? (salary, job satisfaction, commute time, work-life balance, etc.)</li>
+                    </ul>
+
+                    <p><strong>When NOT to Use Multiple Regression:</strong></p>
+
+                    <p><strong>1. Predictors are Perfectly Collinear:</strong></p>
+                    <ul>
+                        <li>If two predictors are perfectly correlated, the model can't separate their effects</li>
+                        <li>SPSS will give you an error or exclude one variable</li>
+                    </ul>
+
+                    <p><strong>2. Too Many Predictors for Sample Size:</strong></p>
+                    <ul>
+                        <li>Rule of thumb: At least 10-15 participants per predictor</li>
+                        <li>With only 30 participants, don't include 20 predictors!</li>
+                    </ul>
+
+                    <p><strong>3. Non-Linear Relationships:</strong></p>
+                    <ul>
+                        <li>Standard regression assumes linear relationships</li>
+                        <li>If relationships are curvilinear, you need polynomial regression or other techniques</li>
+                    </ul>
+
+                    <p><strong>4. You Want to Compare Group Means:</strong></p>
+                    <ul>
+                        <li>If your IVs are categorical groups, use ANOVA instead</li>
+                        <li>(Though you can include categorical predictors using dummy coding)</li>
+                    </ul>
+
+                    <h3>5.5 Interpreting Multiple Regression Coefficients</h3>
+                    <p>Each slope in multiple regression has a specific interpretation:</p>
+
+                    <p><strong>"The slope b₁ represents the predicted change in Y for every one-unit increase in X₁, <strong>holding all other predictors constant</strong>."</strong></p>
+
+                    <p><strong>Example:</strong><br>
+                    Ŷ (Salary) = 2000(Education) + 1500(Experience) + 500(Gender) + 10,000</p>
+
+                    <p><strong>Interpreting Each Slope:</strong></p>
+
+                    <p><strong>Education (b₁ = 2000):</strong><br>
+                    "For every additional year of education, salary is predicted to increase by $2,000, holding years of experience and gender constant."</p>
+
+                    <p><strong>Experience (b₂ = 1500):</strong><br>
+                    "For every additional year of work experience, salary is predicted to increase by $1,500, holding education and gender constant."</p>
+
+                    <p><strong>Gender (b₃ = 500):</strong><br>
+                    "Comparing people with the same education and experience, one gender is predicted to earn $500 more than the other." (Note: Gender would be dummy coded, e.g., 0 = female, 1 = male)</p>
+
+                    <p><strong>Key Point:</strong> Each slope is the <strong>unique</strong> effect of that predictor, independent of the others.</p>
+
+                    <div class="knowledge-check-item" data-question-id="tab3-q1">
+                        <p class="question-text"><strong>Question 1:</strong> What unique information can be gleaned from a multiple linear regression that is not available from a bivariate linear regression?</p>
+                        <ul class="question-options">
+                            <li>A) The relative contributions from different predictors to the regression model</li>
+                            <li>B) Whether the model effect can be generalized to the population</li>
+                            <li>C) The parameters of the regression equation for predicting the outcome variable</li>
+                            <li>D) The measure of how well the model fit the data set</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <div class="answer-content">
+                                <p class="correct-answer"><strong>✓ Answer:</strong> A) The relative contributions from different predictors to the regression model</p>
+                                <p class="explanation"><strong>Why this is correct:</strong> Multiple regression's key advantage is that it shows you the <strong>unique contribution</strong> of each predictor while controlling for all others. This allows you to compare which predictors are most important, which is impossible with separate bivariate regressions.</p>
+                                <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+                                <ul>
+                                    <li><strong>B) Generalizability:</strong> Both bivariate and multiple regression use significance tests to assess generalizability to the population.</li>
+                                    <li><strong>C) Regression equation parameters:</strong> Both types provide regression equations (Ŷ = bX + a for bivariate; Ŷ = b₁X₁ + b₂X₂ + ... + a for multiple).</li>
+                                    <li><strong>D) Model fit:</strong> Both provide R² and Adjusted R² to indicate how well the model fits the data.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab3-q1')">Show Answer</button>
+                    </div>
+
+                    <div class="knowledge-check-item" data-question-id="tab3-q2">
+                        <p class="question-text"><strong>Question 2:</strong> Which of these is an example of multiple regression?</p>
+                        <ul class="question-options">
+                            <li>A) The effect of temperatures in Celsius and the possibility of rainfall on a particular day</li>
+                            <li>B) The effect of the number of employees in a company and their height</li>
+                            <li>C) The effect of the price and the sweetness of a pastry affecting a taster's rating</li>
+                            <li>D) The effect of the weight of a student and his or her grade point average</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <div class="answer-content">
+                                <p class="correct-answer"><strong>✓ Answer:</strong> C) The effect of the price and the sweetness of a pastry affecting a taster's rating</p>
+                                <p class="explanation"><strong>Why this is correct:</strong> This has <strong>two predictors</strong> (price and sweetness) predicting <strong>one outcome</strong> (taster's rating). That's the definition of multiple regression: multiple IVs → one DV.</p>
+                                <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+                                <ul>
+                                    <li><strong>A) Temperature and rainfall:</strong> This is backwards—it's unclear what is predicting what. Also, "possibility of rainfall" is likely categorical (yes/no), not continuous.</li>
+                                    <li><strong>B) Employees and height:</strong> This describes only one predictor (height) and the outcome isn't clear. It's not structured as a multiple regression.</li>
+                                    <li><strong>D) Weight and GPA:</strong> This has only one predictor (weight) predicting one outcome (GPA). This would be bivariate regression, not multiple regression.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab3-q2')">Show Answer</button>
+                    </div>
+
+                    <div class="knowledge-check-item" data-question-id="tab3-q3">
+                        <p class="question-text"><strong>Question 3:</strong> You perform a multiple linear regression with Acceleration as the outcome variable, with Horsepower, Engine, and Weight as the predictor variables. The Model Summary shows R² = .658 and Adjusted R² = .653. What does the Adjusted R² value mean?</p>
+                        <ul class="question-options">
+                            <li>A) The model explains 65.3% of the variance in Acceleration</li>
+                            <li>B) The predictors are 65.3% correlated with each other</li>
+                            <li>C) 65.3% of the sample supports the model</li>
+                            <li>D) The model is 65.3% certain to generalize to the population</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <div class="answer-content">
+                                <p class="correct-answer"><strong>✓ Answer:</strong> A) The model explains 65.3% of the variance in Acceleration</p>
+                                <p class="explanation"><strong>Why this is correct:</strong> Adjusted R² represents the proportion of variance in the outcome variable (Acceleration) that is explained by the predictors in the model, adjusted for the number of predictors. 0.653 = 65.3% of variance explained.</p>
+                                <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+                                <ul>
+                                    <li><strong>B) Predictors are correlated:</strong> Adjusted R² doesn't measure correlation among predictors—that would be assessed through correlation matrices or VIF.</li>
+                                    <li><strong>C) Sample supports model:</strong> Adjusted R² isn't about what percentage of people support the model; it's about variance explained.</li>
+                                    <li><strong>D) Certainty of generalization:</strong> This would be related to confidence intervals or significance tests, not Adjusted R².</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab3-q3')">Show Answer</button>
+                    </div>
+                </div>
+                <div id="tab-4" class="tab-panel">
+                    <h2>Understanding Unique Contributions</h2>
+
+                    <h3>6.1 Standardized Coefficients (Beta β)</h3>
+                    <p>When predictors are measured on different scales, comparing unstandardized slopes (b) is like comparing apples to oranges.</p>
+
+                    <p><strong>The Problem:</strong></p>
+                    <ul>
+                        <li>Predictor 1: Age (years), b₁ = 0.5</li>
+                        <li>Predictor 2: Income (dollars), b₂ = 0.0001</li>
+                        <li>Predictor 3: Education (years), b₃ = 2.0</li>
+                    </ul>
+
+                    <p><strong>Which predictor is strongest?</strong> You can't tell from these values because they're in different units!</p>
+
+                    <p><strong>The Solution: Standardized Coefficients (Beta β)</strong></p>
+
+                    <p><strong>Beta (β)</strong> is the slope you would get if all variables were converted to <strong>z-scores</strong> (standardized to have M = 0, SD = 1).</p>
+
+                    <p><strong>Properties of Beta:</strong></p>
+                    <ul>
+                        <li><strong>Unit-free:</strong> All predictors are on the same scale (standard deviation units)</li>
+                        <li><strong>Comparable:</strong> You can directly compare Betas to see which predictor is strongest</li>
+                        <li><strong>Ranges from -1 to +1</strong> (though rarely reaches these extremes)</li>
+                        <li><strong>Sign indicates direction:</strong> Positive = positive relationship; Negative = negative relationship</li>
+                    </ul>
+
+                    <p><strong>Example:</strong></p>
+                    <pre>
+Predictor         b (Unstandardized)    Beta (β)
+Horsepower       .002                   .367
+Engine           .012                   .338
+Weight           -.005                  -.859</pre>
+
+                    <p><strong>Interpretation:</strong><br>
+                    Even though Weight has the smallest unstandardized slope (-.005), it has the <strong>largest</strong> Beta (-.859 in absolute value). This means Weight is actually the strongest predictor when all variables are on the same scale.</p>
+
+                    <h3>6.2 Comparing Relative Importance</h3>
+                    <p><strong>How to Identify the Strongest Predictor:</strong></p>
+
+                    <p><strong>Step 1:</strong> Look at the Beta (β) column in the Coefficients table</p>
+                    <p><strong>Step 2:</strong> Find the largest <strong>absolute value</strong> (ignore the sign)</p>
+                    <p><strong>Step 3:</strong> That predictor has the strongest unique relationship with the outcome</p>
+
+                    <p><strong>Example:</strong></p>
+                    <pre>
+Predictor         Beta (β)
+Horsepower       .367
+Engine           .338
+Weight           -.859</pre>
+
+                    <p><strong>Strongest predictor:</strong> Weight (|-.859| = .859)<br>
+                    <strong>Second:</strong> Horsepower (.367)<br>
+                    <strong>Third:</strong> Engine (.338)</p>
+
+                    <p><strong>Important Caveat:</strong></p>
+                    <p>Beta tells you the <strong>relative strength within your model</strong>, but:</p>
+                    <ul>
+                        <li>A large Beta doesn't guarantee statistical significance (check the p-value!)</li>
+                        <li>A small Beta might still be theoretically or practically important</li>
+                        <li>Betas can change if you add or remove predictors from the model</li>
+                    </ul>
+
+                    <h3>6.3 Semipartial Correlation (sr) and sr²</h3>
+                    <p>While Beta tells you <strong>which</strong> predictor is strongest, <strong>semipartial correlation (sr)</strong> tells you <strong>how much</strong> unique variance each predictor explains.</p>
+
+                    <p><strong>What is Semipartial Correlation?</strong></p>
+
+                    <p><strong>Semipartial correlation (sr)</strong> is the correlation between:</p>
+                    <ul>
+                        <li>The <strong>predictor</strong> (with effects of other predictors removed)</li>
+                        <li>The <strong>outcome</strong> (in its original form)</li>
+                    </ul>
+
+                    <p><strong>Why "Semipartial"?</strong></p>
+                    <ul>
+                        <li>"Semi" = halfway</li>
+                        <li>Only the predictor is "partialed" (other IVs removed from it)</li>
+                        <li>The outcome is left alone</li>
+                    </ul>
+
+                    <p><strong>Semipartial Correlation Squared (sr²):</strong></p>
+
+                    <p><strong>sr²</strong> is the <strong>unique variance</strong> explained by that predictor:</p>
+                    <ul>
+                        <li>Proportion of total variance in Y explained by this predictor alone</li>
+                        <li>After removing overlap with other predictors</li>
+                        <li>This is the <strong>unique contribution</strong></li>
+                    </ul>
+
+                    <p><strong>Example:</strong></p>
+                    <pre>
+Predictor         Beta (β)    sr²
+Horsepower       .367         .037
+Engine           .338         .114
+Weight           -.859        .136</pre>
+
+                    <p><strong>Interpretation:</strong></p>
+                    <ul>
+                        <li>Horsepower uniquely explains 3.7% of variance in Acceleration</li>
+                        <li>Engine uniquely explains 11.4% of variance</li>
+                        <li>Weight uniquely explains 13.6% of variance</li>
+                        <li>Unique contributions: 3.7% + 11.4% + 13.6% = 28.7%</li>
+                        <li>Total R² = .658 (65.8%)</li>
+                        <li>Shared variance = 65.8% - 28.7% = 37.1%</li>
+                    </ul>
+
+                    <p><strong>Key Insight:</strong><br>
+                    More than half of the explained variance (37.1% out of 65.8%) is <strong>shared</strong> among the predictors. This is why multiple regression is better than separate bivariate regressions!</p>
+
+                    <h3>6.4 Part Correlation vs. Semipartial Correlation</h3>
+                    <p>This is a subtle distinction that often confuses students.</p>
+
+                    <p><strong>Semipartial Correlation (sr):</strong></p>
+                    <ul>
+                        <li>Removes other IVs from the predictor of interest</li>
+                        <li>Leaves the DV in its original form</li>
+                        <li><strong>Squared semipartial (sr²)</strong> tells you unique variance explained</li>
+                        <li>This is what you want for unique contributions</li>
+                    </ul>
+
+                    <p><strong>Partial Correlation (pr):</strong></p>
+                    <ul>
+                        <li>Removes other IVs from BOTH the predictor and the DV</li>
+                        <li>Tells you the relationship between X and Y with other variables "partialed out" of both</li>
+                        <li><strong>Squared partial (pr²)</strong> is always larger than sr²</li>
+                        <li>Less useful for understanding unique variance</li>
+                    </ul>
+
+                    <p><strong>In SPSS:</strong></p>
+                    <ul>
+                        <li>The "Part" column = semipartial correlation (sr)</li>
+                        <li>The "Partial" column = partial correlation (pr)</li>
+                        <li>For unique contributions, use <strong>Part²</strong> (sr²)</li>
+                    </ul>
+
+                    <p><strong>Why This Matters:</strong></p>
+                    <p>If someone asks "What is the unique contribution of the strongest predictor?":</p>
+                    <ul>
+                        <li>Find the predictor with the largest |Beta|</li>
+                        <li>Look at its <strong>sr²</strong> (or square the value in the "Part" column)</li>
+                        <li>That's your answer</li>
+                    </ul>
+
+                    <hr>
+
+                    <h2>Multicollinearity</h2>
+
+                    <h3>7.1 What is Multicollinearity?</h3>
+                    <p><strong>Multicollinearity</strong> occurs when predictor variables in a multiple regression are highly correlated with each other. This creates problems for interpreting the unique contributions of each predictor.</p>
+
+                    <p><strong>Perfect Multicollinearity:</strong></p>
+                    <ul>
+                        <li>Two predictors are perfectly correlated (r = 1.0)</li>
+                        <li>SPSS cannot calculate unique effects</li>
+                        <li>You'll get an error message</li>
+                    </ul>
+
+                    <p><strong>High Multicollinearity:</strong></p>
+                    <ul>
+                        <li>Predictors are strongly correlated (r > .70 or .80)</li>
+                        <li>Standard errors become inflated</li>
+                        <li>It's hard to determine which predictor is "really" important</li>
+                    </ul>
+
+                    <h3>7.2 Variance Inflation Factor (VIF)</h3>
+                    <p>The <strong>Variance Inflation Factor (VIF)</strong> measures how much multicollinearity is inflating the standard errors of regression coefficients.</p>
+
+                    <p><strong>VIF Interpretation:</strong></p>
+                    <ul>
+                        <li><strong>VIF = 1:</strong> No multicollinearity (predictor is uncorrelated with others)</li>
+                        <li><strong>VIF = 2:</strong> Standard errors are doubled due to multicollinearity</li>
+                        <li><strong>VIF > 5:</strong> Potential concern</li>
+                        <li><strong>VIF > 10:</strong> Serious multicollinearity problem</li>
+                    </ul>
+
+                    <p><strong>Example:</strong></p>
+                    <pre>
+Predictor         VIF
+Horsepower       2.34
+Engine           8.67
+Weight           3.21</pre>
+
+                    <p><strong>Interpretation:</strong> Engine has a VIF of 8.67, indicating serious multicollinearity. This means Engine is highly correlated with other predictors in the model.</p>
+
+                    <h3>7.3 Tolerance</h3>
+                    <p><strong>Tolerance</strong> is the inverse of VIF and represents the proportion of variance in a predictor that is not explained by other predictors.</p>
+
+                    <p><strong>Tolerance = 1 / VIF</strong></p>
+
+                    <p><strong>Tolerance Interpretation:</strong></p>
+                    <ul>
+                        <li><strong>Tolerance = 1.0:</strong> No multicollinearity</li>
+                        <li><strong>Tolerance = 0.5:</strong> 50% of variance is unique to this predictor</li>
+                        <li><strong>Tolerance < 0.2:</strong> Potential concern</li>
+                        <li><strong>Tolerance < 0.1:</strong> Serious multicollinearity problem</li>
+                    </ul>
+
+                    <h3>7.4 Consequences of Multicollinearity</h3>
+                    <p><strong>1. Inflated Standard Errors:</strong></p>
+                    <ul>
+                        <li>Makes it harder to achieve statistical significance</li>
+                        <li>Confidence intervals become wider</li>
+                        <li>Reduces statistical power</li>
+                    </ul>
+
+                    <p><strong>2. Unstable Coefficients:</strong></p>
+                    <ul>
+                        <li>Small changes in data can cause large changes in coefficients</li>
+                        <li>Adding or removing one predictor can dramatically change others</li>
+                        <li>Makes interpretation difficult</li>
+                    </ul>
+
+                    <p><strong>3. Difficulty Interpreting Unique Contributions:</strong></p>
+                    <ul>
+                        <li>Can't tell which predictor is "really" important</li>
+                        <li>Shared variance dominates unique variance</li>
+                        <li>Results may not generalize to other samples</li>
+                    </ul>
+
+                    <h3>7.5 Dealing with Multicollinearity</h3>
+                    <p><strong>1. Remove Redundant Predictors:</strong></p>
+                    <ul>
+                        <li>If two predictors are highly correlated, keep only one</li>
+                        <li>Choose the one that's theoretically more important</li>
+                        <li>Or choose the one that's easier to measure</li>
+                    </ul>
+
+                    <p><strong>2. Combine Related Predictors:</strong></p>
+                    <ul>
+                        <li>Create composite scores from highly correlated predictors</li>
+                        <li>Use principal component analysis (PCA)</li>
+                        <li>Create meaningful scales or indices</li>
+                    </ul>
+
+                    <p><strong>3. Use Ridge Regression:</strong></p>
+                    <ul>
+                        <li>Advanced technique that handles multicollinearity</li>
+                        <li>Adds a penalty term to prevent overfitting</li>
+                        <li>Beyond the scope of this course</li>
+                    </ul>
+
+                    <p><strong>4. Increase Sample Size:</strong></p>
+                    <ul>
+                        <li>Larger samples provide more stable estimates</li>
+                        <li>Reduces the impact of multicollinearity</li>
+                        <li>Not always feasible in practice</li>
+                    </ul>
+
+                    <div class="knowledge-check-item" data-question-id="tab4-q1">
+                        <p class="question-text"><strong>Question 1:</strong> In a multiple regression analysis, which of the following indicates the strongest predictor when comparing standardized coefficients (Beta)?</p>
+                        <ul class="question-options">
+                            <li>A) The predictor with the largest positive Beta</li>
+                            <li>B) The predictor with the largest absolute value of Beta</li>
+                            <li>C) The predictor with the smallest Beta</li>
+                            <li>D) The predictor with the most significant p-value</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <div class="answer-content">
+                                <p class="correct-answer"><strong>✓ Answer:</strong> B) The predictor with the largest absolute value of Beta</p>
+                                <p class="explanation"><strong>Why this is correct:</strong> Beta coefficients are standardized, so they can be directly compared regardless of the original scale of measurement. The largest absolute value indicates the strongest relationship with the outcome variable, regardless of direction.</p>
+                                <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+                                <ul>
+                                    <li><strong>A) Largest positive Beta:</strong> This ignores negative relationships, which can be just as strong.</li>
+                                    <li><strong>C) Smallest Beta:</strong> This would indicate the weakest predictor, not the strongest.</li>
+                                    <li><strong>D) Most significant p-value:</strong> Statistical significance doesn't necessarily indicate the strongest effect size.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab4-q1')">Show Answer</button>
+                    </div>
+
+                    <div class="knowledge-check-item" data-question-id="tab4-q2">
+                        <p class="question-text"><strong>Question 2:</strong> What does a Variance Inflation Factor (VIF) of 8.5 indicate?</p>
+                        <ul class="question-options">
+                            <li>A) The predictor is highly correlated with the outcome variable</li>
+                            <li>B) The predictor has a strong unique contribution to the model</li>
+                            <li>C) There is serious multicollinearity involving this predictor</li>
+                            <li>D) The predictor should be removed from the model</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <div class="answer-content">
+                                <p class="correct-answer"><strong>✓ Answer:</strong> C) There is serious multicollinearity involving this predictor</p>
+                                <p class="explanation"><strong>Why this is correct:</strong> VIF measures how much multicollinearity inflates the standard errors. A VIF of 8.5 indicates that this predictor is highly correlated with other predictors in the model, causing serious multicollinearity (VIF > 5 is concerning, VIF > 10 is serious).</p>
+                                <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+                                <ul>
+                                    <li><strong>A) Highly correlated with outcome:</strong> VIF measures correlation between predictors, not predictor-outcome correlation.</li>
+                                    <li><strong>B) Strong unique contribution:</strong> High VIF actually indicates the opposite—difficulty determining unique contributions.</li>
+                                    <li><strong>D) Should be removed:</strong> While high VIF is concerning, removal is one option among several solutions.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab4-q2')">Show Answer</button>
+                    </div>
+
+                    <div class="knowledge-check-item" data-question-id="tab4-q3">
+                        <p class="question-text"><strong>Question 3:</strong> What is the unique contribution of a predictor that has a semipartial correlation (sr) of .30?</p>
+                        <ul class="question-options">
+                            <li>A) 30%</li>
+                            <li>B) 9%</li>
+                            <li>C) 90%</li>
+                            <li>D) 3%</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <div class="answer-content">
+                                <p class="correct-answer"><strong>✓ Answer:</strong> B) 9%</p>
+                                <p class="explanation"><strong>Why this is correct:</strong> The unique contribution is measured by sr² (semipartial correlation squared). If sr = .30, then sr² = (.30)² = .09 = 9%.</p>
+                                <p class="explanation"><strong>Why the others are incorrect:</strong></p>
+                                <ul>
+                                    <li><strong>A) 30%:</strong> This is the semipartial correlation itself, not the unique variance explained.</li>
+                                    <li><strong>C) 90%:</strong> This would be 1 - (.30)², which doesn't represent unique contribution.</li>
+                                    <li><strong>D) 3%:</strong> This might result from a calculation error or confusion with other statistics.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab4-q3')">Show Answer</button>
+                    </div>
+                </div>
+                <div id="tab-5" class="tab-panel">
+                    <h2>Model Building and Comparison</h2>
+
+                    <h3>8.1 Methods for Building Regression Models</h3>
+                    <p>When you have many potential predictors, how do you decide which ones to include? SPSS offers several methods:</p>
+
+                    <p><strong>1. Simultaneous (Enter) Method:</strong></p>
+                    <ul>
+                        <li>Enters all predictors into the model at once</li>
+                        <li>Most common and straightforward approach</li>
+                        <li>You decide which predictors based on theory</li>
+                    </ul>
+
+                    <p><strong>2. Forward Method:</strong></p>
+                    <ul>
+                        <li>Starts with no predictors</li>
+                        <li>Adds predictors one at a time</li>
+                        <li>Each step: adds the predictor that improves the model most (highest correlation with residuals)</li>
+                        <li>Stops when no remaining predictor significantly improves the model</li>
+                        <li><strong>Result:</strong> A model with only significant predictors</li>
+                    </ul>
+
+                    <p><strong>3. Backward Method:</strong></p>
+                    <ul>
+                        <li>Starts with ALL predictors in the model</li>
+                        <li>Removes predictors one at a time</li>
+                        <li>Each step: removes the predictor that hurts the model least (smallest contribution)</li>
+                        <li>Stops when all remaining predictors are significant</li>
+                    </ul>
+
+                    <p><strong>4. Stepwise Method:</strong></p>
+                    <ul>
+                        <li>Combination of forward and backward</li>
+                        <li>At each step: can add OR remove a predictor</li>
+                        <li>More complex, can be unstable</li>
+                    </ul>
+
+                    <p><strong>When to Use Each:</strong></p>
+
+                    <p><strong>Use Simultaneous (Enter) when:</strong></p>
+                    <ul>
+                        <li>You have a strong theoretical model</li>
+                        <li>You want to include all predictors regardless of significance</li>
+                        <li>You have a small number of predictors</li>
+                    </ul>
+
+                    <p><strong>Use Forward/Backward/Stepwise when:</strong></p>
+                    <ul>
+                        <li>You have many potential predictors</li>
+                        <li>You're conducting exploratory research</li>
+                        <li>You want a parsimonious (simple) model with only significant predictors</li>
+                        <li><strong>Caution:</strong> These methods can be influenced by small sample variations</li>
+                    </ul>
+
+                    <h3>8.2 Forward Method in Detail</h3>
+                    <p><strong>How Forward Method Works:</strong></p>
+
+                    <p><strong>Step 1:</strong> Start with no predictors (just the intercept)</p>
+                    <p><strong>Step 2:</strong> Test all available predictors</p>
+                    <ul>
+                        <li>Find the one most strongly correlated with Y</li>
+                        <li>Add it to the model if p < .05 (or your chosen alpha)</li>
+                    </ul>
+                    <p><strong>Step 3:</strong> Test all remaining predictors</p>
+                    <ul>
+                        <li>Find the one that improves the model most (highest partial correlation with residuals)</li>
+                        <li>Add it to the model if p < .05</li>
+                    </ul>
+                    <p><strong>Step 4:</strong> Repeat until no remaining predictor significantly improves the model</p>
+
+                    <p><strong>Advantage:</strong></p>
+                    <ul>
+                        <li>Results in a model with <strong>only significant predictors</strong></li>
+                        <li>Efficient when you have many potential predictors</li>
+                        <li>Easy to interpret (no non-significant predictors cluttering the model)</li>
+                    </ul>
+
+                    <p><strong>Disadvantages:</strong></p>
+                    <ul>
+                        <li>Not theoretically driven (data-driven instead)</li>
+                        <li>Can be influenced by multicollinearity</li>
+                        <li>Might exclude theoretically important predictors</li>
+                        <li>Results can vary between samples (less stable)</li>
+                    </ul>
+
+                    <h3>8.3 Comparing Models with Adjusted R²</h3>
+                    <p>When comparing different regression models, <strong>Adjusted R²</strong> is your primary tool.</p>
+
+                    <p><strong>Why Not Regular R²?</strong></p>
+
+                    <p>R² <strong>always increases</strong> when you add predictors, even if they're useless:</p>
+                    <ul>
+                        <li>Model 1 (1 predictor): R² = .50</li>
+                        <li>Model 2 (2 predictors): R² = .52</li>
+                        <li>Model 3 (10 predictors): R² = .54</li>
+                    </ul>
+
+                    <p>Did those extra predictors really help? Or is the increase just due to chance?</p>
+
+                    <p><strong>Adjusted R² Corrects for This:</strong></p>
+
+                    <p>Adjusted R² <strong>penalizes</strong> you for adding predictors:</p>
+                    <ul>
+                        <li>If a predictor genuinely improves the model: Adjusted R² increases</li>
+                        <li>If a predictor doesn't help much: Adjusted R² stays the same or even decreases</li>
+                    </ul>
+
+                    <p><strong>Example Comparison:</strong></p>
+
+                    <p><strong>Model 1 (Bivariate):</strong></p>
+                    <ul>
+                        <li>Predictor: Weight only</li>
+                        <li>R² = .739</li>
+                        <li>Adjusted R² = .738</li>
+                    </ul>
+
+                    <p><strong>Model 2 (Multiple):</strong></p>
+                    <ul>
+                        <li>Predictors: Weight, Horsepower, Engine</li>
+                        <li>R² = .658</li>
+                        <li>Adjusted R² = .653</li>
+                    </ul>
+
+                    <p><strong>In this case:</strong> The single predictor (Weight) is actually superior to the three-predictor model.</p>
+
+                    <hr>
+
+                    <h2>Assumptions of Correlation and Regression</h2>
+
+                    <h3>9.1 The Four Key Assumptions</h3>
+                    <p>Like all statistical tests, correlation and regression have assumptions that must be met for results to be valid:</p>
+
+                    <p><strong>1. Linearity:</strong></p>
+                    <ul>
+                        <li>The relationship between variables is best described by a straight line</li>
+                        <li>Check with scatterplots</li>
+                        <li>If relationship is curved, correlation/regression will underestimate the true relationship</li>
+                    </ul>
+
+                    <p><strong>2. Normality:</strong></p>
+                    <ul>
+                        <li>Variables should be approximately normally distributed</li>
+                        <li>Check with histograms, Q-Q plots, or normality tests</li>
+                        <li>Violations affect significance tests but not correlation coefficients</li>
+                    </ul>
+
+                    <p><strong>3. Homoscedasticity (Equal Variance):</strong></p>
+                    <ul>
+                        <li>The spread of Y values is consistent across all X values</li>
+                        <li>Check scatterplot for funnel shapes or other patterns</li>
+                        <li>Violations affect standard errors and significance tests</li>
+                    </ul>
+
+                    <p><strong>4. Independence:</strong></p>
+                    <ul>
+                        <li>Each observation is independent of all others</li>
+                        <li>No clustering, repeated measures, or nested data</li>
+                        <li>Most important for significance testing</li>
+                    </ul>
+
+                    <h3>9.2 How to Check Assumptions</h3>
+                    <p><strong>Linearity:</strong></p>
+                    <ul>
+                        <li>Create scatterplots of all variable pairs</li>
+                        <li>Look for straight-line patterns</li>
+                        <li>Watch for curves, U-shapes, or other non-linear patterns</li>
+                    </ul>
+
+                    <p><strong>Normality:</strong></p>
+                    <ul>
+                        <li>Create histograms for each variable</li>
+                        <li>Use Q-Q plots for more detailed assessment</li>
+                        <li>Run normality tests (Shapiro-Wilk, Kolmogorov-Smirnov)</li>
+                    </ul>
+
+                    <p><strong>Homoscedasticity:</strong></p>
+                    <ul>
+                        <li>Look at scatterplot patterns</li>
+                        <li>Variance should be similar across all X values</li>
+                        <li>Watch for funnel shapes or other systematic patterns</li>
+                    </ul>
+
+                    <p><strong>Independence:</strong></p>
+                    <ul>
+                        <li>Design issue: ensure no repeated measures or clustering</li>
+                        <li>Check that each participant contributed only one data point</li>
+                        <li>Consider study design carefully</li>
+                    </ul>
+
+                    <h3>9.3 What to Do When Assumptions Are Violated</h3>
+                    <p><strong>Linearity Violations:</strong></p>
+                    <ul>
+                        <li>Consider polynomial regression for curved relationships</li>
+                        <li>Transform variables (log, square root, etc.)</li>
+                        <li>Use non-parametric alternatives (Spearman correlation)</li>
+                    </ul>
+
+                    <p><strong>Normality Violations:</strong></p>
+                    <ul>
+                        <li>Large samples (N > 100) are robust to normality violations</li>
+                        <li>Transform variables to improve normality</li>
+                        <li>Use non-parametric tests</li>
+                    </ul>
+
+                    <p><strong>Homoscedasticity Violations:</strong></p>
+                    <ul>
+                        <li>Transform variables</li>
+                        <li>Use weighted least squares regression</li>
+                        <li>Report robust standard errors</li>
+                    </ul>
+
+                    <p><strong>Independence Violations:</strong></p>
+                    <ul>
+                        <li>Use appropriate statistical techniques (mixed models, multilevel modeling)</li>
+                        <li>Consider the clustering in your analysis</li>
+                        <li>May need to consult a statistician</li>
+                    </ul>
+
+                    <h3>9.4 Practical Guidelines</h3>
+                    <p><strong>Always check assumptions before interpreting results:</strong></p>
+                    <ul>
+                        <li>Assumption violations can lead to incorrect conclusions</li>
+                        <li>Some violations are more serious than others</li>
+                        <li>Report assumption checks in your methods section</li>
+                    </ul>
+
+                    <p><strong>When in doubt:</strong></p>
+                    <ul>
+                        <li>Use multiple approaches (parametric and non-parametric)</li>
+                        <li>Report both sets of results</li>
+                        <li>Be conservative in your interpretations</li>
+                    </ul>
+
+                    <p><strong>Remember:</strong> The goal is not perfect assumptions, but reasonable ones that don't seriously bias your results.</p>
+                </div>
+                <div id="tab-6" class="tab-panel">
+                    <h2>SPSS Practical Guide</h2>
+
+                    <h3>Running Correlations in SPSS</h3>
+                    <p><strong>Step-by-Step Instructions:</strong></p>
+                    <ol>
+                        <li><strong>Analyze → Correlate → Bivariate</strong></li>
+                        <li><strong>Select variables:</strong> Move all variables you want to correlate into the "Variables" box</li>
+                        <li><strong>Correlation Coefficient:</strong> Ensure "Pearson" is checked (default)</li>
+                        <li><strong>Test of Significance:</strong> Ensure "Two-tailed" is checked</li>
+                        <li><strong>Flag significant correlations:</strong> Check "Flag significant correlations"</li>
+                        <li><strong>Click OK</strong></li>
+                    </ol>
+
+                    <h3>Running Regression in SPSS</h3>
+                    <p><strong>For Bivariate Regression:</strong></p>
+                    <ol>
+                        <li><strong>Analyze → Regression → Linear</strong></li>
+                        <li><strong>Dependent:</strong> Select your outcome variable</li>
+                        <li><strong>Independent(s):</strong> Select your predictor variable</li>
+                        <li><strong>Method:</strong> Enter (default)</li>
+                        <li><strong>Click OK</strong></li>
+                    </ol>
+
+                    <p><strong>For Multiple Regression:</strong></p>
+                    <ol>
+                        <li><strong>Analyze → Regression → Linear</strong></li>
+                        <li><strong>Dependent:</strong> Select your outcome variable</li>
+                        <li><strong>Independent(s):</strong> Select all predictor variables</li>
+                        <li><strong>Method:</strong> Enter (or Forward/Backward/Stepwise)</li>
+                        <li><strong>Statistics:</strong> Check "Collinearity diagnostics" for VIF</li>
+                        <li><strong>Click OK</strong></li>
+                    </ol>
+
+                    <h3>Key SPSS Output Tables</h3>
+                    <p><strong>Model Summary:</strong> Contains R² and Adjusted R²</p>
+                    <p><strong>ANOVA:</strong> Contains the omnibus F-test</p>
+                    <p><strong>Coefficients:</strong> Contains slopes, intercepts, t-tests, and standardized coefficients</p>
+
+                    <h3>Interpreting SPSS Output</h3>
+                    <p><strong>Correlation Matrix:</strong> Look for the strongest absolute correlation values</p>
+                    <p><strong>F-test:</strong> Check significance (p < .05)</p>
+                    <p><strong>R²/Adjusted R²:</strong> Effect size measure</p>
+                    <p><strong>Beta coefficients:</strong> Relative importance of predictors</p>
+                    <p><strong>VIF values:</strong> Check for multicollinearity (VIF > 5 is concerning)</p>
+
+                    <div class="visual-diagram">
+                        <h4>SPSS Screenshots</h4>
+                        <p><strong>Note:</strong> Refer to the assets/m6-assets/ folder for detailed SPSS screenshots including:</p>
+                        <ul>
+                            <li>bivariate-correlation.png</li>
+                            <li>linear-regression.png</li>
+                            <li>multiple-linear-regression.png</li>
+                            <li>variable-view.png</li>
+                            <li>And other SPSS interface images</li>
+                        </ul>
+                    </div>
+                </div>
+                <div id="tab-7" class="tab-panel">
+                    <h2>APA Reporting</h2>
+
+                    <h3>Correlation Reporting</h3>
+                    <p><strong>Basic Format:</strong></p>
+                    <p>"There was a significant positive correlation between study hours and exam scores, r(48) = .68, p < .001."</p>
+
+                    <p><strong>Components:</strong></p>
+                    <ul>
+                        <li>r = correlation coefficient</li>
+                        <li>df = degrees of freedom (N - 2)</li>
+                        <li>p = significance level</li>
+                    </ul>
+
+                    <h3>Bivariate Regression Reporting</h3>
+                    <p><strong>Basic Format:</strong></p>
+                    <p>"Study hours significantly predicted exam scores, F(1, 48) = 32.15, p < .001, Adjusted R² = .46. The regression equation was: Exam Score = 3.5(Study Hours) + 45."</p>
+
+                    <p><strong>Components:</strong></p>
+                    <ul>
+                        <li>F(df₁, df₂) = F-statistic</li>
+                        <li>df₁ = number of predictors</li>
+                        <li>df₂ = N - k - 1</li>
+                        <li>Adjusted R² = effect size</li>
+                        <li>Include the regression equation</li>
+                    </ul>
+
+                    <h3>Multiple Regression Reporting</h3>
+                    <p><strong>Basic Format:</strong></p>
+                    <p>"The multiple regression model significantly predicted job satisfaction, F(3, 96) = 15.42, p < .001, Adjusted R² = .31. Weight was the strongest predictor (β = -.45, p < .001), followed by work-life balance (β = .38, p = .003), and supervisor support (β = .22, p = .045)."</p>
+
+                    <p><strong>Components:</strong></p>
+                    <ul>
+                        <li>Overall model F-test</li>
+                        <li>Adjusted R² for effect size</li>
+                        <li>Standardized beta coefficients for each predictor</li>
+                        <li>Individual significance tests</li>
+                        <li>Report predictors in order of importance (largest |β| first)</li>
+                    </ul>
+
+                    <h3>Writing Tips</h3>
+                    <p><strong>Use precise language:</strong></p>
+                    <ul>
+                        <li>"Predicted" not "caused"</li>
+                        <li>"Associated with" not "causes"</li>
+                        <li>"Significantly predicted" not "significantly caused"</li>
+                    </ul>
+
+                    <p><strong>Include effect sizes:</strong></p>
+                    <ul>
+                        <li>Always report R² or Adjusted R²</li>
+                        <li>Interpret the practical significance</li>
+                        <li>Compare to typical values in your field</li>
+                    </ul>
+
+                    <p><strong>Report confidence intervals when available:</strong></p>
+                    <ul>
+                        <li>More informative than just p-values</li>
+                        <li>Shows precision of estimates</li>
+                        <li>Becoming standard in many journals</li>
+                    </ul>
+                </div>
+                <div id="tab-8" class="tab-panel">
+                    <h2>Summary and Key Formulas</h2>
+
+                    <h3>Key Formulas</h3>
+                    <p><strong>Correlation:</strong></p>
+                    <ul>
+                        <li>r = correlation coefficient (-1 to +1)</li>
+                        <li>r² = coefficient of determination (0 to 1)</li>
+                        <li>r² = proportion of variance explained</li>
+                    </ul>
+
+                    <p><strong>Regression Equation:</strong></p>
+                    <ul>
+                        <li>Bivariate: Ŷ = bX + a</li>
+                        <li>Multiple: Ŷ = b₁X₁ + b₂X₂ + ... + a</li>
+                        <li>b = slope (unstandardized)</li>
+                        <li>β = slope (standardized)</li>
+                        <li>a = y-intercept</li>
+                    </ul>
+
+                    <p><strong>Effect Sizes:</strong></p>
+                    <ul>
+                        <li>R² = proportion of variance explained by model</li>
+                        <li>Adjusted R² = R² adjusted for number of predictors</li>
+                        <li>sr² = unique variance explained by each predictor</li>
+                    </ul>
+
+                    <p><strong>Degrees of Freedom:</strong></p>
+                    <ul>
+                        <li>Correlation: df = N - 2</li>
+                        <li>Regression: df₁ = k, df₂ = N - k - 1</li>
+                        <li>k = number of predictors</li>
+                    </ul>
+
+                    <h3>Quick Reference Guide</h3>
+                    <p><strong>When to Use Each Analysis:</strong></p>
+                    <ul>
+                        <li><strong>Correlation:</strong> Describing relationships between two variables</li>
+                        <li><strong>Bivariate Regression:</strong> Predicting one variable from another</li>
+                        <li><strong>Multiple Regression:</strong> Predicting from multiple variables, controlling for confounds</li>
+                    </ul>
+
+                    <p><strong>Key Interpretations:</strong></p>
+                    <ul>
+                        <li><strong>r = .10:</strong> Small effect</li>
+                        <li><strong>r = .30:</strong> Medium effect</li>
+                        <li><strong>r = .50:</strong> Large effect</li>
+                        <li><strong>R² = .25:</strong> Model explains 25% of variance</li>
+                        <li><strong>VIF > 5:</strong> Potential multicollinearity concern</li>
+                        <li><strong>VIF > 10:</strong> Serious multicollinearity problem</li>
+                    </ul>
+
+                    <h3>Common Mistakes to Avoid</h3>
+                    <ul>
+                        <li>Confusing correlation with causation</li>
+                        <li>Interpreting r as a percentage of people</li>
+                        <li>Ignoring the sign of correlation coefficients</li>
+                        <li>Comparing unstandardized slopes across different scales</li>
+                        <li>Not checking assumptions before interpreting results</li>
+                        <li>Using R² instead of Adjusted R² for model comparison</li>
+                    </ul>
+
+                    <h3>Conclusion</h3>
+                    <p>Correlation and regression are powerful tools for understanding relationships between variables. Remember to:</p>
+                    <ul>
+                        <li>Always examine your data visually first</li>
+                        <li>Check assumptions before interpreting results</li>
+                        <li>Use appropriate language (prediction, not causation)</li>
+                        <li>Report effect sizes, not just significance</li>
+                        <li>Consider practical as well as statistical significance</li>
+                    </ul>
+
+                    <p>These techniques form the foundation for more advanced analyses and are essential for understanding psychological research and conducting your own studies.</p>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+
+        <h2>Glossary</h2>
+        <div class="glossary-section">
+            <div class="glossary-item">
+                <h4>Pearson Correlation Coefficient (r)</h4>
+                <p>A measure of the strength and direction of a linear relationship between two continuous variables, ranging from -1.0 to +1.0.</p>
+            </div>
+            <div class="glossary-item">
+                <h4>Coefficient of Determination (r²)</h4>
+                <p>The proportion of variance in one variable that is explained by its relationship with another variable. Calculated by squaring the correlation coefficient.</p>
+            </div>
+            <div class="glossary-item">
+                <h4>Regression Equation</h4>
+                <p>The mathematical formula used to predict values of an outcome variable from predictor variables: Ŷ = bX + a for bivariate regression.</p>
+            </div>
+            <div class="glossary-item">
+                <h4>Slope (b)</h4>
+                <p>The rate of change in the outcome variable for every one-unit increase in the predictor variable in a regression equation.</p>
+            </div>
+            <div class="glossary-item">
+                <h4>Y-Intercept (a)</h4>
+                <p>The predicted value of the outcome variable when the predictor variable equals zero in a regression equation.</p>
+            </div>
+            <div class="glossary-item">
+                <h4>Omnibus F-Test</h4>
+                <p>A statistical test that evaluates whether the overall regression model significantly predicts the outcome variable better than chance.</p>
+            </div>
+            <div class="glossary-item">
+                <h4>R² (R-squared)</h4>
+                <p>The proportion of variance in the outcome variable that is explained by the regression model.</p>
+            </div>
+            <div class="glossary-item">
+                <h4>Adjusted R²</h4>
+                <p>A modified version of R² that adjusts for the number of predictors in the model, providing a more conservative estimate of variance explained.</p>
+            </div>
+            <div class="glossary-item">
+                <h4>Standardized Beta (β)</h4>
+                <p>A standardized regression coefficient that allows comparison of predictors on the same scale, ranging from -1 to +1.</p>
+            </div>
+            <div class="glossary-item">
+                <h4>Semipartial Correlation (sr)</h4>
+                <p>The correlation between a predictor variable (with other predictors removed) and the outcome variable, used to measure unique contributions.</p>
+            </div>
+            <div class="glossary-item">
+                <h4>Multicollinearity</h4>
+                <p>A condition where predictor variables in multiple regression are highly correlated with each other, making it difficult to isolate their unique effects.</p>
+            </div>
+            <div class="glossary-item">
+                <h4>VIF (Variance Inflation Factor)</h4>
+                <p>A measure of multicollinearity that indicates how much the standard error of a coefficient is inflated due to correlation with other predictors.</p>
+            </div>
+            <div class="glossary-item">
+                <h4>Tolerance</h4>
+                <p>The inverse of VIF, representing the proportion of variance in a predictor that is not explained by other predictors in the model.</p>
+            </div>
+            <div class="glossary-item">
+                <h4>Bivariate Regression</h4>
+                <p>A regression analysis using one predictor variable to predict one outcome variable, also called simple linear regression.</p>
+            </div>
+            <div class="glossary-item">
+                <h4>Multiple Regression</h4>
+                <p>A regression analysis using two or more predictor variables to predict one outcome variable, allowing examination of unique contributions.</p>
+            </div>
+            <div class="glossary-item">
+                <h4>Predictor Variable (IV)</h4>
+                <p>The independent variable used to predict values of the outcome variable in regression analysis.</p>
+            </div>
+            <div class="glossary-item">
+                <h4>Outcome Variable (DV)</h4>
+                <p>The dependent variable being predicted in regression analysis.</p>
+            </div>
+            <div class="glossary-item">
+                <h4>Residuals</h4>
+                <p>The difference between observed and predicted values in regression analysis, representing the error in prediction.</p>
+            </div>
+            <div class="glossary-item">
+                <h4>Linearity</h4>
+                <p>The assumption that the relationship between variables is best described by a straight line in correlation and regression analysis.</p>
+            </div>
+            <div class="glossary-item">
+                <h4>Homoscedasticity</h4>
+                <p>The assumption that the variance of residuals is constant across all levels of the predictor variable in regression analysis.</p>
+            </div>
+        </div>
+
+        <!-- Bottom Navigation -->
+        <div class="tab-navigation bottom-nav">
+            <button class="tab-button" onclick="showTab(1)">
+                <input
+                    type="checkbox"
+                    id="progress-1-bottom"
+                    class="tab-checkbox"
+                    onchange="toggleTabComplete(1)"
+                />
+                <span class="tab-label">Introduction & Bivariate Correlation</span>
+            </button>
+            <button class="tab-button" onclick="showTab(2)">
+                <input
+                    type="checkbox"
+                    id="progress-2-bottom"
+                    class="tab-checkbox"
+                    onchange="toggleTabComplete(2)"
+                />
+                <span class="tab-label">Regression Equation & Bivariate Regression</span>
+            </button>
+            <button class="tab-button" onclick="showTab(3)">
+                <input
+                    type="checkbox"
+                    id="progress-3-bottom"
+                    class="tab-checkbox"
+                    onchange="toggleTabComplete(3)"
+                />
+                <span class="tab-label">Multiple Regression Fundamentals</span>
+            </button>
+            <button class="tab-button" onclick="showTab(4)">
+                <input
+                    type="checkbox"
+                    id="progress-4-bottom"
+                    class="tab-checkbox"
+                    onchange="toggleTabComplete(4)"
+                />
+                <span class="tab-label">Unique Contributions & Multicollinearity</span>
+            </button>
+            <button class="tab-button" onclick="showTab(5)">
+                <input
+                    type="checkbox"
+                    id="progress-5-bottom"
+                    class="tab-checkbox"
+                    onchange="toggleTabComplete(5)"
+                />
+                <span class="tab-label">Model Building & Assumptions</span>
+            </button>
+            <button class="tab-button" onclick="showTab(6)">
+                <input
+                    type="checkbox"
+                    id="progress-6-bottom"
+                    class="tab-checkbox"
+                    onchange="toggleTabComplete(6)"
+                />
+                <span class="tab-label">SPSS Practical Guide</span>
+            </button>
+            <button class="tab-button" onclick="showTab(7)">
+                <input
+                    type="checkbox"
+                    id="progress-7-bottom"
+                    class="tab-checkbox"
+                    onchange="toggleTabComplete(7)"
+                />
+                <span class="tab-label">APA Reporting</span>
+            </button>
+            <button class="tab-button" onclick="showTab(8)">
+                <input
+                    type="checkbox"
+                    id="progress-8-bottom"
+                    class="tab-checkbox"
+                    onchange="toggleTabComplete(8)"
+                />
+                <span class="tab-label">Summary & Key Formulas</span>
+            </button>
+        </div>
+    </main>
+
+    <script>
+        // Progress tracking storage key
+        const PROGRESS_KEY = "m6-lecture-progress";
+
+        function loadProgress() {
+            const savedProgress = localStorage.getItem(PROGRESS_KEY);
+            if (savedProgress) {
+                const progress = JSON.parse(savedProgress);
+                // Update all checkboxes based on saved progress
+                for (let i = 1; i <= 8; i++) {
+                    const isComplete = progress[i] || false;
+                    const checkbox = document.getElementById(`progress-${i}`);
+                    const bottomCheckbox = document.getElementById(`progress-${i}-bottom`);
+                    if (checkbox) checkbox.checked = isComplete;
+                    if (bottomCheckbox) bottomCheckbox.checked = isComplete;
+                    updateTabVisualState(i, isComplete);
+                }
+            }
+        }
+
+        function saveProgress(tabNumber, isComplete) {
+            const savedProgress = localStorage.getItem(PROGRESS_KEY);
+            const progress = savedProgress ? JSON.parse(savedProgress) : {};
+            progress[tabNumber] = isComplete;
+            localStorage.setItem(PROGRESS_KEY, JSON.stringify(progress));
+        }
+
+        function toggleTabComplete(tabNumber) {
+            // Determine which checkbox was clicked (top or bottom)
+            const clickedCheckbox = event.target;
+            const isComplete = clickedCheckbox.checked;
+
+            // Update both top and bottom checkboxes to stay in sync
+            const topCheckbox = document.getElementById(`progress-${tabNumber}`);
+            const bottomCheckbox = document.getElementById(
+                `progress-${tabNumber}-bottom`
+            );
+            if (topCheckbox) topCheckbox.checked = isComplete;
+            if (bottomCheckbox) bottomCheckbox.checked = isComplete;
+
+            // Update visual state
+            updateTabVisualState(tabNumber, isComplete);
+
+            // Save to localStorage
+            saveProgress(tabNumber, isComplete);
+        }
+
+        function updateTabVisualState(tabNumber, isComplete) {
+            const buttons = document.querySelectorAll(
+                `.tab-button:nth-child(${tabNumber})`
+            );
+            buttons.forEach((button) => {
+                if (isComplete) {
+                    button.classList.add("completed");
+                } else {
+                    button.classList.remove("completed");
+                }
+            });
+        }
+
+        function showTab(tabNumber) {
+            // Hide all panels
+            const panels = document.querySelectorAll(".tab-panel");
+            panels.forEach((panel) => panel.classList.remove("active"));
+
+            // Remove active class from all buttons
+            const buttons = document.querySelectorAll(".tab-button");
+            buttons.forEach((button) => button.classList.remove("active"));
+
+            // Show selected panel
+            const selectedPanel = document.getElementById(`tab-${tabNumber}`);
+            if (selectedPanel) {
+                selectedPanel.classList.add("active");
+            }
+
+            // Add active class to clicked button
+            const clickedButton = event.target.closest(".tab-button");
+            if (clickedButton) {
+                clickedButton.classList.add("active");
+            }
+
+            // Scroll to top of the tab navigation for better UX
+            const tabContainer = document.querySelector(".lecture-tabs");
+            if (tabContainer) {
+                tabContainer.scrollIntoView({ behavior: "smooth", block: "start" });
+            }
+        }
+
+        // Knowledge check functionality with toggle
+        function revealAnswer(questionId) {
+            const questionItem = document.querySelector(
+                `[data-question-id="${questionId}"]`
+            );
+            const answerDiv = questionItem.querySelector(".answer-reveal");
+            const button = questionItem.querySelector(".reveal-answer-btn");
+
+            if (answerDiv && button) {
+                if (answerDiv.style.display === "none" || answerDiv.style.display === "") {
+                    // Show the answer
+                    answerDiv.style.display = "block";
+                    button.textContent = "Hide Answer";
+                    button.classList.add("answered");
+                    questionItem.classList.add("answered");
+
+                    // Save to storage
+                    markQuestionAsAnswered(questionId, true);
+                } else {
+                    // Hide the answer
+                    answerDiv.style.display = "none";
+                    button.textContent = "Show Answer";
+                    button.classList.remove("answered");
+                    questionItem.classList.remove("answered");
+                }
+            }
+        }
+
+        // Knowledge check storage functions
+        const KC_STORAGE_KEY = "m6-knowledge-checks";
+
+        function saveAnsweredQuestion(questionId) {
+            const savedProgress = localStorage.getItem(KC_STORAGE_KEY);
+            const answeredQuestions = savedProgress ? JSON.parse(savedProgress) : [];
+
+            if (!answeredQuestions.includes(questionId)) {
+                answeredQuestions.push(questionId);
+                localStorage.setItem(KC_STORAGE_KEY, JSON.stringify(answeredQuestions));
+            }
+        }
+
+        function markQuestionAsAnswered(questionId, saveToStorage) {
+            const questionItem = document.querySelector(
+                `[data-question-id="${questionId}"]`
+            );
+            if (!questionItem) return;
+
+            // Save to storage if requested
+            if (saveToStorage) {
+                saveAnsweredQuestion(questionId);
+            }
+        }
+
+        function loadKnowledgeCheckProgress() {
+            const savedProgress = localStorage.getItem(KC_STORAGE_KEY);
+            if (savedProgress) {
+                const answeredQuestions = JSON.parse(savedProgress);
+                answeredQuestions.forEach((questionId) => {
+                    markQuestionAsAnswered(questionId, false);
+                });
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            loadProgress();
+            loadKnowledgeCheckProgress();
+        });
+    </script>
+</body>
+</html>
