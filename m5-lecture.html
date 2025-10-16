@@ -1,0 +1,2132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 5: Two-Way Factorial ANOVA</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <style>
+        /* Knowledge Check Styling */
+        .knowledge-check-item {
+            background-color: #f8f9fa;
+            border-left: 4px solid #007bff;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+
+        .knowledge-check-item.answered {
+            border-left-color: #28a745;
+            background-color: #f0f8f4;
+        }
+
+        .question-text {
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .question-options {
+            margin: 10px 0;
+            list-style-position: inside;
+        }
+
+        .answer-reveal {
+            background-color: #e7f3ff;
+            border: 1px solid #b3d9ff;
+            padding: 12px;
+            margin-top: 10px;
+            border-radius: 4px;
+        }
+
+        .answer-text {
+            margin: 0;
+            color: #004085;
+        }
+
+        .reveal-answer-btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-top: 10px;
+            transition: background-color 0.2s;
+        }
+
+        .reveal-answer-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .reveal-answer-btn.answered {
+            background-color: #28a745;
+        }
+
+        .reveal-answer-btn.answered:hover {
+            background-color: #218838;
+        }
+
+        /* Learning Objectives Styling */
+        .learning-objectives {
+            margin: 15px 0;
+        }
+
+        .learning-objectives > li {
+            margin-bottom: 8px;
+        }
+
+        /* Glossary Styling */
+        .glossary-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .glossary-item {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 6px;
+            padding: 15px;
+        }
+
+        .glossary-item h4 {
+            color: #007bff;
+            margin-bottom: 8px;
+            font-size: 1.1em;
+        }
+
+        .glossary-item p {
+            margin: 0;
+            color: #495057;
+            line-height: 1.5;
+        }
+
+        /* Visual Diagrams Styling */
+        .visual-diagram {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .visual-diagram h4 {
+            color: #495057;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 5px;
+        }
+
+        .diagram-caption {
+            text-align: center;
+            font-size: 0.9em;
+            color: #6c757d;
+            margin-top: 10px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>Module 5: Two-Way Factorial ANOVA</h1>
+        <p><strong>Estimated Study Time:</strong> 2-3 hours</p>
+
+        <h2>Learning Objectives</h2>
+        <p>By the end of this module, you will be able to:</p>
+        <ol class="learning-objectives">
+            <li>Explain why factorial ANOVA is necessary when studying multiple independent variables</li>
+            <li>Understand and use factorial design notation (2x2, 2x3, 3x3, etc.)</li>
+            <li>Calculate the number of cells in a factorial design</li>
+            <li>Distinguish between between-groups, within-groups, and mixed-design factorial ANOVAs</li>
+            <li>Define and interpret main effects for each factor</li>
+            <li>Define and interpret interaction effects between factors</li>
+            <li>Understand why interactions are typically the most important finding in factorial ANOVA</li>
+            <li>Identify the three separate null hypotheses tested in a two-way ANOVA</li>
+            <li>Calculate degrees of freedom for factorial designs</li>
+            <li>Apply the decision tree for interpreting factorial ANOVA results</li>
+            <li>Determine when to run simple effects tests vs. post-hoc tests</li>
+            <li>Perform two-way ANOVA in SPSS and interpret the output</li>
+            <li>Calculate and interpret effect sizes for factorial ANOVA</li>
+            <li>Report factorial ANOVA results in proper APA format</li>
+        </ol>
+
+        <hr>
+
+        <div class="lecture-tabs">
+            <div class="tab-navigation">
+                <button class="tab-button active" onclick="showTab(1)">
+                    <input
+                        type="checkbox"
+                        id="progress-1"
+                        class="tab-checkbox"
+                        onchange="toggleTabComplete(1)"
+                    />
+                    <span class="tab-label">Introduction & Design</span>
+                </button>
+                <button class="tab-button" onclick="showTab(2)">
+                    <input
+                        type="checkbox"
+                        id="progress-2"
+                        class="tab-checkbox"
+                        onchange="toggleTabComplete(2)"
+                    />
+                    <span class="tab-label">Main Effects & Interactions</span>
+                </button>
+                <button class="tab-button" onclick="showTab(3)">
+                    <input
+                        type="checkbox"
+                        id="progress-3"
+                        class="tab-checkbox"
+                        onchange="toggleTabComplete(3)"
+                    />
+                    <span class="tab-label">Omnibus Test & Decision Tree</span>
+                </button>
+                <button class="tab-button" onclick="showTab(4)">
+                    <input
+                        type="checkbox"
+                        id="progress-4"
+                        class="tab-checkbox"
+                        onchange="toggleTabComplete(4)"
+                    />
+                    <span class="tab-label">Simple Effects & Effect Size</span>
+                </button>
+                <button class="tab-button" onclick="showTab(5)">
+                    <input
+                        type="checkbox"
+                        id="progress-5"
+                        class="tab-checkbox"
+                        onchange="toggleTabComplete(5)"
+                    />
+                    <span class="tab-label">Assumptions, SPSS & Reporting</span>
+                </button>
+            </div>
+
+            <div class="tab-content">
+                <div id="tab-1" class="tab-panel active">
+                    <h2>Part 1: Introduction to Factorial ANOVA</h2>
+
+                    <h3>Moving Beyond Single Factors</h3>
+                    <p>So far in this course, you've learned to compare groups using:</p>
+                    <ul>
+                        <li><strong>Independent-samples t-test:</strong> Comparing 2 groups</li>
+                        <li><strong>Paired-samples t-test:</strong> Comparing 2 conditions (same participants)</li>
+                        <li><strong>One-way ANOVA:</strong> Comparing 3+ groups on one independent variable</li>
+                    </ul>
+                    <p>But what happens when you want to study <strong>two or more independent variables simultaneously</strong>? That's where <strong>factorial ANOVA</strong> comes in.</p>
+
+                    <h3>Why Not Just Run Multiple One-Way ANOVAs?</h3>
+                    <p>Imagine you're studying the effects of:</p>
+                    <ul>
+                        <li><strong>Factor A:</strong> Teaching method (lecture vs. hands-on)</li>
+                        <li><strong>Factor B:</strong> Class size (small vs. large)</li>
+                        <li><strong>DV:</strong> Student test scores</li>
+                    </ul>
+                    <p>You could run two separate one-way ANOVAs:</p>
+                    <ol>
+                        <li>Compare teaching methods (ignoring class size)</li>
+                        <li>Compare class sizes (ignoring teaching method)</li>
+                    </ol>
+
+                    <p><strong>But this approach has three major problems:</strong></p>
+
+                    <h4>Problem 1: Inefficiency</h4>
+                    <ul>
+                        <li>You're running multiple separate analyses instead of one comprehensive test</li>
+                        <li>More time-consuming and complex to manage</li>
+                    </ul>
+
+                    <h4>Problem 2: Inflated Type I Error</h4>
+                    <ul>
+                        <li>Each additional test increases the probability of a false positive</li>
+                        <li>Running 2 tests at α = .05 each gives you a familywise error rate > .05</li>
+                    </ul>
+
+                    <h4>Problem 3: Missing the Interaction (THE BIG ONE)</h4>
+                    <ul>
+                        <li><strong>The real world is complex.</strong> The effect of one factor often depends on the level of another factor</li>
+                        <li>Example: Hands-on teaching might work great in small classes but poorly in large classes</li>
+                        <li>Separate one-way ANOVAs can <strong>never</strong> detect this crucial interaction</li>
+                    </ul>
+
+                    <h3>Real-World Examples of Interactions</h3>
+
+                    <h4>Example 1: Education</h4>
+                    <ul>
+                        <li>Teaching method (lecture, discussion, hands-on) × Student level (beginner, advanced)</li>
+                        <li>Interaction: Hands-on works best for beginners, but advanced students benefit most from discussion</li>
+                    </ul>
+
+                    <h4>Example 2: Medicine</h4>
+                    <ul>
+                        <li>Drug dosage (low, medium, high) × Patient age (young, elderly)</li>
+                        <li>Interaction: Medium dose is optimal for young patients, but elderly patients need low dose</li>
+                    </ul>
+
+                    <h4>Example 3: Marketing</h4>
+                    <ul>
+                        <li>Advertisement type (emotional, factual) × Product category (luxury, practical)</li>
+                        <li>Interaction: Emotional ads work for luxury products, factual ads work for practical products</li>
+                    </ul>
+
+                    <h4>Example 4: Psychology</h4>
+                    <ul>
+                        <li>Therapy type (CBT, medication) × Disorder severity (mild, severe)</li>
+                        <li>Interaction: CBT works well for mild cases, but severe cases need medication</li>
+                    </ul>
+
+                    <h3>The Three Advantages of Factorial ANOVA</h3>
+
+                    <h4>1. Efficiency:</h4>
+                    <ul>
+                        <li>Test multiple factors in a single analysis</li>
+                        <li>Saves time and resources</li>
+                        <li>More elegant research design</li>
+                    </ul>
+
+                    <h4>2. Control of Type I Error:</h4>
+                    <ul>
+                        <li>One omnibus test controls familywise error rate</li>
+                        <li>Maintains α = .05 across all comparisons</li>
+                    </ul>
+
+                    <h4>3. Detection of Interactions:</h4>
+                    <ul>
+                        <li><strong>This is the game-changer</strong></li>
+                        <li>Reveals how factors work together</li>
+                        <li>Provides a more complete, nuanced understanding of your data</li>
+                        <li>Often the most interesting and important finding</li>
+                    </ul>
+
+                    <h3>When to Use Factorial ANOVA</h3>
+
+                    <p><strong>Use factorial ANOVA when:</strong></p>
+                    <ul>
+                        <li>You have <strong>2 or more independent variables</strong> (factors)</li>
+                        <li>Each factor has <strong>2 or more levels</strong></li>
+                        <li>You want to test <strong>main effects</strong> and <strong>interaction effects</strong></li>
+                        <li>Your dependent variable is <strong>continuous</strong> (interval or ratio)</li>
+                    </ul>
+
+                    <p><strong>Research scenarios:</strong></p>
+                    <ul>
+                        <li>Examining how treatment type and patient characteristics affect outcomes</li>
+                        <li>Testing how product features and marketing strategies influence sales</li>
+                        <li>Investigating how teaching methods and student characteristics affect learning</li>
+                        <li>Studying how environmental factors and genetic factors affect behavior</li>
+                    </ul>
+
+                    <hr>
+
+                    <h2>Part 2: Factorial Design Fundamentals</h2>
+
+                    <h3>Understanding Design Notation</h3>
+                    <p>Factorial designs are described using a <strong>notation system</strong> that tells you:</p>
+                    <ol>
+                        <li>How many factors (IVs) are in the study</li>
+                        <li>How many levels each factor has</li>
+                    </ol>
+
+                    <p><strong>The Notation Format:</strong> A × B × C...</p>
+
+                    <h4>Examples:</h4>
+
+                    <h4>2×2 Design ("two by two"):</h4>
+                    <ul>
+                        <li>2 factors</li>
+                        <li>First factor has 2 levels</li>
+                        <li>Second factor has 2 levels</li>
+                        <li>Example: Gender (male, female) × Teaching method (lecture, hands-on)</li>
+                    </ul>
+
+                    <h4>2×3 Design ("two by three"):</h4>
+                    <ul>
+                        <li>2 factors</li>
+                        <li>First factor has 2 levels</li>
+                        <li>Second factor has 3 levels</li>
+                        <li>Example: Gender (male, female) × Class size (small, medium, large)</li>
+                    </ul>
+
+                    <h4>3×3 Design ("three by three"):</h4>
+                    <ul>
+                        <li>2 factors</li>
+                        <li>First factor has 3 levels</li>
+                        <li>Second factor has 3 levels</li>
+                        <li>Example: Teaching method (lecture, discussion, hands-on) × Class size (small, medium, large)</li>
+                    </ul>
+
+                    <h4>2×2×2 Design ("two by two by two"):</h4>
+                    <ul>
+                        <li>3 factors</li>
+                        <li>Each factor has 2 levels</li>
+                        <li>Example: Gender × Teaching method × Class size (all with 2 levels each)</li>
+                    </ul>
+
+                    <h3>Calculating the Number of Cells</h3>
+                    <p>A <strong>cell</strong> is a unique combination of factor levels. The number of cells equals the number of <strong>unique groups</strong> in your study.</p>
+
+                    <p><strong>Formula:</strong> Number of cells = Level₁ × Level₂ × Level₃...</p>
+
+                    <h4>Examples:</h4>
+
+                    <h4>2×2 Design:</h4>
+                    <ul>
+                        <li>2 × 2 = <strong>4 cells</strong></li>
+                        <li>Gender (male, female) × Teaching method (lecture, hands-on)</li>
+                        <li>Cells: Male-Lecture, Male-Hands-on, Female-Lecture, Female-Hands-on</li>
+                    </ul>
+
+                    <h4>2×3 Design:</h4>
+                    <ul>
+                        <li>2 × 3 = <strong>6 cells</strong></li>
+                        <li>Gender (male, female) × Class size (small, medium, large)</li>
+                        <li>Cells: Male-Small, Male-Medium, Male-Large, Female-Small, Female-Medium, Female-Large</li>
+                    </ul>
+
+                    <h4>3×3 Design:</h4>
+                    <ul>
+                        <li>3 × 3 = <strong>9 cells</strong></li>
+                    </ul>
+
+                    <h4>2×2×2 Design:</h4>
+                    <ul>
+                        <li>2 × 2 × 2 = <strong>8 cells</strong></li>
+                    </ul>
+
+                    <h3>Visual Representation: The Factorial Design Table</h3>
+
+                    <h4>2×2 Design Example:</h4>
+                    <table>
+                        <tr>
+                            <th></th>
+                            <th>Lecture</th>
+                            <th>Hands-on</th>
+                        </tr>
+                        <tr>
+                            <td><strong>Male</strong></td>
+                            <td>Cell 1</td>
+                            <td>Cell 2</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Female</strong></td>
+                            <td>Cell 3</td>
+                            <td>Cell 4</td>
+                        </tr>
+                    </table>
+
+                    <h4>2×3 Design Example:</h4>
+                    <table>
+                        <tr>
+                            <th></th>
+                            <th>Small</th>
+                            <th>Medium</th>
+                            <th>Large</th>
+                        </tr>
+                        <tr>
+                            <td><strong>Male</strong></td>
+                            <td>Cell 1</td>
+                            <td>Cell 2</td>
+                            <td>Cell 3</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Female</strong></td>
+                            <td>Cell 4</td>
+                            <td>Cell 5</td>
+                            <td>Cell 6</td>
+                        </tr>
+                    </table>
+
+                    <p>Each cell contains a group of participants experiencing that unique combination of conditions.</p>
+
+                    <h3>Types of Factorial Designs</h3>
+
+                    <h4>Between-Groups (Independent-Groups) Factorial ANOVA:</h4>
+                    <ul>
+                        <li><strong>Different participants</strong> in each cell</li>
+                        <li>Most common type of factorial design</li>
+                        <li>Example: Different students in each teaching method × class size combination</li>
+                    </ul>
+
+                    <h4>Within-Groups (Repeated-Measures) Factorial ANOVA:</h4>
+                    <ul>
+                        <li><strong>Same participants</strong> experience all combinations</li>
+                        <li>Requires participants to experience all levels of all factors</li>
+                        <li>Less common because it can be impractical</li>
+                    </ul>
+
+                    <h4>Mixed-Design Factorial ANOVA:</h4>
+                    <ul>
+                        <li><strong>Combination</strong> of between-groups and within-groups factors</li>
+                        <li>Some factors are between-groups, others are within-groups</li>
+                        <li>Example: Gender (between) × Time of testing (within: morning, afternoon, evening)</li>
+                    </ul>
+
+                    <p><strong>Focus of this lecture:</strong> We'll primarily focus on <strong>between-groups factorial ANOVA</strong>, as it's the most common and is what you'll use in your assignment.</p>
+
+                    <h3>Identifying IVs and DVs in Factorial Studies</h3>
+
+                    <p><strong>Independent Variables (IVs) = Factors:</strong></p>
+                    <ul>
+                        <li>The variables you manipulate or categorize</li>
+                        <li>Each IV has 2+ levels</li>
+                        <li>In a 2×3 design, you have 2 IVs</li>
+                    </ul>
+
+                    <p><strong>Dependent Variable (DV):</strong></p>
+                    <ul>
+                        <li>The outcome you measure</li>
+                        <li>Must be continuous (interval or ratio scale)</li>
+                        <li>Only ONE DV in a two-way ANOVA</li>
+                    </ul>
+
+                    <h4>Example Study:</h4>
+                    <ul>
+                        <li><strong>Research Question:</strong> "Do community type and religious affiliation affect the percentage of graduates going to college?"</li>
+                        <li><strong>IV 1 (Factor A):</strong> Community type (city vs. suburb) - 2 levels</li>
+                        <li><strong>IV 2 (Factor B):</strong> Religious affiliation (yes vs. no) - 2 levels</li>
+                        <li><strong>DV:</strong> Percentage of graduates going to college (continuous)</li>
+                        <li><strong>Design:</strong> 2×2 between-groups factorial ANOVA</li>
+                        <li><strong>Cells:</strong> 4 (City-Religious, City-Non-religious, Suburb-Religious, Suburb-Non-religious)</li>
+                    </ul>
+
+                    <div class="knowledge-check-item" data-question-id="tab1-q1">
+                        <p class="question-text"><strong>Question 1:</strong> Roediger and Karpicke (2006) investigated whether the test-enhanced learning effect was due merely to repeated exposure to material. They randomly assigned participants to one of two study conditions (study-study or study-test) and to one of three retention interval conditions (final test at a delay of 5 minutes, 2 days, or 1 week). The dependent variable was the proportion of idea units recalled. How should the analysis of these data be labeled?</p>
+                        <ul class="question-options">
+                            <li>A) 2×3 between-groups ANOVA</li>
+                            <li>B) 2×2 between-groups ANOVA</li>
+                            <li>C) 2×2 within-groups ANOVA</li>
+                            <li>D) 2×3 within-groups ANOVA</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <p class="answer-text"><strong>Correct Answer:</strong> A) 2×3 between-groups ANOVA</p>
+                            <p class="answer-text"><strong>Why this is correct:</strong> There are 2 factors: study condition (2 levels: study-study, study-test) and retention interval (3 levels: 5 minutes, 2 days, 1 week). This is 2×3. Participants were "randomly assigned," meaning different participants in each condition, making it between-groups.</p>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab1-q1')">Show Answer</button>
+                    </div>
+
+                    <div class="knowledge-check-item" data-question-id="tab1-q2">
+                        <p class="question-text"><strong>Question 2:</strong> The sale amount was analyzed by store location (3 locations) and shelf position (2 positions). How many cells (groups) were in the factorial design?</p>
+                        <ul class="question-options">
+                            <li>A) 4</li>
+                            <li>B) 6</li>
+                            <li>C) 2</li>
+                            <li>D) 5</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <p class="answer-text"><strong>Correct Answer:</strong> B) 6</p>
+                            <p class="answer-text"><strong>Why this is correct:</strong> Number of cells = levels of Factor 1 × levels of Factor 2 = 3 store locations × 2 shelf positions = 6 cells. This is a 3×2 factorial design.</p>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab1-q2')">Show Answer</button>
+                    </div>
+
+                    <div class="knowledge-check-item" data-question-id="tab1-q3">
+                        <p class="question-text"><strong>Question 3:</strong> A researcher is interested in whether circadian rhythms influence participants' performance on different kinds of memory tests. The researcher first classifies participants according to whether each is a morning person or an evening person. The researcher then randomly assigns participants to receive either an implicit memory test or an explicit memory test. The researcher then tests everyone at 8 A.M. What is(are) the main effect(s) being tested in the study?</p>
+                        <ul class="question-options">
+                            <li>A) Type of person and performance</li>
+                            <li>B) Memory test</li>
+                            <li>C) Type of person</li>
+                            <li>D) Type of person and memory test</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <p class="answer-text"><strong>Correct Answer:</strong> D) Type of person and memory test</p>
+                            <p class="answer-text"><strong>Why this is correct:</strong> In a factorial ANOVA, we test the main effect of each independent variable. The two IVs are: (1) type of person (morning vs. evening), and (2) memory test type (implicit vs. explicit). Performance is the DV, not an IV.</p>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab1-q3')">Show Answer</button>
+                    </div>
+
+                    <div class="knowledge-check-item" data-question-id="tab1-q4">
+                        <p class="question-text"><strong>Question 4:</strong> If an analysis of variance includes both within-groups factors and between-groups factors, it is called a ____ ANOVA.</p>
+                        <ul class="question-options">
+                            <li>A) Complex-design</li>
+                            <li>B) Mixed-design</li>
+                            <li>C) Between-within</li>
+                            <li>D) Two-way</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <p class="answer-text"><strong>Correct Answer:</strong> B) Mixed-design</p>
+                            <p class="answer-text"><strong>Why this is correct:</strong> A mixed-design ANOVA (also called split-plot design) includes at least one between-groups factor and at least one within-groups (repeated-measures) factor.</p>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab1-q4')">Show Answer</button>
+                    </div>
+                </div>
+
+                <div id="tab-2" class="tab-panel">
+                    <h2>Part 3: Main Effects</h2>
+
+                    <h3>What is a Main Effect?</h3>
+                    <p>A <strong>main effect</strong> is the effect of <strong>one independent variable on the dependent variable, averaging across (ignoring) all other independent variables</strong>.</p>
+
+                    <p><strong>Key Insight:</strong> In a two-way ANOVA, you test for <strong>two separate main effects</strong>:</p>
+                    <ol>
+                        <li>Main effect of Factor A</li>
+                        <li>Main effect of Factor B</li>
+                    </ol>
+
+                    <p><strong>Definition:</strong> A main effect tells you whether the levels of one factor differ significantly from each other, <strong>on average</strong>, when you collapse (average) across all levels of the other factor(s).</p>
+
+                    <h3>Main Effect of Factor A</h3>
+                    <p><strong>Question asked:</strong> "Does Factor A have an effect on the DV, ignoring Factor B?"</p>
+
+                    <h4>Example:</h4>
+                    <ul>
+                        <li>Factor A: Community type (city vs. suburb)</li>
+                        <li>Factor B: Religious affiliation (yes vs. no)</li>
+                        <li>DV: Percentage going to college</li>
+                    </ul>
+
+                    <p><strong>Main Effect of Community Type:</strong></p>
+                    <p>Do city schools differ from suburban schools in college-going rates, <strong>averaging across both religious and non-religious schools</strong>?</p>
+
+                    <h3>Main Effect of Factor B</h3>
+                    <p><strong>Question asked:</strong> "Does Factor B have an effect on the DV, ignoring Factor A?"</p>
+
+                    <h4>Example:</h4>
+                    <p><strong>Main Effect of Religious Affiliation:</strong></p>
+                    <p>Do religious schools differ from non-religious schools in college-going rates, <strong>averaging across both city and suburban schools</strong>?</p>
+
+                    <h3>Marginal Means</h3>
+                    <p><strong>Marginal means</strong> are the averages for each level of one factor, collapsed across all levels of the other factor.</p>
+
+                    <h4>Example Data Table:</h4>
+                    <table>
+                        <tr>
+                            <th></th>
+                            <th>City Schools</th>
+                            <th>Suburban Schools</th>
+                            <th><strong>Row Marginal Mean</strong></th>
+                        </tr>
+                        <tr>
+                            <td><strong>Religious</strong></td>
+                            <td>75%</td>
+                            <td>85%</td>
+                            <td><strong>80%</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Non-Religious</strong></td>
+                            <td>60%</td>
+                            <td>70%</td>
+                            <td><strong>65%</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Column Marginal Mean</strong></td>
+                            <td><strong>67.5%</strong></td>
+                            <td><strong>77.5%</strong></td>
+                            <td></td>
+                        </tr>
+                    </table>
+
+                    <p><strong>Main Effect of Religious Affiliation:</strong></p>
+                    <ul>
+                        <li>Compare row marginal means: 80% vs. 65%</li>
+                        <li>Religious schools have higher college-going rates (averaging across city and suburb)</li>
+                    </ul>
+
+                    <p><strong>Main Effect of Community Type:</strong></p>
+                    <ul>
+                        <li>Compare column marginal means: 67.5% vs. 77.5%</li>
+                        <li>Suburban schools have higher college-going rates (averaging across religious and non-religious)</li>
+                    </ul>
+
+                    <h3>Hypotheses for Main Effects</h3>
+
+                    <p><strong>For Factor A (Community Type):</strong></p>
+                    <ul>
+                        <li><strong>H₀:</strong> μ_city = μ_suburb (No difference in college-going rates between city and suburban schools)</li>
+                        <li><strong>H₁:</strong> μ_city ≠ μ_suburb (There is a difference)</li>
+                    </ul>
+
+                    <p><strong>For Factor B (Religious Affiliation):</strong></p>
+                    <ul>
+                        <li><strong>H₀:</strong> μ_religious = μ_non-religious (No difference between religious and non-religious schools)</li>
+                        <li><strong>H₁:</strong> μ_religious ≠ μ_non-religious (There is a difference)</li>
+                    </ul>
+
+                    <h3>Testing Main Effects</h3>
+                    <p>Each main effect is tested with its own <strong>F-test</strong>:</p>
+                    <ul>
+                        <li><strong>F for Factor A:</strong> Tests whether the marginal means for Factor A differ significantly</li>
+                        <li><strong>F for Factor B:</strong> Tests whether the marginal means for Factor B differ significantly</li>
+                    </ul>
+
+                    <p><strong>Decision Rule (for each main effect):</strong></p>
+                    <ul>
+                        <li><strong>p < .05:</strong> Reject H₀, the main effect is significant</li>
+                        <li><strong>p ≥ .05:</strong> Fail to reject H₀, the main effect is not significant</li>
+                    </ul>
+
+                    <h3>When Main Effects Have 2 Levels</h3>
+                    <p><strong>If a factor has only 2 levels:</strong></p>
+                    <ul>
+                        <li>A significant F-test tells you which direction the effect goes</li>
+                        <li>Just compare the two marginal means</li>
+                        <li><strong>No post-hoc tests needed</strong></li>
+                    </ul>
+
+                    <h4>Example:</h4>
+                    <p>Religious (yes vs. no) has 2 levels</p>
+                    <ul>
+                        <li>If F is significant, compare marginal means: 80% vs. 65%</li>
+                        <li>Conclusion: Religious schools have higher rates</li>
+                    </ul>
+
+                    <h3>When Main Effects Have 3+ Levels</h3>
+                    <p><strong>If a factor has 3 or more levels:</strong></p>
+                    <ul>
+                        <li>A significant F-test only tells you that differences exist somewhere</li>
+                        <li>You <strong>must run post-hoc tests</strong> to determine which specific levels differ</li>
+                        <li>Use Tukey, Bonferroni, or Scheffé</li>
+                    </ul>
+
+                    <h4>Example:</h4>
+                    <p>Class size (small, medium, large) has 3 levels</p>
+                    <ul>
+                        <li>If F is significant, marginal means might be: 70%, 75%, 85%</li>
+                        <li>Post-hoc tests tell you: Large > Small, Large > Medium, Medium = Small</li>
+                    </ul>
+
+                    <hr>
+
+                    <h2>Part 4: Interaction Effects - The Heart of Factorial ANOVA</h2>
+
+                    <h3>What is an Interaction?</h3>
+                    <p>An <strong>interaction effect</strong> occurs when <strong>the effect of one independent variable depends on the level of another independent variable</strong>.</p>
+
+                    <p><strong>Formal Definition:</strong> An interaction exists when the effect of Factor A is <strong>not the same</strong> at all levels of Factor B (or vice versa).</p>
+
+                    <p><strong>Simple Way to Think About It:</strong></p>
+                    <ul>
+                        <li>Do the two factors work together in a special way?</li>
+                        <li>Does the effect of one factor change depending on the other factor?</li>
+                        <li>Is the pattern different for different groups?</li>
+                    </ul>
+
+                    <h3>Why Interactions Are the Most Important Finding</h3>
+                    <p><strong>THE GOLDEN RULE:</strong> In factorial ANOVA, <strong>the interaction is almost always the most interesting and important finding</strong>.</p>
+
+                    <p><strong>Why?</strong></p>
+                    <ol>
+                        <li><strong>Interactions reveal complexity:</strong> They show how the real world works</li>
+                        <li><strong>Interactions are more informative:</strong> They tell you when and for whom an effect occurs</li>
+                        <li><strong>Interactions change interpretation:</strong> A significant interaction can make main effects misleading</li>
+                    </ol>
+
+                    <p><strong>Critical Point:</strong> If you have a significant interaction, <strong>you must interpret it carefully</strong> and be cautious about interpreting main effects.</p>
+
+                    <h3>Examples of Interactions</h3>
+
+                    <h4>Example 1: Teaching Method × Student Level</h4>
+
+                    <p><strong>No Interaction:</strong></p>
+                    <ul>
+                        <li>Hands-on is better than lecture for BOTH beginners and advanced students</li>
+                        <li>The difference is the same for both groups</li>
+                        <li>Effect of teaching method does NOT depend on student level</li>
+                    </ul>
+
+                    <p><strong>Interaction Present:</strong></p>
+                    <ul>
+                        <li>Hands-on is much better for beginners, but lecture is better for advanced students</li>
+                        <li>The effect of teaching method DOES depend on student level</li>
+                        <li>The pattern reverses across groups</li>
+                    </ul>
+
+                    <h4>Example 2: Drug Dosage × Age</h4>
+
+                    <p><strong>No Interaction:</strong></p>
+                    <ul>
+                        <li>Higher doses work better for both young and elderly patients</li>
+                        <li>The pattern is the same for both age groups</li>
+                    </ul>
+
+                    <p><strong>Interaction Present:</strong></p>
+                    <ul>
+                        <li>Higher doses work better for young patients, but lower doses work better for elderly</li>
+                        <li>The optimal dosage depends on age</li>
+                        <li>What works for one group doesn't work for the other</li>
+                    </ul>
+
+                    <h4>Example 3: Study Location × Gender</h4>
+
+                    <p><strong>No Interaction:</strong></p>
+                    <ul>
+                        <li>Library is best for both males and females</li>
+                        <li>The rank order of locations is the same for both genders</li>
+                    </ul>
+
+                    <p><strong>Interaction Present:</strong></p>
+                    <ul>
+                        <li>Library is best for females, but home is best for males</li>
+                        <li>The best study location depends on gender</li>
+                        <li>You can't give one recommendation for everyone</li>
+                    </ul>
+
+                    <h3>Visualizing Interactions with Line Graphs</h3>
+                    <p>Interaction plots show the dependent variable on the Y-axis, one factor on the X-axis, and separate lines for each level of the other factor.</p>
+
+                    <h4>No Interaction Pattern (Parallel Lines):</h4>
+                    <p>Imagine a graph where:</p>
+                    <ul>
+                        <li>X-axis shows Teaching Method: Lecture → Hands-on</li>
+                        <li>Y-axis shows Test Scores (0-100)</li>
+                        <li>Two lines: one for Males (solid), one for Females (dashed)</li>
+                    </ul>
+
+                    <p>Both lines rise from left to right at the SAME angle:</p>
+                    <ul>
+                        <li>Males: 40 → 60 (increase of 20 points)</li>
+                        <li>Females: 80 → 100 (increase of 20 points)</li>
+                    </ul>
+
+                    <p>The lines stay parallel and never meet.</p>
+
+                    <p><strong>What this means:</strong> Hands-on is better than lecture for BOTH groups by the same amount (20 points). The effect of teaching method doesn't depend on gender.</p>
+
+                    <hr>
+
+                    <h4>Interaction Pattern (Non-Parallel Lines):</h4>
+                    <p>Imagine a graph where:</p>
+                    <ul>
+                        <li>X-axis shows Teaching Method: Lecture → Hands-on</li>
+                        <li>Y-axis shows Test Scores (0-100)</li>
+                        <li>Two lines: one for Males (solid), one for Females (dashed)</li>
+                    </ul>
+
+                    <p>Lines move in opposite directions and CROSS:</p>
+                    <ul>
+                        <li>Males: 60 → 40 (decrease of 20 points)</li>
+                        <li>Females: 80 → 100 (increase of 20 points)</li>
+                    </ul>
+
+                    <p>The lines intersect in the middle of the graph.</p>
+
+                    <p><strong>What this means:</strong> The effect of teaching method DEPENDS on gender. Females benefit from hands-on while males do worse. Males do better with lecture.</p>
+
+                    <h4>Key Visual Cues:</h4>
+                    <ul>
+                        <li><strong>Parallel lines</strong> = No interaction (consistent effect across groups)</li>
+                        <li><strong>Non-parallel lines</strong> = Possible interaction (effect varies by group)</li>
+                        <li><strong>Crossing lines</strong> = Definite interaction (effect reverses across groups)</li>
+                    </ul>
+
+                    <h3>Types of Interactions</h3>
+
+                    <h4>1. Crossover Interaction:</h4>
+                    <ul>
+                        <li>The lines actually cross</li>
+                        <li>The rank order reverses</li>
+                        <li>Example: Drug A is best for young, Drug B is best for elderly</li>
+                    </ul>
+
+                    <h4>2. Spreading Interaction:</h4>
+                    <ul>
+                        <li>Lines diverge but don't cross</li>
+                        <li>One factor has a bigger effect at certain levels of the other factor</li>
+                        <li>Example: Hands-on helps beginners much more than it helps advanced students</li>
+                    </ul>
+
+                    <h4>3. No Interaction:</h4>
+                    <ul>
+                        <li>Lines are parallel (or close to it)</li>
+                        <li>One factor has the same effect at all levels of the other factor</li>
+                    </ul>
+
+                    <h3>Hypotheses for Interaction Effects</h3>
+
+                    <p><strong>Null Hypothesis (H₀):</strong></p>
+                    <ul>
+                        <li>There is no interaction between Factor A and Factor B</li>
+                        <li>The effect of Factor A is the same at all levels of Factor B</li>
+                        <li>The lines on the graph will be parallel</li>
+                    </ul>
+
+                    <p><strong>Alternative Hypothesis (H₁):</strong></p>
+                    <ul>
+                        <li>There is an interaction between Factor A and Factor B</li>
+                        <li>The effect of Factor A depends on the level of Factor B</li>
+                        <li>The lines on the graph will not be parallel</li>
+                    </ul>
+
+                    <h3>What a Significant Interaction Tells You</h3>
+
+                    <p><strong>If the interaction is significant (p < .05):</strong></p>
+                    <ul>
+                        <li>✅ The effect of one factor <strong>depends on</strong> the level of the other factor</li>
+                        <li>✅ You <strong>cannot</strong> make simple statements like "Factor A increases the DV"</li>
+                        <li>✅ You <strong>must</strong> explore the interaction with simple effects tests</li>
+                        <li>✅ This is your <strong>main story</strong> to report</li>
+                    </ul>
+
+                    <h4>Example Interpretation:</h4>
+                    <p>"The effect of teaching method on test scores depends on student level. Hands-on instruction is more effective for beginners, while lecture is more effective for advanced students."</p>
+
+                    <div class="knowledge-check-item" data-question-id="tab2-q1">
+                        <p class="question-text"><strong>Question 1:</strong> Main effects refer to the _____.</p>
+                        <ul class="question-options">
+                            <li>A) Effect of a single independent variable on the dependent variable, disregarding all other variables in the study</li>
+                            <li>B) Combined effects of two dependent variables</li>
+                            <li>C) Effect of one level of the independent variable on the dependent variable, disregarding other levels of the independent variable</li>
+                            <li>D) Combined effects of two independent variables</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <p class="answer-text"><strong>Correct Answer:</strong> A) Effect of a single independent variable on the dependent variable, disregarding all other variables in the study</p>
+                            <p class="answer-text"><strong>Why this is correct:</strong> A main effect examines the effect of ONE independent variable by itself, averaging across (ignoring) all other independent variables in the design.</p>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab2-q1')">Show Answer</button>
+                    </div>
+
+                    <div class="knowledge-check-item" data-question-id="tab2-q2">
+                        <p class="question-text"><strong>Question 2:</strong> The owners of the Syfy channel are interested in whether watching the Syfy channel causes people to become "geeky," and if so, whether any such effects depend on a person's gender. They hire a researcher to design and carry out the appropriate study. The researcher randomly assigns an equal number of men and women to watch 0, 3, 5, or 9 hours of the Syfy channel each week for 6 weeks. What is the research hypothesis for the main effect of hours watched?</p>
+                        <ul class="question-options">
+                            <li>A) On average, watchers are equally geeky regardless of the hours of the Syfy channel they watch.</li>
+                            <li>B) On average, men are geekier than women when watching fewer hours but less geeky than women when watching more hours of the Syfy channel.</li>
+                            <li>C) On average, watchers differ in their geekiness levels across the various hours of the Syfy channel watched.</li>
+                            <li>D) On average, men and women differ in their geekiness levels.</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <p class="answer-text"><strong>Correct Answer:</strong> C) On average, watchers differ in their geekiness levels across the various hours of the Syfy channel watched.</p>
+                            <p class="answer-text"><strong>Why this is correct:</strong> The research hypothesis for a main effect predicts that there will be differences across the levels of that factor (hours watched), averaging across the other factor (gender). This statement says geekiness differs across hours watched.</p>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab2-q2')">Show Answer</button>
+                    </div>
+
+                    <div class="knowledge-check-item" data-question-id="tab2-q3">
+                        <p class="question-text"><strong>Question 3:</strong> An interaction occurs when _____.</p>
+                        <ul class="question-options">
+                            <li>A) Two independent variables both influence the dependent variable</li>
+                            <li>B) The effects of one independent variable depend on the level of the other independent variable</li>
+                            <li>C) A single independent variable changes the dependent variable, disregarding all other variables in the study</li>
+                            <li>D) The dependent variable does not depend on any of the independent variables</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <p class="answer-text"><strong>Correct Answer:</strong> B) The effects of one independent variable depend on the level of the other independent variable</p>
+                            <p class="answer-text"><strong>Why this is correct:</strong> An interaction means that the effect of one IV changes depending on which level of the other IV you're looking at. The two factors work together in a way that can't be explained by their individual main effects alone.</p>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab2-q3')">Show Answer</button>
+                    </div>
+
+                    <div class="knowledge-check-item" data-question-id="tab2-q4">
+                        <p class="question-text"><strong>Question 4:</strong> In addition to assessing whether each independent variable has an effect on the dependent variable, a factorial ANOVA also allows one to _____.</p>
+                        <ul class="question-options">
+                            <li>A) Use multiple dependent measures in a single analysis</li>
+                            <li>B) Determine whether the effects of one factor depend on the other factor</li>
+                            <li>C) Control for a third variable that might be related to the dependent measure, prior to investigating the independent variable of interest</li>
+                            <li>D) Partition out the variability due to individual differences and the variability due to measurement error</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <p class="answer-text"><strong>Correct Answer:</strong> B) Determine whether the effects of one factor depend on the other factor</p>
+                            <p class="answer-text"><strong>Why this is correct:</strong> The key advantage of factorial ANOVA over one-way ANOVA is the ability to test for interactions—whether the effect of one factor depends on (varies with) the level of the other factor.</p>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab2-q4')">Show Answer</button>
+                    </div>
+                </div>
+
+                <div id="tab-3" class="tab-panel">
+                    <h2>Part 5: The Omnibus Test in Two-Way ANOVA</h2>
+
+                    <h3>Three Separate Null Hypotheses</h3>
+                    <p>In a two-way ANOVA, the <strong>omnibus test</strong> actually tests <strong>three separate null hypotheses simultaneously</strong>:</p>
+
+                    <h4>H₀₁: Main Effect of Factor A</h4>
+                    <ul>
+                        <li>μ_A1 = μ_A2 = μ_A3... (all marginal means for Factor A are equal)</li>
+                        <li>Example: μ_city = μ_suburb</li>
+                    </ul>
+
+                    <h4>H₀₂: Main Effect of Factor B</h4>
+                    <ul>
+                        <li>μ_B1 = μ_B2 = μ_B3... (all marginal means for Factor B are equal)</li>
+                        <li>Example: μ_religious = μ_non-religious</li>
+                    </ul>
+
+                    <h4>H₀₃: Interaction Between A and B</h4>
+                    <ul>
+                        <li>There is no interaction between Factor A and Factor B</li>
+                        <li>The effect of Factor A is the same at all levels of Factor B</li>
+                    </ul>
+
+                    <p><strong>Important:</strong> Each of these three hypotheses is tested with its own <strong>separate F-test</strong>, meaning you get three F-statistics in your output.</p>
+
+                    <h3>In a Two-Way ANOVA, the Researcher Makes Decisions Regarding...</h3>
+                    <p><strong>Answer:</strong> Three separate null hypotheses</p>
+
+                    <p>This is a critical concept that distinguishes two-way ANOVA from simpler tests:</p>
+                    <ul>
+                        <li>One-way ANOVA: 1 null hypothesis (one factor)</li>
+                        <li>Independent t-test: 1 null hypothesis (two groups)</li>
+                        <li>Two-way ANOVA: <strong>3 null hypotheses</strong> (2 main effects + 1 interaction)</li>
+                    </ul>
+
+                    <h3>Variance Partitioning in Factorial ANOVA</h3>
+                    <p>In one-way ANOVA, we partitioned variance into:</p>
+                    <ul>
+                        <li>Between-groups variance</li>
+                        <li>Within-groups variance</li>
+                    </ul>
+
+                    <p><strong>In two-way ANOVA, between-groups variance is further divided into THREE components:</strong></p>
+                    <p><strong>Total Between-Groups Variance = Main Effect A + Main Effect B + Interaction (A×B)</strong></p>
+
+                    <p>This is why factorial ANOVA is so powerful—it breaks down the differences among groups into interpretable pieces:</p>
+                    <ol>
+                        <li>How much is due to Factor A alone?</li>
+                        <li>How much is due to Factor B alone?</li>
+                        <li>How much is due to the combination/interaction of A and B?</li>
+                    </ol>
+
+                    <h4>Visual Representation:</h4>
+                    <pre>
+Total Variance in DV
+    |
+    ├─ Between-Groups Variance
+    |    ├─ Main Effect of A
+    |    ├─ Main Effect of B
+    |    └─ Interaction (A × B)
+    |
+    └─ Within-Groups Variance (Error)
+                    </pre>
+
+                    <h3>Understanding Degrees of Freedom in Factorial ANOVA</h3>
+                    <p><strong>Degrees of freedom</strong> become more complex in factorial designs because we're testing multiple effects.</p>
+
+                    <h4>Between-Groups Degrees of Freedom:</h4>
+
+                    <h4>df for Main Effect A:</h4>
+                    <ul>
+                        <li>df_A = a - 1</li>
+                        <li>Where a = number of levels of Factor A</li>
+                        <li>Example: 2 community types → df = 2 - 1 = 1</li>
+                    </ul>
+
+                    <h4>df for Main Effect B:</h4>
+                    <ul>
+                        <li>df_B = b - 1</li>
+                        <li>Where b = number of levels of Factor B</li>
+                        <li>Example: 2 religious affiliations → df = 2 - 1 = 1</li>
+                    </ul>
+
+                    <h4>df for Interaction (A × B):</h4>
+                    <ul>
+                        <li>df_A×B = (a - 1) × (b - 1)</li>
+                        <li>Example: (2-1) × (2-1) = 1 × 1 = 1</li>
+                    </ul>
+
+                    <h4>Within-Groups Degrees of Freedom:</h4>
+
+                    <h4>df for Within-Groups (Error):</h4>
+                    <ul>
+                        <li>df_within = N - (a × b)</li>
+                        <li>Where N = total number of participants, a × b = total number of cells</li>
+                        <li>Alternative formula: Subtract 1 participant from each cell, then add up</li>
+                        <li>Example: 60 participants, 2×2 design (4 cells) → df = 60 - 4 = 56</li>
+                    </ul>
+
+                    <h4>Total Degrees of Freedom:</h4>
+                    <ul>
+                        <li>df_total = N - 1</li>
+                        <li>Example: 60 participants → df = 60 - 1 = 59</li>
+                    </ul>
+
+                    <p><strong>Check:</strong> df_A + df_B + df_A×B + df_within = df_total</p>
+                    <ul>
+                        <li>Example: 1 + 1 + 1 + 56 = 59 ✓</li>
+                    </ul>
+
+                    <h3>Reading the SPSS Output Table</h3>
+                    <p>SPSS produces a "Tests of Between-Subjects Effects" table that looks like this:</p>
+
+                    <pre>
+Tests of Between-Subjects Effects
+Dependent Variable: Pcollege
+
+Source                     Type III SS    df    Mean Square    F        Sig.    Partial η²
+Corrected Model           24255.640      3     8085.213       68.502   .000    .780
+Intercept                 285120.000     1     285120.000     2416.00  .000    .977
+Community                 12600.840      1     12600.840      106.736  .000    .656
+Religious                 8294.400       1     8294.400       70.285   .000    .557
+Community * Religious     3360.400       1     3360.400       28.476   .000    .330
+Error                     6616.320       56    118.113
+Total                     316000.000     60
+Corrected Total           30871.960      59
+                    </pre>
+
+                    <h4>Key Information to Extract:</h4>
+
+                    <h4>1. Omnibus F-statistic (Corrected Model row):</h4>
+                    <ul>
+                        <li>F = 68.502</li>
+                        <li>This tests whether the overall model (all three effects combined) is significant</li>
+                        <li>df = (3, 56)</li>
+                    </ul>
+
+                    <h4>2. Main Effect of Community:</h4>
+                    <ul>
+                        <li>F = 106.736, df = (1, 56), p < .001</li>
+                        <li>Significant main effect</li>
+                    </ul>
+
+                    <h4>3. Main Effect of Religious:</h4>
+                    <ul>
+                        <li>F = 70.285, df = (1, 56), p < .001</li>
+                        <li>Significant main effect</li>
+                    </ul>
+
+                    <h4>4. Interaction (Community × Religious):</h4>
+                    <ul>
+                        <li>F = 28.476, df = (1, 56), p < .001</li>
+                        <li>Significant interaction</li>
+                    </ul>
+
+                    <h4>5. Error (Within-Groups):</h4>
+                    <ul>
+                        <li>MS_error = 118.113</li>
+                        <li>df = 56</li>
+                    </ul>
+
+                    <hr>
+
+                    <h2>Part 6: The Decision Tree - Interpreting Factorial ANOVA Results</h2>
+
+                    <h3>The Golden Rule: Check the Interaction FIRST</h3>
+                    <p><strong>Most Important Principle in Factorial ANOVA:</strong></p>
+                    <p>When interpreting your results, <strong>ALWAYS examine the interaction effect before looking at the main effects.</strong></p>
+
+                    <p><strong>Why?</strong></p>
+                    <ul>
+                        <li>The interaction tells you whether the main effects can be interpreted independently</li>
+                        <li>A significant interaction changes how you interpret everything else</li>
+                        <li>The interaction is usually the most interesting and informative finding</li>
+                    </ul>
+
+                    <h3>The Decision Tree</h3>
+                    <pre>
+Step 1: Look at the Interaction (A × B)
+    |
+    ├─ Is interaction significant (p < .05)?
+    |    |
+    |    ├─ YES → Interaction is SIGNIFICANT
+    |    |    |
+    |    |    ├─ 1. Report the significant interaction as your main finding
+    |    |    ├─ 2. Run SIMPLE EFFECTS tests to explore the interaction
+    |    |    ├─ 3. Interpret main effects with EXTREME CAUTION (or ignore them)
+    |    |    └─ 4. Focus on describing the pattern of the interaction
+    |    |
+    |    └─ NO → Interaction is NOT SIGNIFICANT
+    |         |
+    |         ├─ 1. Report that the interaction is not significant
+    |         ├─ 2. NOW you can interpret main effects independently
+    |         └─ 3. For each significant main effect:
+    |              |
+    |              ├─ If factor has 2 levels → Compare marginal means
+    |              └─ If factor has 3+ levels → Run POST-HOC tests
+                    </pre>
+
+                    <h3>When the Interaction is Significant</h3>
+
+                    <p><strong>What this means:</strong></p>
+                    <ul>
+                        <li>The effect of Factor A depends on the level of Factor B</li>
+                        <li>You cannot make simple statements like "Factor A increases the DV"</li>
+                        <li>The two factors work together in a complex way</li>
+                    </ul>
+
+                    <p><strong>What to do:</strong></p>
+                    <ol>
+                        <li><strong>Report the interaction:</strong> "There was a significant interaction between A and B, F(1, 56) = 35.62, p < .001."</li>
+                        <li><strong>Run simple effects tests:</strong> Break down your data by levels of one factor and test the effect of the other factor separately at each level</li>
+                        <li><strong>Describe the pattern:</strong> Explain how the effect of one factor changes across levels of the other</li>
+                        <li><strong>Be cautious with main effects:</strong> If you report them at all, note that they must be interpreted in light of the significant interaction</li>
+                    </ol>
+
+                    <h4>Example Interpretation:</h4>
+                    <p>"The effect of religious affiliation on college-going rates depends on community type. In city schools, religious affiliation had a large significant effect (p < .001), but in suburban schools, the effect was not significant (p = .45)."</p>
+
+                    <h3>When the Interaction is NOT Significant</h3>
+
+                    <p><strong>What this means:</strong></p>
+                    <ul>
+                        <li>The effect of Factor A is consistent across all levels of Factor B</li>
+                        <li>The two factors work independently</li>
+                        <li>Main effects can be interpreted separately</li>
+                    </ul>
+
+                    <p><strong>What to do:</strong></p>
+                    <ol>
+                        <li><strong>Report that interaction is not significant:</strong> "There was no significant interaction, F(1, 56) = 0.85, p = .36."</li>
+                        <li><strong>Interpret each main effect separately:</strong>
+                            <ul>
+                                <li>For each significant main effect with 2 levels: Compare marginal means</li>
+                                <li>For each significant main effect with 3+ levels: Run post-hoc tests</li>
+                            </ul>
+                        </li>
+                    </ol>
+
+                    <h4>Example Interpretation:</h4>
+                    <p>"There was no significant interaction. The main effect of community type was significant, F(1, 56) = 106.74, p < .001, with suburban schools having higher rates than city schools. The main effect of religious affiliation was also significant, F(1, 56) = 70.29, p < .001, with religious schools having higher rates than non-religious schools."</p>
+
+                    <h3>When to Run Post-Hoc Tests</h3>
+
+                    <p><strong>Post-hoc tests are needed when:</strong></p>
+                    <ul>
+                        <li>The interaction is <strong>NOT significant</strong>, AND</li>
+                        <li>A main effect is <strong>significant</strong>, AND</li>
+                        <li>That factor has <strong>3 or more levels</strong></li>
+                    </ul>
+
+                    <p><strong>When post-hoc tests are NOT needed:</strong></p>
+                    <ul>
+                        <li>Interaction is significant (run simple effects tests instead)</li>
+                        <li>Main effect has only 2 levels (just compare marginal means)</li>
+                        <li>Main effect is not significant</li>
+                    </ul>
+
+                    <h4>Example from Quiz:</h4>
+                    <p>Based on ANOVA results showing:</p>
+                    <ul>
+                        <li>Community effect: F = 106.74, p < .001 (2 levels: city, suburb)</li>
+                        <li>Religious effect: F = 70.29, p < .001 (2 levels: yes, no)</li>
+                        <li>Interaction: F = 35.62, p < .001</li>
+                    </ul>
+
+                    <p><strong>Answer: Post hoc tests are not necessary</strong></p>
+
+                    <p><strong>Why?</strong> The interaction is significant, so you should run simple effects tests instead. Even if the interaction weren't significant, both main effects have only 2 levels each, so no post-hoc tests would be needed—just compare the two marginal means for each factor.</p>
+
+                    <h3>Caution: Don't Over-Interpret Main Effects with Significant Interactions</h3>
+
+                    <p><strong>Common Mistake:</strong></p>
+                    <p>Reporting "Religious schools have higher college-going rates" when there's a significant interaction.</p>
+
+                    <p><strong>Problem:</strong></p>
+                    <p>This statement might be true on average (the marginal means), but it hides the complexity revealed by the interaction.</p>
+
+                    <p><strong>Better Approach:</strong></p>
+                    <p>"The effect of religious affiliation depends on community type. In city schools, religious schools have much higher rates (85% vs. 60%), but in suburban schools, the difference is smaller (88% vs. 75%)."</p>
+
+                    <div class="knowledge-check-item" data-question-id="tab3-q1">
+                        <p class="question-text"><strong>Question 1:</strong> In a two-way ANOVA, the researcher makes decisions regarding _____ when the omnibus test is significant.</p>
+                        <ul class="question-options">
+                            <li>A) Three separate null hypotheses</li>
+                            <li>B) Four separate null hypotheses</li>
+                            <li>C) One null hypothesis and one alternative hypothesis</li>
+                            <li>D) Two separate null hypotheses</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <p class="answer-text"><strong>Correct Answer:</strong> A) Three separate null hypotheses</p>
+                            <p class="answer-text"><strong>Why this is correct:</strong> A two-way ANOVA tests three separate null hypotheses: (1) Main effect of Factor A, (2) Main effect of Factor B, and (3) Interaction between A and B. Each has its own F-test.</p>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab3-q1')">Show Answer</button>
+                    </div>
+
+                    <div class="knowledge-check-item" data-question-id="tab3-q2">
+                        <p class="question-text"><strong>Question 2:</strong> In a two-way factorial ANOVA, between-groups variance is divided into _____.</p>
+                        <ul class="question-options">
+                            <li>A) Two main effects and two interactions</li>
+                            <li>B) One main effect and a single interaction</li>
+                            <li>C) Two main effects and a single interaction</li>
+                            <li>D) One main effect and two interactions</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <p class="answer-text"><strong>Correct Answer:</strong> C) Two main effects and a single interaction</p>
+                            <p class="answer-text"><strong>Why this is correct:</strong> Between-groups variance in a two-way ANOVA is partitioned into three components: Main effect of Factor A, Main effect of Factor B, and the A×B interaction. That's two main effects plus one interaction.</p>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab3-q2')">Show Answer</button>
+                    </div>
+
+                    <div class="knowledge-check-item" data-question-id="tab3-q3">
+                        <p class="question-text"><strong>Question 3:</strong> Based on ANOVA results showing a significant interaction between CityRural and SchoolType (p < .001), but non-significant main effects for both factors (p > .05), what post hoc tests should be performed?</p>
+                        <ul class="question-options">
+                            <li>A) Post hoc tests are not necessary</li>
+                            <li>B) Post hoc tests for the CityRural × SchoolType effect</li>
+                            <li>C) Post hoc tests for the SchoolType effect</li>
+                            <li>D) Post hoc tests for the CityRural effect</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <p class="answer-text"><strong>Correct Answer:</strong> A) Post hoc tests are not necessary</p>
+                            <p class="answer-text"><strong>Why this is correct:</strong> When the interaction is significant, you run SIMPLE EFFECTS tests, not post-hoc tests. Post-hoc tests are only used for significant main effects with 3+ levels when the interaction is NOT significant.</p>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab3-q3')">Show Answer</button>
+                    </div>
+
+                    <div class="knowledge-check-item" data-question-id="tab3-q4">
+                        <p class="question-text"><strong>Question 4:</strong> If the interaction is significant (p < .001), should you interpret the main effects?</p>
+                        <ul class="question-options">
+                            <li>A) Yes, always interpret main effects regardless of the interaction</li>
+                            <li>B) No, completely ignore the main effects</li>
+                            <li>C) Interpret main effects with extreme caution, noting they must be understood in light of the interaction</li>
+                            <li>D) Only interpret the main effect if it's also significant</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <p class="answer-text"><strong>Correct Answer:</strong> C) Interpret main effects with extreme caution, noting they must be understood in light of the interaction</p>
+                            <p class="answer-text"><strong>Why this is correct:</strong> A significant interaction means the effect of one factor depends on the other. Main effects can still be reported, but you must emphasize that the interaction is the more complete story. Marginal means can be misleading when an interaction is present.</p>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab3-q4')">Show Answer</button>
+                    </div>
+                </div>
+
+                <div id="tab-4" class="tab-panel">
+                    <h2>Part 7: Simple Effects Tests</h2>
+
+                    <h3>What Are Simple Effects?</h3>
+                    <p><strong>Simple effects</strong> are the effects of one factor at <strong>individual levels</strong> of the other factor.</p>
+
+                    <h4>Example:</h4>
+                    <p>Instead of asking "Does teaching method affect scores?" (main effect), we ask:</p>
+                    <ul>
+                        <li>"Does teaching method affect scores <strong>for beginners</strong>?" (simple effect at beginner level)</li>
+                        <li>"Does teaching method affect scores <strong>for advanced students</strong>?" (simple effect at advanced level)</li>
+                    </ul>
+
+                    <p><strong>Purpose:</strong> Simple effects tests help you understand and describe the pattern of a significant interaction.</p>
+
+                    <h3>When to Run Simple Effects Tests</h3>
+
+                    <p><strong>Run simple effects tests when:</strong></p>
+                    <ul>
+                        <li>The interaction is <strong>significant</strong> (p < .05)</li>
+                        <li>You want to understand <strong>how</strong> the two factors interact</li>
+                    </ul>
+
+                    <p><strong>Do NOT run simple effects tests when:</strong></p>
+                    <ul>
+                        <li>The interaction is <strong>not significant</strong></li>
+                        <li>In that case, interpret main effects instead</li>
+                    </ul>
+
+                    <h3>How Simple Effects Tests Work</h3>
+
+                    <h4>Approach 1: Split by Factor A, Test Effect of Factor B</h4>
+
+                    <p><strong>Steps:</strong></p>
+                    <ol>
+                        <li>Split your data into separate groups based on Factor A levels</li>
+                        <li>For each level of Factor A, run a one-way ANOVA testing the effect of Factor B</li>
+                        <li>Compare results across the different levels of Factor A</li>
+                    </ol>
+
+                    <h4>Example:</h4>
+                    <ul>
+                        <li>Split data by Community Type (City schools only, Suburb schools only)</li>
+                        <li>For City schools: Run one-way ANOVA testing effect of Religious affiliation</li>
+                        <li>For Suburb schools: Run one-way ANOVA testing effect of Religious affiliation</li>
+                        <li>Compare: Is the effect of Religious different in City vs. Suburb?</li>
+                    </ul>
+
+                    <h4>Approach 2: Split by Factor B, Test Effect of Factor A</h4>
+                    <p>You could also do it the other way:</p>
+                    <ul>
+                        <li>Split data by Religious affiliation (Religious schools only, Non-religious schools only)</li>
+                        <li>Test effect of Community Type separately for each group</li>
+                    </ul>
+
+                    <p><strong>Choose based on your research question and which makes more conceptual sense.</strong></p>
+
+                    <h3>Interpreting Simple Effects Results</h3>
+
+                    <h4>Example Results:</h4>
+
+                    <h4>City Schools:</h4>
+                    <ul>
+                        <li>Religious vs. Non-religious: F(1, 28) = 45.23, p < .001</li>
+                        <li>Religious schools: M = 85%, Non-religious: M = 60%</li>
+                        <li><strong>Large, significant effect of religious affiliation</strong></li>
+                    </ul>
+
+                    <h4>Suburban Schools:</h4>
+                    <ul>
+                        <li>Religious vs. Non-religious: F(1, 28) = 2.15, p = .154</li>
+                        <li>Religious schools: M = 88%, Non-religious: M = 82%</li>
+                        <li><strong>No significant effect of religious affiliation</strong></li>
+                    </ul>
+
+                    <h4>Interpretation:</h4>
+                    <p>"The effect of religious affiliation on college-going rates depends on community type. In city schools, religious affiliation has a large significant effect (religious schools: 85%, non-religious: 60%), F(1, 28) = 45.23, p < .001, η² = .62. However, in suburban schools, there is no significant difference between religious and non-religious schools (88% vs. 82%), F(1, 28) = 2.15, p = .154."</p>
+
+                    <h3>Simple Effects in SPSS</h3>
+
+                    <h4>Method: Split File and Run One-Way ANOVAs</h4>
+
+                    <h4>Step 1: Split the data</h4>
+                    <ol>
+                        <li>Data → Split File</li>
+                        <li>Select "Organize output by groups"</li>
+                        <li>Move the splitting variable (e.g., Community Type) to "Groups Based on"</li>
+                        <li>Click OK</li>
+                    </ol>
+
+                    <h4>Step 2: Run One-Way ANOVA</h4>
+                    <ol>
+                        <li>Analyze → Compare Means → One-Way ANOVA</li>
+                        <li>DV: College percentage</li>
+                        <li>Factor: Religious affiliation</li>
+                        <li>Click OK</li>
+                    </ol>
+
+                    <p><strong>Result:</strong> SPSS will run separate one-way ANOVAs for each level of Community Type</p>
+
+                    <h4>Step 3: Turn off Split File</h4>
+                    <ol>
+                        <li>Data → Split File</li>
+                        <li>Select "Analyze all cases, do not create groups"</li>
+                        <li>Click OK</li>
+                    </ol>
+
+                    <hr>
+
+                    <h2>Part 8: Effect Size in Factorial ANOVA</h2>
+
+                    <h3>Why Effect Size Matters</h3>
+                    <p>Just like with other ANOVAs, statistical significance (p-value) doesn't tell you about <strong>practical significance</strong>. Effect sizes answer the question: "How much of the variance in the DV is explained by the IVs?"</p>
+
+                    <h3>Effect Sizes for Each Effect</h3>
+                    <p>In factorial ANOVA, you can calculate effect sizes for:</p>
+                    <ol>
+                        <li>Main effect of Factor A</li>
+                        <li>Main effect of Factor B</li>
+                        <li>Interaction effect (A × B)</li>
+                        <li>Total model (all effects combined)</li>
+                    </ol>
+
+                    <h3>Partial Eta Squared (Partial η²)</h3>
+                    <p><strong>Partial η²</strong> is the most commonly reported effect size for factorial ANOVA.</p>
+
+                    <p><strong>Formula for each effect:</strong></p>
+                    <ul>
+                        <li>Partial η² = SS_effect / (SS_effect + SS_error)</li>
+                    </ul>
+
+                    <h4>Example from SPSS Output:</h4>
+                    <pre>
+Source                     SS          Partial η²
+Community                 12600.840    .656
+Religious                 8294.400     .557
+Community * Religious     3360.400     .330
+Error                     6616.320
+                    </pre>
+
+                    <h4>Interpretation:</h4>
+                    <ul>
+                        <li>Community: 65.6% of variance (after removing other effects)</li>
+                        <li>Religious: 55.7% of variance (after removing other effects)</li>
+                        <li>Interaction: 33.0% of variance (after removing other effects)</li>
+                    </ul>
+
+                    <h3>Total R² (R-Squared)</h3>
+                    <p><strong>Total R²</strong> tells you how much variance is explained by the <strong>entire model</strong> (all effects combined).</p>
+
+                    <p><strong>Formula:</strong></p>
+                    <ul>
+                        <li>R² = SS_between_total / SS_total</li>
+                        <li>Where SS_between_total = SS_A + SS_B + SS_A×B</li>
+                    </ul>
+
+                    <h4>Example Calculation:</h4>
+                    <pre>
+SS_Community = 12600.840
+SS_Religious = 8294.400
+SS_Interaction = 3360.400
+SS_between_total = 12600.840 + 8294.400 + 3360.400 = 24255.640
+
+SS_total = 30871.960
+
+R² = 24255.640 / 30871.960 = .786 (78.6%)
+                    </pre>
+
+                    <p><strong>Interpretation:</strong> The combined model (community type, religious affiliation, and their interaction) explains 78.6% of the variance in college-going rates.</p>
+
+                    <h3>Cohen's Guidelines for η²</h3>
+                    <ul>
+                        <li><strong>Small effect:</strong> η² = .01 (1% of variance)</li>
+                        <li><strong>Medium effect:</strong> η² = .06 (6% of variance)</li>
+                        <li><strong>Large effect:</strong> η² = .14 (14% of variance)</li>
+                    </ul>
+
+                    <p><strong>Important:</strong> These are general guidelines. Context matters!</p>
+
+                    <h3>Reporting Effect Sizes</h3>
+                    <p><strong>Always report effect sizes alongside F-statistics:</strong></p>
+
+                    <h4>Example:</h4>
+                    <p>"There was a significant main effect of community type, F(1, 56) = 106.74, p < .001, partial η² = .656, indicating a large effect. There was also a significant interaction between community type and religious affiliation, F(1, 56) = 35.62, p < .001, partial η² = .330."</p>
+
+                    <div class="knowledge-check-item" data-question-id="tab4-q1">
+                        <p class="question-text"><strong>Question 1:</strong> As follow-up tests for the interaction effect, you split the data points by community type and then run a one-way ANOVA on Pcollege as DV and religious affiliation as factor. Which of the following is a correct description of the results if you find: City schools - F(1,28) = 45.23, p < .001, η² = .62; Suburb schools - F(1,28) = 0.58, p = .45, η² = .02?</p>
+                        <ul class="question-options">
+                            <li>A) The effect of religious affiliation on Pcollege is significant in both city schools and suburban schools, but the effect size is larger in the city schools.</li>
+                            <li>B) The effect of religious affiliation on Pcollege is significant in both city schools and suburban schools, but the effect size is larger in the suburb schools.</li>
+                            <li>C) The effect of religious affiliation on Pcollege is significant in city schools but not in suburban schools.</li>
+                            <li>D) The effect of religious affiliation on Pcollege is significant in suburban schools but not in city schools.</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <p class="answer-text"><strong>Correct Answer:</strong> C) The effect of religious affiliation on Pcollege is significant in city schools but not in suburban schools.</p>
+                            <p class="answer-text"><strong>Why this is correct:</strong> For city schools, p < .001 (significant), but for suburb schools, p = .45 (not significant). The effect of religious affiliation is only significant in city schools.</p>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab4-q1')">Show Answer</button>
+                    </div>
+
+                    <div class="knowledge-check-item" data-question-id="tab4-q2">
+                        <p class="question-text"><strong>Question 2:</strong> When should you run simple effects tests?</p>
+                        <ul class="question-options">
+                            <li>A) Always, for every factorial ANOVA</li>
+                            <li>B) Only when the interaction is significant</li>
+                            <li>C) Only when the main effects are significant</li>
+                            <li>D) Only when the interaction is NOT significant</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <p class="answer-text"><strong>Correct Answer:</strong> B) Only when the interaction is significant</p>
+                            <p class="answer-text"><strong>Why this is correct:</strong> Simple effects tests are specifically designed to explore and understand significant interactions. They break down the interaction to show how the effect of one factor changes across levels of the other factor.</p>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab4-q2')">Show Answer</button>
+                    </div>
+
+                    <div class="knowledge-check-item" data-question-id="tab4-q3">
+                        <p class="question-text"><strong>Question 3:</strong> How much of the variance in "college percentage" can be accounted for by the total between-group variance if SS_between_total = 24255.640 and SS_total = 30871.960?</p>
+                        <ul class="question-options">
+                            <li>A) 3.8%</li>
+                            <li>B) 25.3%</li>
+                            <li>C) 20%</li>
+                            <li>D) 78.6%</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <p class="answer-text"><strong>Correct Answer:</strong> D) 78.6%</p>
+                            <p class="answer-text"><strong>Why this is correct:</strong> Total R² = SS_between_total / SS_total = 24255.640 / 30871.960 = .786 = 78.6%. This tells us that the model explains 78.6% of the variance in college-going percentage.</p>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab4-q3')">Show Answer</button>
+                    </div>
+
+                    <div class="knowledge-check-item" data-question-id="tab4-q4">
+                        <p class="question-text"><strong>Question 4:</strong> If partial η² = .656 for the main effect of community type, how should this be interpreted?</p>
+                        <ul class="question-options">
+                            <li>A) Small effect</li>
+                            <li>B) Medium effect</li>
+                            <li>C) Large effect</li>
+                            <li>D) Cannot determine without more information</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <p class="answer-text"><strong>Correct Answer:</strong> C) Large effect</p>
+                            <p class="answer-text"><strong>Why this is correct:</strong> partial η² = .656 means 65.6% of the variance is explained, which is far above the threshold for a large effect (.14 or 14%). This is a very large effect.</p>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab4-q4')">Show Answer</button>
+                    </div>
+                </div>
+
+                <div id="tab-5" class="tab-panel">
+                    <h2>Part 9: Assumptions of Factorial ANOVA</h2>
+
+                    <h3>The Four Critical Assumptions</h3>
+                    <p>Like all statistical tests, factorial ANOVA has assumptions that must be reasonably met for results to be valid.</p>
+
+                    <h4>Assumption 1: Independence of Observations</h4>
+                    <ul>
+                        <li>Each participant's score must be independent of all other participants</li>
+                        <li>Violated by: Related participants (siblings, couples), repeated measures, clustered data</li>
+                        <li><strong>How to check:</strong> Consider your research design and data collection method</li>
+                        <li><strong>Most important assumption</strong> - violations seriously compromise results</li>
+                    </ul>
+
+                    <h4>Assumption 2: Normality</h4>
+                    <ul>
+                        <li>The dependent variable should be approximately normally distributed <strong>within each cell</strong></li>
+                        <li>More important with small sample sizes (n < 30 per cell)</li>
+                        <li>ANOVA is robust to mild violations, especially with equal cell sizes</li>
+                        <li><strong>How to check in SPSS:</strong>
+                            <ul>
+                                <li>Run Analyze → Descriptive Statistics → Explore</li>
+                                <li>Request histograms and Shapiro-Wilk test for each cell</li>
+                                <li>Look for extreme skewness (±2) or kurtosis (±7)</li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <h4>Assumption 3: Homogeneity of Variance</h4>
+                    <ul>
+                        <li>Variance should be approximately equal across all cells</li>
+                        <li>Tested with Levene's test in SPSS output</li>
+                        <li>ANOVA is fairly robust if cell sizes are equal</li>
+                        <li><strong>How to check:</strong> Levene's test in SPSS (p > .05 indicates assumption met)</li>
+                        <li><strong>Rule of thumb:</strong> Largest cell SD should be < 2× smallest cell SD</li>
+                    </ul>
+
+                    <h4>Assumption 4: No Significant Outliers</h4>
+                    <ul>
+                        <li>Extreme outliers can distort means and inflate variance</li>
+                        <li><strong>How to check in SPSS:</strong>
+                            <ul>
+                                <li>Look at boxplots (values beyond 3× IQR)</li>
+                                <li>Check standardized residuals (values > ±3.29 are concerning)</li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <h3>What to Do When Assumptions Are Violated</h3>
+
+                    <h4>If Independence is Violated:</h4>
+                    <ul>
+                        <li>⚠️ STOP - This is serious</li>
+                        <li>Consider multilevel modeling or repeated-measures ANOVA instead</li>
+                        <li>Cannot proceed with standard factorial ANOVA</li>
+                    </ul>
+
+                    <h4>If Normality is Violated:</h4>
+                    <ul>
+                        <li>With n > 30 per cell: Probably okay (Central Limit Theorem)</li>
+                        <li>With smaller samples: Consider data transformation (log, square root)</li>
+                        <li>Alternative: Use non-parametric methods or bootstrapping</li>
+                    </ul>
+
+                    <h4>If Homogeneity of Variance is Violated:</h4>
+                    <ul>
+                        <li>If cell sizes are equal (within 10%): Probably okay to proceed</li>
+                        <li>If cell sizes are unequal: Use Welch's correction or report robust statistics</li>
+                        <li>Consider reporting with caution and noting the violation</li>
+                    </ul>
+
+                    <h4>If Outliers are Present:</h4>
+                    <ul>
+                        <li>Investigate: Data entry error? True extreme case?</li>
+                        <li>Options: Remove (if error), winsorize (cap at less extreme value), or transform data</li>
+                        <li>Always report how you handled outliers</li>
+                    </ul>
+
+                    <hr>
+
+                    <h2>Part 10: SPSS Practical Guide</h2>
+
+                    <h3>Running Two-Way Between-Groups ANOVA in SPSS</h3>
+
+                    <h4>Step-by-Step Instructions:</h4>
+
+                    <h4>Step 1: Prepare Your Data</h4>
+                    <ul>
+                        <li>Ensure both IVs are coded numerically (or as string variables)</li>
+                        <li>Ensure DV is continuous</li>
+                        <li>Each row represents one participant</li>
+                        <li>No missing values in key variables</li>
+                    </ul>
+
+                    <h4>Step 2: Access the GLM Univariate Menu</h4>
+                    <ol>
+                        <li>Click <strong>Analyze</strong> → <strong>General Linear Model</strong> → <strong>Univariate</strong></li>
+                    </ol>
+
+                    <h4>Step 3: Define Variables</h4>
+                    <ol>
+                        <li>Move your <strong>Dependent Variable</strong> to the "Dependent Variable" box</li>
+                        <li>Move your <strong>Independent Variables</strong> (Factors) to the "Fixed Factor(s)" box</li>
+                        <li>Example: Move "Community" and "Religious" to Fixed Factors</li>
+                    </ol>
+
+                    <h4>Step 4: Request Descriptive Statistics and Effect Sizes</h4>
+                    <ol>
+                        <li>Click <strong>Options</strong></li>
+                        <li>Check <strong>Descriptive statistics</strong></li>
+                        <li>Check <strong>Estimates of effect size</strong></li>
+                        <li>Move your factors and interaction to "Display Means for" (optional, for marginal means)</li>
+                        <li>Click <strong>Continue</strong></li>
+                    </ol>
+
+                    <h4>Step 5: Create Interaction Plots (Optional but Recommended)</h4>
+                    <ol>
+                        <li>Click <strong>Plots</strong></li>
+                        <li>Move one IV to "Horizontal Axis"</li>
+                        <li>Move the other IV to "Separate Lines"</li>
+                        <li>Click <strong>Add</strong></li>
+                        <li>Click <strong>Continue</strong></li>
+                    </ol>
+
+                    <h4>Step 6: Run the Analysis</h4>
+                    <ol>
+                        <li>Click <strong>OK</strong></li>
+                    </ol>
+
+                    <h3>Reading the SPSS Output</h3>
+
+                    <h4>1. Descriptive Statistics Table:</h4>
+                    <p>Shows means and SDs for each cell</p>
+
+                    <h4>2. Levene's Test:</h4>
+                    <ul>
+                        <li>Tests homogeneity of variances assumption</li>
+                        <li>p > .05 = assumption met</li>
+                    </ul>
+
+                    <h4>3. Tests of Between-Subjects Effects:</h4>
+                    <ul>
+                        <li><strong>Corrected Model:</strong> Omnibus F-test</li>
+                        <li><strong>Each IV:</strong> Main effect F-tests</li>
+                        <li><strong>IV1 × IV2:</strong> Interaction F-test</li>
+                        <li><strong>Error:</strong> Within-groups variance</li>
+                    </ul>
+
+                    <h4>4. Profile Plots (if requested):</h4>
+                    <ul>
+                        <li>Visual representation of interaction</li>
+                        <li>Non-parallel lines = potential interaction</li>
+                    </ul>
+
+                    <hr>
+
+                    <h2>Part 11: Reporting Factorial ANOVA in APA Format</h2>
+
+                    <h3>APA Format Structure</h3>
+                    <p>A complete factorial ANOVA report includes:</p>
+                    <ol>
+                        <li>Description of the analysis</li>
+                        <li>Omnibus test result</li>
+                        <li>Main effects results</li>
+                        <li>Interaction result</li>
+                        <li>Follow-up tests (simple effects or post-hoc)</li>
+                        <li>Effect sizes throughout</li>
+                    </ol>
+
+                    <h3>Reporting the Omnibus Test</h3>
+
+                    <h4>Template:</h4>
+                    <p>"A two-way between-groups ANOVA was conducted to examine the effects of [Factor A] and [Factor B] on [DV]. The omnibus test was significant, F(df₁, df₂) = X.XX, p < .001, indicating that the model significantly explained variance in [DV]."</p>
+
+                    <h4>Example:</h4>
+                    <p>"A 2×2 between-groups ANOVA was conducted to examine the effects of community type (city vs. suburb) and religious affiliation (yes vs. no) on the percentage of graduates going to college. The omnibus test was significant, F(3, 56) = 68.50, p < .001, indicating that the model significantly explained variance in college-going rates."</p>
+
+                    <h3>Reporting Main Effects</h3>
+
+                    <h4>Template:</h4>
+                    <p>"There was a [significant/non-significant] main effect of [Factor], F(df₁, df₂) = X.XX, p = .XXX, partial η² = .XX. [Describe direction if significant]."</p>
+
+                    <h4>Example:</h4>
+                    <p>"There was a significant main effect of community type, F(1, 56) = 106.74, p < .001, partial η² = .66, with suburban schools (M = 77.5%, SD = 8.2) having higher college-going rates than city schools (M = 67.5%, SD = 9.1)."</p>
+
+                    <h3>Reporting the Interaction</h3>
+
+                    <h4>Template (if significant):</h4>
+                    <p>"There was a significant interaction between [Factor A] and [Factor B], F(df₁, df₂) = X.XX, p < .001, partial η² = .XX. Simple effects tests revealed that [describe the pattern]."</p>
+
+                    <h4>Example:</h4>
+                    <p>"There was a significant interaction between community type and religious affiliation, F(1, 56) = 35.62, p < .001, partial η² = .33. Simple effects tests revealed that the effect of religious affiliation was significant in city schools, F(1, 28) = 45.23, p < .001, with religious schools showing substantially higher rates (85% vs. 60%), but not significant in suburban schools, F(1, 28) = 2.15, p = .154 (88% vs. 82%)."</p>
+
+                    <h4>Template (if not significant):</h4>
+                    <p>"There was no significant interaction between [Factor A] and [Factor B], F(df₁, df₂) = X.XX, p = .XXX."</p>
+
+                    <h3>APA Formatting Reminders</h3>
+
+                    <h4>p-values:</h4>
+                    <ul>
+                        <li>Report exact p-values for p ≥ .001: "p = .023"</li>
+                        <li>For very small p-values: "p < .001" (not "p = .000")</li>
+                        <li>Italicize the p</li>
+                    </ul>
+
+                    <h4>F-statistics:</h4>
+                    <ul>
+                        <li>Italicize the F</li>
+                        <li>Include both degrees of freedom: F(df₁, df₂)</li>
+                        <li>Report to 2 decimal places</li>
+                    </ul>
+
+                    <h4>Effect sizes:</h4>
+                    <ul>
+                        <li>Always report effect sizes</li>
+                        <li>Use partial η² for individual effects</li>
+                        <li>Can report R² for overall model</li>
+                        <li>Interpret size (small, medium, large)</li>
+                    </ul>
+
+                    <hr>
+
+                    <h2>Summary and Key Formulas</h2>
+
+                    <h3>Key Concepts Covered</h3>
+                    <ol>
+                        <li><strong>Factorial ANOVA</strong> allows testing of multiple IVs and their interaction simultaneously</li>
+                        <li><strong>Design notation</strong> (e.g., 2×3) indicates number of levels for each factor</li>
+                        <li><strong>Number of cells</strong> = levels of Factor 1 × levels of Factor 2</li>
+                        <li><strong>Main effects</strong> examine each IV separately, averaging across the other IV(s)</li>
+                        <li><strong>Interaction effects</strong> show when the effect of one IV depends on the other IV</li>
+                        <li><strong>Three null hypotheses</strong> are tested: Main effect A, Main effect B, Interaction A×B</li>
+                        <li><strong>Between-groups variance</strong> is partitioned into two main effects and one interaction</li>
+                        <li><strong>Interaction is paramount</strong>: Always check interaction first before interpreting main effects</li>
+                        <li><strong>Simple effects tests</strong> explore significant interactions</li>
+                        <li><strong>Post-hoc tests</strong> are for significant main effects with 3+ levels (when interaction is not significant)</li>
+                    </ol>
+
+                    <h3>Essential Formulas</h3>
+
+                    <h4>Degrees of Freedom:</h4>
+                    <ul>
+                        <li>df_A = a - 1</li>
+                        <li>df_B = b - 1</li>
+                        <li>df_A×B = (a - 1) × (b - 1)</li>
+                        <li>df_within = N - (a × b)</li>
+                        <li>df_total = N - 1</li>
+                    </ul>
+
+                    <h4>Effect Sizes:</h4>
+                    <ul>
+                        <li>Partial η² = SS_effect / (SS_effect + SS_error)</li>
+                        <li>Total R² = SS_between_total / SS_total</li>
+                        <li>SS_between_total = SS_A + SS_B + SS_A×B</li>
+                    </ul>
+
+                    <h4>Variance Partitioning:</h4>
+                    <ul>
+                        <li>Total Variance = Between-Groups + Within-Groups</li>
+                        <li>Between-Groups = Main Effect A + Main Effect B + Interaction</li>
+                    </ul>
+
+                    <h3>The Decision Tree (Summary)</h3>
+                    <pre>
+1. Check INTERACTION first
+   ↓
+2. Interaction significant?
+   ├─ YES → Run SIMPLE EFFECTS tests
+   │         Report interaction pattern
+   │         Be cautious with main effects
+   │
+   └─ NO  → Interpret MAIN EFFECTS independently
+             Run POST-HOC tests for factors with 3+ levels
+                    </pre>
+
+                    <div class="knowledge-check-item" data-question-id="tab5-q1">
+                        <p class="question-text"><strong>Question 1:</strong> In the SPSS output, you see F = 68.502 for the Corrected Model row. What does this represent?</p>
+                        <ul class="question-options">
+                            <li>A) The omnibus F-test for the overall model</li>
+                            <li>B) The interaction F-test</li>
+                            <li>C) The main effect of Factor A</li>
+                            <li>D) The main effect of Factor B</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <p class="answer-text"><strong>Correct Answer:</strong> A) The omnibus F-test for the overall model</p>
+                            <p class="answer-text"><strong>Why this is correct:</strong> The "Corrected Model" row shows the omnibus F-test, which tests whether the entire model (all three effects combined) significantly explains variance in the DV.</p>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab5-q1')">Show Answer</button>
+                    </div>
+
+                    <div class="knowledge-check-item" data-question-id="tab5-q2">
+                        <p class="question-text"><strong>Question 2:</strong> What is the correct APA format to report a p-value of .000 from SPSS output?</p>
+                        <ul class="question-options">
+                            <li>A) p = .000</li>
+                            <li>B) p < .001</li>
+                            <li>C) p < .05</li>
+                            <li>D) p < .01</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <p class="answer-text"><strong>Correct Answer:</strong> B) p < .001</p>
+                            <p class="answer-text"><strong>Why this is correct:</strong> When SPSS shows p = .000, it means p < .001 (the actual p-value is very small, not exactly zero). APA format requires reporting "p < .001" rather than "p = .000".</p>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab5-q2')">Show Answer</button>
+                    </div>
+
+                    <div class="knowledge-check-item" data-question-id="tab5-q3">
+                        <p class="question-text"><strong>Question 3:</strong> Which SPSS menu path do you use to run a two-way between-groups ANOVA?</p>
+                        <ul class="question-options">
+                            <li>A) Analyze → Compare Means → One-Way ANOVA</li>
+                            <li>B) Analyze → General Linear Model → Univariate</li>
+                            <li>C) Analyze → General Linear Model → Repeated Measures</li>
+                            <li>D) Analyze → Regression → Linear</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <p class="answer-text"><strong>Correct Answer:</strong> B) Analyze → General Linear Model → Univariate</p>
+                            <p class="answer-text"><strong>Why this is correct:</strong> Two-way (factorial) between-groups ANOVA is run using the General Linear Model → Univariate menu in SPSS.</p>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab5-q3')">Show Answer</button>
+                    </div>
+
+                    <div class="knowledge-check-item" data-question-id="tab5-q4">
+                        <p class="question-text"><strong>Question 4:</strong> What is the hypothesis test result from the omnibus test if F(3, 56) = 68.502, p < .001?</p>
+                        <ul class="question-options">
+                            <li>A) The null hypothesis is not rejected, and the model is significant.</li>
+                            <li>B) The null hypothesis is not rejected and the model is not significant.</li>
+                            <li>C) The null hypothesis is rejected, and the model is not significant.</li>
+                            <li>D) The null hypothesis is rejected, and the model is significant.</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <p class="answer-text"><strong>Correct Answer:</strong> D) The null hypothesis is rejected, and the model is significant.</p>
+                            <p class="answer-text"><strong>Why this is correct:</strong> p < .001 means we reject the null hypothesis. When we reject the null, the model IS significant—meaning at least one of the effects (main effects or interaction) is significant.</p>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab5-q4')">Show Answer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+
+        <h2>Glossary</h2>
+        <div class="glossary-section">
+            <div class="glossary-item">
+                <h4>Factorial ANOVA</h4>
+                <p>ANOVA with 2+ independent variables</p>
+            </div>
+            <div class="glossary-item">
+                <h4>Two-way ANOVA</h4>
+                <p>Factorial ANOVA with exactly 2 factors</p>
+            </div>
+            <div class="glossary-item">
+                <h4>Main effect</h4>
+                <p>Effect of one IV, averaging across other IV(s)</p>
+            </div>
+            <div class="glossary-item">
+                <h4>Interaction</h4>
+                <p>When effect of one IV depends on level of other IV</p>
+            </div>
+            <div class="glossary-item">
+                <h4>Simple effects</h4>
+                <p>Effect of one IV at specific level of other IV</p>
+            </div>
+            <div class="glossary-item">
+                <h4>Marginal means</h4>
+                <p>Means for each level of one factor, averaged across other factor</p>
+            </div>
+            <div class="glossary-item">
+                <h4>Cell</h4>
+                <p>Unique combination of factor levels</p>
+            </div>
+            <div class="glossary-item">
+                <h4>Omnibus test</h4>
+                <p>Overall test of the entire model</p>
+            </div>
+            <div class="glossary-item">
+                <h4>Between-groups variance</h4>
+                <p>Variance explained by IVs (main effects + interaction)</p>
+            </div>
+            <div class="glossary-item">
+                <h4>Within-groups variance</h4>
+                <p>Error variance not explained by IVs</p>
+            </div>
+            <div class="glossary-item">
+                <h4>Partial eta squared (partial η²)</h4>
+                <p>Variance explained by one effect, removing others</p>
+            </div>
+            <div class="glossary-item">
+                <h4>Total R²</h4>
+                <p>Variance explained by entire model</p>
+            </div>
+        </div>
+
+        <!-- Bottom Navigation -->
+        <div class="tab-navigation bottom-nav">
+            <button class="tab-button" onclick="showTab(1)">
+                <input
+                    type="checkbox"
+                    id="progress-1-bottom"
+                    class="tab-checkbox"
+                    onchange="toggleTabComplete(1)"
+                />
+                <span class="tab-label">Introduction & Design</span>
+            </button>
+            <button class="tab-button" onclick="showTab(2)">
+                <input
+                    type="checkbox"
+                    id="progress-2-bottom"
+                    class="tab-checkbox"
+                    onchange="toggleTabComplete(2)"
+                />
+                <span class="tab-label">Main Effects & Interactions</span>
+            </button>
+            <button class="tab-button" onclick="showTab(3)">
+                <input
+                    type="checkbox"
+                    id="progress-3-bottom"
+                    class="tab-checkbox"
+                    onchange="toggleTabComplete(3)"
+                />
+                <span class="tab-label">Omnibus Test & Decision Tree</span>
+            </button>
+            <button class="tab-button" onclick="showTab(4)">
+                <input
+                    type="checkbox"
+                    id="progress-4-bottom"
+                    class="tab-checkbox"
+                    onchange="toggleTabComplete(4)"
+                />
+                <span class="tab-label">Simple Effects & Effect Size</span>
+            </button>
+            <button class="tab-button" onclick="showTab(5)">
+                <input
+                    type="checkbox"
+                    id="progress-5-bottom"
+                    class="tab-checkbox"
+                    onchange="toggleTabComplete(5)"
+                />
+                <span class="tab-label">Assumptions, SPSS & Reporting</span>
+            </button>
+        </div>
+    </main>
+
+    <script>
+        // Progress tracking storage key
+        const PROGRESS_KEY = "m5-lecture-progress";
+
+        function loadProgress() {
+            const savedProgress = localStorage.getItem(PROGRESS_KEY);
+            if (savedProgress) {
+                const progress = JSON.parse(savedProgress);
+                // Update all checkboxes based on saved progress
+                for (let i = 1; i <= 5; i++) {
+                    const isComplete = progress[i] || false;
+                    const checkbox = document.getElementById(`progress-${i}`);
+                    const bottomCheckbox = document.getElementById(`progress-${i}-bottom`);
+                    if (checkbox) checkbox.checked = isComplete;
+                    if (bottomCheckbox) bottomCheckbox.checked = isComplete;
+                    updateTabVisualState(i, isComplete);
+                }
+            }
+        }
+
+        function saveProgress(tabNumber, isComplete) {
+            const savedProgress = localStorage.getItem(PROGRESS_KEY);
+            const progress = savedProgress ? JSON.parse(savedProgress) : {};
+            progress[tabNumber] = isComplete;
+            localStorage.setItem(PROGRESS_KEY, JSON.stringify(progress));
+        }
+
+        function toggleTabComplete(tabNumber) {
+            // Determine which checkbox was clicked (top or bottom)
+            const clickedCheckbox = event.target;
+            const isComplete = clickedCheckbox.checked;
+
+            // Update both top and bottom checkboxes to stay in sync
+            const topCheckbox = document.getElementById(`progress-${tabNumber}`);
+            const bottomCheckbox = document.getElementById(
+                `progress-${tabNumber}-bottom`
+            );
+            if (topCheckbox) topCheckbox.checked = isComplete;
+            if (bottomCheckbox) bottomCheckbox.checked = isComplete;
+
+            // Update visual state
+            updateTabVisualState(tabNumber, isComplete);
+
+            // Save to localStorage
+            saveProgress(tabNumber, isComplete);
+        }
+
+        function updateTabVisualState(tabNumber, isComplete) {
+            const buttons = document.querySelectorAll(
+                `.tab-button:nth-child(${tabNumber})`
+            );
+            buttons.forEach((button) => {
+                if (isComplete) {
+                    button.classList.add("completed");
+                } else {
+                    button.classList.remove("completed");
+                }
+            });
+        }
+
+        function showTab(tabNumber) {
+            // Hide all panels
+            const panels = document.querySelectorAll(".tab-panel");
+            panels.forEach((panel) => panel.classList.remove("active"));
+
+            // Remove active class from all buttons
+            const buttons = document.querySelectorAll(".tab-button");
+            buttons.forEach((button) => button.classList.remove("active"));
+
+            // Show selected panel
+            const selectedPanel = document.getElementById(`tab-${tabNumber}`);
+            if (selectedPanel) {
+                selectedPanel.classList.add("active");
+            }
+
+            // Add active class to clicked button
+            const clickedButton = event.target.closest(".tab-button");
+            if (clickedButton) {
+                clickedButton.classList.add("active");
+            }
+
+            // Scroll to top of the tab navigation for better UX
+            const tabContainer = document.querySelector(".lecture-tabs");
+            if (tabContainer) {
+                tabContainer.scrollIntoView({ behavior: "smooth", block: "start" });
+            }
+        }
+
+        // Knowledge check functionality with toggle
+        function revealAnswer(questionId) {
+            const questionItem = document.querySelector(
+                `[data-question-id="${questionId}"]`
+            );
+            const answerDiv = questionItem.querySelector(".answer-reveal");
+            const button = questionItem.querySelector(".reveal-answer-btn");
+
+            if (answerDiv && button) {
+                if (answerDiv.style.display === "none" || answerDiv.style.display === "") {
+                    // Show the answer
+                    answerDiv.style.display = "block";
+                    button.textContent = "Hide Answer";
+                    button.classList.add("answered");
+                    questionItem.classList.add("answered");
+
+                    // Save to storage
+                    markQuestionAsAnswered(questionId, true);
+                } else {
+                    // Hide the answer
+                    answerDiv.style.display = "none";
+                    button.textContent = "Show Answer";
+                    button.classList.remove("answered");
+                    questionItem.classList.remove("answered");
+                }
+            }
+        }
+
+        // Knowledge check storage functions
+        const KC_STORAGE_KEY = "m5-knowledge-checks";
+
+        function saveAnsweredQuestion(questionId) {
+            const savedProgress = localStorage.getItem(KC_STORAGE_KEY);
+            const answeredQuestions = savedProgress ? JSON.parse(savedProgress) : [];
+
+            if (!answeredQuestions.includes(questionId)) {
+                answeredQuestions.push(questionId);
+                localStorage.setItem(KC_STORAGE_KEY, JSON.stringify(answeredQuestions));
+            }
+        }
+
+        function markQuestionAsAnswered(questionId, saveToStorage) {
+            const questionItem = document.querySelector(
+                `[data-question-id="${questionId}"]`
+            );
+            if (!questionItem) return;
+
+            // Save to storage if requested
+            if (saveToStorage) {
+                saveAnsweredQuestion(questionId);
+            }
+        }
+
+        function loadKnowledgeCheckProgress() {
+            const savedProgress = localStorage.getItem(KC_STORAGE_KEY);
+            if (savedProgress) {
+                const answeredQuestions = JSON.parse(savedProgress);
+                answeredQuestions.forEach((questionId) => {
+                    markQuestionAsAnswered(questionId, false);
+                });
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            loadProgress();
+            loadKnowledgeCheckProgress();
+        });
+    </script>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <div class="nav-content">
+            <a href="m4-lecture.html" class="nav-btn prev">
+                <span class="nav-arrow">←</span>
+                <span class="nav-text">
+                    <span class="nav-label">Previous</span>
+                    <span class="nav-title">Module 4: ANOVA</span>
+                </span>
+            </a>
+            <a href="m6-lecture.html" class="nav-btn next">
+                <span class="nav-text">
+                    <span class="nav-label">Next</span>
+                    <span class="nav-title">Module 6: Regression</span>
+                </span>
+                <span class="nav-arrow">→</span>
+            </a>
+        </div>
+    </nav>
+</body>
+</html>
