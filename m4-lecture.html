@@ -1,0 +1,2406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 4: Analysis of Variance (ANOVA)</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <style>
+        /* Knowledge Check Styling */
+        .knowledge-check-item {
+            background-color: #f8f9fa;
+            border-left: 4px solid #007bff;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+
+        .knowledge-check-item.answered {
+            border-left-color: #28a745;
+            background-color: #f0f8f4;
+        }
+
+        .question-text {
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .question-options {
+            margin: 10px 0;
+            list-style-position: inside;
+        }
+
+        .answer-reveal {
+            background-color: #e7f3ff;
+            border: 1px solid #b3d9ff;
+            padding: 12px;
+            margin-top: 10px;
+            border-radius: 4px;
+        }
+
+        .answer-text {
+            margin: 0;
+            color: #004085;
+        }
+
+        .reveal-answer-btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-top: 10px;
+            transition: background-color 0.2s;
+        }
+
+        .reveal-answer-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .reveal-answer-btn.answered {
+            background-color: #28a745;
+        }
+
+        .reveal-answer-btn.answered:hover {
+            background-color: #218838;
+        }
+
+        /* Learning Objectives Styling */
+        .learning-objectives {
+            margin: 15px 0;
+        }
+
+        .learning-objectives > li {
+            margin-bottom: 8px;
+        }
+
+        /* Glossary Styling */
+        .glossary-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .glossary-item {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 6px;
+            padding: 15px;
+        }
+
+        .glossary-item h4 {
+            color: #007bff;
+            margin-bottom: 8px;
+            font-size: 1.1em;
+        }
+
+        .glossary-item p {
+            margin: 0;
+            color: #495057;
+            line-height: 1.5;
+        }
+
+        /* Visual Diagrams Styling */
+        .visual-diagram {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .visual-diagram h4 {
+            color: #495057;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 5px;
+        }
+
+        .diagram-caption {
+            text-align: center;
+            font-size: 0.9em;
+            color: #6c757d;
+            margin-top: 10px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>Module 4: Analysis of Variance (ANOVA)</h1>
+
+        <p><strong>Estimated Study Time:</strong> 2-3 hours</p>
+
+        <h2>Learning Objectives</h2>
+        <p>By the end of this module, you will be able to:</p>
+        <ol class="learning-objectives">
+            <li>Explain why ANOVA is necessary when comparing three or more groups and the problems with multiple t-tests</li>
+            <li>Understand the core logic of ANOVA through the F-ratio and variance decomposition</li>
+            <li>Distinguish between one-way between-groups and one-way repeated-measures ANOVA designs</li>
+            <li>Identify independent and dependent variables in ANOVA research scenarios</li>
+            <li>Calculate and interpret degrees of freedom for between-groups and within-groups designs</li>
+            <li>Understand and check the assumptions of ANOVA, including homogeneity of variances and sphericity</li>
+            <li>Interpret ANOVA output from SPSS, including F-statistics, p-values, and effect sizes</li>
+            <li>Determine when post-hoc tests are warranted and interpret their results</li>
+            <li>Calculate and interpret eta squared (η²) as a measure of effect size</li>
+            <li>Report ANOVA results in proper APA format</li>
+            <li>Select the appropriate ANOVA design based on research questions and study design</li>
+        </ol>
+
+        <hr>
+
+        <div class="lecture-tabs">
+            <div class="tab-navigation">
+                <button class="tab-button active" onclick="showTab(1)">
+                    <input
+                        type="checkbox"
+                        id="progress-1"
+                        class="tab-checkbox"
+                        onchange="toggleTabComplete(1)"
+                    />
+                    <span class="tab-label">Introduction & F-Ratio Logic</span>
+                </button>
+                <button class="tab-button" onclick="showTab(2)">
+                    <input
+                        type="checkbox"
+                        id="progress-2"
+                        class="tab-checkbox"
+                        onchange="toggleTabComplete(2)"
+                    />
+                    <span class="tab-label">Between-Groups ANOVA & Post-Hoc Tests</span>
+                </button>
+                <button class="tab-button" onclick="showTab(3)">
+                    <input
+                        type="checkbox"
+                        id="progress-3"
+                        class="tab-checkbox"
+                        onchange="toggleTabComplete(3)"
+                    />
+                    <span class="tab-label">Repeated-Measures ANOVA & Effect Size</span>
+                </button>
+                <button class="tab-button" onclick="showTab(4)">
+                    <input
+                        type="checkbox"
+                        id="progress-4"
+                        class="tab-checkbox"
+                        onchange="toggleTabComplete(4)"
+                    />
+                    <span class="tab-label">Assumptions & SPSS Guide</span>
+                </button>
+                <button class="tab-button" onclick="showTab(5)">
+                    <input
+                        type="checkbox"
+                        id="progress-5"
+                        class="tab-checkbox"
+                        onchange="toggleTabComplete(5)"
+                    />
+                    <span class="tab-label">Reporting & Quick Reference</span>
+                </button>
+            </div>
+
+            <div class="tab-content">
+                <div id="tab-1" class="tab-panel active">
+                    <h2>Part 1: Introduction to ANOVA - Why We Need It</h2>
+
+                    <h3>The Problem with Multiple t-Tests</h3>
+
+                    <p>Imagine you're a researcher studying the effectiveness of three different teaching methods on student performance. You have three groups:</p>
+
+                    <ul>
+                        <li>Group 1: Traditional lecture</li>
+                        <li>Group 2: Interactive discussion</li>
+                        <li>Group 3: Hands-on activities</li>
+                    </ul>
+
+                    <p>Your first instinct might be to run three separate t-tests:</p>
+
+                    <ul>
+                        <li>Traditional vs. Interactive</li>
+                        <li>Traditional vs. Hands-on</li>
+                        <li>Interactive vs. Hands-on</li>
+                    </ul>
+
+                    <p><strong>This approach has a critical flaw: the multiple comparisons problem.</strong></p>
+
+                    <h3>The Multiple Comparisons Problem</h3>
+
+                    <p>When you run multiple statistical tests on the same data, the probability of making at least one Type I error (false positive) increases dramatically.</p>
+
+                    <p><strong>With one test at α = .05:</strong></p>
+                    <ul>
+                        <li>Probability of Type I error = .05 (5%)</li>
+                    </ul>
+
+                    <p><strong>With three tests at α = .05 each:</strong></p>
+                    <ul>
+                        <li>Probability of at least one Type I error = 1 - (1 - .05)³ = .143 (14.3%)</li>
+                    </ul>
+
+                    <p><strong>With k tests:</strong></p>
+                    <ul>
+                        <li>Probability of at least one Type I error = 1 - (1 - α)^k</li>
+                    </ul>
+
+                    <p>This inflation of Type I error rate is unacceptable in statistical analysis.</p>
+
+                    <div class="visual-diagram">
+                        <h4>⚠️ THE MULTIPLE COMPARISONS PROBLEM: Why ANOVA is Essential</h4>
+                        <p><strong>The Risk:</strong> Running multiple t-tests on the same data inflates Type I error dramatically!</p>
+                        <ul>
+                            <li>1 test at α = .05 → 5% error rate ✓</li>
+                            <li>3 tests at α = .05 → 14.3% error rate ⚠️</li>
+                            <li>10 tests at α = .05 → 40% error rate ❌</li>
+                        </ul>
+                        <p><strong>The Solution:</strong> ANOVA tests all groups simultaneously in one test</p>
+                        <ul>
+                            <li>Maintains α = .05 across all comparisons</li>
+                            <li>Then uses "protected" post-hoc tests if significant</li>
+                        </ul>
+                        <p><strong>Remember:</strong> Never run multiple t-tests when you have 3+ groups!</p>
+                    </div>
+
+                    <h3>The ANOVA Solution</h3>
+
+                    <p><strong>Analysis of Variance (ANOVA)</strong> solves this problem by:</p>
+
+                    <ol>
+                        <li><strong>Testing all groups simultaneously</strong> in a single omnibus test</li>
+                        <li><strong>Controlling Type I error</strong> at the desired level (typically .05)</li>
+                        <li><strong>Following up with protected comparisons</strong> (post-hoc tests) only when the omnibus test is significant</li>
+                    </ol>
+
+                    <h3>Research Scenarios Requiring ANOVA</h3>
+
+                    <div class="visual-diagram">
+                        <h4>🔗 Connection to Module 3</h4>
+                        <p>Remember independent-samples t-tests from Module 3? They compare TWO groups. ANOVA extends this logic to THREE OR MORE groups, while controlling Type I error. Think of ANOVA as the "big sibling" of the t-test!</p>
+                    </div>
+
+                    <p><strong>When to Use ANOVA:</strong></p>
+
+                    <ul>
+                        <li>Comparing <strong>3 or more groups</strong> on a continuous dependent variable</li>
+                        <li>Testing the effect of one independent variable with multiple levels</li>
+                        <li>Both between-subjects and within-subjects designs</li>
+                    </ul>
+
+                    <p><strong>Quick Decision:</strong></p>
+                    <ul>
+                        <li>2 groups → Use t-test (see Module 3: Comparing Two Means)</li>
+                        <li>3+ groups → Use ANOVA (this module)</li>
+                    </ul>
+
+                    <p><strong>Examples:</strong></p>
+
+                    <ul>
+                        <li>Comparing effectiveness of 4 different teaching methods</li>
+                        <li>Testing impact of 3 dosage levels of a medication</li>
+                        <li>Measuring performance across 5 different time points</li>
+                        <li>Comparing satisfaction ratings across 6 different service providers</li>
+                    </ul>
+
+                    <h3>Between-Groups vs. Within-Groups Designs</h3>
+
+                    <p><strong>Between-Groups (Independent-Samples) ANOVA:</strong></p>
+
+                    <ul>
+                        <li>Different participants in each group</li>
+                        <li>Each person experiences only one condition</li>
+                        <li>More participants needed overall</li>
+                        <li>Less statistical power</li>
+                    </ul>
+
+                    <p><strong>Within-Groups (Repeated-Measures) ANOVA:</strong></p>
+
+                    <ul>
+                        <li>Same participants in all conditions</li>
+                        <li>Each person experiences all conditions</li>
+                        <li>Fewer participants needed overall</li>
+                        <li>More statistical power (controls for individual differences)</li>
+                    </ul>
+
+                    <p><strong>Key Insight:</strong> Within-groups designs are generally preferred because they control for individual differences, resulting in less error variance and greater statistical power.</p>
+
+                    <div class="knowledge-check-item" data-question-id="tab1-q1">
+                        <p class="question-text"><strong>Question 1:</strong> A researcher can't just run multiple t-tests when the independent variable has more than two levels because as more statistical tests are run, _____.</p>
+                        <ul class="question-options">
+                            <li>A) Degrees of freedom are lost</li>
+                            <li>B) The probability of making a Type I error in one of the tests increases</li>
+                            <li>C) It becomes harder and harder to reject the null hypothesis</li>
+                            <li>D) The probability of making a Type II error in one of the tests increases</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <div class="answer-content">
+                                <p class="answer-text"><strong>✓ Answer:</strong> B) The probability of making a Type I error in one of the tests increases</p>
+                                <p class="answer-text"><strong>Why this is correct:</strong> When you run multiple t-tests on the same data, the probability of making at least one Type I error (false positive) increases dramatically. With three tests at α = .05, the probability of at least one Type I error becomes about 14.3%.</p>
+                                <p class="answer-text"><strong>Why the others are incorrect:</strong></p>
+                                <ul>
+                                    <li><strong>A) Degrees of freedom are lost:</strong> Degrees of freedom don't accumulate across multiple tests in this way.</li>
+                                    <li><strong>C) Harder to reject null hypothesis:</strong> This is backwards—multiple tests actually make it easier to find significance by chance.</li>
+                                    <li><strong>D) Type II error increases:</strong> The main concern is Type I error inflation, not Type II error.</li>
+                                </ul>
+                                <p class="answer-text"><em>💭 Need to review?</em> See Part 1: Introduction to ANOVA for the multiple comparisons problem.</p>
+                            </div>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab1-q1')">Show Answer</button>
+                    </div>
+
+                    <div class="knowledge-check-item" data-question-id="tab1-q2">
+                        <p class="question-text"><strong>Question 2:</strong> Which statement accurately captures why within-groups designs are preferred over between-groups designs?</p>
+                        <ul class="question-options">
+                            <li>A) Loss of participants has a more significant negative impact on between-groups designs</li>
+                            <li>B) Control of extraneous variables is easier when using between-groups designs</li>
+                            <li>C) Within-groups designs take less time than between-groups designs</li>
+                            <li>D) Variability due to participants' differences is held constant across levels of the independent variable in within-groups design, resulting in less within-groups variability</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <div class="answer-content">
+                                <p class="answer-text"><strong>✓ Answer:</strong> D) Variability due to participants' differences is held constant across levels of the independent variable in within-groups design, resulting in less within-groups variability</p>
+                                <p class="answer-text"><strong>Why this is correct:</strong> In within-groups designs, the same participants are measured across all conditions, so individual differences between people are held constant. This reduces the error variance, making it easier to detect real effects.</p>
+                                <p class="answer-text"><strong>Why the others are incorrect:</strong></p>
+                                <ul>
+                                    <li><strong>A) Participant loss impact:</strong> This is a practical consideration but not the main statistical advantage.</li>
+                                    <li><strong>B) Easier control in between-groups:</strong> This is backwards—within-groups designs provide better control.</li>
+                                    <li><strong>C) Takes less time:</strong> This may or may not be true and isn't the statistical advantage.</li>
+                                </ul>
+                                <p class="answer-text"><em>💡 Application Tip:</em> Within-groups designs are more powerful because they control for individual differences, reducing error variance.</p>
+                            </div>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab1-q2')">Show Answer</button>
+                    </div>
+
+                    <div class="knowledge-check-item" data-question-id="tab1-q3">
+                        <p class="question-text"><strong>Question 3:</strong> A researcher is interested in whether a sensitivity training class changes attitudes toward minority populations. The researcher assesses these attitudes in participants who have and have not had the sensitivity training class. Which research design should be used?</p>
+                        <ul class="question-options">
+                            <li>A) One-way within-groups ANOVA</li>
+                            <li>B) Paired-samples t-test</li>
+                            <li>C) One-way between-groups ANOVA</li>
+                            <li>D) Independent-samples t-test</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <div class="answer-content">
+                                <p class="answer-text"><strong>✓ Answer:</strong> C) One-way between-groups ANOVA</p>
+                                <p class="answer-text"><strong>Why this is correct:</strong> The researcher is comparing two different groups of people (those who have had training vs. those who have not). This is a between-groups design where different participants are in each condition.</p>
+                                <p class="answer-text"><strong>Why the others are incorrect:</strong></p>
+                                <ul>
+                                    <li><strong>A) Within-groups ANOVA:</strong> This would be used if the same people were measured before and after training.</li>
+                                    <li><strong>B) Paired-samples t-test:</strong> This is for two conditions, not multiple groups, and would be within-subjects.</li>
+                                    <li><strong>D) Independent-samples t-test:</strong> This would be appropriate if there were only two groups, but the question asks about ANOVA design.</li>
+                                </ul>
+                                <p class="answer-text"><em>💭 Need to review?</em> See Part 1: Introduction to ANOVA for distinguishing between-groups and within-groups designs.</p>
+                            </div>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab1-q3')">Show Answer</button>
+                    </div>
+
+                    <div class="knowledge-check-item" data-question-id="tab1-q4">
+                        <p class="question-text"><strong>Question 4:</strong> A researcher wants to examine people's preference for pets by having 10 people act as "foster owners" for four different types of family pets: dogs, cats, birds, and fish. The participants will foster each type of pet for one week, and a scale measure will be used to assess preference. Which research design should be used?</p>
+                        <ul class="question-options">
+                            <li>A) One-way within-groups ANOVA</li>
+                            <li>B) Paired-samples t-test</li>
+                            <li>C) One-way between-groups ANOVA</li>
+                            <li>D) Independent-samples t-test</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <div class="answer-content">
+                                <p class="answer-text"><strong>✓ Answer:</strong> A) One-way within-groups ANOVA</p>
+                                <p class="answer-text"><strong>Why this is correct:</strong> The same 10 people will experience all four conditions (fostering dogs, cats, birds, and fish). This is a within-subjects design where each participant serves in all conditions.</p>
+                                <p class="answer-text"><strong>Why the others are incorrect:</strong></p>
+                                <ul>
+                                    <li><strong>B) Paired-samples t-test:</strong> This is for comparing two conditions, not four.</li>
+                                    <li><strong>C) Between-groups ANOVA:</strong> This would be used if different people fostered each type of pet.</li>
+                                    <li><strong>D) Independent-samples t-test:</strong> This is for two groups only, not four conditions.</li>
+                                </ul>
+                                <p class="answer-text"><em>💡 Application Tip:</em> Ask yourself: "Are the same people experiencing all conditions?" If yes, use within-groups design.</p>
+                            </div>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab1-q4')">Show Answer</button>
+                    </div>
+
+                    <hr>
+
+                    <h2>Part 2: The F-Ratio - Core Logic of ANOVA</h2>
+
+                    <h3>Understanding Variance Decomposition</h3>
+
+                    <p>ANOVA's power comes from its clever way of partitioning variance. All the variation in your data can be broken down into two components:</p>
+
+                    <p><strong>Total Variance = Between-Groups Variance + Within-Groups Variance</strong></p>
+
+                    <h3>Between-Groups Variance (Effect Variance)</h3>
+
+                    <p>This measures how much the group means differ from each other. It represents the <strong>"signal"</strong> - the variation we hope is caused by our independent variable.</p>
+
+                    <p><strong>Formula:</strong> SS_between / df_between</p>
+
+                    <p><strong>What it captures:</strong></p>
+
+                    <ul>
+                        <li>Differences between treatment conditions</li>
+                        <li>Effects of your manipulation</li>
+                        <li>Systematic variation due to your IV</li>
+                    </ul>
+
+                    <p><strong>Example:</strong> If teaching method A produces an average score of 85, method B produces 75, and method C produces 95, there's substantial between-groups variance.</p>
+
+                    <h3>Within-Groups Variance (Error Variance)</h3>
+
+                    <p>This measures how much individual scores vary within each group. It represents the <strong>"noise"</strong> - random variation that's not due to your treatment.</p>
+
+                    <p><strong>Formula:</strong> SS_within / df_within</p>
+
+                    <p><strong>What it captures:</strong></p>
+
+                    <ul>
+                        <li>Individual differences between participants</li>
+                        <li>Random measurement error</li>
+                        <li>Uncontrolled extraneous variables</li>
+                    </ul>
+
+                    <p><strong>Example:</strong> Even within method A, students might score 80, 85, 90, etc. This within-group variation is your error variance.</p>
+
+                    <h3>The Grand Mean</h3>
+
+                    <p>The <strong>grand mean</strong> is the mean of all scores in the study, regardless of which group they belong to.</p>
+
+                    <p><strong>Formula:</strong> Grand Mean = Sum of all scores / Total number of scores</p>
+
+                    <p><strong>Importance:</strong> Both between-groups and within-groups variance are calculated relative to the grand mean.</p>
+
+                    <h3>The F-Ratio Logic</h3>
+
+                    <p>The F-statistic is simply:</p>
+
+                    <p><strong>F = Between-Groups Variance / Within-Groups Variance = Effect / Error</strong></p>
+
+                    <p><strong>Interpreting F-values:</strong></p>
+
+                    <ul>
+                        <li><strong>F ≈ 1:</strong> The difference between groups (effect) is about the same as the random variation within groups (error). This suggests no real effect. <strong>Fail to reject H₀.</strong></li>
+                        <li><strong>F > 1:</strong> The difference between groups is larger than the random variation within groups. This suggests a real effect. <strong>Reject H₀.</strong></li>
+                        <li><strong>F >> 1:</strong> The effect is much larger than the error. This suggests a strong effect.</li>
+                    </ul>
+
+                    <div class="visual-diagram">
+                        <h4>📊 UNDERSTANDING THE F-RATIO: The Signal-to-Noise Metaphor</h4>
+                        <p><strong>Think of F as a Signal-to-Noise Ratio:</strong></p>
+                        <p><strong>F = Signal / Noise = Between-Groups Variance / Within-Groups Variance</strong></p>
+                        <ul>
+                            <li><strong>High F:</strong> Strong signal (clear group differences) relative to noise (random variation)</li>
+                            <li><strong>Low F:</strong> Weak signal (small group differences) buried in noise</li>
+                        </ul>
+                        <p><strong>Practical Interpretation:</strong></p>
+                        <ul>
+                            <li>F = 1.0 → Signal equals noise → No real effect</li>
+                            <li>F = 3.5 → Signal is 3.5× stronger than noise → Probably significant</li>
+                            <li>F = 10.0 → Signal is 10× stronger than noise → Very significant</li>
+                        </ul>
+                        <p><strong>Key Insight:</strong> ANOVA asks "Are group differences bigger than random individual differences?"</p>
+                    </div>
+
+                    <h3>Why F Cannot Be Negative</h3>
+
+                    <p>F-statistics are calculated as ratios of variances, and variances are always positive (they're squared values). Therefore, F must always be ≥ 0.</p>
+
+                    <p><strong>If you see a negative F-statistic, there has been a calculation error.</strong></p>
+
+                    <h3>The F-Ratio in Practice</h3>
+
+                    <p><strong>Scenario:</strong> Testing three teaching methods with the following results:</p>
+
+                    <table>
+                        <tr>
+                            <th>Method</th>
+                            <th>Mean Score</th>
+                            <th>Standard Deviation</th>
+                        </tr>
+                        <tr>
+                            <td>A</td>
+                            <td>85</td>
+                            <td>8</td>
+                        </tr>
+                        <tr>
+                            <td>B</td>
+                            <td>75</td>
+                            <td>7</td>
+                        </tr>
+                        <tr>
+                            <td>C</td>
+                            <td>95</td>
+                            <td>9</td>
+                        </tr>
+                    </table>
+
+                    <p><strong>Between-groups variance:</strong> Large (means are quite different: 75, 85, 95)</p>
+                    <p><strong>Within-groups variance:</strong> Moderate (SDs around 7-9)</p>
+                    <p><strong>F-ratio:</strong> Large between-groups / moderate within-groups = Large F</p>
+
+                    <p>This would likely result in a significant F-test, indicating that teaching method does affect performance.</p>
+
+                    <div class="knowledge-check-item" data-question-id="tab1-q5">
+                        <p class="question-text"><strong>Question 1:</strong> If an F statistic is negative, which of these is true?</p>
+                        <ul class="question-options">
+                            <li>A) The difference among the group means is less than what would have occurred by chance</li>
+                            <li>B) The difference among the group means is greater than what would have occurred by chance</li>
+                            <li>C) The within-groups variance exceeds the between-groups variance</li>
+                            <li>D) There has been a calculation error</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <div class="answer-content">
+                                <p class="answer-text"><strong>✓ Answer:</strong> D) There has been a calculation error</p>
+                                <p class="answer-text"><strong>Why this is correct:</strong> F-statistics are calculated as ratios of variances, and variances are always positive (they're squared values). Therefore, F must always be ≥ 0. A negative F-statistic indicates an error in calculation.</p>
+                                <p class="answer-text"><strong>Why the others are incorrect:</strong></p>
+                                <ul>
+                                    <li><strong>A) Less than chance:</strong> Even if differences are small, F would be small but positive, not negative.</li>
+                                    <li><strong>B) Greater than chance:</strong> This would result in a large positive F, not negative.</li>
+                                    <li><strong>C) Within exceeds between:</strong> This would result in F < 1 (small but positive), not negative.</li>
+                                </ul>
+                                <p class="answer-text"><em>💭 Need to review?</em> See Part 2: The F-Ratio - Core Logic of ANOVA for why F cannot be negative.</p>
+                            </div>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab1-q5')">Show Answer</button>
+                    </div>
+
+                    <div class="knowledge-check-item" data-question-id="tab1-q6">
+                        <p class="question-text"><strong>Question 2:</strong> The t and F distributions have something in common—the numerator of the test statistic _____.</p>
+                        <ul class="question-options">
+                            <li>A) Represents what would be expected to happen by chance</li>
+                            <li>B) Contains a measure of variability within the various groups</li>
+                            <li>C) Is a squared number</li>
+                            <li>D) Contains a measure of difference among group means</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <div class="answer-content">
+                                <p class="answer-text"><strong>✓ Answer:</strong> D) Contains a measure of difference among group means</p>
+                                <p class="answer-text"><strong>Why this is correct:</strong> Both t and F statistics have numerators that measure differences among means. For t-tests, it's the difference between two means. For F-tests, it's the variance among group means (which is based on differences among means).</p>
+                                <p class="answer-text"><strong>Why the others are incorrect:</strong></p>
+                                <ul>
+                                    <li><strong>A) Expected by chance:</strong> The numerator measures actual differences, not what's expected by chance.</li>
+                                    <li><strong>B) Within-group variability:</strong> This is typically in the denominator, not the numerator.</li>
+                                    <li><strong>C) Squared number:</strong> While F uses squared values, this isn't what t and F have in common.</li>
+                                </ul>
+                                <p class="answer-text"><em>💡 Application Tip:</em> Both t and F statistics measure differences among means in their numerators, with variability measures in their denominators.</p>
+                            </div>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab1-q6')">Show Answer</button>
+                    </div>
+
+                    <div class="knowledge-check-item" data-question-id="tab1-q7">
+                        <p class="question-text"><strong>Question 3:</strong> The grand mean is the _____.</p>
+                        <ul class="question-options">
+                            <li>A) Mean of all the scores in the study squared</li>
+                            <li>B) Average difference of each of the group means</li>
+                            <li>C) Average of each of the group means</li>
+                            <li>D) Mean of every score in the study, regardless of the sample</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <div class="answer-content">
+                                <p class="answer-text"><strong>✓ Answer:</strong> D) Mean of every score in the study, regardless of the sample</p>
+                                <p class="answer-text"><strong>Why this is correct:</strong> The grand mean is calculated by taking all individual scores across all groups, adding them up, and dividing by the total number of scores. It's the overall average of all data points in the study.</p>
+                                <p class="answer-text"><strong>Why the others are incorrect:</strong></p>
+                                <ul>
+                                    <li><strong>A) Scores squared:</strong> The grand mean is not calculated using squared scores.</li>
+                                    <li><strong>B) Average difference:</strong> This describes something else entirely, not the grand mean.</li>
+                                    <li><strong>C) Average of group means:</strong> While this might give a similar result in some cases, it's not the definition of the grand mean.</li>
+                                </ul>
+                                <p class="answer-text"><em>💭 Need to review?</em> See Part 2: The F-Ratio - Core Logic of ANOVA for the grand mean definition.</p>
+                            </div>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab1-q7')">Show Answer</button>
+                    </div>
+
+                    <div class="knowledge-check-item" data-question-id="tab1-q8">
+                        <p class="question-text"><strong>Question 4:</strong> If between-groups variance is much larger than within-groups variance, we infer that the sample means are _____ one another, and we _____ the null hypothesis.</p>
+                        <ul class="question-options">
+                            <li>A) Similar to; reject</li>
+                            <li>B) Different from; reject</li>
+                            <li>C) Similar to; fail to reject</li>
+                            <li>D) Different from; fail to reject</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <div class="answer-content">
+                                <p class="answer-text"><strong>✓ Answer:</strong> B) Different from; reject</p>
+                                <p class="answer-text"><strong>Why this is correct:</strong> Large between-groups variance means the group means are quite different from each other. When between-groups variance is much larger than within-groups variance, F > 1, indicating a significant effect, so we reject the null hypothesis.</p>
+                                <p class="answer-text"><strong>Why the others are incorrect:</strong></p>
+                                <ul>
+                                    <li><strong>A) Similar; reject:</strong> If means were similar, between-groups variance would be small, and we'd fail to reject.</li>
+                                    <li><strong>C) Similar; fail to reject:</strong> This would be correct if between-groups variance were small.</li>
+                                    <li><strong>D) Different; fail to reject:</strong> If means are different (large between-groups variance), we should reject the null hypothesis.</li>
+                                </ul>
+                                <p class="answer-text"><em>💡 Application Tip:</em> Large between-groups variance relative to within-groups variance indicates real differences among groups, leading to rejection of the null hypothesis.</p>
+                            </div>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab1-q8')">Show Answer</button>
+                    </div>
+                </div>
+
+                <div id="tab-2" class="tab-panel">
+                    <h2>Part 3: One-Way Between-Groups ANOVA</h2>
+
+                    <h3>Research Design Requirements</h3>
+
+                    <p><strong>One-way between-groups ANOVA</strong> is used when:</p>
+
+                    <ul>
+                        <li>You have <strong>one independent variable</strong> with <strong>3 or more levels</strong></li>
+                        <li>Different participants are in each group (between-subjects design)</li>
+                        <li>You're comparing means on a continuous dependent variable</li>
+                    </ul>
+
+                    <p><strong>Example Research Question:</strong> "Do different teaching methods (lecture, discussion, hands-on) affect student test scores?"</p>
+
+                    <h3>Identifying Variables</h3>
+
+                    <p><strong>Independent Variable (IV):</strong> The variable you manipulate or categorize</p>
+
+                    <ul>
+                        <li><strong>Levels:</strong> The different conditions or groups (e.g., lecture, discussion, hands-on)</li>
+                        <li><strong>Type:</strong> Usually categorical/nominal</li>
+                    </ul>
+
+                    <p><strong>Dependent Variable (DV):</strong> The variable you measure</p>
+
+                    <ul>
+                        <li><strong>Type:</strong> Must be continuous (interval or ratio)</li>
+                        <li><strong>Example:</strong> Test scores, reaction times, ratings</li>
+                    </ul>
+
+                    <h3>Hypotheses for One-Way ANOVA</h3>
+
+                    <p><strong>Null Hypothesis (H₀):</strong></p>
+
+                    <ul>
+                        <li>μ₁ = μ₂ = μ₃ = ... = μₖ</li>
+                        <li>"There is no significant difference among any of the group means"</li>
+                        <li>All groups have the same population mean</li>
+                    </ul>
+
+                    <p><strong>Alternative Hypothesis (H₁):</strong></p>
+
+                    <ul>
+                        <li>Not H₀</li>
+                        <li>"At least one group mean is significantly different from another"</li>
+                        <li><strong>Important:</strong> This is an "omnibus" test - it tells you that a difference exists somewhere, but not where</li>
+                    </ul>
+
+                    <h3>Degrees of Freedom</h3>
+
+                    <p><strong>Between-Groups df:</strong></p>
+
+                    <ul>
+                        <li>df_between = k - 1</li>
+                        <li>Where k = number of groups</li>
+                        <li>Example: 3 groups → df_between = 2</li>
+                    </ul>
+
+                    <p><strong>Within-Groups df:</strong></p>
+
+                    <ul>
+                        <li>df_within = N - k</li>
+                        <li>Where N = total number of participants, k = number of groups</li>
+                        <li>Example: 60 participants, 3 groups → df_within = 57</li>
+                    </ul>
+
+                    <p><strong>Total df:</strong></p>
+
+                    <ul>
+                        <li>df_total = N - 1</li>
+                        <li>df_total = df_between + df_within</li>
+                    </ul>
+
+                    <h3>The ANOVA Table</h3>
+
+                    <p>SPSS produces an ANOVA table with this structure:</p>
+
+                    <table>
+                        <tr>
+                            <th>Source</th>
+                            <th>SS</th>
+                            <th>df</th>
+                            <th>MS</th>
+                            <th>F</th>
+                            <th>Sig.</th>
+                        </tr>
+                        <tr>
+                            <td>Between Groups</td>
+                            <td>SS_between</td>
+                            <td>k-1</td>
+                            <td>MS_between</td>
+                            <td>F</td>
+                            <td>p-value</td>
+                        </tr>
+                        <tr>
+                            <td>Within Groups</td>
+                            <td>SS_within</td>
+                            <td>N-k</td>
+                            <td>MS_within</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Total</td>
+                            <td>SS_total</td>
+                            <td>N-1</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+
+                    <p><strong>Key Values to Extract:</strong></p>
+
+                    <ul>
+                        <li><strong>F-statistic:</strong> MS_between / MS_within</li>
+                        <li><strong>p-value ("Sig."):</strong> Probability of getting this F if H₀ is true</li>
+                        <li><strong>df:</strong> (df_between, df_within) for reporting</li>
+                    </ul>
+
+                    <h3>Homogeneity of Variances Assumption</h3>
+
+                    <p><strong>Levene's Test</strong> checks whether the variances of the groups are equal.</p>
+
+                    <p><strong>Interpretation:</strong></p>
+
+                    <ul>
+                        <li><strong>p > .05:</strong> Equal variances assumed (assumption met)</li>
+                        <li><strong>p ≤ .05:</strong> Equal variances not assumed (assumption violated)</li>
+                    </ul>
+
+                    <p><strong>What to do if violated:</strong></p>
+
+                    <ul>
+                        <li>Report the violation in your results</li>
+                        <li>Consider using a more robust test (Welch's ANOVA)</li>
+                        <li>Transform the data if appropriate</li>
+                    </ul>
+
+                    <div class="visual-diagram">
+                        <h4>🔍 LEVENE'S TEST: The "Backwards" Logic</h4>
+                        <p><strong>This confuses almost everyone at first!</strong></p>
+                        <p><strong>What you want:</strong> Equal variances (assumption met)</p>
+                        <p><strong>What you need:</strong> p > .05</p>
+                        <p><strong>Interpretation:</strong></p>
+                        <ul>
+                            <li><strong>p > .05:</strong> ✓ Assumption met (variances are equal)</li>
+                            <li><strong>p ≤ .05:</strong> ✗ Assumption violated (variances are NOT equal)</li>
+                        </ul>
+                        <p><strong>Why it's backwards:</strong> In most tests, p < .05 is "good" (significant result). But for Levene's test, you WANT p > .05!</p>
+                        <p><strong>H₀ for Levene's test:</strong> "Variances are equal"</p>
+                        <ul>
+                            <li>p > .05 → Fail to reject → Variances are equal ✓</li>
+                            <li>p < .05 → Reject → Variances are NOT equal ✗</li>
+                        </ul>
+                        <p><strong>Remember:</strong> For assumption tests, you want HIGH p-values (> .05)!</p>
+                    </div>
+
+                    <h3>Reading ANOVA Output in SPSS</h3>
+
+                    <p><strong>Example Output:</strong></p>
+
+                    <pre>
+ANOVA
+TestScores
+                Sum of Squares    df    Mean Square    F      Sig.
+Between Groups    1901.425        2      950.713      2.805   .048
+Within Groups    51524.485       152     338.977
+Total           53425.910        154
+                    </pre>
+
+                    <p><strong>What to extract:</strong></p>
+
+                    <ul>
+                        <li><strong>F = 2.805</strong></li>
+                        <li><strong>df = (2, 152)</strong></li>
+                        <li><strong>p = .048</strong></li>
+                        <li><strong>SS_between = 1901.425</strong></li>
+                        <li><strong>SS_total = 53425.910</strong></li>
+                    </ul>
+
+                    <div class="knowledge-check-item" data-question-id="tab2-q1">
+                        <p class="question-text"><strong>Question 1:</strong> Between-groups degrees of freedom is calculated by _____.</p>
+                        <ul class="question-options">
+                            <li>A) Subtracting 1 from the number of subjects within each group and then adding those numbers together</li>
+                            <li>B) Multiplying the number of subjects by the number of conditions in the study and then subtracting 1</li>
+                            <li>C) Subtracting 1 from the total number of subjects in the study</li>
+                            <li>D) Subtracting 1 from the total number of groups in the study</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <div class="answer-content">
+                                <p class="answer-text"><strong>✓ Answer:</strong> D) Subtracting 1 from the total number of groups in the study</p>
+                                <p class="answer-text"><strong>Why this is correct:</strong> Between-groups degrees of freedom = k - 1, where k is the number of groups. If you have 3 groups, df_between = 3 - 1 = 2.</p>
+                                <p class="answer-text"><strong>Why the others are incorrect:</strong></p>
+                                <ul>
+                                    <li><strong>A) Within each group:</strong> This describes how to calculate within-groups df, not between-groups df.</li>
+                                    <li><strong>B) Total subjects × conditions:</strong> This doesn't match the correct formula for between-groups df.</li>
+                                    <li><strong>C) Total subjects - 1:</strong> This is the formula for total df, not between-groups df.</li>
+                                </ul>
+                                <p class="answer-text"><em>💭 Need to review?</em> See Part 3: One-Way Between-Groups ANOVA for the degrees of freedom formulas.</p>
+                            </div>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab2-q1')">Show Answer</button>
+                    </div>
+
+                    <div class="knowledge-check-item" data-question-id="tab2-q2">
+                        <p class="question-text"><strong>Question 2:</strong> Within-groups degrees of freedom is calculated by _____.</p>
+                        <ul class="question-options">
+                            <li>A) Subtracting 1 from the total number of groups in the study</li>
+                            <li>B) Multiplying the number of subjects by the number of conditions in the study and then subtracting 1</li>
+                            <li>C) For each condition, subtracting 1 from the number of subjects in that group and then adding together the totals for all the groups</li>
+                            <li>D) Subtracting 1 from the total number of subjects in the study</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <div class="answer-content">
+                                <p class="answer-text"><strong>✓ Answer:</strong> C) For each condition, subtracting 1 from the number of subjects in that group and then adding together the totals for all the groups</p>
+                                <p class="answer-text"><strong>Why this is correct:</strong> Within-groups df = (n₁ - 1) + (n₂ - 1) + ... + (nₖ - 1) = N - k, where nᵢ is the number of subjects in group i, N is total subjects, and k is number of groups.</p>
+                                <p class="answer-text"><strong>Why the others are incorrect:</strong></p>
+                                <ul>
+                                    <li><strong>A) Groups - 1:</strong> This is the formula for between-groups df.</li>
+                                    <li><strong>B) Subjects × conditions - 1:</strong> This doesn't match the correct formula.</li>
+                                    <li><strong>D) Total subjects - 1:</strong> This is total df, not within-groups df.</li>
+                                </ul>
+                                <p class="answer-text"><em>💡 Application Tip:</em> Within-groups df = Total subjects - Number of groups. This represents the degrees of freedom for error variance.</p>
+                            </div>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab2-q2')">Show Answer</button>
+                    </div>
+
+                    <div class="knowledge-check-item" data-question-id="tab2-q3">
+                        <p class="question-text"><strong>Question 3:</strong> In an ANOVA table, the F-statistic is calculated as _____.</p>
+                        <ul class="question-options">
+                            <li>A) SS_between / SS_within</li>
+                            <li>B) MS_between / MS_within</li>
+                            <li>C) df_between / df_within</li>
+                            <li>D) SS_total / df_total</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <div class="answer-content">
+                                <p class="answer-text"><strong>✓ Answer:</strong> B) MS_between / MS_within</p>
+                                <p class="answer-text"><strong>Why this is correct:</strong> F = MS_between / MS_within, where MS = Mean Square = SS / df. This gives us the ratio of between-groups variance to within-groups variance.</p>
+                                <p class="answer-text"><strong>Why the others are incorrect:</strong></p>
+                                <ul>
+                                    <li><strong>A) SS_between / SS_within:</strong> This would be incorrect because it doesn't account for degrees of freedom.</li>
+                                    <li><strong>C) df_between / df_within:</strong> This would just give you a ratio of degrees of freedom, not variances.</li>
+                                    <li><strong>D) SS_total / df_total:</strong> This would give you the grand mean squared, not the F-statistic.</li>
+                                </ul>
+                                <p class="answer-text"><em>💭 Need to review?</em> See Part 3: One-Way Between-Groups ANOVA for the ANOVA table structure.</p>
+                            </div>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab2-q3')">Show Answer</button>
+                    </div>
+
+                    <div class="knowledge-check-item" data-question-id="tab2-q4">
+                        <p class="question-text"><strong>Question 4:</strong> A researcher wants to know if there is a significant difference in the percentage of graduates going to college across three geographic locations (city, suburb, and town/rural). What is the dependent variable in this analysis?</p>
+                        <ul class="question-options">
+                            <li>A) Geographic location</li>
+                            <li>B) Percentage of graduates going to college</li>
+                            <li>C) Type of community</li>
+                            <li>D) Number of graduates</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <div class="answer-content">
+                                <p class="answer-text"><strong>✓ Answer:</strong> B) Percentage of graduates going to college</p>
+                                <p class="answer-text"><strong>Why this is correct:</strong> The dependent variable is what you're measuring - the outcome variable. In this case, the researcher is measuring the percentage of graduates going to college across different locations.</p>
+                                <p class="answer-text"><strong>Why the others are incorrect:</strong></p>
+                                <ul>
+                                    <li><strong>A) Geographic location:</strong> This is the independent variable - what the researcher is comparing across.</li>
+                                    <li><strong>C) Type of community:</strong> This is another way of describing the independent variable (geographic location).</li>
+                                    <li><strong>D) Number of graduates:</strong> This isn't what's being measured - it's the percentage that matters.</li>
+                                </ul>
+                                <p class="answer-text"><em>💭 Need to review?</em> See Part 3: One-Way Between-Groups ANOVA for identifying IV and DV.</p>
+                            </div>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab2-q4')">Show Answer</button>
+                    </div>
+
+                    <hr>
+
+                    <h2>Part 4: Post-Hoc Tests - Finding Specific Differences</h2>
+
+                    <h3>When Post-Hoc Tests Are Warranted</h3>
+
+                    <p><strong>Post-hoc tests are warranted when:</strong></p>
+
+                    <ol>
+                        <li>You have <strong>rejected the null hypothesis</strong> in the omnibus F-test</li>
+                        <li>There are <strong>more than two groups</strong> in your study</li>
+                        <li>You want to know <strong>which specific groups differ</strong> from each other</li>
+                    </ol>
+
+                    <p><strong>Remember:</strong> A significant F-test only tells you that a difference exists somewhere among the groups, not where the differences are.</p>
+
+                    <div class="visual-diagram">
+                        <h4>🎯 POST-HOC TESTS: When and Why</h4>
+                        <p><strong>CRITICAL RULE:</strong> Only run post-hoc tests if the F-test is significant!</p>
+                        <p><strong>The Three Requirements:</strong></p>
+                        <ol>
+                            <li>✓ F-test must be significant (p ≤ .05)</li>
+                            <li>✓ Must have 3+ groups</li>
+                            <li>✓ Want to know which specific groups differ</li>
+                        </ol>
+                        <p><strong>Why this rule?</strong></p>
+                        <ul>
+                            <li>Running post-hoc tests after non-significant F = "fishing" for significance</li>
+                            <li>The significant F-test "protects" post-hoc tests from inflating error rate</li>
+                            <li>Without significant F, there's nothing to follow up on!</li>
+                        </ul>
+                        <p><strong>Think of it as:</strong> F-test is the gatekeeper. Only if it says "yes, differences exist" can you go investigate WHERE those differences are.</p>
+                    </div>
+
+                    <h3>The Problem Post-Hoc Tests Solve</h3>
+
+                    <p><strong>The Omnibus F-Test Limitation:</strong></p>
+
+                    <ul>
+                        <li>Significant F: "At least one group is different from another"</li>
+                        <li>But which groups? We don't know!</li>
+                    </ul>
+
+                    <p><strong>Example:</strong> F-test shows p < .05 for teaching methods A, B, C</p>
+
+                    <ul>
+                        <li>Possible differences: A vs. B, A vs. C, B vs. C, or all combinations</li>
+                        <li>We need post-hoc tests to find out</li>
+                    </ul>
+
+                    <h3>Common Post-Hoc Tests</h3>
+
+                    <p><strong>Tukey's HSD (Honestly Significant Difference):</strong></p>
+
+                    <ul>
+                        <li>Most commonly used</li>
+                        <li>Controls familywise error rate</li>
+                        <li>Good for equal sample sizes</li>
+                        <li>Conservative (less likely to find false positives)</li>
+                    </ul>
+
+                    <p><strong>Bonferroni:</strong></p>
+
+                    <ul>
+                        <li>More conservative than Tukey</li>
+                        <li>Good for small number of comparisons</li>
+                        <li>Divides alpha by number of comparisons</li>
+                    </ul>
+
+                    <p><strong>Scheffe:</strong></p>
+
+                    <ul>
+                        <li>Most conservative</li>
+                        <li>Good for complex comparisons</li>
+                        <li>Less powerful than Tukey</li>
+                    </ul>
+
+                    <h3>Interpreting Post-Hoc Output</h3>
+
+                    <p><strong>SPSS Post-Hoc Output Example:</strong></p>
+
+                    <pre>
+Multiple Comparisons
+Dependent Variable: TestScores
+Tukey HSD
+
+(I) Method    (J) Method    Mean Difference (I-J)    Std. Error    Sig.    95% Confidence Interval
+                                                                         Lower Bound    Upper Bound
+Lecture       Discussion    -10.50*                 3.45          .015    -19.23        -1.77
+              Hands-on      -15.20*                 3.45          .001    -23.93        -6.47
+Discussion    Lecture        10.50*                 3.45          .015     1.77          19.23
+              Hands-on       -4.70                  3.45          .456    -13.43         4.03
+Hands-on      Lecture        15.20*                 3.45          .001     6.47          23.93
+              Discussion     4.70                   3.45          .456    -4.03          13.43
+
+* The mean difference is significant at the .05 level.
+                    </pre>
+
+                    <p><strong>Key Information:</strong></p>
+
+                    <ul>
+                        <li><strong>Mean Difference:</strong> How much one group differs from another</li>
+                        <li><strong>Sig. (p-value):</strong> Whether the difference is statistically significant</li>
+                        <li><strong>95% Confidence Interval:</strong> Range of likely differences</li>
+                    </ul>
+
+                    <h3>What a Significant F-Test Tells You</h3>
+
+                    <p><strong>Important Limitation:</strong> When you reject the null hypothesis in ANOVA, you know:</p>
+
+                    <ul>
+                        <li>✅ At least one group mean is different from another</li>
+                        <li>❌ You don't know which specific groups differ</li>
+                        <li>❌ You don't know the direction of differences</li>
+                        <li>❌ You don't know how many pairs differ</li>
+                    </ul>
+
+                    <p><strong>Example:</strong> Lucille finds significant F for alcohol consumption effects on gaming style. She knows:</p>
+
+                    <ul>
+                        <li>✅ Drinking affects gaming style somehow</li>
+                        <li>❌ She doesn't know if more alcohol = more/less prosocial behavior</li>
+                        <li>❌ She doesn't know if the effect is linear or more complex</li>
+                    </ul>
+
+                    <div class="visual-diagram">
+                        <h4>🔗 How to Report Post-Hoc Results</h4>
+                        <p>Once you've run post-hoc tests and identified specific differences, see Part 9: Decision Framework and Reporting for APA format examples showing how to report both the omnibus F-test and post-hoc test results together.</p>
+                    </div>
+
+                    <div class="knowledge-check-item" data-question-id="tab2-q5">
+                        <p class="question-text"><strong>Question 1:</strong> A post hoc test is warranted when a researcher _____.</p>
+                        <ul class="question-options">
+                            <li>A) Rejects the null hypothesis when performing an independent-groups t-test</li>
+                            <li>B) Has an a priori prediction about which group means will differ</li>
+                            <li>C) Fails to reject the null hypothesis in an ANOVA</li>
+                            <li>D) Rejects the null hypothesis and there are more than two groups</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <div class="answer-content">
+                                <p class="answer-text"><strong>✓ Answer:</strong> D) Rejects the null hypothesis and there are more than two groups</p>
+                                <p class="answer-text"><strong>Why this is correct:</strong> Post-hoc tests are only needed when: (1) the omnibus F-test is significant (reject H₀), AND (2) there are more than two groups. This is because a significant F-test only tells you that differences exist somewhere, not where they are.</p>
+                                <p class="answer-text"><strong>Why the others are incorrect:</strong></p>
+                                <ul>
+                                    <li><strong>A) Independent t-test:</strong> T-tests only compare two groups, so you already know which groups differ.</li>
+                                    <li><strong>B) A priori prediction:</strong> If you have specific predictions, you'd use planned comparisons, not post-hoc tests.</li>
+                                    <li><strong>C) Fails to reject H₀:</strong> If the F-test isn't significant, there are no differences to explore with post-hoc tests.</li>
+                                </ul>
+                                <p class="answer-text"><em>💭 Need to review?</em> See Part 4: Post-Hoc Tests - Finding Specific Differences for when post-hoc tests are warranted.</p>
+                            </div>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab2-q5')">Show Answer</button>
+                    </div>
+
+                    <div class="knowledge-check-item" data-question-id="tab2-q6">
+                        <p class="question-text"><strong>Question 2:</strong> Lucille is interested in the effects of alcohol consumption on style of play while playing The Sims. She asks 15 college students to play under one of four conditions: no alcohol, 1 ounce, 2 ounces, or 3 ounces. She measures how prosocial their play style is (1-10 scale). After performing an ANOVA, she finds she can reject the null hypothesis. On this basis, what does Lucille know?</p>
+                        <ul class="question-options">
+                            <li>A) She knows that greater levels of alcohol consumption are associated with a more prosocial style of play</li>
+                            <li>B) She knows that drinking any amount of alcohol affects the style of play</li>
+                            <li>C) She knows that moderate alcohol consumption is associated with prosocial play, but greater consumption is associated with antisocial play</li>
+                            <li>D) She knows that there is a difference among the groups somewhere, but she does not know where</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <div class="answer-content">
+                                <p class="answer-text"><strong>✓ Answer:</strong> D) She knows that there is a difference among the groups somewhere, but she does not know where</p>
+                                <p class="answer-text"><strong>Why this is correct:</strong> A significant F-test in ANOVA is an "omnibus" test that only tells you that at least one group mean is different from another. It doesn't tell you which specific groups differ or the direction of the differences.</p>
+                                <p class="answer-text"><strong>Why the others are incorrect:</strong></p>
+                                <ul>
+                                    <li><strong>A) Greater alcohol = more prosocial:</strong> This assumes a specific pattern that the F-test doesn't reveal.</li>
+                                    <li><strong>B) Any amount affects play:</strong> The F-test doesn't tell you that every amount has an effect, just that some amounts do.</li>
+                                    <li><strong>C) Moderate vs. greater amounts:</strong> This assumes a specific pattern that requires post-hoc tests to determine.</li>
+                                </ul>
+                                <p class="answer-text"><em>💡 Application Tip:</em> Significant F-test = "Something is different somewhere." Post-hoc tests = "Here's exactly what's different."</p>
+                            </div>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab2-q6')">Show Answer</button>
+                    </div>
+
+                    <div class="knowledge-check-item" data-question-id="tab2-q7">
+                        <p class="question-text"><strong>Question 3:</strong> Which of these is NOT an assumption of an ANOVA?</p>
+                        <ul class="question-options">
+                            <li>A) Normally distributed populations</li>
+                            <li>B) Independent variable has only three levels</li>
+                            <li>C) Random selection for samples</li>
+                            <li>D) Samples come from populations with equal variances</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <div class="answer-content">
+                                <p class="answer-text"><strong>✓ Answer:</strong> B) Independent variable has only three levels</p>
+                                <p class="answer-text"><strong>Why this is correct:</strong> ANOVA can handle independent variables with 3 or more levels (not just 3). There's no requirement that the IV must have exactly three levels.</p>
+                                <p class="answer-text"><strong>Why the others are incorrect:</strong></p>
+                                <ul>
+                                    <li><strong>A) Normal populations:</strong> This is a key assumption of ANOVA - populations should be normally distributed.</li>
+                                    <li><strong>C) Random selection:</strong> This is an assumption - samples should be randomly selected from populations.</li>
+                                    <li><strong>D) Equal variances:</strong> This is the homogeneity of variances assumption, tested with Levene's test.</li>
+                                </ul>
+                                <p class="answer-text"><em>💭 Need to review?</em> See Part 7: ANOVA Assumptions for all the key assumptions.</p>
+                            </div>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab2-q7')">Show Answer</button>
+                    </div>
+
+                    <div class="knowledge-check-item" data-question-id="tab2-q8">
+                        <p class="question-text"><strong>Question 4:</strong> What is the main purpose of post-hoc tests in ANOVA?</p>
+                        <ul class="question-options">
+                            <li>A) To determine if the overall F-test is significant</li>
+                            <li>B) To identify which specific groups differ from each other</li>
+                            <li>C) To calculate effect size</li>
+                            <li>D) To check assumptions</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <div class="answer-content">
+                                <p class="answer-text"><strong>✓ Answer:</strong> B) To identify which specific groups differ from each other</p>
+                                <p class="answer-text"><strong>Why this is correct:</strong> Post-hoc tests are follow-up tests that identify which specific pairs of groups are significantly different from each other after finding a significant omnibus F-test.</p>
+                                <p class="answer-text"><strong>Why the others are incorrect:</strong></p>
+                                <ul>
+                                    <li><strong>A) Determine F-test significance:</strong> The F-test itself tells you if the overall test is significant.</li>
+                                    <li><strong>C) Calculate effect size:</strong> Effect size is calculated separately, typically as eta squared.</li>
+                                    <li><strong>D) Check assumptions:</strong> Assumptions are checked before running the main ANOVA, not with post-hoc tests.</li>
+                                </ul>
+                                <p class="answer-text"><em>💡 Application Tip:</em> Think of post-hoc tests as "detective work" - they find the specific differences that the omnibus F-test detected.</p>
+                            </div>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab2-q8')">Show Answer</button>
+                    </div>
+                </div>
+
+                <div id="tab-3" class="tab-panel">
+                    <h2>Part 5: One-Way Repeated-Measures ANOVA</h2>
+
+                    <h3>When to Use Repeated-Measures ANOVA</h3>
+
+                    <p><strong>Repeated-measures ANOVA</strong> is used when:</p>
+
+                    <ul>
+                        <li>The same participants are measured across multiple conditions</li>
+                        <li>You want to compare means across 3 or more time points or conditions</li>
+                        <li>You're interested in within-subject changes over time</li>
+                    </ul>
+
+                    <p><strong>Example Research Questions:</strong></p>
+
+                    <ul>
+                        <li>"Do students' test scores improve across three exam periods?"</li>
+                        <li>"How does mood change across four seasons?"</li>
+                        <li>"Does reaction time decrease with practice across five sessions?"</li>
+                    </ul>
+
+                    <h3>Advantages of Repeated-Measures Design</h3>
+
+                    <div class="visual-diagram">
+                        <h4>🔗 Comparison to Between-Groups</h4>
+                        <p>Repeated-measures and between-groups ANOVA answer similar questions but with different designs. The key difference: same vs. different participants. Both use the F-ratio logic, but repeated-measures removes individual differences from error variance, making it more powerful.</p>
+                    </div>
+
+                    <p><strong>1. Controls Individual Differences:</strong></p>
+
+                    <ul>
+                        <li>Each person serves as their own control</li>
+                        <li>Eliminates between-subject variability</li>
+                        <li>More statistical power</li>
+                    </ul>
+
+                    <p><strong>2. Requires Fewer Participants:</strong></p>
+
+                    <ul>
+                        <li>Same people in all conditions</li>
+                        <li>More cost-effective</li>
+                        <li>Easier recruitment</li>
+                    </ul>
+
+                    <p><strong>3. Reduces Error Variance:</strong></p>
+
+                    <ul>
+                        <li>Individual differences are held constant</li>
+                        <li>More sensitive to detecting effects</li>
+                    </ul>
+
+                    <h3>The Sphericity Assumption</h3>
+
+                    <p><strong>Sphericity (Mauchly's Test):</strong></p>
+
+                    <ul>
+                        <li>Tests whether variances of differences between conditions are equal</li>
+                        <li>More complex than homogeneity of variances</li>
+                    </ul>
+
+                    <p><strong>Interpretation:</strong></p>
+
+                    <ul>
+                        <li><strong>p > .05:</strong> Sphericity assumed (assumption met)</li>
+                        <li><strong>p ≤ .05:</strong> Sphericity not assumed (assumption violated)</li>
+                    </ul>
+
+                    <p><strong>What to do if violated:</strong></p>
+
+                    <ul>
+                        <li>Use Greenhouse-Geisser correction</li>
+                        <li>Use Huynh-Feldt correction</li>
+                        <li>Report the violation</li>
+                    </ul>
+
+                    <div class="visual-diagram">
+                        <h4>⚖️ SPHERICITY: The Unique Repeated-Measures Assumption</h4>
+                        <p><strong>What makes sphericity special:</strong></p>
+                        <ul>
+                            <li>Only applies to repeated-measures ANOVA (NOT between-groups!)</li>
+                            <li>More complex than homogeneity of variances</li>
+                            <li>Tests equality of variance of DIFFERENCES between conditions</li>
+                        </ul>
+                        <p><strong>Mauchly's Test Interpretation:</strong> (Same "backwards" logic as Levene's!)</p>
+                        <ul>
+                            <li><strong>p > .05:</strong> ✓ Assumption met (sphericity assumed)</li>
+                            <li><strong>p ≤ .05:</strong> ✗ Assumption violated (use corrections)</li>
+                        </ul>
+                        <p><strong>If violated, use corrections:</strong></p>
+                        <ul>
+                            <li><strong>Greenhouse-Geisser:</strong> More conservative, always works</li>
+                            <li><strong>Huynh-Feldt:</strong> Less conservative, better with larger samples</li>
+                        </ul>
+                        <p><strong>SPSS tip:</strong> SPSS shows all corrections in output. Look at:</p>
+                        <ul>
+                            <li>"Sphericity Assumed" row if Mauchly's p > .05</li>
+                            <li>"Greenhouse-Geisser" row if Mauchly's p ≤ .05</li>
+                        </ul>
+                        <p><strong>Remember:</strong> Sphericity is to repeated-measures what Levene's test is to between-groups!</p>
+                    </div>
+
+                    <h3>Degrees of Freedom in Repeated-Measures</h3>
+
+                    <p><strong>Between-Subjects df:</strong></p>
+
+                    <ul>
+                        <li>df_between_subjects = N - 1</li>
+                        <li>Where N = number of participants</li>
+                    </ul>
+
+                    <p><strong>Within-Subjects df:</strong></p>
+
+                    <ul>
+                        <li>df_within_subjects = (k - 1) × (N - 1)</li>
+                        <li>Where k = number of conditions, N = number of participants</li>
+                    </ul>
+
+                    <p><strong>Total df:</strong></p>
+
+                    <ul>
+                        <li>df_total = (N × k) - 1</li>
+                    </ul>
+
+                    <h3>Reading Repeated-Measures Output</h3>
+
+                    <p><strong>Example Output:</strong></p>
+
+                    <pre>
+Tests of Within-Subjects Effects
+Measure: TestScores
+
+Source                    Type III Sum    df    Mean Square    F      Sig.
+                          of Squares
+Time                      Sphericity Assumed    245.800    2      122.900    8.425   .001
+                          Greenhouse-Geisser     245.800    1.234   199.189    8.425   .004
+                          Huynh-Feldt           245.800    1.267   194.030    8.425   .004
+                          Lower-bound           245.800    1.000   245.800    8.425   .012
+Error(Time)               Sphericity Assumed    291.200    20      14.560
+                          Greenhouse-Geisser     291.200    12.344   23.595
+                          Huynh-Feldt           291.200    12.667   22.988
+                          Lower-bound           291.200    10.000   29.120
+                    </pre>
+
+                    <p><strong>Key Information:</strong></p>
+
+                    <ul>
+                        <li><strong>F = 8.425</strong></li>
+                        <li><strong>df = (2, 20)</strong> for sphericity assumed</li>
+                        <li><strong>p = .001</strong></li>
+                    </ul>
+
+                    <div class="knowledge-check-item" data-question-id="tab3-q1">
+                        <p class="question-text"><strong>Question 1:</strong> A researcher wants to examine people's preference for pets by having 10 people act as "foster owners" for four different types of family pets: dogs, cats, birds, and fish. The participants will foster each type of pet for one week, and a scale measure will be used to assess preference. Which research design should be used?</p>
+                        <ul class="question-options">
+                            <li>A) One-way within-groups ANOVA</li>
+                            <li>B) Paired-samples t-test</li>
+                            <li>C) One-way between-groups ANOVA</li>
+                            <li>D) Independent-samples t-test</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <div class="answer-content">
+                                <p class="answer-text"><strong>✓ Answer:</strong> A) One-way within-groups ANOVA</p>
+                                <p class="answer-text"><strong>Why this is correct:</strong> The same 10 people will experience all four conditions (fostering dogs, cats, birds, and fish). This is a within-subjects design where each participant serves in all conditions.</p>
+                                <p class="answer-text"><strong>Why the others are incorrect:</strong></p>
+                                <ul>
+                                    <li><strong>B) Paired-samples t-test:</strong> This is for comparing two conditions, not four.</li>
+                                    <li><strong>C) Between-groups ANOVA:</strong> This would be used if different people fostered each type of pet.</li>
+                                    <li><strong>D) Independent-samples t-test:</strong> This is for two groups only, not four conditions.</li>
+                                </ul>
+                                <p class="answer-text"><em>💭 Need to review?</em> See Part 5: One-Way Repeated-Measures ANOVA for when to use within-subjects designs.</p>
+                            </div>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab3-q1')">Show Answer</button>
+                    </div>
+
+                    <div class="knowledge-check-item" data-question-id="tab3-q2">
+                        <p class="question-text"><strong>Question 2:</strong> In repeated-measures ANOVA, the sphericity assumption is tested using:</p>
+                        <ul class="question-options">
+                            <li>A) Levene's test</li>
+                            <li>B) Mauchly's test</li>
+                            <li>C) Shapiro-Wilk test</li>
+                            <li>D) Kolmogorov-Smirnov test</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <div class="answer-content">
+                                <p class="answer-text"><strong>✓ Answer:</strong> B) Mauchly's test</p>
+                                <p class="answer-text"><strong>Why this is correct:</strong> Mauchly's test specifically tests the sphericity assumption in repeated-measures ANOVA. It checks whether the variances of differences between all pairs of conditions are equal.</p>
+                                <p class="answer-text"><strong>Why the others are incorrect:</strong></p>
+                                <ul>
+                                    <li><strong>A) Levene's test:</strong> This tests homogeneity of variances in between-subjects designs.</li>
+                                    <li><strong>C) Shapiro-Wilk test:</strong> This tests normality of distributions.</li>
+                                    <li><strong>D) Kolmogorov-Smirnov test:</strong> This also tests normality, not sphericity.</li>
+                                </ul>
+                                <p class="answer-text"><em>💡 Application Tip:</em> Sphericity is a unique assumption for repeated-measures designs, tested with Mauchly's test.</p>
+                            </div>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab3-q2')">Show Answer</button>
+                    </div>
+
+                    <div class="knowledge-check-item" data-question-id="tab3-q3">
+                        <p class="question-text"><strong>Question 3:</strong> Which statement accurately captures why within-groups designs are preferred over between-groups designs?</p>
+                        <ul class="question-options">
+                            <li>A) Loss of participants has a more significant negative impact on between-groups designs</li>
+                            <li>B) Control of extraneous variables is easier when using between-groups designs</li>
+                            <li>C) Within-groups designs take less time than between-groups designs</li>
+                            <li>D) Variability due to participants' differences is held constant across levels of the independent variable in within-groups design, resulting in less within-groups variability</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <div class="answer-content">
+                                <p class="answer-text"><strong>✓ Answer:</strong> D) Variability due to participants' differences is held constant across levels of the independent variable in within-groups design, resulting in less within-groups variability</p>
+                                <p class="answer-text"><strong>Why this is correct:</strong> In within-groups designs, the same participants are measured across all conditions, so individual differences between people are held constant. This reduces the error variance, making it easier to detect real effects.</p>
+                                <p class="answer-text"><strong>Why the others are incorrect:</strong></p>
+                                <ul>
+                                    <li><strong>A) Participant loss impact:</strong> This is a practical consideration but not the main statistical advantage.</li>
+                                    <li><strong>B) Easier control in between-groups:</strong> This is backwards—within-groups designs provide better control.</li>
+                                    <li><strong>C) Takes less time:</strong> This may or may not be true and isn't the statistical advantage.</li>
+                                </ul>
+                                <p class="answer-text"><em>💡 Application Tip:</em> Within-groups designs are more powerful because they control for individual differences, reducing error variance.</p>
+                            </div>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab3-q3')">Show Answer</button>
+                    </div>
+
+                    <div class="knowledge-check-item" data-question-id="tab3-q4">
+                        <p class="question-text"><strong>Question 4:</strong> A researcher wants to know if there is a significant difference in the percentage of graduates going to college across three geographic locations (city, suburb, and town/rural). What is the dependent variable in this analysis?</p>
+                        <ul class="question-options">
+                            <li>A) Geographic location</li>
+                            <li>B) Percentage of graduates going to college</li>
+                            <li>C) Type of community</li>
+                            <li>D) Number of graduates</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <div class="answer-content">
+                                <p class="answer-text"><strong>✓ Answer:</strong> B) Percentage of graduates going to college</p>
+                                <p class="answer-text"><strong>Why this is correct:</strong> The dependent variable is what you're measuring - the outcome variable. In this case, the researcher is measuring the percentage of graduates going to college across different locations.</p>
+                                <p class="answer-text"><strong>Why the others are incorrect:</strong></p>
+                                <ul>
+                                    <li><strong>A) Geographic location:</strong> This is the independent variable - what the researcher is comparing across.</li>
+                                    <li><strong>C) Type of community:</strong> This is another way of describing the independent variable (geographic location).</li>
+                                    <li><strong>D) Number of graduates:</strong> This isn't what's being measured - it's the percentage that matters.</li>
+                                </ul>
+                                <p class="answer-text"><em>💭 Need to review?</em> See Part 5: One-Way Repeated-Measures ANOVA for identifying IV and DV.</p>
+                            </div>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab3-q4')">Show Answer</button>
+                    </div>
+
+                    <hr>
+
+                    <h2>Part 6: Effect Size for ANOVA - Eta Squared</h2>
+
+                    <h3>Understanding Effect Size in ANOVA</h3>
+
+                    <p><strong>Effect size</strong> tells us how much of the variance in the dependent variable is explained by the independent variable. Unlike p-values, effect sizes are not affected by sample size.</p>
+
+                    <h3>Eta Squared (η²)</h3>
+
+                    <p><strong>Formula:</strong> η² = SS_between / SS_total</p>
+
+                    <p><strong>Interpretation:</strong></p>
+
+                    <ul>
+                        <li><strong>η² = .01:</strong> Small effect (1% of variance explained)</li>
+                        <li><strong>η² = .06:</strong> Medium effect (6% of variance explained)</li>
+                        <li><strong>η² = .14:</strong> Large effect (14% of variance explained)</li>
+                    </ul>
+
+                    <h3>Calculating Eta Squared from SPSS Output</h3>
+
+                    <p><strong>From the previous example:</strong></p>
+
+                    <ul>
+                        <li>SS_between = 1901.425</li>
+                        <li>SS_total = 53425.910</li>
+                        <li>η² = 1901.425 / 53425.910 = .036 (3.6% of variance explained)</li>
+                    </ul>
+
+                    <h3>Partial Eta Squared</h3>
+
+                    <p><strong>Formula:</strong> Partial η² = SS_between / (SS_between + SS_within)</p>
+
+                    <p><strong>Use when:</strong></p>
+
+                    <ul>
+                        <li>You have multiple factors in your ANOVA</li>
+                        <li>You want to isolate the effect of one factor</li>
+                    </ul>
+
+                    <h3>Reading Effect Size from SPSS</h3>
+
+                    <p>SPSS often provides effect size automatically in the output. Look for:</p>
+
+                    <ul>
+                        <li><strong>Eta Squared</strong> column</li>
+                        <li><strong>Partial Eta Squared</strong> column</li>
+                        <li>Values between 0 and 1</li>
+                    </ul>
+
+                    <h3>Interpreting Effect Size</h3>
+
+                    <p><strong>Cohen's Guidelines for η²:</strong></p>
+
+                    <ul>
+                        <li><strong>Small:</strong> η² = .01</li>
+                        <li><strong>Medium:</strong> η² = .06</li>
+                        <li><strong>Large:</strong> η² = .14</li>
+                    </ul>
+
+                    <p><strong>Important:</strong> These are guidelines, not rules. Context matters for interpretation.</p>
+
+                    <div class="knowledge-check-item" data-question-id="tab3-q5">
+                        <p class="question-text"><strong>Question 1:</strong> Eta squared (η²) is calculated as _____.</p>
+                        <ul class="question-options">
+                            <li>A) SS_between / SS_within</li>
+                            <li>B) SS_between / SS_total</li>
+                            <li>C) MS_between / MS_within</li>
+                            <li>D) df_between / df_total</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <div class="answer-content">
+                                <p class="answer-text"><strong>✓ Answer:</strong> B) SS_between / SS_total</p>
+                                <p class="answer-text"><strong>Why this is correct:</strong> Eta squared = SS_between / SS_total. This tells you what proportion of the total variance is explained by the independent variable.</p>
+                                <p class="answer-text"><strong>Why the others are incorrect:</strong></p>
+                                <ul>
+                                    <li><strong>A) SS_between / SS_within:</strong> This would be incorrect because it doesn't include all variance.</li>
+                                    <li><strong>C) MS_between / MS_within:</strong> This is the F-statistic, not eta squared.</li>
+                                    <li><strong>D) df_between / df_total:</strong> This would just give you a ratio of degrees of freedom, not variance explained.</li>
+                                </ul>
+                                <p class="answer-text"><em>💭 Need to review?</em> See Part 6: Effect Size for ANOVA - Eta Squared for the calculation formula.</p>
+                            </div>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab3-q5')">Show Answer</button>
+                    </div>
+
+                    <div class="knowledge-check-item" data-question-id="tab3-q6">
+                        <p class="question-text"><strong>Question 2:</strong> A researcher reports η² = .08 for their ANOVA. How should this be interpreted?</p>
+                        <ul class="question-options">
+                            <li>A) Small effect size</li>
+                            <li>B) Medium effect size</li>
+                            <li>C) Large effect size</li>
+                            <li>D) Cannot be determined without more information</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <div class="answer-content">
+                                <p class="answer-text"><strong>✓ Answer:</strong> B) Medium effect size</p>
+                                <p class="answer-text"><strong>Why this is correct:</strong> According to Cohen's guidelines, η² = .06 is medium effect size. Since .08 is between .06 and .14, it's closer to medium than large.</p>
+                                <p class="answer-text"><strong>Why the others are incorrect:</strong></p>
+                                <ul>
+                                    <li><strong>A) Small effect:</strong> Small effect is η² = .01, much smaller than .08.</li>
+                                    <li><strong>C) Large effect:</strong> Large effect is η² = .14, and .08 is not quite there.</li>
+                                    <li><strong>D) Cannot be determined:</strong> We have enough information to make a reasonable interpretation.</li>
+                                </ul>
+                                <p class="answer-text"><em>💡 Application Tip:</em> η² = .08 means the IV explains 8% of the variance in the DV - a moderate amount.</p>
+                            </div>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab3-q6')">Show Answer</button>
+                    </div>
+
+                    <div class="knowledge-check-item" data-question-id="tab3-q7">
+                        <p class="question-text"><strong>Question 3:</strong> What is the main advantage of reporting effect size along with statistical significance?</p>
+                        <ul class="question-options">
+                            <li>A) It makes the results more statistically significant</li>
+                            <li>B) It provides information about the practical importance of the effect</li>
+                            <li>C) It reduces the chance of Type I error</li>
+                            <li>D) It increases statistical power</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <div class="answer-content">
+                                <p class="answer-text"><strong>✓ Answer:</strong> B) It provides information about the practical importance of the effect</p>
+                                <p class="answer-text"><strong>Why this is correct:</strong> Effect size tells you how big the effect is in practical terms, while p-values only tell you if the effect is statistically significant. A statistically significant result might be very small in practical terms.</p>
+                                <p class="answer-text"><strong>Why the others are incorrect:</strong></p>
+                                <ul>
+                                    <li><strong>A) More statistically significant:</strong> Effect size doesn't change statistical significance.</li>
+                                    <li><strong>C) Reduces Type I error:</strong> Effect size doesn't affect Type I error rates.</li>
+                                    <li><strong>D) Increases power:</strong> Effect size doesn't increase statistical power.</li>
+                                </ul>
+                                <p class="answer-text"><em>💡 Application Tip:</em> Always report both statistical significance (p-value) and practical significance (effect size) for complete interpretation.</p>
+                            </div>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab3-q7')">Show Answer</button>
+                    </div>
+
+                    <div class="knowledge-check-item" data-question-id="tab3-q8">
+                        <p class="question-text"><strong>Question 4:</strong> In APA format, how should you report an ANOVA result with F(2, 57) = 3.45, p = .038, η² = .11?</p>
+                        <ul class="question-options">
+                            <li>A) F(2, 57) = 3.45, p = .038, η² = .11</li>
+                            <li>B) F(2, 57) = 3.45, p = .038, eta squared = .11</li>
+                            <li>C) F(2, 57) = 3.45, p = .038, η² = .11</li>
+                            <li>D) All of the above are correct</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <div class="answer-content">
+                                <p class="answer-text"><strong>✓ Answer:</strong> D) All of the above are correct</p>
+                                <p class="answer-text"><strong>Why this is correct:</strong> APA format accepts multiple ways of reporting effect size: the Greek letter η², "eta squared" spelled out, or both. The key is to be consistent within your paper.</p>
+                                <p class="answer-text"><strong>Why the others are incorrect:</strong></p>
+                                <ul>
+                                    <li><strong>A, B, C:</strong> Each of these formats is acceptable in APA style.</li>
+                                </ul>
+                                <p class="answer-text"><em>💭 Need to review?</em> See Part 6: Effect Size for ANOVA - Eta Squared for APA reporting guidelines.</p>
+                            </div>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab3-q8')">Show Answer</button>
+                    </div>
+                </div>
+
+                <div id="tab-4" class="tab-panel">
+                    <h2>Part 7: ANOVA Assumptions</h2>
+
+                    <h3>Key Assumptions of ANOVA</h3>
+
+                    <p><strong>1. Normality:</strong></p>
+
+                    <ul>
+                        <li>Populations from which samples are drawn should be normally distributed</li>
+                        <li>Most important for small samples (n < 30 per group)</li>
+                        <li>Less critical for large samples due to Central Limit Theorem</li>
+                    </ul>
+
+                    <p><strong>2. Homogeneity of Variances (Between-Groups ANOVA):</strong></p>
+
+                    <ul>
+                        <li>All groups should have equal population variances</li>
+                        <li>Tested with Levene's test</li>
+                        <li>More important when sample sizes are unequal</li>
+                    </ul>
+
+                    <p><strong>3. Independence of Observations:</strong></p>
+
+                    <ul>
+                        <li>Each observation should be independent of others</li>
+                        <li>Violated when participants are measured multiple times (use repeated-measures instead)</li>
+                        <li>Important for both between-groups and within-groups designs</li>
+                    </ul>
+
+                    <p><strong>4. Random Selection:</strong></p>
+
+                    <ul>
+                        <li>Samples should be randomly selected from populations</li>
+                        <li>Important for generalizability</li>
+                        <li>Often violated in convenience samples</li>
+                    </ul>
+
+                    <h3>Checking Assumptions</h3>
+
+                    <p><strong>Normality:</strong></p>
+
+                    <ul>
+                        <li>Visual inspection of histograms</li>
+                        <li>Q-Q plots</li>
+                        <li>Shapiro-Wilk test for small samples</li>
+                        <li>Kolmogorov-Smirnov test for large samples</li>
+                    </ul>
+
+                    <p><strong>Homogeneity of Variances:</strong></p>
+
+                    <ul>
+                        <li>Levene's test (p > .05 = assumption met)</li>
+                        <li>Visual inspection of boxplots</li>
+                        <li>Compare standard deviations across groups</li>
+                    </ul>
+
+                    <p><strong>Independence:</strong></p>
+
+                    <ul>
+                        <li>Review study design</li>
+                        <li>Ensure no participant appears in multiple groups</li>
+                        <li>Check for clustering effects</li>
+                    </ul>
+
+                    <h3>What to Do When Assumptions Are Violated</h3>
+
+                    <p><strong>Normality Violations:</strong></p>
+
+                    <ul>
+                        <li>Transform the data (log, square root)</li>
+                        <li>Use non-parametric alternatives (Kruskal-Wallis)</li>
+                        <li>Proceed with caution if sample size is large</li>
+                    </ul>
+
+                    <p><strong>Homogeneity Violations:</strong></p>
+
+                    <ul>
+                        <li>Use Welch's ANOVA (more robust)</li>
+                        <li>Transform the data</li>
+                        <li>Report the violation and proceed cautiously</li>
+                    </ul>
+
+                    <p><strong>Independence Violations:</strong></p>
+
+                    <ul>
+                        <li>Use repeated-measures ANOVA instead</li>
+                        <li>Account for clustering in analysis</li>
+                        <li>Consider multilevel modeling</li>
+                    </ul>
+
+                    <div class="visual-diagram">
+                        <h4>🔗 Where to Check These in SPSS</h4>
+                        <p>See Part 8: SPSS Practical Guide for step-by-step instructions on how to check each assumption in SPSS. The Options dialog has settings for Levene's test (between-groups) and sphericity tests (repeated-measures).</p>
+                    </div>
+
+                    <div class="knowledge-check-item" data-question-id="tab4-q1">
+                        <p class="question-text"><strong>Question 1:</strong> Which of these is NOT an assumption of an ANOVA?</p>
+                        <ul class="question-options">
+                            <li>A) Normally distributed populations</li>
+                            <li>B) Independent variable has only three levels</li>
+                            <li>C) Random selection for samples</li>
+                            <li>D) Samples come from populations with equal variances</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <div class="answer-content">
+                                <p class="answer-text"><strong>✓ Answer:</strong> B) Independent variable has only three levels</p>
+                                <p class="answer-text"><strong>Why this is correct:</strong> ANOVA can handle independent variables with 3 or more levels (not just 3). There's no requirement that the IV must have exactly three levels.</p>
+                                <p class="answer-text"><strong>Why the others are incorrect:</strong></p>
+                                <ul>
+                                    <li><strong>A) Normal populations:</strong> This is a key assumption of ANOVA - populations should be normally distributed.</li>
+                                    <li><strong>C) Random selection:</strong> This is an assumption - samples should be randomly selected from populations.</li>
+                                    <li><strong>D) Equal variances:</strong> This is the homogeneity of variances assumption, tested with Levene's test.</li>
+                                </ul>
+                                <p class="answer-text"><em>💭 Need to review?</em> See Part 7: ANOVA Assumptions for all the key assumptions.</p>
+                            </div>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab4-q1')">Show Answer</button>
+                    </div>
+
+                    <div class="knowledge-check-item" data-question-id="tab4-q2">
+                        <p class="question-text"><strong>Question 2:</strong> In an independent-samples ANOVA, Levene's test produces p = .023. What does this tell us about the assumption of equal variances?</p>
+                        <ul class="question-options">
+                            <li>A) The assumption is met because p < .05</li>
+                            <li>B) The assumption is not met because p < .05</li>
+                            <li>C) The assumption is met because p > .05</li>
+                            <li>D) The assumption is not met because p > .05</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <div class="answer-content">
+                                <p class="answer-text"><strong>✓ Answer:</strong> B) The assumption is not met because p < .05</p>
+                                <p class="answer-text"><strong>Why this is correct:</strong> Levene's test null hypothesis is that variances are equal. When p < .05, we reject this null hypothesis, concluding that variances are NOT equal. Therefore, the assumption of equal variances is violated.</p>
+                                <p class="answer-text"><strong>Why the others are incorrect:</strong></p>
+                                <ul>
+                                    <li><strong>A) Assumption met because p < .05:</strong> This is backwards. p < .05 means we reject equal variances, so the assumption is NOT met.</li>
+                                    <li><strong>C) Assumption met because p > .05:</strong> This would be correct if p > .05, but here p = .023 < .05.</li>
+                                    <li><strong>D) Assumption not met because p > .05:</strong> This is backwards. p > .05 would mean we fail to reject equal variances, so the assumption WOULD be met.</li>
+                                </ul>
+                                <p class="answer-text"><em>💭 Need to review?</em> See Part 7: ANOVA Assumptions for the interpretation of Levene's test.</p>
+                            </div>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab4-q2')">Show Answer</button>
+                    </div>
+
+                    <div class="knowledge-check-item" data-question-id="tab4-q3">
+                        <p class="question-text"><strong>Question 3:</strong> What should you do if the homogeneity of variances assumption is violated in ANOVA?</p>
+                        <ul class="question-options">
+                            <li>A) Stop the analysis and report that ANOVA cannot be used</li>
+                            <li>B) Use Welch's ANOVA instead of regular ANOVA</li>
+                            <li>C) Transform the data to meet the assumption</li>
+                            <li>D) Both B and C are appropriate options</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <div class="answer-content">
+                                <p class="answer-text"><strong>✓ Answer:</strong> D) Both B and C are appropriate options</p>
+                                <p class="answer-text"><strong>Why this is correct:</strong> When homogeneity of variances is violated, you can use Welch's ANOVA (which is more robust to this violation) or transform the data to try to meet the assumption. Both approaches are valid.</p>
+                                <p class="answer-text"><strong>Why the others are incorrect:</strong></p>
+                                <ul>
+                                    <li><strong>A) Stop analysis:</strong> This is too extreme - there are ways to address the violation.</li>
+                                    <li><strong>B) Welch's ANOVA only:</strong> While this is good, data transformation is also a valid option.</li>
+                                    <li><strong>C) Transform only:</strong> While this is good, Welch's ANOVA is also a valid option.</li>
+                                </ul>
+                                <p class="answer-text"><em>💡 Application Tip:</em> When assumptions are violated, try multiple approaches and report what you did.</p>
+                            </div>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab4-q3')">Show Answer</button>
+                    </div>
+
+                    <div class="knowledge-check-item" data-question-id="tab4-q4">
+                        <p class="question-text"><strong>Question 4:</strong> Which assumption is most critical to check when using ANOVA with small sample sizes?</p>
+                        <ul class="question-options">
+                            <li>A) Homogeneity of variances</li>
+                            <li>B) Normality</li>
+                            <li>C) Independence of observations</li>
+                            <li>D) Random selection</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <div class="answer-content">
+                                <p class="answer-text"><strong>✓ Answer:</strong> B) Normality</p>
+                                <p class="answer-text"><strong>Why this is correct:</strong> Normality is most critical with small samples because the Central Limit Theorem doesn't apply as strongly. With large samples, violations of normality are less problematic.</p>
+                                <p class="answer-text"><strong>Why the others are incorrect:</strong></p>
+                                <ul>
+                                    <li><strong>A) Homogeneity of variances:</strong> Important but not as critical as normality for small samples.</li>
+                                    <li><strong>C) Independence:</strong> Always important regardless of sample size.</li>
+                                    <li><strong>D) Random selection:</strong> Important for generalizability but not as critical for the statistical test itself.</li>
+                                </ul>
+                                <p class="answer-text"><em>💭 Need to review?</em> See Part 7: ANOVA Assumptions for the importance of assumptions with different sample sizes.</p>
+                            </div>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab4-q4')">Show Answer</button>
+                    </div>
+
+                    <hr>
+
+                    <h2>Part 8: SPSS Practical Guide</h2>
+
+                    <h3>Running One-Way Between-Groups ANOVA in SPSS</h3>
+
+                    <p><strong>Step 1: Data Setup</strong></p>
+
+                    <ul>
+                        <li>Ensure your IV is coded as numbers (1, 2, 3, etc.)</li>
+                        <li>Ensure your DV is continuous</li>
+                        <li>Check for missing values</li>
+                    </ul>
+
+                    <p><strong>Step 2: Run the Analysis</strong></p>
+
+                    <ol>
+                        <li>Go to <strong>Analyze</strong> → <strong>Compare Means</strong> → <strong>One-Way ANOVA</strong></li>
+                        <li>Move your DV to the <strong>Dependent List</strong></li>
+                        <li>Move your IV to the <strong>Factor</strong> box</li>
+                        <li>Click <strong>Options</strong> and check:
+                            <ul>
+                                <li>Descriptive statistics</li>
+                                <li>Homogeneity of variance test (Levene's test)</li>
+                                <li>Means plot</li>
+                            </ul>
+                        </li>
+                        <li>Click <strong>Post Hoc</strong> and select <strong>Tukey</strong> (if you have 3+ groups)</li>
+                        <li>Click <strong>Continue</strong> and <strong>OK</strong></li>
+                    </ol>
+
+                    <p><strong>Step 3: Interpret Output</strong></p>
+
+                    <ul>
+                        <li><strong>Descriptives:</strong> Check means and standard deviations</li>
+                        <li><strong>Test of Homogeneity of Variances:</strong> Check Levene's test</li>
+                        <li><strong>ANOVA:</strong> Check F-statistic, df, and p-value</li>
+                        <li><strong>Post Hoc Tests:</strong> Check which groups differ significantly</li>
+                    </ul>
+
+                    <h3>Running One-Way Repeated-Measures ANOVA in SPSS</h3>
+
+                    <p><strong>Step 1: Data Setup</strong></p>
+
+                    <ul>
+                        <li>Each condition should be a separate column</li>
+                        <li>Each row represents one participant</li>
+                        <li>No missing values allowed</li>
+                    </ul>
+
+                    <p><strong>Step 2: Run the Analysis</strong></p>
+
+                    <ol>
+                        <li>Go to <strong>Analyze</strong> → <strong>General Linear Model</strong> → <strong>Repeated Measures</strong></li>
+                        <li>Define your factor:
+                            <ul>
+                                <li><strong>Within-Subject Factor Name:</strong> Enter a name (e.g., "Time")</li>
+                                <li><strong>Number of Levels:</strong> Enter number of conditions</li>
+                                <li>Click <strong>Add</strong> and <strong>Define</strong></li>
+                            </ul>
+                        </li>
+                        <li>Move your condition columns to the <strong>Within-Subjects Variables</strong> box</li>
+                        <li>Click <strong>Options</strong> and check:
+                            <ul>
+                                <li>Descriptive statistics</li>
+                                <li>Estimates of effect size</li>
+                            </ul>
+                        </li>
+                        <li>Click <strong>Continue</strong> and <strong>OK</strong></li>
+                    </ol>
+
+                    <p><strong>Step 3: Interpret Output</strong></p>
+
+                    <ul>
+                        <li><strong>Descriptive Statistics:</strong> Check means and standard deviations</li>
+                        <li><strong>Mauchly's Test of Sphericity:</strong> Check sphericity assumption</li>
+                        <li><strong>Tests of Within-Subjects Effects:</strong> Check F-statistic and p-value</li>
+                        <li><strong>Pairwise Comparisons:</strong> Check which conditions differ</li>
+                    </ul>
+
+                    <h3>Common SPSS Issues and Solutions</h3>
+
+                    <p><strong>Issue 1: "Factor must be numeric"</strong></p>
+
+                    <ul>
+                        <li><strong>Solution:</strong> Recode your IV as numbers (1, 2, 3, etc.)</li>
+                    </ul>
+
+                    <p><strong>Issue 2: Missing values in repeated-measures</strong></p>
+
+                    <ul>
+                        <li><strong>Solution:</strong> Remove participants with missing data or use imputation</li>
+                    </ul>
+
+                    <p><strong>Issue 3: No post-hoc tests available</strong></p>
+
+                    <ul>
+                        <li><strong>Solution:</strong> You need 3+ groups for post-hoc tests</li>
+                    </ul>
+
+                    <p><strong>Issue 4: Sphericity violated</strong></p>
+
+                    <ul>
+                        <li><strong>Solution:</strong> Use Greenhouse-Geisser or Huynh-Feldt corrections</li>
+                    </ul>
+
+                    <div class="knowledge-check-item" data-question-id="tab4-q5">
+                        <p class="question-text"><strong>Question 1:</strong> A researcher runs a one-way ANOVA and obtains F(2, 57) = 3.45, p = .038. What should they conclude?</p>
+                        <ul class="question-options">
+                            <li>A) There is no significant difference among the groups</li>
+                            <li>B) There is a significant difference among the groups</li>
+                            <li>C) The effect size is large</li>
+                            <li>D) The assumption of equal variances is violated</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <div class="answer-content">
+                                <p class="answer-text"><strong>✓ Answer:</strong> B) There is a significant difference among the groups</p>
+                                <p class="answer-text"><strong>Why this is correct:</strong> Since p = .038 < .05, the null hypothesis is rejected, indicating that there is a significant difference among the group means.</p>
+                                <p class="answer-text"><strong>Why the others are incorrect:</strong></p>
+                                <ul>
+                                    <li><strong>A) No significant difference:</strong> This would be correct if p > .05, but here p = .038 < .05.</li>
+                                    <li><strong>C) Large effect size:</strong> The F-statistic doesn't tell us about effect size - we need eta squared for that.</li>
+                                    <li><strong>D) Equal variances violated:</strong> This would be determined by Levene's test, not the F-test.</li>
+                                </ul>
+                                <p class="answer-text"><em>💭 Need to review?</em> See Part 8: SPSS Practical Guide for interpreting ANOVA output.</p>
+                            </div>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab4-q5')">Show Answer</button>
+                    </div>
+
+                    <div class="knowledge-check-item" data-question-id="tab4-q6">
+                        <p class="question-text"><strong>Question 2:</strong> In SPSS output, where would you find the exact F-statistic value?</p>
+                        <ul class="question-options">
+                            <li>A) In the Descriptives table</li>
+                            <li>B) In the ANOVA table</li>
+                            <li>C) In the Post Hoc Tests table</li>
+                            <li>D) In the Test of Homogeneity of Variances table</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <div class="answer-content">
+                                <p class="answer-text"><strong>✓ Answer:</strong> B) In the ANOVA table</p>
+                                <p class="answer-text"><strong>Why this is correct:</strong> The F-statistic is reported in the main ANOVA table, along with degrees of freedom and p-value.</p>
+                                <p class="answer-text"><strong>Why the others are incorrect:</strong></p>
+                                <ul>
+                                    <li><strong>A) Descriptives:</strong> This table contains means and standard deviations, not F-statistics.</li>
+                                    <li><strong>C) Post Hoc Tests:</strong> This table contains pairwise comparisons, not the overall F-statistic.</li>
+                                    <li><strong>D) Homogeneity test:</strong> This table contains Levene's test results, not the main F-statistic.</li>
+                                </ul>
+                                <p class="answer-text"><em>💡 Application Tip:</em> Look for the "ANOVA" table in SPSS output to find the main F-statistic and p-value.</p>
+                            </div>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab4-q6')">Show Answer</button>
+                    </div>
+
+                    <div class="knowledge-check-item" data-question-id="tab4-q7">
+                        <p class="question-text"><strong>Question 3:</strong> A researcher obtains F(2, 57) = 3.45, p = .038 from their ANOVA. What should they do next?</p>
+                        <ul class="question-options">
+                            <li>A) Stop the analysis since the result is significant</li>
+                            <li>B) Run post-hoc tests to identify which groups differ</li>
+                            <li>C) Check assumptions before proceeding</li>
+                            <li>D) Both B and C are appropriate</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <div class="answer-content">
+                                <p class="answer-text"><strong>✓ Answer:</strong> D) Both B and C are appropriate</p>
+                                <p class="answer-text"><strong>Why this is correct:</strong> After finding a significant F-test, you should run post-hoc tests to identify which specific groups differ. You should also check assumptions to ensure the results are valid.</p>
+                                <p class="answer-text"><strong>Why the others are incorrect:</strong></p>
+                                <ul>
+                                    <li><strong>A) Stop analysis:</strong> A significant F-test only tells you that differences exist somewhere - you need post-hoc tests to find where.</li>
+                                    <li><strong>B) Post-hoc only:</strong> While important, checking assumptions is also crucial for valid results.</li>
+                                    <li><strong>C) Check assumptions only:</strong> While important, post-hoc tests are needed to identify specific differences.</li>
+                                </ul>
+                                <p class="answer-text"><em>💡 Application Tip:</em> Always follow up significant F-tests with post-hoc tests and assumption checks.</p>
+                            </div>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab4-q7')">Show Answer</button>
+                    </div>
+
+                    <div class="knowledge-check-item" data-question-id="tab4-q8">
+                        <p class="question-text"><strong>Question 4:</strong> In SPSS, which menu path would you use to run a one-way between-groups ANOVA?</p>
+                        <ul class="question-options">
+                            <li>A) Analyze → General Linear Model → Univariate</li>
+                            <li>B) Analyze → Compare Means → One-Way ANOVA</li>
+                            <li>C) Analyze → General Linear Model → Repeated Measures</li>
+                            <li>D) Analyze → Nonparametric Tests → Independent Samples</li>
+                        </ul>
+                        <div class="answer-reveal" style="display: none;">
+                            <div class="answer-content">
+                                <p class="answer-text"><strong>✓ Answer:</strong> B) Analyze → Compare Means → One-Way ANOVA</p>
+                                <p class="answer-text"><strong>Why this is correct:</strong> The standard menu path for one-way between-groups ANOVA in SPSS is Analyze → Compare Means → One-Way ANOVA.</p>
+                                <p class="answer-text"><strong>Why the others are incorrect:</strong></p>
+                                <ul>
+                                    <li><strong>A) GLM Univariate:</strong> This is for more complex designs, not simple one-way ANOVA.</li>
+                                    <li><strong>C) Repeated Measures:</strong> This is for within-subjects designs, not between-groups.</li>
+                                    <li><strong>D) Nonparametric:</strong> This is for non-parametric tests, not ANOVA.</li>
+                                </ul>
+                                <p class="answer-text"><em>💭 Need to review?</em> See Part 8: SPSS Practical Guide for the correct menu paths.</p>
+                            </div>
+                        </div>
+                        <button class="reveal-answer-btn" onclick="revealAnswer('tab4-q8')">Show Answer</button>
+                    </div>
+                </div>
+
+                <div id="tab-5" class="tab-panel">
+                    <h2>Part 9: Decision Framework and Reporting</h2>
+
+                    <h3>Making Statistical Decisions</h3>
+
+                    <p><strong>Step 1: Check Assumptions</strong></p>
+
+                    <ul>
+                        <li>Normality: Visual inspection, tests if needed</li>
+                        <li>Homogeneity of variances: Levene's test</li>
+                        <li>Independence: Review study design</li>
+                        <li>Random selection: Document sampling method</li>
+                    </ul>
+
+                    <p><strong>Step 2: Run the Appropriate ANOVA</strong></p>
+
+                    <ul>
+                        <li>Between-groups: Different participants in each group</li>
+                        <li>Repeated-measures: Same participants in all conditions</li>
+                    </ul>
+
+                    <p><strong>Step 3: Interpret the F-Test</strong></p>
+
+                    <ul>
+                        <li><strong>p ≤ .05:</strong> Reject H₀, significant differences exist</li>
+                        <li><strong>p > .05:</strong> Fail to reject H₀, no significant differences</li>
+                    </ul>
+
+                    <p><strong>Step 4: Follow Up if Significant</strong></p>
+
+                    <ul>
+                        <li>Run post-hoc tests (Tukey, Bonferroni, etc.)</li>
+                        <li>Calculate effect size (eta squared)</li>
+                        <li>Interpret practical significance</li>
+                    </ul>
+
+                    <p><strong>Step 5: Report Results</strong></p>
+
+                    <ul>
+                        <li>Use proper APA format</li>
+                        <li>Include all necessary statistics</li>
+                        <li>Discuss practical implications</li>
+                    </ul>
+
+                    <h3>APA Format for ANOVA Results</h3>
+
+                    <p><strong>Between-Groups ANOVA:</strong><br>
+                    "A one-way between-groups ANOVA was conducted to compare the effectiveness of three teaching methods on student test scores. There was a statistically significant difference among the groups, F(2, 57) = 3.45, p = .038, η² = .11. Post-hoc comparisons using Tukey's HSD test indicated that the hands-on method (M = 85.2, SD = 8.1) was significantly more effective than the lecture method (M = 75.0, SD = 7.3), p = .015. The discussion method (M = 80.1, SD = 6.8) did not differ significantly from either other method."</p>
+
+                    <p><strong>Repeated-Measures ANOVA:</strong><br>
+                    "A one-way repeated-measures ANOVA was conducted to compare test scores across three time points. There was a statistically significant difference among the time points, F(2, 20) = 8.43, p = .001, η² = .46. Post-hoc comparisons using Bonferroni correction indicated that scores at Time 3 (M = 85.2, SD = 8.1) were significantly higher than scores at Time 1 (M = 75.0, SD = 7.3), p = .001, and Time 2 (M = 80.1, SD = 6.8), p = .015."</p>
+
+                    <h3>Quick Reference Card: ANOVA at a Glance</h3>
+
+                    <div class="visual-diagram">
+                        <h4>📋 ANOVA Decision Tree</h4>
+                        <p><strong>START:</strong> Do you have 3+ groups to compare?</p>
+                        <ul>
+                            <li><strong>NO</strong> → Use t-test (see Module 3)</li>
+                            <li><strong>YES</strong> → Continue</li>
+                        </ul>
+                        <p><strong>Are the same participants in all conditions?</strong></p>
+                        <ul>
+                            <li><strong>YES</strong> → ONE-WAY REPEATED-MEASURES ANOVA
+                                <ul>
+                                    <li>Controls individual differences</li>
+                                    <li>More statistical power</li>
+                                    <li>Check Mauchly's test for sphericity</li>
+                                    <li>Use Greenhouse-Geisser if violated</li>
+                                    <li>SPSS: Analyze → General Linear Model → Repeated Measures</li>
+                                </ul>
+                            </li>
+                            <li><strong>NO</strong> → ONE-WAY BETWEEN-GROUPS ANOVA
+                                <ul>
+                                    <li>Different participants per group</li>
+                                    <li>More participants needed</li>
+                                    <li>Check Levene's test for equal variances</li>
+                                    <li>Use Welch's ANOVA if violated</li>
+                                    <li>SPSS: Analyze → Compare Means → One-Way ANOVA</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <h3>Degrees of Freedom Quick Reference</h3>
+
+                    <table>
+                        <tr>
+                            <th>Design Type</th>
+                            <th>df_between</th>
+                            <th>df_within</th>
+                            <th>df_total</th>
+                        </tr>
+                        <tr>
+                            <td><strong>Between-Groups</strong></td>
+                            <td>k - 1</td>
+                            <td>N - k</td>
+                            <td>N - 1</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Repeated-Measures</strong></td>
+                            <td>k - 1</td>
+                            <td>(k-1)(N-1)</td>
+                            <td>(N×k) - 1</td>
+                        </tr>
+                    </table>
+
+                    <p><strong>Where:</strong> k = number of groups/conditions, N = total number of participants</p>
+
+                    <h3>Effect Size Interpretation (Eta Squared)</h3>
+
+                    <p><strong>Formula:</strong> η² = SS_between / SS_total</p>
+
+                    <table>
+                        <tr>
+                            <th>η² Value</th>
+                            <th>Effect Size</th>
+                            <th>Interpretation</th>
+                        </tr>
+                        <tr>
+                            <td>.01</td>
+                            <td>Small</td>
+                            <td>IV explains 1% of variance</td>
+                        </tr>
+                        <tr>
+                            <td>.06</td>
+                            <td>Medium</td>
+                            <td>IV explains 6% of variance</td>
+                        </tr>
+                        <tr>
+                            <td>.14</td>
+                            <td>Large</td>
+                            <td>IV explains 14% of variance</td>
+                        </tr>
+                    </table>
+
+                    <h3>Common Mistakes to Avoid</h3>
+
+                    <ul>
+                        <li>❌ <strong>Running post-hoc tests when F is not significant</strong>
+                            <ul><li>Post-hoc tests are only valid after rejecting H₀</li></ul>
+                        </li>
+                        <li>❌ <strong>Ignoring assumption violations</strong>
+                            <ul><li>Always check Levene's test (between-groups) or Mauchly's test (repeated-measures)</li></ul>
+                        </li>
+                        <li>❌ <strong>Running multiple t-tests instead of ANOVA</strong>
+                            <ul><li>Inflates Type I error rate dramatically</li></ul>
+                        </li>
+                        <li>❌ <strong>Forgetting to report effect size</strong>
+                            <ul><li>Always report η² along with F-statistic</li></ul>
+                        </li>
+                        <li>❌ <strong>Wrong ANOVA type</strong>
+                            <ul><li>Same participants = Repeated-measures</li></ul>
+                        </li>
+                    </ul>
+
+                    <h3>Key Decision Points</h3>
+
+                    <ol>
+                        <li><strong>Check Assumptions First</strong>
+                            <ul><li>Visual inspection + statistical tests</li></ul>
+                        </li>
+                        <li><strong>Run Appropriate ANOVA</strong>
+                            <ul><li>Match design to research question</li></ul>
+                        </li>
+                        <li><strong>Interpret F-Test</strong>
+                            <ul><li>p ≤ .05 → Reject H₀ → Run post-hoc tests</li></ul>
+                        </li>
+                        <li><strong>Calculate Effect Size</strong>
+                            <ul><li>Always report η²</li></ul>
+                        </li>
+                        <li><strong>Report Results</strong>
+                            <ul><li>Use APA format templates</li></ul>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+
+        <h2>Glossary</h2>
+
+        <div class="glossary-section">
+            <div class="glossary-item">
+                <h4>ANOVA</h4>
+                <p>Analysis of Variance - statistical test for comparing 3+ means</p>
+            </div>
+
+            <div class="glossary-item">
+                <h4>Between-Groups Design</h4>
+                <p>Different participants in each condition</p>
+            </div>
+
+            <div class="glossary-item">
+                <h4>Eta Squared (η²)</h4>
+                <p>Effect size measure for ANOVA showing proportion of variance explained</p>
+            </div>
+
+            <div class="glossary-item">
+                <h4>F-Ratio</h4>
+                <p>Test statistic for ANOVA (between-groups variance / within-groups variance)</p>
+            </div>
+
+            <div class="glossary-item">
+                <h4>Grand Mean</h4>
+                <p>The mean of all scores in the study, regardless of which group they belong to</p>
+            </div>
+
+            <div class="glossary-item">
+                <h4>Homogeneity of Variances</h4>
+                <p>Assumption that all groups have equal variances, tested with Levene's test</p>
+            </div>
+
+            <div class="glossary-item">
+                <h4>Levene's Test</h4>
+                <p>Test for homogeneity of variances in between-groups ANOVA</p>
+            </div>
+
+            <div class="glossary-item">
+                <h4>Mauchly's Test</h4>
+                <p>Test for sphericity assumption in repeated-measures ANOVA</p>
+            </div>
+
+            <div class="glossary-item">
+                <h4>Multiple Comparisons Problem</h4>
+                <p>Inflation of Type I error when running multiple t-tests on the same data</p>
+            </div>
+
+            <div class="glossary-item">
+                <h4>Omnibus Test</h4>
+                <p>Test that determines if differences exist somewhere among groups (ANOVA F-test)</p>
+            </div>
+
+            <div class="glossary-item">
+                <h4>Post-Hoc Test</h4>
+                <p>Follow-up test to identify which specific groups differ from each other</p>
+            </div>
+
+            <div class="glossary-item">
+                <h4>Sphericity</h4>
+                <p>Assumption for repeated-measures ANOVA about equality of variance of differences</p>
+            </div>
+
+            <div class="glossary-item">
+                <h4>Within-Groups Design</h4>
+                <p>Same participants in all conditions</p>
+            </div>
+        </div>
+
+        <!-- Bottom Navigation -->
+        <div class="tab-navigation bottom-nav">
+            <button class="tab-button" onclick="showTab(1)">
+                <input
+                    type="checkbox"
+                    id="progress-1-bottom"
+                    class="tab-checkbox"
+                    onchange="toggleTabComplete(1)"
+                />
+                <span class="tab-label">Introduction & F-Ratio Logic</span>
+            </button>
+            <button class="tab-button" onclick="showTab(2)">
+                <input
+                    type="checkbox"
+                    id="progress-2-bottom"
+                    class="tab-checkbox"
+                    onchange="toggleTabComplete(2)"
+                />
+                <span class="tab-label">Between-Groups ANOVA & Post-Hoc Tests</span>
+            </button>
+            <button class="tab-button" onclick="showTab(3)">
+                <input
+                    type="checkbox"
+                    id="progress-3-bottom"
+                    class="tab-checkbox"
+                    onchange="toggleTabComplete(3)"
+                />
+                <span class="tab-label">Repeated-Measures ANOVA & Effect Size</span>
+            </button>
+            <button class="tab-button" onclick="showTab(4)">
+                <input
+                    type="checkbox"
+                    id="progress-4-bottom"
+                    class="tab-checkbox"
+                    onchange="toggleTabComplete(4)"
+                />
+                <span class="tab-label">Assumptions & SPSS Guide</span>
+            </button>
+            <button class="tab-button" onclick="showTab(5)">
+                <input
+                    type="checkbox"
+                    id="progress-5-bottom"
+                    class="tab-checkbox"
+                    onchange="toggleTabComplete(5)"
+                />
+                <span class="tab-label">Reporting & Quick Reference</span>
+            </button>
+        </div>
+    </main>
+
+    <script>
+        // Progress tracking storage key
+        const PROGRESS_KEY = "m4-lecture-progress";
+        const KC_STORAGE_KEY = "m4-knowledge-checks";
+
+        // Load progress from localStorage
+        function loadProgress() {
+            const savedProgress = localStorage.getItem(PROGRESS_KEY);
+            if (savedProgress) {
+                const progress = JSON.parse(savedProgress);
+                // Update all checkboxes based on saved progress
+                for (let i = 1; i <= 5; i++) {
+                    const isComplete = progress[i] || false;
+                    const checkbox = document.getElementById(`progress-${i}`);
+                    const bottomCheckbox = document.getElementById(`progress-${i}-bottom`);
+                    if (checkbox) checkbox.checked = isComplete;
+                    if (bottomCheckbox) bottomCheckbox.checked = isComplete;
+                    updateTabVisualState(i, isComplete);
+                }
+            }
+        }
+
+        // Save progress to localStorage
+        function saveProgress(tabNumber, isComplete) {
+            const savedProgress = localStorage.getItem(PROGRESS_KEY);
+            const progress = savedProgress ? JSON.parse(savedProgress) : {};
+            progress[tabNumber] = isComplete;
+            localStorage.setItem(PROGRESS_KEY, JSON.stringify(progress));
+        }
+
+        // Toggle tab completion
+        function toggleTabComplete(tabNumber) {
+            // Determine which checkbox was clicked (top or bottom)
+            const clickedCheckbox = event.target;
+            const isComplete = clickedCheckbox.checked;
+
+            // Update both top and bottom checkboxes to stay in sync
+            const topCheckbox = document.getElementById(`progress-${tabNumber}`);
+            const bottomCheckbox = document.getElementById(
+                `progress-${tabNumber}-bottom`
+            );
+            if (topCheckbox) topCheckbox.checked = isComplete;
+            if (bottomCheckbox) bottomCheckbox.checked = isComplete;
+
+            // Update visual state
+            updateTabVisualState(tabNumber, isComplete);
+
+            // Save to localStorage
+            saveProgress(tabNumber, isComplete);
+        }
+
+        // Update tab visual state
+        function updateTabVisualState(tabNumber, isComplete) {
+            const buttons = document.querySelectorAll(
+                `.tab-button:nth-child(${tabNumber})`
+            );
+            buttons.forEach((button) => {
+                if (isComplete) {
+                    button.classList.add("completed");
+                } else {
+                    button.classList.remove("completed");
+                }
+            });
+        }
+
+        // Show tab function
+        function showTab(tabNumber) {
+            // Hide all panels
+            const panels = document.querySelectorAll(".tab-panel");
+            panels.forEach((panel) => panel.classList.remove("active"));
+
+            // Remove active class from all buttons
+            const buttons = document.querySelectorAll(".tab-button");
+            buttons.forEach((button) => button.classList.remove("active"));
+
+            // Show selected panel
+            const selectedPanel = document.getElementById(`tab-${tabNumber}`);
+            if (selectedPanel) {
+                selectedPanel.classList.add("active");
+            }
+
+            // Add active class to clicked button
+            const clickedButton = event.target.closest(".tab-button");
+            if (clickedButton) {
+                clickedButton.classList.add("active");
+            }
+
+            // Scroll to top of the tab navigation for better UX
+            const tabContainer = document.querySelector(".lecture-tabs");
+            if (tabContainer) {
+                tabContainer.scrollIntoView({ behavior: "smooth", block: "start" });
+            }
+        }
+
+        // Knowledge check functionality with toggle
+        function revealAnswer(questionId) {
+            const questionItem = document.querySelector(
+                `[data-question-id="${questionId}"]`
+            );
+            const answerDiv = questionItem.querySelector(".answer-reveal");
+            const button = questionItem.querySelector(".reveal-answer-btn");
+
+            if (answerDiv && button) {
+                if (answerDiv.style.display === "none" || answerDiv.style.display === "") {
+                    // Show the answer
+                    answerDiv.style.display = "block";
+                    button.textContent = "Hide Answer";
+                    button.classList.add("answered");
+                    questionItem.classList.add("answered");
+
+                    // Save to storage
+                    markQuestionAsAnswered(questionId, true);
+                } else {
+                    // Hide the answer
+                    answerDiv.style.display = "none";
+                    button.textContent = "Show Answer";
+                    button.classList.remove("answered");
+                    questionItem.classList.remove("answered");
+                }
+            }
+        }
+
+        // Knowledge check storage functions
+        function saveAnsweredQuestion(questionId) {
+            const savedProgress = localStorage.getItem(KC_STORAGE_KEY);
+            const answeredQuestions = savedProgress ? JSON.parse(savedProgress) : [];
+
+            if (!answeredQuestions.includes(questionId)) {
+                answeredQuestions.push(questionId);
+                localStorage.setItem(KC_STORAGE_KEY, JSON.stringify(answeredQuestions));
+            }
+        }
+
+        function markQuestionAsAnswered(questionId, saveToStorage) {
+            const questionItem = document.querySelector(
+                `[data-question-id="${questionId}"]`
+            );
+            if (!questionItem) return;
+
+            // Save to storage if requested
+            if (saveToStorage) {
+                saveAnsweredQuestion(questionId);
+            }
+        }
+
+        function loadKnowledgeCheckProgress() {
+            const savedProgress = localStorage.getItem(KC_STORAGE_KEY);
+            if (savedProgress) {
+                const answeredQuestions = JSON.parse(savedProgress);
+                answeredQuestions.forEach((questionId) => {
+                    markQuestionAsAnswered(questionId, false);
+                });
+            }
+        }
+
+        // Document ready function
+        document.addEventListener("DOMContentLoaded", function () {
+            loadProgress();
+            loadKnowledgeCheckProgress();
+        });
+    </script>
+</body>
+</html>
