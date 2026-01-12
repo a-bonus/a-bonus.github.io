@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 1: Foundations of Statistics & Research Design</title>
+    <style>
+        /* Base Styling */
+        :root {
+            --primary: #007bff;
+            --secondary: #6c757d;
+            --success: #28a745;
+            --warning: #ffc107;
+            --light-bg: #f8f9fa;
+            --border: #dee2e6;
+            --text: #333;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fafafa;
+        }
+
+        h1, h2, h3 { color: #2c3e50; }
+        
+        /* Header */
+        header {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            border-left: 5px solid var(--primary);
+        }
+
+        /* Tabs */
+        .lecture-tabs {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .tab-navigation {
+            display: flex;
+            background-color: #e9ecef;
+            overflow-x: auto;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .tab-button {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            background: none;
+            cursor: pointer;
+            text-align: left;
+            border-bottom: 3px solid transparent;
+            min-width: 160px;
+            transition: all 0.2s;
+            font-weight: 600;
+            color: #555;
+        }
+
+        .tab-button:hover { background-color: #dde2e6; }
+        .tab-button.active { 
+            background-color: #fff; 
+            border-bottom-color: var(--primary); 
+            color: var(--primary);
+        }
+
+        /* Content */
+        .tab-content { padding: 30px; }
+        .tab-panel { display: none; animation: fadeIn 0.4s; }
+        .tab-panel.active { display: block; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Interactive Components */
+        .scenario-box {
+            background-color: #e3f2fd;
+            border: 1px solid #bbdefb;
+            padding: 20px;
+            border-radius: 6px;
+            margin: 20px 0;
+        }
+
+        .warning-box {
+            background-color: #fff3cd;
+            border: 1px solid #ffeeba;
+            border-left: 4px solid var(--warning);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+
+        .knowledge-check {
+            background-color: #f8f9fa;
+            border: 1px solid var(--border);
+            padding: 20px;
+            border-radius: 6px;
+            margin-top: 20px;
+        }
+
+        .reveal-btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        
+        .answer-reveal {
+            display: none;
+            margin-top: 15px;
+            padding: 15px;
+            background: white;
+            border-left: 3px solid var(--success);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        /* Excel Styles */
+        .excel-block {
+            background-color: #1d6f42;
+            color: white;
+            padding: 15px;
+            border-radius: 6px;
+            font-family: 'Consolas', monospace;
+            margin: 10px 0;
+        }
+
+        /* Table Styles for APA Demo */
+        .apa-demo-table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 10px 0;
+            font-family: 'Times New Roman', serif;
+        }
+        .apa-demo-table th {
+            border-top: 1px solid black;
+            border-bottom: 1px solid black;
+            padding: 5px;
+            text-align: left;
+        }
+        .apa-demo-table td {
+            padding: 5px;
+        }
+        .apa-demo-table tr:last-child td {
+            border-bottom: 1px solid black;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Module 1: Statistics & Research Design</h1>
+        <p><strong>Goal:</strong> Master variable identification, IV/DV logic, and Excel basics (Sorting, Histograms, and Central Tendency).</p>
+        <p><em>"Statistics is not just math; it is the logic of decision making."</em></p>
+    </header>
+
+    <div class="lecture-tabs">
+        <div class="tab-navigation">
+            <button class="tab-button active" onclick="showTab(1)">1. Intro & Logic</button>
+            <button class="tab-button" onclick="showTab(2)">2. Variables & Scales</button>
+            <button class="tab-button" onclick="showTab(3)">3. Central Tendency</button>
+            <button class="tab-button" onclick="showTab(4)">4. Visuals & APA</button>
+            <button class="tab-button" onclick="showTab(5)">5. Excel Workshop</button>
+        </div>
+
+        <div class="tab-content">
+            
+            <!-- TAB 1: INTRO & LOGIC -->
+            <div id="tab-1" class="tab-panel active">
+                <h2>The Logic of Variables</h2>
+                <p>Before calculating anything, you must identify what you are studying. In research, we look for relationships between variables.</p>
+
+                <h3>Independent (IV) vs. Dependent (DV)</h3>
+                <p>Use the sentence: <strong>"Does [Variable A] depend on [Variable B]?"</strong></p>
+                <ul>
+                    <li>The variable that "depends" is the <strong>Dependent Variable (DV)</strong> (The Outcome).</li>
+                    <li>The variable that influences the other is the <strong>Independent Variable (IV)</strong> (The Grouper/Predictor).</li>
+                </ul>
+
+                <div class="scenario-box">
+                    <h4>Practice Scenario: Coffee & Sleep</h4>
+                    <p><strong>Research Question:</strong> Does drinking coffee affect how many hours a student sleeps?</p>
+                    <p><em>Ask yourself: Does coffee consumption depend on sleep? Or does sleep depend on coffee consumption?</em></p>
+                    <button class="reveal-btn" onclick="reveal('ans-logic')">Reveal Analysis</button>
+                    <div id="ans-logic" class="answer-reveal">
+                        <p><strong>DV (Outcome):</strong> Hours of Sleep. (This is what we measure to see the effect).</p>
+                        <p><strong>IV (Predictor):</strong> Coffee Consumption.</p>
+                        <p><strong>Variables to analyze:</strong> Coffee Consumption (IV) and Hours of Sleep (DV).</p>
+                    </div>
+                </div>
+
+                <h3>Demographic Splits</h3>
+                <p>Often, a researcher wants to compare groups (e.g., "Do Seniors sleep more than Freshmen?").</p>
+                <ul>
+                    <li><strong>Variable 1:</strong> Class Standing (Freshman, Senior). This is the grouping variable.</li>
+                    <li><strong>Variable 2:</strong> Sleep Hours. This is the measured variable.</li>
+                    <li><strong>Note:</strong> "Freshman" is not a variable. "Freshman" is a <em>level</em> or <em>category</em> of the variable "Class Standing."</li>
+                </ul>
+            </div>
+
+            <!-- TAB 2: VARIABLES & SCALES -->
+            <div id="tab-2" class="tab-panel">
+                <h2>Naming & Measuring Variables</h2>
+                
+                <h3>1. Naming Convention</h3>
+                <p>Name the <strong>category</strong>, not the specific answer.</p>
+                <ul>
+                    <li>❌ Variable: "Yes"</li>
+                    <li>✅ Variable: "Response" (Levels: Yes, No)</li>
+                    <li>❌ Variable: "Male"</li>
+                    <li>✅ Variable: "Gender" (Levels: Male, Female, Non-binary)</li>
+                </ul>
+
+                <h3>2. Scales of Measurement</h3>
+                <p>Identifying the scale tells you which Excel formula to use.</p>
+
+                <table style="width:100%; border-collapse: collapse; margin-top: 15px;">
+                    <tr style="background-color: #eee;">
+                        <th style="padding:10px; border:1px solid #ccc;">Type</th>
+                        <th style="padding:10px; border:1px solid #ccc;">Key Feature</th>
+                        <th style="padding:10px; border:1px solid #ccc;">Examples</th>
+                    </tr>
+                    <tr>
+                        <td style="padding:10px; border:1px solid #ccc;"><strong>Nominal</strong></td>
+                        <td style="padding:10px; border:1px solid #ccc;">Names/Labels. No math possible.</td>
+                        <td style="padding:10px; border:1px solid #ccc;">Computer Type (Mac/PC), Time Zone, Employment Status.</td>
+                    </tr>
+                    <tr>
+                        <td style="padding:10px; border:1px solid #ccc;"><strong>Ordinal</strong></td>
+                        <td style="padding:10px; border:1px solid #ccc;">Ranked Order. Distance unknown.</td>
+                        <td style="padding:10px; border:1px solid #ccc;">Class Standing (Freshman < Sophomore), Single Likert item (1-5).</td>
+                    </tr>
+                    <tr>
+                        <td style="padding:10px; border:1px solid #ccc;"><strong>Scale / Equal-Interval</strong></td>
+                        <td style="padding:10px; border:1px solid #ccc;">Real numbers. Math works.</td>
+                        <td style="padding:10px; border:1px solid #ccc;">Age, Time (minutes), Height.</td>
+                    </tr>
+                </table>
+
+                <div class="warning-box">
+                    <strong>⚠️ Important Exception: Composite Scores</strong><br>
+                    If a researcher takes 10 survey questions (Likert scale 1-7) and <strong>averages</strong> them to create a "Total Satisfaction Score," that new score is treated as <strong>Scale/Interval</strong>, not Ordinal.
+                </div>
+            </div>
+
+            <!-- TAB 3: CENTRAL TENDENCY -->
+            <div id="tab-3" class="tab-panel">
+                <h2>Descriptive Statistics</h2>
+                <p>When summarizing data, you need to find the center (Central Tendency) and the spread (Variability).</p>
+
+                <h3>Choosing the Right Measure</h3>
+                <ul>
+                    <li><strong>Mean (Average):</strong> Use for Scale data that is symmetrical (Normal Distribution).
+                        <br><em>Sensitive to outliers!</em></li>
+                    <li><strong>Median (Middle):</strong> Use for Scale data that is <strong>Skewed</strong> (has extreme outliers).
+                        <br><em>Example: Housing prices, Salaries.</em></li>
+                    <li><strong>Mode (Most Frequent):</strong> Use for Nominal/Categorical data.
+                        <br><em>Example: The most common computer type.</em></li>
+                </ul>
+
+                <h3>Calculating Variance & Standard Deviation (Process)</h3>
+                <p>Your assignment may ask you to show the "Calculation Process." Do not just write the answer.</p>
+                
+                <div class="scenario-box">
+                    <h4>Example: Showing Your Work</h4>
+                    <p><strong>Data:</strong> 2, 4, 6</p>
+                    <p><strong>Step 1: Mean (M)</strong> = (2+4+6)/3 = 4</p>
+                    <p><strong>Step 2: Deviations (X - M)</strong><br>
+                    2 - 4 = -2<br>
+                    4 - 4 = 0<br>
+                    6 - 4 = +2</p>
+                    <p><strong>Step 3: Squared Deviations (SS)</strong><br>
+                    -2² = 4<br>
+                    0² = 0<br>
+                    2² = 4<br>
+                    Sum of Squares = 8</p>
+                    <p><strong>Step 4: Variance (SS / N-1)</strong><br>
+                    8 / (3-1) = 4</p>
+                    <p><strong>Step 5: Standard Deviation (√Variance)</strong><br>
+                    √4 = 2</p>
+                </div>
+            </div>
+
+            <!-- TAB 4: VISUALS & APA -->
+            <div id="tab-4" class="tab-panel">
+                <h2>Visuals & APA Formatting</h2>
+                
+                <h3>Graph Selection Guide</h3>
+                <div style="display:flex; gap:20px; margin-bottom: 20px;">
+                    <div style="flex:1; background:#e8f5e9; padding:15px; border-radius:6px;">
+                        <h4>Bar Graph</h4>
+                        <p><strong>Use for:</strong> Nominal/Categorical Data.</p>
+                        <p><strong>Visual:</strong> Bars DO NOT touch.</p>
+                        <p><strong>Why:</strong> Categories are distinct (Mac vs PC).</p>
+                    </div>
+                    <div style="flex:1; background:#fff3e0; padding:15px; border-radius:6px;">
+                        <h4>Histogram</h4>
+                        <p><strong>Use for:</strong> Scale/Continuous Data.</p>
+                        <p><strong>Visual:</strong> Bars TOUCH.</p>
+                        <p><strong>Why:</strong> Data flows (Age 20 is next to 21).</p>
+                    </div>
+                </div>
+
+                <h3>APA Table Rules (The "Clean Look")</h3>
+                <p>APA tables are minimalist. Follow these strict rules to avoid point deductions:</p>
+                <div class="apa-demo-table">
+                    <table>
+                        <tr>
+                            <th colspan="3" style="border:none; text-align:center; font-style:italic;">Table 1<br>Descriptive Title Goes Here in Italics</th>
+                        </tr>
+                        <tr>
+                            <th>Category</th>
+                            <th>Frequency</th>
+                            <th>Percentage</th>
+                        </tr>
+                        <tr>
+                            <td>Category A</td>
+                            <td>10</td>
+                            <td>50%</td>
+                        </tr>
+                        <tr>
+                            <td>Category B</td>
+                            <td>10</td>
+                            <td>50%</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid black;">
+                            <td><strong>Total</strong></td>
+                            <td><strong>20</strong></td>
+                            <td><strong>100%</strong></td>
+                        </tr>
+                    </table>
+                </div>
+                <ul>
+                    <li>✅ <strong>Horizontal Lines:</strong> Only at the top, under headers, and at the very bottom.</li>
+                    <li>❌ <strong>Vertical Lines:</strong> NEVER use vertical lines to separate columns.</li>
+                    <li>✅ <strong>Title:</strong> Above the table, Italicized.</li>
+                </ul>
+
+                <h3>APA Figure Rules</h3>
+                <ul>
+                    <li><strong>Label:</strong> "Figure 1" goes <strong>BELOW</strong> the graph.</li>
+                    <li><strong>Caption:</strong> A descriptive sentence goes below the label.</li>
+                    <li><strong>Axes:</strong> Both X and Y axes must be labeled clearly (e.g., "Age Groups" not just "1, 2, 3").</li>
+                </ul>
+            </div>
+
+            <!-- TAB 5: EXCEL WORKSHOP -->
+            <div id="tab-5" class="tab-panel">
+                <h2>Excel Workshop</h2>
+                
+                <div class="warning-box">
+                    <strong>Assignment Tip:</strong> You may need to calculate stats for only <em>one specific group</em> (e.g., "Unemployed Students"). You cannot run the formula on the whole column! You must <strong>Sort</strong> first.
+                </div>
+
+                <h3>1. How to Sort & Filter Data</h3>
+                <ol>
+                    <li>Highlight all your data (including headers).</li>
+                    <li>Go to the <strong>Data</strong> tab > Click <strong>Sort</strong>.</li>
+                    <li>Sort by the category you need (e.g., "Employment Status").</li>
+                    <li>Now, look at the rows. All "Unemployed" students will be grouped together (e.g., Rows 2 through 15).</li>
+                    <li>Run your formulas <strong>only on those specific cells</strong> (e.g., <code>=AVERAGE(B2:B15)</code>).</li>
+                </ol>
+
+                <h3>2. Formulas Cheat Sheet</h3>
+                <div class="excel-block">
+                    Mean: =AVERAGE(range)<br>
+                    Median: =MEDIAN(range)<br>
+                    Mode: =MODE.SNGL(range)<br>
+                    Variance (Sample): =VAR.S(range)<br>
+                    Std Dev (Sample): =STDEV.S(range)<br>
+                    Range: =MAX(range) - MIN(range)
+                </div>
+
+                <h3>3. Creating a Grouped Frequency Table (Histograms)</h3>
+                <p>If you have a wide range of data (like Age 18-60), you cannot list every single age. You must create <strong>Bins</strong> (Groups).</p>
+                <ol>
+                    <li>Decide your bins (e.g., 20-29, 30-39).</li>
+                    <li>In Excel, verify your count.</li>
+                    <li><strong>Rule of Thumb:</strong> Aim for 5 to 10 bins. Too few = no detail. Too many = messy.</li>
+                    <li>Ensure your histogram uses these bins on the X-axis.</li>
+                </ol>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        function showTab(tabIndex) {
+            document.querySelectorAll('.tab-panel').forEach(panel => {
+                panel.classList.remove('active');
+            });
+            document.getElementById('tab-' + tabIndex).classList.add('active');
+            
+            document.querySelectorAll('.tab-button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`.tab-button:nth-child(${tabIndex})`).classList.add('active');
+        }
+
+        function reveal(id) {
+            const el = document.getElementById(id);
+            if(el.style.display === 'block') {
+                el.style.display = 'none';
+            } else {
+                el.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>
