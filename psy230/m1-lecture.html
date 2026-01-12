@@ -73,6 +73,36 @@
             border-bottom-color: var(--primary); 
             color: var(--primary);
         }
+        .tab-button.completed {
+            border-bottom-color: var(--success);
+            position: relative;
+        }
+        .tab-button.completed::after {
+            content: "✓";
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background-color: var(--success);
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .tab-checkbox {
+            margin-right: 8px;
+            cursor: pointer;
+            transform: scale(1.2);
+        }
+        .bottom-nav {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid var(--border);
+        }
 
         /* Content */
         .tab-content { padding: 30px; }
@@ -205,12 +235,30 @@
 
     <div class="lecture-tabs">
         <div class="tab-navigation">
-            <button class="tab-button active" onclick="showTab(1)">1. Intro & Logic</button>
-            <button class="tab-button" onclick="showTab(2)">2. Variables & Scales</button>
-            <button class="tab-button" onclick="showTab(3)">3. Distributions</button>
-            <button class="tab-button" onclick="showTab(4)">4. Central Tendency</button>
-            <button class="tab-button" onclick="showTab(5)">5. Visuals & APA</button>
-            <button class="tab-button" onclick="showTab(6)">6. Excel Workshop</button>
+            <button class="tab-button active" onclick="showTab(1)">
+                <input type="checkbox" id="progress-1" class="tab-checkbox" onchange="toggleTabComplete(1)">
+                1. Intro & Logic
+            </button>
+            <button class="tab-button" onclick="showTab(2)">
+                <input type="checkbox" id="progress-2" class="tab-checkbox" onchange="toggleTabComplete(2)">
+                2. Variables & Scales
+            </button>
+            <button class="tab-button" onclick="showTab(3)">
+                <input type="checkbox" id="progress-3" class="tab-checkbox" onchange="toggleTabComplete(3)">
+                3. Distributions
+            </button>
+            <button class="tab-button" onclick="showTab(4)">
+                <input type="checkbox" id="progress-4" class="tab-checkbox" onchange="toggleTabComplete(4)">
+                4. Central Tendency
+            </button>
+            <button class="tab-button" onclick="showTab(5)">
+                <input type="checkbox" id="progress-5" class="tab-checkbox" onchange="toggleTabComplete(5)">
+                5. Visuals & APA
+            </button>
+            <button class="tab-button" onclick="showTab(6)">
+                <input type="checkbox" id="progress-6" class="tab-checkbox" onchange="toggleTabComplete(6)">
+                6. Excel Workshop
+            </button>
         </div>
 
         <div class="tab-content">
@@ -866,6 +914,34 @@
         </div>
     </div>
 
+    <!-- Bottom Navigation -->
+    <div class="tab-navigation bottom-nav">
+        <button class="tab-button" onclick="showTab(1)">
+            <input type="checkbox" id="progress-1-bottom" class="tab-checkbox" onchange="toggleTabComplete(1)">
+            1. Intro & Logic
+        </button>
+        <button class="tab-button" onclick="showTab(2)">
+            <input type="checkbox" id="progress-2-bottom" class="tab-checkbox" onchange="toggleTabComplete(2)">
+            2. Variables & Scales
+        </button>
+        <button class="tab-button" onclick="showTab(3)">
+            <input type="checkbox" id="progress-3-bottom" class="tab-checkbox" onchange="toggleTabComplete(3)">
+            3. Distributions
+        </button>
+        <button class="tab-button" onclick="showTab(4)">
+            <input type="checkbox" id="progress-4-bottom" class="tab-checkbox" onchange="toggleTabComplete(4)">
+            4. Central Tendency
+        </button>
+        <button class="tab-button" onclick="showTab(5)">
+            <input type="checkbox" id="progress-5-bottom" class="tab-checkbox" onchange="toggleTabComplete(5)">
+            5. Visuals & APA
+        </button>
+        <button class="tab-button" onclick="showTab(6)">
+            <input type="checkbox" id="progress-6-bottom" class="tab-checkbox" onchange="toggleTabComplete(6)">
+            6. Excel Workshop
+        </button>
+    </div>
+
     <!-- Learning Objectives Checklist -->
     <div style="background: white; padding: 25px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); margin-top: 20px; border-left: 5px solid #28a745;">
         <h2 style="margin-top: 0; color: #2c3e50;">Module 1 Learning Objectives Checklist</h2>
@@ -907,16 +983,86 @@
     </div>
 
     <script>
+        // Progress tracking storage key
+        const PROGRESS_KEY = 'psy230-m1-lecture-progress';
+
+        // Load saved progress on page load
+        function loadProgress() {
+            const savedProgress = localStorage.getItem(PROGRESS_KEY);
+            if (savedProgress) {
+                const progress = JSON.parse(savedProgress);
+                Object.keys(progress).forEach(tabNumber => {
+                    const isComplete = progress[tabNumber];
+                    // Update both top and bottom checkboxes
+                    const topCheckbox = document.getElementById(`progress-${tabNumber}`);
+                    const bottomCheckbox = document.getElementById(`progress-${tabNumber}-bottom`);
+                    if (topCheckbox) topCheckbox.checked = isComplete;
+                    if (bottomCheckbox) bottomCheckbox.checked = isComplete;
+                    // Update visual state
+                    updateTabVisualState(parseInt(tabNumber), isComplete);
+                });
+            }
+        }
+
+        // Save progress to localStorage
+        function saveProgress(tabNumber, isComplete) {
+            const savedProgress = localStorage.getItem(PROGRESS_KEY);
+            const progress = savedProgress ? JSON.parse(savedProgress) : {};
+            progress[tabNumber] = isComplete;
+            localStorage.setItem(PROGRESS_KEY, JSON.stringify(progress));
+        }
+
+        // Toggle tab completion
+        function toggleTabComplete(tabNumber) {
+            const clickedCheckbox = event.target;
+            const isComplete = clickedCheckbox.checked;
+            
+            // Update both top and bottom checkboxes to stay in sync
+            const topCheckbox = document.getElementById(`progress-${tabNumber}`);
+            const bottomCheckbox = document.getElementById(`progress-${tabNumber}-bottom`);
+            if (topCheckbox) topCheckbox.checked = isComplete;
+            if (bottomCheckbox) bottomCheckbox.checked = isComplete;
+            
+            // Update visual state
+            updateTabVisualState(tabNumber, isComplete);
+            
+            // Save to localStorage
+            saveProgress(tabNumber, isComplete);
+        }
+
+        // Update visual state of tab buttons when completed
+        function updateTabVisualState(tabNumber, isComplete) {
+            // Find all tab buttons for this tab (top and bottom)
+            const tabButtons = document.querySelectorAll(`button[onclick="showTab(${tabNumber})"]`);
+            tabButtons.forEach(button => {
+                if (isComplete) {
+                    button.classList.add('completed');
+                } else {
+                    button.classList.remove('completed');
+                }
+            });
+        }
+
         function showTab(tabIndex) {
+            // Hide all panels
             document.querySelectorAll('.tab-panel').forEach(panel => {
                 panel.classList.remove('active');
             });
+            // Show target panel
             document.getElementById('tab-' + tabIndex).classList.add('active');
             
+            // Update button states (both top and bottom)
             document.querySelectorAll('.tab-button').forEach(btn => {
                 btn.classList.remove('active');
             });
-            document.querySelector(`.tab-button:nth-child(${tabIndex})`).classList.add('active');
+            // Activate the clicked button
+            event.target.classList.add('active');
+            
+            // Scroll to top of tabs for better UX
+            const tabContainer = document.querySelector('.lecture-tabs');
+            if (tabContainer) {
+                tabContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
         }
 
         function reveal(id) {
@@ -927,6 +1073,11 @@
                 el.style.display = 'block';
             }
         }
+
+        // Load progress when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            loadProgress();
+        });
     </script>
 </body>
 </html>
