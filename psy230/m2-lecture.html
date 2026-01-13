@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 2: Probability, Normal Distribution & Inference</title>
+    <style>
+        /* Base Styling - Consistent with Module 1 */
+        :root {
+            --primary: #5e35b1; /* Purple for this module */
+            --secondary: #6c757d;
+            --success: #28a745;
+            --warning: #ffc107;
+            --danger: #dc3545;
+            --light-bg: #f8f9fa;
+            --border: #dee2e6;
+            --text: #333;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fafafa;
+        }
+
+        h1, h2, h3 { color: #2c3e50; }
+        
+        /* Header */
+        header {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            border-left: 5px solid var(--primary);
+        }
+
+        /* Tabs */
+        .lecture-tabs {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .tab-navigation {
+            display: flex;
+            background-color: #e9ecef;
+            overflow-x: auto;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .tab-button {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            background: none;
+            cursor: pointer;
+            text-align: left;
+            border-bottom: 3px solid transparent;
+            min-width: 160px;
+            transition: all 0.2s;
+            font-weight: 600;
+            color: #555;
+        }
+
+        .tab-button:hover { background-color: #dde2e6; }
+        .tab-button.active { 
+            background-color: #fff; 
+            border-bottom-color: var(--primary); 
+            color: var(--primary);
+        }
+        .tab-button.completed {
+            border-bottom-color: var(--success);
+            position: relative;
+        }
+        .tab-button.completed::after {
+            content: "✓";
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background-color: var(--success);
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .tab-checkbox {
+            margin-right: 8px;
+            cursor: pointer;
+            transform: scale(1.2);
+        }
+        .bottom-nav {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid var(--border);
+        }
+
+        /* Content */
+        .tab-content { padding: 30px; }
+        .tab-panel { display: none; animation: fadeIn 0.4s; }
+        .tab-panel.active { display: block; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Interactive Components */
+        .scenario-box {
+            background-color: #f3e5f5;
+            border: 1px solid #e1bee7;
+            padding: 20px;
+            border-radius: 6px;
+            margin: 20px 0;
+        }
+
+        .warning-box {
+            background-color: #fff3cd;
+            border: 1px solid #ffeeba;
+            border-left: 4px solid var(--warning);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        
+        .tip-box {
+            background-color: #e3f2fd;
+            border: 1px solid #bbdefb;
+            border-left: 4px solid #2196f3;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+
+        .formula-box {
+            background-color: #333;
+            color: #fff;
+            padding: 15px;
+            border-radius: 6px;
+            text-align: center;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1.2em;
+            margin: 20px 0;
+            letter-spacing: 1px;
+        }
+
+        .assignments-box {
+            background-color: #e8f5e9;
+            border: 1px solid #c8e6c9;
+            border-left: 4px solid var(--success);
+            padding: 15px;
+            margin: 20px 0 0 0;
+            border-radius: 4px;
+        }
+
+        .knowledge-check {
+            background-color: #f8f9fa;
+            border: 1px solid var(--border);
+            padding: 20px;
+            border-radius: 6px;
+            margin-top: 20px;
+        }
+
+        .reveal-btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        
+        .answer-reveal {
+            display: none;
+            margin-top: 15px;
+            padding: 15px;
+            background: white;
+            border-left: 3px solid var(--success);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        table.comparison {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        table.comparison th, table.comparison td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        table.comparison th {
+            background-color: #eee;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Module 2: Probability, Normal Distribution & Inference</h1>
+        <p><strong>Goal:</strong> Move from <em>describing</em> data (Module 1) to <em>inferring</em> conclusions. Understand how samples relate to populations, master Z-scores and the normal distribution, and learn how hypothesis testing uses probability to draw conclusions.</p>
+        <p><em>"We cannot study everyone (Population), so we study a few (Sample) and use probability to guess what everyone is like."</em></p>
+
+        <div class="assignments-box">
+            <h3>Module 2 Assignments & Due Items</h3>
+            <ul>
+                <li><strong>Review Materials:</strong> This interactive guide + Textbook Chapters 5 & 6</li>
+                <li><strong>M2 Quiz:</strong> Covers probability, Z-calcs, sampling distribution, and hypothesis logic.</li>
+                <li><strong>M2 Assignment:</strong> Using Excel for probability and Manual Z-score calculations.</li>
+                <li><strong>Key Skills to Master:</strong>
+                    <ul>
+                        <li>Using the Z-table forwards (Score → %) and backwards (% → Score)</li>
+                        <li>Understanding how sample means vary (Standard Error = σ/√n)</li>
+                        <li>Distinguishing Type I and Type II errors</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="lecture-tabs">
+        <div class="tab-navigation">
+            <button class="tab-button active" onclick="showTab(1)">
+                <input type="checkbox" id="progress-1" class="tab-checkbox" onchange="toggleTabComplete(1)">
+                1. Probability & Samples
+            </button>
+            <button class="tab-button" onclick="showTab(2)">
+                <input type="checkbox" id="progress-2" class="tab-checkbox" onchange="toggleTabComplete(2)">
+                2. Normal Dist & Z
+            </button>
+            <button class="tab-button" onclick="showTab(3)">
+                <input type="checkbox" id="progress-3" class="tab-checkbox" onchange="toggleTabComplete(3)">
+                3. Mastering Z-Tables
+            </button>
+            <button class="tab-button" onclick="showTab(4)">
+                <input type="checkbox" id="progress-4" class="tab-checkbox" onchange="toggleTabComplete(4)">
+                4. Sampling Distribution
+            </button>
+            <button class="tab-button" onclick="showTab(5)">
+                <input type="checkbox" id="progress-5" class="tab-checkbox" onchange="toggleTabComplete(5)">
+                5. Hypothesis Testing
+            </button>
+            <button class="tab-button" onclick="showTab(6)">
+                <input type="checkbox" id="progress-6" class="tab-checkbox" onchange="toggleTabComplete(6)">
+                6. Errors & Tails
+            </button>
+            <button class="tab-button" onclick="showTab(7)">
+                <input type="checkbox" id="progress-7" class="tab-checkbox" onchange="toggleTabComplete(7)">
+                7. Assignment Workshop
+            </button>
+        </div>
+
+        <div class="tab-content">
+            
+            <!-- TAB 1: PROBABILITY & SAMPLES -->
+            <div id="tab-1" class="tab-panel active">
+                <h2>From Description to Inference</h2>
+                <p>In Module 1, we learned <strong>descriptive statistics</strong> — how to summarize data we have. Now we move to <strong>inferential statistics</strong> — using sample data to draw conclusions about larger populations we can't fully measure.</p>
+
+                <div class="tip-box">
+                    <strong>The Core Problem of Research:</strong> We want to know something about a large group (population), but we can only study a small group (sample). Inferential statistics uses probability to bridge this gap — telling us how confident we can be in our conclusions.
+                </div>
+
+                <h3>Sample vs. Population</h3>
+                <p>This distinction is critical for notation, formulas, and understanding inference.</p>
+                <table class="comparison">
+                    <tr>
+                        <th>Concept</th>
+                        <th>Sample (The group we have)</th>
+                        <th>Population (The group we want to know about)</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Definition</strong></td>
+                        <td>A subset of the population (e.g., 200 students surveyed).</td>
+                        <td>The entire group of interest (e.g., All college students in the US).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Mean Symbol</strong></td>
+                        <td><strong>M</strong> (or x̄)</td>
+                        <td><strong>μ</strong> (Mu)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Std Dev Symbol</strong></td>
+                        <td><strong>SD</strong> (or s)</td>
+                        <td><strong>σ</strong> (Sigma)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>What we do with it</strong></td>
+                        <td>Calculate statistics to <em>estimate</em> population parameters.</td>
+                        <td>The "Truth" we want to know (usually unknown).</td>
+                    </tr>
+                </table>
+
+                <h3>The Sampling Process</h3>
+                <p>For our sample to tell us something useful about the population, we ideally need <strong>random sampling</strong>. But in practice, researchers use different sampling methods.</p>
+
+                <h4>Types of Samples</h4>
+                <table class="comparison">
+                    <tr>
+                        <th>Sample Type</th>
+                        <th>Description</th>
+                        <th>Example</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Random Sample</strong></td>
+                        <td>Every member of the population has an equal chance of being selected. The gold standard for generalizability.</td>
+                        <td>Using a random number generator to select students from a complete list of all university students.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Convenience Sample</strong></td>
+                        <td>Participants selected because they are easy to access. Most common in research.</td>
+                        <td>A professor surveys students in their own class.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Volunteer Sample</strong></td>
+                        <td>Participants self-select to participate. May introduce bias (volunteers differ from non-volunteers).</td>
+                        <td>People who post reviews on RateMyProfessor.com or respond to online surveys.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Cluster Sample</strong></td>
+                        <td>Population divided into groups (clusters), then entire clusters are randomly selected.</td>
+                        <td>Randomly selecting 10 schools, then surveying all students in those schools.</td>
+                    </tr>
+                </table>
+
+                <div class="warning-box">
+                    <strong>Why are true random samples rarely used?</strong> Researchers rarely have access to the entire population. You can't randomly sample "all college students in the US" if you don't have a list of every single one. This is why convenience and volunteer samples are more common — but they limit how well results generalize.
+                </div>
+
+                <div class="scenario-box">
+                    <h4>Random Sampling vs. Random Assignment</h4>
+                    <p>These are two different concepts that students often confuse:</p>
+                    <ul>
+                        <li><strong>Random Sampling:</strong> How you SELECT participants from the population. Affects <em>generalizability</em> (can you apply results to the whole population?).</li>
+                        <li><strong>Random Assignment:</strong> How you ASSIGN participants to experimental conditions (e.g., treatment vs. control). Affects <em>internal validity</em> (can you conclude causation?).</li>
+                    </ul>
+                    <p><strong>Example:</strong> Mark flips a coin to determine which condition each participant goes into. This is <strong>random assignment</strong> (not random sampling — the participants weren't randomly selected from a population).</p>
+                </div>
+
+                <h3>Probability Basics</h3>
+                <p>Probability is the mathematical language that connects samples to populations. It quantifies how likely an event is to occur.</p>
+
+                <div class="formula-box">
+                    p = Target Outcomes / All Possible Outcomes
+                </div>
+
+                <p><strong>Rules of Probability:</strong></p>
+                <ul>
+                    <li>Probability is expressed as a <strong>decimal</strong> (0.00 to 1.00).</li>
+                    <li>0 = Impossible, 1 = Certain.</li>
+                    <li>Do not use percentages (50%) or fractions (1/2) for your final answer in this course. Use <strong>0.50</strong>.</li>
+                </ul>
+
+                <div class="scenario-box">
+                    <h4>Practice: The Dice Roll</h4>
+                    <p>You roll a standard 6-sided die. What is the probability of getting an <strong>even number</strong>?</p>
+                    <p><strong>Total Outcomes:</strong> 1, 2, 3, 4, 5, 6 (N=6)<br>
+                    <strong>Target Outcomes (Even):</strong> 2, 4, 6 (N=3)</p>
+                    <p><strong>Calculation:</strong> p = 3 / 6 = <strong>0.5</strong></p>
+                </div>
+
+                <div class="warning-box">
+                    <strong>Connecting Probability to Sampling:</strong> When we randomly select someone from a population, each person has a known probability of being selected. This is why random sampling is so powerful — it allows us to use probability math to determine how likely our sample results are to reflect the true population.
+                </div>
+
+                <div class="knowledge-check">
+                    <h4>Knowledge Check</h4>
+                    <p>A bag contains 2 Red balls, 3 Blue balls, and 5 Green balls. What is the probability of drawing a <strong>Green</strong> ball?</p>
+                    <button class="reveal-btn" onclick="reveal('ans-prob')">Reveal Answer</button>
+                    <div id="ans-prob" class="answer-reveal">
+                        <p><strong>p = 0.5</strong></p>
+                        <p>Total balls = 2 + 3 + 5 = 10.</p>
+                        <p>Target (Green) = 5.</p>
+                        <p>p = 5 / 10 = 0.5.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 2: Z-SCORES & LOGIC -->
+            <div id="tab-2" class="tab-panel">
+                <h2>The Normal Distribution & Z-Scores</h2>
+
+                <h3>The Normal Distribution</h3>
+                <p>Many natural phenomena follow a <strong>Normal Distribution</strong> (also called the "bell curve"): height, IQ, blood pressure, test scores, etc.</p>
+
+                <div class="tip-box">
+                    <strong>Key Properties of the Normal Distribution:</strong>
+                    <ul>
+                        <li><strong>Symmetrical:</strong> The left and right sides are mirror images.</li>
+                        <li><strong>Mean = Median = Mode:</strong> All three measures of central tendency are at the center. <em>This means: if μ = 151, then the median is also 151!</em></li>
+                        <li><strong>Predictable Areas:</strong> We know exactly what percentage of scores fall within any range.</li>
+                    </ul>
+                </div>
+
+                <div class="scenario-box">
+                    <h4>The 68-95-99.7 Rule (Empirical Rule)</h4>
+                    <p>In any normal distribution:</p>
+                    <ul>
+                        <li><strong>68%</strong> of scores fall within 1 SD of the mean (between Z = -1 and Z = +1)</li>
+                        <li><strong>95%</strong> of scores fall within 2 SDs of the mean (between Z = -2 and Z = +2)</li>
+                        <li><strong>99.7%</strong> of scores fall within 3 SDs of the mean (between Z = -3 and Z = +3)</li>
+                    </ul>
+                    <p><em>This is why Z-scores beyond ±3 are extremely rare!</em></p>
+                </div>
+
+                <h3>The Z-Score: Your Location on the Curve</h3>
+                <p>How do you compare two different things? For example, a teacher's salary in US Dollars vs. Japanese Yen? You can't compare the raw numbers directly. You must <strong>standardize</strong> them.</p>
+
+                <p>A <strong>Z-score</strong> tells you exactly where a score lies in a distribution by counting <strong>how many Standard Deviations (SD) it is away from the Mean.</strong></p>
+
+                <div class="formula-box">
+                    Z = (X - μ) / σ
+                </div>
+
+                <div class="tip-box">
+                    <strong>The Standard Normal (Z) Distribution:</strong> When we convert all raw scores to Z-scores, we create a <strong>Z distribution</strong> with these properties:
+                    <ul>
+                        <li><strong>Mean = 0</strong> (because the average person is 0 SDs from the mean)</li>
+                        <li><strong>Standard Deviation = 1</strong> (by definition, Z measures distance in SD units)</li>
+                    </ul>
+                    This is why the Z distribution is also called the "standard normal distribution."
+                </div>
+                <p style="text-align:center; font-size:0.9em;"><em>Where X is the raw score, μ is the mean, and σ is the standard deviation.</em></p>
+
+                <h3>Interpreting Z-Scores</h3>
+                <ul>
+                    <li><strong>Z = 0:</strong> The score is exactly the average.</li>
+                    <li><strong>Z = +1.0:</strong> The score is 1 SD <em>above</em> the average.</li>
+                    <li><strong>Z = -2.5:</strong> The score is 2.5 SDs <em>below</em> the average (very low).</li>
+                </ul>
+
+                <div class="warning-box">
+                    <strong>Which Z-score is more "extreme"?</strong> When comparing how far scores are from the mean, look at the <strong>absolute value</strong> of the Z-score (ignore the sign).
+                    <ul>
+                        <li>Z = +0.68 is 0.68 SDs from the mean</li>
+                        <li>Z = -0.92 is 0.92 SDs from the mean</li>
+                    </ul>
+                    So <strong>Z = -0.92 is more extreme</strong> because |−0.92| > |0.68|. The negative sign just means it's below the mean, not that it's less extreme.
+                </div>
+
+                <div class="scenario-box">
+                    <h4>Scenario: Who did better?</h4>
+                    <p><strong>Teacher A (Arizona):</strong> Salary = $50,000 (Mean = $32,000, SD = $20,000)</p>
+                    <p><strong>Teacher B (Japan):</strong> Salary = ¥4,000,000 (Mean = ¥2,500,000, SD = ¥1,200,000)</p>
+                    
+                    <p><strong>Step 1: Calculate Z for Teacher A</strong><br>
+                    Z = (50,000 - 32,000) / 20,000 = 18,000 / 20,000 = <strong>+0.90</strong></p>
+                    
+                    <p><strong>Step 2: Calculate Z for Teacher B</strong><br>
+                    Z = (4,000,000 - 2,500,000) / 1,200,000 = 1,500,000 / 1,200,000 = <strong>+1.25</strong></p>
+                    
+                    <p><strong>Conclusion:</strong> Teacher B is doing better relative to their local economy (1.25 SDs above average vs 0.90 SDs).</p>
+                </div>
+
+                <div class="warning-box">
+                    <strong>Common Pitfall:</strong> Order of Operations! You must subtract the Mean from the Score <em>first</em>, then divide. <br>
+                    Correct: <code>(100 - 80) / 10 = 2</code><br>
+                    Incorrect: <code>100 - 80 / 10 = 92</code> (Calculator error)
+                </div>
+
+                <div class="knowledge-check">
+                    <h4>Knowledge Check</h4>
+                    <p>Mean = 50, SD = 5. Your score (X) is 45. What is your Z-score?</p>
+                    <button class="reveal-btn" onclick="reveal('ans-zcalc')">Reveal Answer</button>
+                    <div id="ans-zcalc" class="answer-reveal">
+                        <p><strong>Z = -1.0</strong></p>
+                        <p>Z = (45 - 50) / 5</p>
+                        <p>Z = -5 / 5 = -1.0</p>
+                        <p><em>(The negative sign is crucial! It means you are below the mean.)</em></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 3: MASTERING Z-TABLES -->
+            <div id="tab-3" class="tab-panel">
+                <h2>Mastering the Z-Table</h2>
+                <p>The Z-table connects <strong>Scores</strong> to <strong>Probabilities (Percentages)</strong>. This is the most technical skill in Module 2.</p>
+                
+                <div class="tip-box">
+                    <strong>The Golden Rule of Symmetry:</strong> The Normal Curve is symmetrical. <br>
+                    The area above Z = +1.0 is the <em>exact same</em> as the area below Z = -1.0. <br>
+                    If your Z-table doesn't show negative numbers, just look up the positive version!
+                </div>
+
+                <h3>Direction 1: Have Z → Find % (Probability)</h3>
+                <p><em>Use this when asking: "What percentage of people scored higher/lower than X?"</em></p>
+                <ol>
+                    <li>Calculate Z score.</li>
+                    <li>Look up Z in the table (e.g., 1.50).</li>
+                    <li>Find the "Area in Tail" (if asking for the extreme) or "Area between Mean and Z".</li>
+                </ol>
+
+                <div class="scenario-box">
+                    <h4>Example</h4>
+                    <p>Z = +1.5. What percentage of people scored <strong>higher</strong> than this?</p>
+                    <p>1. Look up 1.5 in the Z-table.</p>
+                    <p>2. "Area in Tail" = 0.0668 (or 6.68%).</p>
+                    <p>3. Answer: 6.68% of people scored higher.</p>
+                </div>
+
+                <h3>Direction 2: Have % → Find Z (Cut-off Scores)</h3>
+                <p><em>Use this when asking: "What score do I need to be in the top 10%?" or "What is the 90th percentile?"</em></p>
+                <ol>
+                    <li>Determine the area <strong>in the tail</strong>. (If top 10%, tail = 0.10).</li>
+                    <li>Look <strong>inside the body of the table</strong> for the number closest to 0.1000.</li>
+                    <li>Trace back to find the Z-score.</li>
+                    <li>Convert Z back to Raw Score using the formula below.</li>
+                </ol>
+
+                <div class="formula-box" style="background:#fff3e0; color:#333; border: 2px solid #ff9800;">
+                    <p><strong>Converting Z to Raw Score:</strong></p>
+                    <p>X = μ + (Z)(σ)</p>
+                </div>
+                <p style="text-align:center; font-size:0.9em;"><em>Rearranged from Z = (X - μ) / σ. Just solve for X!</em></p>
+
+                <h3>Common Critical Z-Values (Memorize These!)</h3>
+                <table class="comparison">
+                    <tr>
+                        <th>Tail Area</th>
+                        <th>One-Tailed Z</th>
+                        <th>Two-Tailed Z (±)</th>
+                        <th>Common Use</th>
+                    </tr>
+                    <tr>
+                        <td>0.10 (10%)</td>
+                        <td>±1.28</td>
+                        <td>±1.645</td>
+                        <td>Top/Bottom 10%</td>
+                    </tr>
+                    <tr>
+                        <td>0.05 (5%)</td>
+                        <td>±1.645</td>
+                        <td>±1.96</td>
+                        <td>Top/Bottom 5%; 95% CI</td>
+                    </tr>
+                    <tr>
+                        <td>0.025 (2.5%)</td>
+                        <td>±1.96</td>
+                        <td>—</td>
+                        <td>97.5th percentile</td>
+                    </tr>
+                    <tr>
+                        <td>0.01 (1%)</td>
+                        <td>±2.33</td>
+                        <td>±2.58</td>
+                        <td>Top/Bottom 1%</td>
+                    </tr>
+                </table>
+
+                <div class="warning-box">
+                    <strong>Assignment Helper (Q3/Q4):</strong>
+                    <p><strong>Scenario:</strong> "Identify the top 5% of students."</p>
+                    <p>1. Area in tail = 0.05.</p>
+                    <p>2. Look inside the table for 0.0500. (It's usually between 0.0495 and 0.0505).</p>
+                    <p>3. The Z-score is <strong>1.645</strong>.</p>
+                    <p>4. Since it's the "Top" 5%, Z is positive (+1.645). If it were "Bottom" 5%, Z would be negative (-1.645).</p>
+                </div>
+
+                <div class="knowledge-check">
+                    <h4>Knowledge Check</h4>
+                    <p>You want to find the <strong>97.5th percentile</strong>. This leaves 2.5% (0.0250) in the top tail. Look at a Z-table (or recall the lecture). What is the Z-score?</p>
+                    <button class="reveal-btn" onclick="reveal('ans-reverse')">Reveal Answer</button>
+                    <div id="ans-reverse" class="answer-reveal">
+                        <p><strong>Z = 1.96</strong></p>
+                        <p>This is a famous number in statistics! The area in the tail for Z=1.96 is exactly 0.0250.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 4: SAMPLING DISTRIBUTION -->
+            <div id="tab-4" class="tab-panel">
+                <h2>The Sampling Distribution: The Bridge to Inference</h2>
+                <p>This is the most important concept in Module 2. It explains <strong>how we can use one sample to make conclusions about an entire population.</strong></p>
+
+                <h3>The Big Picture Problem</h3>
+                <div class="scenario-box">
+                    <p><strong>Imagine:</strong> You want to know the average IQ of all college students in the US (the population mean, μ).</p>
+                    <p>You can't test every student. So you test 100 students and get a sample mean (M) of 105.</p>
+                    <p><strong>The Question:</strong> How confident can you be that 105 is close to the true population mean?</p>
+                </div>
+
+                <h3>What Is a Sampling Distribution?</h3>
+                <p>Imagine you could repeat your study thousands of times:</p>
+                <ol>
+                    <li>Take a random sample of 100 students → calculate the mean (e.g., 105)</li>
+                    <li>Take another random sample of 100 → calculate the mean (e.g., 98)</li>
+                    <li>Take another sample → mean = 102</li>
+                    <li>...repeat this thousands of times...</li>
+                </ol>
+                <p>If you plotted all these sample means, you would get the <strong>Sampling Distribution of the Mean</strong> — a distribution of all possible sample means.</p>
+
+                <div class="tip-box">
+                    <strong>Key Insight:</strong> The sampling distribution is NOT your data. It's a theoretical distribution of what <em>could happen</em> if you took many samples. It tells us how much sample means naturally vary due to random chance.
+                </div>
+
+                <h3>The Central Limit Theorem (CLT)</h3>
+                <p>This is one of the most powerful theorems in statistics. It says:</p>
+
+                <div class="formula-box" style="background:#e8f5e9; color:#333; border: 2px solid #4caf50;">
+                    <p><strong>No matter the shape of the population distribution,</strong></p>
+                    <p>the sampling distribution of sample means will be <strong>approximately Normal</strong></p>
+                    <p>(as long as sample size is large enough, typically n ≥ 30)</p>
+                </div>
+
+                <p><strong>Why this matters:</strong> Because the sampling distribution is Normal, we can use Z-scores and the Z-table to calculate probabilities about sample means!</p>
+
+                <h3>Standard Error: How Much Do Sample Means Vary?</h3>
+                <p>Just like individual scores have a standard deviation (σ), sample means have their own measure of spread called the <strong>Standard Error (SE)</strong>.</p>
+
+                <div class="formula-box">
+                    SE = σ / √n
+                </div>
+                <p style="text-align:center; font-size:0.9em;"><em>Where σ is the population standard deviation and n is the sample size.</em></p>
+
+                <table class="comparison">
+                    <tr>
+                        <th>Concept</th>
+                        <th>Standard Deviation (σ)</th>
+                        <th>Standard Error (SE)</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Measures spread of...</strong></td>
+                        <td>Individual scores in a population</td>
+                        <td>Sample means across many samples</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Example</strong></td>
+                        <td>"How much do individual IQ scores vary?"</td>
+                        <td>"How much do sample means vary from sample to sample?"</td>
+                    </tr>
+                </table>
+
+                <div class="warning-box">
+                    <strong>Critical Insight:</strong> Notice the √n in the denominator. As your sample size increases, the Standard Error <em>decreases</em>. This means:
+                    <ul>
+                        <li>Larger samples → less variability in sample means → more precision</li>
+                        <li>With n=100, SE = σ/10 (one-tenth of the SD)</li>
+                        <li>This is why larger samples give more reliable estimates!</li>
+                    </ul>
+                </div>
+
+                <div class="scenario-box">
+                    <h4>Example: Calculating Standard Error</h4>
+                    <p><strong>Given:</strong> Population mean (μ) = 100, Population SD (σ) = 15, Sample size (n) = 25</p>
+                    <p><strong>Calculate SE:</strong></p>
+                    <p>SE = σ / √n = 15 / √25 = 15 / 5 = <strong>3</strong></p>
+                    <p><strong>Interpretation:</strong> While individual IQ scores vary by about 15 points (σ), sample means of 25 people only vary by about 3 points. The sampling distribution is much "tighter" than the original distribution!</p>
+                </div>
+
+                <div class="knowledge-check">
+                    <h4>Quick Practice: Standard Error</h4>
+                    <p>A population has μ = 100 and σ = 15. If you take samples of n = 20, what is the standard error of the sampling distribution?</p>
+                    <button class="reveal-btn" onclick="reveal('ans-se')">Reveal Answer</button>
+                    <div id="ans-se" class="answer-reveal">
+                        <p><strong>SE = 15 / √20 = 15 / 4.47 = 3.35</strong></p>
+                        <p><em>Remember: √20 ≈ 4.47. The standard error tells us how much sample means will typically vary from the true population mean.</em></p>
+                    </div>
+                </div>
+
+                <h3>Connecting It All: Z-Scores for Sample Means</h3>
+                <p>When working with sample means instead of individual scores, we modify the Z-score formula:</p>
+
+                <div class="formula-box">
+                    Z = (M - μ) / SE = (M - μ) / (σ / √n)
+                </div>
+                <p style="text-align:center; font-size:0.9em;"><em>Where M is the sample mean, μ is the population mean, and SE is the standard error.</em></p>
+
+                <div class="knowledge-check">
+                    <h4>Knowledge Check</h4>
+                    <p>Population: μ = 500, σ = 100. You take a sample of n = 64 and find M = 520.</p>
+                    <p>1. What is the Standard Error?</p>
+                    <p>2. What is the Z-score for this sample mean?</p>
+                    <button class="reveal-btn" onclick="reveal('ans-sampling')">Reveal Answer</button>
+                    <div id="ans-sampling" class="answer-reveal">
+                        <p><strong>1. SE = 100 / √64 = 100 / 8 = 12.5</strong></p>
+                        <p><strong>2. Z = (520 - 500) / 12.5 = 20 / 12.5 = 1.6</strong></p>
+                        <p><em>This sample mean is 1.6 standard errors above the population mean. Using the Z-table, this is a relatively unusual result (only about 5.5% of samples would have a mean this high or higher).</em></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 5: HYPOTHESIS TESTING -->
+            <div id="tab-5" class="tab-panel">
+                <h2>The Logic of Hypothesis Testing</h2>
+                <p>Now we connect everything: samples, probability, Z-scores, and the sampling distribution all come together in <strong>hypothesis testing</strong>.</p>
+
+                <div class="tip-box">
+                    <strong>The Connection to Sampling Distribution:</strong> We know from Tab 4 that sample means vary predictably (following a normal distribution with standard error). This allows us to ask: "If the Null Hypothesis is true, how likely is it that we'd get a sample mean this extreme?" That probability is the <strong>p-value</strong>.
+                </div>
+
+                <p>We want to prove our idea (Research Hypothesis), but math can't prove things true. It can only prove things <em>unlikely</em>.</p>
+
+                <h3>The Courtroom Analogy</h3>
+                <ul>
+                    <li><strong>Null Hypothesis ($H_0$):</strong> The defendant is Innocent. (There is NO effect. The drug does nothing).</li>
+                    <li><strong>Alternative Hypothesis ($H_1$):</strong> The defendant is Guilty. (There IS an effect. The drug works).</li>
+                </ul>
+                <p><strong>The Process:</strong> We assume the Null ($H_0$) is true. We collect evidence (Data). If the evidence is overwhelmingly unlikely to happen if the defendant were innocent, we <strong>Reject the Null</strong>.</p>
+
+                <h3>The "P-Value" and Alpha ($\alpha$)</h3>
+                <ul>
+                    <li><strong>Alpha ($\alpha$):</strong> The "Reasonable Doubt" threshold. Usually set at <strong>0.05 (5%)</strong>.</li>
+                    <li><strong>p-value:</strong> The probability that your result happened by random luck.</li>
+                </ul>
+
+                <div class="formula-box" style="background:#e3f2fd; color:#333; border: 2px solid #2196f3;">
+                    <p>If <strong>p < α</strong> (p is low):</p>
+                    <p><strong>REJECT the Null Hypothesis.</strong></p>
+                    <p><em>(The result is Statistically Significant)</em></p>
+                </div>
+                
+                <div class="formula-box" style="background:#fff3e0; color:#333; border: 2px solid #ff9800;">
+                    <p>If <strong>p ≥ α</strong> (p is high):</p>
+                    <p><strong>FAIL TO REJECT the Null Hypothesis.</strong></p>
+                    <p><em>(The result is NOT Statistically Significant)</em></p>
+                </div>
+
+                <div class="scenario-box">
+                    <h4>Scenario: The SAT Prep Course</h4>
+                    <p><strong>$H_0$:</strong> The Prep Course has NO effect. ($\mu_{prep} = \mu_{general}$)</p>
+                    <p><strong>Result:</strong> We tested a student, "Student B". The probability of Student B getting their score by random luck was 0.03 (3%).</p>
+                    <p><strong>Decision:</strong> Since 0.03 < 0.05, we <strong>Reject the Null</strong>. It is too unlikely that Student B got this score by luck. The Prep Course likely works.</p>
+                </div>
+            </div>
+
+            <!-- TAB 6: ERRORS & TAILS -->
+            <div id="tab-6" class="tab-panel">
+                <h2>Tails and Errors</h2>
+
+                <h3>One-Tailed vs. Two-Tailed Tests</h3>
+                <table class="comparison">
+                    <tr>
+                        <th>Type</th>
+                        <th>Two-Tailed (Non-Directional)</th>
+                        <th>One-Tailed (Directional)</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Meaning</strong></td>
+                        <td>We just want to see a difference (Higher OR Lower).</td>
+                        <td>We predict a specific direction (Higher ONLY or Lower ONLY).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Alpha Split</strong></td>
+                        <td>0.05 is split into two tails (0.025 on left, 0.025 on right).</td>
+                        <td>0.05 is put entirely into one tail.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Critical Z</strong></td>
+                        <td><strong>±1.96</strong> (Harder to reach)</td>
+                        <td><strong>+1.645</strong> (Easier to reach)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Usage</strong></td>
+                        <td><strong>The Default.</strong> Use unless you have a very strong reason.</td>
+                        <td>Only if you don't care about the opposite result.</td>
+                    </tr>
+                </table>
+
+                <h3>Type I and Type II Errors</h3>
+                <p>We are making guesses based on probability, so we might be wrong.</p>
+
+                <div style="display:flex; gap:20px; margin: 20px 0;">
+                    <div style="flex:1; background:#ffebee; padding:15px; border-radius:6px; border-left:4px solid #f44336;">
+                        <h4 style="margin-top:0;">Type I Error (False Positive)</h4>
+                        <p><strong>Definition:</strong> You Rejected the Null, but you shouldn't have.</p>
+                        <p><strong>In plain English:</strong> You said there was an effect (e.g., "The drug works!"), but there actually wasn't. It was just a fluke.</p>
+                        <p><strong>Controlled by:</strong> Alpha level ($\alpha$).</p>
+                    </div>
+                    <div style="flex:1; background:#e8f5e9; padding:15px; border-radius:6px; border-left:4px solid #4caf50;">
+                        <h4 style="margin-top:0;">Type II Error (False Negative)</h4>
+                        <p><strong>Definition:</strong> You Failed to Reject the Null, but you should have.</p>
+                        <p><strong>In plain English:</strong> You missed it. There really was an effect, but your study didn't catch it.</p>
+                    </div>
+                </div>
+
+                <div class="knowledge-check">
+                    <h4>Knowledge Check</h4>
+                    <p>A researcher claims a new teaching method improves grades. In reality, the method does nothing, but by random chance, the sample group got high grades and the researcher published the finding. What type of error is this?</p>
+                    <button class="reveal-btn" onclick="reveal('ans-error')">Reveal Answer</button>
+                    <div id="ans-error" class="answer-reveal">
+                        <p><strong>Type I Error (False Positive).</strong> The researcher found a "significant" result when one did not truly exist in the population.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 7: ASSIGNMENT WORKSHOP -->
+            <div id="tab-7" class="tab-panel">
+                <h2>Assignment Workshop & Tips</h2>
+                
+                <div class="warning-box">
+                    <strong>Critical Requirement:</strong> You must show your "Calculation Process." Do not just type the answer. <br>
+                    Correct: <code>p = 3 / 6 = 0.5</code><br>
+                    Incorrect: <code>0.5</code>
+                </div>
+
+                <h3>Q1: Excel Probability</h3>
+                <ul>
+                    <li>You do not need complex formulas. Use <strong>Data > Sort</strong> or <strong>Filter</strong>.</li>
+                    <li><strong>Example:</strong> "Probability of drawing a female."
+                        <ol>
+                            <li>Sort the Gender column.</li>
+                            <li>Count the rows labeled "Female".</li>
+                            <li>Divide by total number of rows.</li>
+                        </ol>
+                    </li>
+                    <li><strong>Logic Check:</strong> "Probability of Male < 12 years schooling."
+                        <ol>
+                            <li>Count Males who <em>also</em> have <12 years.</li>
+                            <li>Divide by the <strong>Total N</strong> (not just the males!).</li>
+                        </ol>
+                    </li>
+                </ul>
+
+                <h3>Q2: Comparing Z-Scores</h3>
+                <ul>
+                    <li>Calculate Z for Student A.</li>
+                    <li>Calculate Z for Student B.</li>
+                    <li>Compare: Who is <strong>higher</strong>? (More positive is better).</li>
+                </ul>
+
+                <h3>Q3 & Q4: The Gifted Program (Tricky!)</h3>
+                <p>This asks you to go from % → Z → Raw Score.</p>
+                <div class="scenario-box">
+                    <h4>Step-by-Step Guide for "Top 4% Cutoff"</h4>
+                    <p><strong>1. Find the Area in Body:</strong> Top 4% means 0.04 in the tail. Look up 0.0400 in the <em>tail</em> column of your Z-table (or 0.9600 in the body).<br>
+                    → Closest Z is approx <strong>1.75</strong>.</p>
+                    <p><strong>2. Convert Z to Raw Score:</strong><br>
+                    Formula: X = μ + (Z)(σ)<br>
+                    If Mean=100 and SD=15: <br>
+                    X = 100 + (1.75 * 15) = 100 + 26.25 = <strong>126.25</strong>.</p>
+                    <p><strong>3. Conclusion:</strong> A student needs a score of 126.25 to be in the top 4%.</p>
+                </div>
+
+                <div class="tip-box">
+                    <strong>Percentile Logic:</strong><br>
+                    96th Percentile = Top 4% (Z will be positive).<br>
+                    5th Percentile = Bottom 5% (Z will be negative).
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <div class="tab-navigation bottom-nav">
+        <button class="tab-button" onclick="showTab(1)">
+            <input type="checkbox" id="progress-1-bottom" class="tab-checkbox" onchange="toggleTabComplete(1)">
+            1. Probability & Samples
+        </button>
+        <button class="tab-button" onclick="showTab(2)">
+            <input type="checkbox" id="progress-2-bottom" class="tab-checkbox" onchange="toggleTabComplete(2)">
+            2. Normal Dist & Z
+        </button>
+        <button class="tab-button" onclick="showTab(3)">
+            <input type="checkbox" id="progress-3-bottom" class="tab-checkbox" onchange="toggleTabComplete(3)">
+            3. Mastering Z-Tables
+        </button>
+        <button class="tab-button" onclick="showTab(4)">
+            <input type="checkbox" id="progress-4-bottom" class="tab-checkbox" onchange="toggleTabComplete(4)">
+            4. Sampling Distribution
+        </button>
+        <button class="tab-button" onclick="showTab(5)">
+            <input type="checkbox" id="progress-5-bottom" class="tab-checkbox" onchange="toggleTabComplete(5)">
+            5. Hypothesis Testing
+        </button>
+        <button class="tab-button" onclick="showTab(6)">
+            <input type="checkbox" id="progress-6-bottom" class="tab-checkbox" onchange="toggleTabComplete(6)">
+            6. Errors & Tails
+        </button>
+        <button class="tab-button" onclick="showTab(7)">
+            <input type="checkbox" id="progress-7-bottom" class="tab-checkbox" onchange="toggleTabComplete(7)">
+            7. Assignment Workshop
+        </button>
+    </div>
+
+    <script>
+        // Progress tracking logic
+        const PROGRESS_KEY = 'psy230-m2-progress';
+
+        function loadProgress() {
+            const savedProgress = localStorage.getItem(PROGRESS_KEY);
+            if (savedProgress) {
+                const progress = JSON.parse(savedProgress);
+                Object.keys(progress).forEach(tabNumber => {
+                    const isComplete = progress[tabNumber];
+                    const topCheckbox = document.getElementById(`progress-${tabNumber}`);
+                    const bottomCheckbox = document.getElementById(`progress-${tabNumber}-bottom`);
+                    if (topCheckbox) topCheckbox.checked = isComplete;
+                    if (bottomCheckbox) bottomCheckbox.checked = isComplete;
+                    updateTabVisualState(parseInt(tabNumber), isComplete);
+                });
+            }
+        }
+
+        function saveProgress(tabNumber, isComplete) {
+            const savedProgress = localStorage.getItem(PROGRESS_KEY);
+            const progress = savedProgress ? JSON.parse(savedProgress) : {};
+            progress[tabNumber] = isComplete;
+            localStorage.setItem(PROGRESS_KEY, JSON.stringify(progress));
+        }
+
+        function toggleTabComplete(tabNumber) {
+            const clickedCheckbox = event.target;
+            const isComplete = clickedCheckbox.checked;
+            
+            const topCheckbox = document.getElementById(`progress-${tabNumber}`);
+            const bottomCheckbox = document.getElementById(`progress-${tabNumber}-bottom`);
+            if (topCheckbox) topCheckbox.checked = isComplete;
+            if (bottomCheckbox) bottomCheckbox.checked = isComplete;
+            
+            updateTabVisualState(tabNumber, isComplete);
+            saveProgress(tabNumber, isComplete);
+        }
+
+        function updateTabVisualState(tabNumber, isComplete) {
+            const tabButtons = document.querySelectorAll(`button[onclick="showTab(${tabNumber})"]`);
+            tabButtons.forEach(button => {
+                if (isComplete) button.classList.add('completed');
+                else button.classList.remove('completed');
+            });
+        }
+
+        function showTab(tabIndex) {
+            document.querySelectorAll('.tab-panel').forEach(panel => panel.classList.remove('active'));
+            document.getElementById('tab-' + tabIndex).classList.add('active');
+            
+            document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            const tabContainer = document.querySelector('.lecture-tabs');
+            if (tabContainer) tabContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function reveal(id) {
+            const el = document.getElementById(id);
+            el.style.display = (el.style.display === 'block') ? 'none' : 'block';
+        }
+
+        document.addEventListener('DOMContentLoaded', loadProgress);
+    </script>
+</body>
+</html>
