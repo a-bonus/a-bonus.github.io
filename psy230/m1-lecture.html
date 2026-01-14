@@ -410,6 +410,24 @@
                         <p><strong>Descriptive.</strong> The researcher is simply summarizing the data they collected. They are not yet making claims about a larger population or testing whether differences are statistically significant.</p>
                     </div>
                 </div>
+
+                <div class="knowledge-check">
+                    <h4>Practice: Descriptive vs. Inferential</h4>
+                    <p><strong>Scenario:</strong> Researchers studied 22 adolescents playing Dance Dance Revolution (DDR) for 12 minutes, measuring their heart rates. On average, they found no difference between overweight and non-overweight participants. Both groups' heart rates met exercise recommendations.</p>
+                    <p>Which of these requires <strong>inferential statistics</strong>?</p>
+                    <ul style="list-style:none; padding-left:0;">
+                        <li>A) The average heart rate for an adolescent playing DDR</li>
+                        <li>B) The conclusion that adolescents will get cardiovascular benefit from playing DDR</li>
+                        <li>C) Recruiting the sample of 22 adolescents</li>
+                        <li>D) The recommendation by the American College of Sports Medicine</li>
+                    </ul>
+                    <button class="reveal-btn" onclick="reveal('ans-infer')">Reveal Answer</button>
+                    <div id="ans-infer" class="answer-reveal">
+                        <p><strong>Answer: B</strong></p>
+                        <p>Only option B requires inferential statistics because it <strong>generalizes beyond the sample</strong> — concluding that "adolescents" (the population) will benefit based on data from only 22 participants (the sample).</p>
+                        <p>Option A is descriptive (calculating an average). Options C and D are not statistical procedures.</p>
+                    </div>
+                </div>
             </div>
 
             <!-- TAB 2: VARIABLES & SCALES -->
@@ -473,12 +491,28 @@
                     If a researcher takes 10 survey questions (Likert scale 1-7) and <strong>averages</strong> them to create a "Total Satisfaction Score," that new score is treated as <strong>Scale (Interval)</strong>, not Ordinal. This is common practice in psychology research.
                 </div>
 
+                <div class="scenario-box">
+                    <h4>Tricky Example: "Conceptually No True Zero"</h4>
+                    <p><strong>Scenario:</strong> A variable "sensitivity to others" is measured from 0 (low) to 10 (high). Although it is possible to have LOW sensitivity, it is not conceptually possible to have NO sensitivity at all.</p>
+                    <p><strong>Answer:</strong> This is <strong>Interval</strong>, not Ratio.</p>
+                    <p><em>Why? Even though the scale starts at 0, zero doesn't mean "complete absence" of sensitivity — it just means the lowest point on this particular scale. You can't say someone with a score of 8 is "twice as sensitive" as someone with a score of 4.</em></p>
+                </div>
+
                 <div class="knowledge-check">
                     <h4>Knowledge Check</h4>
                     <p>What scale of measurement is "Number of siblings"?</p>
                     <button class="reveal-btn" onclick="reveal('ans-scale')">Reveal Answer</button>
                     <div id="ans-scale" class="answer-reveal">
                         <p><strong>Ratio.</strong> There are equal intervals between values (the difference between 1 and 2 siblings is the same as between 3 and 4), AND there is a true zero (0 siblings means no siblings at all). You can meaningfully say that 4 siblings is "twice as many" as 2 siblings.</p>
+                    </div>
+                </div>
+
+                <div class="knowledge-check">
+                    <h4>Knowledge Check</h4>
+                    <p>A five-star rating system for movies (1 star to 5 stars) is what type of variable?</p>
+                    <button class="reveal-btn" onclick="reveal('ans-stars')">Reveal Answer</button>
+                    <div id="ans-stars" class="answer-reveal">
+                        <p><strong>Ordinal.</strong> The stars have a meaningful order (5 stars > 4 stars > 3 stars), but the intervals are not equal — the difference between 1 and 2 stars may not be the same as between 4 and 5 stars. There's also no true zero (you can't give "0 stars" in most systems).</p>
                     </div>
                 </div>
             </div>
@@ -490,6 +524,17 @@
 
                 <h3>Frequency Distributions</h3>
                 <p>A frequency distribution organizes data by showing how often each value (or range of values) occurs.</p>
+
+                <h4>Steps for Creating a Frequency Table (Scale Variables)</h4>
+                <div class="scenario-box">
+                    <ol>
+                        <li><strong>Step 1: Determine the highest and lowest scores</strong> — This tells you the range you need to cover.</li>
+                        <li><strong>Step 2: Decide on bin intervals</strong> — Aim for 5-10 bins. Calculate: (Max - Min) ÷ number of bins.</li>
+                        <li><strong>Step 3: Create rows for each bin/value</strong> — List them from highest to lowest (or lowest to highest).</li>
+                        <li><strong>Step 4: Count frequencies</strong> — Tally how many scores fall into each bin.</li>
+                        <li><strong>Step 5: Add percentage column</strong> — (Frequency ÷ Total N) × 100</li>
+                    </ol>
+                </div>
 
                 <div style="display:flex; gap:20px; margin: 20px 0;">
                     <div style="flex:1;">
@@ -598,6 +643,71 @@
                     <div id="ans-skew" class="answer-reveal">
                         <p><strong>Positive skew (right skew).</strong> The expensive mansions create a long tail extending toward the high end (right side). The mean would be pulled up by those expensive homes, making the median a better measure of the "typical" home price.</p>
                     </div>
+                </div>
+
+                <h3>Predicting Distribution Shapes</h3>
+                <p>You can often predict what a distribution will look like based on the scenario.</p>
+
+                <div class="knowledge-check">
+                    <h4>Practice: Cafeteria Breakfast Times</h4>
+                    <p><strong>Scenario:</strong> Katrina records the number of people who purchase breakfast at a hospital cafeteria from 7:00 AM to 11:00 AM. Employees typically eat breakfast around 9:00 AM.</p>
+                    <p>What type of distribution would she most likely see?</p>
+                    <button class="reveal-btn" onclick="reveal('ans-cafe')">Reveal Answer</button>
+                    <div id="ans-cafe" class="answer-reveal">
+                        <p><strong>Normal distribution.</strong> Most people would buy breakfast around 9:00 AM (the peak), with fewer people at the early (7 AM) and late (11 AM) extremes. This creates a symmetric bell shape.</p>
+                    </div>
+                </div>
+
+                <div class="knowledge-check">
+                    <h4>Practice: Reading a Frequency Table</h4>
+                    <p>Look at this grouped frequency distribution:</p>
+                    <table style="width:60%; border-collapse: collapse; margin:10px 0;">
+                        <tr style="background:#eee;"><th style="padding:8px; border:1px solid #ccc;">Score Range</th><th style="padding:8px; border:1px solid #ccc;">Frequency</th></tr>
+                        <tr><td style="padding:8px; border:1px solid #ccc;">1200-1399</td><td style="padding:8px; border:1px solid #ccc;">3</td></tr>
+                        <tr><td style="padding:8px; border:1px solid #ccc;">1000-1199</td><td style="padding:8px; border:1px solid #ccc;">5</td></tr>
+                        <tr><td style="padding:8px; border:1px solid #ccc;">800-999</td><td style="padding:8px; border:1px solid #ccc;">11</td></tr>
+                        <tr><td style="padding:8px; border:1px solid #ccc;">600-799</td><td style="padding:8px; border:1px solid #ccc;">8</td></tr>
+                        <tr><td style="padding:8px; border:1px solid #ccc;">400-599</td><td style="padding:8px; border:1px solid #ccc;">4</td></tr>
+                    </table>
+                    <p>Roughly how many people scored 1000 or above?</p>
+                    <button class="reveal-btn" onclick="reveal('ans-freq')">Reveal Answer</button>
+                    <div id="ans-freq" class="answer-reveal">
+                        <p><strong>8 people.</strong> Add the frequencies for 1000-1199 (5) and 1200-1399 (3): 5 + 3 = 8.</p>
+                    </div>
+                </div>
+
+                <h3>Correlation: Relationships Between Variables</h3>
+                <p>A <strong>correlation</strong> describes the relationship between two variables. When you plot two variables on a scatterplot, the pattern reveals the type of correlation.</p>
+
+                <div style="display:flex; gap:15px; margin: 20px 0; flex-wrap:wrap;">
+                    <div style="flex:1; min-width:200px; background:#e8f5e9; padding:15px; border-radius:6px;">
+                        <h4 style="margin-top:0;">Positive Correlation</h4>
+                        <p>As X increases, Y also increases.</p>
+                        <p><strong>Pattern:</strong> Points go from lower-left to upper-right (↗)</p>
+                        <p><em>Example: Height and weight (taller people tend to weigh more)</em></p>
+                    </div>
+                    <div style="flex:1; min-width:200px; background:#ffebee; padding:15px; border-radius:6px;">
+                        <h4 style="margin-top:0;">Negative Correlation</h4>
+                        <p>As X increases, Y decreases.</p>
+                        <p><strong>Pattern:</strong> Points go from upper-left to lower-right (↘)</p>
+                        <p><em>Example: Box office ranking and earnings (rank 1 earns most, rank 100 earns least)</em></p>
+                    </div>
+                    <div style="flex:1; min-width:200px; background:#fff3e0; padding:15px; border-radius:6px;">
+                        <h4 style="margin-top:0;">No Correlation</h4>
+                        <p>No consistent relationship between X and Y.</p>
+                        <p><strong>Pattern:</strong> Points scattered randomly</p>
+                        <p><em>Example: Shoe size and IQ</em></p>
+                    </div>
+                    <div style="flex:1; min-width:200px; background:#e3f2fd; padding:15px; border-radius:6px;">
+                        <h4 style="margin-top:0;">Nonlinear Correlation</h4>
+                        <p>There IS a relationship, but it's curved, not straight.</p>
+                        <p><strong>Pattern:</strong> Points form a curve (U-shape, inverted U, etc.)</p>
+                        <p><em>Example: Anxiety and performance (some anxiety helps, too much hurts)</em></p>
+                    </div>
+                </div>
+
+                <div class="warning-box">
+                    <strong>Remember:</strong> Correlation does NOT equal causation. Just because two variables are related doesn't mean one causes the other.
                 </div>
             </div>
 
@@ -743,6 +853,41 @@
                         <p><strong>Dataset B</strong> has a much larger standard deviation. The scores are spread far from the mean (20 and 80 are 30 points away), while Dataset A's scores only deviate by 1-2 points from the mean. This illustrates why we need measures of spread—the mean alone doesn't show how variable the data is.</p>
                     </div>
                 </div>
+
+                <div class="knowledge-check">
+                    <h4>Practice: Calculate the Mean</h4>
+                    <p>Six students reported TV hours per week: <strong>18, 12, 15, 14, 13, 16</strong></p>
+                    <p>What is the mean?</p>
+                    <button class="reveal-btn" onclick="reveal('ans-mean')">Reveal Answer</button>
+                    <div id="ans-mean" class="answer-reveal">
+                        <p><strong>Step 1:</strong> Add all values: 18 + 12 + 15 + 14 + 13 + 16 = <strong>88</strong></p>
+                        <p><strong>Step 2:</strong> Divide by N: 88 ÷ 6 = <strong>14.67</strong></p>
+                        <p>The mean is <strong>14.67 hours</strong> per week.</p>
+                    </div>
+                </div>
+
+                <div class="knowledge-check">
+                    <h4>Practice: Identify Least Variability</h4>
+                    <p>Which set of scores has the <strong>least</strong> amount of variability?</p>
+                    <ul style="list-style:none; padding-left:0;">
+                        <li>A) 5, 18, 82, 78</li>
+                        <li>B) 101, 110, 56, 13</li>
+                        <li>C) 22, 26, 21, 23</li>
+                        <li>D) 32, 72, 86, 100</li>
+                    </ul>
+                    <button class="reveal-btn" onclick="reveal('ans-var')">Reveal Answer</button>
+                    <div id="ans-var" class="answer-reveal">
+                        <p><strong>Answer: C) 22, 26, 21, 23</strong></p>
+                        <p><strong>Why?</strong> Look at the range (Max - Min) for each:</p>
+                        <ul>
+                            <li>A) 82 - 5 = 77</li>
+                            <li>B) 110 - 13 = 97</li>
+                            <li>C) 26 - 21 = <strong>5</strong> ← Smallest!</li>
+                            <li>D) 100 - 32 = 68</li>
+                        </ul>
+                        <p>Set C has scores clustered tightly together (all in the low 20s), so it has the least variability.</p>
+                    </div>
+                </div>
             </div>
 
             <!-- TAB 5: VISUALS & APA -->
@@ -797,6 +942,26 @@
 
                 <div class="warning-box">
                     <strong>Key Distinction:</strong> Bar graph bars are <strong>separated</strong> because categories are distinct. Histogram bars <strong>touch</strong> because continuous data flows from one value to the next.
+                </div>
+
+                <div class="scenario-box">
+                    <h4>What Does Bar Height Represent?</h4>
+                    <p>The bar height depends on the purpose of the graph:</p>
+                    <ul>
+                        <li><strong>Frequency bar graph:</strong> Height = count of cases in each category</li>
+                        <li><strong>Research comparison bar graph:</strong> Height = <strong>mean</strong> of the dependent variable for each group</li>
+                    </ul>
+                    <p><em>Example: A researcher comparing reaction times between men and women would create bars where the height represents the <strong>mean reaction time</strong> for each gender group.</em></p>
+                </div>
+
+                <div class="knowledge-check">
+                    <h4>Knowledge Check</h4>
+                    <p>The x-axis of a histogram depicts the values of a ____ variable, while the x-axis of a bar graph depicts the values of a ____ variable.</p>
+                    <button class="reveal-btn" onclick="reveal('ans-axis')">Reveal Answer</button>
+                    <div id="ans-axis" class="answer-reveal">
+                        <p><strong>Scale (continuous); Nominal/Ordinal (categorical)</strong></p>
+                        <p>Histograms show continuous data (like age, scores), while bar graphs show categorical data (like gender, major, computer type).</p>
+                    </div>
                 </div>
 
                 <h3>Common Data Quality Problems</h3>

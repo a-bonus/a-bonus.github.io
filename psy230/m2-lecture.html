@@ -340,10 +340,30 @@
                     <h4>Random Sampling vs. Random Assignment</h4>
                     <p>These are two different concepts that students often confuse:</p>
                     <ul>
-                        <li><strong>Random Sampling:</strong> How you SELECT participants from the population. Affects <em>generalizability</em> (can you apply results to the whole population?).</li>
+                        <li><strong>Random Sampling (Random Selection):</strong> How you SELECT participants from the population. Affects <em>generalizability</em> (can you apply results to the whole population?).</li>
                         <li><strong>Random Assignment:</strong> How you ASSIGN participants to experimental conditions (e.g., treatment vs. control). Affects <em>internal validity</em> (can you conclude causation?).</li>
                     </ul>
                     <p><strong>Example:</strong> Mark flips a coin to determine which condition each participant goes into. This is <strong>random assignment</strong> (not random sampling — the participants weren't randomly selected from a population).</p>
+
+                    <h4>Control Group vs. Experimental Group</h4>
+                    <p>In experiments, participants are assigned to different conditions:</p>
+                    <ul>
+                        <li><strong>Control Group:</strong> The group that does NOT receive the treatment. They serve as a baseline for comparison. They might receive a placebo or no intervention.</li>
+                        <li><strong>Experimental Group:</strong> The group that DOES receive the treatment or intervention being tested.</li>
+                    </ul>
+                    <p><strong>Why it matters:</strong> Without a control group, you can't know if changes are due to the treatment or other factors (time, placebo effect, etc.).</p>
+                </div>
+
+                <div class="knowledge-check">
+                    <h4>Knowledge Check: Random Assignment</h4>
+                    <p>A researcher wants to test if a new study method improves exam scores. She recruits 60 volunteers from her class. She flips a coin for each student: heads = new study method, tails = traditional method.</p>
+                    <p>Is this random sampling or random assignment?</p>
+                    <button class="reveal-btn" onclick="reveal('ans-random')">Reveal Answer</button>
+                    <div id="ans-random" class="answer-reveal">
+                        <p><strong>Random Assignment.</strong></p>
+                        <p>The coin flip determines which GROUP each participant goes into (experimental vs. control). This is random assignment.</p>
+                        <p>It is NOT random sampling because the participants were not randomly selected from a population — they were volunteers from her class (a convenience sample).</p>
+                    </div>
                 </div>
 
                 <h3>Probability Basics</h3>
@@ -366,6 +386,45 @@
                     <p><strong>Total Outcomes:</strong> 1, 2, 3, 4, 5, 6 (N=6)<br>
                     <strong>Target Outcomes (Even):</strong> 2, 4, 6 (N=3)</p>
                     <p><strong>Calculation:</strong> p = 3 / 6 = <strong>0.5</strong></p>
+                </div>
+
+                <h3>Independent vs. Dependent Probability</h3>
+                <p>Events can be <strong>independent</strong> or <strong>dependent</strong> — this affects how we calculate combined probabilities.</p>
+
+                <table class="comparison">
+                    <tr>
+                        <th>Type</th>
+                        <th>Definition</th>
+                        <th>Example</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Independent Events</strong></td>
+                        <td>The outcome of one event does NOT affect the probability of the other event.</td>
+                        <td>Flipping a coin twice. Getting heads on flip 1 doesn't change the probability of heads on flip 2.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Dependent Events</strong></td>
+                        <td>The outcome of one event DOES affect the probability of the other event.</td>
+                        <td>Drawing cards without replacement. If you draw an Ace first, there are fewer Aces left for the second draw.</td>
+                    </tr>
+                </table>
+
+                <div class="scenario-box">
+                    <h4>Example: Independent Probability</h4>
+                    <p><strong>Question:</strong> You flip a fair coin twice. What is the probability of getting heads both times?</p>
+                    <p><strong>Why Independent?</strong> The result of the first flip has no effect on the second flip. Each flip is a separate, independent event.</p>
+                    <p><strong>Calculation:</strong> p(Heads AND Heads) = p(Heads) × p(Heads) = 0.5 × 0.5 = <strong>0.25</strong></p>
+                </div>
+
+                <div class="knowledge-check">
+                    <h4>Knowledge Check: Independence</h4>
+                    <p>A bag contains 4 red and 6 blue marbles. You draw one marble, put it back, then draw again.</p>
+                    <p>Are these draws independent or dependent events?</p>
+                    <button class="reveal-btn" onclick="reveal('ans-indep')">Reveal Answer</button>
+                    <div id="ans-indep" class="answer-reveal">
+                        <p><strong>Independent.</strong></p>
+                        <p>Because you put the marble back ("with replacement"), the probabilities stay the same for the second draw. If you did NOT put it back, they would be dependent events.</p>
+                    </div>
                 </div>
 
                 <div class="warning-box">
@@ -445,6 +504,23 @@
                         <li>Z = -0.92 is 0.92 SDs from the mean</li>
                     </ul>
                     So <strong>Z = -0.92 is more extreme</strong> because |−0.92| > |0.68|. The negative sign just means it's below the mean, not that it's less extreme.
+                </div>
+
+                <div class="knowledge-check">
+                    <h4>Knowledge Check: Extreme Z-Scores</h4>
+                    <p>Which of these Z-scores represents a score that is MOST different from the mean?</p>
+                    <ul>
+                        <li>A) Z = +1.25</li>
+                        <li>B) Z = -1.50</li>
+                        <li>C) Z = +0.90</li>
+                        <li>D) Z = -0.75</li>
+                    </ul>
+                    <button class="reveal-btn" onclick="reveal('ans-extreme')">Reveal Answer</button>
+                    <div id="ans-extreme" class="answer-reveal">
+                        <p><strong>B) Z = -1.50</strong></p>
+                        <p>Compare absolute values: |+1.25| = 1.25, |-1.50| = 1.50, |+0.90| = 0.90, |-0.75| = 0.75</p>
+                        <p>1.50 is the largest, so Z = -1.50 is most extreme (furthest from the mean). The negative sign indicates it's below average, but doesn't make it "less extreme."</p>
+                    </div>
                 </div>
 
                 <div class="scenario-box">
@@ -598,6 +674,18 @@
                 </ol>
                 <p>If you plotted all these sample means, you would get the <strong>Sampling Distribution of the Mean</strong> — a distribution of all possible sample means.</p>
 
+                <div class="scenario-box">
+                    <h4>Terminology Note</h4>
+                    <p>These terms all mean the same thing:</p>
+                    <ul>
+                        <li><strong>Sampling Distribution</strong></li>
+                        <li><strong>Sampling Distribution of the Mean</strong></li>
+                        <li><strong>Distribution of Means</strong></li>
+                        <li><strong>Distribution of Sample Means</strong></li>
+                    </ul>
+                    <p>If you see any of these on an exam, they refer to the same concept: the theoretical distribution of all possible sample means.</p>
+                </div>
+
                 <div class="tip-box">
                     <strong>Key Insight:</strong> The sampling distribution is NOT your data. It's a theoretical distribution of what <em>could happen</em> if you took many samples. It tells us how much sample means naturally vary due to random chance.
                 </div>
@@ -646,6 +734,10 @@
                         <li>With n=100, SE = σ/10 (one-tenth of the SD)</li>
                         <li>This is why larger samples give more reliable estimates!</li>
                     </ul>
+                </div>
+
+                <div class="tip-box">
+                    <strong>Key Exam Concept:</strong> The distribution of sample means (sampling distribution) <strong>always has LOWER variance</strong> than the distribution of individual scores. Why? Because sample means average out individual variation. A single person might be extremely tall or short, but if you average 50 people, extreme values cancel out.
                 </div>
 
                 <div class="scenario-box">
@@ -704,7 +796,16 @@
                     <li><strong>Null Hypothesis ($H_0$):</strong> The defendant is Innocent. (There is NO effect. The drug does nothing).</li>
                     <li><strong>Alternative Hypothesis ($H_1$):</strong> The defendant is Guilty. (There IS an effect. The drug works).</li>
                 </ul>
+
+                <div class="tip-box">
+                    <strong>Terminology Note:</strong> The <strong>Alternative Hypothesis</strong> is also called the <strong>Research Hypothesis</strong> — these terms mean the same thing. It's what the researcher believes or hopes to find evidence for.
+                </div>
+
                 <p><strong>The Process:</strong> We assume the Null ($H_0$) is true. We collect evidence (Data). If the evidence is overwhelmingly unlikely to happen if the defendant were innocent, we <strong>Reject the Null</strong>.</p>
+
+                <div class="warning-box">
+                    <strong>Key Decision Rule:</strong> When your results <em>support</em> your research hypothesis (alternative hypothesis), you <strong>reject the null hypothesis</strong>. You never "accept" the alternative — you reject the null based on statistical evidence.
+                </div>
 
                 <h3>The "P-Value" and Alpha ($\alpha$)</h3>
                 <ul>
@@ -782,12 +883,59 @@
                     </div>
                 </div>
 
+                <div class="scenario-box">
+                    <h4>Type I Error and Replication</h4>
+                    <p><strong>Scenario:</strong> A researcher publishes a study claiming a new supplement improves memory. However, when other researchers try to replicate the study, they <strong>cannot reproduce the results</strong>.</p>
+                    <p><strong>What likely happened?</strong> The original finding was probably a <strong>Type I Error</strong>. The researcher found a "significant" result by chance when no real effect existed. This is why replication is so important in science!</p>
+                </div>
+
+                <h3>The Importance of Replication</h3>
+                <p>Replication means repeating a study to see if results can be reproduced. It's one of the most important safeguards against Type I errors.</p>
+
+                <table class="comparison">
+                    <tr>
+                        <th>Type of Replication</th>
+                        <th>Description</th>
+                        <th>What It Tests</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Direct Replication</strong></td>
+                        <td>Repeat the exact same study with the same methods.</td>
+                        <td>Was the original finding real or a fluke?</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Conceptual Replication</strong></td>
+                        <td>Test the same idea but with different methods or measures.</td>
+                        <td>Does the effect generalize beyond one specific method?</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Replication in New Contexts</strong></td>
+                        <td>Test the finding in a different population, culture, or setting.</td>
+                        <td>Does the effect generalize to other groups? (Tests external validity)</td>
+                    </tr>
+                </table>
+
+                <div class="tip-box">
+                    <strong>Why Replicate in New Contexts?</strong> A finding from American college students might not apply to older adults, people from other cultures, or clinical populations. Replicating in new contexts tests the <em>external validity</em> — how broadly the results generalize.
+                </div>
+
                 <div class="knowledge-check">
                     <h4>Knowledge Check</h4>
                     <p>A researcher claims a new teaching method improves grades. In reality, the method does nothing, but by random chance, the sample group got high grades and the researcher published the finding. What type of error is this?</p>
                     <button class="reveal-btn" onclick="reveal('ans-error')">Reveal Answer</button>
                     <div id="ans-error" class="answer-reveal">
                         <p><strong>Type I Error (False Positive).</strong> The researcher found a "significant" result when one did not truly exist in the population.</p>
+                    </div>
+                </div>
+
+                <div class="knowledge-check">
+                    <h4>Knowledge Check: Replication</h4>
+                    <p>A study found that a meditation app reduces anxiety in college students. Researchers want to see if this effect also occurs among elderly adults in retirement homes.</p>
+                    <p>What type of replication is this?</p>
+                    <button class="reveal-btn" onclick="reveal('ans-replic')">Reveal Answer</button>
+                    <div id="ans-replic" class="answer-reveal">
+                        <p><strong>Replication in a new context.</strong></p>
+                        <p>They are testing whether the finding generalizes to a different population (elderly adults vs. college students). This tests external validity.</p>
                     </div>
                 </div>
             </div>
@@ -827,6 +975,19 @@
                     <li>Compare: Who is <strong>higher</strong>? (More positive is better).</li>
                 </ul>
 
+                <div class="scenario-box">
+                    <h4>Practice: Comparing Z-Scores</h4>
+                    <p><strong>Emma's Math Score:</strong> X = 82 (Class Mean = 75, SD = 10)</p>
+                    <p><strong>Emma's English Score:</strong> X = 88 (Class Mean = 80, SD = 5)</p>
+                    <p>In which subject did Emma perform better <em>relative to her classmates</em>?</p>
+                    <button class="reveal-btn" onclick="reveal('ans-compare')">Reveal Answer</button>
+                    <div id="ans-compare" class="answer-reveal">
+                        <p><strong>Math Z:</strong> (82 - 75) / 10 = 7 / 10 = <strong>+0.70</strong></p>
+                        <p><strong>English Z:</strong> (88 - 80) / 5 = 8 / 5 = <strong>+1.60</strong></p>
+                        <p><strong>Conclusion:</strong> Emma did better in English (Z = +1.60) relative to her classmates. Even though her raw score was only 6 points higher in English, she was further above average compared to her peers.</p>
+                    </div>
+                </div>
+
                 <h3>Q3 & Q4: The Gifted Program (Tricky!)</h3>
                 <p>This asks you to go from % → Z → Raw Score.</p>
                 <div class="scenario-box">
@@ -845,6 +1006,58 @@
                     96th Percentile = Top 4% (Z will be positive).<br>
                     5th Percentile = Bottom 5% (Z will be negative).
                 </div>
+
+                <h3>Q5: Two-Tailed Cutoffs (Top AND Bottom)</h3>
+                <p>Sometimes you need to find cutoffs for BOTH ends of the distribution. This is common for identifying people who are extremely high OR extremely low.</p>
+
+                <div class="scenario-box">
+                    <h4>Practice: Two-Tailed Cutoffs</h4>
+                    <p><strong>Scenario:</strong> A health program wants to identify patients with extreme blood pressure (either very high or very low). They want to flag the top 3% and bottom 3%.</p>
+                    <p><strong>Given:</strong> Mean BP = 120 mmHg, SD = 15 mmHg</p>
+                    <p>Find both cutoff scores.</p>
+                    <button class="reveal-btn" onclick="reveal('ans-twotail')">Reveal Answer</button>
+                    <div id="ans-twotail" class="answer-reveal">
+                        <p><strong>Step 1: Find Z for 3% in the tail.</strong></p>
+                        <p>Look up 0.0300 in the tail column of the Z-table. The closest Z ≈ <strong>1.88</strong>.</p>
+
+                        <p><strong>Step 2: Calculate BOTH cutoffs.</strong></p>
+                        <p><strong>Top 3% (High BP):</strong> Z = +1.88<br>
+                        X = μ + (Z)(σ) = 120 + (1.88)(15) = 120 + 28.2 = <strong>148.2 mmHg</strong></p>
+
+                        <p><strong>Bottom 3% (Low BP):</strong> Z = -1.88 (same number, negative)<br>
+                        X = μ + (Z)(σ) = 120 + (-1.88)(15) = 120 - 28.2 = <strong>91.8 mmHg</strong></p>
+
+                        <p><strong>Conclusion:</strong> Patients with BP above 148.2 or below 91.8 would be flagged.</p>
+                    </div>
+                </div>
+
+                <div class="warning-box">
+                    <strong>Key Insight for Two-Tailed Problems:</strong> The Z-value is the SAME for both tails (just opposite signs). If top 3% uses Z = +1.88, then bottom 3% uses Z = -1.88.
+                </div>
+
+                <h3>Common Mistakes to Avoid</h3>
+                <table class="comparison">
+                    <tr>
+                        <th>Mistake</th>
+                        <th>How to Fix It</th>
+                    </tr>
+                    <tr>
+                        <td>Using percentage instead of decimal (writing 0.50% instead of 0.50)</td>
+                        <td>Always express probability as a decimal between 0 and 1</td>
+                    </tr>
+                    <tr>
+                        <td>Forgetting the negative sign for below-average Z-scores</td>
+                        <td>If X < μ, the Z-score MUST be negative</td>
+                    </tr>
+                    <tr>
+                        <td>Using SD instead of SE when working with sample means</td>
+                        <td>For individual scores: use σ. For sample means: use SE = σ/√n</td>
+                    </tr>
+                    <tr>
+                        <td>Confusing "top X%" with "Xth percentile"</td>
+                        <td>Top 5% = 95th percentile (the highest scores). Bottom 5% = 5th percentile.</td>
+                    </tr>
+                </table>
             </div>
 
         </div>

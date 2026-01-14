@@ -832,65 +832,135 @@
 
                 <hr style="margin: 30px 0;">
 
-                <h3>Assignment Problems Strategy</h3>
-                <p>Your assignment has 3 questions. Here is the strategy for each.</p>
+                <h3>Practice Problems: Apply What You've Learned</h3>
+                <p>Work through these practice examples to prepare for your assignment. Your assignment will have similar problem types with different values.</p>
 
-                <h3>Q1: IQ in Las Cruces (Directional Test)</h3>
+                <h3>Practice A: One-Tailed (Directional) Test</h3>
+                <div class="scenario-box">
+                    <h4>Scenario: Coffee Shop Wait Times</h4>
+                    <p>A coffee chain reports that the national average wait time is <strong>μ = 4.5 minutes</strong> with <strong>σ = 1.2 minutes</strong>. A manager believes her store has <strong>faster</strong> service. She records wait times for 25 customers and finds M = 4.1 minutes. Test at α = .05.</p>
+                </div>
                 <div class="step-container">
                     <div class="step-item">
-                        <div class="step-title">1. Hypotheses</div>
-                        <p>Scenario says "individuals... might have <strong>higher</strong> IQs." This is directional (One-Tailed).</p>
-                        <p>$H_0: \mu_{LC} \le 100$ (Note: Null covers the opposite of prediction)</p>
-                        <p>$H_1: \mu_{LC} > 100$</p>
+                        <div class="step-title">1. Identify the Test Type</div>
+                        <p>Keywords: "faster" = directional prediction → <strong>One-Tailed Test</strong></p>
+                        <p>Direction: Predicting <em>lower</em> wait times</p>
                     </div>
                     <div class="step-item">
-                        <div class="step-title">2. Calculations</div>
-                        <p>Use Excel/Calculator. Given: $\mu=100, \sigma=15$.</p>
-                        <p>a) Find Sample Mean ($M$) of the 20 numbers.</p>
-                        <p>b) Find SE: $15 / \sqrt{20}$.</p>
-                        <p>c) Find Z: $(M - 100) / SE$.</p>
+                        <div class="step-title">2. Write Hypotheses</div>
+                        <p>$H_0: \mu_{store} \ge 4.5$ (Store is same or slower)</p>
+                        <p>$H_1: \mu_{store} < 4.5$ (Store is faster)</p>
+                        <p><em>Note: $H_1$ matches the prediction direction</em></p>
                     </div>
                     <div class="step-item">
-                        <div class="step-title">3. Decision</div>
-                        <p>Alpha = .05, One-tailed. Look at the One-Tailed row in the table (Tab 3).<br>
-                        Critical Z = <strong>+1.645</strong>.<br>
-                        Is your calc Z > 1.645? If yes, Reject.</p>
+                        <div class="step-title">3. Calculate SE</div>
+                        <p>$SE = \sigma / \sqrt{N} = 1.2 / \sqrt{25} = 1.2 / 5 = \mathbf{0.24}$</p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-title">4. Calculate Z</div>
+                        <p>$Z = (M - \mu) / SE = (4.1 - 4.5) / 0.24 = -0.4 / 0.24 = \mathbf{-1.67}$</p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-title">5. Find Critical Z</div>
+                        <p>One-tailed, α = .05, predicting lower → Critical Z = <strong>-1.645</strong></p>
+                        <p><em>(Negative because we predict the sample is BELOW the population)</em></p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-title">6. Decision</div>
+                        <p>Is -1.67 more extreme than -1.645? <strong>Yes!</strong> (-1.67 is further from zero)</p>
+                        <p><strong>Reject the null.</strong> The store's wait times are significantly faster.</p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-title">7. Effect Size</div>
+                        <p>$d = (M - \mu) / \sigma = (4.1 - 4.5) / 1.2 = -0.4 / 1.2 = \mathbf{-0.33}$ (Small-Medium effect)</p>
                     </div>
                 </div>
 
-                <h3>Q2: Life Expectancy (Non-Directional)</h3>
+                <h3>Practice B: Two-Tailed (Non-Directional) Test</h3>
+                <div class="scenario-box">
+                    <h4>Scenario: Smartphone Battery Life</h4>
+                    <p>A manufacturer claims phones last <strong>μ = 18 hours</strong> on average with <strong>σ = 3.5 hours</strong>. A reviewer tests 50 phones and finds M = 17.2 hours. Is this <strong>significantly different</strong>? Test at α = .05.</p>
+                </div>
                 <div class="step-container">
                     <div class="step-item">
-                        <div class="step-title">1. Hypotheses</div>
-                        <p>Scenario says "significantly <strong>different</strong>." Non-Directional (Two-Tailed).</p>
-                        <p>$H_0: \mu_{VT} = 78.2$</p>
-                        <p>$H_1: \mu_{VT} \neq 78.2$</p>
+                        <div class="step-title">1. Identify the Test Type</div>
+                        <p>Keywords: "significantly different" = no direction → <strong>Two-Tailed Test</strong></p>
                     </div>
                     <div class="step-item">
-                        <div class="step-title">2. Critical Value</div>
-                        <p>Alpha = .05, Two-tailed.<br>
-                        Critical Z = <strong>±1.96</strong>.</p>
-                        <p>Compare your Z. Is it outside -1.96 to +1.96?</p>
+                        <div class="step-title">2. Write Hypotheses</div>
+                        <p>$H_0: \mu_{tested} = 18$ (No difference)</p>
+                        <p>$H_1: \mu_{tested} \neq 18$ (There is a difference)</p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-title">3. Calculate SE</div>
+                        <p>$SE = 3.5 / \sqrt{50} = 3.5 / 7.07 = \mathbf{0.495}$</p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-title">4. Calculate Z</div>
+                        <p>$Z = (17.2 - 18) / 0.495 = -0.8 / 0.495 = \mathbf{-1.62}$</p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-title">5. Find Critical Z</div>
+                        <p>Two-tailed, α = .05 → Critical Z = <strong>±1.96</strong></p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-title">6. Decision</div>
+                        <p>Is |-1.62| > 1.96? <strong>No.</strong> 1.62 < 1.96</p>
+                        <p><strong>Fail to reject.</strong> Battery life is not significantly different from the claim.</p>
                     </div>
                 </div>
 
-                <h3>Q3: Exam Scores (Small vs. Large Sample)</h3>
+                <h3>Practice C: Sample Size Effects</h3>
+                <div class="scenario-box">
+                    <h4>Key Concept: How Sample Size Affects Results</h4>
+                    <p>When you run the same test with a larger sample size:</p>
+                </div>
                 <div class="step-container">
                     <div class="step-item">
-                        <div class="step-title">The Sample Size Lesson</div>
-                        <p>This question asks you to run the test twice. Once with $N=15$, once with $N=80$.</p>
-                        <p><strong>Prediction:</strong></p>
+                        <div class="step-title">What Changes?</div>
                         <ul>
-                            <li>With $N=15$, your SE will be large, your Z will be small. You might fail to reject.</li>
-                            <li>With $N=80$, your SE will be small (dividing by a bigger number), your Z will be huge. You will likely reject.</li>
+                            <li><strong>SE gets smaller</strong> (because you divide σ by a larger √N)</li>
+                            <li><strong>Z gets larger</strong> (because you divide by a smaller SE)</li>
+                            <li><strong>More likely to reject</strong> (Z more likely to exceed critical value)</li>
                         </ul>
-                        <p><strong>Takeaway:</strong> Increasing sample size increases <strong>Power</strong> (the ability to find significance).</p>
                     </div>
                     <div class="step-item">
-                        <div class="step-title">Effect Size Check</div>
-                        <p>Q3 asks about Effect Size for both. Remember the formula: $d = (M - \mu) / \sigma$.<br>
-                        Does $N$ appear in this formula? <strong>NO.</strong><br>
-                        Therefore, Effect Size should be roughly the same regardless of sample size (unlike significance).</p>
+                        <div class="step-title">What Stays the Same?</div>
+                        <ul>
+                            <li><strong>Effect Size (Cohen's d)</strong> - because the formula $d = (M - \mu) / \sigma$ has NO N in it!</li>
+                            <li>The effect size measures the actual magnitude of difference, regardless of sample size</li>
+                        </ul>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-title">Example Comparison</div>
+                        <table class="comparison">
+                            <tr>
+                                <th>Measure</th>
+                                <th>N = 20</th>
+                                <th>N = 100</th>
+                            </tr>
+                            <tr>
+                                <td>SE (if σ = 10)</td>
+                                <td>10/√20 = 2.24</td>
+                                <td>10/√100 = 1.00</td>
+                            </tr>
+                            <tr>
+                                <td>Z (if M-μ = 3)</td>
+                                <td>3/2.24 = 1.34</td>
+                                <td>3/1.00 = 3.00</td>
+                            </tr>
+                            <tr>
+                                <td>Cohen's d</td>
+                                <td>3/10 = 0.30</td>
+                                <td>3/10 = 0.30</td>
+                            </tr>
+                            <tr>
+                                <td>Decision (α=.05, 2-tail)</td>
+                                <td>Fail to Reject</td>
+                                <td>Reject</td>
+                            </tr>
+                        </table>
+                        <p><strong>Takeaway:</strong> Larger samples increase <strong>power</strong> (ability to detect effects), but don't change the actual effect size.</p>
                     </div>
                 </div>
 
