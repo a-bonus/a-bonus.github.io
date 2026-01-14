@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 3: Hypothesis Testing with Z-Tests</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    <style>
+        /* Base Styling - Consistent with Previous Modules */
+        :root {
+            --primary: #d32f2f; /* Red/Crimson for this module */
+            --secondary: #6c757d;
+            --success: #28a745;
+            --warning: #ffc107;
+            --light-bg: #f8f9fa;
+            --border: #dee2e6;
+            --text: #333;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fafafa;
+        }
+
+        h1, h2, h3 { color: #2c3e50; }
+        
+        /* Header */
+        header {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            border-left: 5px solid var(--primary);
+        }
+
+        /* Tabs */
+        .lecture-tabs {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .tab-navigation {
+            display: flex;
+            background-color: #e9ecef;
+            overflow-x: auto;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .tab-button {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            background: none;
+            cursor: pointer;
+            text-align: left;
+            border-bottom: 3px solid transparent;
+            min-width: 160px;
+            transition: all 0.2s;
+            font-weight: 600;
+            color: #555;
+        }
+
+        .tab-button:hover { background-color: #dde2e6; }
+        .tab-button.active { 
+            background-color: #fff; 
+            border-bottom-color: var(--primary); 
+            color: var(--primary);
+        }
+        .tab-button.completed {
+            border-bottom-color: var(--success);
+            position: relative;
+        }
+        .tab-button.completed::after {
+            content: "✓";
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background-color: var(--success);
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .tab-checkbox {
+            margin-right: 8px;
+            cursor: pointer;
+            transform: scale(1.2);
+        }
+        .bottom-nav {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid var(--border);
+        }
+
+        /* Content */
+        .tab-content { padding: 30px; }
+        .tab-panel { display: none; animation: fadeIn 0.4s; }
+        .tab-panel.active { display: block; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Interactive Components */
+        .scenario-box {
+            background-color: #ffebee;
+            border: 1px solid #ffcdd2;
+            padding: 20px;
+            border-radius: 6px;
+            margin: 20px 0;
+        }
+
+        .warning-box {
+            background-color: #fff3cd;
+            border: 1px solid #ffeeba;
+            border-left: 4px solid var(--warning);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        
+        .tip-box {
+            background-color: #e3f2fd;
+            border: 1px solid #bbdefb;
+            border-left: 4px solid #2196f3;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+
+        .formula-box {
+            background-color: #333;
+            color: #fff;
+            padding: 15px;
+            border-radius: 6px;
+            text-align: center;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1.1em;
+            margin: 20px 0;
+            letter-spacing: 1px;
+            border: 2px solid #555;
+        }
+
+        .assignments-box {
+            background-color: #e8f5e9;
+            border: 1px solid #c8e6c9;
+            border-left: 4px solid var(--success);
+            padding: 15px;
+            margin: 20px 0 0 0;
+            border-radius: 4px;
+        }
+
+        .knowledge-check {
+            background-color: #f8f9fa;
+            border: 1px solid var(--border);
+            padding: 20px;
+            border-radius: 6px;
+            margin-top: 20px;
+        }
+
+        .reveal-btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        
+        .answer-reveal {
+            display: none;
+            margin-top: 15px;
+            padding: 15px;
+            background: white;
+            border-left: 3px solid var(--success);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        table.comparison {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        table.comparison th, table.comparison td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        table.comparison th {
+            background-color: #eee;
+        }
+
+        /* Step Process Styles */
+        .step-container {
+            border-left: 3px solid var(--secondary);
+            padding-left: 20px;
+            margin: 20px 0;
+        }
+        .step-item {
+            margin-bottom: 20px;
+        }
+        .step-title {
+            font-weight: bold;
+            color: var(--primary);
+            text-transform: uppercase;
+            font-size: 0.9em;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Module 3: Hypothesis Testing with Z-Tests</h1>
+        <p><strong>Goal:</strong> In Module 2, we learned how probability works. Now, in Module 3, we use it to make decisions. We will compare a <strong>Sample Mean</strong> to a known <strong>Population Mean</strong> to see if they are significantly different.</p>
+        <p><em>"Does this sample belong to the general population, or is it special?"</em></p>
+
+        <div class="assignments-box">
+            <h3>📋 Module 3 Assignments & Due Items</h3>
+            <ul>
+                <li><strong>Readings:</strong> Chapters 7 & 8 (Essentials of Statistics)</li>
+                <li><strong>M3 Quiz:</strong> Covers the "Chandler Household" scenario and concepts of Power/Effect Size.</li>
+                <li><strong>M3 Assignment:</strong> Three problems (IQ in Las Cruces, Life Expectancy in Vermont, Exam Scores).</li>
+                <li><strong>Key Skills:</strong>
+                    <ul>
+                        <li>Writing Hypotheses (Null vs. Alternative)</li>
+                        <li>Calculating Standard Error (SE) and Z-statistics</li>
+                        <li>Making decisions (Reject vs. Fail to Reject)</li>
+                        <li>Calculating Effect Size (Cohen's d)</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="lecture-tabs">
+        <div class="tab-navigation">
+            <button class="tab-button active" onclick="showTab(1)">
+                <input type="checkbox" id="progress-1" class="tab-checkbox" onchange="toggleTabComplete(1)">
+                1. Logic & Hypotheses
+            </button>
+            <button class="tab-button" onclick="showTab(2)">
+                <input type="checkbox" id="progress-2" class="tab-checkbox" onchange="toggleTabComplete(2)">
+                2. Calculation Engine
+            </button>
+            <button class="tab-button" onclick="showTab(3)">
+                <input type="checkbox" id="progress-3" class="tab-checkbox" onchange="toggleTabComplete(3)">
+                3. Decisions & Tails
+            </button>
+            <button class="tab-button" onclick="showTab(4)">
+                <input type="checkbox" id="progress-4" class="tab-checkbox" onchange="toggleTabComplete(4)">
+                4. Effect Size & Power
+            </button>
+            <button class="tab-button" onclick="showTab(5)">
+                <input type="checkbox" id="progress-5" class="tab-checkbox" onchange="toggleTabComplete(5)">
+                5. Assignment Workshop
+            </button>
+        </div>
+
+        <div class="tab-content">
+            
+            <!-- TAB 1: LOGIC & HYPOTHESES -->
+            <div id="tab-1" class="tab-panel active">
+                <h2>The Logic of the Z-Test</h2>
+                <p>A Z-test compares a <strong>Sample Mean (M)</strong> to a known <strong>Population Mean (μ)</strong>. We usually know the population mean and standard deviation from historical data (e.g., Census data, National averages).</p>
+
+                <h3>1. Identifying Variables (IV vs. DV)</h3>
+                <p>Before you calculate anything, you must know who is who. This is Question 1 on your Quiz.</p>
+                <div class="scenario-box">
+                    <h4>The "Chandler vs. Neighborhood" Example</h4>
+                    <p><strong>Scenario:</strong> You want to know if household sizes in <em>your neighborhood</em> differ from the <em>City of Chandler</em>.</p>
+                    <ul>
+                        <li><strong>Independent Variable (IV):</strong> The "Grouper." What separates the two groups? <br>
+                        <em>Answer: Location (Chandler vs. Neighborhood).</em></li>
+                        <li><strong>Dependent Variable (DV):</strong> The "Measurement." What numbers are we averaging?<br>
+                        <em>Answer: Household Size.</em></li>
+                    </ul>
+                </div>
+
+                <h3>2. Writing Hypotheses</h3>
+                <p>You must write two hypotheses for every test.</p>
+
+                <table class="comparison">
+                    <tr>
+                        <th style="width:20%">Type</th>
+                        <th style="width:40%">Definition</th>
+                        <th style="width:40%">Key Symbols</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Null Hypothesis ($H_0$)</strong></td>
+                        <td>The "Boring" Hypothesis. Assumes there is <strong>NO</strong> difference. Any difference found is just luck/chance.</td>
+                        <td>Always includes the <strong>Equals (=)</strong> sign.<br>($=$, $\le$, $\ge$)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Alternative Hypothesis ($H_1$)</strong></td>
+                        <td>Also called the <strong>"Research Hypothesis."</strong> Assumes there <strong>IS</strong> a difference. This is usually what you want to prove.</td>
+                        <td>Never includes equals.<br>($\neq$, $<$, $>$)</td>
+                    </tr>
+                </table>
+
+                <div class="tip-box">
+                    <strong>Terminology Note:</strong> "Research Hypothesis" is just another name for the <strong>Alternative Hypothesis ($H_1$)</strong>. They mean the same thing. If you see "research hypothesis" on a quiz, think $H_1$.
+                </div>
+
+                <h3>3. One-Tailed vs. Two-Tailed</h3>
+                <p>This determines how you write your symbols and find your critical values.</p>
+
+                <div style="display:flex; gap:20px; margin: 20px 0;">
+                    <div style="flex:1; background:#e3f2fd; padding:15px; border-radius:6px; border-left:4px solid #2196f3;">
+                        <h4 style="margin-top:0;">Two-Tailed (Non-Directional)</h4>
+                        <p><strong>Keywords:</strong> "Is there a difference?", "Differ from"</p>
+                        <p><strong>Logic:</strong> I don't know if it will be higher or lower, just different.</p>
+                        <p><strong>Symbols:</strong><br>
+                        $H_0: \mu_{sample} = \mu_{pop}$<br>
+                        $H_1: \mu_{sample} \neq \mu_{pop}$</p>
+                    </div>
+                    <div style="flex:1; background:#fff3e0; padding:15px; border-radius:6px; border-left:4px solid #ff9800;">
+                        <h4 style="margin-top:0;">One-Tailed (Directional)</h4>
+                        <p><strong>Keywords:</strong> "Higher", "Lower", "Better", "Worse", "Increase"</p>
+                        <p><strong>Logic:</strong> I predict a specific direction.</p>
+                        <p><strong>Symbols (e.g., Higher):</strong><br>
+                        $H_0: \mu_{sample} \le \mu_{pop}$ (Note the opposite coverage)<br>
+                        $H_1: \mu_{sample} > \mu_{pop}$</p>
+                    </div>
+                </div>
+
+                <div class="knowledge-check">
+                    <h4>Quiz Practice: Question 2</h4>
+                    <p><strong>Scenario:</strong> I am interested in examining <em>any difference</em> between my neighborhood and the city. I am <em>not predicting</em> any particular direction.</p>
+                    <p>What is the correct Null Hypothesis?</p>
+                    <button class="reveal-btn" onclick="reveal('ans-hyp')">Reveal Answer</button>
+                    <div id="ans-hyp" class="answer-reveal">
+                        <p><strong>"Household sizes in my neighborhood are not significantly different from the general household sizes in the whole city of Chandler."</strong></p>
+                        <p>Because it is non-directional, the Null says "No Difference."</p>
+                    </div>
+                </div>
+
+                <h3>4. Two-Population Notation ($\mu_1$ vs $\mu_2$)</h3>
+                <p>When comparing two groups (not a sample to a known population), we use subscript notation.</p>
+
+                <div class="scenario-box">
+                    <h4>Example: Memory Study</h4>
+                    <p><strong>Scenario:</strong> Researchers hypothesize that participants in a <em>stress condition</em> will perform <strong>worse</strong> than participants in a <em>control group</em> on a memory test.</p>
+                    <p>Let Population 1 = Stress group, Population 2 = Control group.</p>
+                    <p><strong>Because stress is predicted to cause WORSE performance:</strong></p>
+                    <p>$H_0: \mu_1 \ge \mu_2$ (Stress group is the same or better)</p>
+                    <p>$H_1: \mu_1 < \mu_2$ (Stress group performs worse = lower scores)</p>
+                </div>
+
+                <div class="scenario-box">
+                    <h4>Example: Women Talk More?</h4>
+                    <p><strong>Scenario:</strong> Testing if women (Population 1) talk more than men (Population 2).</p>
+                    <p><strong>Because we predict women talk MORE:</strong></p>
+                    <p>$H_0: \mu_1 \le \mu_2$ (Women talk the same or less)</p>
+                    <p>$H_1: \mu_1 > \mu_2$ (Women talk more)</p>
+                </div>
+
+                <div class="tip-box">
+                    <strong>Quick Rule:</strong> The alternative hypothesis ($H_1$) always matches your prediction. If you predict Group 1 is <strong>higher</strong>, use $\mu_1 > \mu_2$. If you predict Group 1 is <strong>lower</strong>, use $\mu_1 < \mu_2$.
+                </div>
+
+                <div class="knowledge-check">
+                    <h4>Quiz Practice: Two-Group Comparison</h4>
+                    <p><strong>Scenario:</strong> Researchers were interested in whether playing Dance Dance Revolution affected the heart rate of <em>overweight adolescents</em> differently than <em>non-overweight adolescents</em>. Both groups played DDR while researchers measured heart rate.</p>
+                    <p>What is the null hypothesis?</p>
+                    <button class="reveal-btn" onclick="reveal('ans-ddr')">Reveal Answer</button>
+                    <div id="ans-ddr" class="answer-reveal">
+                        <p><strong>"There will be no difference in the average heart rates of the two groups after both groups play Dance Dance Revolution."</strong></p>
+                        <p>The null hypothesis always says "no difference" or "no effect." Since the researchers are just asking if the groups <em>differ</em> (not which is higher), this is non-directional.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 2: CALCULATION ENGINE -->
+            <div id="tab-2" class="tab-panel">
+                <h2>The Calculation Engine</h2>
+                <p>To perform a Z-test, you need to calculate two numbers in a specific order: <strong>Standard Error (SE)</strong> and the <strong>Z-statistic</strong>.</p>
+
+                <h3>Requirements for a Z-Test (Parametric Test)</h3>
+                <div class="warning-box">
+                    <strong>Important:</strong> A Z-test is a <strong>parametric test</strong>, which means it has requirements:
+                    <ul>
+                        <li>The <strong>Dependent Variable (DV)</strong> must be a <strong>scale variable</strong> (interval or ratio level of measurement)</li>
+                        <li>Examples of scale variables: IQ scores, height, weight, test scores, income</li>
+                        <li>You cannot use a Z-test with nominal (categories) or ordinal (rankings) data</li>
+                    </ul>
+                </div>
+
+                <h3>What is the Z-Table Used For?</h3>
+                <p>The Z-table serves several purposes:</p>
+                <ul>
+                    <li><strong>Converting a Z-score to a percentile:</strong> Find what percentage of scores fall below a given Z</li>
+                    <li><strong>Converting a raw score to a percentile:</strong> First calculate Z, then look up the percentage</li>
+                    <li><strong>Finding critical values:</strong> Determine the Z cutoffs for hypothesis testing</li>
+                </ul>
+                <div class="tip-box">
+                    <strong>Quiz Tip:</strong> The Z-table is primarily used for <strong>converting a raw score to a percentile score</strong>. You first convert the raw score to a Z-score, then use the table to find the corresponding percentile.
+                </div>
+
+                <div class="warning-box">
+                    <strong>Crucial Concept:</strong> In Module 2, we used Standard Deviation ($\sigma$) for single scores. Now that we are testing a <strong>Sample Mean</strong>, we must use <strong>Standard Error ($SE$)</strong>.
+                </div>
+
+                <h3>Step 1: Calculate the Sample Mean ($M$)</h3>
+                <p>Add up all your scores and divide by $N$ (number of scores).</p>
+                <div class="formula-box">
+                    $M = \frac{\sum X}{N}$
+                </div>
+
+                <h3>Step 2: Calculate Standard Error ($SE$)</h3>
+                <p>This tells us how much sample means typically vary from the population mean. You need the Population SD ($\sigma$) and Sample Size ($N$).</p>
+                <div class="formula-box">
+                    $SE = \frac{\sigma}{\sqrt{N}}$
+                </div>
+                <p class="tip-box"><strong>Tip:</strong> Do this calculation first! You cannot find Z without it. <br><em>Excel Formula:</em> <code>=PopulationSD / SQRT(N)</code></p>
+
+                <h3>Step 3: Calculate the Z-Statistic</h3>
+                <p>This places your sample on the curve. It tells you how many "Standard Errors" away from the population mean your sample is.</p>
+                <div class="formula-box">
+                    $Z = \frac{M - \mu}{SE}$
+                </div>
+                
+                <div class="scenario-box">
+                    <h4>Guided Practice: The "Chandler" Numbers</h4>
+                    <p><strong>Given:</strong><br>
+                    Population Mean ($\mu$) = 3.1<br>
+                    Population SD ($\sigma$) = 1.6<br>
+                    Sample Size ($N$) = 16<br>
+                    Sample Mean ($M$) = 3.5 (Calculated from list)</p>
+
+                    <p><strong>1. Calculate SE:</strong></p>
+                    <button class="reveal-btn" onclick="reveal('ans-calc-se')">Reveal SE Calculation</button>
+                    <div id="ans-calc-se" class="answer-reveal">
+                        <p>$SE = 1.6 / \sqrt{16}$</p>
+                        <p>$SE = 1.6 / 4$</p>
+                        <p><strong>$SE = 0.4$</strong></p>
+                    </div>
+
+                    <p><strong>2. Calculate Z-Statistic:</strong></p>
+                    <button class="reveal-btn" onclick="reveal('ans-calc-z')">Reveal Z Calculation</button>
+                    <div id="ans-calc-z" class="answer-reveal">
+                        <p>$Z = (3.5 - 3.1) / 0.4$</p>
+                        <p>$Z = 0.4 / 0.4$</p>
+                        <p><strong>$Z = 1.0$</strong></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 3: DECISIONS & TAILS -->
+            <div id="tab-3" class="tab-panel">
+                <h2>Making the Decision</h2>
+                <p>Now that you have a Z-statistic (e.g., 1.0), is that "significant"? Is it weird enough to reject the Null?</p>
+
+                <h3>1. Determine Tails & Alpha</h3>
+                <ul>
+                    <li><strong>Alpha ($\alpha$):</strong> Usually 0.05 or 0.01. This is your "risk threshold" for error.</li>
+                    <li><strong>Two-Tailed:</strong> If your hypothesis was "difference" (non-directional). Split alpha into two tails.</li>
+                    <li><strong>One-Tailed:</strong> If your hypothesis was "higher/lower" (directional). Put all alpha in one tail.</li>
+                </ul>
+
+                <h3>2. Find the Critical Z Value (The "Cutoff")</h3>
+                <p>Use your Z-table or memorize these common cutoffs. These are the numbers your Calculated Z must beat.</p>
+
+                <table class="comparison">
+                    <tr>
+                        <th>Alpha Level ($\alpha$)</th>
+                        <th>Test Type</th>
+                        <th>Critical Z Values</th>
+                    </tr>
+                    <tr>
+                        <td><strong>0.05</strong></td>
+                        <td>Two-Tailed</td>
+                        <td><strong>±1.96</strong> (Most Common)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>0.05</strong></td>
+                        <td>One-Tailed</td>
+                        <td><strong>±1.645</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>0.01</strong></td>
+                        <td>Two-Tailed</td>
+                        <td><strong>±2.58</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>0.01</strong></td>
+                        <td>One-Tailed</td>
+                        <td><strong>±2.33</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>0.10</strong></td>
+                        <td>Two-Tailed</td>
+                        <td><strong>±1.645</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>0.10</strong></td>
+                        <td>One-Tailed</td>
+                        <td><strong>±1.28</strong></td>
+                    </tr>
+                </table>
+
+                <div class="tip-box">
+                    <strong>How to find critical Z values:</strong> Look up the alpha level in the Z-table. For two-tailed tests, split alpha in half (e.g., $\alpha = .10$ → look for .05 in each tail). For one-tailed tests, use the full alpha value.
+                </div>
+
+                <div class="warning-box">
+                    <strong>Quiz Question 7 Hint:</strong> The Chandler quiz asks for <strong>$\alpha = 0.10$</strong> (Two-Tailed). Look at the table above. The cutoff is <strong>±1.645</strong>.
+                </div>
+
+                <h3>3. Compare and Decide</h3>
+                <p><strong>The Rule:</strong> If your Calculated Z is <strong>MORE EXTREME</strong> (further from zero) than the Critical Z, you <strong>REJECT</strong> the Null.</p>
+
+                <div class="scenario-box">
+                    <h4>Chandler Decision Practice</h4>
+                    <p><strong>Calculated Z:</strong> 1.0<br>
+                    <strong>Critical Z (at $\alpha = .10$, 2-tail):</strong> ±1.645</p>
+                    
+                    <p><strong>Comparison:</strong> Is 1.0 more extreme than 1.645?</p>
+                    <p>No. 1.0 is closer to zero. It is inside the "safe zone."</p>
+                    
+                    <p><strong>Decision:</strong> <strong>Fail to Reject</strong> the Null Hypothesis.</p>
+                    
+                    <p><strong>Conclusion in English:</strong> "The household sizes in my neighborhood are <strong>not significantly different</strong> from the city of Chandler."</p>
+                </div>
+
+                <div class="tip-box">
+                    <strong>Interpreting "Fail to Reject":</strong> It doesn't mean the Null is <em>true</em>. It just means we didn't have enough evidence to prove it false. It's like a "Not Guilty" verdict in court (which is not the same as "Innocent").
+                </div>
+
+                <h3>4. Decision Flowchart: One-Tailed vs Two-Tailed</h3>
+                <div style="background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%); padding: 20px; border-radius: 8px; margin: 20px 0;">
+                    <p style="text-align:center; font-weight:bold; font-size:1.1em;">Does the research question predict a SPECIFIC DIRECTION?</p>
+                    <div style="display:flex; justify-content:center; gap:40px; margin-top:15px;">
+                        <div style="background:#e8f5e9; padding:15px; border-radius:6px; text-align:center; flex:1; max-width:300px;">
+                            <p style="font-weight:bold; color:#2e7d32;">YES → One-Tailed</p>
+                            <p style="font-size:0.9em;">"higher", "lower", "better", "worse", "increase", "decrease"</p>
+                            <p style="font-size:0.85em; margin-top:10px;"><strong>Critical Z:</strong> All α in one tail<br>α=.05 → ±1.645</p>
+                        </div>
+                        <div style="background:#e3f2fd; padding:15px; border-radius:6px; text-align:center; flex:1; max-width:300px;">
+                            <p style="font-weight:bold; color:#1565c0;">NO → Two-Tailed</p>
+                            <p style="font-size:0.9em;">"different", "differs from", "any difference"</p>
+                            <p style="font-size:0.85em; margin-top:10px;"><strong>Critical Z:</strong> Split α in two tails<br>α=.05 → ±1.96</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>5. Common Mistakes to Avoid</h3>
+                <div class="warning-box" style="border-left-color: #dc3545;">
+                    <strong style="color:#dc3545;">Mistake #1: Confusing SE and σ</strong>
+                    <ul>
+                        <li><strong>σ (Population SD):</strong> Use for individual scores and Cohen's d</li>
+                        <li><strong>SE (Standard Error):</strong> Use for Z-statistic when testing sample means</li>
+                    </ul>
+                    <p><em>Remember: SE = σ / √N. SE is always smaller than σ.</em></p>
+                </div>
+
+                <div class="warning-box" style="border-left-color: #dc3545;">
+                    <strong style="color:#dc3545;">Mistake #2: Wrong denominator in Cohen's d</strong>
+                    <ul>
+                        <li><strong>Z-statistic:</strong> $Z = (M - \mu) / \mathbf{SE}$</li>
+                        <li><strong>Cohen's d:</strong> $d = (M - \mu) / \mathbf{\sigma}$</li>
+                    </ul>
+                    <p><em>Cohen's d uses the population SD, NOT the standard error!</em></p>
+                </div>
+
+                <div class="warning-box" style="border-left-color: #dc3545;">
+                    <strong style="color:#dc3545;">Mistake #3: Using α=.05 Two-Tailed values for One-Tailed tests</strong>
+                    <ul>
+                        <li>Two-tailed at α=.05: Critical Z = ±1.96</li>
+                        <li>One-tailed at α=.05: Critical Z = ±1.645</li>
+                    </ul>
+                    <p><em>Always check: Is the hypothesis directional or non-directional?</em></p>
+                </div>
+
+                <div class="warning-box" style="border-left-color: #dc3545;">
+                    <strong style="color:#dc3545;">Mistake #4: Saying "Accept the Null"</strong>
+                    <p>We never "accept" the null hypothesis. We either:</p>
+                    <ul>
+                        <li><strong>Reject</strong> the null (evidence against it)</li>
+                        <li><strong>Fail to reject</strong> the null (insufficient evidence)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- TAB 4: EFFECT SIZE & POWER -->
+            <div id="tab-4" class="tab-panel">
+                <h2>Effect Size & Power</h2>
+                <p>Significance tells us "Yes/No." Effect Size tells us "How much?" Power tells us "Did we miss it?"</p>
+
+                <h3>1. Effect Size (Cohen's d)</h3>
+                <p>Even if a result is not significant (like our Chandler example), we often calculate Effect Size. It measures the difference between means in standard deviation units.</p>
+
+                <div class="formula-box" style="border-color: var(--primary);">
+                    $d = \frac{M - \mu}{\sigma}$
+                </div>
+
+                <div class="warning-box">
+                    <strong>⚠️ MAJOR TRAP ALERT ⚠️</strong><br>
+                    Notice the denominator? It is <strong>$\sigma$ (Population SD)</strong>, NOT $SE$.<br>
+                    Z-statistic uses SE. Cohen's d uses $\sigma$.<br>
+                    <em>Why? Effect size is about the populations, not the sample size.</em>
+                </div>
+
+                <div class="scenario-box">
+                    <h4>Chandler Effect Size</h4>
+                    <p>$M = 3.5$, $\mu = 3.1$, $\sigma = 1.6$</p>
+                    <p>$d = (3.5 - 3.1) / 1.6$</p>
+                    <p>$d = 0.4 / 1.6 = \mathbf{0.25}$</p>
+                    <p><strong>Interpretation:</strong> This is a <strong>Small</strong> effect. (0.2=Small, 0.5=Medium, 0.8=Large).</p>
+                </div>
+
+                <div class="scenario-box">
+                    <h4>Another Example: Donut Calories</h4>
+                    <p><strong>Scenario:</strong> Krispy Kreme donuts average 260 calories ($\mu = 260$) with SD = 35. A local bakery's donuts average 240 calories.</p>
+                    <p>$d = (240 - 260) / 35 = -20 / 35 = \mathbf{-0.57}$</p>
+                    <p><strong>Interpretation:</strong> This is a <strong>Medium</strong> effect. The negative sign indicates the local bakery has <em>fewer</em> calories.</p>
+                </div>
+
+                <h3>2. Statistical Power</h3>
+                <p>Power is the ability to correctly reject a false Null Hypothesis (i.e., finding an effect when it really exists).</p>
+
+                <table class="comparison">
+                    <tr>
+                        <th>Concept</th>
+                        <th>Definition</th>
+                        <th>Probability Symbol</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Type I Error</strong></td>
+                        <td>False Alarm. Rejecting Null when it's actually True.</td>
+                        <td>$\alpha$ (Alpha)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Type II Error</strong></td>
+                        <td>Missed Discovery. Failing to Reject Null when it's False.</td>
+                        <td>$\beta$ (Beta)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Power</strong></td>
+                        <td>Correct Hit. Rejecting Null when it is indeed False.</td>
+                        <td>$1 - \beta$</td>
+                    </tr>
+                </table>
+
+                <h4>Interpreting Power Values</h4>
+                <div class="scenario-box">
+                    <h4>Example: Power = 0.93</h4>
+                    <p><strong>What does this mean?</strong></p>
+                    <p>If the null hypothesis is <strong>FALSE</strong> (there really is an effect), there is a <strong>93%</strong> chance of rejecting the null hypothesis (correctly detecting the effect).</p>
+                    <p>Conversely, there is a 7% chance of missing it (Type II error, $\beta = 0.07$).</p>
+                </div>
+
+                <div class="warning-box">
+                    <strong>The 80% Power Convention:</strong><br>
+                    Researchers generally want power of at least <strong>0.80 (80%)</strong>. If power is less than 80%, the study has <strong>insufficient power</strong> and there's too high a risk of missing a real effect.
+                </div>
+
+                <h4>The Practical Use of Power</h4>
+                <p>Power analysis tells researchers <strong>how many participants are needed</strong> to conduct a study with findings they can trust. Before running a study, researchers calculate the required sample size to achieve at least 80% power.</p>
+
+                <h4>How to Increase Power?</h4>
+                <ol>
+                    <li><strong>Increase Sample Size (N):</strong> This is the easiest way. It lowers Standard Error, making Z larger.</li>
+                    <li><strong>Increase Alpha ($\alpha$):</strong> Raising alpha from .01 to .05 makes it easier to reject (but increases Type I error risk).</li>
+                    <li><strong>Increase Effect Size:</strong> Using a stronger treatment.</li>
+                </ol>
+
+                <h3>3. The Alpha-Power-Error Relationship</h3>
+                <p>Alpha ($\alpha$) and Power are connected in important ways:</p>
+
+                <div class="tip-box">
+                    <strong>Key Relationship:</strong> When alpha <strong>increases</strong>, both the <strong>probability of Type I error</strong> AND <strong>statistical power</strong> increase.
+                    <ul>
+                        <li>Higher $\alpha$ (e.g., .10 instead of .05) → Easier to reject null → More power</li>
+                        <li>But also → More risk of false alarms (Type I errors)</li>
+                    </ul>
+                    <p>The typical probability (alpha) researchers use is <strong>0.05</strong>.</p>
+                </div>
+
+                <h3>4. Point Estimates & Confidence Intervals</h3>
+                <p>When reporting results, we use three key terms:</p>
+
+                <table class="comparison">
+                    <tr>
+                        <th>Term</th>
+                        <th>Definition</th>
+                        <th>Example</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Point Estimate</strong></td>
+                        <td>A single value (usually the sample mean or effect size) that represents our best guess.</td>
+                        <td>If exposure to tears lowered arousal by 1.27 points, the point estimate is <strong>1.27</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Margin of Error</strong></td>
+                        <td>The range of uncertainty around the point estimate.</td>
+                        <td>± 0.32 points</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Confidence Interval</strong></td>
+                        <td>The range created by point estimate ± margin of error.</td>
+                        <td>[0.95, 1.59] or written as 1.27 ± 0.32</td>
+                    </tr>
+                </table>
+
+                <h3>5. Meta-Analysis & Confidence Intervals</h3>
+                <p>A <strong>meta-analysis</strong> combines results from multiple studies to get an overall effect size. When interpreting meta-analysis results:</p>
+
+                <div class="scenario-box">
+                    <h4>How to Interpret Meta-Analysis Results</h4>
+                    <p><strong>Example:</strong> Mean $d = 0.11$ with 95% CI of (-0.04, 0.26)</p>
+                    <p><strong>Key Question:</strong> Does the confidence interval include zero?</p>
+                    <ul>
+                        <li>If the CI <strong>includes zero</strong> (like -0.04 to 0.26): The effect is <strong>NOT statistically significant</strong>. We cannot conclude there is a real effect.</li>
+                        <li>If the CI <strong>does NOT include zero</strong>: The effect IS statistically significant.</li>
+                    </ul>
+                    <p><strong>Answer for this example:</strong> Averaging across all of the literature, there really is <strong>no effect</strong> (because the CI crosses zero).</p>
+                </div>
+
+                <div class="knowledge-check">
+                    <h4>Quick Quiz: Test Your Understanding</h4>
+
+                    <p><strong>Q1:</strong> What is the alpha level used for in a Z-test?</p>
+                    <button class="reveal-btn" onclick="reveal('ans-alpha')">Reveal Answer</button>
+                    <div id="ans-alpha" class="answer-reveal">
+                        <p>Alpha is used to <strong>determine the critical Z value(s)</strong> marking the critical area of the distribution. It sets the "cutoff" for what counts as significant.</p>
+                    </div>
+
+                    <p style="margin-top:15px;"><strong>Q2:</strong> If statistical power is 0.93, what does this mean?</p>
+                    <button class="reveal-btn" onclick="reveal('ans-power93')">Reveal Answer</button>
+                    <div id="ans-power93" class="answer-reveal">
+                        <p>If the null hypothesis is <strong>false</strong>, there is a <strong>93%</strong> chance of rejecting the null hypothesis.</p>
+                    </div>
+
+                    <p style="margin-top:15px;"><strong>Q3:</strong> What is the minimum power threshold considered acceptable?</p>
+                    <button class="reveal-btn" onclick="reveal('ans-power80')">Reveal Answer</button>
+                    <div id="ans-power80" class="answer-reveal">
+                        <p><strong>80%</strong> (or 0.80). If power is less than 80%, there is insufficient power.</p>
+                    </div>
+
+                    <p style="margin-top:15px;"><strong>Q4:</strong> What is the practical use of statistical power?</p>
+                    <button class="reveal-btn" onclick="reveal('ans-poweruse')">Reveal Answer</button>
+                    <div id="ans-poweruse" class="answer-reveal">
+                        <p>Power analysis tells researchers <strong>how many participants are needed</strong> to conduct a study with findings they can trust.</p>
+                    </div>
+
+                    <p style="margin-top:15px;"><strong>Q5:</strong> When alpha increases, what else increases?</p>
+                    <button class="reveal-btn" onclick="reveal('ans-alphapower')">Reveal Answer</button>
+                    <div id="ans-alphapower" class="answer-reveal">
+                        <p>Both <strong>statistical power</strong> AND <strong>probability of Type I error</strong> increase when alpha increases.</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- TAB 5: ASSIGNMENT WORKSHOP -->
+            <div id="tab-5" class="tab-panel">
+                <h2>Assignment Workshop</h2>
+                <p>Your M3 Quiz and Assignment both require complete Z-test calculations. This section provides step-by-step walkthroughs.</p>
+
+                <h3>Complete Quiz Walkthrough: Chandler Household Study</h3>
+                <div class="scenario-box">
+                    <h4>The Data</h4>
+                    <p><strong>Population (City of Chandler):</strong> $\mu = 3.1$, $\sigma = 1.6$</p>
+                    <p><strong>Sample (Your Neighborhood):</strong> 16 households with sizes: 2, 4, 2, 6, 3, 2, 4, 4, 3, 5, 6, 2, 3, 5, 3, 2</p>
+                    <p><strong>Research Question:</strong> Is the neighborhood <em>different</em> from the city? (non-directional)</p>
+                    <p><strong>Alpha:</strong> $\alpha = 0.10$ (two-tailed)</p>
+                </div>
+
+                <div class="step-container">
+                    <div class="step-item">
+                        <div class="step-title">Step 1: Identify DV and IV</div>
+                        <p><strong>DV (what we measure):</strong> Household size</p>
+                        <p><strong>IV (what separates groups):</strong> Location (Chandler vs. Neighborhood)</p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-title">Step 2: State the Null Hypothesis</div>
+                        <p>Since this is <em>non-directional</em> ("different", not "higher/lower"):</p>
+                        <p>"Household sizes in my neighborhood are not significantly different from the general household sizes in Chandler."</p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-title">Step 3: Calculate Sample Mean ($M$)</div>
+                        <p>Sum = 2+4+2+6+3+2+4+4+3+5+6+2+3+5+3+2 = <strong>56</strong></p>
+                        <p>$M = 56 / 16 = \mathbf{3.5}$</p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-title">Step 4: Calculate Standard Error ($SE$)</div>
+                        <p>$SE = \sigma / \sqrt{N} = 1.6 / \sqrt{16} = 1.6 / 4 = \mathbf{0.4}$</p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-title">Step 5: Calculate Z-Statistic</div>
+                        <p>$Z = (M - \mu) / SE = (3.5 - 3.1) / 0.4 = 0.4 / 0.4 = \mathbf{1.0}$</p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-title">Step 6: Determine Tails & Critical Value</div>
+                        <p>Non-directional = <strong>Two-tailed</strong></p>
+                        <p>At $\alpha = 0.10$, Two-tailed: Critical Z = <strong>±1.645</strong></p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-title">Step 7: Make the Decision</div>
+                        <p>Is |1.0| > 1.645? <strong>No.</strong> 1.0 is less extreme than 1.645.</p>
+                        <p><strong>Decision: Fail to Reject</strong> the null hypothesis.</p>
+                        <p><strong>Conclusion:</strong> "The household sizes in my neighborhood are NOT significantly different from the city of Chandler."</p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-title">Step 8: Calculate Effect Size (Cohen's d)</div>
+                        <p>$d = (M - \mu) / \sigma = (3.5 - 3.1) / 1.6 = 0.4 / 1.6 = \mathbf{0.25}$</p>
+                        <p>This is a <strong>small</strong> effect (below 0.5).</p>
+                    </div>
+                </div>
+
+                <hr style="margin: 30px 0;">
+
+                <h3>Assignment Problems Strategy</h3>
+                <p>Your assignment has 3 questions. Here is the strategy for each.</p>
+
+                <h3>Q1: IQ in Las Cruces (Directional Test)</h3>
+                <div class="step-container">
+                    <div class="step-item">
+                        <div class="step-title">1. Hypotheses</div>
+                        <p>Scenario says "individuals... might have <strong>higher</strong> IQs." This is directional (One-Tailed).</p>
+                        <p>$H_0: \mu_{LC} \le 100$ (Note: Null covers the opposite of prediction)</p>
+                        <p>$H_1: \mu_{LC} > 100$</p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-title">2. Calculations</div>
+                        <p>Use Excel/Calculator. Given: $\mu=100, \sigma=15$.</p>
+                        <p>a) Find Sample Mean ($M$) of the 20 numbers.</p>
+                        <p>b) Find SE: $15 / \sqrt{20}$.</p>
+                        <p>c) Find Z: $(M - 100) / SE$.</p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-title">3. Decision</div>
+                        <p>Alpha = .05, One-tailed. Look at the One-Tailed row in the table (Tab 3).<br>
+                        Critical Z = <strong>+1.645</strong>.<br>
+                        Is your calc Z > 1.645? If yes, Reject.</p>
+                    </div>
+                </div>
+
+                <h3>Q2: Life Expectancy (Non-Directional)</h3>
+                <div class="step-container">
+                    <div class="step-item">
+                        <div class="step-title">1. Hypotheses</div>
+                        <p>Scenario says "significantly <strong>different</strong>." Non-Directional (Two-Tailed).</p>
+                        <p>$H_0: \mu_{VT} = 78.2$</p>
+                        <p>$H_1: \mu_{VT} \neq 78.2$</p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-title">2. Critical Value</div>
+                        <p>Alpha = .05, Two-tailed.<br>
+                        Critical Z = <strong>±1.96</strong>.</p>
+                        <p>Compare your Z. Is it outside -1.96 to +1.96?</p>
+                    </div>
+                </div>
+
+                <h3>Q3: Exam Scores (Small vs. Large Sample)</h3>
+                <div class="step-container">
+                    <div class="step-item">
+                        <div class="step-title">The Sample Size Lesson</div>
+                        <p>This question asks you to run the test twice. Once with $N=15$, once with $N=80$.</p>
+                        <p><strong>Prediction:</strong></p>
+                        <ul>
+                            <li>With $N=15$, your SE will be large, your Z will be small. You might fail to reject.</li>
+                            <li>With $N=80$, your SE will be small (dividing by a bigger number), your Z will be huge. You will likely reject.</li>
+                        </ul>
+                        <p><strong>Takeaway:</strong> Increasing sample size increases <strong>Power</strong> (the ability to find significance).</p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-title">Effect Size Check</div>
+                        <p>Q3 asks about Effect Size for both. Remember the formula: $d = (M - \mu) / \sigma$.<br>
+                        Does $N$ appear in this formula? <strong>NO.</strong><br>
+                        Therefore, Effect Size should be roughly the same regardless of sample size (unlike significance).</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <div class="tab-navigation bottom-nav">
+        <button class="tab-button" onclick="showTab(1)">
+            <input type="checkbox" id="progress-1-bottom" class="tab-checkbox" onchange="toggleTabComplete(1)">
+            1. Logic & Hypotheses
+        </button>
+        <button class="tab-button" onclick="showTab(2)">
+            <input type="checkbox" id="progress-2-bottom" class="tab-checkbox" onchange="toggleTabComplete(2)">
+            2. Calculation Engine
+        </button>
+        <button class="tab-button" onclick="showTab(3)">
+            <input type="checkbox" id="progress-3-bottom" class="tab-checkbox" onchange="toggleTabComplete(3)">
+            3. Decisions & Tails
+        </button>
+        <button class="tab-button" onclick="showTab(4)">
+            <input type="checkbox" id="progress-4-bottom" class="tab-checkbox" onchange="toggleTabComplete(4)">
+            4. Effect Size & Power
+        </button>
+        <button class="tab-button" onclick="showTab(5)">
+            <input type="checkbox" id="progress-5-bottom" class="tab-checkbox" onchange="toggleTabComplete(5)">
+            5. Assignment Workshop
+        </button>
+    </div>
+
+    <!-- Formula Quick Reference Card -->
+    <div style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); color: white; padding: 25px; border-radius: 8px; margin-top: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+        <h3 style="color: #fff; margin-top: 0; border-bottom: 2px solid #e94560; padding-bottom: 10px;">Formula Quick Reference Card</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+            <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 6px;">
+                <h4 style="color: #e94560; margin-top: 0;">Sample Mean</h4>
+                <p style="font-family: 'Courier New', monospace; font-size: 1.1em;">M = ΣX / N</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 6px;">
+                <h4 style="color: #e94560; margin-top: 0;">Standard Error</h4>
+                <p style="font-family: 'Courier New', monospace; font-size: 1.1em;">SE = σ / √N</p>
+                <p style="font-size: 0.85em; opacity: 0.8;">Excel: =σ/SQRT(N)</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 6px;">
+                <h4 style="color: #e94560; margin-top: 0;">Z-Statistic</h4>
+                <p style="font-family: 'Courier New', monospace; font-size: 1.1em;">Z = (M - μ) / SE</p>
+                <p style="font-size: 0.85em; opacity: 0.8;">Uses SE in denominator!</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 6px;">
+                <h4 style="color: #e94560; margin-top: 0;">Cohen's d (Effect Size)</h4>
+                <p style="font-family: 'Courier New', monospace; font-size: 1.1em;">d = (M - μ) / σ</p>
+                <p style="font-size: 0.85em; opacity: 0.8;">Uses σ (not SE)!</p>
+            </div>
+        </div>
+        <div style="margin-top: 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+            <div style="background: rgba(233, 69, 96, 0.2); padding: 12px; border-radius: 6px; text-align: center;">
+                <strong>Small Effect</strong><br>d ≈ 0.2
+            </div>
+            <div style="background: rgba(233, 69, 96, 0.3); padding: 12px; border-radius: 6px; text-align: center;">
+                <strong>Medium Effect</strong><br>d ≈ 0.5
+            </div>
+            <div style="background: rgba(233, 69, 96, 0.4); padding: 12px; border-radius: 6px; text-align: center;">
+                <strong>Large Effect</strong><br>d ≈ 0.8
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Progress tracking logic
+        const PROGRESS_KEY = 'psy230-m3-progress';
+
+        function loadProgress() {
+            const savedProgress = localStorage.getItem(PROGRESS_KEY);
+            if (savedProgress) {
+                const progress = JSON.parse(savedProgress);
+                Object.keys(progress).forEach(tabNumber => {
+                    const isComplete = progress[tabNumber];
+                    const topCheckbox = document.getElementById(`progress-${tabNumber}`);
+                    const bottomCheckbox = document.getElementById(`progress-${tabNumber}-bottom`);
+                    if (topCheckbox) topCheckbox.checked = isComplete;
+                    if (bottomCheckbox) bottomCheckbox.checked = isComplete;
+                    updateTabVisualState(parseInt(tabNumber), isComplete);
+                });
+            }
+        }
+
+        function saveProgress(tabNumber, isComplete) {
+            const savedProgress = localStorage.getItem(PROGRESS_KEY);
+            const progress = savedProgress ? JSON.parse(savedProgress) : {};
+            progress[tabNumber] = isComplete;
+            localStorage.setItem(PROGRESS_KEY, JSON.stringify(progress));
+        }
+
+        function toggleTabComplete(tabNumber) {
+            const clickedCheckbox = event.target;
+            const isComplete = clickedCheckbox.checked;
+            
+            const topCheckbox = document.getElementById(`progress-${tabNumber}`);
+            const bottomCheckbox = document.getElementById(`progress-${tabNumber}-bottom`);
+            if (topCheckbox) topCheckbox.checked = isComplete;
+            if (bottomCheckbox) bottomCheckbox.checked = isComplete;
+            
+            updateTabVisualState(tabNumber, isComplete);
+            saveProgress(tabNumber, isComplete);
+        }
+
+        function updateTabVisualState(tabNumber, isComplete) {
+            const tabButtons = document.querySelectorAll(`button[onclick="showTab(${tabNumber})"]`);
+            tabButtons.forEach(button => {
+                if (isComplete) button.classList.add('completed');
+                else button.classList.remove('completed');
+            });
+        }
+
+        function showTab(tabIndex) {
+            document.querySelectorAll('.tab-panel').forEach(panel => panel.classList.remove('active'));
+            document.getElementById('tab-' + tabIndex).classList.add('active');
+            
+            document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            const tabContainer = document.querySelector('.lecture-tabs');
+            if (tabContainer) tabContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function reveal(id) {
+            const el = document.getElementById(id);
+            el.style.display = (el.style.display === 'block') ? 'none' : 'block';
+        }
+
+        document.addEventListener('DOMContentLoaded', loadProgress);
+    </script>
+</body>
+</html>
