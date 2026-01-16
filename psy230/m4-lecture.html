@@ -1,0 +1,1368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 4: The t-Test Family</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    <style>
+        /* Base Styling */
+        :root {
+            --primary: #d84315; /* Burnt Orange for M4 */
+            --secondary: #546e7a;
+            --success: #2e7d32;
+            --warning: #f9a825;
+            --light-bg: #fbe9e7;
+            --border: #dee2e6;
+            --text: #333;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fafafa;
+        }
+
+        h1, h2, h3 { color: #2c3e50; }
+        
+        /* Header */
+        header {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            border-left: 5px solid var(--primary);
+        }
+
+        /* Tabs */
+        .lecture-tabs {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .tab-navigation {
+            display: flex;
+            background-color: #e9ecef;
+            overflow-x: auto;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .tab-button {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            background: none;
+            cursor: pointer;
+            text-align: left;
+            border-bottom: 3px solid transparent;
+            min-width: 160px;
+            transition: all 0.2s;
+            font-weight: 600;
+            color: #555;
+        }
+
+        .tab-button:hover { background-color: #dde2e6; }
+        .tab-button.active { 
+            background-color: #fff; 
+            border-bottom-color: var(--primary); 
+            color: var(--primary);
+        }
+        .tab-button.completed {
+            border-bottom-color: var(--success);
+            position: relative;
+        }
+        .tab-button.completed::after {
+            content: "✓";
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background-color: var(--success);
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .tab-checkbox {
+            margin-right: 8px;
+            cursor: pointer;
+            transform: scale(1.2);
+        }
+        .bottom-nav {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid var(--border);
+        }
+
+        /* Content */
+        .tab-content { padding: 30px; }
+        .tab-panel { display: none; animation: fadeIn 0.4s; }
+        .tab-panel.active { display: block; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Interactive Components */
+        .scenario-box {
+            background-color: #fff3e0;
+            border: 1px solid #ffe0b2;
+            padding: 20px;
+            border-radius: 6px;
+            margin: 20px 0;
+        }
+
+        .warning-box {
+            background-color: #fff3cd;
+            border: 1px solid #ffeeba;
+            border-left: 4px solid var(--warning);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        
+        .tip-box {
+            background-color: #e1f5fe;
+            border: 1px solid #b3e5fc;
+            border-left: 4px solid #0288d1;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+
+        .formula-box {
+            background-color: #37474f;
+            color: #fff;
+            padding: 15px;
+            border-radius: 6px;
+            text-align: center;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1.1em;
+            margin: 20px 0;
+            letter-spacing: 1px;
+            border: 2px solid #546e7a;
+        }
+
+        .assignments-box {
+            background-color: #e8f5e9;
+            border: 1px solid #c8e6c9;
+            border-left: 4px solid var(--success);
+            padding: 15px;
+            margin: 20px 0 0 0;
+            border-radius: 4px;
+        }
+
+        .knowledge-check {
+            background-color: #f8f9fa;
+            border: 1px solid var(--border);
+            padding: 20px;
+            border-radius: 6px;
+            margin-top: 20px;
+        }
+
+        .reveal-btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        
+        .answer-reveal {
+            display: none;
+            margin-top: 15px;
+            padding: 15px;
+            background: white;
+            border-left: 3px solid var(--success);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        table.comparison {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        table.comparison th, table.comparison td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        table.comparison th {
+            background-color: #eee;
+        }
+
+        /* Step Process Styles */
+        .step-container {
+            border-left: 3px solid var(--secondary);
+            padding-left: 20px;
+            margin: 20px 0;
+        }
+        .step-item {
+            margin-bottom: 20px;
+        }
+        .step-title {
+            font-weight: bold;
+            color: var(--primary);
+            text-transform: uppercase;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Module 4: One-Sample & Paired-Samples t-Tests</h1>
+        <p><strong>Goal:</strong> In Module 3, we used Z-tests because we magically knew the Population Standard Deviation ($\sigma$). In real research, we almost never know $\sigma$. In this module, we learn how to estimate it from our sample and use the <strong>t-test</strong>, the workhorse of statistics.</p>
+        <p><em>"How do we compare a group to a standard, or compare a group to itself over time, when we don't know the population's variance?"</em></p>
+
+        <div class="assignments-box">
+            <h3>📋 Module 4 Assignments & Due Items</h3>
+            <ul>
+                <li><strong>Readings:</strong> Chapter 9 (Essentials of Statistics)</li>
+                <li><strong>M4 Quiz:</strong> Covers t-test assumptions, degrees of freedom, and interpreting confidence intervals.</li>
+                <li><strong>M4 Assignment:</strong> 
+                    <ul>
+                        <li>One-Sample t-test: Comparing Sample A vs. National Average</li>
+                        <li>Paired-Samples t-test: Comparing Age 70 vs. Age 80 (Same people)</li>
+                        <li>Paired-Samples t-test: Condition A vs. Condition B (Same people)</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="lecture-tabs">
+        <div class="tab-navigation">
+            <button class="tab-button active" onclick="showTab(1)">
+                <input type="checkbox" id="progress-1" class="tab-checkbox" onchange="toggleTabComplete(1)">
+                1. The t-Test Concept
+            </button>
+            <button class="tab-button" onclick="showTab(2)">
+                <input type="checkbox" id="progress-2" class="tab-checkbox" onchange="toggleTabComplete(2)">
+                2. One-Sample Engine
+            </button>
+            <button class="tab-button" onclick="showTab(3)">
+                <input type="checkbox" id="progress-3" class="tab-checkbox" onchange="toggleTabComplete(3)">
+                3. Paired-Samples Logic
+            </button>
+            <button class="tab-button" onclick="showTab(4)">
+                <input type="checkbox" id="progress-4" class="tab-checkbox" onchange="toggleTabComplete(4)">
+                4. Paired Calculation
+            </button>
+            <button class="tab-button" onclick="showTab(5)">
+                <input type="checkbox" id="progress-5" class="tab-checkbox" onchange="toggleTabComplete(5)">
+                5. Decisions & Effect Size
+            </button>
+            <button class="tab-button" onclick="showTab(6)">
+                <input type="checkbox" id="progress-6" class="tab-checkbox" onchange="toggleTabComplete(6)">
+                6. Assignment Workshop
+            </button>
+        </div>
+
+        <div class="tab-content">
+            
+            <!-- TAB 1: THE T-TEST CONCEPT -->
+            <div id="tab-1" class="tab-panel active">
+                <h2>Why do we need a "t" test?</h2>
+                <p>In Module 3, every problem provided the <strong>Population Standard Deviation ($\sigma$)</strong>. But in the real world, if you are studying a new drug or a specific sub-group, you don't know the population's spread. You only have your sample.</p>
+
+                <h3>The Problem of Estimation</h3>
+                <p>We can use our Sample Standard Deviation ($s$) to estimate the Population Standard Deviation ($\sigma$). However, samples tend to be <strong>less variable</strong> than the full population (we rarely catch the extreme outliers in a small sample).</p>
+                <p>If we just used $s$ in a Z-test formula, we would underestimate the error and get false positives (Type I errors).</p>
+
+                <h3>The Solution: The t-Distribution</h3>
+                <p>The t-distribution is a "shape-shifter." It looks like a normal Z-curve, but it changes shape based on sample size.</p>
+
+                <div class="scenario-box">
+                    <h4>Z-Distribution vs. t-Distribution</h4>
+                    <ul>
+                        <li><strong>Z-Distribution:</strong> Perfect Normal Bell Curve. Used when $\sigma$ is known.</li>
+                        <li><strong>t-Distribution:</strong> Has <strong>Fatter Tails</strong>. This accounts for the uncertainty of estimating $\sigma$.</li>
+                        <li>As Sample Size ($N$) gets bigger, the t-distribution looks more and more like the Z-distribution.</li>
+                    </ul>
+                    <p><strong>Why fatter tails matter:</strong> More area in the tails means the critical cutoff values are more extreme. With the same α = .05, the cutoff for t is farther from zero than Z (e.g., ±2.306 for df=8 vs. ±1.96 for Z). This makes t-tests harder to reach significance — which is appropriate because we have more uncertainty.</p>
+                </div>
+
+                <div class="warning-box">
+                    <strong>What is a "Conservative" Test?</strong><br>
+                    When scientists call a hypothesis test <strong>conservative</strong>, they mean it is <strong>difficult to reject the null hypothesis</strong>. The t-test is more conservative than the Z-test because:
+                    <ul>
+                        <li>The fatter tails push critical values further from zero</li>
+                        <li>Your calculated t must be more extreme to reach significance</li>
+                        <li>This protects against false positives when we have uncertainty in our estimates</li>
+                    </ul>
+                </div>
+
+                <h3>Key Terminology: Three Populations</h3>
+                <p>Before conducting any hypothesis test, you must clearly identify these three components:</p>
+
+                <table class="comparison">
+                    <tr>
+                        <th>Term</th>
+                        <th>Definition</th>
+                        <th>Example (Commercial Times Study)</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Sample</strong></td>
+                        <td>The actual data you collected</td>
+                        <td>The 9 TV networks you measured in 2018</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Target Population</strong></td>
+                        <td>The larger group your sample represents — the group you want to generalize your findings to</td>
+                        <td>All broadcast networks in America in 2018</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Comparison Population</strong></td>
+                        <td>The known population with $\mu$ (and sometimes $\sigma$) that you're comparing against</td>
+                        <td>The 2009 broadcast networks with $\mu = 13.5$ minutes</td>
+                    </tr>
+                </table>
+
+                <div class="tip-box">
+                    <strong>Assignment Tip:</strong> When asked to identify "the sample," "target population," and "comparison population," think:
+                    <ul>
+                        <li><strong>Sample</strong> = What you actually measured (e.g., "10 Japanese mid-size SUV models")</li>
+                        <li><strong>Target Population</strong> = Who/what the sample represents (e.g., "All Japanese mid-size SUVs")</li>
+                        <li><strong>Comparison Population</strong> = The benchmark with the known mean (e.g., "American mid-size SUVs with μ = 28.5 MPG")</li>
+                    </ul>
+                </div>
+
+                <h3>When to use which test?</h3>
+                <table class="comparison">
+                    <tr>
+                        <th>Scenario</th>
+                        <th>Test to Use</th>
+                        <th>Why?</th>
+                    </tr>
+                    <tr>
+                        <td>Known Population Mean ($\mu$) AND Known Population SD ($\sigma$)</td>
+                        <td><strong>Z-Test</strong></td>
+                        <td>We have perfect information about the population spread.</td>
+                    </tr>
+                    <tr>
+                        <td>Known Population Mean ($\mu$) but <strong>Unknown</strong> Population SD</td>
+                        <td><strong>One-Sample t-Test</strong></td>
+                        <td>We must estimate the spread using our sample.</td>
+                    </tr>
+                    <tr>
+                        <td>Comparing two linked scores (e.g., Pre/Post)</td>
+                        <td><strong>Paired-Samples t-Test</strong></td>
+                        <td>We treat the <em>differences</em> as a single sample.</td>
+                    </tr>
+                </table>
+
+                <h3>Assumptions of t-Tests</h3>
+                <p>T-tests are <strong>parametric tests</strong>, meaning they have specific requirements:</p>
+
+                <div class="scenario-box">
+                    <h4>The Three Assumptions</h4>
+                    <ol>
+                        <li><strong>The DV is a scale variable</strong> — The dependent variable must be measured at the interval or ratio level (not nominal or ordinal). You can't run a t-test on categories!</li>
+                        <li><strong>The population is normally distributed</strong> — The data should come from a normally distributed population. However, t-tests are "robust" to violations with large samples (N > 30).</li>
+                        <li><strong>Participants are randomly selected</strong> — Ideally, participants should be randomly selected from the population. <em>Note: This assumption is often violated in practice (most studies use convenience samples), but it affects generalizability, not the math.</em></li>
+                    </ol>
+                </div>
+
+                <div class="knowledge-check">
+                    <h4>Knowledge Check: Assumptions</h4>
+                    <p><strong>Question:</strong> Which of these is NOT a strict assumption of the paired-samples t test?</p>
+                    <ul>
+                        <li>A) The DV is a scale variable</li>
+                        <li>B) The population is normally distributed</li>
+                        <li>C) Participants are randomly selected</li>
+                        <li>D) The sample size is at least 30</li>
+                    </ul>
+                    <button class="reveal-btn" onclick="reveal('ans-assume')">Reveal Answer</button>
+                    <div id="ans-assume" class="answer-reveal">
+                        <p><strong>D) The sample size is at least 30</strong></p>
+                        <p>While larger samples are better (more power, more robust to normality violations), there is no strict requirement that N ≥ 30. You can run a t-test with smaller samples — just be more careful about the normality assumption.</p>
+                    </div>
+                </div>
+
+                <h3>Symbol Notation Review</h3>
+                <table class="comparison">
+                    <tr>
+                        <th>Symbol</th>
+                        <th>Name</th>
+                        <th>What It Represents</th>
+                    </tr>
+                    <tr>
+                        <td><strong>$\sigma$</strong></td>
+                        <td>Population Standard Deviation</td>
+                        <td>The true spread of the population (usually unknown)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>$s$</strong></td>
+                        <td>Estimated Population Standard Deviation</td>
+                        <td>Our estimate of $\sigma$ calculated from the sample using $N-1$</td>
+                    </tr>
+                    <tr>
+                        <td><strong>$SE$ or $s_M$</strong></td>
+                        <td>Standard Error</td>
+                        <td>Standard deviation of the sampling distribution ($s / \sqrt{N}$)</td>
+                    </tr>
+                </table>
+
+                <div class="tip-box">
+                    <strong>Quiz Tip:</strong> If a problem gives you the Population Mean ($\mu$) but forces you to calculate SD from the sample data, you MUST use a t-test. The symbol $s$ represents a population standard deviation estimated from a sample.
+                </div>
+
+                <div class="knowledge-check">
+                    <h4>Knowledge Check: Z vs. t-Test</h4>
+                    <p><strong>Question:</strong> A researcher wants to compare the average IQ of psychology majors ($\mu = 100$ is known) to the national average. The researcher collects a sample of 25 students and calculates the sample standard deviation from the data. Which test should be used?</p>
+                    <button class="reveal-btn" onclick="reveal('ans-zt')">Reveal Answer</button>
+                    <div id="ans-zt" class="answer-reveal">
+                        <p><strong>One-Sample t-Test</strong></p>
+                        <p>Even though the population mean is known ($\mu = 100$), the population standard deviation is NOT known. The researcher must calculate it from the sample, so we use a t-test to account for the uncertainty in estimating $\sigma$.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 2: ONE-SAMPLE ENGINE -->
+            <div id="tab-2" class="tab-panel">
+                <h2>The One-Sample Calculation Engine</h2>
+                <p>The formula for $t$ looks almost identical to $Z$, but the symbols change to reflect that we are <em>estimating</em>.</p>
+
+                <h3>1. Degrees of Freedom ($df$)</h3>
+                <p>The shape of the t-distribution is determined by <strong>Degrees of Freedom</strong>. For a one-sample test:</p>
+                <div class="formula-box">
+                    $df = N - 1$
+                </div>
+                <p><em>Example: If you test 10 cars, $df = 9$. You look up the critical value in the row for 9.</em></p>
+
+                <h3>2. Calculate Sample Statistics</h3>
+                <p><strong>A. Estimated Population Standard Deviation ($s$)</strong><br>
+                Note the denominator is $N-1$ (Degrees of Freedom), not $N$. This makes the SD slightly larger to correct for bias.</p>
+                <div class="formula-box">
+                    $s = \sqrt{\frac{\sum(X - M)^2}{N - 1}}$
+                </div>
+                <p><em>Excel Formula:</em> <code>=STDEV.S(data)</code> (The "S" stands for Sample, using N-1)</p>
+
+                <p><strong>B. Estimated Standard Error ($SE$ or $s_M$)</strong><br>
+                We use the estimated SD ($s$) to find the standard error.</p>
+                <div class="formula-box">
+                    $SE = \frac{s}{\sqrt{N}}$
+                </div>
+                <p><em>Excel Formula:</em> <code>=s/SQRT(N)</code></p>
+
+                <p><strong>C. The t-Statistic</strong></p>
+                <div class="formula-box">
+                    $t = \frac{M - \mu}{SE}$
+                </div>
+
+                <h3>3. Anatomy of the t-Statistic Formula</h3>
+                <p>Understanding what's in the <strong>numerator</strong> vs. <strong>denominator</strong> is a common quiz question!</p>
+
+                <div class="scenario-box">
+                    <h4>Breaking Down the Formula</h4>
+                    <table class="comparison">
+                        <tr>
+                            <th>Part</th>
+                            <th>Formula Component</th>
+                            <th>What It Represents</th>
+                        </tr>
+                        <tr>
+                            <td><strong>Numerator</strong><br>(Top)</td>
+                            <td>$M - \mu$</td>
+                            <td>A <strong>difference between means</strong>: How far is the sample mean from the population mean?</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Denominator</strong><br>(Bottom)</td>
+                            <td>$SE = s / \sqrt{N}$</td>
+                            <td>The <strong>estimated standard error</strong> of the sampling distribution of the mean</td>
+                        </tr>
+                    </table>
+                    <p><strong>In plain English:</strong> The t-statistic tells you how many standard errors the sample mean is from the population mean.</p>
+                </div>
+
+                <div class="tip-box">
+                    <strong>Quiz Pattern:</strong> "The numerator of all t statistics contains ____"<br>
+                    Answer: <strong>A difference between means</strong><br><br>
+                    "The denominator of the one-sample t statistic is ____"<br>
+                    Answer: <strong>The estimated standard error of the sampling distribution of the mean</strong>
+                </div>
+
+                <div class="scenario-box">
+                    <h4>Guided Practice: Commercial Times</h4>
+                    <p><strong>Scenario:</strong> 2009 Average = 13.5 ($\mu$). You measure 9 networks in 2018 ($N=9$).<br>
+                    Sample Data: 13, 13.5, 15, 14.25, 14.5, 14.25, 13.25, 16, 16.75</p>
+
+                    <p><strong>Step 1: Calculate Mean ($M$)</strong><br>
+                    Sum = 130.5. $M = 130.5 / 9 = \mathbf{14.5}$</p>
+
+                    <p><strong>Step 2: Calculate Est. Pop SD ($s$)</strong><br>
+                    (Calculated using $N-1$ in denominator)<br>
+                    $s = 1.25$ (approx)</p>
+
+                    <p><strong>Step 3: Calculate Standard Error ($SE$)</strong><br>
+                    $SE = 1.25 / \sqrt{9} = 1.25 / 3 = \mathbf{0.417}$</p>
+
+                    <p><strong>Step 4: Calculate t</strong><br>
+                    Numerator: $14.5 - 13.5 = 1.0$ (difference between means)<br>
+                    Denominator: $0.417$ (standard error)<br>
+                    $t = 1.0 / 0.417 = \mathbf{2.40}$</p>
+                </div>
+
+                <div class="warning-box">
+                    <strong>Critical Calculation Detail:</strong> When estimating the Population SD, you divide the Sum of Squares by <strong>N-1</strong>. When calculating Standard Error, you divide that SD by <strong>Square Root of N</strong>. Don't mix these up!
+                </div>
+
+                <div class="knowledge-check">
+                    <h4>Knowledge Check: Formula Components</h4>
+                    <p><strong>Question:</strong> A researcher collects 25 data points that yield a mean of 8.164 and a standard deviation (based on N – 1) of 2.237. If the researcher is comparing the sample to a population mean of 9.2, what is the value of the t statistic?</p>
+                    <button class="reveal-btn" onclick="reveal('ans-tcalc')">Reveal Answer</button>
+                    <div id="ans-tcalc" class="answer-reveal">
+                        <p><strong>Step 1: Identify the components</strong></p>
+                        <ul>
+                            <li>$M = 8.164$, $\mu = 9.2$, $s = 2.237$, $N = 25$</li>
+                        </ul>
+                        <p><strong>Step 2: Calculate SE</strong></p>
+                        <p>$SE = s / \sqrt{N} = 2.237 / \sqrt{25} = 2.237 / 5 = 0.4474$</p>
+                        <p><strong>Step 3: Calculate t</strong></p>
+                        <p>$t = (M - \mu) / SE = (8.164 - 9.2) / 0.4474 = -1.036 / 0.4474 = \mathbf{-2.316}$</p>
+                    </div>
+                </div>
+
+                <div class="knowledge-check">
+                    <h4>Knowledge Check: Degrees of Freedom</h4>
+                    <p><strong>Question:</strong> A researcher conducts a one-sample t-test with a sample size of 20. What are the degrees of freedom?</p>
+                    <button class="reveal-btn" onclick="reveal('ans-df')">Reveal Answer</button>
+                    <div id="ans-df" class="answer-reveal">
+                        <p><strong>$df = N - 1 = 20 - 1 = 19$</strong></p>
+                        <p>For a one-sample t-test, degrees of freedom is always $N - 1$. This value is used to look up the critical t-value in the t-table.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 3: PAIRED-SAMPLES LOGIC -->
+            <div id="tab-3" class="tab-panel">
+                <h2>Paired-Samples t-Test</h2>
+                <p>Also called "Dependent-Means," "Repeated-Measures," or "Within-Subjects" t-test.</p>
+
+                <h3>When to use it?</h3>
+                <p>Use this when data points are <strong>linked</strong>:</p>
+                <ul>
+                    <li><strong>Pre/Post:</strong> Measuring anxiety before and after a yoga class for the same people.</li>
+                    <li><strong>Matched Pairs:</strong> Comparing twins (Twin A vs Twin B).</li>
+                    <li><strong>Repeated Conditions:</strong> Each person tastes Cola A and Cola B.</li>
+                    <li><strong>Longitudinal:</strong> Measuring the same people at age 70 and again at age 80.</li>
+                </ul>
+
+                <div class="warning-box">
+                    <strong>Why Use Paired-Samples Instead of Two Separate Groups?</strong><br>
+                    When the assignment asks "Explain why a paired-samples t test is appropriate," your answer should include:
+                    <ul>
+                        <li>The <strong>same participants</strong> are measured twice (OR participants are matched one-to-one)</li>
+                        <li>Each data point in one condition has a <strong>corresponding linked data point</strong> in the other condition</li>
+                        <li>The scores are <strong>not independent</strong> — they come from the same person or matched pair</li>
+                    </ul>
+                    <p><strong>Example answer:</strong> "A paired-samples t test is appropriate because the same elderly residents were measured at both age 70 and age 80. Each person's score at age 80 is directly linked to their own score at age 70, making the data points dependent rather than independent."</p>
+                </div>
+
+                <h3>The "Difference Score" Trick</h3>
+                <p>The math for a Paired-Samples t-test is actually just a One-Sample t-test in disguise!</p>
+                <ol>
+                    <li>We don't analyze Score 1 and Score 2 separately.</li>
+                    <li>We subtract them to create a <strong>Difference Score ($D$)</strong>.</li>
+                    <li>We run a One-Sample t-test on the Difference Scores, comparing them to a population mean of <strong>Zero</strong>.</li>
+                </ol>
+
+                <h3>The Comparison Distribution</h3>
+                <div class="scenario-box">
+                    <h4>What is the Comparison Distribution for Paired-Samples?</h4>
+                    <p>In a paired-samples t test, the comparison distribution is a <strong>distribution of mean difference scores</strong>.</p>
+                    <ul>
+                        <li>We're not comparing individual scores or group means</li>
+                        <li>We're comparing our sample's <strong>mean difference</strong> to a distribution of all possible <strong>mean differences</strong></li>
+                        <li>The center of this distribution is $\mu_{diff} = 0$ (if the null hypothesis is true)</li>
+                    </ul>
+                    <p><strong>Quiz Answer:</strong> "The comparison distribution in a paired-samples t test is a distribution of <strong>mean difference scores</strong>."</p>
+                </div>
+
+                <h3>The Null Hypothesis Logic</h3>
+                <div class="scenario-box">
+                    <h4>The Logic</h4>
+                    <p><strong>Null Hypothesis ($H_0$):</strong> The average difference is Zero ($\mu_{diff} = 0$).<br>
+                    <em>(Meaning: The yoga class changed nothing).</em></p>
+                    <p><strong>Alternative Hypothesis ($H_1$):</strong> The average difference is NOT Zero ($\mu_{diff} \neq 0$).</p>
+                </div>
+
+                <div class="warning-box">
+                    <strong>What to Expect if the Null Hypothesis is True?</strong><br>
+                    This is a common quiz question! If the null hypothesis is true (no real effect), you would expect:
+                    <ul>
+                        <li>The <strong>mean difference score to be around zero</strong></li>
+                        <li>Some people might show positive differences, some negative, but they cancel out</li>
+                        <li>Any deviation from zero is just random chance</li>
+                    </ul>
+                    <p><strong>Example (Weight Loss Program):</strong> If the null is true for a paired-samples t test about weight loss, you would expect <strong>"no change in weight or weight gain, indicating that the program does not work."</strong></p>
+                </div>
+
+                <div class="tip-box">
+                    <strong>Key Insight:</strong> A paired-samples t-test is essentially asking: "Is the average difference significantly different from zero?" If the differences are consistently positive (or negative), that suggests a real effect.
+                </div>
+
+                <h3>Anatomy of the Paired-Samples t Formula</h3>
+                <div class="scenario-box">
+                    <h4>Numerator vs. Denominator</h4>
+                    <table class="comparison">
+                        <tr>
+                            <th>Part</th>
+                            <th>Formula Component</th>
+                            <th>What It Represents</th>
+                        </tr>
+                        <tr>
+                            <td><strong>Numerator</strong><br>(Top)</td>
+                            <td>$M_{diff} - 0$</td>
+                            <td>A <strong>difference between means</strong>: the sample mean difference minus zero</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Denominator</strong><br>(Bottom)</td>
+                            <td>$SE_{diff} = s_{diff} / \sqrt{N}$</td>
+                            <td>The <strong>estimated standard error of the distribution of mean difference scores</strong></td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="tip-box">
+                    <strong>Quiz Pattern:</strong> "The denominator of the paired-samples t statistic is ____"<br>
+                    Answer: <strong>The estimated standard error of the distribution of mean difference scores</strong>
+                </div>
+
+                <div class="knowledge-check">
+                    <h4>Knowledge Check: Null Hypothesis for Paired-Samples</h4>
+                    <p><strong>Question:</strong> A researcher studies 45 volunteer citizens and asks them about the amount of caffeine (in milligrams) they ingest before and after lunch each day. What is a valid null hypothesis for this paired-samples study?</p>
+                    <button class="reveal-btn" onclick="reveal('ans-nullpaired')">Reveal Answer</button>
+                    <div id="ans-nullpaired" class="answer-reveal">
+                        <p><strong>"There is no difference between the amount of caffeine ingested before and after lunch."</strong></p>
+                        <p>The null hypothesis always states there is no effect or no difference. In symbolic notation: $H_0: \mu_{before} = \mu_{after}$ or equivalently $H_0: \mu_{diff} = 0$</p>
+                    </div>
+                </div>
+
+                <div class="knowledge-check">
+                    <h4>Knowledge Check: Paired vs. Independent</h4>
+                    <p><strong>Question:</strong> A researcher measures the reaction time of 15 participants before and after drinking coffee. Which test is appropriate?</p>
+                    <button class="reveal-btn" onclick="reveal('ans-paired')">Reveal Answer</button>
+                    <div id="ans-paired" class="answer-reveal">
+                        <p><strong>Paired-Samples t-Test</strong></p>
+                        <p>This is a repeated-measures design because the same 15 participants are measured twice (before and after). The scores are linked because each person has two measurements. We would calculate difference scores (After - Before) and test if the mean difference is significantly different from zero.</p>
+                    </div>
+                </div>
+
+                <div class="knowledge-check">
+                    <h4>Knowledge Check: Comparison Distribution</h4>
+                    <p><strong>Question:</strong> The comparison distribution in a paired-samples t test is a distribution of ____.</p>
+                    <button class="reveal-btn" onclick="reveal('ans-compdist')">Reveal Answer</button>
+                    <div id="ans-compdist" class="answer-reveal">
+                        <p><strong>Mean difference scores</strong></p>
+                        <p>Not "means," not "scores," not "differences between means" — specifically a distribution of <strong>mean difference scores</strong>. This represents all possible mean differences we could get if we repeatedly sampled and calculated the mean difference each time.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 4: PAIRED CALCULATION -->
+            <div id="tab-4" class="tab-panel">
+                <h2>Calculating the Paired t-Test</h2>
+
+                <div class="step-container">
+                    <div class="step-item">
+                        <div class="step-title">Step 1: Calculate Difference Scores</div>
+                        <table style="width:100%; border:1px solid #ccc; font-family:monospace; border-collapse: collapse; margin: 10px 0;">
+                            <tr style="background:#eee;"><th style="border:1px solid #ccc; padding:8px;">Subject</th><th style="border:1px solid #ccc; padding:8px;">After</th><th style="border:1px solid #ccc; padding:8px;">Before</th><th style="border:1px solid #ccc; padding:8px;">Difference (D)</th></tr>
+                            <tr><td style="border:1px solid #ccc; padding:8px;">1</td><td style="border:1px solid #ccc; padding:8px;">10</td><td style="border:1px solid #ccc; padding:8px;">8</td><td style="border:1px solid #ccc; padding:8px;">+2</td></tr>
+                            <tr><td style="border:1px solid #ccc; padding:8px;">2</td><td style="border:1px solid #ccc; padding:8px;">12</td><td style="border:1px solid #ccc; padding:8px;">12</td><td style="border:1px solid #ccc; padding:8px;">0</td></tr>
+                            <tr><td style="border:1px solid #ccc; padding:8px;">3</td><td style="border:1px solid #ccc; padding:8px;">9</td><td style="border:1px solid #ccc; padding:8px;">11</td><td style="border:1px solid #ccc; padding:8px;">-2</td></tr>
+                        </table>
+                        <p><em>Always be consistent (e.g., always Post - Pre).</em></p>
+                    </div>
+
+                    <div class="step-item">
+                        <div class="step-title">Step 2: Find the Mean of Differences ($M_{diff}$)</div>
+                        <p>Add up the difference column and divide by N.</p>
+                        <div class="formula-box">
+                            $M_{diff} = \frac{\sum D}{N}$
+                        </div>
+                    </div>
+
+                    <div class="step-item">
+                        <div class="step-title">Step 3: Find SD of Differences ($s_{diff}$)</div>
+                        <p>Calculate the standard deviation of that difference column (using N-1).</p>
+                        <div class="formula-box">
+                            $s_{diff} = \sqrt{\frac{\sum(D - M_{diff})^2}{N - 1}}$
+                        </div>
+                        <p><em>Excel Formula:</em> <code>=STDEV.S(difference_column)</code></p>
+                    </div>
+
+                    <div class="step-item">
+                        <div class="step-title">Step 4: Find Standard Error ($SE_{diff}$)</div>
+                        <div class="formula-box">
+                            $SE_{diff} = \frac{s_{diff}}{\sqrt{N}}$
+                        </div>
+                    </div>
+
+                    <div class="step-item">
+                        <div class="step-title">Step 5: Calculate t</div>
+                        <div class="formula-box">
+                            $t = \frac{M_{diff} - 0}{SE_{diff}} = \frac{M_{diff}}{SE_{diff}}$
+                        </div>
+                        <p>Note: We subtract 0 because the Null Hypothesis assumes zero difference.</p>
+                    </div>
+                </div>
+
+                <div class="warning-box">
+                    <strong>Common Mistake:</strong> Do NOT calculate the mean of Group A and the mean of Group B and try to run a test on those two numbers. You MUST calculate the differences row-by-row first!
+                </div>
+
+                <div class="scenario-box">
+                    <h4>Complete Example: Yoga and Anxiety</h4>
+                    <p><strong>Scenario:</strong> 8 people rate their anxiety (1-10 scale) before and after a yoga class.</p>
+                    <table class="comparison" style="margin: 15px 0;">
+                        <tr>
+                            <th>Person</th>
+                            <th>Before</th>
+                            <th>After</th>
+                            <th>Difference (After - Before)</th>
+                        </tr>
+                        <tr><td>1</td><td>8</td><td>6</td><td>-2</td></tr>
+                        <tr><td>2</td><td>7</td><td>5</td><td>-2</td></tr>
+                        <tr><td>3</td><td>9</td><td>7</td><td>-2</td></tr>
+                        <tr><td>4</td><td>6</td><td>6</td><td>0</td></tr>
+                        <tr><td>5</td><td>8</td><td>5</td><td>-3</td></tr>
+                        <tr><td>6</td><td>7</td><td>4</td><td>-3</td></tr>
+                        <tr><td>7</td><td>9</td><td>8</td><td>-1</td></tr>
+                        <tr><td>8</td><td>8</td><td>7</td><td>-1</td></tr>
+                    </table>
+                    <p><strong>Step 1:</strong> Differences calculated (shown above)</p>
+                    <p><strong>Step 2:</strong> $M_{diff} = (-2 + -2 + -2 + 0 + -3 + -3 + -1 + -1) / 8 = -14 / 8 = \mathbf{-1.75}$</p>
+                    <p><strong>Step 3:</strong> $s_{diff} = 1.16$ (calculated using STDEV.S)</p>
+                    <p><strong>Step 4:</strong> $SE_{diff} = 1.16 / \sqrt{8} = 1.16 / 2.83 = \mathbf{0.41}$</p>
+                    <p><strong>Step 5:</strong> $t = -1.75 / 0.41 = \mathbf{-4.27}$</p>
+                    <p><strong>Degrees of Freedom:</strong> $df = 8 - 1 = 7$</p>
+                </div>
+
+                <div class="knowledge-check">
+                    <h4>Knowledge Check: Mean of Difference Scores</h4>
+                    <p><strong>Question:</strong> For the following data, what is the mean of the difference scores?</p>
+                    <table class="comparison" style="margin: 10px 0;">
+                        <tr><th>Participant</th><th>Time 1</th><th>Time 2</th></tr>
+                        <tr><td>1</td><td>12</td><td>18</td></tr>
+                        <tr><td>2</td><td>8</td><td>11</td></tr>
+                        <tr><td>3</td><td>10</td><td>14</td></tr>
+                        <tr><td>4</td><td>6</td><td>12</td></tr>
+                        <tr><td>5</td><td>15</td><td>17</td></tr>
+                        <tr><td>6</td><td>9</td><td>16</td></tr>
+                    </table>
+                    <button class="reveal-btn" onclick="reveal('ans-meandiff')">Reveal Answer</button>
+                    <div id="ans-meandiff" class="answer-reveal">
+                        <p><strong>Step 1: Calculate difference scores (Time 2 - Time 1)</strong></p>
+                        <p>Differences: 18-12=6, 11-8=3, 14-10=4, 12-6=6, 17-15=2, 16-9=7</p>
+                        <p><strong>Step 2: Calculate the mean</strong></p>
+                        <p>$M_{diff} = (6 + 3 + 4 + 6 + 2 + 7) / 6 = 28 / 6 = \mathbf{4.67}$</p>
+                        <p>(Or if calculated as Time 1 - Time 2: $M_{diff} = -4.67$)</p>
+                    </div>
+                </div>
+
+                <div class="tip-box">
+                    <strong>Direction of Subtraction:</strong> It doesn't matter whether you calculate (Time 2 - Time 1) or (Time 1 - Time 2), as long as you're consistent and interpret your results correctly!
+                    <ul>
+                        <li>If you expect <strong>improvement</strong> (Time 2 > Time 1): Use Time 2 - Time 1 → expect positive differences</li>
+                        <li>If you expect <strong>decline</strong> (Time 2 < Time 1): Use Time 2 - Time 1 → expect negative differences</li>
+                    </ul>
+                    The sign of your t-statistic and effect size will match the direction of your hypothesis.
+                </div>
+            </div>
+
+            <!-- TAB 5: DECISIONS & EFFECT SIZE -->
+            <div id="tab-5" class="tab-panel">
+                <h2>Decisions & Effect Size</h2>
+
+                <h3>1. Finding the Critical Value</h3>
+                <p>You need three things to find the cutoff in a t-table:</p>
+                <ol>
+                    <li><strong>Alpha ($\alpha$):</strong> Usually .05 or .10.</li>
+                    <li><strong>Tails:</strong> One-tailed (directional) or Two-tailed (non-directional)?</li>
+                    <li><strong>Degrees of Freedom ($df$):</strong> $N - 1$.</li>
+                </ol>
+                <p><em>Example: $N=10$, $\alpha=.05$, Two-tailed. Look up $df=9$. Critical $t = \pm 2.262$.</em></p>
+
+                <div class="tip-box">
+                    <strong>Using the t-Table:</strong> Unlike the Z-table which has fixed values, the t-table changes based on degrees of freedom. Smaller $df$ means larger critical values (harder to reject). As $df$ increases, critical t-values approach Z-values.
+                </div>
+
+                <div class="scenario-box">
+                    <h4>Common Critical t Values (Memorize These!)</h4>
+                    <table class="comparison">
+                        <tr>
+                            <th>df</th>
+                            <th>α = .05, Two-tailed</th>
+                            <th>α = .05, One-tailed</th>
+                            <th>α = .10, Two-tailed</th>
+                        </tr>
+                        <tr><td>8</td><td>±2.306</td><td>±1.860</td><td>±1.860</td></tr>
+                        <tr><td>9</td><td>±2.262</td><td>±1.833</td><td>±1.833</td></tr>
+                        <tr><td>15</td><td>±2.131</td><td>±1.753</td><td>±1.753</td></tr>
+                    </table>
+                    <p><em>Note: For paired-samples with 16 participants, df = 16 - 1 = 15, so critical t for one-tailed at α=.05 is ±1.753.</em></p>
+                </div>
+
+                <h3>2. The Decision</h3>
+                <p>If your calculated $t$ is <strong>more extreme</strong> (larger magnitude) than the critical value, Reject Null.</p>
+
+                <div class="scenario-box">
+                    <h4>Decision Example</h4>
+                    <p><strong>Calculated t:</strong> -4.27<br>
+                    <strong>Critical t (df=7, α=.05, two-tailed):</strong> ±2.365</p>
+                    <p><strong>Comparison:</strong> Is |-4.27| > 2.365? <strong>Yes!</strong></p>
+                    <p><strong>Decision:</strong> <strong>Reject</strong> the Null Hypothesis.</p>
+                    <p><strong>Conclusion:</strong> "Yoga significantly reduced anxiety levels."</p>
+                </div>
+
+                <h3>3. Reading p-Values in Statistical Notation</h3>
+                <p>In research articles and some quiz questions, you'll see results reported in this format:</p>
+                <div class="formula-box">
+                    $t(df) = t\text{-statistic}, p = \text{exact p-value}$
+                </div>
+
+                <div class="scenario-box">
+                    <h4>How to Read This Notation</h4>
+                    <p><strong>Example:</strong> $t(12) = 2.2, p = .03$</p>
+                    <ul>
+                        <li><strong>$t(12)$</strong> = t-test with 12 degrees of freedom (meaning N = 13)</li>
+                        <li><strong>$= 2.2$</strong> = the calculated t-statistic is 2.2</li>
+                        <li><strong>$p = .03$</strong> = the probability of getting this result by chance is 3%</li>
+                    </ul>
+                </div>
+
+                <div class="warning-box">
+                    <strong>The p-Value Decision Rule</strong><br>
+                    <ul>
+                        <li>If $p < \alpha$ → <strong>Reject</strong> the null hypothesis (result is significant)</li>
+                        <li>If $p \geq \alpha$ → <strong>Fail to reject</strong> the null hypothesis (result is not significant)</li>
+                    </ul>
+                    <p>Using $\alpha = .05$:</p>
+                    <ul>
+                        <li>$t(12) = 2.2, p = .03$ → Reject null (because .03 < .05)</li>
+                        <li>$t(11) = 2.2, p = .11$ → Fail to reject (because .11 > .05)</li>
+                        <li>$t(4) = 2.2, p = .09$ → Fail to reject (because .09 > .05)</li>
+                    </ul>
+                </div>
+
+                <div class="knowledge-check">
+                    <h4>Knowledge Check: p-Value Interpretation</h4>
+                    <p><strong>Question:</strong> Based on the statistical results provided, which of these would lead us to reject the null hypothesis, using a criterion of α = .05?</p>
+                    <ul>
+                        <li>A) $t(4) = 2.2, p = .09$</li>
+                        <li>B) $t(11) = 2.2, p = .11$</li>
+                        <li>C) $t(12) = 2.2, p = .03$</li>
+                        <li>D) $t(10) = 2.2, p = .065$</li>
+                    </ul>
+                    <button class="reveal-btn" onclick="reveal('ans-pvalue')">Reveal Answer</button>
+                    <div id="ans-pvalue" class="answer-reveal">
+                        <p><strong>C) $t(12) = 2.2, p = .03$</strong></p>
+                        <p>This is the only option where $p < .05$. The other options all have p-values greater than .05, so we would fail to reject the null hypothesis for those.</p>
+                    </div>
+                </div>
+
+                <h3>4. Effect Size (Cohen's d)</h3>
+                <p>Just like in Module 3, we calculate how big the effect is. But be careful with the formula!</p>
+
+                <div class="formula-box" style="border-color: var(--primary);">
+                    $d = \frac{M - \mu}{s}$
+                </div>
+
+                <div class="warning-box">
+                    <strong>CRITICAL DISTINCTION:</strong><br>
+                    For the <strong>t-statistic</strong>, the denominator is <strong>Standard Error ($SE$)</strong>.<br>
+                    For <strong>Cohen's d</strong>, the denominator is <strong>Standard Deviation ($s$)</strong>.<br>
+                    <em>Effect size is about the distribution of scores, not the distribution of means!</em>
+                </div>
+
+                <div class="scenario-box">
+                    <h4>Effect Size for Paired-Samples</h4>
+                    <p>For paired-samples tests, use the standard deviation of the <strong>differences</strong>:</p>
+                    <div class="formula-box">
+                        $d = \frac{M_{diff}}{s_{diff}}$
+                    </div>
+                    <p><em>Example (Yoga):</em> $d = -1.75 / 1.16 = \mathbf{-1.51}$ (Large effect)</p>
+                </div>
+
+                <div class="knowledge-check">
+                    <h4>Knowledge Check: Effect Size Calculation</h4>
+                    <p><strong>Question:</strong> Imagine the average time to complete a 4-year bachelor degree is actually 4.7 years, based on national data. You collect data on the 68 psychology students who started school during the same semester as you, finding an average time to complete at 4.3 years with a standard deviation of 0.6 years. What would be the effect size associated with a single-sample t test?</p>
+                    <button class="reveal-btn" onclick="reveal('ans-effectsize')">Reveal Answer</button>
+                    <div id="ans-effectsize" class="answer-reveal">
+                        <p><strong>$d = (M - \mu) / s = (4.3 - 4.7) / 0.6 = -0.4 / 0.6 = \mathbf{-0.67}$</strong></p>
+                        <p>This is a medium effect size. The negative sign indicates that psychology students complete faster than the national average.</p>
+                        <p><strong>Remember:</strong> Effect size uses $s$ (standard deviation), NOT $SE$ (standard error)!</p>
+                    </div>
+                </div>
+
+                <h3>5. Confidence Intervals</h3>
+                <p>A Confidence Interval (CI) gives us a range of likely values for the population mean.</p>
+                <div class="scenario-box">
+                    <h4>The Zero Rule</h4>
+                    <p>If you are doing a Paired-Samples test (or One-Sample comparing to zero):</p>
+                    <ul>
+                        <li>If the 95% CI includes <strong>0</strong> (e.g., [-2.5, 4.3]): Fail to Reject. No significant effect.</li>
+                        <li>If the 95% CI does <strong>NOT</strong> include 0 (e.g., [1.2, 5.5]): Reject Null. Significant effect.</li>
+                    </ul>
+                </div>
+
+                <div class="formula-box">
+                    $CI = M_{diff} \pm (t_{critical} \times SE_{diff})$
+                </div>
+
+                <div class="scenario-box">
+                    <h4>Confidence Interval Example</h4>
+                    <p>Using the yoga example: $M_{diff} = -1.75$, $SE_{diff} = 0.41$, $t_{critical} = 2.365$ (df=7, α=.05, two-tailed)</p>
+                    <p>$CI = -1.75 \pm (2.365 \times 0.41)$</p>
+                    <p>$CI = -1.75 \pm 0.97$</p>
+                    <p>$CI = [-2.72, -0.78]$</p>
+                    <p><strong>Interpretation:</strong> We are 95% confident that the true mean difference in anxiety scores is between -2.72 and -0.78. Since this interval does NOT include 0, we reject the null hypothesis.</p>
+                </div>
+
+                <div class="knowledge-check">
+                    <h4>Knowledge Check: Confidence Intervals</h4>
+                    <p><strong>Question:</strong> A researcher calculates a 95% confidence interval for a paired-samples t-test and finds [-0.5, 2.3]. What should the researcher conclude?</p>
+                    <button class="reveal-btn" onclick="reveal('ans-ci')">Reveal Answer</button>
+                    <div id="ans-ci" class="answer-reveal">
+                        <p><strong>Fail to Reject the Null Hypothesis</strong></p>
+                        <p>The confidence interval includes 0 (the range goes from -0.5 to 2.3, which contains 0). This means we cannot be confident that there is a real difference. The null hypothesis (that the mean difference equals zero) cannot be rejected.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 6: ASSIGNMENT WORKSHOP -->
+            <div id="tab-6" class="tab-panel">
+                <h2>Assignment Workshop</h2>
+                <p>Your assignment involves three problems. Below are similar practice scenarios with different context but identical math logic.</p>
+
+                <h3>Assignment Question Types You'll See</h3>
+                <div class="warning-box">
+                    <strong>Q1a-type: Identify the Key Information</strong><br>
+                    The assignment asks you to identify:
+                    <ul>
+                        <li><strong>Dependent Variable (DV):</strong> What is being measured/the outcome</li>
+                        <li><strong>Sample:</strong> The actual data you collected</li>
+                        <li><strong>Target Population:</strong> The larger group represented by the sample</li>
+                        <li><strong>Comparison Population:</strong> The known population with $\mu$ that you're comparing against</li>
+                    </ul>
+                </div>
+
+                <div class="scenario-box">
+                    <h4>Practice: Identifying Variables (One-Sample t-Test)</h4>
+                    <p><strong>Scenario:</strong> "I am shopping for a new mid-size SUV and want to see if Japanese mid-size SUVs have different MPG from American mid-size SUVs. The EPA reports that American mid-size SUVs average 28.5 MPG. I collected MPG data on 10 Japanese mid-size SUV models."</p>
+
+                    <button class="reveal-btn" onclick="reveal('ans-identify1')">Reveal Answer</button>
+                    <div id="ans-identify1" class="answer-reveal">
+                        <ul>
+                            <li><strong>DV:</strong> Miles per gallon (MPG)</li>
+                            <li><strong>Sample:</strong> The 10 Japanese mid-size SUV models measured</li>
+                            <li><strong>Target Population:</strong> All Japanese mid-size SUVs</li>
+                            <li><strong>Comparison Population:</strong> American mid-size SUVs with $\mu = 28.5$ MPG</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="scenario-box">
+                    <h4>Practice: Identifying Variables (Paired-Samples t-Test)</h4>
+                    <p><strong>Scenario:</strong> "A research project tracks memory scores of elderly residents, tested first at age 70 and again at age 80. The researcher wants to know if there is a significant decline in memory functions."</p>
+
+                    <button class="reveal-btn" onclick="reveal('ans-identify2')">Reveal Answer</button>
+                    <div id="ans-identify2" class="answer-reveal">
+                        <ul>
+                            <li><strong>DV:</strong> Memory test scores</li>
+                            <li><strong>IV:</strong> Age (70 vs. 80) — this is what differentiates the two sets of scores</li>
+                            <li><strong>Why Paired?</strong> The same participants are measured at both time points. Each person's score at age 80 is linked to their own score at age 70.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <hr style="margin: 30px 0; border: 1px solid #ddd;">
+
+                <h3>Problem 1: One-Sample t-Test</h3>
+                <div class="scenario-box">
+                    <h4>Practice Scenario: Laptop Battery Life</h4>
+                    <p><strong>Situation:</strong> The industry average battery life for laptops is <strong>10 hours</strong> ($\mu=10$). You want to know if "Brand X" is significantly different. You test a sample of 10 Brand X laptops.</p>
+                    <p><strong>Sample Data:</strong> 11, 12, 10, 9, 8, 13, 11, 10, 11, 14.</p>
+                    <p><strong>Hypotheses (Two-Tailed):</strong><br>
+                    $H_0: \mu_{BrandX} = 10$<br>
+                    $H_1: \mu_{BrandX} \neq 10$</p>
+                    <p><strong>Steps:</strong></p>
+                    <ol>
+                        <li>Calculate Sample Mean ($M$).</li>
+                        <li>Calculate Estimated Pop SD ($s$). (Use Excel `STDEV.S` or manual $N-1$).</li>
+                        <li>Calculate SE ($s / \sqrt{10}$).</li>
+                        <li>Calculate $t$ ($ (M - 10) / SE $).</li>
+                        <li>Find Critical $t$ ($df=9, \alpha=.10$).</li>
+                        <li>Decide (Is calc $t$ > critical $t$?).</li>
+                        <li>Effect Size ($ (M - 10) / s $).</li>
+                    </ol>
+                </div>
+
+                <div class="step-container">
+                    <div class="step-item">
+                        <div class="step-title">Step-by-Step Solution</div>
+                        <p><strong>Step 1: Calculate M</strong><br>
+                        Sum = 11+12+10+9+8+13+11+10+11+14 = 109<br>
+                        $M = 109 / 10 = \mathbf{10.9}$</p>
+                        
+                        <p><strong>Step 2: Calculate s</strong><br>
+                        Using Excel STDEV.S or formula: $s = \mathbf{1.79}$</p>
+                        
+                        <p><strong>Step 3: Calculate SE</strong><br>
+                        $SE = 1.79 / \sqrt{10} = 1.79 / 3.16 = \mathbf{0.566}$</p>
+                        
+                        <p><strong>Step 4: Calculate t</strong><br>
+                        $t = (10.9 - 10) / 0.566 = 0.9 / 0.566 = \mathbf{1.59}$</p>
+                        
+                        <p><strong>Step 5: Find Critical t</strong><br>
+                        $df = 10 - 1 = 9$, $\alpha = .10$, Two-tailed<br>
+                        Critical $t = \pm \mathbf{1.833}$</p>
+                        
+                        <p><strong>Step 6: Decision</strong><br>
+                        Is |1.59| > 1.833? <strong>No.</strong> Fail to Reject.</p>
+                        
+                        <p><strong>Step 7: Effect Size</strong><br>
+                        $d = (10.9 - 10) / 1.79 = 0.9 / 1.79 = \mathbf{0.50}$ (Medium effect)</p>
+                    </div>
+                </div>
+
+                <h3>Problem 2: Paired-Samples t-Test (Longitudinal)</h3>
+                <div class="scenario-box">
+                    <h4>Practice Scenario: Reflex Speed & Aging</h4>
+                    <p><strong>Situation:</strong> You measure reflex speed (in milliseconds) for 10 people at Age 20, and the same 10 people at Age 40. You predict reflexes get <strong>slower</strong> (Directional/One-Tailed).</p>
+                    <p><strong>Sample Data:</strong></p>
+                    <table class="comparison" style="margin: 10px 0;">
+                        <tr>
+                            <th>Person</th>
+                            <th>Age 20</th>
+                            <th>Age 40</th>
+                        </tr>
+                        <tr><td>1</td><td>180</td><td>195</td></tr>
+                        <tr><td>2</td><td>175</td><td>190</td></tr>
+                        <tr><td>3</td><td>200</td><td>210</td></tr>
+                        <tr><td>4</td><td>185</td><td>200</td></tr>
+                        <tr><td>5</td><td>190</td><td>205</td></tr>
+                        <tr><td>6</td><td>195</td><td>210</td></tr>
+                        <tr><td>7</td><td>180</td><td>195</td></tr>
+                        <tr><td>8</td><td>200</td><td>215</td></tr>
+                        <tr><td>9</td><td>185</td><td>200</td></tr>
+                        <tr><td>10</td><td>190</td><td>205</td></tr>
+                    </table>
+                    <p><strong>Hypotheses:</strong><br>
+                    $H_0: \mu_{Age40} \le \mu_{Age20}$ (Speed at 40 is same or faster - Lower time means faster reflex)<br>
+                    $H_1: \mu_{Age40} > \mu_{Age20}$ (Speed at 40 is slower/higher time)</p>
+                    <p><strong>Steps:</strong></p>
+                    <ol>
+                        <li>Create a "Difference" column (Age 40 score minus Age 20 score).</li>
+                        <li>Calculate Mean of Differences ($M_{diff}$).</li>
+                        <li>Calculate SD of Differences ($s_{diff}$).</li>
+                        <li>Calculate SE ($s_{diff} / \sqrt{N}$).</li>
+                        <li>Calculate $t$.</li>
+                        <li>Find Critical $t$ (One-tailed).</li>
+                    </ol>
+                </div>
+
+                <div class="step-container">
+                    <div class="step-item">
+                        <div class="step-title">Step-by-Step Solution</div>
+                        <p><strong>Step 1: Calculate Differences (Age 40 - Age 20)</strong><br>
+                        Differences: +15, +15, +10, +15, +15, +15, +15, +15, +15, +15</p>
+                        
+                        <p><strong>Step 2: Calculate M_diff</strong><br>
+                        $M_{diff} = (15+15+10+15+15+15+15+15+15+15) / 10 = 145 / 10 = \mathbf{14.5}$</p>
+                        
+                        <p><strong>Step 3: Calculate s_diff</strong><br>
+                        $s_{diff} = \mathbf{1.58}$ (using STDEV.S)</p>
+                        
+                        <p><strong>Step 4: Calculate SE</strong><br>
+                        $SE_{diff} = 1.58 / \sqrt{10} = 1.58 / 3.16 = \mathbf{0.50}$</p>
+                        
+                        <p><strong>Step 5: Calculate t</strong><br>
+                        $t = 14.5 / 0.50 = \mathbf{29.0}$</p>
+                        
+                        <p><strong>Step 6: Find Critical t</strong><br>
+                        $df = 9$, $\alpha = .05$, One-tailed (predicting increase)<br>
+                        Critical $t = \mathbf{1.833}$</p>
+                        
+                        <p><strong>Step 7: Decision</strong><br>
+                        Is 29.0 > 1.833? <strong>Yes!</strong> Reject Null. Reflexes are significantly slower at age 40.</p>
+                        
+                        <p><strong>Step 8: Effect Size</strong><br>
+                        $d = 14.5 / 1.58 = \mathbf{9.18}$ (Extremely large effect!)</p>
+                    </div>
+                </div>
+
+                <h3>Problem 3: Paired-Samples t-Test (Conditions)</h3>
+                <div class="scenario-box">
+                    <h4>Practice Scenario: Taste Test</h4>
+                    <p><strong>Situation:</strong> 12 people rate the sweetness of Cola A and Cola B (0-100 scale). Does the container shape affect taste perception? (Non-Directional).</p>
+                    <p><strong>Hypotheses:</strong><br>
+                    $H_0: \mu_{diff} = 0$ (No difference in sweetness ratings)<br>
+                    $H_1: \mu_{diff} \neq 0$ (There is a difference)</p>
+                    <p><strong>Steps:</strong></p>
+                    <ol>
+                        <li>Calculate Difference (Cola A - Cola B).</li>
+                        <li>Follow standard paired t-test steps.</li>
+                        <li><strong>Effect Size:</strong> $M_{diff} / s_{diff}$. (Remember, ignore SE for effect size!).</li>
+                    </ol>
+                </div>
+
+                <div class="tip-box">
+                    <strong>Assignment Tips:</strong>
+                    <ul>
+                        <li>Always show your work step-by-step</li>
+                        <li>Label your calculations clearly (M, s, SE, t, df, etc.)</li>
+                        <li>State your decision in terms of rejecting or failing to reject the null</li>
+                        <li>Interpret your effect size using Cohen's conventions (0.2=small, 0.5=medium, 0.8=large)</li>
+                        <li>For paired tests, remember to calculate differences FIRST before any other calculations</li>
+                    </ul>
+                </div>
+
+                <h3>Quick Reference: Finding Critical t Values</h3>
+                <div class="scenario-box">
+                    <h4>Steps to Find the Critical t Value</h4>
+                    <ol>
+                        <li><strong>Calculate df:</strong> $df = N - 1$</li>
+                        <li><strong>Determine tails:</strong> Is the hypothesis directional (one-tailed) or non-directional (two-tailed)?</li>
+                        <li><strong>Know your alpha:</strong> Usually $\alpha = .05$ or $\alpha = .10$</li>
+                        <li><strong>Look up in t-table:</strong> Find the row for your df and the column for your alpha/tails</li>
+                    </ol>
+
+                    <table class="comparison">
+                        <tr>
+                            <th>Scenario</th>
+                            <th>df</th>
+                            <th>Critical t</th>
+                        </tr>
+                        <tr>
+                            <td>N=10, α=.10, Two-tailed</td>
+                            <td>9</td>
+                            <td>±1.833</td>
+                        </tr>
+                        <tr>
+                            <td>N=10, α=.05, Two-tailed</td>
+                            <td>9</td>
+                            <td>±2.262</td>
+                        </tr>
+                        <tr>
+                            <td>N=10, α=.05, One-tailed</td>
+                            <td>9</td>
+                            <td>±1.833</td>
+                        </tr>
+                        <tr>
+                            <td>N=9, α=.05, Two-tailed</td>
+                            <td>8</td>
+                            <td>±2.306</td>
+                        </tr>
+                        <tr>
+                            <td>N=12, α=.05, Two-tailed</td>
+                            <td>11</td>
+                            <td>±2.201</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <h3>Final Checklist Before Submitting</h3>
+                <div class="warning-box">
+                    <strong>For One-Sample t-Test:</strong>
+                    <ul>
+                        <li>☐ Identified DV, Sample, Target Population, Comparison Population</li>
+                        <li>☐ Wrote hypotheses in words AND symbols</li>
+                        <li>☐ Calculated M (sample mean)</li>
+                        <li>☐ Calculated s (using N-1 formula or STDEV.S)</li>
+                        <li>☐ Calculated SE = s / √N</li>
+                        <li>☐ Calculated t = (M - μ) / SE</li>
+                        <li>☐ Found df and critical t value</li>
+                        <li>☐ Made decision: "more extreme" or "less extreme"</li>
+                        <li>☐ Stated "reject" or "fail to reject"</li>
+                        <li>☐ Wrote interpretation sentence</li>
+                        <li>☐ Calculated effect size d = (M - μ) / s (NOT SE!)</li>
+                    </ul>
+                </div>
+
+                <div class="warning-box">
+                    <strong>For Paired-Samples t-Test:</strong>
+                    <ul>
+                        <li>☐ Identified DV and IV</li>
+                        <li>☐ Explained why paired-samples is appropriate</li>
+                        <li>☐ Wrote hypotheses in words AND symbols</li>
+                        <li>☐ Calculated difference scores for each participant</li>
+                        <li>☐ Calculated M_diff (mean of differences)</li>
+                        <li>☐ Calculated s_diff (SD of differences using N-1)</li>
+                        <li>☐ Calculated SE_diff = s_diff / √N</li>
+                        <li>☐ Calculated t = M_diff / SE_diff</li>
+                        <li>☐ Found df and critical t value</li>
+                        <li>☐ Made decision and interpretation</li>
+                        <li>☐ Calculated effect size d = M_diff / s_diff (NOT SE!)</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <div class="tab-navigation bottom-nav">
+        <button class="tab-button" onclick="showTab(1)">
+            <input type="checkbox" id="progress-1-bottom" class="tab-checkbox" onchange="toggleTabComplete(1)">
+            1. The t-Test Concept
+        </button>
+        <button class="tab-button" onclick="showTab(2)">
+            <input type="checkbox" id="progress-2-bottom" class="tab-checkbox" onchange="toggleTabComplete(2)">
+            2. One-Sample Engine
+        </button>
+        <button class="tab-button" onclick="showTab(3)">
+            <input type="checkbox" id="progress-3-bottom" class="tab-checkbox" onchange="toggleTabComplete(3)">
+            3. Paired-Samples Logic
+        </button>
+        <button class="tab-button" onclick="showTab(4)">
+            <input type="checkbox" id="progress-4-bottom" class="tab-checkbox" onchange="toggleTabComplete(4)">
+            4. Paired Calculation
+        </button>
+        <button class="tab-button" onclick="showTab(5)">
+            <input type="checkbox" id="progress-5-bottom" class="tab-checkbox" onchange="toggleTabComplete(5)">
+            5. Decisions & Effect Size
+        </button>
+        <button class="tab-button" onclick="showTab(6)">
+            <input type="checkbox" id="progress-6-bottom" class="tab-checkbox" onchange="toggleTabComplete(6)">
+            6. Assignment Workshop
+        </button>
+    </div>
+
+    <!-- Formula Quick Reference Card -->
+    <div style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); color: white; padding: 25px; border-radius: 8px; margin-top: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+        <h3 style="color: #fff; margin-top: 0; border-bottom: 2px solid #d84315; padding-bottom: 10px;">Formula Quick Reference Card</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+            <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 6px;">
+                <h4 style="color: #ffab91; margin-top: 0;">Degrees of Freedom</h4>
+                <p style="font-family: 'Courier New', monospace; font-size: 1.1em;">df = N - 1</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 6px;">
+                <h4 style="color: #ffab91; margin-top: 0;">Sample SD (s)</h4>
+                <p style="font-family: 'Courier New', monospace; font-size: 1.1em;">s = √[Σ(X-M)²/(N-1)]</p>
+                <p style="font-size: 0.85em; opacity: 0.8;">Excel: =STDEV.S(data)</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 6px;">
+                <h4 style="color: #ffab91; margin-top: 0;">Standard Error</h4>
+                <p style="font-family: 'Courier New', monospace; font-size: 1.1em;">SE = s / √N</p>
+                <p style="font-size: 0.85em; opacity: 0.8;">Excel: =s/SQRT(N)</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 6px;">
+                <h4 style="color: #ffab91; margin-top: 0;">t-Statistic (One-Sample)</h4>
+                <p style="font-family: 'Courier New', monospace; font-size: 1.1em;">t = (M - μ) / SE</p>
+                <p style="font-size: 0.85em; opacity: 0.8;">Uses SE in denominator!</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 6px;">
+                <h4 style="color: #ffab91; margin-top: 0;">t-Statistic (Paired)</h4>
+                <p style="font-family: 'Courier New', monospace; font-size: 1.1em;">t = M_diff / SE_diff</p>
+                <p style="font-size: 0.85em; opacity: 0.8;">Compare differences to 0</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 6px;">
+                <h4 style="color: #ffab91; margin-top: 0;">Cohen's d</h4>
+                <p style="font-family: 'Courier New', monospace; font-size: 1.1em;">d = (M - μ) / s</p>
+                <p style="font-size: 0.85em; opacity: 0.8;">Uses s (not SE)!</p>
+            </div>
+        </div>
+        <div style="margin-top: 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+            <div style="background: rgba(255, 171, 145, 0.2); padding: 12px; border-radius: 6px; text-align: center;">
+                <strong>Small Effect</strong><br>d ≈ 0.2
+            </div>
+            <div style="background: rgba(255, 171, 145, 0.3); padding: 12px; border-radius: 6px; text-align: center;">
+                <strong>Medium Effect</strong><br>d ≈ 0.5
+            </div>
+            <div style="background: rgba(255, 171, 145, 0.4); padding: 12px; border-radius: 6px; text-align: center;">
+                <strong>Large Effect</strong><br>d ≈ 0.8
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Progress tracking logic
+        const PROGRESS_KEY = 'psy230-m4-progress';
+
+        function loadProgress() {
+            const savedProgress = localStorage.getItem(PROGRESS_KEY);
+            if (savedProgress) {
+                const progress = JSON.parse(savedProgress);
+                Object.keys(progress).forEach(tabNumber => {
+                    const isComplete = progress[tabNumber];
+                    const topCheckbox = document.getElementById(`progress-${tabNumber}`);
+                    const bottomCheckbox = document.getElementById(`progress-${tabNumber}-bottom`);
+                    if (topCheckbox) topCheckbox.checked = isComplete;
+                    if (bottomCheckbox) bottomCheckbox.checked = isComplete;
+                    updateTabVisualState(parseInt(tabNumber), isComplete);
+                });
+            }
+        }
+
+        function saveProgress(tabNumber, isComplete) {
+            const savedProgress = localStorage.getItem(PROGRESS_KEY);
+            const progress = savedProgress ? JSON.parse(savedProgress) : {};
+            progress[tabNumber] = isComplete;
+            localStorage.setItem(PROGRESS_KEY, JSON.stringify(progress));
+        }
+
+        function toggleTabComplete(tabNumber) {
+            const clickedCheckbox = event.target;
+            const isComplete = clickedCheckbox.checked;
+            
+            const topCheckbox = document.getElementById(`progress-${tabNumber}`);
+            const bottomCheckbox = document.getElementById(`progress-${tabNumber}-bottom`);
+            if (topCheckbox) topCheckbox.checked = isComplete;
+            if (bottomCheckbox) bottomCheckbox.checked = isComplete;
+            
+            updateTabVisualState(tabNumber, isComplete);
+            saveProgress(tabNumber, isComplete);
+        }
+
+        function updateTabVisualState(tabNumber, isComplete) {
+            const tabButtons = document.querySelectorAll(`button[onclick="showTab(${tabNumber})"]`);
+            tabButtons.forEach(button => {
+                if (isComplete) button.classList.add('completed');
+                else button.classList.remove('completed');
+            });
+        }
+
+        function showTab(tabIndex) {
+            document.querySelectorAll('.tab-panel').forEach(panel => panel.classList.remove('active'));
+            document.getElementById('tab-' + tabIndex).classList.add('active');
+            
+            document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            const tabContainer = document.querySelector('.lecture-tabs');
+            if (tabContainer) tabContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function reveal(id) {
+            const el = document.getElementById(id);
+            el.style.display = (el.style.display === 'block') ? 'none' : 'block';
+        }
+
+        document.addEventListener('DOMContentLoaded', loadProgress);
+    </script>
+</body>
+</html>
