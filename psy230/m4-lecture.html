@@ -577,7 +577,7 @@
                         <li>Each data point in one condition has a <strong>corresponding linked data point</strong> in the other condition</li>
                         <li>The scores are <strong>not independent</strong> — they come from the same person or matched pair</li>
                     </ul>
-                    <p><strong>Example answer:</strong> "A paired-samples t test is appropriate because the same elderly residents were measured at both age 70 and age 80. Each person's score at age 80 is directly linked to their own score at age 70, making the data points dependent rather than independent."</p>
+                    <p><strong>Example answer:</strong> "A paired-samples t test is appropriate because the same patients were measured both before and after the treatment. Each person's post-treatment score is directly linked to their own pre-treatment score, making the data points dependent rather than independent."</p>
                 </div>
 
                 <h3>The "Difference Score" Trick</h3>
@@ -972,29 +972,29 @@
 
                 <div class="scenario-box">
                     <h4>Practice: Identifying Variables (One-Sample t-Test)</h4>
-                    <p><strong>Scenario:</strong> "I am shopping for a new mid-size SUV and want to see if Japanese mid-size SUVs have different MPG from American mid-size SUVs. The EPA reports that American mid-size SUVs average 28.5 MPG. I collected MPG data on 10 Japanese mid-size SUV models."</p>
+                    <p><strong>Scenario:</strong> "A coffee chain claims their baristas make drinks in an average of 3.5 minutes. A quality control manager suspects the downtown location is slower. She times 12 drink preparations at the downtown store to compare against the company standard of $\mu = 3.5$ minutes."</p>
 
                     <button class="reveal-btn" onclick="reveal('ans-identify1')">Reveal Answer</button>
                     <div id="ans-identify1" class="answer-reveal">
                         <ul>
-                            <li><strong>DV:</strong> Miles per gallon (MPG)</li>
-                            <li><strong>Sample:</strong> The 10 Japanese mid-size SUV models measured</li>
-                            <li><strong>Target Population:</strong> All Japanese mid-size SUVs</li>
-                            <li><strong>Comparison Population:</strong> American mid-size SUVs with $\mu = 28.5$ MPG</li>
+                            <li><strong>DV:</strong> Drink preparation time (in minutes)</li>
+                            <li><strong>Sample:</strong> The 12 drink preparations timed at the downtown store</li>
+                            <li><strong>Target Population:</strong> All drink preparations at the downtown store</li>
+                            <li><strong>Comparison Population:</strong> Company-wide drink preparations with $\mu = 3.5$ minutes</li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="scenario-box">
                     <h4>Practice: Identifying Variables (Paired-Samples t-Test)</h4>
-                    <p><strong>Scenario:</strong> "A research project tracks memory scores of elderly residents, tested first at age 70 and again at age 80. The researcher wants to know if there is a significant decline in memory functions."</p>
+                    <p><strong>Scenario:</strong> "A pharmaceutical company tests whether a new medication reduces blood pressure. They measure systolic blood pressure for 15 patients before starting the medication and again after 8 weeks of treatment. The researcher hypothesizes that blood pressure will be significantly lower after treatment."</p>
 
                     <button class="reveal-btn" onclick="reveal('ans-identify2')">Reveal Answer</button>
                     <div id="ans-identify2" class="answer-reveal">
                         <ul>
-                            <li><strong>DV:</strong> Memory test scores</li>
-                            <li><strong>IV:</strong> Age (70 vs. 80) — this is what differentiates the two sets of scores</li>
-                            <li><strong>Why Paired?</strong> The same participants are measured at both time points. Each person's score at age 80 is linked to their own score at age 70.</li>
+                            <li><strong>DV:</strong> Systolic blood pressure (mmHg)</li>
+                            <li><strong>IV:</strong> Time point (Before vs. After treatment) — this is what differentiates the two sets of scores</li>
+                            <li><strong>Why Paired?</strong> The same 15 patients are measured at both time points. Each person's "after" reading is directly linked to their own "before" reading, making the data dependent rather than independent.</li>
                         </ul>
                     </div>
                 </div>
@@ -1049,85 +1049,123 @@
                     </div>
                 </div>
 
-                <h3>Problem 2: Paired-Samples t-Test (Longitudinal)</h3>
+                <h3>Problem 2: Paired-Samples t-Test (Pre/Post Treatment)</h3>
                 <div class="scenario-box">
-                    <h4>Practice Scenario: Reflex Speed & Aging</h4>
-                    <p><strong>Situation:</strong> You measure reflex speed (in milliseconds) for 10 people at Age 20, and the same 10 people at Age 40. You predict reflexes get <strong>slower</strong> (Directional/One-Tailed).</p>
+                    <h4>Practice Scenario: Stress Reduction Workshop</h4>
+                    <p><strong>Situation:</strong> A wellness center wants to know if their stress reduction workshop is effective. They measure stress levels (on a 1-50 scale) for 10 employees before the workshop and again one week after. The researcher hypothesizes that stress will be <strong>lower</strong> after the workshop (Directional/One-Tailed). Alpha = .05.</p>
                     <p><strong>Sample Data:</strong></p>
                     <table class="comparison" style="margin: 10px 0;">
                         <tr>
                             <th>Person</th>
-                            <th>Age 20</th>
-                            <th>Age 40</th>
+                            <th>Before</th>
+                            <th>After</th>
                         </tr>
-                        <tr><td>1</td><td>180</td><td>195</td></tr>
-                        <tr><td>2</td><td>175</td><td>190</td></tr>
-                        <tr><td>3</td><td>200</td><td>210</td></tr>
-                        <tr><td>4</td><td>185</td><td>200</td></tr>
-                        <tr><td>5</td><td>190</td><td>205</td></tr>
-                        <tr><td>6</td><td>195</td><td>210</td></tr>
-                        <tr><td>7</td><td>180</td><td>195</td></tr>
-                        <tr><td>8</td><td>200</td><td>215</td></tr>
-                        <tr><td>9</td><td>185</td><td>200</td></tr>
-                        <tr><td>10</td><td>190</td><td>205</td></tr>
+                        <tr><td>1</td><td>38</td><td>32</td></tr>
+                        <tr><td>2</td><td>42</td><td>38</td></tr>
+                        <tr><td>3</td><td>35</td><td>33</td></tr>
+                        <tr><td>4</td><td>40</td><td>35</td></tr>
+                        <tr><td>5</td><td>45</td><td>40</td></tr>
+                        <tr><td>6</td><td>37</td><td>36</td></tr>
+                        <tr><td>7</td><td>41</td><td>34</td></tr>
+                        <tr><td>8</td><td>39</td><td>37</td></tr>
+                        <tr><td>9</td><td>44</td><td>39</td></tr>
+                        <tr><td>10</td><td>36</td><td>34</td></tr>
                     </table>
-                    <p><strong>Hypotheses:</strong><br>
-                    $H_0: \mu_{Age40} \le \mu_{Age20}$ (Speed at 40 is same or faster - Lower time means faster reflex)<br>
-                    $H_1: \mu_{Age40} > \mu_{Age20}$ (Speed at 40 is slower/higher time)</p>
-                    <p><strong>Steps:</strong></p>
-                    <ol>
-                        <li>Create a "Difference" column (Age 40 score minus Age 20 score).</li>
-                        <li>Calculate Mean of Differences ($M_{diff}$).</li>
-                        <li>Calculate SD of Differences ($s_{diff}$).</li>
-                        <li>Calculate SE ($s_{diff} / \sqrt{N}$).</li>
-                        <li>Calculate $t$.</li>
-                        <li>Find Critical $t$ (One-tailed).</li>
-                    </ol>
+                    <p><strong>Hypotheses (expecting stress to decrease):</strong><br>
+                    $H_0: \mu_{After} \ge \mu_{Before}$ (Stress is same or higher after)<br>
+                    $H_1: \mu_{After} < \mu_{Before}$ (Stress is lower after)</p>
+                    <p><em>Or using difference scores (After - Before), expecting negative differences:</em><br>
+                    $H_0: \mu_{diff} \ge 0$<br>
+                    $H_1: \mu_{diff} < 0$</p>
                 </div>
 
                 <div class="step-container">
                     <div class="step-item">
                         <div class="step-title">Step-by-Step Solution</div>
-                        <p><strong>Step 1: Calculate Differences (Age 40 - Age 20)</strong><br>
-                        Differences: +15, +15, +10, +15, +15, +15, +15, +15, +15, +15</p>
-                        
+                        <p><strong>Step 1: Calculate Differences (After - Before)</strong><br>
+                        Differences: -6, -4, -2, -5, -5, -1, -7, -2, -5, -2</p>
+
                         <p><strong>Step 2: Calculate M_diff</strong><br>
-                        $M_{diff} = (15+15+10+15+15+15+15+15+15+15) / 10 = 145 / 10 = \mathbf{14.5}$</p>
-                        
+                        $M_{diff} = (-6 + -4 + -2 + -5 + -5 + -1 + -7 + -2 + -5 + -2) / 10 = -39 / 10 = \mathbf{-3.9}$</p>
+
                         <p><strong>Step 3: Calculate s_diff</strong><br>
-                        $s_{diff} = \mathbf{1.58}$ (using STDEV.S)</p>
-                        
+                        $s_{diff} = \mathbf{2.02}$ (using STDEV.S)</p>
+
                         <p><strong>Step 4: Calculate SE</strong><br>
-                        $SE_{diff} = 1.58 / \sqrt{10} = 1.58 / 3.16 = \mathbf{0.50}$</p>
-                        
+                        $SE_{diff} = 2.02 / \sqrt{10} = 2.02 / 3.16 = \mathbf{0.64}$</p>
+
                         <p><strong>Step 5: Calculate t</strong><br>
-                        $t = 14.5 / 0.50 = \mathbf{29.0}$</p>
-                        
+                        $t = -3.9 / 0.64 = \mathbf{-6.09}$</p>
+
                         <p><strong>Step 6: Find Critical t</strong><br>
-                        $df = 9$, $\alpha = .05$, One-tailed (predicting increase)<br>
-                        Critical $t = \mathbf{1.833}$</p>
-                        
+                        $df = 9$, $\alpha = .05$, One-tailed (predicting decrease = negative direction)<br>
+                        Critical $t = \mathbf{-1.833}$ (negative because we predict lower/negative)</p>
+
                         <p><strong>Step 7: Decision</strong><br>
-                        Is 29.0 > 1.833? <strong>Yes!</strong> Reject Null. Reflexes are significantly slower at age 40.</p>
-                        
+                        Is -6.09 more extreme than -1.833? <strong>Yes!</strong> (-6.09 is further from zero)<br>
+                        <strong>Reject Null.</strong> Stress levels are significantly lower after the workshop.</p>
+
                         <p><strong>Step 8: Effect Size</strong><br>
-                        $d = 14.5 / 1.58 = \mathbf{9.18}$ (Extremely large effect!)</p>
+                        $d = -3.9 / 2.02 = \mathbf{-1.93}$ (Very large effect! Negative indicates decrease.)</p>
                     </div>
                 </div>
 
-                <h3>Problem 3: Paired-Samples t-Test (Conditions)</h3>
+                <h3>Problem 3: Paired-Samples t-Test (Two Conditions)</h3>
                 <div class="scenario-box">
-                    <h4>Practice Scenario: Taste Test</h4>
-                    <p><strong>Situation:</strong> 12 people rate the sweetness of Cola A and Cola B (0-100 scale). Does the container shape affect taste perception? (Non-Directional).</p>
-                    <p><strong>Hypotheses:</strong><br>
-                    $H_0: \mu_{diff} = 0$ (No difference in sweetness ratings)<br>
+                    <h4>Practice Scenario: Reading Comprehension Study</h4>
+                    <p><strong>Situation:</strong> A researcher tests whether background music affects reading comprehension. 8 students complete a reading test in silence (Condition A) and a similar test with background music (Condition B). The researcher does NOT predict which will be better (Non-Directional). Alpha = .05.</p>
+                    <p><strong>Sample Data:</strong></p>
+                    <table class="comparison" style="margin: 10px 0;">
+                        <tr>
+                            <th>Student</th>
+                            <th>Silence (A)</th>
+                            <th>Music (B)</th>
+                        </tr>
+                        <tr><td>1</td><td>85</td><td>82</td></tr>
+                        <tr><td>2</td><td>78</td><td>75</td></tr>
+                        <tr><td>3</td><td>92</td><td>88</td></tr>
+                        <tr><td>4</td><td>70</td><td>72</td></tr>
+                        <tr><td>5</td><td>88</td><td>84</td></tr>
+                        <tr><td>6</td><td>76</td><td>74</td></tr>
+                        <tr><td>7</td><td>82</td><td>80</td></tr>
+                        <tr><td>8</td><td>90</td><td>85</td></tr>
+                    </table>
+                    <p><strong>Hypotheses (Non-Directional):</strong><br>
+                    $H_0: \mu_{diff} = 0$ (No difference between conditions)<br>
                     $H_1: \mu_{diff} \neq 0$ (There is a difference)</p>
-                    <p><strong>Steps:</strong></p>
-                    <ol>
-                        <li>Calculate Difference (Cola A - Cola B).</li>
-                        <li>Follow standard paired t-test steps.</li>
-                        <li><strong>Effect Size:</strong> $M_{diff} / s_{diff}$. (Remember, ignore SE for effect size!).</li>
-                    </ol>
+                </div>
+
+                <div class="step-container">
+                    <div class="step-item">
+                        <div class="step-title">Step-by-Step Solution</div>
+                        <p><strong>Step 1: Calculate Differences (A - B)</strong><br>
+                        Differences: 3, 3, 4, -2, 4, 2, 2, 5</p>
+
+                        <p><strong>Step 2: Calculate M_diff</strong><br>
+                        $M_{diff} = (3 + 3 + 4 + -2 + 4 + 2 + 2 + 5) / 8 = 21 / 8 = \mathbf{2.625}$</p>
+
+                        <p><strong>Step 3: Calculate s_diff</strong><br>
+                        $s_{diff} = \mathbf{2.20}$ (using STDEV.S)</p>
+
+                        <p><strong>Step 4: Calculate SE</strong><br>
+                        $SE_{diff} = 2.20 / \sqrt{8} = 2.20 / 2.83 = \mathbf{0.78}$</p>
+
+                        <p><strong>Step 5: Calculate t</strong><br>
+                        $t = 2.625 / 0.78 = \mathbf{3.37}$</p>
+
+                        <p><strong>Step 6: Find Critical t</strong><br>
+                        $df = 7$, $\alpha = .05$, <strong>Two-tailed</strong><br>
+                        Critical $t = \mathbf{\pm 2.365}$</p>
+
+                        <p><strong>Step 7: Decision</strong><br>
+                        Is |3.37| > 2.365? <strong>Yes!</strong><br>
+                        <strong>Reject Null.</strong> There is a significant difference in reading comprehension between the two conditions.</p>
+
+                        <p><strong>Step 8: Effect Size</strong><br>
+                        $d = 2.625 / 2.20 = \mathbf{1.19}$ (Large effect)</p>
+
+                        <p><strong>Interpretation:</strong> Students scored significantly higher in silence than with background music.</p>
+                    </div>
                 </div>
 
                 <div class="tip-box">
