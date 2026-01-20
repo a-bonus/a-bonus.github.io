@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 5: Independent-Samples t-Test</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    <style>
+        /* Base Styling */
+        :root {
+            --primary: #00897b; /* Teal for Module 5 */
+            --secondary: #546e7a;
+            --success: #2e7d32;
+            --warning: #f9a825;
+            --light-bg: #e0f2f1;
+            --border: #dee2e6;
+            --text: #333;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fafafa;
+        }
+
+        h1, h2, h3 { color: #2c3e50; }
+        
+        /* Header */
+        header {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            border-left: 5px solid var(--primary);
+        }
+
+        /* Tabs */
+        .lecture-tabs {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .tab-navigation {
+            display: flex;
+            background-color: #e9ecef;
+            overflow-x: auto;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .tab-button {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            background: none;
+            cursor: pointer;
+            text-align: left;
+            border-bottom: 3px solid transparent;
+            min-width: 160px;
+            transition: all 0.2s;
+            font-weight: 600;
+            color: #555;
+        }
+
+        .tab-button:hover { background-color: #dde2e6; }
+        .tab-button.active { 
+            background-color: #fff; 
+            border-bottom-color: var(--primary); 
+            color: var(--primary);
+        }
+        .tab-button.completed {
+            border-bottom-color: var(--success);
+            position: relative;
+        }
+        .tab-button.completed::after {
+            content: "✓";
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background-color: var(--success);
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .tab-checkbox {
+            margin-right: 8px;
+            cursor: pointer;
+            transform: scale(1.2);
+        }
+        .bottom-nav {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid var(--border);
+        }
+
+        /* Content */
+        .tab-content { padding: 30px; }
+        .tab-panel { display: none; animation: fadeIn 0.4s; }
+        .tab-panel.active { display: block; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Interactive Components */
+        .scenario-box {
+            background-color: #e0f2f1;
+            border: 1px solid #b2dfdb;
+            padding: 20px;
+            border-radius: 6px;
+            margin: 20px 0;
+        }
+
+        .warning-box {
+            background-color: #fff3cd;
+            border: 1px solid #ffeeba;
+            border-left: 4px solid var(--warning);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        
+        .tip-box {
+            background-color: #e3f2fd;
+            border: 1px solid #bbdefb;
+            border-left: 4px solid #2196f3;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+
+        .formula-box {
+            background-color: #263238;
+            color: #fff;
+            padding: 15px;
+            border-radius: 6px;
+            text-align: center;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1.1em;
+            margin: 20px 0;
+            letter-spacing: 1px;
+            border: 2px solid #546e7a;
+        }
+
+        .assignments-box {
+            background-color: #e8f5e9;
+            border: 1px solid #c8e6c9;
+            border-left: 4px solid var(--success);
+            padding: 15px;
+            margin: 20px 0 0 0;
+            border-radius: 4px;
+        }
+
+        .reveal-btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        
+        .answer-reveal {
+            display: none;
+            margin-top: 15px;
+            padding: 15px;
+            background: white;
+            border-left: 3px solid var(--success);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        table.comparison {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        table.comparison th, table.comparison td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        table.comparison th {
+            background-color: #eee;
+        }
+
+        /* Step Process Styles */
+        .step-container {
+            border-left: 3px solid var(--secondary);
+            padding-left: 20px;
+            margin: 20px 0;
+        }
+        .step-item {
+            margin-bottom: 20px;
+        }
+        .step-title {
+            font-weight: bold;
+            color: var(--primary);
+            text-transform: uppercase;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Module 5: Independent-Samples t-Tests</h1>
+        <p><strong>Goal:</strong> So far, we've compared a sample to a population (One-Sample) or a sample to itself (Paired). Now, we tackle the most common research scenario: comparing <strong>two completely separate groups</strong> of people (e.g., Treatment Group vs. Control Group).</p>
+        <p><em>"Does the group that took the medicine differ from the group that took the placebo?"</em></p>
+
+        <div class="assignments-box">
+            <h3>📋 Module 5 Assignments & Due Items</h3>
+            <ul>
+                <li><strong>Readings:</strong> Chapter 10 (Essentials of Statistics)</li>
+                <li><strong>M5 Quiz:</strong> Covers study design identification and interpretation of t-statistics.</li>
+                <li><strong>M5 Assignment:</strong> 
+                    <ul>
+                        <li>Problem 1: Encoding Condition A vs. B (One-tailed test)</li>
+                        <li>Problem 2: Male vs. Female Education Levels (Two-tailed test)</li>
+                    </ul>
+                </li>
+                <li><strong>Key Skill:</strong> Mastering the <strong>Pooled Variance</strong> calculation.</li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="lecture-tabs">
+        <div class="tab-navigation">
+            <button class="tab-button active" onclick="showTab(1)">
+                <input type="checkbox" id="progress-1" class="tab-checkbox" onchange="toggleTabComplete(1)">
+                1. Logic & Hypotheses
+            </button>
+            <button class="tab-button" onclick="showTab(2)">
+                <input type="checkbox" id="progress-2" class="tab-checkbox" onchange="toggleTabComplete(2)">
+                2. The Pooling Problem
+            </button>
+            <button class="tab-button" onclick="showTab(3)">
+                <input type="checkbox" id="progress-3" class="tab-checkbox" onchange="toggleTabComplete(3)">
+                3. Calculation Engine
+            </button>
+            <button class="tab-button" onclick="showTab(4)">
+                <input type="checkbox" id="progress-4" class="tab-checkbox" onchange="toggleTabComplete(4)">
+                4. Decision & Effect Size
+            </button>
+            <button class="tab-button" onclick="showTab(5)">
+                <input type="checkbox" id="progress-5" class="tab-checkbox" onchange="toggleTabComplete(5)">
+                5. Which Test When?
+            </button>
+            <button class="tab-button" onclick="showTab(6)">
+                <input type="checkbox" id="progress-6" class="tab-checkbox" onchange="toggleTabComplete(6)">
+                6. Assignment Workshop
+            </button>
+        </div>
+
+        <div class="tab-content">
+            
+            <!-- TAB 1: LOGIC & HYPOTHESES -->
+            <div id="tab-1" class="tab-panel active">
+                <h2>Independent-Samples t-Test Logic</h2>
+                <p>Use this test when you have <strong>two separate groups</strong> of participants. No one is in both groups. There is no matching.</p>
+
+                <h3>Between-Subjects Design</h3>
+                <p>This is a "Between-Subjects" design because we are comparing differences <em>between</em> two different groups of subjects.</p>
+                <ul>
+                    <li><strong>Example:</strong> Group A uses Apple computers. Group B uses PCs. We compare their average typing speed.</li>
+                    <li><strong>Contrast with Paired:</strong> In paired, the *same* person uses an Apple, then uses a PC. In independent, they only use one.</li>
+                </ul>
+
+                <h3>The Hypotheses</h3>
+                <p>We are comparing the means of two unknown populations ($\mu_1$ and $\mu_2$).</p>
+
+                <div class="scenario-box">
+                    <h4>Two-Tailed (Non-Directional)</h4>
+                    <p><strong>Question:</strong> Is there a difference between the groups?</p>
+                    <p>$H_0: \mu_1 = \mu_2$ (or $\mu_1 - \mu_2 = 0$)</p>
+                    <p>$H_1: \mu_1 \neq \mu_2$</p>
+                </div>
+
+                <div class="scenario-box">
+                    <h4>One-Tailed (Directional)</h4>
+                    <p><strong>Question:</strong> Is Group 1 <strong>higher</strong> than Group 2?</p>
+                    <p>$H_0: \mu_1 \le \mu_2$</p>
+                    <p>$H_1: \mu_1 > \mu_2$</p>
+                </div>
+
+                <h3>The Sampling Distribution</h3>
+                <p>In Module 4 (Paired), we looked at a distribution of <em>mean differences</em>. <br>
+                In Module 5 (Independent), we look at a distribution of <strong>differences between means</strong>.</p>
+                <p>It sounds the same, but the math is harder because we have two different sources of error (Group 1's variance + Group 2's variance).</p>
+
+                <div class="tip-box">
+                    <strong>Key Concept: The Comparison Distribution is Centered at Zero</strong><br>
+                    Under the null hypothesis, the mean of the comparison distribution (distribution of differences between means) is <strong>always 0</strong>. Why? Because $H_0$ states that $\mu_1 - \mu_2 = 0$. If the populations are truly equal, we'd expect the difference between sample means to average out to zero across many samples.
+                </div>
+            </div>
+
+            <!-- TAB 2: THE POOLING PROBLEM -->
+            <div id="tab-2" class="tab-panel">
+                <h2>The Concept of "Pooled Variance"</h2>
+                <p>This is the most critical calculation concept in Module 5.</p>
+
+                <h3>Why do we "Pool"?</h3>
+                <p>We have two samples. Sample 1 has a variance ($s_1^2$). Sample 2 has a variance ($s_2^2$).</p>
+                <p>We assume the populations they come from actually have the <strong>same</strong> variance (Assumption of Homogeneity of Variance). To get the best estimate of this shared variance, we combine (pool) our estimates.</p>
+
+                <div class="warning-box">
+                    <strong>Why not just average them?</strong><br>
+                    If Group 1 has 100 people and Group 2 has 5 people, Group 1's variance is a much more reliable estimate. We calculate a <strong>Weighted Average</strong> based on Degrees of Freedom ($df$).
+                </div>
+
+                <h3>Formulas You Need</h3>
+                <p><strong>1. Degrees of Freedom per Group:</strong></p>
+                <p>$df_1 = n_1 - 1$</p>
+                <p>$df_2 = n_2 - 1$</p>
+                <p>$df_{total} = df_1 + df_2$ (or $N_{total} - 2$)</p>
+
+                <div class="scenario-box">
+                    <h4>Reading t(df) Notation: Finding Sample Size</h4>
+                    <p>In research articles and quiz questions, you'll see results reported as <strong>$t(df) = value$</strong>.</p>
+                    <p><strong>Example:</strong> $t(19) = 4.02, p = .01$</p>
+                    <ul>
+                        <li>The number in parentheses (19) is the <strong>degrees of freedom</strong></li>
+                        <li>For independent-samples: $df_{total} = N_{total} - 2$</li>
+                        <li>Therefore: $N_{total} = df + 2 = 19 + 2 = \mathbf{21}$ participants total</li>
+                    </ul>
+                    <p><strong>Quiz Tip:</strong> If a question asks "What is the sample size given $t(19)$?" the answer is <strong>21</strong> (add 2 to the df for independent-samples t-tests).</p>
+                </div>
+
+                <div class="knowledge-check">
+                    <h4>Knowledge Check: Sample Size from t-Notation</h4>
+                    <p>The results of an independent-samples t-test were reported as: $t(24) = 2.15, p = .04$</p>
+                    <p>What was the total sample size (N)?</p>
+                    <button class="reveal-btn" onclick="reveal('ans-tdf')">Reveal Answer</button>
+                    <div id="ans-tdf" class="answer-reveal">
+                        <p><strong>N = 26</strong></p>
+                        <p>For independent-samples t-tests: $N = df + 2 = 24 + 2 = 26$</p>
+                        <p><em>Remember: Independent-samples uses $df = N - 2$ (we lose 1 df per group), so reverse it by adding 2.</em></p>
+                    </div>
+                </div>
+
+                <p><strong>2. Pooled Variance ($s_{pooled}^2$):</strong></p>
+                <div class="formula-box">
+                    $s_{pooled}^2 = \frac{df_1}{df_{total}}(s_1^2) + \frac{df_2}{df_{total}}(s_2^2)$
+                </div>
+                <p><em>(Note: You might also see this written as sum of squares divided by total df. Both work. This weighted average formula is often easier to type into a calculator).</em></p>
+
+                <div class="tip-box">
+                    <strong>Reality Check:</strong> Your $s_{pooled}^2$ must fall <strong>between</strong> $s_1^2$ and $s_2^2$. If your answer is higher than both or lower than both, you made a math error!
+                </div>
+            </div>
+
+            <!-- TAB 3: CALCULATION ENGINE -->
+            <div id="tab-3" class="tab-panel">
+                <h2>The Independent Calculation Engine</h2>
+                <p>This is the longest manual calculation in the course. Follow these 6 steps carefully.</p>
+
+                <div class="scenario-box">
+                    <h4>Practice Scenario: Caffeine Reaction Time</h4>
+                    <p><strong>Research:</strong> Does caffeine improve reaction time? (One-tailed test, $\alpha=.05$)</p>
+                    <p><strong>Group 1 (Caffeine):</strong> $n=5$, Mean ($M_1$) = 4, Variance ($s_1^2$) = 2.5</p>
+                    <p><strong>Group 2 (Decaf):</strong> $n=5$, Mean ($M_2$) = 7, Variance ($s_2^2$) = 1.5</p>
+                    <p><em>Prediction: Caffeine Group (1) will have lower time than Decaf Group (2). $H_1: \mu_1 < \mu_2$.</em></p>
+                </div>
+
+                <div class="step-container">
+                    <div class="step-item">
+                        <div class="step-title">Step 1: Calculate df</div>
+                        <p>$df_1 = 5 - 1 = 4$</p>
+                        <p>$df_2 = 5 - 1 = 4$</p>
+                        <p>$df_{total} = 4 + 4 = \mathbf{8}$</p>
+                    </div>
+
+                    <div class="step-item">
+                        <div class="step-title">Step 2: Calculate Pooled Variance ($s_{pooled}^2$)</div>
+                        <p>We weigh the variances by their df.</p>
+                        <p>$s_{pooled}^2 = \frac{4}{8}(2.5) + \frac{4}{8}(1.5)$</p>
+                        <p>$s_{pooled}^2 = 0.5(2.5) + 0.5(1.5)$</p>
+                        <p>$s_{pooled}^2 = 1.25 + 0.75 = \mathbf{2.0}$</p>
+                    </div>
+
+                    <div class="step-item">
+                        <div class="step-title">Step 3: Variance of Sampling Distributions ($s_{M}^2$)</div>
+                        <p>We assume the pooled variance applies to both, but we divide by their specific sample sizes.</p>
+                        <p>$s_{M1}^2 = \frac{s_{pooled}^2}{n_1} = \frac{2.0}{5} = 0.4$</p>
+                        <p>$s_{M2}^2 = \frac{s_{pooled}^2}{n_2} = \frac{2.0}{5} = 0.4$</p>
+                    </div>
+
+                    <div class="step-item">
+                        <div class="step-title">Step 4: Variance of Differences ($s_{diff}^2$)</div>
+                        <p>Add the two sampling variances together.</p>
+                        <p>$s_{diff}^2 = 0.4 + 0.4 = \mathbf{0.8}$</p>
+                    </div>
+
+                    <div class="step-item">
+                        <div class="step-title">Step 5: Standard Deviation of Difference ($s_{diff}$)</div>
+                        <p>Also known as the Standard Error of Difference.</p>
+                        <p>$s_{diff} = \sqrt{0.8} = \mathbf{0.894}$</p>
+                        <p><em>(This is your denominator for t)</em></p>
+                    </div>
+
+                    <div class="step-item">
+                        <div class="step-title">Step 6: Calculate t</div>
+                        <p>$t = \frac{M_1 - M_2}{s_{diff}}$</p>
+                        <p>$t = \frac{4 - 7}{0.894} = \frac{-3}{0.894} = \mathbf{-3.36}$</p>
+                    </div>
+                </div>
+
+                <div class="warning-box">
+                    <strong>Assignment Note:</strong> In your assignment, the sample sizes ($n$) are different. This means your weights in Step 2 will not be 50/50. Pay close attention to the fractions!
+                </div>
+            </div>
+
+            <!-- TAB 4: DECISION & EFFECT SIZE -->
+            <div id="tab-4" class="tab-panel">
+                <h2>Decision & Effect Size</h2>
+
+                <h3>1. The Decision</h3>
+                <p>Using the Caffeine example above ($t = -3.36$, $df_{total} = 8$, One-tailed).</p>
+                <ol>
+                    <li>Go to t-table. Look up $df=8$.</li>
+                    <li>One-tailed, $\alpha=.05$.</li>
+                    <li>Critical value = <strong>1.860</strong>.</li>
+                    <li>Since we predicted Group 1 < Group 2, our critical t is <strong>-1.860</strong>.</li>
+                    <li><strong>Comparison:</strong> Is -3.36 more extreme than -1.860? Yes.</li>
+                    <li><strong>Result:</strong> Reject Null. Caffeine significantly reduces reaction time.</li>
+                </ol>
+
+                <h3>2. Effect Size (Cohen's d)</h3>
+                <p>For independent samples, we compare the difference in means to the <strong>Pooled Standard Deviation</strong>.</p>
+
+                <div class="formula-box">
+                    $d = \frac{M_1 - M_2}{\sqrt{s_{pooled}^2}}$
+                </div>
+                
+                <p><strong>Note:</strong> The denominator is the square root of pooled <em>variance</em>. Do NOT use the standard error ($s_{diff}$) here.</p>
+
+                <div class="scenario-box">
+                    <h4>Calculate d for Caffeine Study</h4>
+                    <p>Mean Difference = $4 - 7 = -3$</p>
+                    <p>Pooled Variance ($s_{pooled}^2$) = 2.0</p>
+                    <p>Pooled Std Dev ($s_{pooled}$) = $\sqrt{2.0} = 1.414$</p>
+                    <p>$d = \frac{-3}{1.414} = \mathbf{-2.12}$</p>
+                    <p><strong>Interpretation:</strong> Huge effect (d > 0.8).</p>
+                </div>
+
+                <div class="tip-box">
+                    <strong>What Does Cohen's d Actually Mean?</strong><br>
+                    Cohen's d tells you <strong>how many pooled standard deviations apart the two group means are</strong>.
+                    <ul>
+                        <li>$d = 0.50$ means the means are <strong>0.50 standard deviations apart</strong></li>
+                        <li>$d = 1.24$ means the means are <strong>1.24 standard deviations apart</strong></li>
+                    </ul>
+                    <p>This is why effect size is so useful — it puts the difference on a standardized scale that can be compared across studies.</p>
+                </div>
+
+                <div class="scenario-box">
+                    <h4>Cohen's d Interpretation Guidelines (Memorize These!)</h4>
+                    <table class="comparison">
+                        <tr>
+                            <th>Effect Size (|d|)</th>
+                            <th>Interpretation</th>
+                        </tr>
+                        <tr>
+                            <td>0.2</td>
+                            <td><strong>Small</strong> effect</td>
+                        </tr>
+                        <tr>
+                            <td>0.5</td>
+                            <td><strong>Medium</strong> effect</td>
+                        </tr>
+                        <tr>
+                            <td>0.8</td>
+                            <td><strong>Large</strong> effect</td>
+                        </tr>
+                    </table>
+                    <p><em>Note: Use the absolute value of d for interpretation. A d of -0.60 is a "medium" effect (the negative just indicates direction).</em></p>
+                </div>
+
+                <div class="knowledge-check">
+                    <h4>Knowledge Check: Effect Size Denominator</h4>
+                    <p>When calculating Cohen's d for an independent-samples t-test, what goes in the denominator?</p>
+                    <button class="reveal-btn" onclick="reveal('ans-denom')">Reveal Answer</button>
+                    <div id="ans-denom" class="answer-reveal">
+                        <p><strong>The Pooled Standard Deviation ($s_{pooled}$).</strong></p>
+                        <p>Many students make the mistake of using the Standard Error ($s_{diff}$) used in the t-test. Effect size is about the populations (standard deviation), not the sampling precision (standard error).</p>
+                    </div>
+                </div>
+
+                <h3>3. p-Values and Confidence Intervals</h3>
+                <div class="tip-box">
+                    <strong>The p-Value and Confidence Interval Connection</strong><br>
+                    There's a direct relationship between the significance level ($\alpha$) and confidence intervals:
+                    <table class="comparison" style="margin-top: 10px;">
+                        <tr>
+                            <th>Alpha Level (p)</th>
+                            <th>Confidence Interval</th>
+                        </tr>
+                        <tr>
+                            <td>$\alpha = .05$</td>
+                            <td><strong>95%</strong> CI</td>
+                        </tr>
+                        <tr>
+                            <td>$\alpha = .01$</td>
+                            <td><strong>99%</strong> CI</td>
+                        </tr>
+                        <tr>
+                            <td>$\alpha = .10$</td>
+                            <td><strong>90%</strong> CI</td>
+                        </tr>
+                    </table>
+                    <p style="margin-top: 10px;"><strong>The pattern:</strong> Confidence Level = $1 - \alpha$ (expressed as a percentage).</p>
+                    <p><strong>Quiz Tip:</strong> If asked "A p-level of 0.05 corresponds to a confidence interval of ___%", the answer is <strong>95%</strong>.</p>
+                </div>
+            </div>
+
+            <!-- TAB 5: WHICH TEST WHEN? -->
+            <div id="tab-5" class="tab-panel">
+                <h2>Synthesizing the t-Tests</h2>
+                <p>You have now learned all three t-tests. One of the main goals of this module is distinguishing between them.</p>
+
+                <table class="comparison">
+                    <tr>
+                        <th>Test Type</th>
+                        <th>Research Design</th>
+                        <th>Comparison Population</th>
+                        <th>Variance Used</th>
+                    </tr>
+                    <tr>
+                        <td><strong>One-Sample t</strong></td>
+                        <td>One group compared to a known standard (e.g., National Avg).</td>
+                        <td>$\mu$ is known.</td>
+                        <td>Sample variance ($s^2$).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Paired-Samples t</strong></td>
+                        <td>One group tested twice (Pre/Post) OR Matched Pairs.</td>
+                        <td>$\mu_{diff} = 0$ (Null is zero difference).</td>
+                        <td>Variance of difference scores ($s_{diff}^2$).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Independent-Samples t</strong></td>
+                        <td>Two separate, unrelated groups (e.g., Men vs Women).</td>
+                        <td>$\mu_1 - \mu_2 = 0$ (Null is zero difference).</td>
+                        <td><strong>Pooled Variance ($s_{pooled}^2$).</strong></td>
+                    </tr>
+                </table>
+
+                <div class="scenario-box">
+                    <h4>Practice Identification (Test Yourself!)</h4>
+
+                    <p><strong>Scenario A:</strong> Comparing the math scores of students in Mr. Smith's class vs. Mrs. Jones' class.</p>
+                    <button class="reveal-btn" onclick="reveal('ans-scenario-a')">Reveal Answer</button>
+                    <div id="ans-scenario-a" class="answer-reveal">
+                        <p><strong>Independent-Samples t-test</strong> — Two separate classes/groups of different students.</p>
+                    </div>
+
+                    <p style="margin-top: 20px;"><strong>Scenario B:</strong> Comparing math scores of students before and after a tutoring session.</p>
+                    <button class="reveal-btn" onclick="reveal('ans-scenario-b')">Reveal Answer</button>
+                    <div id="ans-scenario-b" class="answer-reveal">
+                        <p><strong>Paired-Samples t-test</strong> — Same students measured twice (pre/post).</p>
+                    </div>
+
+                    <p style="margin-top: 20px;"><strong>Scenario C:</strong> Comparing math scores of Mr. Smith's class against the State Average.</p>
+                    <button class="reveal-btn" onclick="reveal('ans-scenario-c')">Reveal Answer</button>
+                    <div id="ans-scenario-c" class="answer-reveal">
+                        <p><strong>One-Sample t-test</strong> — One group compared to a known population mean.</p>
+                    </div>
+
+                    <p style="margin-top: 20px;"><strong>Scenario D:</strong> Researchers randomly assigned 20 participants to either a fitness training group or a relaxation training group, then measured change in headaches.</p>
+                    <button class="reveal-btn" onclick="reveal('ans-scenario-d')">Reveal Answer</button>
+                    <div id="ans-scenario-d" class="answer-reveal">
+                        <p><strong>Independent-Samples t-test</strong> — Two separate groups (randomly assigned to different conditions).</p>
+                    </div>
+
+                    <p style="margin-top: 20px;"><strong>Scenario E:</strong> A clinical researcher administered a depression inventory before treatment and after treatment to assess effectiveness.</p>
+                    <button class="reveal-btn" onclick="reveal('ans-scenario-e')">Reveal Answer</button>
+                    <div id="ans-scenario-e" class="answer-reveal">
+                        <p><strong>Paired-Samples t-test</strong> — Same participants measured at two time points (pre/post treatment).</p>
+                    </div>
+
+                    <p style="margin-top: 20px;"><strong>Scenario F:</strong> Mehl et al. (2007) compared the number of words uttered per day by men vs. women in a sample of 396 participants.</p>
+                    <button class="reveal-btn" onclick="reveal('ans-scenario-f')">Reveal Answer</button>
+                    <div id="ans-scenario-f" class="answer-reveal">
+                        <p><strong>Independent-Samples t-test</strong> — Two separate groups (men vs. women are different people).</p>
+                    </div>
+                </div>
+
+                <h3>Assumptions for All t-Tests</h3>
+                <ol>
+                    <li><strong>Scale Data:</strong> The DV must be interval or ratio.</li>
+                    <li><strong>Normality:</strong> The populations should be normally distributed (robust if N > 30).</li>
+                    <li><strong>Random Sampling:</strong> Ideal, though often violated.</li>
+                    <li><strong>Homogeneity of Variance (New for Independent):</strong> We assume Population 1 and Population 2 have similar variances. (That's why we pool them!).</li>
+                </ol>
+            </div>
+
+            <!-- TAB 6: ASSIGNMENT WORKSHOP -->
+            <div id="tab-6" class="tab-panel">
+                <h2>Assignment Workshop</h2>
+                <p>Your assignment involves two problems involving independent groups. Be careful with your calculations!</p>
+
+                <h3>Q1: Encoding Conditions (One-Tailed)</h3>
+                <p><strong>Scenario:</strong> You compare Memory Scores for Group A (Object Naming) vs. Group B (Color Naming). You predict Group A will be better.</p>
+                <div class="step-container">
+                    <div class="step-item">
+                        <div class="step-title">Hint 1: Calculate Variance Correctly</div>
+                        <p>You are given a list of scores. You must calculate $s^2$ (Variance) for each group.</p>
+                        <p>Excel: <code>=VAR.S(select_data)</code></p>
+                        <p>Manual: Sum of Squared Deviations / (N-1).</p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-title">Hint 2: Weighting the Pool</div>
+                        <p>Group A has $n=12$. Group B has $n=12$.</p>
+                        <p>Since sample sizes are equal, $s_{pooled}^2$ will simply be the average of the two variances. (This makes the math easier!).</p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-title">Hint 3: One-Tailed Decision</div>
+                        <p>If Group A is Mean=85 and Group B is Mean=83, the difference is positive. Ensure your t-statistic is positive. Check the critical value for One-Tailed $\alpha=.01$.</p>
+                    </div>
+                </div>
+
+                <h3>Q2: Gender & Education (Two-Tailed)</h3>
+                <div class="step-container">
+                    <div class="step-item">
+                        <div class="step-title">Hint 1: Unequal N</div>
+                        <p>Count your rows carefully! Males have $n=12$. Females have $n=14$.</p>
+                        <p><strong>This implies:</strong> You cannot just average the variances. You must use the full pooled variance formula:</p>
+                        <p>$\frac{11}{24}(s_1^2) + \frac{13}{24}(s_2^2)$</p>
+                        <p><em>(Note: $df_{total} = 11 + 13 = 24$)</em></p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-title">Hint 2: Non-Directional</div>
+                        <p>The researchers "are not predicting any direction."</p>
+                        <p>This means you use the <strong>Two-Tailed</strong> column in the t-table for your critical value.</p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-title">Hint 3: Effect Size</div>
+                        <p>Remember to take the square root of your Pooled Variance to get the Pooled Standard Deviation before calculating Cohen's d.</p>
+                    </div>
+                </div>
+
+                <div class="scenario-box" style="background-color: #ffebee; border-color: #ffcdd2;">
+                    <h4 style="color: #c62828;">Common Mistakes to Avoid</h4>
+                    <ol>
+                        <li><strong>Using Standard Error instead of Standard Deviation for Cohen's d</strong>
+                            <ul>
+                                <li>$s_{diff}$ (standard error) goes in the <em>t-statistic</em> denominator</li>
+                                <li>$s_{pooled}$ (pooled SD) goes in the <em>Cohen's d</em> denominator</li>
+                            </ul>
+                        </li>
+                        <li><strong>Forgetting to take the square root</strong>
+                            <ul>
+                                <li>Pooled Variance ($s_{pooled}^2$) must become Pooled SD ($s_{pooled}$) for Cohen's d</li>
+                                <li>$s_{diff}^2$ must become $s_{diff}$ for the t-statistic</li>
+                            </ul>
+                        </li>
+                        <li><strong>Wrong critical value column</strong>
+                            <ul>
+                                <li>One-tailed test → Use one-tailed column</li>
+                                <li>Two-tailed test → Use two-tailed column</li>
+                            </ul>
+                        </li>
+                        <li><strong>Unequal sample sizes</strong>
+                            <ul>
+                                <li>When $n_1 \neq n_2$, you CANNOT just average the variances</li>
+                                <li>You MUST use the weighted formula: $\frac{df_1}{df_{total}}(s_1^2) + \frac{df_2}{df_{total}}(s_2^2)$</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+
+                <div class="warning-box">
+                    <strong>Final formatting tip:</strong> Round to the hundredth (2 decimal places) as requested in the assignment instructions to avoid auto-grading errors!
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <div class="tab-navigation bottom-nav">
+        <button class="tab-button" onclick="showTab(1)">
+            <input type="checkbox" id="progress-1-bottom" class="tab-checkbox" onchange="toggleTabComplete(1)">
+            1. Logic & Hypotheses
+        </button>
+        <button class="tab-button" onclick="showTab(2)">
+            <input type="checkbox" id="progress-2-bottom" class="tab-checkbox" onchange="toggleTabComplete(2)">
+            2. The Pooling Problem
+        </button>
+        <button class="tab-button" onclick="showTab(3)">
+            <input type="checkbox" id="progress-3-bottom" class="tab-checkbox" onchange="toggleTabComplete(3)">
+            3. Calculation Engine
+        </button>
+        <button class="tab-button" onclick="showTab(4)">
+            <input type="checkbox" id="progress-4-bottom" class="tab-checkbox" onchange="toggleTabComplete(4)">
+            4. Decision & Effect Size
+        </button>
+        <button class="tab-button" onclick="showTab(5)">
+            <input type="checkbox" id="progress-5-bottom" class="tab-checkbox" onchange="toggleTabComplete(5)">
+            5. Which Test When?
+        </button>
+        <button class="tab-button" onclick="showTab(6)">
+            <input type="checkbox" id="progress-6-bottom" class="tab-checkbox" onchange="toggleTabComplete(6)">
+            6. Assignment Workshop
+        </button>
+    </div>
+
+    <!-- Formula Quick Reference Card -->
+    <div style="background: linear-gradient(135deg, #004d40 0%, #00695c 100%); color: white; padding: 25px; border-radius: 8px; margin-top: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+        <h3 style="color: #fff; margin-top: 0; border-bottom: 2px solid #80cbc4; padding-bottom: 10px;">Module 5 Formula Card</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+            <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 6px;">
+                <h4 style="color: #80cbc4; margin-top: 0;">Total Degrees of Freedom</h4>
+                <p style="font-family: 'Courier New', monospace; font-size: 1.1em;">df_total = (n1 - 1) + (n2 - 1)</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 6px;">
+                <h4 style="color: #80cbc4; margin-top: 0;">Pooled Variance (s²p)</h4>
+                <p style="font-family: 'Courier New', monospace; font-size: 0.9em;">[(df1/df_tot) * s1²] + [(df2/df_tot) * s2²]</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 6px;">
+                <h4 style="color: #80cbc4; margin-top: 0;">Standard Error (s_diff)</h4>
+                <p style="font-family: 'Courier New', monospace; font-size: 1.1em;">√[ (s²p / n1) + (s²p / n2) ]</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 6px;">
+                <h4 style="color: #80cbc4; margin-top: 0;">t-Statistic</h4>
+                <p style="font-family: 'Courier New', monospace; font-size: 1.1em;">t = (M1 - M2) / s_diff</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 6px;">
+                <h4 style="color: #80cbc4; margin-top: 0;">Cohen's d</h4>
+                <p style="font-family: 'Courier New', monospace; font-size: 1.1em;">d = (M1 - M2) / √s²p</p>
+                <p style="font-size: 0.85em; opacity: 0.8;">Uses Pooled SD, not SE!</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 6px;">
+                <h4 style="color: #80cbc4; margin-top: 0;">Cohen's d Thresholds</h4>
+                <p style="font-family: 'Courier New', monospace; font-size: 1.1em;">|d| ≈ 0.2 → Small</p>
+                <p style="font-family: 'Courier New', monospace; font-size: 1.1em;">|d| ≈ 0.5 → Medium</p>
+                <p style="font-family: 'Courier New', monospace; font-size: 1.1em;">|d| ≈ 0.8 → Large</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 6px;">
+                <h4 style="color: #80cbc4; margin-top: 0;">Sample Size from t(df)</h4>
+                <p style="font-family: 'Courier New', monospace; font-size: 1.1em;">N = df + 2</p>
+                <p style="font-size: 0.85em; opacity: 0.8;">For independent-samples only</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Progress tracking logic
+        const PROGRESS_KEY = 'psy230-m5-progress';
+
+        function loadProgress() {
+            const savedProgress = localStorage.getItem(PROGRESS_KEY);
+            if (savedProgress) {
+                const progress = JSON.parse(savedProgress);
+                Object.keys(progress).forEach(tabNumber => {
+                    const isComplete = progress[tabNumber];
+                    const topCheckbox = document.getElementById(`progress-${tabNumber}`);
+                    const bottomCheckbox = document.getElementById(`progress-${tabNumber}-bottom`);
+                    if (topCheckbox) topCheckbox.checked = isComplete;
+                    if (bottomCheckbox) bottomCheckbox.checked = isComplete;
+                    updateTabVisualState(parseInt(tabNumber), isComplete);
+                });
+            }
+        }
+
+        function saveProgress(tabNumber, isComplete) {
+            const savedProgress = localStorage.getItem(PROGRESS_KEY);
+            const progress = savedProgress ? JSON.parse(savedProgress) : {};
+            progress[tabNumber] = isComplete;
+            localStorage.setItem(PROGRESS_KEY, JSON.stringify(progress));
+        }
+
+        function toggleTabComplete(tabNumber) {
+            const clickedCheckbox = event.target;
+            const isComplete = clickedCheckbox.checked;
+            
+            const topCheckbox = document.getElementById(`progress-${tabNumber}`);
+            const bottomCheckbox = document.getElementById(`progress-${tabNumber}-bottom`);
+            if (topCheckbox) topCheckbox.checked = isComplete;
+            if (bottomCheckbox) bottomCheckbox.checked = isComplete;
+            
+            updateTabVisualState(tabNumber, isComplete);
+            saveProgress(tabNumber, isComplete);
+        }
+
+        function updateTabVisualState(tabNumber, isComplete) {
+            const tabButtons = document.querySelectorAll(`button[onclick="showTab(${tabNumber})"]`);
+            tabButtons.forEach(button => {
+                if (isComplete) button.classList.add('completed');
+                else button.classList.remove('completed');
+            });
+        }
+
+        function showTab(tabIndex) {
+            document.querySelectorAll('.tab-panel').forEach(panel => panel.classList.remove('active'));
+            document.getElementById('tab-' + tabIndex).classList.add('active');
+            
+            document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            const tabContainer = document.querySelector('.lecture-tabs');
+            if (tabContainer) tabContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function reveal(id) {
+            const el = document.getElementById(id);
+            el.style.display = (el.style.display === 'block') ? 'none' : 'block';
+        }
+
+        document.addEventListener('DOMContentLoaded', loadProgress);
+    </script>
+</body>
+</html>
