@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 6: Correlation & Association</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    <style>
+        /* Base Styling */
+        :root {
+            --primary: #8e24aa; /* Purple/Grape for Module 6 */
+            --secondary: #546e7a;
+            --success: #2e7d32;
+            --warning: #f9a825;
+            --light-bg: #f3e5f5;
+            --border: #dee2e6;
+            --text: #333;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fafafa;
+        }
+
+        h1, h2, h3 { color: #2c3e50; }
+        
+        /* Header */
+        header {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            border-left: 5px solid var(--primary);
+        }
+
+        /* Tabs */
+        .lecture-tabs {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .tab-navigation {
+            display: flex;
+            background-color: #e9ecef;
+            overflow-x: auto;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .tab-button {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            background: none;
+            cursor: pointer;
+            text-align: left;
+            border-bottom: 3px solid transparent;
+            min-width: 160px;
+            transition: all 0.2s;
+            font-weight: 600;
+            color: #555;
+        }
+
+        .tab-button:hover { background-color: #dde2e6; }
+        .tab-button.active { 
+            background-color: #fff; 
+            border-bottom-color: var(--primary); 
+            color: var(--primary);
+        }
+        .tab-button.completed {
+            border-bottom-color: var(--success);
+            position: relative;
+        }
+        .tab-button.completed::after {
+            content: "✓";
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background-color: var(--success);
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .tab-checkbox {
+            margin-right: 8px;
+            cursor: pointer;
+            transform: scale(1.2);
+        }
+        .bottom-nav {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid var(--border);
+        }
+
+        /* Content */
+        .tab-content { padding: 30px; }
+        .tab-panel { display: none; animation: fadeIn 0.4s; }
+        .tab-panel.active { display: block; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Interactive Components */
+        .scenario-box {
+            background-color: #f3e5f5;
+            border: 1px solid #e1bee7;
+            padding: 20px;
+            border-radius: 6px;
+            margin: 20px 0;
+        }
+
+        .warning-box {
+            background-color: #fff3cd;
+            border: 1px solid #ffeeba;
+            border-left: 4px solid var(--warning);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        
+        .tip-box {
+            background-color: #e3f2fd;
+            border: 1px solid #bbdefb;
+            border-left: 4px solid #2196f3;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+
+        .formula-box {
+            background-color: #4a148c;
+            color: #fff;
+            padding: 15px;
+            border-radius: 6px;
+            text-align: center;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1.1em;
+            margin: 20px 0;
+            letter-spacing: 1px;
+            border: 2px solid #7b1fa2;
+        }
+
+        .assignments-box {
+            background-color: #e8f5e9;
+            border: 1px solid #c8e6c9;
+            border-left: 4px solid var(--success);
+            padding: 15px;
+            margin: 20px 0 0 0;
+            border-radius: 4px;
+        }
+
+        .assignments-box h3 {
+            margin-top: 0;
+            color: #2e7d32;
+            font-size: 1.1em;
+        }
+
+        .assignments-box ul {
+            margin: 10px 0 0 0;
+            padding-left: 20px;
+        }
+
+        .assignments-box li {
+            margin-bottom: 8px;
+        }
+
+        .reveal-btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        
+        .answer-reveal {
+            display: none;
+            margin-top: 15px;
+            padding: 15px;
+            background: white;
+            border-left: 3px solid var(--success);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        table.comparison {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        table.comparison th, table.comparison td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        table.comparison th {
+            background-color: #eee;
+        }
+        
+        /* Scatterplot mock visualization */
+        .scatter-mock {
+            width: 200px;
+            height: 150px;
+            border-left: 2px solid #333;
+            border-bottom: 2px solid #333;
+            position: relative;
+            margin: 20px auto;
+        }
+        .dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        /* Step Process Styles */
+        .step-container {
+            border-left: 3px solid var(--secondary);
+            padding-left: 20px;
+            margin: 20px 0;
+        }
+        .step-item {
+            margin-bottom: 20px;
+        }
+        .step-title {
+            font-weight: bold;
+            color: var(--primary);
+            text-transform: uppercase;
+            font-size: 0.9em;
+        }
+
+        .knowledge-check {
+            background-color: #f8f9fa;
+            border: 1px solid var(--border);
+            padding: 20px;
+            border-radius: 6px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Module 6: Correlation & Association</h1>
+        <p><strong>Goal:</strong> Transition from <em>comparing groups</em> (t-tests) to examining the <em>relationship between variables</em>. We will learn to calculate Pearson's $r$, interpret scatterplots, and understand why correlation does not equal causation.</p>
+        <p><em>"How do two variables vary in relation to each other?"</em></p>
+
+        <div class="assignments-box">
+            <h3>📋 Module 6 Assignments & Due Items</h3>
+            <ul>
+                <li><strong>Readings:</strong> Chapter 13 (Essentials of Statistics)</li>
+                <li><strong>M6 Quiz:</strong> Covers scatterplots, direction/strength of $r$, and interpreting results.</li>
+                <li><strong>M6 Assignment:</strong> 
+                    <ul>
+                        <li>Q1: Education vs. Memory (Elderly residents)</li>
+                        <li>Q2: Acceptance Rate vs. Graduation Rate (Universities)</li>
+                    </ul>
+                </li>
+                <li><strong>Key Skill:</strong> Calculating $r$ via Z-scores and creating APA scatterplots in Excel.</li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="lecture-tabs">
+        <div class="tab-navigation">
+            <button class="tab-button active" onclick="showTab(1)">
+                <input type="checkbox" id="progress-1" class="tab-checkbox" onchange="toggleTabComplete(1)">
+                1. Intro & Scatterplots
+            </button>
+            <button class="tab-button" onclick="showTab(2)">
+                <input type="checkbox" id="progress-2" class="tab-checkbox" onchange="toggleTabComplete(2)">
+                2. Pearson's r Logic
+            </button>
+            <button class="tab-button" onclick="showTab(3)">
+                <input type="checkbox" id="progress-3" class="tab-checkbox" onchange="toggleTabComplete(3)">
+                3. Calculation Engine
+            </button>
+            <button class="tab-button" onclick="showTab(4)">
+                <input type="checkbox" id="progress-4" class="tab-checkbox" onchange="toggleTabComplete(4)">
+                4. r² & Interpretation
+            </button>
+            <button class="tab-button" onclick="showTab(5)">
+                <input type="checkbox" id="progress-5" class="tab-checkbox" onchange="toggleTabComplete(5)">
+                5. Hypothesis Testing
+            </button>
+            <button class="tab-button" onclick="showTab(6)">
+                <input type="checkbox" id="progress-6" class="tab-checkbox" onchange="toggleTabComplete(6)">
+                6. Assignment Workshop
+            </button>
+        </div>
+
+        <div class="tab-content">
+            
+            <!-- TAB 1: INTRO & SCATTERPLOTS -->
+            <div id="tab-1" class="tab-panel active">
+                <h2>Group Comparison vs. Correlation</h2>
+                <p>Previously (Modules 4-5), we asked: <em>"Is Group A different from Group B?"</em> (e.g., Treatment vs. Control).<br>
+                Now, we ask: <em>"How are Variable X and Variable Y related?"</em> (e.g., Is studying related to grades?).</p>
+
+                <h3>When to use Correlation?</h3>
+                <p>Use Pearson's correlation when:</p>
+                <ul>
+                    <li>You have <strong>two variables</strong> measured on the <strong>same person</strong> (or linked entity).</li>
+                    <li>Both variables are <strong>Scale</strong> (Interval or Ratio).</li>
+                    <li>You are not manipulating groups; you are observing natural variation.</li>
+                </ul>
+
+                <div class="scenario-box">
+                    <h4>Scenario Identification</h4>
+                    <p><strong>Scenario A:</strong> Comparing the average heart rate of Runners vs. Swimmers.</p>
+                    <p><em>Analysis:</em> Independent t-test (Two groups).</p>
+                    <hr>
+                    <p><strong>Scenario B:</strong> Measuring the heart rate and the running speed of 50 athletes to see if faster runners have higher heart rates.</p>
+                    <p><em>Analysis:</em> <strong>Correlation.</strong> We have a range of speeds and a range of heart rates, linked per person.</p>
+                </div>
+
+                <h3>The Scatterplot</h3>
+                <p>Before calculating anything, you <strong>MUST</strong> look at the data. A scatterplot places Variable X on the horizontal axis and Variable Y on the vertical axis.</p>
+
+                <div style="display:flex; justify-content:space-around; margin:20px 0;">
+                    <div style="text-align:center;">
+                        <div class="scatter-mock" style="background: white;">
+                            <div class="dot" style="bottom:10%; left:10%;"></div>
+                            <div class="dot" style="bottom:30%; left:30%;"></div>
+                            <div class="dot" style="bottom:50%; left:50%;"></div>
+                            <div class="dot" style="bottom:70%; left:70%;"></div>
+                            <div class="dot" style="bottom:90%; left:90%;"></div>
+                        </div>
+                        <p><strong>Positive Correlation</strong><br>As X goes up, Y goes up.</p>
+                    </div>
+                    <div style="text-align:center;">
+                        <div class="scatter-mock" style="background: white;">
+                            <div class="dot" style="bottom:90%; left:10%;"></div>
+                            <div class="dot" style="bottom:70%; left:30%;"></div>
+                            <div class="dot" style="bottom:50%; left:50%;"></div>
+                            <div class="dot" style="bottom:30%; left:70%;"></div>
+                            <div class="dot" style="bottom:10%; left:90%;"></div>
+                        </div>
+                        <p><strong>Negative Correlation</strong><br>As X goes up, Y goes down.</p>
+                    </div>
+                </div>
+
+                <div class="warning-box">
+                    <strong>Assumption Check: Linearity & Outliers</strong><br>
+                    Pearson's $r$ only works for <strong>linear</strong> (straight line) relationships. If your scatterplot looks like a curve (U-shape), $r$ will be close to zero even if there is a relationship!<br><br>
+                    <strong>"Outliers are Liars":</strong> One extreme data point can artificially create a strong correlation where none exists, or destroy a real correlation. Always check the graph!
+                </div>
+            </div>
+
+            <!-- TAB 2: PEARSON'S R LOGIC -->
+            <div id="tab-2" class="tab-panel">
+                <h2>Pearson's Correlation Coefficient ($r$)</h2>
+                <p>The statistic $r$ summarizes the relationship in a single number ranging from <strong>-1.00 to +1.00</strong>.</p>
+
+                <h3>1. Direction (+ or -)</h3>
+                <ul>
+                    <li><strong>Positive (+):</strong> Variables move together. (High X = High Y; Low X = Low Y).
+                        <ul><li><em>Example:</em> Height and Shoe Size.</li></ul>
+                    </li>
+                    <li><strong>Negative (-):</strong> Variables move opposite. (High X = Low Y).
+                        <ul><li><em>Example:</em> Absences and Grades.</li></ul>
+                    </li>
+                </ul>
+
+                <div class="tip-box">
+                    <strong>Critical Concept:</strong> A "Negative" correlation does NOT mean "No" correlation. It simply means the relationship is inverse. A correlation of -0.80 is just as strong as +0.80.
+                </div>
+
+                <h3>2. Magnitude (Strength)</h3>
+                <p>How close are the dots to forming a perfect straight line? Use <strong>Cohen's Guidelines</strong> (provided in your lectures):</p>
+                <table class="comparison">
+                    <tr>
+                        <th>Value of |r|</th>
+                        <th>Strength</th>
+                    </tr>
+                    <tr>
+                        <td>0.0 to 0.1</td>
+                        <td>No correlation / Negligible</td>
+                    </tr>
+                    <tr>
+                        <td>0.1 to 0.3</td>
+                        <td>Weak</td>
+                    </tr>
+                    <tr>
+                        <td>0.3 to 0.5</td>
+                        <td>Medium / Moderate</td>
+                    </tr>
+                    <tr>
+                        <td>&gt; 0.5</td>
+                        <td>Strong</td>
+                    </tr>
+                </table>
+
+                <h3>3. Perfect Correlation ($r = \pm 1.0$)</h3>
+                <p>When <strong>all data points fall exactly on a straight line</strong>, the correlation is <strong>perfect</strong>.</p>
+                <ul>
+                    <li>$r = +1.0$: Perfect positive correlation (all points on an upward-sloping line)</li>
+                    <li>$r = -1.0$: Perfect negative correlation (all points on a downward-sloping line)</li>
+                </ul>
+
+                <div class="scenario-box">
+                    <h4>Special Case: Same Variable in Different Units</h4>
+                    <p><strong>Question:</strong> What is the correlation between a person's weight measured in <em>grams</em> and their weight measured in <em>pounds</em>?</p>
+                    <p><strong>Answer:</strong> $r = +1.0$ (Perfect positive correlation)</p>
+                    <p><strong>Why?</strong> They are measuring the <em>exact same thing</em>. Every person who is high in grams is equally high in pounds. The relationship is perfectly linear because pounds = grams × 0.00220462.</p>
+                </div>
+
+                <div class="tip-box">
+                    <strong>Why are correlations above 0.50 rare in social sciences?</strong><br>
+                    Human behavior is the product of <strong>many interacting variables</strong>. Any single variable (like study time) will be limited in its association with an outcome (like GPA) because dozens of other factors also matter (sleep, prior knowledge, test anxiety, etc.). This is why finding $r > 0.50$ in psychology research is noteworthy!
+                </div>
+
+                <!-- Interactive Scatterplot Practice -->
+                <h3>Practice: Estimate the Correlation</h3>
+                <p>Look at each scatterplot below. Before revealing the answer, estimate: (1) Is it positive or negative? (2) Is it weak, moderate, or strong?</p>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin: 20px 0;">
+
+                    <!-- Scatterplot A: Strong Positive ~0.85 -->
+                    <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; text-align: center;">
+                        <p style="font-weight: bold; margin-top: 0;">Scatterplot A</p>
+                        <div class="scatter-mock" style="margin: 10px auto; background: white;">
+                            <div class="dot" style="bottom: 8%; left: 5%;"></div>
+                            <div class="dot" style="bottom: 15%; left: 12%;"></div>
+                            <div class="dot" style="bottom: 22%; left: 20%;"></div>
+                            <div class="dot" style="bottom: 35%; left: 30%;"></div>
+                            <div class="dot" style="bottom: 40%; left: 38%;"></div>
+                            <div class="dot" style="bottom: 55%; left: 50%;"></div>
+                            <div class="dot" style="bottom: 60%; left: 58%;"></div>
+                            <div class="dot" style="bottom: 72%; left: 70%;"></div>
+                            <div class="dot" style="bottom: 80%; left: 80%;"></div>
+                            <div class="dot" style="bottom: 92%; left: 90%;"></div>
+                        </div>
+                        <button class="reveal-btn" onclick="reveal('scatter-a')" style="font-size: 0.85em;">Reveal r</button>
+                        <div id="scatter-a" class="answer-reveal" style="text-align: left; margin-top: 10px;">
+                            <p><strong>r ≈ +0.85</strong></p>
+                            <p>Strong positive. Points cluster tightly around an upward line.</p>
+                        </div>
+                    </div>
+
+                    <!-- Scatterplot B: Strong Negative ~-0.80 -->
+                    <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; text-align: center;">
+                        <p style="font-weight: bold; margin-top: 0;">Scatterplot B</p>
+                        <div class="scatter-mock" style="margin: 10px auto; background: white;">
+                            <div class="dot" style="bottom: 88%; left: 8%;"></div>
+                            <div class="dot" style="bottom: 82%; left: 15%;"></div>
+                            <div class="dot" style="bottom: 70%; left: 28%;"></div>
+                            <div class="dot" style="bottom: 62%; left: 38%;"></div>
+                            <div class="dot" style="bottom: 50%; left: 48%;"></div>
+                            <div class="dot" style="bottom: 45%; left: 55%;"></div>
+                            <div class="dot" style="bottom: 32%; left: 68%;"></div>
+                            <div class="dot" style="bottom: 22%; left: 78%;"></div>
+                            <div class="dot" style="bottom: 12%; left: 88%;"></div>
+                        </div>
+                        <button class="reveal-btn" onclick="reveal('scatter-b')" style="font-size: 0.85em;">Reveal r</button>
+                        <div id="scatter-b" class="answer-reveal" style="text-align: left; margin-top: 10px;">
+                            <p><strong>r ≈ -0.80</strong></p>
+                            <p>Strong negative. As X increases, Y decreases consistently.</p>
+                        </div>
+                    </div>
+
+                    <!-- Scatterplot C: Near Zero ~0.05 -->
+                    <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; text-align: center;">
+                        <p style="font-weight: bold; margin-top: 0;">Scatterplot C</p>
+                        <div class="scatter-mock" style="margin: 10px auto; background: white;">
+                            <div class="dot" style="bottom: 45%; left: 10%;"></div>
+                            <div class="dot" style="bottom: 80%; left: 20%;"></div>
+                            <div class="dot" style="bottom: 25%; left: 30%;"></div>
+                            <div class="dot" style="bottom: 60%; left: 40%;"></div>
+                            <div class="dot" style="bottom: 35%; left: 50%;"></div>
+                            <div class="dot" style="bottom: 70%; left: 60%;"></div>
+                            <div class="dot" style="bottom: 20%; left: 70%;"></div>
+                            <div class="dot" style="bottom: 55%; left: 80%;"></div>
+                            <div class="dot" style="bottom: 40%; left: 90%;"></div>
+                        </div>
+                        <button class="reveal-btn" onclick="reveal('scatter-c')" style="font-size: 0.85em;">Reveal r</button>
+                        <div id="scatter-c" class="answer-reveal" style="text-align: left; margin-top: 10px;">
+                            <p><strong>r ≈ 0.05</strong></p>
+                            <p>No correlation. Points are scattered randomly with no pattern.</p>
+                        </div>
+                    </div>
+
+                    <!-- Scatterplot D: Moderate Positive ~0.45 -->
+                    <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; text-align: center;">
+                        <p style="font-weight: bold; margin-top: 0;">Scatterplot D</p>
+                        <div class="scatter-mock" style="margin: 10px auto; background: white;">
+                            <div class="dot" style="bottom: 15%; left: 8%;"></div>
+                            <div class="dot" style="bottom: 35%; left: 15%;"></div>
+                            <div class="dot" style="bottom: 20%; left: 28%;"></div>
+                            <div class="dot" style="bottom: 45%; left: 35%;"></div>
+                            <div class="dot" style="bottom: 40%; left: 48%;"></div>
+                            <div class="dot" style="bottom: 65%; left: 55%;"></div>
+                            <div class="dot" style="bottom: 50%; left: 68%;"></div>
+                            <div class="dot" style="bottom: 70%; left: 78%;"></div>
+                            <div class="dot" style="bottom: 60%; left: 88%;"></div>
+                        </div>
+                        <button class="reveal-btn" onclick="reveal('scatter-d')" style="font-size: 0.85em;">Reveal r</button>
+                        <div id="scatter-d" class="answer-reveal" style="text-align: left; margin-top: 10px;">
+                            <p><strong>r ≈ +0.45</strong></p>
+                            <p>Moderate positive. General upward trend, but points are more spread out.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="knowledge-check">
+                    <h4>Quick Check: Which is Stronger?</h4>
+                    <p>Which represents a <strong>stronger</strong> relationship: $r = +0.55$ or $r = -0.72$?</p>
+                    <button class="reveal-btn" onclick="reveal('ans-stronger')">Reveal Answer</button>
+                    <div id="ans-stronger" class="answer-reveal">
+                        <p><strong>$r = -0.72$</strong> is stronger.</p>
+                        <p>Remember: Ignore the sign when judging strength! Look at the absolute value: |−0.72| = 0.72 > |+0.55| = 0.55. The negative sign only tells us direction (inverse), not weakness.</p>
+                    </div>
+                </div>
+
+                <h3>The Logic: Z-Scores</h3>
+                <p>How do we compare "Apples eaten per week" vs "Doctors visits per year"? They have different scales. We must <strong>Standardize</strong> them.</p>
+                <p>We convert every X score to a $Z_x$ and every Y score to a $Z_y$.</p>
+
+                <div class="formula-box">
+                    $r = \frac{\sum(Z_x \cdot Z_y)}{N}$
+                </div>
+
+                <p><strong>Why this works:</strong></p>
+                <ul>
+                    <li>If someone is High on X ($+$ Z) and High on Y ($+$ Z), the product is <strong>Positive</strong>.</li>
+                    <li>If someone is Low on X ($-$ Z) and Low on Y ($-$ Z), the product is <strong>Positive</strong> (negative $\times$ negative = positive).</li>
+                    <li>If most products are positive, $r$ is positive.</li>
+                    <li>If High X goes with Low Y, the product ($+$ $\times$ $-$) is <strong>Negative</strong>.</li>
+                </ul>
+            </div>
+
+            <!-- TAB 3: CALCULATION ENGINE -->
+            <div id="tab-3" class="tab-panel">
+                <h2>The Calculation Engine</h2>
+                <p>This module requires a very specific multi-step calculation. We will use the <strong>Z-score product method</strong> as taught in your lectures.</p>
+
+                <div class="warning-box">
+                    <strong>Assignment Note:</strong> For the standard deviation calculation in this specific Z-score method for correlation, your lecture materials use the formula with <strong>N</strong> in the denominator (population formula applied to sample), not N-1. <br>
+                    $SD = \sqrt{\frac{\sum(X-M)^2}{N}}$
+                </div>
+
+                <div class="scenario-box">
+                    <h4>Practice Example: Study Hours vs. Exam Score</h4>
+                    <p><strong>Data (N = 5):</strong></p>
+                    <table class="comparison" style="width: auto;">
+                        <tr><th>Student</th><th>Hours (X)</th><th>Score (Y)</th></tr>
+                        <tr><td>A</td><td>2</td><td>60</td></tr>
+                        <tr><td>B</td><td>4</td><td>70</td></tr>
+                        <tr><td>C</td><td>6</td><td>90</td></tr>
+                        <tr><td>D</td><td>4</td><td>80</td></tr>
+                        <tr><td>E</td><td>9</td><td>95</td></tr>
+                    </table>
+                </div>
+
+                <div class="step-container">
+                    <div class="step-item">
+                        <div class="step-title">Step 1: Calculate the Mean for Both Variables</div>
+                        <p><strong>Hours (X):</strong> $(2 + 4 + 6 + 4 + 9) / 5 = 25 / 5 = \mathbf{5.00}$</p>
+                        <p><strong>Score (Y):</strong> $(60 + 70 + 90 + 80 + 95) / 5 = 395 / 5 = \mathbf{79.00}$</p>
+                    </div>
+
+                    <div class="step-item">
+                        <div class="step-title">Step 2: Calculate Deviations from the Mean</div>
+                        <p><em>This is the first key step — find how far each score is from its mean.</em></p>
+                        <table class="comparison" style="width: auto; font-size: 0.9em;">
+                            <tr><th>Student</th><th>X</th><th>$(X - M_x)$</th><th>Y</th><th>$(Y - M_y)$</th></tr>
+                            <tr><td>A</td><td>2</td><td>2 - 5 = <strong>-3</strong></td><td>60</td><td>60 - 79 = <strong>-19</strong></td></tr>
+                            <tr><td>B</td><td>4</td><td>4 - 5 = <strong>-1</strong></td><td>70</td><td>70 - 79 = <strong>-9</strong></td></tr>
+                            <tr><td>C</td><td>6</td><td>6 - 5 = <strong>+1</strong></td><td>90</td><td>90 - 79 = <strong>+11</strong></td></tr>
+                            <tr><td>D</td><td>4</td><td>4 - 5 = <strong>-1</strong></td><td>80</td><td>80 - 79 = <strong>+1</strong></td></tr>
+                            <tr><td>E</td><td>9</td><td>9 - 5 = <strong>+4</strong></td><td>95</td><td>95 - 79 = <strong>+16</strong></td></tr>
+                        </table>
+                    </div>
+
+                    <div class="step-item">
+                        <div class="step-title">Step 3: Calculate Standard Deviation (Using N)</div>
+                        <p><strong>For Hours (X):</strong></p>
+                        <p>Square each deviation: $(-3)^2 + (-1)^2 + (1)^2 + (-1)^2 + (4)^2 = 9 + 1 + 1 + 1 + 16 = 28$</p>
+                        <p>$SD_x = \sqrt{28 / 5} = \sqrt{5.6} = \mathbf{2.37}$</p>
+
+                        <p><strong>For Score (Y):</strong></p>
+                        <p>Square each deviation: $(-19)^2 + (-9)^2 + (11)^2 + (1)^2 + (16)^2 = 361 + 81 + 121 + 1 + 256 = 820$</p>
+                        <p>$SD_y = \sqrt{820 / 5} = \sqrt{164} = \mathbf{12.81}$</p>
+                    </div>
+
+                    <div class="step-item">
+                        <div class="step-title">Step 4: Calculate Z-scores for Everyone</div>
+                        <p>Formula: $Z = (Score - Mean) / SD$</p>
+                        <table class="comparison" style="width: auto; font-size: 0.9em;">
+                            <tr><th>Student</th><th>$Z_x$</th><th>$Z_y$</th></tr>
+                            <tr><td>A</td><td>$(2-5)/2.37 = -1.27$</td><td>$(60-79)/12.81 = -1.48$</td></tr>
+                            <tr><td>B</td><td>$(4-5)/2.37 = -0.42$</td><td>$(70-79)/12.81 = -0.70$</td></tr>
+                            <tr><td>C</td><td>$(6-5)/2.37 = +0.42$</td><td>$(90-79)/12.81 = +0.86$</td></tr>
+                            <tr><td>D</td><td>$(4-5)/2.37 = -0.42$</td><td>$(80-79)/12.81 = +0.08$</td></tr>
+                            <tr><td>E</td><td>$(9-5)/2.37 = +1.69$</td><td>$(95-79)/12.81 = +1.25$</td></tr>
+                        </table>
+                    </div>
+
+                    <div class="step-item">
+                        <div class="step-title">Step 5: Multiply $Z_x \times Z_y$ (Cross Products)</div>
+                        <table class="comparison" style="width: auto; font-size: 0.9em;">
+                            <tr><th>Student</th><th>$Z_x$</th><th>$Z_y$</th><th>$Z_x \times Z_y$</th></tr>
+                            <tr><td>A</td><td>-1.27</td><td>-1.48</td><td>$(-1.27)(-1.48) = +1.88$</td></tr>
+                            <tr><td>B</td><td>-0.42</td><td>-0.70</td><td>$(-0.42)(-0.70) = +0.29$</td></tr>
+                            <tr><td>C</td><td>+0.42</td><td>+0.86</td><td>$(+0.42)(+0.86) = +0.36$</td></tr>
+                            <tr><td>D</td><td>-0.42</td><td>+0.08</td><td>$(-0.42)(+0.08) = -0.03$</td></tr>
+                            <tr><td>E</td><td>+1.69</td><td>+1.25</td><td>$(+1.69)(+1.25) = +2.11$</td></tr>
+                        </table>
+                        <p><em>Notice: When both Z's have the same sign, the product is positive (contributes to positive r).</em></p>
+                    </div>
+
+                    <div class="step-item">
+                        <div class="step-title">Step 6: Sum Products and Divide by N</div>
+                        <p>$\sum(Z_x \times Z_y) = 1.88 + 0.29 + 0.36 + (-0.03) + 2.11 = 4.61$</p>
+                        <p>$r = 4.61 / 5 = \mathbf{0.92}$</p>
+                        <p><strong>Interpretation:</strong> Strong positive correlation between study hours and exam scores.</p>
+                    </div>
+                </div>
+
+                <div class="knowledge-check">
+                    <h4>Knowledge Check: The First Step</h4>
+                    <p>The first step involved in calculating the Pearson correlation coefficient is to ____.</p>
+                    <button class="reveal-btn" onclick="reveal('ans-first')">Reveal Answer</button>
+                    <div id="ans-first" class="answer-reveal">
+                        <p><strong>Calculate the deviation of each score from its mean.</strong></p>
+                        <p>Before we can standardize scores into Z-scores, we need to find how far each score deviates from the mean. This deviation $(X - M)$ is the foundation of everything that follows.</p>
+                    </div>
+                </div>
+
+                <div class="knowledge-check">
+                    <h4>Knowledge Check: The Formula</h4>
+                    <p>To calculate Pearson's $r$, we sum the products of the Z-scores and divide by ___?</p>
+                    <button class="reveal-btn" onclick="reveal('ans-n')">Reveal Answer</button>
+                    <div id="ans-n" class="answer-reveal">
+                        <p><strong>N (The number of pairs).</strong></p>
+                        <p>Unlike variance calculations where we divide by N-1, the Pearson Z-score formula typically averages the products by dividing by N.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 4: r² & INTERPRETATION -->
+            <div id="tab-4" class="tab-panel">
+                <h2>Interpretation & $r^2$</h2>
+
+                <h3>Coefficient of Determination ($r^2$) = Effect Size</h3>
+                <p>While $r$ tells us strength and direction, $r^2$ tells us <strong>Shared Variance</strong>.</p>
+
+                <div class="warning-box">
+                    <strong>Critical Point:</strong> For correlation, <strong>$r^2$ IS the effect size</strong>. When a question asks "What is the effect size?" for a correlation analysis, calculate $r^2$.
+                </div>
+
+                <ul>
+                    <li><strong>Definition:</strong> The proportion of variance in one variable that can be predicted by the other.</li>
+                    <li><strong>Calculation:</strong> Simply square your $r$ value.</li>
+                    <li><strong>Example:</strong> if $r = 0.60$, then $r^2 = 0.36$.</li>
+                    <li><strong>As a Percentage:</strong> Multiply by 100. So $r^2 = 0.36$ means <strong>36%</strong> shared variance.</li>
+                </ul>
+
+                <div class="scenario-box">
+                    <h4>Converting $r^2$ to Percentage (Assignment Format)</h4>
+                    <p>Your assignment asks for the proportion of shared variance "as a percentage to the hundredth."</p>
+                    <p><strong>Example:</strong> If $r = 0.648$</p>
+                    <ol>
+                        <li>Square it: $r^2 = 0.648^2 = 0.419904$</li>
+                        <li>Convert to percentage: $0.419904 \times 100 = 41.99\%$</li>
+                    </ol>
+                    <p><strong>Interpretation:</strong> "Approximately 41.99% of the variance in Variable Y can be predicted by Variable X."</p>
+                </div>
+
+                <div class="tip-box">
+                    <strong>Interpretation Template:</strong><br>
+                    When asked to interpret $r^2$: "Approximately [percentage]% of the variance in [Variable Y] can be predicted by the variance in [Variable X]."
+                </div>
+
+                <h3>Effect Size Guidelines for $r^2$</h3>
+                <table class="comparison">
+                    <tr>
+                        <th>$r^2$ Value</th>
+                        <th>Interpretation</th>
+                    </tr>
+                    <tr>
+                        <td>0.01 (1%)</td>
+                        <td>Small effect</td>
+                    </tr>
+                    <tr>
+                        <td>0.09 (9%)</td>
+                        <td>Medium effect</td>
+                    </tr>
+                    <tr>
+                        <td>0.25 (25%)</td>
+                        <td>Large effect</td>
+                    </tr>
+                </table>
+                <p><em>Note: These correspond to Cohen's guidelines where r = 0.10, 0.30, and 0.50.</em></p>
+
+                <h3>Correlation $\neq$ Causation</h3>
+                <p>Just because Ice Cream Sales and Crime Rates are positively correlated ($r = 0.60$), does ice cream cause crime?</p>
+                <ul>
+                    <li><strong>Possibility 1:</strong> X causes Y.</li>
+                    <li><strong>Possibility 2:</strong> Y causes X.</li>
+                    <li><strong>Possibility 3 (Third Variable):</strong> Z causes both X and Y. (e.g., Heat causes people to buy ice cream AND get agitated/commit crime).</li>
+                </ul>
+                <p><strong>Key Takeaway:</strong> Correlation allows for <em>prediction</em>, but not <em>explanation</em> of cause.</p>
+
+                <div class="knowledge-check">
+                    <h4>Knowledge Check: Strength</h4>
+                    <p>Which represents a stronger relationship? $r = +0.45$ or $r = -0.65$?</p>
+                    <button class="reveal-btn" onclick="reveal('ans-strength')">Reveal Answer</button>
+                    <div id="ans-strength" class="answer-reveal">
+                        <p><strong>$r = -0.65$</strong></p>
+                        <p>We look at the <strong>absolute value</strong> (magnitude) for strength. 0.65 is larger than 0.45. The negative sign just tells us direction.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 5: HYPOTHESIS TESTING -->
+            <div id="tab-5" class="tab-panel">
+                <h2>Hypothesis Testing for Correlation</h2>
+                <p>Calculating $r$ describes your <em>sample</em>. To infer if a relationship exists in the <em>population</em>, we test hypotheses.</p>
+
+                <h3>1. Symbols</h3>
+                <ul>
+                    <li><strong>Sample Statistic:</strong> $r$</li>
+                    <li><strong>Population Parameter:</strong> $\rho$ (pronounced "rho")</li>
+                </ul>
+
+                <h3>2. Writing Hypotheses</h3>
+                <p>We usually test against the idea of "No Correlation" (Zero).</p>
+                
+                <div class="scenario-box">
+                    <h4>Two-Tailed (Non-Directional)</h4>
+                    <p><strong>Q:</strong> Is there <em>any</em> relationship?</p>
+                    <p><strong>Null ($H_0$):</strong> $\rho = 0$ (No correlation)</p>
+                    <p><strong>Alt ($H_1$):</strong> $\rho \neq 0$ (Significant correlation)</p>
+                </div>
+
+                <div class="scenario-box">
+                    <h4>One-Tailed (Directional)</h4>
+                    <p><strong>Q:</strong> Is there a <em>positive</em> relationship?</p>
+                    <p><strong>Null ($H_0$):</strong> $\rho \le 0$</p>
+                    <p><strong>Alt ($H_1$):</strong> $\rho > 0$</p>
+                </div>
+
+                <h3>3. Making the Decision</h3>
+                <p>In this module, you will often use software (Excel/SPSS) output provided in assignments.</p>
+                <ul>
+                    <li><strong>The P-Value Rule:</strong>
+                        <ul>
+                            <li>If $p < \alpha$ (usually .05) → <strong>Reject Null</strong>. (The correlation is significant).</li>
+                            <li>If $p \ge \alpha$ → <strong>Fail to Reject Null</strong>. (The correlation is not significant).</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <div class="scenario-box">
+                    <h4>Practice Decision</h4>
+                    <p><strong>Result:</strong> $r = -0.21, p = .15$ ($\alpha = .05$)</p>
+                    <p><strong>Conclusion:</strong> Since $.15 > .05$, we <strong>Fail to Reject</strong> the null. There is no significant evidence of a relationship in the population.</p>
+                </div>
+
+                <h3>4. Assumptions for Correlation Hypothesis Testing</h3>
+                <p>For results to be valid, we assume:</p>
+                <ol>
+                    <li><strong>Scale Data:</strong> Both variables must be interval or ratio (scale) level — NOT nominal or ordinal.</li>
+                    <li><strong>Random Sampling:</strong> To generalize to a population, data should be randomly selected.</li>
+                    <li><strong>Normal Distributions:</strong> The population distributions of both variables should be approximately normal.</li>
+                    <li><strong>Linearity:</strong> The relationship between X and Y should be linear (check scatterplot!).</li>
+                    <li><strong>Homoscedasticity:</strong> The variability of scores on one variable should be <strong>equal across all levels</strong> of the second variable. (The "spread" of Y should be consistent whether X is low, medium, or high.)</li>
+                </ol>
+
+                <div class="tip-box">
+                    <strong>What is NOT an assumption?</strong><br>
+                    It is NOT assumed that "the variables are positively correlated." This would defeat the purpose of hypothesis testing! The direction is what we're trying to discover.
+                </div>
+
+                <div class="knowledge-check">
+                    <h4>Knowledge Check: Assumptions</h4>
+                    <p>Which of the following is NOT an assumption for hypothesis testing with Pearson's r?</p>
+                    <ul style="list-style-type: upper-alpha;">
+                        <li>The data should be randomly selected</li>
+                        <li>The variables must be positively correlated</li>
+                        <li>The population distributions should be normal</li>
+                        <li>Variability should be equal across levels (homoscedasticity)</li>
+                    </ul>
+                    <button class="reveal-btn" onclick="reveal('ans-assumption')">Reveal Answer</button>
+                    <div id="ans-assumption" class="answer-reveal">
+                        <p><strong>B. The variables must be positively correlated.</strong></p>
+                        <p>We don't assume the direction! The whole point of hypothesis testing is to determine whether (and in what direction) a relationship exists.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 6: ASSIGNMENT WORKSHOP -->
+            <div id="tab-6" class="tab-panel">
+                <h2>Assignment Workshop</h2>
+                <p>Your assignment requires using Excel to calculate statistics and creating APA graphs. Here are specific tips for success.</p>
+
+                <h3>Creating an APA Scatterplot in Excel</h3>
+                <ol>
+                    <li><strong>Select Data:</strong> Highlight both columns of numbers.</li>
+                    <li><strong>Insert:</strong> Go to Insert &gt; Charts &gt; Scatter (the one with dots only).</li>
+                    <li><strong>Axis Labels:</strong> Click the chart. Go to "Add Chart Element" &gt; Axis Titles. You MUST label X and Y with variable names.</li>
+                    <li><strong>Cleanup:</strong> Remove the default title (APA figures have captions below, not titles inside). Remove gridlines for a cleaner look.</li>
+                    <li><strong>Word:</strong> Paste into Word. Below the graph, type: <br><em>Figure 1.</em> Scatterplot showing the relationship between [Variable X] and [Variable Y].</li>
+                </ol>
+
+                <h3>Rounding Rules</h3>
+                <div class="warning-box">
+                    <strong>Precision Matters:</strong> The assignment instructions generally ask you to round to the <strong>hundredth</strong> (2 decimal places). <br>
+                    Example: $12.456 \rightarrow 12.46$. <br>
+                    <em>Exception:</em> Do not round intermediate steps (like Z-scores) too early, or your final $r$ might be off.
+                </div>
+
+                <h3>Organizing Q1 (Education vs. Memory)</h3>
+                <p>This is a classic correlation question.</p>
+                <ul>
+                    <li><strong>Step 1:</strong> Create Scatterplot. Is it linear?</li>
+                    <li><strong>Step 2:</strong> Calc Mean/SD for Education. Calc Mean/SD for Memory.</li>
+                    <li><strong>Step 3:</strong> Create columns for Z-scores ($Z_{edu}$ and $Z_{mem}$).</li>
+                    <li><strong>Step 4:</strong> Create a product column ($Z_{edu} \times Z_{mem}$).</li>
+                    <li><strong>Step 5:</strong> Average that product column to get $r$.</li>
+                    <li><strong>Step 6:</strong> Square $r$ to get shared variance.</li>
+                    <li><strong>Step 7:</strong> Look at the p-value provided in the prompt to make your Null Hypothesis decision.</li>
+                </ul>
+
+                <h3>Organizing Q2 (Acceptance vs. Graduation Rate)</h3>
+                <p>Follow the exact same steps. Pay attention to the direction!</p>
+                <div class="tip-box">
+                    <strong>Logic Check:</strong> Universities with <em>lower</em> acceptance rates (more exclusive) usually have <em>higher</em> graduation rates. <br>
+                    Low X goes with High Y. <br>
+                    What direction should your $r$ be? (Hint: Negative).
+                </div>
+
+                <h3>Writing Hypotheses (Words AND Symbols)</h3>
+                <p>Your assignment requires hypotheses in <strong>both formats</strong>:</p>
+                <table class="comparison">
+                    <tr>
+                        <th></th>
+                        <th>Written (Words)</th>
+                        <th>Symbolic</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Null</strong></td>
+                        <td>There is no significant correlation between [Variable X] and [Variable Y] in the population.</td>
+                        <td>$H_0: \rho = 0$</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Alternative</strong></td>
+                        <td>There is a significant correlation between [Variable X] and [Variable Y] in the population.</td>
+                        <td>$H_1: \rho \neq 0$</td>
+                    </tr>
+                </table>
+                <p><em>Note: Use $\rho$ (rho) for the population correlation, not $r$ (which is the sample statistic).</em></p>
+
+                <div class="scenario-box" style="background-color: #ffebee; border-color: #ffcdd2;">
+                    <h4 style="color: #c62828;">Common Mistakes to Avoid</h4>
+                    <ol>
+                        <li><strong>Using the wrong SD formula</strong>
+                            <ul>
+                                <li>For this Z-score correlation method, use $SD = \sqrt{\frac{\sum(X-M)^2}{N}}$ (divide by N, not N-1)</li>
+                                <li>This is specified in your lecture materials</li>
+                            </ul>
+                        </li>
+                        <li><strong>Rounding too early</strong>
+                            <ul>
+                                <li>Keep full precision for Z-scores during calculation</li>
+                                <li>Only round your <em>final</em> $r$ value to 2 decimal places</li>
+                            </ul>
+                        </li>
+                        <li><strong>Forgetting to square $r$ for effect size</strong>
+                            <ul>
+                                <li>Effect size for correlation = $r^2$, not $r$</li>
+                                <li>If asked for percentage: $r^2 \times 100$</li>
+                            </ul>
+                        </li>
+                        <li><strong>Confusing $r$ with $\rho$</strong>
+                            <ul>
+                                <li>$r$ = sample correlation (what you calculate)</li>
+                                <li>$\rho$ = population correlation (what hypotheses are about)</li>
+                            </ul>
+                        </li>
+                        <li><strong>Misinterpreting negative correlations</strong>
+                            <ul>
+                                <li>Negative $r$ means inverse relationship, NOT "no relationship"</li>
+                                <li>$r = -0.70$ is STRONGER than $r = +0.40$</li>
+                            </ul>
+                        </li>
+                        <li><strong>Claiming causation</strong>
+                            <ul>
+                                <li>Correlation shows association, NOT that one variable causes changes in the other</li>
+                                <li>Use words like "related to" or "associated with," not "causes" or "leads to"</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+
+                <div class="warning-box">
+                    <strong>Final formatting tip:</strong> Round to the hundredth (2 decimal places) as requested in the assignment instructions. Consistent rounding makes your work easier to follow and grade!
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <div class="tab-navigation bottom-nav">
+        <button class="tab-button" onclick="showTab(1)">
+            <input type="checkbox" id="progress-1-bottom" class="tab-checkbox" onchange="toggleTabComplete(1)">
+            1. Intro & Scatterplots
+        </button>
+        <button class="tab-button" onclick="showTab(2)">
+            <input type="checkbox" id="progress-2-bottom" class="tab-checkbox" onchange="toggleTabComplete(2)">
+            2. Pearson's r Logic
+        </button>
+        <button class="tab-button" onclick="showTab(3)">
+            <input type="checkbox" id="progress-3-bottom" class="tab-checkbox" onchange="toggleTabComplete(3)">
+            3. Calculation Engine
+        </button>
+        <button class="tab-button" onclick="showTab(4)">
+            <input type="checkbox" id="progress-4-bottom" class="tab-checkbox" onchange="toggleTabComplete(4)">
+            4. r² & Interpretation
+        </button>
+        <button class="tab-button" onclick="showTab(5)">
+            <input type="checkbox" id="progress-5-bottom" class="tab-checkbox" onchange="toggleTabComplete(5)">
+            5. Hypothesis Testing
+        </button>
+        <button class="tab-button" onclick="showTab(6)">
+            <input type="checkbox" id="progress-6-bottom" class="tab-checkbox" onchange="toggleTabComplete(6)">
+            6. Assignment Workshop
+        </button>
+    </div>
+
+    <!-- Formula Quick Reference Card -->
+    <div style="background: linear-gradient(135deg, #4a148c 0%, #311b92 100%); color: white; padding: 25px; border-radius: 8px; margin-top: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+        <h3 style="color: #fff; margin-top: 0; border-bottom: 2px solid #ab47bc; padding-bottom: 10px;">Module 6 Formula Card</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+            <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 6px;">
+                <h4 style="color: #ce93d8; margin-top: 0;">Standard Deviation (for r)</h4>
+                <p style="font-family: 'Courier New', monospace; font-size: 1.1em;">SD = √[Σ(X-M)² / N]</p>
+                <p style="font-size: 0.85em; opacity: 0.8;">Use N (not N-1) for this method</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 6px;">
+                <h4 style="color: #ce93d8; margin-top: 0;">Z-Score</h4>
+                <p style="font-family: 'Courier New', monospace; font-size: 1.1em;">Z = (X - M) / SD</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 6px;">
+                <h4 style="color: #ce93d8; margin-top: 0;">Pearson's r</h4>
+                <p style="font-family: 'Courier New', monospace; font-size: 1.1em;">r = Σ(Zx * Zy) / N</p>
+                <p style="font-size: 0.85em; opacity: 0.8;">Average of the Z products</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 6px;">
+                <h4 style="color: #ce93d8; margin-top: 0;">Effect Size = r²</h4>
+                <p style="font-family: 'Courier New', monospace; font-size: 1.1em;">r² = r × r</p>
+                <p style="font-size: 0.85em; opacity: 0.8;">As %: multiply by 100</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 6px;">
+                <h4 style="color: #ce93d8; margin-top: 0;">Strength of r (Cohen)</h4>
+                <p style="font-size: 0.9em;">|r| 0.1 - 0.3: Weak</p>
+                <p style="font-size: 0.9em;">|r| 0.3 - 0.5: Medium</p>
+                <p style="font-size: 0.9em;">|r| &gt; 0.5: Strong</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 6px;">
+                <h4 style="color: #ce93d8; margin-top: 0;">Effect Size of r²</h4>
+                <p style="font-size: 0.9em;">0.01 (1%): Small</p>
+                <p style="font-size: 0.9em;">0.09 (9%): Medium</p>
+                <p style="font-size: 0.9em;">0.25 (25%): Large</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 6px;">
+                <h4 style="color: #ce93d8; margin-top: 0;">Perfect Correlation</h4>
+                <p style="font-size: 0.9em;">r = +1.0: All points on upward line</p>
+                <p style="font-size: 0.9em;">r = -1.0: All points on downward line</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 6px;">
+                <h4 style="color: #ce93d8; margin-top: 0;">Hypothesis Symbols</h4>
+                <p style="font-size: 0.9em;">H₀: ρ = 0</p>
+                <p style="font-size: 0.9em;">H₁: ρ ≠ 0 (two-tailed)</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Progress tracking logic
+        const PROGRESS_KEY = 'psy230-m6-progress';
+
+        function loadProgress() {
+            const savedProgress = localStorage.getItem(PROGRESS_KEY);
+            if (savedProgress) {
+                const progress = JSON.parse(savedProgress);
+                Object.keys(progress).forEach(tabNumber => {
+                    const isComplete = progress[tabNumber];
+                    const topCheckbox = document.getElementById(`progress-${tabNumber}`);
+                    const bottomCheckbox = document.getElementById(`progress-${tabNumber}-bottom`);
+                    if (topCheckbox) topCheckbox.checked = isComplete;
+                    if (bottomCheckbox) bottomCheckbox.checked = isComplete;
+                    updateTabVisualState(parseInt(tabNumber), isComplete);
+                });
+            }
+        }
+
+        function saveProgress(tabNumber, isComplete) {
+            const savedProgress = localStorage.getItem(PROGRESS_KEY);
+            const progress = savedProgress ? JSON.parse(savedProgress) : {};
+            progress[tabNumber] = isComplete;
+            localStorage.setItem(PROGRESS_KEY, JSON.stringify(progress));
+        }
+
+        function toggleTabComplete(tabNumber) {
+            const clickedCheckbox = event.target;
+            const isComplete = clickedCheckbox.checked;
+            
+            const topCheckbox = document.getElementById(`progress-${tabNumber}`);
+            const bottomCheckbox = document.getElementById(`progress-${tabNumber}-bottom`);
+            if (topCheckbox) topCheckbox.checked = isComplete;
+            if (bottomCheckbox) bottomCheckbox.checked = isComplete;
+            
+            updateTabVisualState(tabNumber, isComplete);
+            saveProgress(tabNumber, isComplete);
+        }
+
+        function updateTabVisualState(tabNumber, isComplete) {
+            const tabButtons = document.querySelectorAll(`button[onclick="showTab(${tabNumber})"]`);
+            tabButtons.forEach(button => {
+                if (isComplete) button.classList.add('completed');
+                else button.classList.remove('completed');
+            });
+        }
+
+        function showTab(tabIndex) {
+            document.querySelectorAll('.tab-panel').forEach(panel => panel.classList.remove('active'));
+            document.getElementById('tab-' + tabIndex).classList.add('active');
+            
+            document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            const tabContainer = document.querySelector('.lecture-tabs');
+            if (tabContainer) tabContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function reveal(id) {
+            const el = document.getElementById(id);
+            el.style.display = (el.style.display === 'block') ? 'none' : 'block';
+        }
+
+        document.addEventListener('DOMContentLoaded', loadProgress);
+    </script>
+</body>
+</html>
