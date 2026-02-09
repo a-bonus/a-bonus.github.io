@@ -453,11 +453,11 @@
 
                 <h3>2. Calculate Sample Statistics</h3>
                 <p><strong>A. Estimated Population Standard Deviation ($s$)</strong><br>
-                Note the denominator is $N-1$ (Degrees of Freedom), not $N$. This makes the SD slightly larger to correct for bias.</p>
+                Note the denominator is $(N-1)$ (Degrees of Freedom), not $N$. This makes the SD slightly larger to correct for bias. When the formula is written on one line, the denominator must be written as <strong>(N-1)</strong> so it is clear we divide by the whole term, not by N then subtract 1.</p>
                 <div class="formula-box">
-                    $s = \sqrt{\frac{\sum(X - M)^2}{N - 1}}$
+                    $s = \sqrt{\frac{\sum(X - M)^2}{(N - 1)}}$
                 </div>
-                <p><em>Excel Formula:</em> <code>=STDEV.S(data)</code> (The "S" stands for Sample, using N-1)</p>
+                <p><em>Excel Formula:</em> <code>=STDEV.S(data)</code> (The "S" stands for Sample, using (N-1))</p>
 
                 <p><strong>B. Estimated Standard Error ($SE$ or $s_M$)</strong><br>
                 We use the estimated SD ($s$) to find the standard error.</p>
@@ -525,7 +525,7 @@
                 </div>
 
                 <div class="warning-box">
-                    <strong>Critical Calculation Detail:</strong> When estimating the Population SD, you divide the Sum of Squares by <strong>N-1</strong>. When calculating Standard Error, you divide that SD by <strong>Square Root of N</strong>. Don't mix these up!
+                    <strong>Critical Calculation Detail:</strong> When estimating the Population SD, you divide the Sum of Squares by <strong>(N-1)</strong>. When writing the formula inline, always use parentheses: √( Σ(X-M)² / (N-1) ). When calculating Standard Error, you divide that SD by <strong>Square Root of N</strong>. Don't mix these up!
                 </div>
 
                 <div class="knowledge-check">
@@ -1301,7 +1301,7 @@
             <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 6px;">
                 <h4 style="color: #ffab91; margin-top: 0;">Sample SD (s)</h4>
                 <p style="font-family: 'Courier New', monospace; font-size: 1.1em;">s = √[Σ(X-M)²/(N-1)]</p>
-                <p style="font-size: 0.85em; opacity: 0.8;">Excel: =STDEV.S(data)</p>
+                <p style="font-size: 0.85em; opacity: 0.8;">Denominator is (N-1). Excel: =STDEV.S(data)</p>
             </div>
             <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 6px;">
                 <h4 style="color: #ffab91; margin-top: 0;">Standard Error</h4>
