@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 7: Chi-Square & Non-Parametric Tests</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    <style>
+        /* Base Styling */
+        :root {
+            --primary: #00796b; /* Deep Teal for Module 7 */
+            --secondary: #546e7a;
+            --success: #2e7d32;
+            --warning: #f9a825;
+            --light-bg: #e0f2f1;
+            --border: #dee2e6;
+            --text: #333;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fafafa;
+        }
+
+        h1, h2, h3 { color: #2c3e50; }
+        
+        /* Header */
+        header {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            border-left: 5px solid var(--primary);
+        }
+
+        /* Tabs */
+        .lecture-tabs {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .tab-navigation {
+            display: flex;
+            background-color: #e9ecef;
+            overflow-x: auto;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .tab-button {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            background: none;
+            cursor: pointer;
+            text-align: left;
+            border-bottom: 3px solid transparent;
+            min-width: 160px;
+            transition: all 0.2s;
+            font-weight: 600;
+            color: #555;
+        }
+
+        .tab-button:hover { background-color: #dde2e6; }
+        .tab-button.active { 
+            background-color: #fff; 
+            border-bottom-color: var(--primary); 
+            color: var(--primary);
+        }
+        .tab-button.completed {
+            border-bottom-color: var(--success);
+            position: relative;
+        }
+        .tab-button.completed::after {
+            content: "✓";
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background-color: var(--success);
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .tab-checkbox {
+            margin-right: 8px;
+            cursor: pointer;
+            transform: scale(1.2);
+        }
+        .bottom-nav {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid var(--border);
+        }
+
+        /* Content */
+        .tab-content { padding: 30px; }
+        .tab-panel { display: none; animation: fadeIn 0.4s; }
+        .tab-panel.active { display: block; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Interactive Components */
+        .scenario-box {
+            background-color: #e0f2f1;
+            border: 1px solid #b2dfdb;
+            padding: 20px;
+            border-radius: 6px;
+            margin: 20px 0;
+        }
+
+        .warning-box {
+            background-color: #fff3cd;
+            border: 1px solid #ffeeba;
+            border-left: 4px solid var(--warning);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        
+        .tip-box {
+            background-color: #e3f2fd;
+            border: 1px solid #bbdefb;
+            border-left: 4px solid #2196f3;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+
+        .formula-box {
+            background-color: #004d40;
+            color: #fff;
+            padding: 15px;
+            border-radius: 6px;
+            text-align: center;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1.1em;
+            margin: 20px 0;
+            letter-spacing: 1px;
+            border: 2px solid #00695c;
+        }
+
+        .assignments-box {
+            background-color: #e8f5e9;
+            border: 1px solid #c8e6c9;
+            border-left: 4px solid var(--success);
+            padding: 15px;
+            margin: 20px 0 0 0;
+            border-radius: 4px;
+        }
+
+        .reveal-btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        
+        .answer-reveal {
+            display: none;
+            margin-top: 15px;
+            padding: 15px;
+            background: white;
+            border-left: 3px solid var(--success);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        table.comparison {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        table.comparison th, table.comparison td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        table.comparison th {
+            background-color: #eee;
+        }
+
+        /* Step Process Styles */
+        .step-container {
+            border-left: 3px solid var(--secondary);
+            padding-left: 20px;
+            margin: 20px 0;
+        }
+        .step-item {
+            margin-bottom: 20px;
+        }
+        .step-title {
+            font-weight: bold;
+            color: var(--primary);
+            text-transform: uppercase;
+            font-size: 0.9em;
+        }
+
+        .knowledge-check {
+            background-color: #f8f9fa;
+            border: 1px solid var(--border);
+            padding: 20px;
+            border-radius: 6px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Module 7: Chi-Square ($X^2$) & Non-Parametric Tests</h1>
+        <p><strong>Goal:</strong> All tests so far (t-tests, ANOVA, Pearson's $r$) assumed a normal distribution (bell curve) and quantitative data. But what if you have <strong>categorical data</strong> (e.g., Voting Preference, Ice Cream Flavor)? We cannot calculate a "mean" of Chocolate vs. Vanilla.</p>
+        <p><em>"How do we analyze data when we are counting categories rather than measuring averages?"</em></p>
+
+        <div class="assignments-box">
+            <h3>📋 Module 7 Assignments & Due Items</h3>
+            <ul>
+                <li><strong>Readings:</strong> Chapter 15 (Essentials of Statistics)</li>
+                <li><strong>M7 Assignment Quiz:</strong> Unlike previous modules, you will solve problems on paper and input answers into a Canvas Quiz (2 attempts).</li>
+                <li><strong>Key Scenarios:</strong>
+                    <ul>
+                        <li><strong>Q1:</strong> Ice Cream Popularity (Goodness of Fit)</li>
+                        <li><strong>Q2:</strong> College Majors (Goodness of Fit)</li>
+                        <li><strong>Q3:</strong> Gender vs. Major (Independence)</li>
+                        <li><strong>Q4:</strong> Age vs. News Source (Independence)</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="lecture-tabs">
+        <div class="tab-navigation">
+            <button class="tab-button active" onclick="showTab(1)">
+                <input type="checkbox" id="progress-1" class="tab-checkbox" onchange="toggleTabComplete(1)">
+                1. Logic & Normality
+            </button>
+            <button class="tab-button" onclick="showTab(2)">
+                <input type="checkbox" id="progress-2" class="tab-checkbox" onchange="toggleTabComplete(2)">
+                2. Goodness of Fit
+            </button>
+            <button class="tab-button" onclick="showTab(3)">
+                <input type="checkbox" id="progress-3" class="tab-checkbox" onchange="toggleTabComplete(3)">
+                3. Test for Independence
+            </button>
+            <button class="tab-button" onclick="showTab(4)">
+                <input type="checkbox" id="progress-4" class="tab-checkbox" onchange="toggleTabComplete(4)">
+                4. Calculation Engine
+            </button>
+            <button class="tab-button" onclick="showTab(5)">
+                <input type="checkbox" id="progress-5" class="tab-checkbox" onchange="toggleTabComplete(5)">
+                5. Decision Making
+            </button>
+            <button class="tab-button" onclick="showTab(6)">
+                <input type="checkbox" id="progress-6" class="tab-checkbox" onchange="toggleTabComplete(6)">
+                6. Assignment Workshop
+            </button>
+        </div>
+
+        <div class="tab-content">
+            
+            <!-- TAB 1: LOGIC & NORMALITY -->
+            <div id="tab-1" class="tab-panel active">
+                <h2>When You Don't See a Bell Curve</h2>
+                <p>The tests we learned previously (t-tests, ANOVA) are <strong>Parametric Tests</strong>. They rely on the parameters of a normal distribution (Mean and Variance).</p>
+
+                <h3>The Problem with Categories</h3>
+                <div class="scenario-box">
+                    <p>Imagine a survey: <strong>"Who would you vote for?"</strong></p>
+                    <table class="comparison" style="width: auto;">
+                        <tr><th>Subject</th><th>Candidate</th></tr>
+                        <tr><td>1</td><td>A</td></tr>
+                        <tr><td>2</td><td>A</td></tr>
+                        <tr><td>3</td><td>B</td></tr>
+                    </table>
+                    <p><strong>Question:</strong> What is the "Mean" candidate? Is it A.5?</p>
+                    <p><strong>Answer:</strong> You cannot calculate a mean for Nominal/Categorical data. Therefore, you cannot use t-tests.</p>
+                </div>
+
+                <h3>Parametric vs. Non-Parametric</h3>
+                <table class="comparison">
+                    <tr>
+                        <th>Feature</th>
+                        <th>Parametric (t-tests, ANOVA)</th>
+                        <th>Non-Parametric (Chi-Square)</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Variable Type</strong></td>
+                        <td>Scale / Continuous / Quantitative</td>
+                        <td>Nominal / Categorical / Qualitative</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Key Stat</strong></td>
+                        <td>Mean ($\mu$, $M$)</td>
+                        <td>Frequency / Counts ($f$)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Assumption</strong></td>
+                        <td>Normal Distribution (or $N > 30$)</td>
+                        <td>Distribution Free (Any shape)</td>
+                    </tr>
+                </table>
+
+                <div class="tip-box">
+                    <strong>Checklist for using Chi-Square ($X^2$):</strong>
+                    <ul>
+                        <li>Are you counting people/items in categories? (Yes)</li>
+                        <li>Does calculating an average make no sense? (Yes)</li>
+                        <li>Is the data "bumpy" or "lopsided" (not a bell curve)? (Yes)</li>
+                    </ul>
+                </div>
+
+                <h3>Which Chi-Square Test Do I Use?</h3>
+                <p>Once you know you need a Chi-Square test, the next question is: <strong>which one?</strong></p>
+                <table class="comparison">
+                    <tr>
+                        <th></th>
+                        <th>Goodness of Fit</th>
+                        <th>Test for Independence</th>
+                    </tr>
+                    <tr>
+                        <td><strong>How many variables?</strong></td>
+                        <td>ONE categorical variable</td>
+                        <td>TWO categorical variables</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Question asked</strong></td>
+                        <td>"Do the categories have equal (or expected) frequencies?"</td>
+                        <td>"Are the two variables related or independent?"</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Example</strong></td>
+                        <td>"Are ice cream flavors equally popular?"<br>(1 variable: Flavor)</td>
+                        <td>"Does drink preference depend on gender?"<br>(2 variables: Gender &amp; Drink)</td>
+                    </tr>
+                </table>
+
+                <div class="tip-box">
+                    <strong>Quick Decision Rule:</strong> Count the number of categorical variables being examined.
+                    <ul>
+                        <li><strong>1 variable</strong> (e.g., just "flavor") → <strong>Goodness of Fit</strong></li>
+                        <li><strong>2 variables</strong> (e.g., "gender" AND "drink type") → <strong>Test for Independence</strong></li>
+                    </ul>
+                    <p style="margin-bottom:0"><em>If the data involves means/averages of continuous variables, you don't use Chi-Square at all — go back to t-tests or ANOVA.</em></p>
+                </div>
+            </div>
+
+            <!-- TAB 2: GOODNESS OF FIT -->
+            <div id="tab-2" class="tab-panel">
+                <h2>Chi-Square Goodness of Fit (One Variable)</h2>
+                <p>This test analyzes <strong>one variable</strong> to see if the breakdown of frequencies fits a specific pattern (usually "equal popularity").</p>
+
+                <h3>The Logic: Observed vs. Expected</h3>
+                <ul>
+                    <li><strong>Observed Frequency ($O$):</strong> The actual count from your survey (Real Life).</li>
+                    <li><strong>Expected Frequency ($E$):</strong> The count you <em>should</em> get if the Null Hypothesis were true (Theoretical).</li>
+                </ul>
+
+                <div class="scenario-box">
+                    <h4>Example: Ice Cream Popularity</h4>
+                    <p><strong>Research Question:</strong> Are Chocolate, Vanilla, and Strawberry equally popular?</p>
+                    <p><strong>Total Customers ($N$):</strong> 210</p>
+                    <p><strong>Categories ($k$):</strong> 3</p>
+                    
+                    <p><strong>How to find Expected Frequency ($E$):</strong><br>
+                    If they are equally popular, we divide the total evenly.<br>
+                    $E = N / k = 210 / 3 = 70$.</p>
+                    <p><em>(So, we expect 70 people to choose each flavor).</em></p>
+                </div>
+
+                <h3>Hypotheses</h3>
+                <ul>
+                    <li><strong>Null ($H_0$):</strong> The data fit the expected distribution (No difference in popularity).</li>
+                    <li><strong>Alternative ($H_1$):</strong> The data do NOT fit the expected distribution (Preferences differ).</li>
+                </ul>
+
+                <div class="formula-box">
+                    $\chi^2 = \sum \frac{(O - E)^2}{E}$
+                </div>
+
+                <div class="knowledge-check">
+                    <h4>Quick Check: Expected Frequency</h4>
+                    <p>You survey 100 people about their favorite season (Spring, Summer, Fall, Winter). If the null hypothesis assumes no preference, what is the Expected Frequency ($E$) for "Winter"?</p>
+                    <button class="reveal-btn" onclick="reveal('ans-ef-fit')">Reveal Answer</button>
+                    <div id="ans-ef-fit" class="answer-reveal">
+                        <p><strong>E = 25</strong></p>
+                        <p>$N = 100$, Categories = 4.</p>
+                        <p>$E = 100 / 4 = 25$.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 3: TEST FOR INDEPENDENCE -->
+            <div id="tab-3" class="tab-panel">
+                <h2>Chi-Square Test for Independence (Two Variables)</h2>
+                <p>This test analyzes <strong>two variables</strong> to see if they are related (dependent) or unrelated (independent).</p>
+                <p><em>Example: Does Candidate Preference depend on Age Group?</em></p>
+
+                <h3>The Contingency Table</h3>
+                <p>We arrange data in a grid (Rows $\times$ Columns).</p>
+                <table class="comparison" style="width: auto;">
+                    <tr><th></th><th>Candidate A</th><th>Candidate B</th><th>Row Total</th></tr>
+                    <tr><td><strong>Young</strong></td><td>50</td><td>30</td><td><strong>80</strong></td></tr>
+                    <tr><td><strong>Old</strong></td><td>20</td><td>30</td><td><strong>50</strong></td></tr>
+                    <tr><td><strong>Col Total</strong></td><td><strong>70</strong></td><td><strong>60</strong></td><td><strong>130 (N)</strong></td></tr>
+                </table>
+
+                <h3>Hypotheses</h3>
+                <ul>
+                    <li><strong>Null ($H_0$):</strong> Variables are <strong>Independent</strong>. (Age does NOT affect voting).</li>
+                    <li><strong>Alternative ($H_1$):</strong> Variables are <strong>Not Independent</strong>. (Voting depends on Age).</li>
+                </ul>
+
+                <h3>Calculating Expected Frequency ($E$) for Independence</h3>
+                <p>This is the hardest part. You calculate a specific $E$ for <strong>every single cell</strong> based on the row and column totals.</p>
+
+                <div class="formula-box">
+                    $E = \frac{(\text{Row Total}) \times (\text{Column Total})}{\text{Grand Total}}$
+                </div>
+
+                <div class="scenario-box">
+                    <h4>Example Calculation</h4>
+                    <p>For the "Young / Candidate A" cell (Top-Left):</p>
+                    <ul>
+                        <li>Row Total (Young) = 80</li>
+                        <li>Column Total (Cand A) = 70</li>
+                        <li>Grand Total ($N$) = 130</li>
+                    </ul>
+                    <p>$E = (80 \times 70) / 130 = 5600 / 130 = \mathbf{43.08}$</p>
+                </div>
+
+                <div class="tip-box">
+                    <strong>Logic Check:</strong> The Expected Frequency represents the count we would get if the two groups were perfectly proportional (no relationship).
+                </div>
+
+                <h3>Worked Example: Starbucks Drinks by Gender (Guided Practice)</h3>
+                <div class="scenario-box">
+                    <h4>The Scenario</h4>
+                    <p>A barista at Starbucks has a hunch that there might be a <strong>gender difference</strong> in terms of preferred drinks. She records the next 50 drink orders from female customers and 50 from male customers.</p>
+                    <table class="comparison" style="width: auto;">
+                        <tr><th>Drink</th><th>Female</th><th>Male</th><th>Row Total</th></tr>
+                        <tr><td>Drip coffee</td><td>5</td><td>5</td><td><strong>10</strong></td></tr>
+                        <tr><td>Hot espresso</td><td>20</td><td>15</td><td><strong>35</strong></td></tr>
+                        <tr><td>Cold espresso</td><td>15</td><td>20</td><td><strong>35</strong></td></tr>
+                        <tr><td>Iced coffee</td><td>5</td><td>10</td><td><strong>15</strong></td></tr>
+                        <tr><td>Tea</td><td>5</td><td>0</td><td><strong>5</strong></td></tr>
+                        <tr><td><strong>Col Total</strong></td><td><strong>50</strong></td><td><strong>50</strong></td><td><strong>100 (N)</strong></td></tr>
+                    </table>
+                    <p><strong>Research Question:</strong> Is there a gender difference in drink preference?</p>
+                    <p><strong>Why Independence Test?</strong> There are <strong>two</strong> categorical variables: Gender (Female, Male) and Drink Preference (5 types). We want to know if one depends on the other.</p>
+                </div>
+
+                <h4>Step 1: State the Hypotheses</h4>
+                <ul>
+                    <li><strong>Null ($H_0$):</strong> Drink preference <strong>does not depend</strong> on gender (the variables are independent).</li>
+                    <li><strong>Alternative ($H_1$):</strong> Drink preference <strong>depends</strong> on gender (the variables are not independent).</li>
+                </ul>
+
+                <h4>Step 2: Calculate All Expected Frequencies</h4>
+                <p>Use $E = \frac{\text{Row Total} \times \text{Column Total}}{\text{Grand Total}}$ for <strong>every single cell</strong>.</p>
+                <p>Since both column totals happen to be 50 here, the math simplifies: $E = \text{Row Total} \times 50 / 100 = \text{Row Total} / 2$</p>
+
+                <table class="comparison" style="width: auto;">
+                    <tr><th>Drink</th><th>$E$ (Female)</th><th>$E$ (Male)</th></tr>
+                    <tr><td>Drip coffee</td><td>$(10 \times 50) / 100 = 5.0$</td><td>$5.0$</td></tr>
+                    <tr><td>Hot espresso</td><td>$(35 \times 50) / 100 = 17.5$</td><td>$17.5$</td></tr>
+                    <tr><td>Cold espresso</td><td>$(35 \times 50) / 100 = 17.5$</td><td>$17.5$</td></tr>
+                    <tr><td>Iced coffee</td><td>$(15 \times 50) / 100 = 7.5$</td><td>$7.5$</td></tr>
+                    <tr><td>Tea</td><td>$(5 \times 50) / 100 = 2.5$</td><td>$2.5$</td></tr>
+                </table>
+
+                <div class="tip-box">
+                    <strong>Sanity Check:</strong> The Expected Frequencies for each column should add up to the column total (50). Check: $5.0 + 17.5 + 17.5 + 7.5 + 2.5 = 50$ ✓
+                </div>
+
+                <p><em>The full $\chi^2$ calculation using these values is walked through step-by-step in <strong>Tab 4: Calculation Engine</strong>.</em></p>
+            </div>
+
+            <!-- TAB 4: CALCULATION ENGINE -->
+            <div id="tab-4" class="tab-panel">
+                <h2>The Calculation Engine</h2>
+                <p>The formula for Chi-Square is the same for both tests. It measures the "distance" between what we saw ($O$) and what we expected ($E$).</p>
+
+                <div class="formula-box">
+                    $\chi^2 = \sum \frac{(O - E)^2}{E}$
+                </div>
+
+                <h3>Step-by-Step Walkthrough</h3>
+                <p>Let's calculate specific values from the Ice Cream example.</p>
+                <p><strong>Observed ($O$):</strong> Chocolate=15, Vanilla=5<br>
+                <strong>Expected ($E$):</strong> 10 each (if Total=20, 2 flavors)</p>
+
+                <div class="step-container">
+                    <div class="step-item">
+                        <div class="step-title">1. Subtract (O - E)</div>
+                        <p>Choc: $15 - 10 = 5$</p>
+                        <p>Van: $5 - 10 = -5$</p>
+                        <p><em>Note: These usually sum to zero.</em></p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-title">2. Square the Difference $(O - E)^2$</div>
+                        <p>Choc: $5^2 = 25$</p>
+                        <p>Van: $(-5)^2 = 25$</p>
+                        <p><em>(This removes negatives).</em></p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-title">3. Divide by Expected $\frac{(O - E)^2}{E}$</div>
+                        <p>Choc: $25 / 10 = 2.5$</p>
+                        <p>Van: $25 / 10 = 2.5$</p>
+                        <p><em>(This normalizes the error relative to the size of the group).</em></p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-title">4. Sum ($\sum$)</div>
+                        <p>$\chi^2 = 2.5 + 2.5 = \mathbf{5.0}$</p>
+                    </div>
+                </div>
+
+                <div class="warning-box">
+                    <strong>Common Mistake:</strong> Do NOT sum the $(O-E)^2$ column first. You must divide each row by its specific $E$ <em>before</em> summing the results.
+                </div>
+
+                <div class="knowledge-check">
+                    <h4>Practice: Calculate One Cell</h4>
+                    <p>Observed = 20, Expected = 15. What is the contribution to Chi-Square?</p>
+                    <button class="reveal-btn" onclick="reveal('ans-calc')">Reveal Answer</button>
+                    <div id="ans-calc" class="answer-reveal">
+                        <p>1. $O - E = 20 - 15 = 5$</p>
+                        <p>2. Square it: $25$</p>
+                        <p>3. Divide by E: $25 / 15 = \mathbf{1.67}$</p>
+                    </div>
+                </div>
+
+                <h3>Complete Independence Calculation: Starbucks Example</h3>
+                <p>Now let's apply all four steps to the full Starbucks example from Tab 3. There are <strong>10 cells</strong> (5 drink types × 2 genders), so we need 10 rows in our calculation table.</p>
+
+                <table class="comparison">
+                    <tr>
+                        <th>Cell</th><th>$O$</th><th>$E$</th><th>$O - E$</th><th>$(O-E)^2$</th><th>$\frac{(O-E)^2}{E}$</th>
+                    </tr>
+                    <tr><td>Female / Drip</td><td>5</td><td>5.0</td><td>0.0</td><td>0.00</td><td>0.00</td></tr>
+                    <tr><td>Female / Hot espresso</td><td>20</td><td>17.5</td><td>2.5</td><td>6.25</td><td>0.36</td></tr>
+                    <tr><td>Female / Cold espresso</td><td>15</td><td>17.5</td><td>−2.5</td><td>6.25</td><td>0.36</td></tr>
+                    <tr><td>Female / Iced coffee</td><td>5</td><td>7.5</td><td>−2.5</td><td>6.25</td><td>0.83</td></tr>
+                    <tr><td>Female / Tea</td><td>5</td><td>2.5</td><td>2.5</td><td>6.25</td><td>2.50</td></tr>
+                    <tr><td>Male / Drip</td><td>5</td><td>5.0</td><td>0.0</td><td>0.00</td><td>0.00</td></tr>
+                    <tr><td>Male / Hot espresso</td><td>15</td><td>17.5</td><td>−2.5</td><td>6.25</td><td>0.36</td></tr>
+                    <tr><td>Male / Cold espresso</td><td>20</td><td>17.5</td><td>2.5</td><td>6.25</td><td>0.36</td></tr>
+                    <tr><td>Male / Iced coffee</td><td>10</td><td>7.5</td><td>2.5</td><td>6.25</td><td>0.83</td></tr>
+                    <tr><td>Male / Tea</td><td>0</td><td>2.5</td><td>−2.5</td><td>6.25</td><td>2.50</td></tr>
+                    <tr style="font-weight: bold; background-color: #e0f2f1;">
+                        <td colspan="5" style="text-align: right;">$\chi^2 = \sum =$</td><td><strong>8.10</strong></td>
+                    </tr>
+                </table>
+
+                <div class="tip-box">
+                    <strong>Notice the pattern:</strong> The <strong>Tea</strong> row contributes the most ($2.50 + 2.50 = 5.00$) because the Observed values (5 vs. 0) are very far from what we'd expect (2.5 each). Large differences from Expected = large contributions to $\chi^2$.
+                </div>
+
+                <div class="warning-box">
+                    <strong>Reminder:</strong> When doing your own calculations, build this same table — one row per cell. Do NOT skip columns or try to do it in your head. The table keeps you organized and prevents errors.
+                </div>
+            </div>
+
+            <!-- TAB 5: DECISION MAKING -->
+            <div id="tab-5" class="tab-panel">
+                <h2>Degrees of Freedom & Decisions</h2>
+                <p>Just like t-tests, we compare our Calculated $\chi^2$ to a Critical Value from a table.</p>
+
+                <h3>Calculating Degrees of Freedom ($df$)</h3>
+                <table class="comparison">
+                    <tr>
+                        <th>Test Type</th>
+                        <th>Formula</th>
+                        <th>Example</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Goodness of Fit</strong></td>
+                        <td>$df = k - 1$<br>(where $k$ = number of categories)</td>
+                        <td>4 flavors of ice cream:<br>$df = 4 - 1 = 3$</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Independence</strong></td>
+                        <td>$df = (Rows - 1)(Cols - 1)$</td>
+                        <td>2 Genders $\times$ 3 Majors:<br>$(2-1)(3-1) = 1 \times 2 = 2$</td>
+                    </tr>
+                </table>
+
+                <div class="warning-box">
+                    <strong>Note:</strong> $df$ depends on the number of <em>categories</em>, NOT the sample size ($N$). A study with $N=50$ and $N=5000$ will have the same $df$ if they both just check "Yes/No."
+                </div>
+
+                <h3>Chi-Square Critical Value Table</h3>
+                <p>Look up the critical value using your <strong>$df$</strong> (row) and <strong>$\alpha$</strong> level (column). Your assignment uses $\alpha = .05$ and $\alpha = .10$, and the Guided Practice uses $\alpha = .01$.</p>
+
+                <table class="comparison" style="width: auto;">
+                    <tr><th>$df$</th><th>$\alpha = .10$</th><th>$\alpha = .05$</th><th>$\alpha = .01$</th></tr>
+                    <tr><td><strong>1</strong></td><td>2.706</td><td>3.841</td><td>6.635</td></tr>
+                    <tr><td><strong>2</strong></td><td>4.605</td><td>5.992</td><td>9.210</td></tr>
+                    <tr><td><strong>3</strong></td><td>6.251</td><td>7.815</td><td>11.345</td></tr>
+                    <tr><td><strong>4</strong></td><td>7.779</td><td>9.488</td><td>13.277</td></tr>
+                    <tr><td><strong>5</strong></td><td>9.236</td><td>11.071</td><td>15.086</td></tr>
+                    <tr><td><strong>6</strong></td><td>10.645</td><td>12.592</td><td>16.812</td></tr>
+                </table>
+
+                <div class="warning-box">
+                    <strong>Always check the $\alpha$ level in your problem!</strong> Different problems may use different alpha levels. The critical value changes when $\alpha$ changes — for example, at $df = 3$: $\alpha = .05$ gives $7.815$, but $\alpha = .10$ gives $6.251$.
+                </div>
+
+                <h3>The Decision Rule</h3>
+                <p>This is consistent with all previous modules:</p>
+                <ul>
+                    <li>If Calculated $\chi^2$ <strong>&gt;</strong> Critical Value → <strong>Reject Null</strong> (the statistic is "more extreme"). Result is significant.</li>
+                    <li>If Calculated $\chi^2$ <strong>&lt;</strong> Critical Value → <strong>Fail to Reject</strong> (the statistic is "less extreme"). Result is not significant.</li>
+                </ul>
+
+                <div class="scenario-box">
+                    <h4>Practice Decision 1 (Goodness of Fit)</h4>
+                    <p><strong>Calculated $\chi^2$:</strong> 4.16 &nbsp;&nbsp; <strong>$df = 2$</strong> &nbsp;&nbsp; <strong>$\alpha = .05$</strong></p>
+                    <p><strong>Critical Value:</strong> Look up $df=2$, $\alpha=.05$ → <strong>5.992</strong></p>
+                    <p><strong>Compare:</strong> $4.16 < 5.992$. The statistic is <em>less extreme</em> than the critical value.</p>
+                    <p><strong>Decision:</strong> <strong>Fail to Reject</strong> the null hypothesis.</p>
+                </div>
+
+                <div class="scenario-box">
+                    <h4>Practice Decision 2: Starbucks Example (Independence)</h4>
+                    <p><strong>Calculated $\chi^2$:</strong> 8.10 (from Tab 4)</p>
+                    <p><strong>$df$:</strong> $(Rows - 1)(Cols - 1) = (5-1)(2-1) = 4 \times 1 = 4$</p>
+                    <p><strong>$\alpha = .01$</strong> (as specified in the Guided Practice)</p>
+                    <p><strong>Critical Value:</strong> Look up $df=4$, $\alpha=.01$ → <strong>13.277</strong></p>
+                    <p><strong>Compare:</strong> $8.10 < 13.277$. The statistic is <em>less extreme</em>.</p>
+                    <p><strong>Decision:</strong> <strong>Fail to Reject</strong> the null hypothesis.</p>
+                </div>
+
+                <h3>Writing the Conclusion (Plain English)</h3>
+                <p>The final step is translating the statistical decision into a sentence that answers the research question. Use these templates:</p>
+
+                <table class="comparison">
+                    <tr>
+                        <th>Decision</th>
+                        <th>Goodness of Fit Conclusion</th>
+                        <th>Independence Conclusion</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Fail to Reject</strong></td>
+                        <td>"The categories are equally popular" or "The distribution does not differ significantly from expected."</td>
+                        <td>"[Variable A] does not significantly depend on [Variable B]" or "The distribution of [A] does not differ significantly between [B groups]."</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Reject</strong></td>
+                        <td>"The categories are not equally popular" or "The distribution differs significantly from expected."</td>
+                        <td>"[Variable A] significantly depends on [Variable B]" or "The distribution of [A] differs significantly between [B groups]."</td>
+                    </tr>
+                </table>
+
+                <div class="scenario-box">
+                    <h4>Starbucks Conclusion</h4>
+                    <p>We failed to reject the null. The research question was: <em>"Is there a gender difference in drink preference?"</em></p>
+                    <p><strong>Conclusion:</strong> Drink preference <strong>does not</strong> significantly depend on gender.</p>
+                </div>
+
+                <div class="warning-box">
+                    <strong>Wording matters on the quiz!</strong> Pay attention to the difference between:
+                    <ul style="margin-bottom:0">
+                        <li>"Drink preference does not <em>depend on</em> gender" (correct for Independence test)</li>
+                        <li>"There is no significant <em>difference between</em> gender and drink type" (vague — avoid this phrasing)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- TAB 6: ASSIGNMENT WORKSHOP -->
+            <div id="tab-6" class="tab-panel">
+                <h2>Assignment Workshop</h2>
+                <p>Your assignment is a Canvas Quiz based on 4 scenarios. Work through each problem below, then check your answers using the reveal buttons. <strong>Try each step yourself first!</strong></p>
+
+                <!-- ========== Q1: ICE CREAM (GoF) ========== -->
+                <h3>Q1: Ice Cream Popularity (Goodness of Fit)</h3>
+                <div class="scenario-box">
+                    <p>Two employees at an ice cream store debate whether four flavors are <strong>equally popular</strong>. They tally 44 customers:</p>
+                    <ul>
+                        <li>Vanilla: 5 &nbsp; | &nbsp; Chocolate: 15 &nbsp; | &nbsp; Mint: 14 &nbsp; | &nbsp; Strawberry: 10</li>
+                        <li><strong>Total ($N$) = 44</strong>, &nbsp; <strong>$\alpha = .05$</strong></li>
+                    </ul>
+                </div>
+
+                <p><strong>a–b. Hypotheses:</strong></p>
+                <button class="reveal-btn" onclick="reveal('q1-hyp')">Reveal Hypotheses</button>
+                <div id="q1-hyp" class="answer-reveal">
+                    <p><strong>Variable:</strong> Ice cream flavor preference (<strong>nominal</strong>).</p>
+                    <p><strong>Null ($H_0$):</strong> The four ice cream flavors are equally popular.</p>
+                    <p><strong>Alternative ($H_1$):</strong> The four ice cream flavors are NOT equally popular.</p>
+                </div>
+
+                <p><strong>c. Calculate $\chi^2$:</strong></p>
+                <button class="reveal-btn" onclick="reveal('q1-calc')">Reveal Calculation</button>
+                <div id="q1-calc" class="answer-reveal">
+                    <p><strong>Expected Frequency:</strong> $E = N / k = 44 / 4 = 11$ for each flavor.</p>
+                    <table class="comparison" style="width: auto;">
+                        <tr><th>Flavor</th><th>$O$</th><th>$E$</th><th>$O-E$</th><th>$(O-E)^2$</th><th>$\frac{(O-E)^2}{E}$</th></tr>
+                        <tr><td>Vanilla</td><td>5</td><td>11</td><td>−6</td><td>36</td><td>3.27</td></tr>
+                        <tr><td>Chocolate</td><td>15</td><td>11</td><td>4</td><td>16</td><td>1.45</td></tr>
+                        <tr><td>Mint</td><td>14</td><td>11</td><td>3</td><td>9</td><td>0.82</td></tr>
+                        <tr><td>Strawberry</td><td>10</td><td>11</td><td>−1</td><td>1</td><td>0.09</td></tr>
+                        <tr style="font-weight:bold; background:#e0f2f1;"><td colspan="5" style="text-align:right;">$\chi^2 = \sum =$</td><td><strong>5.64</strong></td></tr>
+                    </table>
+                    <p><em>(On the quiz, select <strong>5.6</strong> — the closest answer choice.)</em></p>
+                </div>
+
+                <p><strong>d–f. Decision:</strong></p>
+                <button class="reveal-btn" onclick="reveal('q1-dec')">Reveal Decision &amp; Conclusion</button>
+                <div id="q1-dec" class="answer-reveal">
+                    <p><strong>$df$:</strong> $k - 1 = 4 - 1 = 3$</p>
+                    <p><strong>Critical Value:</strong> $\alpha = .05$, $df = 3$ → <strong>7.815</strong></p>
+                    <p><strong>Compare:</strong> $5.64 < 7.815$ — the statistic is <em>less extreme</em> than the critical value.</p>
+                    <p><strong>Decision:</strong> <strong>Fail to reject</strong> the null hypothesis.</p>
+                    <p><strong>Conclusion:</strong> The four ice cream flavors <strong>are equally popular</strong> (no significant difference in preference).</p>
+                </div>
+
+                <hr style="margin: 30px 0; border-color: #ddd;">
+
+                <!-- ========== Q2: COLLEGE MAJORS (GoF) ========== -->
+                <h3>Q2: College Majors (Goodness of Fit)</h3>
+                <div class="scenario-box">
+                    <p>A high school physics teacher asks his 72 senior students about their first-choice college major:</p>
+                    <ul>
+                        <li>STEM: 20 &nbsp; | &nbsp; Social Sciences: 18 &nbsp; | &nbsp; Liberal Arts: 34</li>
+                        <li><strong>Total ($N$) = 72</strong>, &nbsp; <strong>$\alpha = .05$</strong></li>
+                    </ul>
+                </div>
+
+                <p><strong>a–b. Hypotheses:</strong></p>
+                <button class="reveal-btn" onclick="reveal('q2-hyp')">Reveal Hypotheses</button>
+                <div id="q2-hyp" class="answer-reveal">
+                    <p><strong>Variable:</strong> Choice of college major (<strong>nominal</strong>).</p>
+                    <p><strong>Null ($H_0$):</strong> The different types of majors are equally popular among the students.</p>
+                    <p><strong>Alternative ($H_1$):</strong> The different types of majors are NOT equally popular among the students.</p>
+                </div>
+
+                <p><strong>c. Calculate $\chi^2$:</strong></p>
+                <button class="reveal-btn" onclick="reveal('q2-calc')">Reveal Calculation</button>
+                <div id="q2-calc" class="answer-reveal">
+                    <p><strong>Expected Frequency:</strong> $E = N / k = 72 / 3 = 24$ for each major type.</p>
+                    <table class="comparison" style="width: auto;">
+                        <tr><th>Major</th><th>$O$</th><th>$E$</th><th>$O-E$</th><th>$(O-E)^2$</th><th>$\frac{(O-E)^2}{E}$</th></tr>
+                        <tr><td>STEM</td><td>20</td><td>24</td><td>−4</td><td>16</td><td>0.67</td></tr>
+                        <tr><td>Social Sciences</td><td>18</td><td>24</td><td>−6</td><td>36</td><td>1.50</td></tr>
+                        <tr><td>Liberal Arts</td><td>34</td><td>24</td><td>10</td><td>100</td><td>4.17</td></tr>
+                        <tr style="font-weight:bold; background:#e0f2f1;"><td colspan="5" style="text-align:right;">$\chi^2 = \sum =$</td><td><strong>6.33</strong></td></tr>
+                    </table>
+                </div>
+
+                <p><strong>d–f. Decision:</strong></p>
+                <button class="reveal-btn" onclick="reveal('q2-dec')">Reveal Decision &amp; Conclusion</button>
+                <div id="q2-dec" class="answer-reveal">
+                    <p><strong>$df$:</strong> $k - 1 = 3 - 1 = 2$</p>
+                    <p><strong>Critical Value:</strong> $\alpha = .05$, $df = 2$ → <strong>5.992</strong></p>
+                    <p><strong>Compare:</strong> $6.33 > 5.992$ — the statistic is <em>more extreme</em> than the critical value.</p>
+                    <p><strong>Decision:</strong> <strong>Reject</strong> the null hypothesis.</p>
+                    <p><strong>Conclusion:</strong> The types of college majors are <strong>not equally popular</strong>. (Liberal Arts is chosen much more than the other two.)</p>
+                </div>
+
+                <hr style="margin: 30px 0; border-color: #ddd;">
+
+                <!-- ========== Q3: GENDER vs MAJOR (Independence) ========== -->
+                <h3>Q3: Gender vs. Major (Independence)</h3>
+                <div class="scenario-box">
+                    <p>The teacher also examines whether there is a <strong>gender difference</strong> in major choice for a class of 50 students. <strong>$\alpha = .05$</strong></p>
+                    <table class="comparison" style="width: auto;">
+                        <tr><th>Major</th><th>Female</th><th>Male</th><th>Row Total</th></tr>
+                        <tr><td>STEM</td><td>8</td><td>12</td><td><strong>20</strong></td></tr>
+                        <tr><td>Social Sciences</td><td>10</td><td>10</td><td><strong>20</strong></td></tr>
+                        <tr><td>Liberal Arts</td><td>8</td><td>2</td><td><strong>10</strong></td></tr>
+                        <tr><td><strong>Col Total</strong></td><td><strong>26</strong></td><td><strong>24</strong></td><td><strong>50</strong></td></tr>
+                    </table>
+                </div>
+
+                <p><strong>a–b. Variables &amp; Hypotheses:</strong></p>
+                <button class="reveal-btn" onclick="reveal('q3-hyp')">Reveal</button>
+                <div id="q3-hyp" class="answer-reveal">
+                    <p><strong>Variables:</strong> Gender (<strong>nominal</strong>) and Choice of major type (<strong>nominal</strong>).</p>
+                    <p><strong>Null ($H_0$):</strong> Choice of major type is NOT different between males and females.</p>
+                    <p><strong>Alternative ($H_1$):</strong> Choice of major type IS different between males and females.</p>
+                </div>
+
+                <p><strong>c. Calculate $\chi^2$:</strong></p>
+                <button class="reveal-btn" onclick="reveal('q3-calc')">Reveal Calculation</button>
+                <div id="q3-calc" class="answer-reveal">
+                    <p><strong>Expected Frequencies:</strong> $E = \frac{\text{Row Total} \times \text{Col Total}}{N}$</p>
+                    <table class="comparison" style="width: auto;">
+                        <tr><th>Cell</th><th>Formula</th><th>$E$</th></tr>
+                        <tr><td>F / STEM</td><td>$(20 \times 26) / 50$</td><td>10.40</td></tr>
+                        <tr><td>F / Social</td><td>$(20 \times 26) / 50$</td><td>10.40</td></tr>
+                        <tr><td>F / Lib Arts</td><td>$(10 \times 26) / 50$</td><td>5.20</td></tr>
+                        <tr><td>M / STEM</td><td>$(20 \times 24) / 50$</td><td>9.60</td></tr>
+                        <tr><td>M / Social</td><td>$(20 \times 24) / 50$</td><td>9.60</td></tr>
+                        <tr><td>M / Lib Arts</td><td>$(10 \times 24) / 50$</td><td>4.80</td></tr>
+                    </table>
+
+                    <p><strong>Chi-Square Calculation:</strong></p>
+                    <table class="comparison" style="width: auto;">
+                        <tr><th>Cell</th><th>$O$</th><th>$E$</th><th>$(O-E)^2/E$</th></tr>
+                        <tr><td>F / STEM</td><td>8</td><td>10.40</td><td>$(8-10.4)^2/10.4 = 0.55$</td></tr>
+                        <tr><td>F / Social</td><td>10</td><td>10.40</td><td>$(10-10.4)^2/10.4 = 0.02$</td></tr>
+                        <tr><td>F / Lib Arts</td><td>8</td><td>5.20</td><td>$(8-5.2)^2/5.2 = 1.51$</td></tr>
+                        <tr style="background:#f0f0f0;"><td colspan="3" style="text-align:right;"><em>Female subtotal:</em></td><td><strong>2.08</strong></td></tr>
+                        <tr><td>M / STEM</td><td>12</td><td>9.60</td><td>$(12-9.6)^2/9.6 = 0.60$</td></tr>
+                        <tr><td>M / Social</td><td>10</td><td>9.60</td><td>$(10-9.6)^2/9.6 = 0.02$</td></tr>
+                        <tr><td>M / Lib Arts</td><td>2</td><td>4.80</td><td>$(2-4.8)^2/4.8 = 1.63$</td></tr>
+                        <tr style="background:#f0f0f0;"><td colspan="3" style="text-align:right;"><em>Male subtotal:</em></td><td><strong>2.25</strong></td></tr>
+                        <tr style="font-weight:bold; background:#e0f2f1;"><td colspan="3" style="text-align:right;">$\chi^2 = 2.08 + 2.25 =$</td><td><strong>4.33</strong></td></tr>
+                    </table>
+                </div>
+
+                <p><strong>d–f. Decision:</strong></p>
+                <button class="reveal-btn" onclick="reveal('q3-dec')">Reveal Decision &amp; Conclusion</button>
+                <div id="q3-dec" class="answer-reveal">
+                    <p><strong>$df$:</strong> $(Rows - 1)(Cols - 1) = (2-1)(3-1) = 1 \times 2 = 2$</p>
+                    <p><strong>Critical Value:</strong> $\alpha = .05$, $df = 2$ → <strong>5.992</strong></p>
+                    <p><strong>Compare:</strong> $4.33 < 5.992$ — the statistic is <em>less extreme</em>.</p>
+                    <p><strong>Decision:</strong> <strong>Fail to reject</strong> the null hypothesis.</p>
+                    <p><strong>Conclusion:</strong> The college major choice distribution <strong>does not differ significantly</strong> between genders.</p>
+                </div>
+
+                <hr style="margin: 30px 0; border-color: #ddd;">
+
+                <!-- ========== Q4: AGE vs NEWS (Independence) ========== -->
+                <h3>Q4: Age vs. News Source (Independence)</h3>
+                <div class="warning-box">
+                    <strong>Watch the alpha!</strong> This problem uses $\alpha = .10$, not $.05$.
+                </div>
+                <div class="scenario-box">
+                    <p>A market researcher surveys 80 people aged 18–49 and 80 people aged 50+ about their preferred news source. <strong>$\alpha = .10$</strong></p>
+                    <table class="comparison" style="width: auto;">
+                        <tr><th>News Source</th><th>18–49</th><th>50+</th><th>Row Total</th></tr>
+                        <tr><td>TV</td><td>20</td><td>30</td><td><strong>50</strong></td></tr>
+                        <tr><td>Online</td><td>40</td><td>20</td><td><strong>60</strong></td></tr>
+                        <tr><td>Radio</td><td>15</td><td>15</td><td><strong>30</strong></td></tr>
+                        <tr><td>Printed papers</td><td>5</td><td>15</td><td><strong>20</strong></td></tr>
+                        <tr><td><strong>Col Total</strong></td><td><strong>80</strong></td><td><strong>80</strong></td><td><strong>160</strong></td></tr>
+                    </table>
+                </div>
+
+                <p><strong>a–b. Variables &amp; Hypotheses:</strong></p>
+                <button class="reveal-btn" onclick="reveal('q4-hyp')">Reveal</button>
+                <div id="q4-hyp" class="answer-reveal">
+                    <p><strong>Variables:</strong> Age group (<strong>nominal</strong>) and Preferred news source (<strong>nominal</strong>).</p>
+                    <p><strong>Null ($H_0$):</strong> News source preference is NOT different between younger adults and older adults.</p>
+                    <p><strong>Alternative ($H_1$):</strong> News source preference IS different between younger adults and older adults.</p>
+                </div>
+
+                <p><strong>c. Calculate $\chi^2$:</strong></p>
+                <button class="reveal-btn" onclick="reveal('q4-calc')">Reveal Calculation</button>
+                <div id="q4-calc" class="answer-reveal">
+                    <p><strong>Expected Frequencies:</strong> Since both column totals are 80, $E = \text{Row Total} \times 80 / 160 = \text{Row Total} / 2$.</p>
+                    <table class="comparison" style="width: auto;">
+                        <tr><th>Source</th><th>$E$ (18–49)</th><th>$E$ (50+)</th></tr>
+                        <tr><td>TV</td><td>$50/2 = 25$</td><td>$25$</td></tr>
+                        <tr><td>Online</td><td>$60/2 = 30$</td><td>$30$</td></tr>
+                        <tr><td>Radio</td><td>$30/2 = 15$</td><td>$15$</td></tr>
+                        <tr><td>Print</td><td>$20/2 = 10$</td><td>$10$</td></tr>
+                    </table>
+
+                    <p><strong>Chi-Square Calculation:</strong></p>
+                    <table class="comparison" style="width: auto;">
+                        <tr><th>Cell</th><th>$O$</th><th>$E$</th><th>$(O-E)^2/E$</th></tr>
+                        <tr><td>18–49 / TV</td><td>20</td><td>25</td><td>$(20-25)^2/25 = 1.00$</td></tr>
+                        <tr><td>18–49 / Online</td><td>40</td><td>30</td><td>$(40-30)^2/30 = 3.33$</td></tr>
+                        <tr><td>18–49 / Radio</td><td>15</td><td>15</td><td>$(15-15)^2/15 = 0.00$</td></tr>
+                        <tr><td>18–49 / Print</td><td>5</td><td>10</td><td>$(5-10)^2/10 = 2.50$</td></tr>
+                        <tr style="background:#f0f0f0;"><td colspan="3" style="text-align:right;"><em>18–49 subtotal:</em></td><td><strong>6.83</strong></td></tr>
+                        <tr><td>50+ / TV</td><td>30</td><td>25</td><td>$(30-25)^2/25 = 1.00$</td></tr>
+                        <tr><td>50+ / Online</td><td>20</td><td>30</td><td>$(20-30)^2/30 = 3.33$</td></tr>
+                        <tr><td>50+ / Radio</td><td>15</td><td>15</td><td>$(15-15)^2/15 = 0.00$</td></tr>
+                        <tr><td>50+ / Print</td><td>15</td><td>10</td><td>$(15-10)^2/10 = 2.50$</td></tr>
+                        <tr style="background:#f0f0f0;"><td colspan="3" style="text-align:right;"><em>50+ subtotal:</em></td><td><strong>6.83</strong></td></tr>
+                        <tr style="font-weight:bold; background:#e0f2f1;"><td colspan="3" style="text-align:right;">$\chi^2 = 6.83 + 6.83 =$</td><td><strong>13.67</strong></td></tr>
+                    </table>
+                </div>
+
+                <p><strong>d–f. Decision:</strong></p>
+                <button class="reveal-btn" onclick="reveal('q4-dec')">Reveal Decision &amp; Conclusion</button>
+                <div id="q4-dec" class="answer-reveal">
+                    <p><strong>$df$:</strong> $(Rows - 1)(Cols - 1) = (2-1)(4-1) = 1 \times 3 = 3$</p>
+                    <p><strong>Critical Value:</strong> $\alpha = .10$, $df = 3$ → <strong>6.251</strong></p>
+                    <p><strong>Compare:</strong> $13.67 > 6.251$ — the statistic is <em>more extreme</em>.</p>
+                    <p><strong>Decision:</strong> <strong>Reject</strong> the null hypothesis.</p>
+                    <p><strong>Conclusion:</strong> Preference of news source <strong>differs significantly</strong> between different age groups.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <div class="tab-navigation bottom-nav">
+        <button class="tab-button" onclick="showTab(1)">
+            <input type="checkbox" id="progress-1-bottom" class="tab-checkbox" onchange="toggleTabComplete(1)">
+            1. Logic & Normality
+        </button>
+        <button class="tab-button" onclick="showTab(2)">
+            <input type="checkbox" id="progress-2-bottom" class="tab-checkbox" onchange="toggleTabComplete(2)">
+            2. Goodness of Fit
+        </button>
+        <button class="tab-button" onclick="showTab(3)">
+            <input type="checkbox" id="progress-3-bottom" class="tab-checkbox" onchange="toggleTabComplete(3)">
+            3. Test for Independence
+        </button>
+        <button class="tab-button" onclick="showTab(4)">
+            <input type="checkbox" id="progress-4-bottom" class="tab-checkbox" onchange="toggleTabComplete(4)">
+            4. Calculation Engine
+        </button>
+        <button class="tab-button" onclick="showTab(5)">
+            <input type="checkbox" id="progress-5-bottom" class="tab-checkbox" onchange="toggleTabComplete(5)">
+            5. Decision Making
+        </button>
+        <button class="tab-button" onclick="showTab(6)">
+            <input type="checkbox" id="progress-6-bottom" class="tab-checkbox" onchange="toggleTabComplete(6)">
+            6. Assignment Workshop
+        </button>
+    </div>
+
+    <!-- Formula Quick Reference Card -->
+    <div style="background: linear-gradient(135deg, #004d40 0%, #00695c 100%); color: white; padding: 25px; border-radius: 8px; margin-top: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+        <h3 style="color: #fff; margin-top: 0; border-bottom: 2px solid #80cbc4; padding-bottom: 10px;">Module 7 Formula Card</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+            <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 6px;">
+                <h4 style="color: #80cbc4; margin-top: 0;">Chi-Square Statistic</h4>
+                <p style="font-family: 'Courier New', monospace; font-size: 1.1em;">χ² = Σ [ (O - E)² / E ]</p>
+                <p style="font-size: 0.85em; opacity: 0.8;">Sum of all cells</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 6px;">
+                <h4 style="color: #80cbc4; margin-top: 0;">Expected Frequency (Fit)</h4>
+                <p style="font-family: 'Courier New', monospace; font-size: 1.1em;">E = N / k</p>
+                <p style="font-size: 0.85em; opacity: 0.8;">Where k = # of categories</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 6px;">
+                <h4 style="color: #80cbc4; margin-top: 0;">Expected Frequency (Indep)</h4>
+                <p style="font-family: 'Courier New', monospace; font-size: 1.1em;">E = (RowTot × ColTot) / N</p>
+                <p style="font-size: 0.85em; opacity: 0.8;">Calculate for each cell</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 6px;">
+                <h4 style="color: #80cbc4; margin-top: 0;">df (Goodness of Fit)</h4>
+                <p style="font-family: 'Courier New', monospace; font-size: 1.1em;">df = k - 1</p>
+                <p style="font-size: 0.85em; opacity: 0.8;">k = categories</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 6px;">
+                <h4 style="color: #80cbc4; margin-top: 0;">df (Independence)</h4>
+                <p style="font-family: 'Courier New', monospace; font-size: 1.1em;">df = (R - 1)(C - 1)</p>
+                <p style="font-size: 0.85em; opacity: 0.8;">Rows and Columns</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 6px;">
+                <h4 style="color: #80cbc4; margin-top: 0;">Decision Rule</h4>
+                <p style="font-size: 0.9em;">If χ²(calc) > χ²(critical) → Reject Null</p>
+                <p style="font-size: 0.9em;">If χ²(calc) < χ²(critical) → Fail to Reject</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 6px;">
+                <h4 style="color: #80cbc4; margin-top: 0;">Key Critical Values</h4>
+                <p style="font-size: 0.85em;">α=.10: df2→4.605 | df3→6.251</p>
+                <p style="font-size: 0.85em;">α=.05: df2→5.992 | df3→7.815</p>
+                <p style="font-size: 0.85em;">α=.01: df4→13.277</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Progress tracking logic
+        const PROGRESS_KEY = 'psy230-m7-progress';
+
+        function loadProgress() {
+            const savedProgress = localStorage.getItem(PROGRESS_KEY);
+            if (savedProgress) {
+                const progress = JSON.parse(savedProgress);
+                Object.keys(progress).forEach(tabNumber => {
+                    const isComplete = progress[tabNumber];
+                    const topCheckbox = document.getElementById(`progress-${tabNumber}`);
+                    const bottomCheckbox = document.getElementById(`progress-${tabNumber}-bottom`);
+                    if (topCheckbox) topCheckbox.checked = isComplete;
+                    if (bottomCheckbox) bottomCheckbox.checked = isComplete;
+                    updateTabVisualState(parseInt(tabNumber), isComplete);
+                });
+            }
+        }
+
+        function saveProgress(tabNumber, isComplete) {
+            const savedProgress = localStorage.getItem(PROGRESS_KEY);
+            const progress = savedProgress ? JSON.parse(savedProgress) : {};
+            progress[tabNumber] = isComplete;
+            localStorage.setItem(PROGRESS_KEY, JSON.stringify(progress));
+        }
+
+        function toggleTabComplete(tabNumber) {
+            const clickedCheckbox = event.target;
+            const isComplete = clickedCheckbox.checked;
+            
+            const topCheckbox = document.getElementById(`progress-${tabNumber}`);
+            const bottomCheckbox = document.getElementById(`progress-${tabNumber}-bottom`);
+            if (topCheckbox) topCheckbox.checked = isComplete;
+            if (bottomCheckbox) bottomCheckbox.checked = isComplete;
+            
+            updateTabVisualState(tabNumber, isComplete);
+            saveProgress(tabNumber, isComplete);
+        }
+
+        function updateTabVisualState(tabNumber, isComplete) {
+            const tabButtons = document.querySelectorAll(`button[onclick="showTab(${tabNumber})"]`);
+            tabButtons.forEach(button => {
+                if (isComplete) button.classList.add('completed');
+                else button.classList.remove('completed');
+            });
+        }
+
+        function showTab(tabIndex) {
+            document.querySelectorAll('.tab-panel').forEach(panel => panel.classList.remove('active'));
+            document.getElementById('tab-' + tabIndex).classList.add('active');
+            
+            document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            const tabContainer = document.querySelector('.lecture-tabs');
+            if (tabContainer) tabContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function reveal(id) {
+            const el = document.getElementById(id);
+            el.style.display = (el.style.display === 'block') ? 'none' : 'block';
+        }
+
+        document.addEventListener('DOMContentLoaded', loadProgress);
+    </script>
+</body>
+</html>
