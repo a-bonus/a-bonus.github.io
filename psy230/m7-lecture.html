@@ -693,7 +693,21 @@
             <!-- TAB 6: ASSIGNMENT WORKSHOP -->
             <div id="tab-6" class="tab-panel">
                 <h2>Assignment Workshop</h2>
-                <p>Your assignment is a Canvas Quiz based on 4 scenarios. Work through each problem below, then check your answers using the reveal buttons. <strong>Try each step yourself first!</strong></p>
+                <p>Work through each assignment problem below using the skills from Tabs 1–5. Each problem provides <strong>setup guidance</strong> and <strong>process checkpoints</strong> so you can verify you're on the right track — but you need to do the calculations yourself.</p>
+
+                <div class="tip-box">
+                    <strong>Recommended workflow for each problem:</strong>
+                    <ol style="margin-bottom:0">
+                        <li>Read the scenario and identify: How many variables? → Which test?</li>
+                        <li>Write your hypotheses in words.</li>
+                        <li>Build the full calculation table (use the template from Tab 4).</li>
+                        <li>Find $df$ and look up the critical value in the table from Tab 5.</li>
+                        <li>Compare your $\chi^2$ to the critical value → Reject or Fail to Reject.</li>
+                        <li>Write a conclusion that answers the research question.</li>
+                    </ol>
+                </div>
+
+                <hr style="margin: 30px 0; border-color: #ddd;">
 
                 <!-- ========== Q1: ICE CREAM (GoF) ========== -->
                 <h3>Q1: Ice Cream Popularity (Goodness of Fit)</h3>
@@ -705,37 +719,31 @@
                     </ul>
                 </div>
 
-                <p><strong>a–b. Hypotheses:</strong></p>
-                <button class="reveal-btn" onclick="reveal('q1-hyp')">Reveal Hypotheses</button>
-                <div id="q1-hyp" class="answer-reveal">
-                    <p><strong>Variable:</strong> Ice cream flavor preference (<strong>nominal</strong>).</p>
-                    <p><strong>Null ($H_0$):</strong> The four ice cream flavors are equally popular.</p>
-                    <p><strong>Alternative ($H_1$):</strong> The four ice cream flavors are NOT equally popular.</p>
-                </div>
+                <p><strong>Setup: </strong> This is a <strong>Goodness of Fit</strong> test (one variable — flavor preference). The null hypothesis assumes the flavors are equally popular.</p>
 
-                <p><strong>c. Calculate $\chi^2$:</strong></p>
-                <button class="reveal-btn" onclick="reveal('q1-calc')">Reveal Calculation</button>
-                <div id="q1-calc" class="answer-reveal">
-                    <p><strong>Expected Frequency:</strong> $E = N / k = 44 / 4 = 11$ for each flavor.</p>
+                <button class="reveal-btn" onclick="reveal('q1-setup')">Show Process Guide</button>
+                <div id="q1-setup" class="answer-reveal">
+                    <p><strong>Step 1 — Expected Frequency:</strong> If all 4 flavors are equally popular, divide the total evenly:</p>
+                    <p>$E = N / k = 44 / 4 = 11$ for each flavor.</p>
+
+                    <p><strong>Step 2 — Build your table:</strong> Set up a row for each flavor. The first row is done for you:</p>
                     <table class="comparison" style="width: auto;">
                         <tr><th>Flavor</th><th>$O$</th><th>$E$</th><th>$O-E$</th><th>$(O-E)^2$</th><th>$\frac{(O-E)^2}{E}$</th></tr>
                         <tr><td>Vanilla</td><td>5</td><td>11</td><td>−6</td><td>36</td><td>3.27</td></tr>
-                        <tr><td>Chocolate</td><td>15</td><td>11</td><td>4</td><td>16</td><td>1.45</td></tr>
-                        <tr><td>Mint</td><td>14</td><td>11</td><td>3</td><td>9</td><td>0.82</td></tr>
-                        <tr><td>Strawberry</td><td>10</td><td>11</td><td>−1</td><td>1</td><td>0.09</td></tr>
-                        <tr style="font-weight:bold; background:#e0f2f1;"><td colspan="5" style="text-align:right;">$\chi^2 = \sum =$</td><td><strong>5.64</strong></td></tr>
+                        <tr><td>Chocolate</td><td>15</td><td>11</td><td>?</td><td>?</td><td>?</td></tr>
+                        <tr><td>Mint</td><td>14</td><td>11</td><td>?</td><td>?</td><td>?</td></tr>
+                        <tr><td>Strawberry</td><td>10</td><td>11</td><td>?</td><td>?</td><td>?</td></tr>
+                        <tr style="font-weight:bold; background:#e0f2f1;"><td colspan="5" style="text-align:right;">$\chi^2 = \sum =$</td><td>?</td></tr>
                     </table>
-                    <p><em>(On the quiz, select <strong>5.6</strong> — the closest answer choice.)</em></p>
+
+                    <p><strong>Step 3 — Degrees of Freedom:</strong> $df = k - 1 = ?$. Then look up the critical value for $\alpha = .05$ in the Tab 5 table.</p>
+                    <p><strong>Step 4 — Compare &amp; Decide:</strong> Is your $\chi^2$ larger or smaller than the critical value?</p>
                 </div>
 
-                <p><strong>d–f. Decision:</strong></p>
-                <button class="reveal-btn" onclick="reveal('q1-dec')">Reveal Decision &amp; Conclusion</button>
-                <div id="q1-dec" class="answer-reveal">
-                    <p><strong>$df$:</strong> $k - 1 = 4 - 1 = 3$</p>
-                    <p><strong>Critical Value:</strong> $\alpha = .05$, $df = 3$ → <strong>7.815</strong></p>
-                    <p><strong>Compare:</strong> $5.64 < 7.815$ — the statistic is <em>less extreme</em> than the critical value.</p>
-                    <p><strong>Decision:</strong> <strong>Fail to reject</strong> the null hypothesis.</p>
-                    <p><strong>Conclusion:</strong> The four ice cream flavors <strong>are equally popular</strong> (no significant difference in preference).</p>
+                <button class="reveal-btn" onclick="reveal('q1-check')">Show Checkpoint (verify your work)</button>
+                <div id="q1-check" class="answer-reveal">
+                    <p><strong>Checkpoint:</strong> Your four $(O-E)^2/E$ values should sum to a number <strong>between 5 and 6</strong>. If you're getting something much larger or smaller, recheck your arithmetic.</p>
+                    <p><strong>$df$ check:</strong> You should have $df = 3$. The critical value at $\alpha = .05$ comes from the table in Tab 5.</p>
                 </div>
 
                 <hr style="margin: 30px 0; border-color: #ddd;">
@@ -750,35 +758,30 @@
                     </ul>
                 </div>
 
-                <p><strong>a–b. Hypotheses:</strong></p>
-                <button class="reveal-btn" onclick="reveal('q2-hyp')">Reveal Hypotheses</button>
-                <div id="q2-hyp" class="answer-reveal">
-                    <p><strong>Variable:</strong> Choice of college major (<strong>nominal</strong>).</p>
-                    <p><strong>Null ($H_0$):</strong> The different types of majors are equally popular among the students.</p>
-                    <p><strong>Alternative ($H_1$):</strong> The different types of majors are NOT equally popular among the students.</p>
-                </div>
+                <p><strong>Setup:</strong> Another <strong>Goodness of Fit</strong> test (one variable — major choice). The null assumes equal popularity across the 3 categories.</p>
 
-                <p><strong>c. Calculate $\chi^2$:</strong></p>
-                <button class="reveal-btn" onclick="reveal('q2-calc')">Reveal Calculation</button>
-                <div id="q2-calc" class="answer-reveal">
-                    <p><strong>Expected Frequency:</strong> $E = N / k = 72 / 3 = 24$ for each major type.</p>
+                <button class="reveal-btn" onclick="reveal('q2-setup')">Show Process Guide</button>
+                <div id="q2-setup" class="answer-reveal">
+                    <p><strong>Step 1 — Expected Frequency:</strong> $E = N / k = 72 / 3 = 24$ for each major type.</p>
+
+                    <p><strong>Step 2 — Build your table:</strong></p>
                     <table class="comparison" style="width: auto;">
                         <tr><th>Major</th><th>$O$</th><th>$E$</th><th>$O-E$</th><th>$(O-E)^2$</th><th>$\frac{(O-E)^2}{E}$</th></tr>
-                        <tr><td>STEM</td><td>20</td><td>24</td><td>−4</td><td>16</td><td>0.67</td></tr>
-                        <tr><td>Social Sciences</td><td>18</td><td>24</td><td>−6</td><td>36</td><td>1.50</td></tr>
-                        <tr><td>Liberal Arts</td><td>34</td><td>24</td><td>10</td><td>100</td><td>4.17</td></tr>
-                        <tr style="font-weight:bold; background:#e0f2f1;"><td colspan="5" style="text-align:right;">$\chi^2 = \sum =$</td><td><strong>6.33</strong></td></tr>
+                        <tr><td>STEM</td><td>20</td><td>24</td><td>?</td><td>?</td><td>?</td></tr>
+                        <tr><td>Social Sciences</td><td>18</td><td>24</td><td>?</td><td>?</td><td>?</td></tr>
+                        <tr><td>Liberal Arts</td><td>34</td><td>24</td><td>?</td><td>?</td><td>?</td></tr>
+                        <tr style="font-weight:bold; background:#e0f2f1;"><td colspan="5" style="text-align:right;">$\chi^2 = \sum =$</td><td>?</td></tr>
                     </table>
+
+                    <p><strong>Step 3:</strong> $df = k - 1 = ?$. Look up the critical value for $\alpha = .05$.</p>
+                    <p><strong>Step 4:</strong> Compare and decide. Is your $\chi^2$ more or less extreme than the critical value?</p>
                 </div>
 
-                <p><strong>d–f. Decision:</strong></p>
-                <button class="reveal-btn" onclick="reveal('q2-dec')">Reveal Decision &amp; Conclusion</button>
-                <div id="q2-dec" class="answer-reveal">
-                    <p><strong>$df$:</strong> $k - 1 = 3 - 1 = 2$</p>
-                    <p><strong>Critical Value:</strong> $\alpha = .05$, $df = 2$ → <strong>5.992</strong></p>
-                    <p><strong>Compare:</strong> $6.33 > 5.992$ — the statistic is <em>more extreme</em> than the critical value.</p>
-                    <p><strong>Decision:</strong> <strong>Reject</strong> the null hypothesis.</p>
-                    <p><strong>Conclusion:</strong> The types of college majors are <strong>not equally popular</strong>. (Liberal Arts is chosen much more than the other two.)</p>
+                <button class="reveal-btn" onclick="reveal('q2-check')">Show Checkpoint (verify your work)</button>
+                <div id="q2-check" class="answer-reveal">
+                    <p><strong>Checkpoint:</strong> The Liberal Arts row should have the largest contribution (the $(O-E)$ difference is biggest there). Your final $\chi^2$ should be <strong>between 6 and 7</strong>.</p>
+                    <p><strong>$df$ check:</strong> You should have $df = 2$. Pay attention — the critical value for $df = 2$ is different from $df = 3$!</p>
+                    <p><strong>Decision hint:</strong> For this problem, your statistic <em>is</em> close to the critical value. Double-check your comparison carefully.</p>
                 </div>
 
                 <hr style="margin: 30px 0; border-color: #ddd;">
@@ -796,51 +799,31 @@
                     </table>
                 </div>
 
-                <p><strong>a–b. Variables &amp; Hypotheses:</strong></p>
-                <button class="reveal-btn" onclick="reveal('q3-hyp')">Reveal</button>
-                <div id="q3-hyp" class="answer-reveal">
-                    <p><strong>Variables:</strong> Gender (<strong>nominal</strong>) and Choice of major type (<strong>nominal</strong>).</p>
-                    <p><strong>Null ($H_0$):</strong> Choice of major type is NOT different between males and females.</p>
-                    <p><strong>Alternative ($H_1$):</strong> Choice of major type IS different between males and females.</p>
-                </div>
+                <p><strong>Setup:</strong> This is a <strong>Test for Independence</strong> (two variables — Gender and Major type, both nominal). Use $E = \frac{\text{Row Total} \times \text{Col Total}}{N}$ for each cell.</p>
 
-                <p><strong>c. Calculate $\chi^2$:</strong></p>
-                <button class="reveal-btn" onclick="reveal('q3-calc')">Reveal Calculation</button>
-                <div id="q3-calc" class="answer-reveal">
-                    <p><strong>Expected Frequencies:</strong> $E = \frac{\text{Row Total} \times \text{Col Total}}{N}$</p>
+                <button class="reveal-btn" onclick="reveal('q3-setup')">Show Process Guide</button>
+                <div id="q3-setup" class="answer-reveal">
+                    <p><strong>Step 1 — Expected Frequencies:</strong> Calculate $E$ for all <strong>6 cells</strong>. The first one is done for you:</p>
                     <table class="comparison" style="width: auto;">
                         <tr><th>Cell</th><th>Formula</th><th>$E$</th></tr>
-                        <tr><td>F / STEM</td><td>$(20 \times 26) / 50$</td><td>10.40</td></tr>
-                        <tr><td>F / Social</td><td>$(20 \times 26) / 50$</td><td>10.40</td></tr>
-                        <tr><td>F / Lib Arts</td><td>$(10 \times 26) / 50$</td><td>5.20</td></tr>
-                        <tr><td>M / STEM</td><td>$(20 \times 24) / 50$</td><td>9.60</td></tr>
-                        <tr><td>M / Social</td><td>$(20 \times 24) / 50$</td><td>9.60</td></tr>
-                        <tr><td>M / Lib Arts</td><td>$(10 \times 24) / 50$</td><td>4.80</td></tr>
+                        <tr><td>Female / STEM</td><td>$(20 \times 26) / 50$</td><td>10.40</td></tr>
+                        <tr><td>Female / Social Sci</td><td>$(? \times 26) / 50$</td><td>?</td></tr>
+                        <tr><td>Female / Liberal Arts</td><td>$(? \times 26) / 50$</td><td>?</td></tr>
+                        <tr><td>Male / STEM</td><td>$(20 \times 24) / 50$</td><td>?</td></tr>
+                        <tr><td>Male / Social Sci</td><td>$(? \times ?) / 50$</td><td>?</td></tr>
+                        <tr><td>Male / Liberal Arts</td><td>$(? \times ?) / 50$</td><td>?</td></tr>
                     </table>
 
-                    <p><strong>Chi-Square Calculation:</strong></p>
-                    <table class="comparison" style="width: auto;">
-                        <tr><th>Cell</th><th>$O$</th><th>$E$</th><th>$(O-E)^2/E$</th></tr>
-                        <tr><td>F / STEM</td><td>8</td><td>10.40</td><td>$(8-10.4)^2/10.4 = 0.55$</td></tr>
-                        <tr><td>F / Social</td><td>10</td><td>10.40</td><td>$(10-10.4)^2/10.4 = 0.02$</td></tr>
-                        <tr><td>F / Lib Arts</td><td>8</td><td>5.20</td><td>$(8-5.2)^2/5.2 = 1.51$</td></tr>
-                        <tr style="background:#f0f0f0;"><td colspan="3" style="text-align:right;"><em>Female subtotal:</em></td><td><strong>2.08</strong></td></tr>
-                        <tr><td>M / STEM</td><td>12</td><td>9.60</td><td>$(12-9.6)^2/9.6 = 0.60$</td></tr>
-                        <tr><td>M / Social</td><td>10</td><td>9.60</td><td>$(10-9.6)^2/9.6 = 0.02$</td></tr>
-                        <tr><td>M / Lib Arts</td><td>2</td><td>4.80</td><td>$(2-4.8)^2/4.8 = 1.63$</td></tr>
-                        <tr style="background:#f0f0f0;"><td colspan="3" style="text-align:right;"><em>Male subtotal:</em></td><td><strong>2.25</strong></td></tr>
-                        <tr style="font-weight:bold; background:#e0f2f1;"><td colspan="3" style="text-align:right;">$\chi^2 = 2.08 + 2.25 =$</td><td><strong>4.33</strong></td></tr>
-                    </table>
+                    <p><strong>Step 2 — Build the $\chi^2$ table:</strong> One row per cell (6 rows total). Calculate $(O-E)^2/E$ for each, then sum. The quiz shows the answer as a Female subtotal + Male subtotal.</p>
+
+                    <p><strong>Step 3:</strong> $df = (Rows - 1)(Cols - 1) = ?$. Look up the critical value for $\alpha = .05$.</p>
                 </div>
 
-                <p><strong>d–f. Decision:</strong></p>
-                <button class="reveal-btn" onclick="reveal('q3-dec')">Reveal Decision &amp; Conclusion</button>
-                <div id="q3-dec" class="answer-reveal">
-                    <p><strong>$df$:</strong> $(Rows - 1)(Cols - 1) = (2-1)(3-1) = 1 \times 2 = 2$</p>
-                    <p><strong>Critical Value:</strong> $\alpha = .05$, $df = 2$ → <strong>5.992</strong></p>
-                    <p><strong>Compare:</strong> $4.33 < 5.992$ — the statistic is <em>less extreme</em>.</p>
-                    <p><strong>Decision:</strong> <strong>Fail to reject</strong> the null hypothesis.</p>
-                    <p><strong>Conclusion:</strong> The college major choice distribution <strong>does not differ significantly</strong> between genders.</p>
+                <button class="reveal-btn" onclick="reveal('q3-check')">Show Checkpoint (verify your work)</button>
+                <div id="q3-check" class="answer-reveal">
+                    <p><strong>$E$ check:</strong> Your Expected Frequencies for each column should add up to the column total. Female column: all $E$ values should sum to 26. Male column: should sum to 24.</p>
+                    <p><strong>Calculation check:</strong> The Social Sciences rows should contribute very little (the $O$ and $E$ are nearly equal). The Liberal Arts rows should contribute the most. Your total $\chi^2$ should be <strong>between 4 and 5</strong>.</p>
+                    <p><strong>$df$ check:</strong> You should have $df = 2$ (not 3 — be careful with the formula).</p>
                 </div>
 
                 <hr style="margin: 30px 0; border-color: #ddd;">
@@ -848,7 +831,7 @@
                 <!-- ========== Q4: AGE vs NEWS (Independence) ========== -->
                 <h3>Q4: Age vs. News Source (Independence)</h3>
                 <div class="warning-box">
-                    <strong>Watch the alpha!</strong> This problem uses $\alpha = .10$, not $.05$.
+                    <strong>Watch the alpha!</strong> This problem uses <strong>$\alpha = .10$</strong>, not $.05$. This changes your critical value lookup!
                 </div>
                 <div class="scenario-box">
                     <p>A market researcher surveys 80 people aged 18–49 and 80 people aged 50+ about their preferred news source. <strong>$\alpha = .10$</strong></p>
@@ -862,51 +845,26 @@
                     </table>
                 </div>
 
-                <p><strong>a–b. Variables &amp; Hypotheses:</strong></p>
-                <button class="reveal-btn" onclick="reveal('q4-hyp')">Reveal</button>
-                <div id="q4-hyp" class="answer-reveal">
-                    <p><strong>Variables:</strong> Age group (<strong>nominal</strong>) and Preferred news source (<strong>nominal</strong>).</p>
-                    <p><strong>Null ($H_0$):</strong> News source preference is NOT different between younger adults and older adults.</p>
-                    <p><strong>Alternative ($H_1$):</strong> News source preference IS different between younger adults and older adults.</p>
+                <p><strong>Setup:</strong> <strong>Test for Independence</strong> (two variables — Age Group and News Source, both nominal).</p>
+
+                <button class="reveal-btn" onclick="reveal('q4-setup')">Show Process Guide</button>
+                <div id="q4-setup" class="answer-reveal">
+                    <p><strong>Step 1 — Expected Frequencies:</strong> Both column totals are 80, so the formula simplifies nicely:</p>
+                    <p>$E = \frac{\text{Row Total} \times 80}{160} = \frac{\text{Row Total}}{2}$</p>
+                    <p>Calculate $E$ for all <strong>8 cells</strong> (4 news sources × 2 age groups).</p>
+
+                    <p><strong>Step 2 — Build the $\chi^2$ table:</strong> 8 rows. Notice that some cells will contribute 0 to the sum (when $O = E$ exactly).</p>
+
+                    <p><strong>Step 3:</strong> $df = (Rows - 1)(Cols - 1)$. Be careful: how many rows and columns are in the <em>data</em> (not counting the totals row/column)?</p>
+
+                    <p><strong>Step 4:</strong> Look up the critical value for <strong>$\alpha = .10$</strong> (not .05!) with your $df$ in the Tab 5 table.</p>
                 </div>
 
-                <p><strong>c. Calculate $\chi^2$:</strong></p>
-                <button class="reveal-btn" onclick="reveal('q4-calc')">Reveal Calculation</button>
-                <div id="q4-calc" class="answer-reveal">
-                    <p><strong>Expected Frequencies:</strong> Since both column totals are 80, $E = \text{Row Total} \times 80 / 160 = \text{Row Total} / 2$.</p>
-                    <table class="comparison" style="width: auto;">
-                        <tr><th>Source</th><th>$E$ (18–49)</th><th>$E$ (50+)</th></tr>
-                        <tr><td>TV</td><td>$50/2 = 25$</td><td>$25$</td></tr>
-                        <tr><td>Online</td><td>$60/2 = 30$</td><td>$30$</td></tr>
-                        <tr><td>Radio</td><td>$30/2 = 15$</td><td>$15$</td></tr>
-                        <tr><td>Print</td><td>$20/2 = 10$</td><td>$10$</td></tr>
-                    </table>
-
-                    <p><strong>Chi-Square Calculation:</strong></p>
-                    <table class="comparison" style="width: auto;">
-                        <tr><th>Cell</th><th>$O$</th><th>$E$</th><th>$(O-E)^2/E$</th></tr>
-                        <tr><td>18–49 / TV</td><td>20</td><td>25</td><td>$(20-25)^2/25 = 1.00$</td></tr>
-                        <tr><td>18–49 / Online</td><td>40</td><td>30</td><td>$(40-30)^2/30 = 3.33$</td></tr>
-                        <tr><td>18–49 / Radio</td><td>15</td><td>15</td><td>$(15-15)^2/15 = 0.00$</td></tr>
-                        <tr><td>18–49 / Print</td><td>5</td><td>10</td><td>$(5-10)^2/10 = 2.50$</td></tr>
-                        <tr style="background:#f0f0f0;"><td colspan="3" style="text-align:right;"><em>18–49 subtotal:</em></td><td><strong>6.83</strong></td></tr>
-                        <tr><td>50+ / TV</td><td>30</td><td>25</td><td>$(30-25)^2/25 = 1.00$</td></tr>
-                        <tr><td>50+ / Online</td><td>20</td><td>30</td><td>$(20-30)^2/30 = 3.33$</td></tr>
-                        <tr><td>50+ / Radio</td><td>15</td><td>15</td><td>$(15-15)^2/15 = 0.00$</td></tr>
-                        <tr><td>50+ / Print</td><td>15</td><td>10</td><td>$(15-10)^2/10 = 2.50$</td></tr>
-                        <tr style="background:#f0f0f0;"><td colspan="3" style="text-align:right;"><em>50+ subtotal:</em></td><td><strong>6.83</strong></td></tr>
-                        <tr style="font-weight:bold; background:#e0f2f1;"><td colspan="3" style="text-align:right;">$\chi^2 = 6.83 + 6.83 =$</td><td><strong>13.67</strong></td></tr>
-                    </table>
-                </div>
-
-                <p><strong>d–f. Decision:</strong></p>
-                <button class="reveal-btn" onclick="reveal('q4-dec')">Reveal Decision &amp; Conclusion</button>
-                <div id="q4-dec" class="answer-reveal">
-                    <p><strong>$df$:</strong> $(Rows - 1)(Cols - 1) = (2-1)(4-1) = 1 \times 3 = 3$</p>
-                    <p><strong>Critical Value:</strong> $\alpha = .10$, $df = 3$ → <strong>6.251</strong></p>
-                    <p><strong>Compare:</strong> $13.67 > 6.251$ — the statistic is <em>more extreme</em>.</p>
-                    <p><strong>Decision:</strong> <strong>Reject</strong> the null hypothesis.</p>
-                    <p><strong>Conclusion:</strong> Preference of news source <strong>differs significantly</strong> between different age groups.</p>
+                <button class="reveal-btn" onclick="reveal('q4-check')">Show Checkpoint (verify your work)</button>
+                <div id="q4-check" class="answer-reveal">
+                    <p><strong>$E$ check:</strong> TV should have $E = 25$ for each age group. Radio should have $E = 15$.</p>
+                    <p><strong>Calculation check:</strong> The Radio rows contribute $0$ (observed matches expected exactly). Online and Printed papers should be the biggest contributors. Your total $\chi^2$ should be <strong>between 13 and 14</strong>. The quiz shows the answer broken into two age-group subtotals.</p>
+                    <p><strong>$df$ check:</strong> You should have $df = 3$. Remember, the critical value for $\alpha = .10$ is <em>lower</em> than for $\alpha = .05$ at the same $df$.</p>
                 </div>
             </div>
 
