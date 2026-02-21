@@ -31,6 +31,7 @@ _More resources may be added as needed._
 - [M5 Lecture (HTML Version): Independent-Samples t-Tests](/psy230/m5-lecture.html) - Comparing two separate groups
 - [M6 Lecture (HTML Version): Correlation Analysis](/psy230/m6-lecture.html) - Bivariate correlation, scatterplots, and interpretation
 - [M7 Lecture (HTML Version): Non-Parametric Tests and Chi-Square](/psy230/m7-lecture.html) - Non-parametric alternatives and chi-square tests
+- [Final Exam Interactive Study Guide](/psy230/final-lecture.html) - Conceptual mastery practice with parallel scenarios and Excel data analysis framework
 
 ## How to Use This Site
 

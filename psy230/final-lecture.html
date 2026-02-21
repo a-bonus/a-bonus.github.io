@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final Exam Interactive Study Guide - PSY 230</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    <style>
+        /* Base Styling */
+        :root {
+            --primary: #2c3e50; 
+            --secondary: #34495e;
+            --success: #27ae60;
+            --warning: #f39c12; 
+            --info: #2980b9;
+            --light-bg: #ecf0f1;
+            --border: #bdc3c7;
+            --text: #333;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+
+        h1, h2, h3 { color: var(--primary); }
+        
+        /* Header */
+        header {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            border-left: 6px solid var(--info);
+        }
+
+        /* Back link */
+        .back-link {
+            display: inline-block;
+            margin-bottom: 15px;
+            color: var(--info);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover { text-decoration: underline; }
+
+        /* Tabs */
+        .lecture-tabs {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .tab-navigation {
+            display: flex;
+            background-color: #e9ecef;
+            overflow-x: auto;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .tab-button {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            background: none;
+            cursor: pointer;
+            text-align: left;
+            border-bottom: 3px solid transparent;
+            min-width: 160px;
+            transition: all 0.2s;
+            font-weight: 600;
+            color: #555;
+        }
+
+        .tab-button:hover { background-color: #dde2e6; }
+        .tab-button.active { 
+            background-color: #fff; 
+            border-bottom-color: var(--info); 
+            color: var(--info);
+        }
+        
+        .tab-content { padding: 30px; }
+        .tab-panel { display: none; animation: fadeIn 0.4s; }
+        .tab-panel.active { display: block; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Interactive Components */
+        .concept-box {
+            background-color: #e8f4f8;
+            border: 1px solid #b3e5fc;
+            border-left: 4px solid var(--info);
+            padding: 20px;
+            border-radius: 6px;
+            margin: 20px 0;
+        }
+
+        .strategy-box {
+            background-color: #fef9e7;
+            border: 1px solid #fcf3cf;
+            border-left: 4px solid var(--warning);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+
+        .practice-question {
+            background-color: #fff;
+            border: 1px solid var(--border);
+            padding: 20px;
+            border-radius: 6px;
+            margin-top: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+        
+        .practice-question h4 {
+            margin-top: 0;
+            color: var(--secondary);
+            font-size: 0.95em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 2px solid var(--light-bg);
+            padding-bottom: 5px;
+        }
+
+        .reveal-btn {
+            background-color: var(--success);
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 15px;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+        .reveal-btn:hover { background-color: #219a52; }
+        
+        .answer-reveal {
+            display: none;
+            margin-top: 15px;
+            padding: 15px;
+            background: #f4fdf8;
+            border-left: 4px solid var(--success);
+            border-radius: 0 4px 4px 0;
+        }
+
+        .bottom-nav { margin-top: 20px; }
+
+    </style>
+</head>
+<body>
+
+    <a href="/psy230/" class="back-link">← Back to PSY 230 Course Index</a>
+
+    <header>
+        <h1>Final Exam Study Guide: Conceptual Mastery</h1>
+        <p><strong>Goal:</strong> True mastery means understanding the <em>why</em> and the <em>how</em>. This interactive guide translates your final exam topics into core concepts, provides parallel practice scenarios, and gives you a framework to conquer the Excel data analysis section entirely on your own.</p>
+        
+        <div style="background: #e8f5e9; padding: 15px; border-radius: 6px; margin-top: 15px; border-left: 4px solid #27ae60;">
+            <strong>💡 Study Strategy:</strong> Read the concept reviews, attempt the practice questions mentally, and <em>then</em> click "Reveal Answer." Treat this like a closed-book practice run!
+        </div>
+    </header>
+
+    <div class="lecture-tabs">
+        <div class="tab-navigation">
+            <button class="tab-button active" onclick="showTab(1)">1. Foundations & Dist.</button>
+            <button class="tab-button" onclick="showTab(2)">2. Design & Errors</button>
+            <button class="tab-button" onclick="showTab(3)">3. The t-Test Family</button>
+            <button class="tab-button" onclick="showTab(4)">4. Correlation & Chi-Sq</button>
+            <button class="tab-button" onclick="showTab(5)">5. Data Analysis Strategy</button>
+        </div>
+
+        <div class="tab-content">
+            
+            <!-- TAB 1: FOUNDATIONS -->
+            <div id="tab-1" class="tab-panel active">
+                <h2>1. Descriptives, Distributions & Z-Scores</h2>
+                
+                <div class="concept-box">
+                    <h3>Core Concepts Review</h3>
+                    <ul>
+                        <li><strong>Two Branches of Descriptives:</strong> <em>Central Tendency</em> (Mean, Median, Mode) and <em>Variability</em> (Range, Standard Deviation, Variance). The mean is generally the most precise measure of central tendency and is preferred when the data don't have outliers pulling it in one direction.</li>
+                        <li><strong>How Variability Measures Relate:</strong> The standard deviation and variance are closely related — variance is simply the standard deviation squared ($Variance = SD^2$). The range is the simplest measure: just the highest score minus the lowest score.</li>
+                        <li><strong>Graphing Data:</strong> The right graph depends on the type of data.
+                            <ul>
+                                <li>When you want to show how a whole is divided into categories (proportions/percentages), a <strong>pie chart</strong> is the standard visualization.</li>
+                                <li>When you want to show the distribution of a <strong>continuous</strong> variable (e.g., income, test scores), you create "bins" or intervals and count how many scores fall into each bin. Plotting those counts gives you a <strong>histogram</strong> — it looks like a bar chart, but the bars touch because the variable is continuous.</li>
+                            </ul>
+                        </li>
+                        <li><strong>The Normal Curve:</strong> Most data clusters near the mean. The tails extend infinitely (asymptotically), meaning extreme values are theoretically <em>possible</em>, just highly <em>unlikely</em>.</li>
+                        <li><strong>Skewness:</strong> If data has extreme high outliers, it is positively skewed. Because the mean is pulled by outliers, the <strong>median</strong> is the most accurate measure of center.</li>
+                        <li><strong>Z-Scores:</strong> $Z = (X - \mu) / \sigma$. It tells you how many standard deviations a score is from the mean. A negative Z-score simply means the raw score was <strong>below average</strong>.</li>
+                    </ul>
+                </div>
+
+                <div class="practice-question">
+                    <h4>Practice Scenario: Spread & Center</h4>
+                    <p>A researcher is analyzing house prices in a city. Most houses cost around $300,000, but a few mansions cost over $5 million. Which measure of central tendency provides the most accurate "typical" house price? And if those outliers didn't exist, which measure of central tendency would be the most precise choice?</p>
+                    <button class="reveal-btn" onclick="reveal('ans-f1')">Check Understanding</button>
+                    <div id="ans-f1" class="answer-reveal">
+                        <p><strong>With outliers:</strong> The Median. The data is positively skewed by the mansions, so the mean would be pulled upward and be misleading.</p>
+                        <p><strong>Without outliers:</strong> The Mean. When data are well-behaved (no extreme skew), the mean is the most precise measure of central tendency because it uses every data point in the calculation.</p>
+                    </div>
+                </div>
+
+                <div class="practice-question">
+                    <h4>Practice Scenario: Z-Score Logic</h4>
+                    <p>On a standardized test, the mean is 50. Sarah has a Z-score of -1.5. What does this tell us about Sarah's performance relative to the mean?</p>
+                    <button class="reveal-btn" onclick="reveal('ans-f2')">Check Understanding</button>
+                    <div id="ans-f2" class="answer-reveal">
+                        <p>Her score is <strong>below the mean</strong>. Specifically, she scored 1.5 standard deviations below the average. A negative Z-score indicates direction (below), not a negative raw score.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 2: DESIGN & ERRORS -->
+            <div id="tab-2" class="tab-panel">
+                <h2>2. Research Design, Validity & Errors</h2>
+
+                <div class="concept-box">
+                    <h3>Core Concepts Review</h3>
+                    <ul>
+                        <li><strong>IV vs DV:</strong> The Independent Variable (IV) is what the researcher manipulates or groups by. The Dependent Variable (DV) is the outcome being measured.</li>
+                        <li><strong>Measurement Quality:</strong> 
+                            <ul>
+                                <li><strong>Construct Validity:</strong> Does the test actually measure the abstract concept it claims to measure?</li>
+                                <li><strong>Reliability:</strong> Do the items on a scale consistently measure the same thing? Measured statistically using <strong>Cronbach's alpha</strong>.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Hypothesis Errors:</strong> There are two ways to be wrong in hypothesis testing. Make sure you understand both and what controls each.
+                            <ul>
+                                <li><strong>Type I Error:</strong> "False Positive." Rejecting the null hypothesis when there is actually no difference. You conclude there's an effect, but there isn't one.</li>
+                                <li><strong>Type II Error:</strong> "False Negative." Failing to reject the null hypothesis when there actually <em>is</em> a real difference. You miss a true effect.</li>
+                                <li><strong>Alpha ($\alpha$):</strong> Your p-value threshold (usually .05). This literally sets your probability/risk of making a Type I error (e.g., .05 = 5% chance of a false positive).</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="practice-question">
+                    <h4>Practice Scenario: Variables</h4>
+                    <p>A study tests whether drinking coffee before an exam improves memory retention scores. What is the dependent variable?</p>
+                    <button class="reveal-btn" onclick="reveal('ans-d1')">Check Understanding</button>
+                    <div id="ans-d1" class="answer-reveal">
+                        <p><strong>Memory retention scores.</strong> The dependent variable is always the outcome that is being measured. The independent variable is the coffee consumption.</p>
+                    </div>
+                </div>
+
+                <div class="practice-question">
+                    <h4>Practice Scenario: Errors</h4>
+                    <p>A researcher tests a new vitamin and concludes it significantly boosts energy. Later, broader studies prove the vitamin does absolutely nothing, and the researcher's initial finding was just a statistical fluke. What kind of error did the researcher make, and what controlled the probability of this happening?</p>
+                    <button class="reveal-btn" onclick="reveal('ans-d2')">Check Understanding</button>
+                    <div id="ans-d2" class="answer-reveal">
+                        <p><strong>Type I Error.</strong> They rejected the null hypothesis (claiming an effect) when the null was actually true. The probability of this happening is equal to the <strong>alpha level</strong> (e.g., .05 or 5%) they set for their study.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 3: THE T-TEST FAMILY -->
+            <div id="tab-3" class="tab-panel">
+                <h2>3. The t-Test Family & Hypothesis Notation</h2>
+
+                <div class="concept-box">
+                    <h3>Core Concepts Review</h3>
+                    <ul>
+                        <li><strong>Standard Error vs. Deviation:</strong> Standard Deviation describes the spread of <em>individual scores</em>. Standard Error describes the spread of <em>sample means</em>.</li>
+                        <li><strong>Choosing a t-Test:</strong>
+                            <ul>
+                                <li><strong>Paired-Samples:</strong> The <em>same people</em> are measured twice (e.g., Pre-test/Post-test).</li>
+                                <li><strong>Independent-Samples:</strong> Two <em>completely separate groups</em> of people are compared.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Assumptions:</strong> To compare two independent groups, we assume <strong>variances are equal</strong> (Homogeneity of Variance).</li>
+                        <li><strong>Degrees of Freedom (Independent):</strong> $df = (N_1 - 1) + (N_2 - 1)$.</li>
+                        <li><strong>Hypothesis Notation:</strong> The Null Hypothesis ($H_0$) <strong>always</strong> contains an equals sign ($=, \le, \ge$). The alternative ($H_1$) never does.</li>
+                        <li><strong>One-Tailed vs. Two-Tailed Tests:</strong> A <strong>two-tailed</strong> test asks "is there <em>any</em> difference?" — it doesn't predict a direction, so it splits the rejection region across both tails. A <strong>one-tailed</strong> test predicts a specific direction (e.g., Group A will score <em>higher</em> than Group B) and places all the rejection region in one tail. When reading a research question, ask yourself: does the researcher predict a direction, or just a difference?</li>
+                    </ul>
+                </div>
+
+                <div class="practice-question">
+                    <h4>Practice Scenario: Which Test?</h4>
+                    <p>Scenario A: Researchers measure stress levels of teachers in Texas, and compare them to the stress levels of a different group of teachers in New York.<br>
+                    Scenario B: Researchers measure stress levels of teachers in August, and then measure those <em>exact same teachers</em> again in December.</p>
+                    <p>Which statistical test should be used for Scenario A and Scenario B?</p>
+                    <button class="reveal-btn" onclick="reveal('ans-t1')">Check Understanding</button>
+                    <div id="ans-t1" class="answer-reveal">
+                        <p><strong>Scenario A:</strong> Independent-Samples t-test (two separate groups of people).</p>
+                        <p><strong>Scenario B:</strong> Paired-Samples t-test (the same people measured twice).</p>
+                    </div>
+                </div>
+
+                <div class="practice-question">
+                    <h4>Practice Scenario: Degrees of Freedom & Symbols</h4>
+                    <p>1. An independent t-test has 40 people in Group A and 45 people in Group B. What is the df?<br>
+                    2. If a researcher is checking if there is "any difference" between two groups, what is the Null Hypothesis ($H_0$) in symbols?</p>
+                    <button class="reveal-btn" onclick="reveal('ans-t2')">Check Understanding</button>
+                    <div id="ans-t2" class="answer-reveal">
+                        <p><strong>1. df = 83.</strong> Formula: (40 - 1) + (45 - 1) = 39 + 44 = 83.</p>
+                        <p><strong>2. $H_0: \mu_1 = \mu_2$.</strong> The null always states there is no difference (they are equal).</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 4: CORRELATION & CHI-SQUARE -->
+            <div id="tab-4" class="tab-panel">
+                <h2>4. Correlation & Chi-Square</h2>
+
+                <div class="concept-box">
+                    <h3>Core Concepts Review</h3>
+                    <ul>
+                        <li><strong>Correlation Strength:</strong> Look at the <strong>absolute value</strong> (ignore the +/- sign). The closer the number is to 1.0 or -1.0, the stronger the relationship.</li>
+                        <li><strong>Correlation ≠ Causation:</strong> A significant correlation tells you two variables are <em>related</em>, but it <strong>cannot</strong> tell you that one <em>causes</em> the other. There are always alternative explanations: maybe X causes Y, maybe Y causes X, or maybe some third variable (Z) is driving both. Only a true experiment with random assignment and manipulation can establish causation.</li>
+                        <li><strong>Correlation Hypotheses:</strong> The null hypothesis claims there is no relationship in the population: $H_0: \rho = 0$.</li>
+                        <li><strong>Coefficient of Determination ($r^2$):</strong> Squaring the correlation coefficient gives you the proportion of variance in one variable that is explained by the other. Think of it as: "How much of the outcome can we predict from this relationship?" For example, $r = .60$ means $r^2 = .36$, so 36% of the variance is shared between the two variables.</li>
+                        <li><strong>Parametric vs. Nonparametric Correlation:</strong> The Pearson correlation ($r$) is a parametric test — it assumes the data are roughly normally distributed. When your data violate those assumptions (e.g., ordinal data, skewed distributions, outliers), you should use the <strong>Spearman correlation</strong> instead. Think of Spearman as the nonparametric cousin of Pearson — it tests the same general question (are these two variables related?) but works on the ranks of the data rather than the raw values.</li>
+                        <li><strong>Two Types of Chi-Square:</strong> It is important to know the difference between these two tests because they answer different questions.
+                            <ul>
+                                <li><strong>Goodness of Fit:</strong> You have <em>one</em> categorical variable and want to know whether the observed frequencies match some expected pattern. (e.g., "Are zodiac signs evenly distributed?")</li>
+                                <li><strong>Test of Independence:</strong> You have <em>two</em> nominal/categorical variables and want to know whether the level of one variable is related to (or independent of) the other. (e.g., "Is major related to class year?")</li>
+                            </ul>
+                            Both are nonparametric tests used when data violate assumptions for parametric analyses. If observed perfectly matches expected, the Chi-square value is <strong>zero</strong>. For Goodness of Fit, if testing that categories are "evenly distributed," Expected Frequency = Total N / Number of Categories.
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="practice-question">
+                    <h4>Practice Scenario: Interpreting $r$</h4>
+                    <p>A researcher finds the following correlations: $r = -0.82$, $r = 0.45$, $r = 0.76$, $r = -0.12$. Which value represents the strongest relationship, and what is the null hypothesis for this test?</p>
+                    <button class="reveal-btn" onclick="reveal('ans-c1')">Check Understanding</button>
+                    <div id="ans-c1" class="answer-reveal">
+                        <p><strong>Strongest: -0.82.</strong> Absolute value |0.82| is larger than 0.76. The negative sign just means as one variable goes up, the other goes down.</p>
+                        <p><strong>Null Hypothesis: $H_0: \rho = 0$.</strong></p>
+                    </div>
+                </div>
+
+                <div class="practice-question">
+                    <h4>Practice Scenario: Choosing the Right Correlation</h4>
+                    <p>A researcher wants to test whether hours spent studying is related to exam grades. However, after inspecting the data, she discovers the distribution is heavily skewed. Should she use a Pearson or Spearman correlation, and why?</p>
+                    <button class="reveal-btn" onclick="reveal('ans-c3')">Check Understanding</button>
+                    <div id="ans-c3" class="answer-reveal">
+                        <p><strong>Spearman.</strong> The Pearson correlation is a parametric test that assumes roughly normal data. When data violate that assumption (e.g., heavy skew), the Spearman correlation is the appropriate nonparametric alternative. It answers the same core question — are these two variables related? — but is robust to violations of normality.</p>
+                    </div>
+                </div>
+
+                <div class="practice-question">
+                    <h4>Practice Scenario: Chi-Square Expected Values</h4>
+                    <p>A survey asks 100 students to choose their favorite season (Spring, Summer, Fall, Winter). If the researcher hypothesizes that the seasons are equally preferred, what is the expected frequency for each category? If the observed data perfectly matches this expectation, what will the Chi-Square test statistic be?</p>
+                    <button class="reveal-btn" onclick="reveal('ans-c2')">Check Understanding</button>
+                    <div id="ans-c2" class="answer-reveal">
+                        <p><strong>Expected Frequency: 25.</strong> (100 students / 4 categories = 25).</p>
+                        <p><strong>Chi-Square Value: 0.</strong> If Observed = Expected, the numerator of the formula is zero.</p>
+                    </div>
+                </div>
+
+                <div class="practice-question">
+                    <h4>Practice Scenario: Goodness of Fit vs. Test of Independence</h4>
+                    <p>Consider these two research questions. Which Chi-Square test would you use for each?<br>
+                    <strong>Study A:</strong> A researcher surveys 200 people and records their favorite genre of music. She wants to know if genres are equally popular.<br>
+                    <strong>Study B:</strong> A researcher records both the favorite genre of music and the age group (teen, adult, senior) of each participant. She wants to know if music preference depends on age group.</p>
+                    <button class="reveal-btn" onclick="reveal('ans-c4')">Check Understanding</button>
+                    <div id="ans-c4" class="answer-reveal">
+                        <p><strong>Study A: Goodness of Fit.</strong> There is one categorical variable (genre) and the question is whether the observed distribution matches an expected pattern (equal popularity).</p>
+                        <p><strong>Study B: Test of Independence.</strong> There are two categorical variables (genre and age group) and the question is whether one variable is related to (dependent on) the other.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 5: DATA ANALYSIS STRATEGY -->
+            <div id="tab-5" class="tab-panel">
+                <h2>5. Data Analysis Framework (Excel)</h2>
+                <p>You will be given raw data and asked to compute statistics. Do not guess which button to click in Excel. Use this framework to <strong>decide</strong> what test to run, and then follow the steps.</p>
+
+                <div class="strategy-box">
+                    <h3>Framework 1: Manual Calculations</h3>
+                    <p><strong>Z-Score Formula:</strong> $Z = (Raw Score - Mean) / Standard Deviation$<br>
+                    <em>Tip:</em> Always calculate the Mean and SD first if they aren't provided. Subtract the Mean from your Score, then divide.</p>
+
+                    <p><strong>Chi-Square Formula:</strong> $\sum \frac{(Observed - Expected)^2}{Expected}$<br>
+                    <em>Workflow:</em><br>
+                    1. Find Expected (Total N / # of categories).<br>
+                    2. For each category: Subtract Expected from Observed. Square that number. Divide by Expected.<br>
+                    3. Add all those category totals together.</p>
+                </div>
+
+                <div class="strategy-box">
+                    <h3>Framework 2: Identifying the Right Excel Test</h3>
+                    <p>When looking at a dataset prompt, ask yourself these questions:</p>
+                    
+                    <h4>Scenario A: "Are these two continuous variables related?"</h4>
+                    <ul>
+                        <li><strong>Action:</strong> You are testing for an association.</li>
+                        <li><strong>Excel Tool:</strong> <code>Data Analysis > Correlation</code> (or type <code>=CORREL(col1, col2)</code>).</li>
+                        <li><strong>Interpretation:</strong> A positive $r$ means they move together. A negative $r$ means they move opposite.</li>
+                    </ul>
+
+                    <h4>Scenario B: "Did the same participants perform differently on Task A vs. Task B?"</h4>
+                    <ul>
+                        <li><strong>Action:</strong> The scores are linked to the same person. This requires a <strong>Paired-Samples t-test</strong>.</li>
+                        <li><strong>Excel Tool:</strong> <code>Data Analysis > t-Test: Paired Two Sample for Means</code>.</li>
+                        <li><strong>Data Prep:</strong> Usually none, just select the two columns.</li>
+                    </ul>
+
+                    <h4>Scenario C: "Did Group 1 (Condition X) perform differently than Group 2 (Condition Y)?"</h4>
+                    <ul>
+                        <li><strong>Action:</strong> These are entirely separate people. This requires an <strong>Independent-Samples t-test</strong>.</li>
+                        <li><strong>Excel Tool:</strong> <code>Data Analysis > t-Test: Two-Sample Assuming Equal Variances</code>.</li>
+                        <li><strong>CRITICAL Data Prep:</strong> If your dataset has all the scores in one column and a "Group Code" in another, <strong>you must sort the data first</strong>. Sort by the Group Code so all Group 1 scores are clustered together, and all Group 2 scores are clustered together. Then, select those specific clusters for Variable 1 and Variable 2.</li>
+                    </ul>
+                </div>
+
+                <div class="practice-question">
+                    <h4>Test Your Analysis Strategy</h4>
+                    <p>A dataset contains variables for "Diet Group" (Keto vs. Vegan) and "Weight Loss Amount". How would you prepare this data and which test would you run to see if weight loss differed by diet?</p>
+                    <button class="reveal-btn" onclick="reveal('ans-excel')">Reveal Strategy</button>
+                    <div id="ans-excel" class="answer-reveal">
+                        <p><strong>1. The Test:</strong> Independent-Samples t-test (Two-Sample Assuming Equal Variances). These are two separate groups of people.</p>
+                        <p><strong>2. Data Prep:</strong> You must <strong>SORT</strong> the data by "Diet Group" first. Then, for Variable 1, highlight the weight loss scores for only the Keto rows. For Variable 2, highlight the weight loss scores for only the Vegan rows.</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <div class="tab-navigation bottom-nav">
+        <button class="tab-button" onclick="showTab(1)">1. Foundations</button>
+        <button class="tab-button" onclick="showTab(2)">2. Design & Errors</button>
+        <button class="tab-button" onclick="showTab(3)">3. T-Tests</button>
+        <button class="tab-button" onclick="showTab(4)">4. Correlation</button>
+        <button class="tab-button" onclick="showTab(5)">5. Data Analysis</button>
+    </div>
+
+    <script>
+        function showTab(tabIndex) {
+            document.querySelectorAll('.tab-panel').forEach(panel => panel.classList.remove('active'));
+            document.getElementById('tab-' + tabIndex).classList.add('active');
+            
+            document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+            
+            // Activate both top and bottom buttons for the selected tab
+            const buttons = document.querySelectorAll('.tab-button');
+            buttons[tabIndex - 1].classList.add('active');
+            buttons[tabIndex + 4].classList.add('active');
+            
+            const tabContainer = document.querySelector('.lecture-tabs');
+            if (tabContainer) tabContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function reveal(id) {
+            const el = document.getElementById(id);
+            if(el.style.display === 'block') {
+                el.style.display = 'none';
+            } else {
+                el.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>
