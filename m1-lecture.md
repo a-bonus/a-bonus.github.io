@@ -1334,6 +1334,30 @@ By the end of this module, you will be able to:
                 <li><strong>Be cautious about generalizations</strong> unless you have a representative sample</li>
             </ol>
 
+            <h3>Converting SPSS Output to Descriptive Statistics</h3>
+
+            <p>SPSS always calculates the <strong>inferential</strong> version of variance and standard deviation (using n-1). But sometimes you need the <strong>descriptive</strong> version (using N) — which only describes your sample without estimating the population.</p>
+
+            <p><strong>The key idea:</strong> SPSS divided by n-1, but you need the version that divides by N. You can convert without starting over from scratch.</p>
+
+            <p><strong>Step 1: Convert the variance</strong></p>
+            <p>Descriptive Variance = SPSS Variance × (n-1) / n</p>
+            <p>This "undoes" the n-1 denominator and replaces it with N.</p>
+
+            <p><strong>Step 2: Take the square root</strong></p>
+            <p>Descriptive SD = √(Descriptive Variance)</p>
+
+            <p><strong>Worked Example:</strong></p>
+            <p>Suppose SPSS reports a variance of 50.00 for a variable with 25 participants (n = 25).</p>
+            <ol>
+                <li>Descriptive Variance = 50.00 × (25-1) / 25 = 50.00 × 24/25 = 50.00 × 0.96 = <strong>48.00</strong></li>
+                <li>Descriptive SD = √48.00 = <strong>6.93</strong></li>
+            </ol>
+
+            <p><strong>Common mistake:</strong> Taking the square root of the SPSS variance directly (√50.00 = 7.07). That gives you the <em>inferential</em> SD, not the descriptive SD. You must convert the variance <em>first</em>, then take the square root.</p>
+
+            <p><strong>Why does this matter?</strong> The descriptive version tells you the actual spread in your data. The inferential version (what SPSS gives you) is slightly larger because it's designed to estimate the population — and that n-1 correction inflates it a bit. When a question asks for the "descriptive" standard deviation, it wants the version that divides by N.</p>
+
             <h3>Quick Check</h3>
 
             <p><strong>Question 1:</strong> A researcher surveys 100 people about their exercise habits. What is the sample and what is the population?</p>
