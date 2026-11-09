@@ -140,8 +140,8 @@ This comprehensive guide integrates core concepts, statistical test details, int
 - **Requirements:** One categorical IV with exactly 2 levels; one scale DV; independence of observations.
 - **_Design Link:_** Used for **between-subjects** designs with two groups (e.g., spaced vs. massed practice; plant vs. no-plant).
 - **Assumption:** Homogeneity of variances (tested with Levene's Test).
-- **SPSS:** `Analyze → Compare Means → Independent-Samples T Test`. Define groups for the IV.
-- **Interpretation:** Check Levene's Test first. Report t, p, and effect size (Cohen's d) from the appropriate row ("Equal variances assumed" or "not assumed").
+- **SPSS:** `Analyze → Compare Means → Independent-Samples T Test`. Define groups for the IV. **SPSS v31+:** Check `Homogeneity of variance test` box (older versions show Levene's automatically).
+- **Interpretation:** Check Levene's Test first (in v31+ may appear in separate "Homogeneity of Variances" table). Report t, p, and effect size (Cohen's d) from the appropriate row ("Equal variances assumed" or "not assumed").
 - **APA:** _t_(df) = [t-value], _p_ = [p-value], _d_ = [Cohen's d] (df based on output, often N-2). (Effect size: Small ≈ 0.2, Medium ≈ 0.5, Large ≈ 0.8)
 - _Interpreting Output:_ In _t_(37) = 5.95, _p_ < .001, the `5.95` is the calculated t-statistic value.
 
@@ -175,7 +175,7 @@ This comprehensive guide integrates core concepts, statistical test details, int
 - **Purpose:** Compare means of three or more independent groups.
 - **_Design Link:_** Used for **between-subjects** designs with one IV having 3+ levels (e.g., comparing memory scores across 4 different music conditions).
 - **Requirements:** One categorical IV (3+ levels); one scale DV; independence; homogeneity of variances (Levene's test).
-- **SPSS:** `Analyze → Compare Means → One-Way ANOVA`. Check Homogeneity test & select Post Hoc tests.
+- **SPSS:** `Analyze → Compare Means → One-Way ANOVA`. Click `Options` and check `Homogeneity of variance test`. Select Post Hoc tests if needed.
 - **APA:** _F_(df*between, df_within) = [F-value], \_p* = [p-value], η² = [value]. Report post-hoc results if F is significant.
 
 ### One-Way Repeated-Measures ANOVA (Module 4)

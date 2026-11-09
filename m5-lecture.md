@@ -2238,8 +2238,9 @@ Like all statistical tests, factorial ANOVA has assumptions that must be reasona
 1. Click **Options**
 2. Check **Descriptive statistics**
 3. Check **Estimates of effect size**
-4. Move your factors and interaction to "Display Means for" (optional, for marginal means)
-5. Click **Continue**
+4. Check **Homogeneity tests** (to include Levene's Test)
+5. Move your factors and interaction to "Display Means for" (optional, for marginal means)
+6. Click **Continue**
 
 **Step 5: Create Interaction Plots (Optional but Recommended)**
 
@@ -2651,7 +2652,7 @@ Remember: **Always check the interaction first!** It's the golden rule of factor
 1. Analyze → General Linear Model → Univariate
 2. Move DV to "Dependent Variable"
 3. Move IVs to "Fixed Factor(s)"
-4. Options → Check "Descriptive statistics" and "Estimates of effect size"
+4. Options → Check "Descriptive statistics", "Estimates of effect size", and "Homogeneity tests"
 5. OK
 
 ### APA Reporting Template

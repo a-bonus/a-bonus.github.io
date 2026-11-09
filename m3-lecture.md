@@ -2017,13 +2017,14 @@ Do you want to compare two means?
 2. Move your continuous variable to "Test Variable(s)"
 3. Move your categorical variable to "Grouping Variable"
 4. Click `Define Groups` and enter the values for your two groups
-5. Click `Options` and check "Estimate effect sizes" (SPSS v27+)
-6. Click `Continue` and `OK`
+5. **SPSS v31+:** Check the box for `Homogeneity of variance test` to include Levene's Test in the output (older versions show it automatically)
+6. Click `Options` and check "Estimate effect sizes" (SPSS v27+)
+7. Click `Continue` and `OK`
 
 **Step 3: Reading the Output**
 
 - **Group Statistics:** Shows means and standard deviations
-- **Levene's Test:** Check the "Sig." column
+- **Levene's Test:** In older versions, look for F and Sig. columns in the Independent Samples Test table. **In SPSS v31+, it may appear in a separate "Homogeneity of Variances" table.**
 - **Independent Samples Test:** Use the appropriate row based on Levene's test
 - **Effect Sizes:** If requested, appears in a separate table
 
