@@ -186,7 +186,7 @@ Notes:
 
 - One-sample t-test: Analyze → Compare Means → One-Sample T Test → Test Value = μ₀. Read t, df, p.
 - Paired t-test: Analyze → Compare Means → Paired-Samples T Test. Read Paired Samples Test (t, df, p) and Paired Samples Statistics (M, SD).
-- Independent t-test: Analyze → Compare Means → Independent-Samples T Test. Check Levene's test; then t, df, p on the correct row.
+- Independent t-test: Analyze → Compare Means → Independent-Samples T Test. **SPSS v31+: Check "Homogeneity of variance test" box.** Check Levene's test in output; then t, df, p on the correct row.
 - One-way ANOVA: Analyze → Compare Means → One-Way ANOVA. Read ANOVA table (F, df, p). If significant, use Post Hoc for pairwise.
 - Factorial ANOVA (between): Analyze → General Linear Model → Univariate. Read Tests of Between-Subjects Effects (main effects, interaction).
 - Repeated-measures: Analyze → General Linear Model → Repeated Measures. Read Within-Subjects Effects (and sphericity corrections if present).
@@ -224,11 +224,12 @@ These scenarios walk you through the complete research workflow, from research q
 **Step 4: Run Analysis in SPSS**
 - Analyze → Compare Means → Independent-Samples T Test
 - DV: Memory score; Grouping variable: Study method
+- **SPSS v31+:** Check "Homogeneity of variance test" (older versions show Levene's automatically)
 - Options: Check "Descriptive statistics"
 - Results from output:
   - Mnemonic group: M = 78.5, SD = 12.3
   - Rereading group: M = 69.2, SD = 11.8
-  - Levene's test: F = 1.05, p = .31 (use equal variances assumed row)
+  - Levene's test: F = 1.05, p = .31 (use equal variances assumed row) — **Note:** In SPSS v31+, this may appear in a separate "Homogeneity of Variances" table
   - t(56) = 3.04, p = .004
   - Calculate Cohen's d: d = (78.5 - 69.2) / 12.05 = 0.77 (medium-to-large effect)
 
@@ -556,7 +557,7 @@ These scenarios walk you through the complete research workflow, from research q
 |:-----------|:----------------|:----------|:-----------|:------------|
 | Compare sample to known value | One-Sample t-test | Compare Means → One-Sample T Test | t, df, p | Cohen's d |
 | Compare 2 means, same people | Paired t-test | Compare Means → Paired-Samples T Test | t, df, p | Cohen's d |
-| Compare 2 means, different people | Independent t-test | Compare Means → Independent-Samples T Test | t, df, p, Levene's | Cohen's d |
+| Compare 2 means, different people | Independent t-test | Compare Means → Independent-Samples T Test (v31+: check "Homogeneity of variance test") | t, df, p, Levene's | Cohen's d |
 | Compare 3+ groups, 1 factor | One-Way ANOVA | Compare Means → One-Way ANOVA | F, df, p, post-hoc | η² or partial η² |
 | Compare groups, 2 factors | Factorial ANOVA | GLM → Univariate | F for main effects & interaction | Partial η² |
 | Relationship between 2 variables | Correlation | Correlate → Bivariate | r, p, N | r² |
